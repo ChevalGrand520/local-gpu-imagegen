@@ -28,6 +28,10 @@ local-gpu-imagegen = "local_gpu_imagegen.cli:main"
 [tool.setuptools]
 package-dir = {"" = "scripts"}
 py-modules = [
+  "_constants",
+  "_protocol",
+  "_schema",
+  "_validation",
   "build_showcase",
   "check_gpu",
   "export_acceptance_evidence",
