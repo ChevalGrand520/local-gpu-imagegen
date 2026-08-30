@@ -177,6 +177,13 @@ class CapabilityRouter:
             "routes": routes,
             "reason": None if routes else "no_eligible_model",
             "next_action": "display_and_wait",
+            **(
+                {}
+                if routes
+                else {
+                    "hint": "No approved model matched this route. Run discover_models (api_only) to list backend-visible models, approve one with set_model_trust (approve_private), then recommend again. If your ComfyUI or checkpoints live outside the default scan roots, use discover_models with selected_folders and explicit roots."
+                }
+            ),
         }
 
     def _layout_capability(self, mode: str) -> dict[str, object]:

@@ -430,7 +430,7 @@ def tool_schema() -> list[dict[str, Any]]:
         },
         {
             "name": "local_gpu_recommend_models",
-            "description": "Recommend one exact confirmed-capability route and at most two alternatives. preferred_model_id must be an exact catalog ID. Display the selected route and start_run_boundary, then wait for later user confirmation before local_gpu_start_run.",
+            "description": "Recommend one exact confirmed-capability route and at most two alternatives. preferred_model_id must be an exact catalog ID. Requires prior api_only discovery and model trust (local_gpu_discover_models then local_gpu_set_model_trust). Display the selected route and start_run_boundary, then wait for later user confirmation before local_gpu_start_run.",
             "inputSchema": _object_schema({
                 "authorization_scope": {"type": "string", "enum": ["private", "public_evidence"]},
                 "operation": {"type": "string", "enum": ["txt2img", "img2img", "inpaint"]},
@@ -564,7 +564,7 @@ def tool_schema() -> list[dict[str, Any]]:
         },
         {
             "name": "local_gpu_generate_round",
-            "description": "Generate one root or immutable revision round and return an optional bounded JPEG preview.",
+            "description": "Generate one root or immutable revision round and return an optional bounded JPEG preview. Construct the plan from the frozen run returned by local_gpu_get_run, copying every confirmed route, identity, workflow, compiler, policy, and budget field.",
             "inputSchema": _object_schema({
                 "run_id": {"type": "string", "minLength": 1},
                 "idempotency_key": {"type": "string", "minLength": 1},
