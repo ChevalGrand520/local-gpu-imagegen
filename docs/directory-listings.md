@@ -1,6 +1,6 @@
 # Prepared Directory Listings
 
-These entries are prepared release materials for version `0.9.0` only. They do not by themselves authorize a package publication, Registry publication, submission, maintainer contact, or third-party pull request.
+These entries are prepared release materials for version `0.9.1` only. They do not by themselves authorize a package publication, Registry publication, submission, maintainer contact, or third-party pull request.
 
 ## awesome-mcp-servers
 
@@ -13,7 +13,7 @@ Alphabetized entry under Image Generation:
 PR body:
 
 ```text
-Adds local-gpu-imagegen `0.9.0`, a Python stdio MCP server that connects Codex or Claude Code to an existing local image-generation stack through a version-pinned durable `uvx` launcher, or guides an explicitly confirmed Windows/NVIDIA portable ComfyUI bootstrap with resumable checksum verification and bounded rollback. It supports ordinary ComfyUI API workflow onboarding, explicit model routes, bounded review, byte-bound finalization, and durable recovery. It does not bundle model weights or download or switch them silently. Docker is not required. Regional and two-stage composition remain experimental.
+Adds local-gpu-imagegen `0.9.1`, a Python stdio MCP server that connects Codex or Claude Code to an existing local image-generation stack through a version-pinned durable `uvx` launcher, or guides an explicitly confirmed Windows/NVIDIA portable ComfyUI bootstrap with resumable checksum verification and bounded rollback. It supports ordinary ComfyUI API workflow onboarding, explicit model routes, bounded review, byte-bound finalization, and durable recovery. It does not bundle model weights or download or switch them silently. Docker is not required. Regional and two-stage composition remain experimental.
 ```
 
 A local v0.9 Windows/NVIDIA acceptance finalized one reviewed environment
@@ -24,14 +24,14 @@ export. Two private character runs remain ineligible negative evidence, so
 prominent-human anatomy quality is not established. Claude Code hosted
 generation remains pending.
 
-Historical submission: [punkpeye/awesome-mcp-servers#11452](https://github.com/punkpeye/awesome-mcp-servers/pull/11452) describes public `v0.8.3`; its last retained state was open with `check-submission` passing. No `0.9.0` update has been submitted in this local audit.
+Historical submission: [punkpeye/awesome-mcp-servers#11452](https://github.com/punkpeye/awesome-mcp-servers/pull/11452) describes public `v0.8.3`; its last retained state was open with `check-submission` passing. No `0.9.1` update has been submitted in this local audit.
 
 ## Glama
 
 - Name: `local-gpu-imagegen`
 - Repository: `https://github.com/ChevalGrand520/local-gpu-imagegen`
-- Package candidate: `local-gpu-imagegen==0.9.0` (not yet published)
-- Official Registry candidate: `io.github.ChevalGrand520/local-gpu-imagegen` version `0.9.0` (not yet published)
+- Package candidate: `local-gpu-imagegen==0.9.1` (not yet published)
+- Official Registry candidate: `io.github.ChevalGrand520/local-gpu-imagegen` version `0.9.1` (not yet published)
 - Transport: `stdio`
 - Install/run: `uvx local-gpu-imagegen serve`
 - Description: `Run supported local image workflows from Codex or Claude Code across existing ComfyUI, AUTOMATIC1111/Forge, and Diffusers installations with explicit routes and review.`

@@ -1,4 +1,4 @@
-# v0.9.0 Release Checklist
+# v0.9.1 Release Checklist
 
 This checklist covers repository release readiness. It does not grant model,
 workflow-component, generated-output, client-configuration, publication, or
@@ -43,14 +43,14 @@ result does not retract the Release.
 - [ ] Freeze an exact release commit with a clean tracked worktree.
 - [x] The pre-freeze candidate content passed all 1,148 model-free tests with
   12 documented platform/privilege skips, Python compilation, `pip check`, and
-  independent stdio verification of version `0.9.0` and exactly seventeen
+  independent stdio verification of version `0.9.1` and exactly seventeen
   tools.
 - [ ] Run the complete model-free suite and Python compilation at that exact
   commit; only documented privilege/integration skips may remain.
-- [x] Build `local_gpu_imagegen-0.9.0-py3-none-any.whl` twice from the same
+- [x] Build `local_gpu_imagegen-0.9.1-py3-none-any.whl` twice from the same
   source epoch and require byte-identical SHA-256 values.
 - [ ] Pass the offline release-candidate verifier and isolated installed-wheel
-  checks for version `0.9.0`, protocol `2024-11-05`, and exactly seventeen
+  checks for version `0.9.1`, protocol `2024-11-05`, and exactly seventeen
   tools.
 - [x] Pass bounded credential, private-path, local-state, image, model-weight,
   temporary-client, dependency, and `git diff --check` scans.
@@ -78,7 +78,7 @@ result does not retract the Release.
 ## Publication Gate
 
 - [ ] README, changelog, package metadata, plugin metadata, `server.json`,
-  release copy, and directory copy agree on `0.9.0`, exactly seventeen tools,
+  release copy, and directory copy agree on `0.9.1`, exactly seventeen tools,
   the ordinary golden path, guided-bootstrap scope, and open limitations.
 - [ ] The Windows full suite and Ubuntu platform-neutral contracts are green
   on Python 3.11 and 3.12 at the exact frozen release commit. Windows-only
@@ -89,7 +89,7 @@ result does not retract the Release.
 - [ ] Publish the exact wheel to PyPI and verify its public SHA-256.
 - [ ] Publish the matching MCP Registry descriptor and verify the resolved
   package, positional `serve` argument, stdio transport, and active version.
-- [ ] Create tag `v0.9.0` and the non-prerelease GitHub Release from the same
+- [ ] Create tag `v0.9.1` and the non-prerelease GitHub Release from the same
   commit and wheel identity.
 - [ ] Update the existing `awesome-mcp-servers` submission and separately
   decide whether to submit Glama.

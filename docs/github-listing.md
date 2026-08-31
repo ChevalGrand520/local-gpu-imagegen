@@ -14,7 +14,7 @@ Topics:
 
 ## GitHub Release
 
-Title: `Local GPU Imagegen v0.9.0`
+Title: `Local GPU Imagegen v0.9.1`
 
 Summary:
 
@@ -39,11 +39,11 @@ Claude Code hosted generation remains pending.
 
 One installed Codex session produced a validated ordinary `sdxl-txt2img` SDXL/ComfyUI result retained as its original 1024x1024 finalized PNG with a sanitized MCP result, full-resolution review, exact hashes, and public rights. Its disclosed limitations are a red-purple palette rather than clear blue hour, no distinct directional beacon beam, one extra navigation beacon, and minor railing/cliff-ladder artifacts. Regional and two-stage composition remain experimental, are not part of the golden path, and provide no fallback; their retained negative evidence does not establish a visual-quality improvement.
 
-`v0.9.0` is a local release candidate and is not yet on PyPI, tagged, published
+`v0.9.1` is a local release candidate and is not yet on PyPI, tagged, published
 as a GitHub Release, or registered as the latest MCP Registry version. Public
 `v0.8.3` remains the current published package and Registry record. The
 existing `awesome-mcp-servers` PR `#11452` describes that older public release;
-the `0.9.0` update and Glama submission remain pending. `100 net-new GitHub
+the `0.9.1` update and Glama submission remain pending. `100 net-new GitHub
 Stars` is the minimum acceptable first-month outcome and planning floor. The
 floor is not a guarantee; it is a post-release adoption goal and does not block publication.
 A missed result does not retract the Release.

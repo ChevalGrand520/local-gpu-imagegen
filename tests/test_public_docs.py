@@ -117,9 +117,9 @@ class PublicDocumentationTests(unittest.TestCase):
         self.assertIn("受支持主机范围是 Windows 10/11 x64 与 NVIDIA", chinese_readme)
         self.assertIn("不代表支持 Linux 托管生图", chinese_readme)
 
-    def test_bootstrap_doc_binds_current_v090_candidate(self) -> None:
+    def test_bootstrap_doc_binds_current_v091_candidate(self) -> None:
         document = (ROOT / "docs" / "bootstrap-windows.md").read_text(encoding="utf-8")
-        self.assertIn("current local-gpu-imagegen 0.9.0", document)
+        self.assertIn("current local-gpu-imagegen 0.9.1", document)
         self.assertIn("Publication remains a separate gate", document)
         self.assertNotIn("planned 0.9.0 target", document)
 
@@ -193,7 +193,7 @@ class PublicDocumentationTests(unittest.TestCase):
         english_readme = (ROOT / "README.md").read_text(encoding="utf-8")
         chinese_readme = CHINESE_README.read_text(encoding="utf-8")
         launcher = (
-            "uvx --from local-gpu-imagegen==0.9.0 "
+            "uvx --from local-gpu-imagegen==0.9.1 "
             "local-gpu-imagegen serve"
         )
 
@@ -404,7 +404,7 @@ class PublicDocumentationTests(unittest.TestCase):
             checklist,
         )
         self.assertIn("- [x] The pre-freeze candidate content passed all 1,148", checklist)
-        self.assertIn("- [x] Build `local_gpu_imagegen-0.9.0-py3-none-any.whl` twice", checklist)
+        self.assertIn("- [x] Build `local_gpu_imagegen-0.9.1-py3-none-any.whl` twice", checklist)
         for pending in (
             "Freeze an exact release commit",
             "Run the complete model-free suite",
@@ -619,7 +619,7 @@ class PublicDocumentationTests(unittest.TestCase):
     def test_github_listing_bounds_the_workflow_offer(self) -> None:
         listing = GITHUB_LISTING.read_text(encoding="utf-8")
         self.assertIn(
-            "Title: `Local GPU Imagegen v0.9.0`",
+            "Title: `Local GPU Imagegen v0.9.1`",
             listing,
         )
 
@@ -854,7 +854,7 @@ class PublicDocumentationTests(unittest.TestCase):
         self.assertIn("experimental compatibility", public)
         self.assertIn("does not establish a visual-quality improvement", public)
 
-    def test_active_versions_are_v090_and_historical_versions_are_preserved(self) -> None:
+    def test_active_versions_are_v091_and_historical_versions_are_preserved(self) -> None:
         readme = (ROOT / "README.md").read_text(encoding="utf-8")
         plugin = json.loads((ROOT / ".codex-plugin" / "plugin.json").read_text(encoding="utf-8"))
         changelog = (ROOT / "CHANGELOG.md").read_text(encoding="utf-8")
@@ -863,9 +863,10 @@ class PublicDocumentationTests(unittest.TestCase):
             for path in ACTIVE_VERSION_FILES
         )
 
-        self.assertEqual(plugin["version"], "0.9.0")
-        self.assertIn('"version": "0.9.0"', readme)
+        self.assertEqual(plugin["version"], "0.9.1")
+        self.assertIn('"version": "0.9.1"', readme)
         self.assertEqual(active_version_findings(active_documents), [])
+        self.assertIn("## [0.9.1] - 2026-08-31", changelog)
         self.assertIn("## [0.9.0] - 2026-08-07", changelog)
         self.assertIn("## [0.8.3] - 2026-08-03", changelog)
         self.assertIn("## [0.8.2] - 2026-08-03", changelog)
@@ -924,11 +925,11 @@ class PublicDocumentationTests(unittest.TestCase):
         ):
             self.assertIn(required, public)
 
-    def test_active_release_guides_pin_v090_and_seventeen_tools(self) -> None:
+    def test_active_release_guides_pin_v091_and_seventeen_tools(self) -> None:
         for path in (RELEASE_CHECKLIST, ROOT / "docs" / "client-compatibility.md"):
             with self.subTest(path=path):
                 text = path.read_text(encoding="utf-8")
-                self.assertIn("`0.9.0`", text)
+                self.assertIn("`0.9.1`", text)
                 self.assertIn("exactly seventeen tools", text)
                 self.assertNotIn("exactly fifteen tools", text)
 
@@ -976,7 +977,7 @@ class PublicDocumentationTests(unittest.TestCase):
                 self.assertIn("full-acceptance/v1.0 gate", text)
                 self.assertIn("not publishable release-set artifacts", text)
 
-    def test_release_coherence_docs_share_v090_state(self) -> None:
+    def test_release_coherence_docs_share_v091_state(self) -> None:
         release_documents = (
             RELEASE_CHECKLIST,
             ROOT / "docs" / "client-compatibility.md",
@@ -985,7 +986,7 @@ class PublicDocumentationTests(unittest.TestCase):
         )
         for path in release_documents:
             with self.subTest(path=path):
-                self.assertIn("0.9.0", path.read_text(encoding="utf-8"))
+                self.assertIn("0.9.1", path.read_text(encoding="utf-8"))
 
         for path in (RELEASE_CHECKLIST, ROOT / "docs" / "client-compatibility.md"):
             with self.subTest(path=path):

@@ -2,6 +2,21 @@
 
 All notable changes will be documented in this file.
 
+## [0.9.1] - 2026-08-31
+
+### Fixed
+
+- Completed the release-identity sync for the ChevalGrand520 migration: the
+  packaged `__version__`, release-candidate expected constants, active
+  documentation, and test contracts all agree on `0.9.1`. The repository
+  remote URL now points at `ChevalGrand520/local-gpu-imagegen`; historical
+  `zc4578980-tech` references remain only in `docs/evidence/` audit records.
+- Added safety-boundary parameter descriptions for confirmation, identity,
+  idempotency, route, and plan fields so tool definitions stay explicit
+  without changing any parameter name, type, or requirement.
+- `model_router.recommend` now reports a `hint` field when no eligible model
+  exists, keeping the failure machine-readable instead of silently empty.
+
 ## [0.9.0] - 2026-08-07
 
 ### Added
