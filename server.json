@@ -3,7 +3,7 @@
   "name": "io.github.ChevalGrand520/local-gpu-imagegen",
   "title": "Local GPU Imagegen",
   "description": "MCP-first control plane for ComfyUI workflows with explicit approvals and no silent downloads.",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "repository": {
     "url": "https://github.com/ChevalGrand520/local-gpu-imagegen",
     "source": "github"
@@ -14,7 +14,7 @@
       "registryType": "pypi",
       "registryBaseUrl": "https://pypi.org",
       "identifier": "local-gpu-imagegen",
-      "version": "0.9.0",
+      "version": "0.9.1",
       "runtimeHint": "uvx",
       "packageArguments": [
         {
