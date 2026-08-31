@@ -1,14 +1,14 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
-  "name": "io.github.zc4578980-tech/local-gpu-imagegen",
+  "name": "io.github.ChevalGrand520/local-gpu-imagegen",
   "title": "Local GPU Imagegen",
   "description": "MCP-first control plane for ComfyUI workflows with explicit approvals and no silent downloads.",
   "version": "0.9.0",
   "repository": {
-    "url": "https://github.com/zc4578980-tech/local-gpu-imagegen",
+    "url": "https://github.com/ChevalGrand520/local-gpu-imagegen",
     "source": "github"
   },
-  "websiteUrl": "https://github.com/zc4578980-tech/local-gpu-imagegen",
+  "websiteUrl": "https://github.com/ChevalGrand520/local-gpu-imagegen",
   "packages": [
     {
       "registryType": "pypi",

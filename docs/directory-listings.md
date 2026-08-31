@@ -7,7 +7,7 @@ These entries are prepared release materials for version `0.9.0` only. They do n
 Alphabetized entry under Image Generation:
 
 ```markdown
-- [local-gpu-imagegen](https://github.com/zc4578980-tech/local-gpu-imagegen) - Connect Codex or Claude Code to existing local ComfyUI, AUTOMATIC1111/Forge, or Diffusers backends with explicit routes and review.
+- [local-gpu-imagegen](https://github.com/ChevalGrand520/local-gpu-imagegen) - Connect Codex or Claude Code to existing local ComfyUI, AUTOMATIC1111/Forge, or Diffusers backends with explicit routes and review.
 ```
 
 PR body:
@@ -29,9 +29,9 @@ Historical submission: [punkpeye/awesome-mcp-servers#11452](https://github.com/p
 ## Glama
 
 - Name: `local-gpu-imagegen`
-- Repository: `https://github.com/zc4578980-tech/local-gpu-imagegen`
+- Repository: `https://github.com/ChevalGrand520/local-gpu-imagegen`
 - Package candidate: `local-gpu-imagegen==0.9.0` (not yet published)
-- Official Registry candidate: `io.github.zc4578980-tech/local-gpu-imagegen` version `0.9.0` (not yet published)
+- Official Registry candidate: `io.github.ChevalGrand520/local-gpu-imagegen` version `0.9.0` (not yet published)
 - Transport: `stdio`
 - Install/run: `uvx local-gpu-imagegen serve`
 - Description: `Run supported local image workflows from Codex or Claude Code across existing ComfyUI, AUTOMATIC1111/Forge, and Diffusers installations with explicit routes and review.`

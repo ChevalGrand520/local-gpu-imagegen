@@ -133,7 +133,7 @@ class RepositoryHygieneTests(unittest.TestCase):
             server["$schema"],
             "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
         )
-        self.assertEqual(server["name"], "io.github.zc4578980-tech/local-gpu-imagegen")
+        self.assertEqual(server["name"], "io.github.ChevalGrand520/local-gpu-imagegen")
         self.assertEqual(server["version"], "0.9.0")
         self.assertLessEqual(len(server["description"]), 100)
         self.assertIn("MCP-first control plane", server["description"])
@@ -142,7 +142,7 @@ class RepositoryHygieneTests(unittest.TestCase):
         self.assertEqual(
             server["repository"],
             {
-                "url": "https://github.com/zc4578980-tech/local-gpu-imagegen",
+                "url": "https://github.com/ChevalGrand520/local-gpu-imagegen",
                 "source": "github",
             },
         )
@@ -166,7 +166,7 @@ class RepositoryHygieneTests(unittest.TestCase):
         readme = (ROOT / "README.md").read_text(encoding="utf-8")
         listings = (ROOT / "docs" / "directory-listings.md").read_text(encoding="utf-8")
         self.assertIn(
-            "mcp-name: io.github.zc4578980-tech/local-gpu-imagegen",
+            "mcp-name: io.github.ChevalGrand520/local-gpu-imagegen",
             readme,
         )
         self.assertIn("awesome-mcp-servers", listings)
