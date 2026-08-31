@@ -16,6 +16,7 @@
 
 1. **上帝文件**：`scripts/mcp_server.py` 2052 行，其中 `tool_schema()` 单函数 603 行（359–962），协议层/schema/参数校验/业务分发/信任/绑定全挤一处。
 2. **静默吞异常**：`except Exception` + `pass` 约 57 处，遍布 `run_store.py`、`engine.py`、`bootstrap_service.py` 等，错误被藏起、不可调试。
+   - ⚠️ **2026-08-31 复测更正**：该数字已过时。按 `except Exception` 紧跟 `pass`/`continue`/`return None` 的口径重新扫描全部已跟踪 `scripts/*.py`，**真正静默的只剩 1 处**（`engine.py`），广义 `except Exception` 共 25 处且多数有真实处理或重抛。原始结论保留作为历史记录，不删除。
 3. **过度工程**：一个生图 MCP 做了 15000 行源码 + 20000 行测试（`run_store.py` 2037 行、`engine.py` 1652 行），`identity_strength`/trust registry/evidence 留存等机制超配。
 
 ## 修复计划（2026-08-30 修订：只拆上帝文件）

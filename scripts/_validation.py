@@ -135,6 +135,13 @@ def validate_tool_arguments(tool: dict[str, Any], arguments: dict[str, Any]) -> 
                     f"{field} must be at most {field_schema['maximum']}.",
                     {"field": field, "maximum": field_schema["maximum"]},
                 )
+            if "multipleOf" in field_schema and value % field_schema["multipleOf"] != 0:
+                return tool_error(
+                    "invalid_dimensions" if field in ("width", "height") else "invalid_argument_value",
+                    "validation",
+                    f"{field} must be divisible by {field_schema['multipleOf']}.",
+                    {"field": field, "multipleOf": field_schema["multipleOf"]},
+                )
         if "const" in field_schema and value != field_schema["const"]:
             return tool_error(
                 "invalid_argument_value",
@@ -327,15 +334,6 @@ def validate_tool_arguments(tool: dict[str, Any], arguments: dict[str, Any]) -> 
             "local_gpu_generate_image requires a non-empty prompt.",
             {"field": "prompt"},
         )
-
-    for field in ("width", "height"):
-        if field in arguments and arguments[field] % 8 != 0:
-            return tool_error(
-                "invalid_dimensions",
-                "validation",
-                "width and height must be divisible by 8.",
-                {"field": field},
-            )
 
     mode = arguments.get("mode", "txt2img")
     if mode in ("img2img", "inpaint") and not arguments.get("input_image"):

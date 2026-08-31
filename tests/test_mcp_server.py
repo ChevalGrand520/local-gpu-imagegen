@@ -423,12 +423,16 @@ class McpServerUnitTests(unittest.TestCase):
         by_name = {tool["name"]: tool for tool in tools}
         self.assertEqual(len(tools), 17)
         self.assertEqual(
-            by_name["local_gpu_inspect_workflow"]["inputSchema"],
-            mcp_server._object_schema(
-                {"workflow_path": {"type": "string", "minLength": 1}},
-                ["workflow_path"],
-            ),
+            by_name["local_gpu_inspect_workflow"]["inputSchema"]["required"],
+            ["workflow_path"],
         )
+        self.assertFalse(
+            by_name["local_gpu_inspect_workflow"]["inputSchema"]["additionalProperties"]
+        )
+        inspect_input = by_name["local_gpu_inspect_workflow"]["inputSchema"]["properties"]
+        self.assertEqual(set(inspect_input), {"workflow_path"})
+        self.assertEqual(inspect_input["workflow_path"]["type"], "string")
+        self.assertEqual(inspect_input["workflow_path"]["minLength"], 1)
         inspect_output = by_name["local_gpu_inspect_workflow"]["outputSchema"]["oneOf"][0]
         defaults = inspect_output["properties"]["workflow_defaults"]
         self.assertIn("workflow_defaults", inspect_output["required"])
@@ -466,7 +470,8 @@ class McpServerUnitTests(unittest.TestCase):
         properties = discovery["inputSchema"]["properties"]
         self.assertIn("exact_file", properties["mode"]["enum"])
         self.assertEqual(set(properties["stage"]["enum"]), {"index", "fingerprint", "verify", "revoke"})
-        self.assertEqual(properties["expected_backend_model_id"], {"type": "string", "minLength": 1})
+        self.assertEqual(properties["expected_backend_model_id"]["type"], "string")
+        self.assertEqual(properties["expected_backend_model_id"]["minLength"], 1)
         self.assertEqual(properties["authorization_id"]["pattern"], r"^verification:[0-9a-f]{24}$")
 
     def test_exact_file_dispatch_forwards_identity_fields_and_optional_confirmation(self) -> None:
@@ -537,10 +542,9 @@ class McpServerUnitTests(unittest.TestCase):
         schema = tools["local_gpu_record_review"]["inputSchema"]
 
         self.assertIn("visual_checks", schema["required"])
-        self.assertEqual(schema["properties"]["constraint_results"], {
-            "type": "object",
-            "additionalProperties": True,
-        })
+        constraint_results = schema["properties"]["constraint_results"]
+        self.assertEqual(constraint_results["type"], "object")
+        self.assertTrue(constraint_results["additionalProperties"])
         checks = schema["properties"]["visual_checks"]
         self.assertFalse(checks["additionalProperties"])
         self.assertEqual(set(checks["required"]), {
