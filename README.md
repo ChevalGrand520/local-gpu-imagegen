@@ -107,6 +107,8 @@ present in the selected portable installation.
 
 For Claude Code, use `uvx local-gpu-imagegen setup claude-code --apply`. Remove the entries with `codex mcp remove local-gpu-imagegen` or `claude mcp remove --scope user local-gpu-imagegen`. Use `uvx local-gpu-imagegen doctor` to inspect local backend readiness. The setup contracts and equivalent stdio launches are verified; one Codex installed-client generation is retained, while Claude Code generation remains pending. See [Client compatibility](docs/client-compatibility.md).
 
+DeepSeek Harness (DSH) connects through the same standard stdio MCP protocol with no setup command: register the server through `dsh plugin --profile <name> add` or point any MCP-compatible client at `scripts/mcp_server.py`. A real DSH-driven run completed the full `discover_models (api_only) → recommend_models → start_run → get_run → generate_round` sequence against a live ComfyUI checkpoint and produced a `round-01.png` artifact; `initialize`/`tools/list`/`ping`, `verify_mcp.py`, and `verify_client_configs.py` all pass.
+
 Before PyPI publication, install the verified wheel or a source checkout, then use the equivalent `local-gpu-imagegen verify` and `local-gpu-imagegen setup ...` commands.
 
 ## Why This Project

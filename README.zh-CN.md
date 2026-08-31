@@ -96,6 +96,13 @@ claude mcp remove --scope user local-gpu-imagegen
 使用 `uvx local-gpu-imagegen doctor` 检查本地后端就绪状态。setup 合约和等价 stdio
 启动已经验证；目前保留了一次 Codex 已安装客户端生成，而 Claude Code 生成仍待验证。
 
+DeepSeek Harness（DSH）通过相同的标准 stdio MCP 协议连接，无需 setup 命令：通过
+`dsh plugin --profile <name> add` 注册，或将任意 MCP 兼容客户端指向
+`scripts/mcp_server.py`。一次真实的 DSH 驱动运行在实时 ComfyUI checkpoint 上完整走通了
+`discover_models (api_only) → recommend_models → start_run → get_run → generate_round`
+序列并产出了 `round-01.png`；`initialize`/`tools/list`/`ping`、`verify_mcp.py`、
+`verify_client_configs.py` 全部通过。
+
 PyPI 发布前，请安装已验证 wheel 或使用源码检出，然后运行等价的
 `local-gpu-imagegen verify` 和 `local-gpu-imagegen setup ...` 命令。
 
