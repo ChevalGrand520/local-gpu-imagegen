@@ -296,8 +296,8 @@ def tool_schema() -> list[dict[str, Any]]:
                 "roots": {"type": "array", "items": {"type": "string"}},
                 "explicit_includes": {"type": "array", "items": {"type": "string"}},
                 "plan_id": {"type": "string", "minLength": 1},
-                "confirmation": {"type": "string", "minLength": 1},
-                "network_confirmation": {"type": "string", "minLength": 1},
+                "confirmation": {"description": "Exact confirmation token returned by the matching discovery plan; required before filesystem access.", "type": "string", "minLength": 1},
+                "network_confirmation": {"description": "Exact separately displayed confirmation authorizing network verification for this unchanged plan.", "type": "string", "minLength": 1},
                 "selected_candidates": {"type": "array", "items": {"type": "string"}},
                 "expected_backend_model_id": {"type": "string", "minLength": 1},
                 "authorization_id": {"type": "string", "pattern": "^verification:[0-9a-f]{24}$"},
@@ -306,8 +306,8 @@ def tool_schema() -> list[dict[str, Any]]:
                 "plan_id": {"type": "string"},
                 "scope_hash": {"type": "string"},
                 "expires_at": {"type": "number"},
-                "confirmation": {"type": "string"},
-                "network_confirmation": {"type": "string"},
+                "confirmation": {"description": "Exact confirmation token returned by the matching discovery plan; required before filesystem access.", "type": "string"},
+                "network_confirmation": {"description": "Exact separately displayed confirmation authorizing network verification for this unchanged plan.", "type": "string"},
                 "incomplete": {"type": "boolean"},
                 "candidates": json_array,
                 "trusted": {"type": "boolean"},
@@ -373,9 +373,9 @@ def tool_schema() -> list[dict[str, Any]]:
             "name": "local_gpu_set_model_trust",
             "description": "Inspect, approve, or revoke one exact current local model identity. A trust mutation requires the exact confirmation previously returned for the same mutation boundary, displayed to the user, and repeated in a later user message.",
             "inputSchema": _object_schema({
-                "action": {"type": "string", "enum": ["inspect_workflow_binding", "approve_private", "approve_public_candidate", "revoke"]},
-                "identity_token": {"type": "string", "minLength": 1},
-                "confirmation": {"type": "string", "minLength": 1},
+                "action": {"description": "Trust operation to inspect, approve, or revoke for the exact supplied identity.", "type": "string", "enum": ["inspect_workflow_binding", "approve_private", "approve_public_candidate", "revoke"]},
+                "identity_token": {"description": "Exact model identity token returned by discovery or workflow inspection.", "type": "string", "minLength": 1},
+                "confirmation": {"description": "Exact confirmation string returned for this mutation and repeated in a later user message.", "type": "string", "minLength": 1},
                 "capabilities": json_object,
                 "public_metadata": _object_schema({
                     "source": {"type": "string", "minLength": 1},
@@ -419,7 +419,7 @@ def tool_schema() -> list[dict[str, Any]]:
             }, ["action", "identity_token"]),
             "outputSchema": _output_schema({
                 "catalog_id": {"type": "string"},
-                "identity_token": {"type": "string"},
+                "identity_token": {"description": "Exact model identity token returned by discovery or workflow inspection.", "type": "string"},
                 "identity_strength": {"type": "string"},
                 "scope": {"type": "string"},
                 "revoked": {"type": "boolean"},
@@ -484,7 +484,7 @@ def tool_schema() -> list[dict[str, Any]]:
                 "model_choice": {"type": "string", "minLength": 1},
                 "backend": {"type": "string", "enum": ["webui", "diffusers", "comfyui"]},
                 "authorization_scope": {"type": "string", "enum": ["private", "public_evidence"]},
-                "route_token": {"type": "string", "minLength": 1},
+                "route_token": {"description": "Opaque recommendation token binding the model, workflow, backend, dimensions, and authorization scope.", "type": "string", "minLength": 1},
                 "max_rounds": {"type": "integer", "minimum": 1, "maximum": 3},
                 "upscale_policy": {"type": "string", "enum": ["auto", "off"]},
             }, [
@@ -567,7 +567,7 @@ def tool_schema() -> list[dict[str, Any]]:
             "description": "Generate one root or immutable revision round and return an optional bounded JPEG preview. Construct the plan from the frozen run returned by local_gpu_get_run, copying every confirmed route, identity, workflow, compiler, policy, and budget field.",
             "inputSchema": _object_schema({
                 "run_id": {"type": "string", "minLength": 1},
-                "idempotency_key": {"type": "string", "minLength": 1},
+                "idempotency_key": {"description": "Caller-chosen key for safely retrying the same round request; reuse with different inputs is rejected.", "type": "string", "minLength": 1},
                 "action": {"type": "string", "enum": ["initial", "refine", "explore"]},
                 "edit_mode": {"type": "string", "enum": ["txt2img", "img2img", "inpaint"]},
                 "mask_id": {"type": "string", "minLength": 1},
@@ -616,7 +616,7 @@ def tool_schema() -> list[dict[str, Any]]:
                 "run_id": {"type": "string", "minLength": 1},
                 "round_number": {"type": "integer", "minimum": 1, "maximum": 3},
                 "summary": {"type": "string", "minLength": 1},
-                "confirmation": {"type": "string", "minLength": 1},
+                "confirmation": {"description": "Exact finalize:<run_id>:<round_number>:<image_sha256> value previously displayed to the user.", "type": "string", "minLength": 1},
                 "postprocess": _object_schema({
                     "type": {"type": "string", "enum": ["anime_upscale"]},
                     "model": {"type": "string", "enum": sorted(SUPPORTED_MODELS)},
@@ -634,7 +634,7 @@ def tool_schema() -> list[dict[str, Any]]:
             "inputSchema": _object_schema({
                 "run_id": {"type": "string", "minLength": 1},
                 "scope": {"type": "string", "enum": ["intermediates", "all"]},
-                "confirmation": {"type": "string"},
+                "confirmation": {"description": "Exact run_id required to authorize cleanup; scope all removes the complete run directory.", "type": "string"},
             }, ["run_id", "scope", "confirmation"]),
             "outputSchema": _output_schema({
                 "run_id": {"type": "string"},
