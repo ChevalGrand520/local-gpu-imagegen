@@ -781,6 +781,21 @@ def _trust_call(services: Any, arguments: dict[str, Any]) -> dict[str, object]:
     return result
 
 
+def unreachable_dispatch_error(name: object) -> dict[str, Any]:
+    """Report a tool that passed schema lookup but matched no dispatch branch.
+
+    Reaching this means the routing group and the per-tool branches have
+    desynchronized. It is reported explicitly instead of silently falling
+    through to whichever handler happens to be last.
+    """
+    return tool_error(
+        "unknown_tool",
+        "validation",
+        f"Unknown tool: {name}",
+        {"toolName": name},
+    )
+
+
 def handle_tool_call(params: dict[str, Any]) -> dict[str, Any]:
     name = params.get("name")
     tool = next((candidate for candidate in tool_schema() if candidate["name"] == name), None)
@@ -884,7 +899,9 @@ def handle_tool_call(params: dict[str, Any]) -> dict[str, Any]:
                 return tool_success(_successful_engine_data(data))
             if name == "local_gpu_set_model_trust":
                 return tool_success(_successful_engine_data(_trust_call(services, arguments)))
-            return tool_success(_successful_engine_data(services.router.recommend(arguments)))
+            if name == "local_gpu_recommend_models":
+                return tool_success(_successful_engine_data(services.router.recommend(arguments)))
+            return unreachable_dispatch_error(name)
         engine = get_asset_engine()
         if name == "local_gpu_list_profiles":
             data = _successful_engine_data(engine.list_profiles(arguments.get("authorization_scope", "private")))
