@@ -1,6 +1,6 @@
 # Local GPU Imagegen
 
-<!-- mcp-name: io.github.zc4578980-tech/local-gpu-imagegen -->
+<!-- mcp-name: io.github.ChevalGrand520/local-gpu-imagegen -->
 
 [English](README.md) | [简体中文](README.zh-CN.md)
 
