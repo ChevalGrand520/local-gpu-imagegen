@@ -43,8 +43,8 @@
 
 ## 关键路径 / 命令
 
-- 项目根：`D:\CodexWorkspace\projects\plugins\local-gpu-imagegen`
-- git：`C:\Program Files\Git\cmd\git.exe`
+- 项目根：仓库根目录（本文件所在目录）
+- git：`git`（任意可用的 git 可执行文件）
 - venv python：`.venv\Scripts\python.exe`（Python 3.12.12）
 - 测试命令：`.venv\Scripts\python.exe -m unittest discover -s tests -v`
 - 契约验证：`.venv\Scripts\python.exe scripts\verify_mcp.py` 和 `scripts\verify_client_configs.py`
