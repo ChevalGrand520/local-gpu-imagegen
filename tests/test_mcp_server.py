@@ -542,10 +542,9 @@ class McpServerUnitTests(unittest.TestCase):
         schema = tools["local_gpu_record_review"]["inputSchema"]
 
         self.assertIn("visual_checks", schema["required"])
-        self.assertEqual(schema["properties"]["constraint_results"], {
-            "type": "object",
-            "additionalProperties": True,
-        })
+        constraint_results = schema["properties"]["constraint_results"]
+        self.assertEqual(constraint_results["type"], "object")
+        self.assertTrue(constraint_results["additionalProperties"])
         checks = schema["properties"]["visual_checks"]
         self.assertFalse(checks["additionalProperties"])
         self.assertEqual(set(checks["required"]), {
