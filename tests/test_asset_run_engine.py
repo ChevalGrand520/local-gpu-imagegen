@@ -143,6 +143,19 @@ class FakeBackendRunner:
         return result
 
 
+class AmbiguousSubmitBackendRunner:
+    def __init__(self) -> None:
+        self.calls: list[dict[str, object]] = []
+
+    def __call__(self, request: dict[str, object]) -> dict[str, object]:
+        self.calls.append(copy.deepcopy(request))
+        raise StateError(
+            "backend_request_failed",
+            "Backend request failed.",
+            {"submission_outcome": "unknown", "error_type": "URLError"},
+        )
+
+
 class TwoStageBackendRunner:
     def __init__(self, *, failure: str | None = None) -> None:
         self.calls: list[dict[str, object]] = []
@@ -1750,6 +1763,32 @@ class AssetRunEngineTests(unittest.TestCase):
         self.runner.exit_code = 0
         data, _ = self.engine.generate_round(self.generate_arguments(started["run_id"], key="initial-2"))
         self.assertEqual(data["round"]["round_number"], 1)
+
+    def test_ambiguous_single_stage_submit_blocks_resubmission(self) -> None:
+        runner = AmbiguousSubmitBackendRunner()
+        self.engine.backend_runner = runner
+        started = self.start()
+        arguments = self.generate_arguments(started["run_id"], key="ambiguous-submit")
+
+        with self.assertRaisesRegex(StateError, "backend_request_failed"):
+            self.engine.generate_round(arguments)
+
+        unresolved = self.engine.get_run({"run_id": started["run_id"]})
+        self.assertEqual(unresolved["state"], "unresolved")
+        self.assertEqual(unresolved["recoverable_next_actions"], ["get_run"])
+        attempt = unresolved["attempts"][-1]
+        self.assertEqual(attempt["status"], "unresolved")
+        self.assertEqual(attempt["submission_outcome"], "unknown")
+        self.assertNotIn("backend_job", attempt)
+
+        for key in ("ambiguous-submit", "different-key"):
+            retry = copy.deepcopy(arguments)
+            retry["idempotency_key"] = key
+            with self.subTest(key=key), self.assertRaisesRegex(
+                StateError, "submission_outcome_unknown"
+            ):
+                self.engine.generate_round(retry)
+        self.assertEqual(len(runner.calls), 1)
 
     def test_unexpected_exception_releases_owned_attempt_lock(self) -> None:
         started = self.start()

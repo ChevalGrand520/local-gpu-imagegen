@@ -2,6 +2,8 @@ from __future__ import annotations
 
 import sys
 import unittest
+import urllib.error
+from unittest.mock import patch
 
 
 ROOT = __import__("pathlib").Path(__file__).resolve().parents[1]
@@ -141,6 +143,38 @@ class BoundedJsonClientTests(unittest.TestCase):
             self.assertEqual(raised.exception.code, "backend_request_failed")
             self.assertEqual(raised.exception.details, {"status": 500})
             self.assertNotIn("private", str(raised.exception))
+
+    def test_post_transport_failure_marks_submission_outcome_unknown(self) -> None:
+        client = BoundedJsonClient("http://127.0.0.1:7860")
+        with patch.object(client._opener, "open", side_effect=urllib.error.URLError("lost")):
+            with self.assertRaises(StateError) as raised:
+                client.post_json("/prompt", {"prompt": "sea"})
+
+        self.assertEqual(
+            raised.exception.details,
+            {"error_type": "URLError", "submission_outcome": "unknown"},
+        )
+
+    def test_get_transport_failure_does_not_mark_submission_outcome_unknown(self) -> None:
+        client = BoundedJsonClient("http://127.0.0.1:7860")
+        with patch.object(client._opener, "open", side_effect=urllib.error.URLError("lost")):
+            with self.assertRaises(StateError) as raised:
+                client.get_json("/status")
+
+        self.assertEqual(raised.exception.details, {"error_type": "URLError"})
+
+    def test_post_http_failure_does_not_mark_submission_outcome_unknown(self) -> None:
+        with FakeBackendServer() as server:
+            server.routes[("POST", "/prompt")] = FakeResponse.json(
+                {"error": "rejected"},
+                status=400,
+            )
+            client = BoundedJsonClient(server.url)
+
+            with self.assertRaises(StateError) as raised:
+                client.post_json("/prompt", {"prompt": "sea"})
+
+        self.assertEqual(raised.exception.details, {"status": 400})
 
     def test_cross_origin_redirect_is_rejected_without_contacting_target(self) -> None:
         with FakeBackendServer() as server:

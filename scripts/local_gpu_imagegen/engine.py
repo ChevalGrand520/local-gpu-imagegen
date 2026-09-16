@@ -388,7 +388,13 @@ class AssetRunEngine:
                 **({"pixel_preservation": pixel_preservation} if two_stage else {}),
             })
         except Exception as error:
-            if (
+            if _is_ambiguous_submission(error):
+                pending_path.unlink(missing_ok=True)
+                try:
+                    self.store.mark_attempt_submission_unknown(handle, _attempt_error(error))
+                except Exception:
+                    self._fail_owned_attempt(handle, error)
+            elif (
                 two_stage
                 and isinstance(error, StateError)
                 and error.code == "comfyui_job_timed_out"
@@ -886,6 +892,10 @@ def recoverable_next_actions(manifest: dict[str, object]) -> list[str]:
     if state == "generating":
         return ["get_run", "generate_round"]
     if state == "unresolved":
+        attempts = manifest.get("attempts")
+        latest = attempts[-1] if isinstance(attempts, list) and attempts else None
+        if isinstance(latest, dict) and latest.get("submission_outcome") == "unknown":
+            return ["get_run"]
         return ["get_run", "generate_round:recover"]
     if state == "generated":
         return ["record_review"]
@@ -1459,6 +1469,13 @@ def _attempt_error(error: Exception) -> dict[str, object]:
         "message": str(error) or type(error).__name__,
         "category": "internal",
     }
+
+
+def _is_ambiguous_submission(error: Exception) -> bool:
+    return (
+        isinstance(error, AssetEngineError)
+        and error.details.get("submission_outcome") == "unknown"
+    )
 
 
 def _existing_image(handle: AttemptHandle) -> dict[str, object]:

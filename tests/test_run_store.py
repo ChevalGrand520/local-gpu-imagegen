@@ -1355,6 +1355,37 @@ class RunStoreTransitionTests(unittest.TestCase):
         self.assertEqual(resumed.status, "recover_backend")
         self.assertEqual(resumed.existing_round["backend_job"]["job_id"], "prompt-stale-1")
 
+    def test_unknown_submission_outcome_blocks_all_new_submissions(self) -> None:
+        handle = self.store.begin_attempt(self.manifest["run_id"], "ambiguous-submit", INITIAL)
+        with self.assertRaisesRegex(ValidationError, "invalid_attempt_error"):
+            self.store.mark_attempt_submission_unknown(
+                handle,
+                {"code": "backend_request_failed", "message": "Missing evidence."},
+            )
+        self.assertEqual(self.store.get(self.manifest["run_id"])["state"], "generating")
+
+        manifest = self.store.mark_attempt_submission_unknown(
+            handle,
+            {
+                "code": "backend_request_failed",
+                "message": "Backend request failed.",
+                "category": "state",
+                "details": {"submission_outcome": "unknown"},
+            },
+        )
+
+        self.assertEqual(manifest["state"], "unresolved")
+        self.assertEqual(manifest["attempts"][-1]["status"], "unresolved")
+        self.assertEqual(manifest["attempts"][-1]["submission_outcome"], "unknown")
+        self.assertNotIn("backend_job", manifest["attempts"][-1])
+        self.assertEqual(recoverable_next_actions(manifest), ["get_run"])
+
+        for key in ("different-key", "ambiguous-submit"):
+            with self.subTest(key=key), self.assertRaisesRegex(
+                StateError, "submission_outcome_unknown"
+            ):
+                self.store.begin_attempt(self.manifest["run_id"], key, INITIAL)
+
     def test_attempt_lock_is_retained_until_completion(self) -> None:
         handle = self.store.begin_attempt(self.manifest["run_id"], "initial-lock", INITIAL)
         lock_path = Path(self.temp.name) / "runs" / self.manifest["run_id"] / ".run.lock"

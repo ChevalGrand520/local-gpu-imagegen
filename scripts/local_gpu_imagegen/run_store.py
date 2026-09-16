@@ -556,6 +556,45 @@ class RunStore:
             if completed and handle.owner_token is not None:
                 self._release_lock(lock_path, handle.owner_token)
 
+    def mark_attempt_submission_unknown(
+        self,
+        handle: AttemptHandle,
+        error: dict[str, object],
+    ) -> dict[str, object]:
+        self._require_attempt_handle(handle)
+        if not isinstance(error, dict):
+            raise ValidationError("invalid_attempt_error", "Attempt error must be an object.")
+        validate_json_serializable(error)
+        details = error.get("details")
+        if not isinstance(details, dict) or details.get("submission_outcome") != "unknown":
+            raise ValidationError(
+                "invalid_attempt_error",
+                "Ambiguous submissions require an explicit unknown submission outcome.",
+            )
+        lock_path = self._lock_path(handle.run_id)
+        completed = False
+        try:
+            manifest, active = self._owned_attempt(handle)
+            if active.get("backend_job") is not None:
+                raise ConflictError(
+                    "backend_job_already_tracked",
+                    "A submission with a known backend job cannot be marked ambiguous.",
+                )
+            archived = copy.deepcopy(active)
+            archived["status"] = "unresolved"
+            archived["submission_outcome"] = "unknown"
+            archived["unresolved_at"] = utc_now()
+            archived["error"] = copy.deepcopy(error)
+            self._attempts(manifest).append(archived)
+            manifest["active_attempt"] = None
+            manifest["state"] = "unresolved"
+            saved = self._save_manifest(handle.run_id, manifest)
+            completed = True
+            return saved
+        finally:
+            if completed and handle.owner_token is not None:
+                self._release_lock(lock_path, handle.owner_token)
+
     def record_partial_attempt(
         self,
         handle: AttemptHandle,
@@ -1146,6 +1185,12 @@ class RunStore:
         unresolved = attempts[-1] if attempts else None
         if not isinstance(unresolved, dict) or unresolved.get("status") != "unresolved":
             return
+        if unresolved.get("submission_outcome") == "unknown":
+            raise StateError(
+                "submission_outcome_unknown",
+                "The backend submission outcome is unknown; no new submission is allowed without reconciliation.",
+                {"idempotency_key": unresolved.get("idempotency_key")},
+            )
         if unresolved.get("idempotency_key") != idempotency_key:
             raise StateError(
                 "backend_job_unresolved",

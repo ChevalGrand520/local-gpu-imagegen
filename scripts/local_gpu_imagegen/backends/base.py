@@ -250,10 +250,13 @@ class BoundedJsonClient:
                 {"status": error.code},
             ) from error
         except (urllib.error.URLError, TimeoutError, socket.timeout, OSError) as error:
+            details: dict[str, object] = {"error_type": type(error).__name__}
+            if body is not None:
+                details["submission_outcome"] = "unknown"
             raise StateError(
                 "backend_request_failed",
                 "Backend request failed.",
-                {"error_type": type(error).__name__},
+                details,
             ) from error
         if len(data) > limit:
             raise ArtifactError(
