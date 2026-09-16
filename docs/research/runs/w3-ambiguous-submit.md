@@ -49,12 +49,13 @@ Ran 114 tests ... OK
 
 python -m unittest \
   tests.test_asset_run_engine.AssetRunEngineTests.test_ambiguous_single_stage_submit_blocks_resubmission \
+  tests.test_asset_run_engine.AssetRunEngineTests.test_ambiguous_submit_persists_unknown_when_pending_cleanup_fails \
   tests.test_asset_run_engine.AssetRunEngineTests.test_backend_failure_is_recorded_without_consuming_round \
   tests.test_asset_run_engine.AssetRunEngineTests.test_two_stage_timeout_recovers_exact_job_without_resubmission \
   tests.test_backend_base.BoundedJsonClientTests.test_post_transport_failure_marks_submission_outcome_unknown \
   tests.test_backend_base.BoundedJsonClientTests.test_get_transport_failure_does_not_mark_submission_outcome_unknown \
   tests.test_run_store.RunStoreTransitionTests.test_unknown_submission_outcome_blocks_all_new_submissions
-Ran 6 tests ... OK
+Ran 7 tests ... OK
 
 python -m compileall -q scripts tests
 exit code 0
@@ -67,13 +68,13 @@ failed for dependency reasons. The initial system Python 3.9 invocation failed
 at import because the repository requires Python 3.11 or 3.12. These are
 environment facts, not converted into product or research outcomes.
 
-The CI-style isolated dependency run used Python 3.13 and completed the current
-`1187` tests with `28` failures, `6` errors, and `41` skips. The raw output is
-retained in `w3-full-suite.log`. This matches the prior W2
-failure/error/skip classification after five W3 tests were added. The W3
-tests and all research tests passed. The retained failures are the known
-macOS/POSIX capability differences and isolated-environment release checks;
-they are not W3 ambiguous-submit failures.
+The CI-style isolated dependency run used Python 3.13 before the W3.1 test was
+added and completed `1187` tests with `28` failures, `6` errors, and `41`
+skips. The raw historical output is retained in `w3-full-suite.log`; it is not
+a post-W3.1 full-suite result. At that earlier commit, the W3 tests and all
+research tests passed. The retained failures are the known macOS/POSIX
+capability differences and isolated-environment release checks; they are not
+W3 ambiguous-submit failures.
 
 The terminal-review product regression command was rerun with Python 3.12.14:
 the original 224-test scope plus the three W3 product tests yielded `227` passed,
