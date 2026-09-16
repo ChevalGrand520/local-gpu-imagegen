@@ -89,6 +89,13 @@ success or as permission to resubmit. The updated focused suite reached `209`
 tests with `1` Windows-only skip and no failures; the terminal-review product
 regression scope reached `227` passed with `1` skip.
 
+After the W3.1 correction, the complete CPU suite was rerun without replacing
+the retained historical log: `1188` tests ran with `28` failures, `6` errors,
+and `41` skips (exit code `1`). The failure/error/skip counts and classified
+failure families match the historical run; no W3.1 test failed. Because this
+run was not redirected to a new raw log, `w3-full-suite.log` remains explicitly
+the pre-W3.1 1187-test record.
+
 The ledger contract guard, `verify_mcp.py`, and `verify_client_configs.py` all
 returned exit code `0`. The guard returned `PASS` for the frozen ledger anchor;
 the MCP verifier returned 17 tools and protocol `2024-11-05`.
