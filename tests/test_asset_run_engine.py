@@ -1790,6 +1790,49 @@ class AssetRunEngineTests(unittest.TestCase):
                 self.engine.generate_round(retry)
         self.assertEqual(len(runner.calls), 1)
 
+    def test_ambiguous_submit_persists_unknown_when_pending_cleanup_fails(self) -> None:
+        runner = AmbiguousSubmitBackendRunner()
+
+        def submit_with_residue(request: dict[str, object]) -> dict[str, object]:
+            Path(str(request["output_path"])).write_bytes(b"pending residue")
+            return runner(request)
+
+        self.engine.backend_runner = submit_with_residue
+        started = self.start()
+        original_unlink = Path.unlink
+        cleanup_failures = 0
+
+        def fail_pending_cleanup(path: Path, *args: object, **kwargs: object) -> None:
+            nonlocal cleanup_failures
+            if (
+                path.name == "round-01.pending.png"
+                and path.exists()
+                and cleanup_failures == 0
+            ):
+                cleanup_failures += 1
+                raise PermissionError("injected ambiguous-submit cleanup failure")
+            original_unlink(path, *args, **kwargs)
+
+        with patch.object(Path, "unlink", new=fail_pending_cleanup):
+            with self.assertRaisesRegex(StateError, "backend_request_failed") as raised:
+                self.engine.generate_round(
+                    self.generate_arguments(started["run_id"], key="ambiguous-cleanup")
+                )
+
+        manifest = self.engine.get_run({"run_id": started["run_id"]})
+        run_root = self.engine.store.run_root(started["run_id"])
+        self.assertEqual(cleanup_failures, 1)
+        self.assertEqual(raised.exception.details["cleanup_warning"], "ambiguous_submission_cleanup_failed")
+        self.assertEqual(manifest["state"], "unresolved")
+        self.assertIsNone(manifest["active_attempt"])
+        self.assertEqual(manifest["attempts"][-1]["submission_outcome"], "unknown")
+        self.assertEqual(
+            manifest["attempts"][-1]["error"]["details"]["cleanup_warning"],
+            "ambiguous_submission_cleanup_failed",
+        )
+        self.assertTrue((run_root / "round-01.pending.png").is_file())
+        self.assertFalse((run_root / ".run.lock").exists())
+
     def test_unexpected_exception_releases_owned_attempt_lock(self) -> None:
         started = self.start()
         with patch("local_gpu_imagegen.engine.validate_backend_result", side_effect=RuntimeError("unexpected")):

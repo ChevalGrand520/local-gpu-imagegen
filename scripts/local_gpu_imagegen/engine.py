@@ -47,6 +47,7 @@ from .visual_review import (
 BackendRunner = Callable[[dict[str, object]], dict[str, object]]
 CapabilityProvider = Callable[[], dict[str, object]]
 TWO_STAGE_RECOVERY_CLEANUP_WARNING = "two_stage_recovery_cleanup_failed"
+AMBIGUOUS_SUBMISSION_CLEANUP_WARNING = "ambiguous_submission_cleanup_failed"
 
 
 class AssetRunEngine:
@@ -389,11 +390,19 @@ class AssetRunEngine:
             })
         except Exception as error:
             if _is_ambiguous_submission(error):
-                pending_path.unlink(missing_ok=True)
+                attempt_error = _attempt_error(error)
                 try:
-                    self.store.mark_attempt_submission_unknown(handle, _attempt_error(error))
+                    pending_path.unlink(missing_ok=True)
                 except Exception:
-                    self._fail_owned_attempt(handle, error)
+                    _add_cleanup_warning(
+                        error,
+                        attempt_error,
+                        AMBIGUOUS_SUBMISSION_CLEANUP_WARNING,
+                    )
+                try:
+                    self.store.mark_attempt_submission_unknown(handle, attempt_error)
+                except Exception:
+                    self._fail_owned_attempt(handle, error, attempt_error)
             elif (
                 two_stage
                 and isinstance(error, StateError)
@@ -1441,18 +1450,22 @@ def _cleanup_two_stage_artifacts(
     return cleanup_failed
 
 
-def _add_cleanup_warning(error: Exception, attempt_error: dict[str, object]) -> None:
+def _add_cleanup_warning(
+    error: Exception,
+    attempt_error: dict[str, object],
+    warning: str = TWO_STAGE_RECOVERY_CLEANUP_WARNING,
+) -> None:
     details = attempt_error.get("details")
     if not isinstance(details, dict):
         details = {}
     attempt_error["details"] = {
         **details,
-        "cleanup_warning": TWO_STAGE_RECOVERY_CLEANUP_WARNING,
+        "cleanup_warning": warning,
     }
     if isinstance(error, AssetEngineError):
         error.details = {
             **error.details,
-            "cleanup_warning": TWO_STAGE_RECOVERY_CLEANUP_WARNING,
+            "cleanup_warning": warning,
         }
 
 

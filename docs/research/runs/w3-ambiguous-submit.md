@@ -45,7 +45,7 @@ The following focused tests passed with `/Users/chevalgrand/.local/bin/python3.1
 
 ```text
 python -m unittest tests.test_backend_base tests.test_run_store
-Ran 113 tests ... OK
+Ran 114 tests ... OK
 
 python -m unittest \
   tests.test_asset_run_engine.AssetRunEngineTests.test_ambiguous_single_stage_submit_blocks_resubmission \
@@ -76,10 +76,17 @@ macOS/POSIX capability differences and isolated-environment release checks;
 they are not W3 ambiguous-submit failures.
 
 The terminal-review product regression command was rerun with Python 3.12.14:
-the original 224-test scope plus the two W3 product tests yielded `226` passed,
+the original 224-test scope plus the three W3 product tests yielded `227` passed,
 `1` skipped, and zero failures. The ComfyUI stub emitted one expected
 BrokenPipeError during an oversized-output test; that test passed and the
 exception is not a W3 failure.
+
+The W3.1 gate check also injects a pending-artifact cleanup failure after an
+ambiguous POST. The run remains durably `unresolved`, releases its lock, and
+retains a sanitized cleanup warning; the residue is not treated as execution
+success or as permission to resubmit. The updated focused suite reached `209`
+tests with `1` Windows-only skip and no failures; the terminal-review product
+regression scope reached `227` passed with `1` skip.
 
 The ledger contract guard, `verify_mcp.py`, and `verify_client_configs.py` all
 returned exit code `0`. The guard returned `PASS` for the frozen ledger anchor;
