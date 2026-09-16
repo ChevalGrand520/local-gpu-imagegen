@@ -32,8 +32,11 @@ class ExportRecordTests(unittest.TestCase):
             "reported_state": {"state": "generated", "attempts": [{"status": "completed", "request_hash": "d" * 64}]},
             "oracle_state": {
                 "execution_state": "succeeded",
+                "oracle_evaluable": True,
                 "execution_started": 1,
                 "execution_finished": 1,
+                "job_id": "job-1",
+                "artifact_hash": "a" * 64,
             },
         }
         original = copy.deepcopy(record)
@@ -42,7 +45,7 @@ class ExportRecordTests(unittest.TestCase):
         self.assertEqual(exported["reported_state"], record["reported_state"])
         self.assertEqual(exported["interpreted_state"]["execution_state"], "succeeded")
         self.assertTrue(exported["interpreted_state"]["execution_verified"])
-        self.assertEqual(exported["mapping_version"], "research-normalization-v1")
+        self.assertEqual(exported["mapping_version"], "research-normalization-v2")
         self.assertEqual(exported["request_digest"], "d" * 64)
         self.assertEqual(exported["field_reasons"]["request_digest"], "provided_reported_attempts.request_hash")
 
@@ -97,6 +100,89 @@ class ExportRecordTests(unittest.TestCase):
         self.assertEqual(exported["interpreted_state"]["execution_state"], "unknown")
         self.assertNotEqual(exported["interpreted_state"]["execution_state"], "failed")
         self.assertEqual(exported["interpreted_state"]["recovery_state"], "required")
+
+    def test_succeeded_without_exact_oracle_binding_is_not_verified(self) -> None:
+        exported = export_record({
+            "record_id": "unbound-success-1",
+            "job_id": "job-reported",
+            "artifact_hash": "a" * 64,
+            "reported_state": {"state": "generated"},
+            "artifact_validation": {"status": "verified", "independent": True},
+            "approval_state": "not_required",
+            "oracle_state": {
+                "execution_state": "succeeded",
+                "oracle_evaluable": True,
+                "execution_started": 1,
+                "execution_finished": 1,
+            },
+        })
+        self.assertFalse(exported["interpreted_state"]["execution_verified"])
+        self.assertIn("independent_execution_artifact_job", exported["interpreted_state"]["execution_verified_reason"])
+
+    def test_contradictory_oracle_is_unknown_and_not_verified(self) -> None:
+        exported = export_record({
+            "record_id": "contradiction-1",
+            "job_id": "job-1",
+            "artifact_hash": "a" * 64,
+            "reported_state": {"state": "generated"},
+            "artifact_validation": {"status": "verified", "independent": True},
+            "oracle_state": {
+                "execution_state": "succeeded",
+                "oracle_evaluable": False,
+                "execution_started": 1,
+                "execution_finished": 0,
+                "job_id": "job-1",
+            },
+        })
+        self.assertEqual(exported["interpreted_state"]["execution_state"], "unknown")
+        self.assertFalse(exported["interpreted_state"]["execution_verified"])
+
+    def test_cli_export_refuses_overwrite(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            destination = Path(temporary) / "export.json"
+            destination.write_text("original\n", encoding="utf-8")
+            with self.assertRaises(ValueError):
+                from scripts.research.export_records import write_export
+
+                write_export(destination, {"new": True})
+            self.assertEqual(destination.read_text(encoding="utf-8"), "original\n")
+
+    def test_input_and_artifact_paths_cannot_escape_evidence_root(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary) / "evidence"
+            root.mkdir()
+            outside = Path(temporary) / "outside.bin"
+            outside.write_bytes(b"outside")
+            source = root / "record.json"
+            source.write_text("{}\n", encoding="utf-8")
+            exported = export_record({
+                "reported_state": {"state": "created"},
+                "input": {"path": "../outside.bin"},
+                "artifact": {"path": "../outside.bin"},
+            }, source_path=source)
+            self.assertIsNone(exported["input_digest"])
+            self.assertIsNone(exported["artifact_hash"])
+            self.assertIn("outside_evidence_root", exported["field_reasons"]["input_digest"])
+            self.assertIn("outside_evidence_root", exported["field_reasons"]["artifact_hash"])
+
+    def test_symlinked_evidence_path_cannot_escape_evidence_root(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary) / "evidence"
+            root.mkdir()
+            outside = Path(temporary) / "outside.bin"
+            outside.write_bytes(b"outside")
+            (root / "linked.bin").symlink_to(outside)
+            source = root / "record.json"
+            source.write_text("{}\n", encoding="utf-8")
+            exported = export_record({
+                "reported_state": {"state": "created"},
+                "input": {"path": "linked.bin"},
+                "artifact": {"path": "linked.bin"},
+            }, source_path=source)
+            self.assertIsNone(exported["input_digest"])
+            self.assertIsNone(exported["artifact_hash"])
+            self.assertIn("symlink_escapes", exported["field_reasons"]["input_digest"])
+            self.assertIn("symlink_escapes", exported["field_reasons"]["artifact_hash"])
 
     def test_cli_style_artifact_path_hash_is_read_only(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:

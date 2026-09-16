@@ -19,6 +19,10 @@ class ExecutionOracle:
     def queue_item_created(self, operation_id: str, job_id: str, prompt_id: str | None = None) -> None:
         self._record("queue_item_created", operation_id, job_id, prompt_id)
 
+    def job_id_revealed(self, operation_id: str, job_id: str, prompt_id: str | None = None) -> None:
+        """Record that the backend exposed a job identity before completion."""
+        self._record("job_id_revealed", operation_id, job_id, prompt_id)
+
     def execution_started(self, operation_id: str, job_id: str, prompt_id: str | None = None) -> str:
         self._execution_counter += 1
         execution_id = f"{self.case_id}:execution-{self._execution_counter:04d}"
@@ -30,14 +34,18 @@ class ExecutionOracle:
         execution_instance_id: str,
         *,
         outcome: str = "succeeded",
+        artifact_hash: str | None = None,
     ) -> None:
         if outcome not in {"succeeded", "failed"}:
             raise ValueError("execution outcome must be succeeded or failed")
-        self._events.append({
+        event: dict[str, object] = {
             "event": "execution_finished",
             "execution_instance_id": execution_instance_id,
             "outcome": outcome,
-        })
+        }
+        if artifact_hash is not None:
+            event["artifact_hash"] = artifact_hash
+        self._events.append(event)
 
     def snapshot(self) -> dict[str, object]:
         started = [event for event in self._events if event["event"] == "execution_started"]
@@ -60,12 +68,17 @@ class ExecutionOracle:
             execution_state = "failed"
         else:
             execution_state = "succeeded"
+        artifact_hashes = [
+            event.get("artifact_hash")
+            for event in finished
+            if isinstance(event.get("artifact_hash"), str)
+        ]
         job_ids = []
         for event in requests:
             job_id = event.get("job_id")
             if job_id not in job_ids:
                 job_ids.append(job_id)
-        return {
+        snapshot: dict[str, object] = {
             "oracle_type": "independent_cpu_execution_oracle_v1",
             "case_id": self.case_id,
             "execution_state": execution_state,
@@ -80,6 +93,9 @@ class ExecutionOracle:
             "job_ids": job_ids,
             "events": copy.deepcopy(self._events),
         }
+        if len(set(artifact_hashes)) == 1:
+            snapshot["artifact_hash"] = artifact_hashes[0]
+        return snapshot
 
     def _record(
         self,

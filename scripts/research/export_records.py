@@ -11,6 +11,7 @@ import argparse
 import copy
 import hashlib
 import json
+import os
 import sys
 from pathlib import Path
 
@@ -25,7 +26,7 @@ from local_gpu_imagegen.run_store import request_hash
 
 EXPORT_SCHEMA_VERSION = 1
 EXPORTER_VERSION = "research-exporter-v1"
-MAPPING_VERSION = "research-normalization-v1"
+MAPPING_VERSION = "research-normalization-v2"
 UNKNOWN = "unknown"
 _MISSING = object()
 
@@ -155,13 +156,15 @@ def load_record(path: Path) -> dict[str, object]:
 
 
 def write_export(path: Path, value: dict[str, object]) -> None:
-    """Write only the requested export destination."""
+    """Create a new export and refuse to overwrite an existing evidence file."""
     destination = Path(path)
     destination.parent.mkdir(parents=True, exist_ok=True)
-    destination.write_text(
-        json.dumps(value, ensure_ascii=True, indent=2, sort_keys=True) + "\n",
-        encoding="utf-8",
-    )
+    payload = json.dumps(value, ensure_ascii=True, indent=2, sort_keys=True) + "\n"
+    try:
+        with destination.open("x", encoding="utf-8") as stream:
+            stream.write(payload)
+    except FileExistsError as error:
+        raise ValueError(f"refusing to overwrite existing export: {destination}") from error
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -260,13 +263,13 @@ def _input_digest(record: dict[str, object], source_path: Path | None) -> tuple[
                 return copy.deepcopy(value[key]), f"provided_input_{key}"
         value = value.get("path")
     if isinstance(value, str) and value:
-        path = Path(value)
-        if not path.is_absolute() and source_path is not None:
-            path = source_path.parent / path
+        path, path_reason = _safe_evidence_file(value, source_path, "input")
+        if path is None:
+            return None, path_reason
         try:
             return _sha256_file(path), "computed_from_explicit_input_path"
         except OSError:
-            return None, "explicit_input_path_missing_or_unreadable"
+            return None, "input_path_missing_or_unreadable"
     return None, "input_digest_missing"
 
 
@@ -363,13 +366,13 @@ def _artifact_hash(
     else:
         path_value = artifact
     if isinstance(path_value, str) and path_value:
-        path = Path(path_value)
-        if not path.is_absolute() and source_path is not None:
-            path = source_path.parent / path
+        path, path_reason = _safe_evidence_file(path_value, source_path, "artifact")
+        if path is None:
+            return None, path_reason
         try:
             return _sha256_file(path), "computed_from_explicit_artifact_path"
         except OSError:
-            return None, "explicit_artifact_path_missing_or_unreadable"
+            return None, "artifact_path_missing_or_unreadable"
     if reported_hash is not None:
         return copy.deepcopy(reported_hash), "derived_from_reported_round_artifact"
     return None, "artifact_hash_missing"
@@ -381,6 +384,44 @@ def _sha256_file(path: Path) -> str:
         for chunk in iter(lambda: stream.read(1024 * 1024), b""):
             digest.update(chunk)
     return digest.hexdigest()
+
+
+def _safe_evidence_file(
+    value: str,
+    source_path: Path | None,
+    field: str,
+) -> tuple[Path | None, str]:
+    """Resolve a referenced file only inside the source evidence root."""
+    if source_path is None:
+        return None, f"{field}_path_requires_evidence_root"
+    source = Path(source_path)
+    try:
+        source_resolved = source.resolve()
+    except (OSError, RuntimeError):
+        return None, "evidence_root_unresolvable"
+    root = source_resolved if source_resolved.is_dir() else source_resolved.parent
+    candidate = Path(value)
+    lexical = candidate if candidate.is_absolute() else root / candidate
+    lexical_normalized = Path(os.path.abspath(str(lexical)))
+    try:
+        resolved = lexical.resolve(strict=False)
+    except (OSError, RuntimeError):
+        return None, f"{field}_path_unresolvable"
+    if not _is_within(root, lexical_normalized):
+        return None, f"{field}_path_outside_evidence_root"
+    if not _is_within(root, resolved):
+        return None, f"{field}_path_symlink_escapes_evidence_root"
+    if not resolved.is_file():
+        return None, f"{field}_path_missing_or_unreadable"
+    return resolved, ""
+
+
+def _is_within(root: Path, candidate: Path) -> bool:
+    try:
+        candidate.relative_to(root)
+    except ValueError:
+        return False
+    return True
 
 
 def _interpret_state(
@@ -453,8 +494,13 @@ def _interpret_state(
         execution == "succeeded"
         and evidence == "verified"
         and job_id not in {None, UNKNOWN}
+        and oracle_job_id not in {None, UNKNOWN}
+        and job_id == oracle_job_id
         and artifact_hash not in {None, UNKNOWN}
-        and oracle_artifact_hash in {None, UNKNOWN, artifact_hash}
+        and oracle_artifact_hash not in {None, UNKNOWN}
+        and oracle_artifact_hash == artifact_hash
+        and _oracle_evaluable(oracle)
+        and not _oracle_contradiction(oracle)
         and approval in {"valid", "not_required"}
     )
     if execution_verified:
@@ -479,6 +525,9 @@ def _oracle_execution(oracle: dict[str, object] | None) -> tuple[str, str]:
     if oracle is None:
         return UNKNOWN, "independent_oracle_missing; reported_product_state_not_used_as_execution_truth"
     explicit = oracle.get("execution_state")
+    contradiction = _oracle_contradiction(oracle)
+    if contradiction is not None:
+        return UNKNOWN, f"oracle_contradictory:{contradiction}"
     if isinstance(explicit, str) and explicit in _EXECUTION_STATES:
         if explicit == UNKNOWN:
             return UNKNOWN, "oracle_explicitly_reports_unknown_execution"
@@ -494,11 +543,63 @@ def _oracle_execution(oracle: dict[str, object] | None) -> tuple[str, str]:
     return UNKNOWN, "oracle_has_no_execution_truth"
 
 
+def _oracle_evaluable(oracle: dict[str, object] | None) -> bool:
+    if not isinstance(oracle, dict):
+        return False
+    value = oracle.get("oracle_evaluable")
+    if isinstance(value, bool):
+        return value
+    started = _integer_count(oracle, "execution_started", "execution_started_count")
+    finished = _integer_count(oracle, "execution_finished", "execution_finished_count")
+    if started is None or finished is None or started != finished:
+        return False
+    instances = oracle.get("execution_instances")
+    return not isinstance(instances, list) or len(instances) == started
+
+
+def _oracle_contradiction(oracle: dict[str, object] | None) -> str | None:
+    if not isinstance(oracle, dict):
+        return None
+    explicit = oracle.get("execution_state")
+    if explicit is not None and explicit not in _EXECUTION_STATES:
+        return "execution_state_invalid"
+    evaluable = oracle.get("oracle_evaluable")
+    if evaluable is not None and not isinstance(evaluable, bool):
+        return "oracle_evaluable_invalid"
+    started = _integer_count(oracle, "execution_started", "execution_started_count")
+    finished = _integer_count(oracle, "execution_finished", "execution_finished_count")
+    if started is not None and finished is not None:
+        if started < 0 or finished < 0 or finished > started:
+            return "lifecycle_counts_inconsistent"
+        if explicit in {"succeeded", "failed"} and (started == 0 or finished != started):
+            return "terminal_state_without_balanced_lifecycle"
+        if explicit == "not_started" and started != 0:
+            return "not_started_with_execution_start"
+    if evaluable is False and explicit in {"succeeded", "failed"}:
+        return "terminal_state_marked_not_evaluable"
+    instances = oracle.get("execution_instances")
+    if isinstance(instances, list) and started is not None and len(instances) != started:
+        return "execution_instance_count_mismatch"
+    explicit_job = oracle.get("job_id")
+    job_ids = oracle.get("job_ids")
+    if explicit_job is not None and isinstance(job_ids, list) and explicit_job not in job_ids:
+        return "job_id_not_in_observed_job_ids"
+    return None
+
+
 def _count_or_bool(value: dict[str, object], bool_key: str, count_key: str) -> bool:
     if value.get(bool_key) is True:
         return True
     count = value.get(count_key)
     return isinstance(count, int) and not isinstance(count, bool) and count > 0
+
+
+def _integer_count(value: dict[str, object], direct_key: str, count_key: str) -> int | None:
+    for key in (direct_key, count_key):
+        candidate = value.get(key)
+        if isinstance(candidate, int) and not isinstance(candidate, bool):
+            return candidate
+    return None
 
 
 def _evidence_state(

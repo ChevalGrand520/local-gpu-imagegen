@@ -9,16 +9,18 @@ change the product contract, B2 behavior, or the research ledger.
 
 | Item | Fact | Evidence level |
 | --- | --- | --- |
-| Target checkout | `da65d57047b5a59e3403b49adf4605a1c0497c58` | Git checkout |
+| Target checkout at W2 correction start | `ad1ca0257036120f68df0f1a750aedf09f146b31` | Git checkout |
 | Fixed B2 | `da65d57047b5a59e3403b49adf4605a1c0497c58` | Research design / Git |
 | Research ledger | `d8ef0bccc84269b7d4a627adce5f6025a17ab024` | Trusted anchor |
-| Work branch | `research/baseline-audit` | Git |
+| Work branch | `research/w2-corrections` | Git |
 | Allowed writes | `docs/research/**`, `scripts/research/**`, `tests/research/**` | Execution contract |
 | Protected files | Research design, terminal review, contract, ledger governance and project guide | Not modified |
 
-The target checkout was initially clean and detached at B2. The work branch was
-created from that exact SHA. No product source, existing B2 test, model, output
-root, or backend service was changed.
+The initial W0 branch was created from the fixed B2 SHA and produced the bounded
+CPU evidence package in `ad1ca0257036120f68df0f1a750aedf09f146b31`. This
+correction branch starts from that evidence commit; B2 remains the unchanged
+product reference and no product source, existing B2 test, model, output root,
+or backend service was changed.
 
 ## Existing Capabilities
 
@@ -108,33 +110,41 @@ not the target installation version. The README's Windows acceptance history
 is not a current inventory. No version is guessed, and no Windows/GPU command
 was run.
 
-## CPU Package Evidence
+## Corrected CPU Package Evidence
 
-The research-only exporter and CPU fault harness live under the permitted
-research paths. They use the product `AssetRunEngine` entrance and the existing
-model-free fixture, while an independent oracle records:
+The research-only exporter and deterministic fault-coverage harness live under
+the permitted research paths. They use the product `AssetRunEngine` entrance
+and the existing model-free fixture. The corrected exporter refuses to
+overwrite an existing export, confines referenced input/artifact files to the
+evidence root, and requires exact oracle job/artifact/lifecycle bindings before
+`execution_verified` can be true.
+
+The CPU worker entry supplies lifecycle events to the independent oracle:
 
 `request_received -> queue_item_created -> execution_started -> execution_finished`
 
-Each actual CPU worker start gets a fresh `execution_instance_id`, including
-two executions that share a prompt ID. Two POST records alone remain
-`duplicate_submission` evidence and cannot become `duplicate_execution`.
+Each worker start gets a fresh `execution_instance_id`, including two
+executions that share a prompt ID. F00 is a separate control arm. F02 creates
+distinct job identities per actual submission; F03 distinguishes a known job
+whose completion response is lost from F02's pre-job-ID response loss. The
+two-stage F03 arm exercises same-job recovery without a second submission.
 
-The resulting evidence is CPU/synthetic backend evidence. It can characterize
-the B2 control-plane behavior and the oracle protocol; it cannot establish
-ComfyUI queue semantics, GPU execution count, image quality, Windows behavior,
-or a natural-world failure rate. Those facts remain pending.
+The resulting evidence is deterministic CPU/synthetic backend evidence. It can
+characterize B2 control-plane behavior and the oracle protocol; it cannot
+establish ComfyUI queue semantics, GPU execution count, image quality, Windows
+behavior, deployment failure rates, or a natural-world duplicate-execution
+rate. Those facts remain pending.
 
 ## Gaps And Non-Generalizable Conclusions
 
 | Classification | Record |
 | --- | --- |
 | Already exists | Durable attempts, idempotency hash, stale recovery, known two-stage job recovery, artifact validation, and ordinary/two-stage product entrances |
-| W1/W2 added here | Read-only raw/interpreted/oracle export and an independent CPU worker lifecycle oracle with F00/F02/F03 characterization |
+| W1/W2 added here | Read-only raw/interpreted/oracle export v2 and deterministic CPU worker lifecycle coverage with separate F00 control and F02/F03 mappings |
 | Pending validation | Target Windows OS/runtime, actual ComfyUI version, real adapter-to-ComfyUI full path, GPU execution count, model and workflow inventory |
 | Component evidence only | Existing HTTP stub response-loss probes and adapter tests; they do not prove backend acceptance or execution |
 | Synthetic evidence only | Fake runner PNGs, CPU fault cases, and oracle self-checks; they are not real inference results |
-| Cannot generalize | A prompt/client ID is not server-side deduplication; a product `failed` attempt is not backend execution failure; a known job recovery test is not ordinary-path recovery; a component probe is not a GPU duplicate-execution observation |
+| Cannot generalize | A prompt/client ID is not server-side deduplication; a product `failed` attempt is not backend execution failure; deterministic CPU counts are not deployment rates; a known job recovery test is not ordinary-path recovery; a component probe is not a GPU duplicate-execution observation |
 
 Only the permitted research directories are changed by this package. Product
 fixes remain outside scope and require the W3 gate.

@@ -2,20 +2,29 @@
   "baseline_sha": "da65d57047b5a59e3403b49adf4605a1c0497c58",
   "cases": [
     {
-      "backend_runner_invocation_count": 1,
+      "backend_submission_count": 1,
+      "backend_worker_invocation_count": 1,
+      "boundary_classification": {
+        "mapping_version": "deterministic-fault-coverage-v2",
+        "reason": "no_first_call_product_error_observed",
+        "recovery_state": "not_needed",
+        "state": "resolved"
+      },
       "case_id": "F00-single-stage",
       "duplicate_execution": false,
       "duplicate_submission": false,
+      "fault_class": "control",
       "fault_id": "F00",
       "final_product_state": "generated",
-      "first_boundary_resolution": "resolved",
+      "first_error": null,
+      "first_error_barrier": null,
+      "first_error_code": null,
+      "first_error_job_id": null,
       "first_product_state": "generated",
-      "injection_confirmed": true,
+      "injection_confirmed": null,
       "oracle_evaluable": true,
       "oracle_execution_count": 1,
       "path_kind": "single-stage",
-      "product_first_call": null,
-      "product_second_call": null,
       "product_second_call_succeeded": false,
       "raw_and_normalized": {
         "normalized_record": {
@@ -36,7 +45,7 @@
           },
           "input_digest": null,
           "interpreted_state": {
-            "approval_state": "unknown",
+            "approval_state": "not_required",
             "domain_verdict": "not_evaluated",
             "evidence_state": "partial",
             "execution_state": "succeeded",
@@ -47,39 +56,46 @@
           },
           "job_id": null,
           "mapping_reason": {
-            "approval_state": "approval_state_missing_is_unknown",
+            "approval_state": "provided_approval_state",
             "domain_verdict": "domain_verdict_missing_is_not_evaluated",
             "evidence_state": "artifact_hash_exists_without_independent_validation",
             "execution_state": "execution_state_supplied_by_independent_oracle",
             "recovery_state": "no_unresolved_report_or_oracle_gap",
             "submission_state": "reported_attempt_or_terminal_run_proves_intent_not_execution"
           },
-          "mapping_version": "research-normalization-v1",
-          "oracle_job_id": "cpu-single-1",
+          "mapping_version": "research-normalization-v2",
+          "oracle_job_id": "cpu-single-stage-f00-0001",
           "oracle_state": {
             "artifact_hash": "11f2c9c919dcaaa53fcfbf16290e641da61f2122a8921cc01c56fa96e219ce5e",
             "case_id": "F00-single-stage",
             "events": [
               {
                 "event": "request_received",
-                "job_id": "cpu-single-1",
+                "job_id": "cpu-single-stage-f00-0001",
                 "operation_id": "F00-single-stage-operation",
                 "prompt_id": "F00-single-stage-operation"
               },
               {
                 "event": "queue_item_created",
-                "job_id": "cpu-single-1",
+                "job_id": "cpu-single-stage-f00-0001",
+                "operation_id": "F00-single-stage-operation",
+                "prompt_id": "F00-single-stage-operation"
+              },
+              {
+                "event": "job_id_revealed",
+                "job_id": "cpu-single-stage-f00-0001",
                 "operation_id": "F00-single-stage-operation",
                 "prompt_id": "F00-single-stage-operation"
               },
               {
                 "event": "execution_started",
                 "execution_instance_id": "F00-single-stage:execution-0001",
-                "job_id": "cpu-single-1",
+                "job_id": "cpu-single-stage-f00-0001",
                 "operation_id": "F00-single-stage-operation",
                 "prompt_id": "F00-single-stage-operation"
               },
               {
+                "artifact_hash": "11f2c9c919dcaaa53fcfbf16290e641da61f2122a8921cc01c56fa96e219ce5e",
                 "event": "execution_finished",
                 "execution_instance_id": "F00-single-stage:execution-0001",
                 "outcome": "succeeded"
@@ -92,7 +108,7 @@
             "execution_started": 1,
             "execution_state": "succeeded",
             "job_ids": [
-              "cpu-single-1"
+              "cpu-single-stage-f00-0001"
             ],
             "oracle_evaluable": true,
             "oracle_type": "independent_cpu_execution_oracle_v1",
@@ -131,7 +147,7 @@
                   "negative_prompt": "watermark, text",
                   "positive_prompt": "calm coast at dawn"
                 },
-                "completed_at": "2026-09-16T05:52:44Z",
+                "completed_at": "2026-09-16T07:59:26Z",
                 "generation_plan": {
                   "authorization_scope": "private",
                   "backend": "webui",
@@ -143,7 +159,7 @@
                   "identity_strength": "cryptographic",
                   "intent": "A calm coast at dawn.",
                   "max_rounds": 2,
-                  "model_choice": "test/approved-anime",
+                  "model_choice": "research-cpu-fake-model",
                   "model_identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                   "negative_prompt": "watermark, text",
                   "parameters": {
@@ -168,7 +184,7 @@
                   "sha256": "11f2c9c919dcaaa53fcfbf16290e641da61f2122a8921cc01c56fa96e219ce5e",
                   "width": 256
                 },
-                "request_hash": "52b372ad3d952c0e9b15a39ce0a6b99ef7d4b2692ee18783623becd040cf361d",
+                "request_hash": "4d640a809a04e43c90c4bb860143780cba7cfbe864f7ac9852f185b2c3ed0029",
                 "round_number": 1,
                 "route": {
                   "authorization_scope": "private",
@@ -178,7 +194,7 @@
                   "height": 256,
                   "identity_strength": "cryptographic",
                   "identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                  "model_id": "test/approved-anime",
+                  "model_id": "research-cpu-fake-model",
                   "operation": "txt2img",
                   "profile": "standalone-illustration",
                   "prompt_compiler_id": "sd15-tags-v1",
@@ -192,7 +208,7 @@
                   "workflow_template_version": null
                 },
                 "seed": 42,
-                "started_at": "2026-09-16T05:52:44Z",
+                "started_at": "2026-09-16T07:59:26Z",
                 "status": "completed"
               }
             ],
@@ -377,7 +393,7 @@
                 },
                 "style": null
               },
-              "model_choice": "test/approved-anime",
+              "model_choice": "research-cpu-fake-model",
               "model_identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
               "model_record": {
                 "backend": "webui",
@@ -385,7 +401,7 @@
                 "byte_size": 1,
                 "endpoint_identity": "endpoint:test",
                 "format": ".safetensors",
-                "id": "test/approved-anime",
+                "id": "research-cpu-fake-model",
                 "identity_strength": "cryptographic",
                 "identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "license_id": "test-only",
@@ -418,7 +434,7 @@
                 "height": 256,
                 "identity_strength": "cryptographic",
                 "identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "model_id": "test/approved-anime",
+                "model_id": "research-cpu-fake-model",
                 "operation": "txt2img",
                 "profile": "standalone-illustration",
                 "prompt_compiler_id": "sd15-tags-v1",
@@ -477,7 +493,7 @@
                   "identity_strength": "cryptographic",
                   "intent": "A calm coast at dawn.",
                   "max_rounds": 2,
-                  "model_choice": "test/approved-anime",
+                  "model_choice": "research-cpu-fake-model",
                   "model_identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                   "negative_prompt": "watermark, text",
                   "parameters": {
@@ -513,7 +529,7 @@
                 },
                 "registry_metadata": {
                   "model": {
-                    "id": "test/approved-anime",
+                    "id": "research-cpu-fake-model",
                     "license_id": "test-only",
                     "license_status": "approved",
                     "license_url": null,
@@ -525,7 +541,7 @@
                   },
                   "style": null
                 },
-                "request_hash": "52b372ad3d952c0e9b15a39ce0a6b99ef7d4b2692ee18783623becd040cf361d",
+                "request_hash": "4d640a809a04e43c90c4bb860143780cba7cfbe864f7ac9852f185b2c3ed0029",
                 "round_number": 1,
                 "route": {
                   "authorization_scope": "private",
@@ -535,7 +551,7 @@
                   "height": 256,
                   "identity_strength": "cryptographic",
                   "identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                  "model_id": "test/approved-anime",
+                  "model_id": "research-cpu-fake-model",
                   "operation": "txt2img",
                   "profile": "standalone-illustration",
                   "prompt_compiler_id": "sd15-tags-v1",
@@ -553,17 +569,18 @@
                 "warnings": []
               }
             ],
-            "run_id": "20260916T055244Z-a43d26a26ab6",
+            "run_id": "20260916T075926Z-003383f8a9d6",
             "schema_version": 1,
             "state": "generated",
             "warnings": []
           },
-          "request_digest": "52b372ad3d952c0e9b15a39ce0a6b99ef7d4b2692ee18783623becd040cf361d",
+          "request_digest": "4d640a809a04e43c90c4bb860143780cba7cfbe864f7ac9852f185b2c3ed0029",
           "schema_version": 1,
           "source_sha": "da65d57047b5a59e3403b49adf4605a1c0497c58",
           "validator_version": "product-validate-v1"
         },
         "raw_record": {
+          "approval_state": "not_required",
           "backend_instance": {
             "backend": "cpu-fake",
             "instance": "F00-single-stage"
@@ -574,24 +591,31 @@
             "events": [
               {
                 "event": "request_received",
-                "job_id": "cpu-single-1",
+                "job_id": "cpu-single-stage-f00-0001",
                 "operation_id": "F00-single-stage-operation",
                 "prompt_id": "F00-single-stage-operation"
               },
               {
                 "event": "queue_item_created",
-                "job_id": "cpu-single-1",
+                "job_id": "cpu-single-stage-f00-0001",
+                "operation_id": "F00-single-stage-operation",
+                "prompt_id": "F00-single-stage-operation"
+              },
+              {
+                "event": "job_id_revealed",
+                "job_id": "cpu-single-stage-f00-0001",
                 "operation_id": "F00-single-stage-operation",
                 "prompt_id": "F00-single-stage-operation"
               },
               {
                 "event": "execution_started",
                 "execution_instance_id": "F00-single-stage:execution-0001",
-                "job_id": "cpu-single-1",
+                "job_id": "cpu-single-stage-f00-0001",
                 "operation_id": "F00-single-stage-operation",
                 "prompt_id": "F00-single-stage-operation"
               },
               {
+                "artifact_hash": "11f2c9c919dcaaa53fcfbf16290e641da61f2122a8921cc01c56fa96e219ce5e",
                 "event": "execution_finished",
                 "execution_instance_id": "F00-single-stage:execution-0001",
                 "outcome": "succeeded"
@@ -604,7 +628,7 @@
             "execution_started": 1,
             "execution_state": "succeeded",
             "job_ids": [
-              "cpu-single-1"
+              "cpu-single-stage-f00-0001"
             ],
             "oracle_evaluable": true,
             "oracle_type": "independent_cpu_execution_oracle_v1",
@@ -641,7 +665,7 @@
                   "negative_prompt": "watermark, text",
                   "positive_prompt": "calm coast at dawn"
                 },
-                "completed_at": "2026-09-16T05:52:44Z",
+                "completed_at": "2026-09-16T07:59:26Z",
                 "generation_plan": {
                   "authorization_scope": "private",
                   "backend": "webui",
@@ -653,7 +677,7 @@
                   "identity_strength": "cryptographic",
                   "intent": "A calm coast at dawn.",
                   "max_rounds": 2,
-                  "model_choice": "test/approved-anime",
+                  "model_choice": "research-cpu-fake-model",
                   "model_identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                   "negative_prompt": "watermark, text",
                   "parameters": {
@@ -678,7 +702,7 @@
                   "sha256": "11f2c9c919dcaaa53fcfbf16290e641da61f2122a8921cc01c56fa96e219ce5e",
                   "width": 256
                 },
-                "request_hash": "52b372ad3d952c0e9b15a39ce0a6b99ef7d4b2692ee18783623becd040cf361d",
+                "request_hash": "4d640a809a04e43c90c4bb860143780cba7cfbe864f7ac9852f185b2c3ed0029",
                 "round_number": 1,
                 "route": {
                   "authorization_scope": "private",
@@ -688,7 +712,7 @@
                   "height": 256,
                   "identity_strength": "cryptographic",
                   "identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                  "model_id": "test/approved-anime",
+                  "model_id": "research-cpu-fake-model",
                   "operation": "txt2img",
                   "profile": "standalone-illustration",
                   "prompt_compiler_id": "sd15-tags-v1",
@@ -702,7 +726,7 @@
                   "workflow_template_version": null
                 },
                 "seed": 42,
-                "started_at": "2026-09-16T05:52:44Z",
+                "started_at": "2026-09-16T07:59:26Z",
                 "status": "completed"
               }
             ],
@@ -887,7 +911,7 @@
                 },
                 "style": null
               },
-              "model_choice": "test/approved-anime",
+              "model_choice": "research-cpu-fake-model",
               "model_identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
               "model_record": {
                 "backend": "webui",
@@ -895,7 +919,7 @@
                 "byte_size": 1,
                 "endpoint_identity": "endpoint:test",
                 "format": ".safetensors",
-                "id": "test/approved-anime",
+                "id": "research-cpu-fake-model",
                 "identity_strength": "cryptographic",
                 "identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "license_id": "test-only",
@@ -928,7 +952,7 @@
                 "height": 256,
                 "identity_strength": "cryptographic",
                 "identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "model_id": "test/approved-anime",
+                "model_id": "research-cpu-fake-model",
                 "operation": "txt2img",
                 "profile": "standalone-illustration",
                 "prompt_compiler_id": "sd15-tags-v1",
@@ -987,7 +1011,7 @@
                   "identity_strength": "cryptographic",
                   "intent": "A calm coast at dawn.",
                   "max_rounds": 2,
-                  "model_choice": "test/approved-anime",
+                  "model_choice": "research-cpu-fake-model",
                   "model_identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                   "negative_prompt": "watermark, text",
                   "parameters": {
@@ -1023,7 +1047,7 @@
                 },
                 "registry_metadata": {
                   "model": {
-                    "id": "test/approved-anime",
+                    "id": "research-cpu-fake-model",
                     "license_id": "test-only",
                     "license_status": "approved",
                     "license_url": null,
@@ -1035,7 +1059,7 @@
                   },
                   "style": null
                 },
-                "request_hash": "52b372ad3d952c0e9b15a39ce0a6b99ef7d4b2692ee18783623becd040cf361d",
+                "request_hash": "4d640a809a04e43c90c4bb860143780cba7cfbe864f7ac9852f185b2c3ed0029",
                 "round_number": 1,
                 "route": {
                   "authorization_scope": "private",
@@ -1045,7 +1069,7 @@
                   "height": 256,
                   "identity_strength": "cryptographic",
                   "identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                  "model_id": "test/approved-anime",
+                  "model_id": "research-cpu-fake-model",
                   "operation": "txt2img",
                   "profile": "standalone-illustration",
                   "prompt_compiler_id": "sd15-tags-v1",
@@ -1063,7 +1087,7 @@
                 "warnings": []
               }
             ],
-            "run_id": "20260916T055244Z-a43d26a26ab6",
+            "run_id": "20260916T075926Z-003383f8a9d6",
             "schema_version": 1,
             "state": "generated",
             "warnings": []
@@ -1074,40 +1098,65 @@
             "path_kind": "single-stage"
           },
           "research_metadata": {
-            "duplicate_execution": false,
-            "duplicate_submission": false,
-            "first_boundary_resolution": "resolved",
-            "injection_confirmed": true,
-            "oracle_evaluable": true,
+            "boundary_classification": {
+              "mapping_version": "deterministic-fault-coverage-v2",
+              "reason": "no_first_call_product_error_observed",
+              "recovery_state": "not_needed",
+              "state": "resolved"
+            },
+            "injection_confirmed": null,
             "scheduled": true,
-            "started": true
+            "started": true,
+            "worker_execution_entry_ids": [
+              "F00-single-stage:execution-0001"
+            ]
           },
           "source_sha": "da65d57047b5a59e3403b49adf4605a1c0497c58",
           "validator_version": "product-validate-v1"
         }
       },
+      "recovery": {
+        "recovery_invocation_count": 0,
+        "same_job": false,
+        "state": "not_needed"
+      },
       "reported_attempt_statuses": [
         "completed"
       ],
       "scheduled": true,
+      "second_error": null,
       "started": true,
-      "submission_count": 1
+      "submitted_job_ids": [
+        "cpu-single-stage-f00-0001"
+      ],
+      "worker_execution_entry_ids": [
+        "F00-single-stage:execution-0001"
+      ]
     },
     {
-      "backend_runner_invocation_count": 1,
+      "backend_submission_count": 1,
+      "backend_worker_invocation_count": 1,
+      "boundary_classification": {
+        "mapping_version": "deterministic-fault-coverage-v2",
+        "reason": "no_first_call_product_error_observed",
+        "recovery_state": "not_needed",
+        "state": "resolved"
+      },
       "case_id": "F00-two-stage",
       "duplicate_execution": false,
       "duplicate_submission": false,
+      "fault_class": "control",
       "fault_id": "F00",
       "final_product_state": "generated",
-      "first_boundary_resolution": "resolved",
+      "first_error": null,
+      "first_error_barrier": null,
+      "first_error_code": null,
+      "first_error_job_id": null,
       "first_product_state": "generated",
-      "injection_confirmed": true,
+      "injection_confirmed": null,
       "oracle_evaluable": true,
       "oracle_execution_count": 1,
       "path_kind": "two-stage",
-      "product_first_call": null,
-      "product_second_call": null,
       "product_second_call_succeeded": false,
       "raw_and_normalized": {
         "normalized_record": {
@@ -1128,7 +1177,7 @@
           },
           "input_digest": null,
           "interpreted_state": {
-            "approval_state": "unknown",
+            "approval_state": "not_required",
             "domain_verdict": "not_evaluated",
             "evidence_state": "partial",
             "execution_state": "succeeded",
@@ -1137,41 +1186,48 @@
             "recovery_state": "not_needed",
             "submission_state": "job_identified"
           },
-          "job_id": "cpu-two-stage-f00",
+          "job_id": "cpu-two-stage-f00-0001",
           "mapping_reason": {
-            "approval_state": "approval_state_missing_is_unknown",
+            "approval_state": "provided_approval_state",
             "domain_verdict": "domain_verdict_missing_is_not_evaluated",
             "evidence_state": "artifact_hash_exists_without_independent_validation",
             "execution_state": "execution_state_supplied_by_independent_oracle",
             "recovery_state": "no_unresolved_report_or_oracle_gap",
             "submission_state": "explicit_or_observed_job_id_is_available"
           },
-          "mapping_version": "research-normalization-v1",
-          "oracle_job_id": "cpu-two-stage-f00",
+          "mapping_version": "research-normalization-v2",
+          "oracle_job_id": "cpu-two-stage-f00-0001",
           "oracle_state": {
             "artifact_hash": "a351bc16743410baebf8ef19392e2cc746fab6d30fa2174bb139f68e0df00a03",
             "case_id": "F00-two-stage",
             "events": [
               {
                 "event": "request_received",
-                "job_id": "cpu-two-stage-f00",
+                "job_id": "cpu-two-stage-f00-0001",
                 "operation_id": "F00-two-stage-operation",
                 "prompt_id": "F00-two-stage-operation"
               },
               {
                 "event": "queue_item_created",
-                "job_id": "cpu-two-stage-f00",
+                "job_id": "cpu-two-stage-f00-0001",
+                "operation_id": "F00-two-stage-operation",
+                "prompt_id": "F00-two-stage-operation"
+              },
+              {
+                "event": "job_id_revealed",
+                "job_id": "cpu-two-stage-f00-0001",
                 "operation_id": "F00-two-stage-operation",
                 "prompt_id": "F00-two-stage-operation"
               },
               {
                 "event": "execution_started",
                 "execution_instance_id": "F00-two-stage:execution-0001",
-                "job_id": "cpu-two-stage-f00",
+                "job_id": "cpu-two-stage-f00-0001",
                 "operation_id": "F00-two-stage-operation",
                 "prompt_id": "F00-two-stage-operation"
               },
               {
+                "artifact_hash": "a351bc16743410baebf8ef19392e2cc746fab6d30fa2174bb139f68e0df00a03",
                 "event": "execution_finished",
                 "execution_instance_id": "F00-two-stage:execution-0001",
                 "outcome": "succeeded"
@@ -1184,7 +1240,7 @@
             "execution_started": 1,
             "execution_state": "succeeded",
             "job_ids": [
-              "cpu-two-stage-f00"
+              "cpu-two-stage-f00-0001"
             ],
             "oracle_evaluable": true,
             "oracle_type": "independent_cpu_execution_oracle_v1",
@@ -1193,7 +1249,7 @@
           },
           "oracle_state_reason": "provided_by_independent_oracle",
           "record_id": "F00-two-stage",
-          "reported_job_id": "cpu-two-stage-f00",
+          "reported_job_id": "cpu-two-stage-f00-0001",
           "reported_state": {
             "active_attempt": null,
             "attempts": [
@@ -1201,7 +1257,7 @@
                 "action": "initial",
                 "backend_job": {
                   "backend": "comfyui",
-                  "job_id": "cpu-two-stage-f00"
+                  "job_id": "cpu-two-stage-f00-0001"
                 },
                 "backend_result": {
                   "backend": "comfyui",
@@ -1231,7 +1287,7 @@
                   },
                   "subject_seed": 43,
                   "width": 640,
-                  "workflow_job_id": "job:two-stage-test",
+                  "workflow_job_id": "cpu-two-stage-f00-0001",
                   "workflow_template_id": "sdxl-two-stage-copy-subject",
                   "workflow_template_version": 1
                 },
@@ -1248,7 +1304,7 @@
                   "negative_prompt": "cropped subject, duplicate telescope",
                   "positive_prompt": "one complete brass telescope on a tripod"
                 },
-                "completed_at": "2026-09-16T05:52:44Z",
+                "completed_at": "2026-09-16T07:59:26Z",
                 "generation_plan": {
                   "authorization_scope": "private",
                   "backend": "comfyui",
@@ -1281,7 +1337,7 @@
                   "identity_strength": "cryptographic",
                   "intent": "A calm coast at dawn.",
                   "max_rounds": 2,
-                  "model_choice": "test/approved-anime",
+                  "model_choice": "research-cpu-fake-model",
                   "model_identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                   "negative_prompt": "text, watermark, telescope",
                   "parameters": {
@@ -1327,7 +1383,7 @@
                   },
                   "width": 640
                 },
-                "request_hash": "770763e5d0f76714e94f9f1474d89a19cbd9d489589286d82436269d4d892269",
+                "request_hash": "ff5b0f21108838b16242ff51ae3ed63d1253767dcc9b2ef387b7efb01e959374",
                 "round_number": 1,
                 "route": {
                   "authorization_scope": "private",
@@ -1339,7 +1395,7 @@
                   "height": 320,
                   "identity_strength": "cryptographic",
                   "identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                  "model_id": "test/approved-anime",
+                  "model_id": "research-cpu-fake-model",
                   "operation": "txt2img",
                   "profile": "standalone-illustration",
                   "prompt_compiler_id": "natural-v1",
@@ -1399,7 +1455,7 @@
                     "seed": 43
                   }
                 ],
-                "started_at": "2026-09-16T05:52:44Z",
+                "started_at": "2026-09-16T07:59:26Z",
                 "status": "completed"
               }
             ],
@@ -1632,7 +1688,7 @@
                 },
                 "style": null
               },
-              "model_choice": "test/approved-anime",
+              "model_choice": "research-cpu-fake-model",
               "model_identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
               "model_record": {
                 "backend": "webui",
@@ -1640,7 +1696,7 @@
                 "byte_size": 1,
                 "endpoint_identity": "endpoint:test",
                 "format": ".safetensors",
-                "id": "test/approved-anime",
+                "id": "research-cpu-fake-model",
                 "identity_strength": "cryptographic",
                 "identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "license_id": "test-only",
@@ -1675,7 +1731,7 @@
                 "height": 320,
                 "identity_strength": "cryptographic",
                 "identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "model_id": "test/approved-anime",
+                "model_id": "research-cpu-fake-model",
                 "operation": "txt2img",
                 "profile": "standalone-illustration",
                 "prompt_compiler_id": "natural-v1",
@@ -1749,7 +1805,7 @@
                   },
                   "subject_seed": 43,
                   "width": 640,
-                  "workflow_job_id": "job:two-stage-test",
+                  "workflow_job_id": "cpu-two-stage-f00-0001",
                   "workflow_template_id": "sdxl-two-stage-copy-subject",
                   "workflow_template_version": 1
                 },
@@ -1798,7 +1854,7 @@
                   "identity_strength": "cryptographic",
                   "intent": "A calm coast at dawn.",
                   "max_rounds": 2,
-                  "model_choice": "test/approved-anime",
+                  "model_choice": "research-cpu-fake-model",
                   "model_identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                   "negative_prompt": "text, watermark, telescope",
                   "parameters": {
@@ -1866,7 +1922,7 @@
                 },
                 "registry_metadata": {
                   "model": {
-                    "id": "test/approved-anime",
+                    "id": "research-cpu-fake-model",
                     "license_id": "test-only",
                     "license_status": "approved",
                     "license_url": null,
@@ -1878,7 +1934,7 @@
                   },
                   "style": null
                 },
-                "request_hash": "770763e5d0f76714e94f9f1474d89a19cbd9d489589286d82436269d4d892269",
+                "request_hash": "ff5b0f21108838b16242ff51ae3ed63d1253767dcc9b2ef387b7efb01e959374",
                 "round_number": 1,
                 "route": {
                   "authorization_scope": "private",
@@ -1890,7 +1946,7 @@
                   "height": 320,
                   "identity_strength": "cryptographic",
                   "identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                  "model_id": "test/approved-anime",
+                  "model_id": "research-cpu-fake-model",
                   "operation": "txt2img",
                   "profile": "standalone-illustration",
                   "prompt_compiler_id": "natural-v1",
@@ -1955,7 +2011,7 @@
                 "warnings": []
               }
             ],
-            "run_id": "20260916T055244Z-5d60900fd118",
+            "run_id": "20260916T075926Z-5fd1a0b80e00",
             "schema_version": 1,
             "stage_budget": {
               "consumed": 2,
@@ -1964,12 +2020,13 @@
             "state": "generated",
             "warnings": []
           },
-          "request_digest": "770763e5d0f76714e94f9f1474d89a19cbd9d489589286d82436269d4d892269",
+          "request_digest": "ff5b0f21108838b16242ff51ae3ed63d1253767dcc9b2ef387b7efb01e959374",
           "schema_version": 1,
           "source_sha": "da65d57047b5a59e3403b49adf4605a1c0497c58",
           "validator_version": "product-validate-v1"
         },
         "raw_record": {
+          "approval_state": "not_required",
           "backend_instance": {
             "backend": "cpu-fake",
             "instance": "F00-two-stage"
@@ -1980,24 +2037,31 @@
             "events": [
               {
                 "event": "request_received",
-                "job_id": "cpu-two-stage-f00",
+                "job_id": "cpu-two-stage-f00-0001",
                 "operation_id": "F00-two-stage-operation",
                 "prompt_id": "F00-two-stage-operation"
               },
               {
                 "event": "queue_item_created",
-                "job_id": "cpu-two-stage-f00",
+                "job_id": "cpu-two-stage-f00-0001",
+                "operation_id": "F00-two-stage-operation",
+                "prompt_id": "F00-two-stage-operation"
+              },
+              {
+                "event": "job_id_revealed",
+                "job_id": "cpu-two-stage-f00-0001",
                 "operation_id": "F00-two-stage-operation",
                 "prompt_id": "F00-two-stage-operation"
               },
               {
                 "event": "execution_started",
                 "execution_instance_id": "F00-two-stage:execution-0001",
-                "job_id": "cpu-two-stage-f00",
+                "job_id": "cpu-two-stage-f00-0001",
                 "operation_id": "F00-two-stage-operation",
                 "prompt_id": "F00-two-stage-operation"
               },
               {
+                "artifact_hash": "a351bc16743410baebf8ef19392e2cc746fab6d30fa2174bb139f68e0df00a03",
                 "event": "execution_finished",
                 "execution_instance_id": "F00-two-stage:execution-0001",
                 "outcome": "succeeded"
@@ -2010,7 +2074,7 @@
             "execution_started": 1,
             "execution_state": "succeeded",
             "job_ids": [
-              "cpu-two-stage-f00"
+              "cpu-two-stage-f00-0001"
             ],
             "oracle_evaluable": true,
             "oracle_type": "independent_cpu_execution_oracle_v1",
@@ -2025,7 +2089,7 @@
                 "action": "initial",
                 "backend_job": {
                   "backend": "comfyui",
-                  "job_id": "cpu-two-stage-f00"
+                  "job_id": "cpu-two-stage-f00-0001"
                 },
                 "backend_result": {
                   "backend": "comfyui",
@@ -2055,7 +2119,7 @@
                   },
                   "subject_seed": 43,
                   "width": 640,
-                  "workflow_job_id": "job:two-stage-test",
+                  "workflow_job_id": "cpu-two-stage-f00-0001",
                   "workflow_template_id": "sdxl-two-stage-copy-subject",
                   "workflow_template_version": 1
                 },
@@ -2072,7 +2136,7 @@
                   "negative_prompt": "cropped subject, duplicate telescope",
                   "positive_prompt": "one complete brass telescope on a tripod"
                 },
-                "completed_at": "2026-09-16T05:52:44Z",
+                "completed_at": "2026-09-16T07:59:26Z",
                 "generation_plan": {
                   "authorization_scope": "private",
                   "backend": "comfyui",
@@ -2105,7 +2169,7 @@
                   "identity_strength": "cryptographic",
                   "intent": "A calm coast at dawn.",
                   "max_rounds": 2,
-                  "model_choice": "test/approved-anime",
+                  "model_choice": "research-cpu-fake-model",
                   "model_identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                   "negative_prompt": "text, watermark, telescope",
                   "parameters": {
@@ -2151,7 +2215,7 @@
                   },
                   "width": 640
                 },
-                "request_hash": "770763e5d0f76714e94f9f1474d89a19cbd9d489589286d82436269d4d892269",
+                "request_hash": "ff5b0f21108838b16242ff51ae3ed63d1253767dcc9b2ef387b7efb01e959374",
                 "round_number": 1,
                 "route": {
                   "authorization_scope": "private",
@@ -2163,7 +2227,7 @@
                   "height": 320,
                   "identity_strength": "cryptographic",
                   "identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                  "model_id": "test/approved-anime",
+                  "model_id": "research-cpu-fake-model",
                   "operation": "txt2img",
                   "profile": "standalone-illustration",
                   "prompt_compiler_id": "natural-v1",
@@ -2223,7 +2287,7 @@
                     "seed": 43
                   }
                 ],
-                "started_at": "2026-09-16T05:52:44Z",
+                "started_at": "2026-09-16T07:59:26Z",
                 "status": "completed"
               }
             ],
@@ -2456,7 +2520,7 @@
                 },
                 "style": null
               },
-              "model_choice": "test/approved-anime",
+              "model_choice": "research-cpu-fake-model",
               "model_identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
               "model_record": {
                 "backend": "webui",
@@ -2464,7 +2528,7 @@
                 "byte_size": 1,
                 "endpoint_identity": "endpoint:test",
                 "format": ".safetensors",
-                "id": "test/approved-anime",
+                "id": "research-cpu-fake-model",
                 "identity_strength": "cryptographic",
                 "identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "license_id": "test-only",
@@ -2499,7 +2563,7 @@
                 "height": 320,
                 "identity_strength": "cryptographic",
                 "identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "model_id": "test/approved-anime",
+                "model_id": "research-cpu-fake-model",
                 "operation": "txt2img",
                 "profile": "standalone-illustration",
                 "prompt_compiler_id": "natural-v1",
@@ -2573,7 +2637,7 @@
                   },
                   "subject_seed": 43,
                   "width": 640,
-                  "workflow_job_id": "job:two-stage-test",
+                  "workflow_job_id": "cpu-two-stage-f00-0001",
                   "workflow_template_id": "sdxl-two-stage-copy-subject",
                   "workflow_template_version": 1
                 },
@@ -2622,7 +2686,7 @@
                   "identity_strength": "cryptographic",
                   "intent": "A calm coast at dawn.",
                   "max_rounds": 2,
-                  "model_choice": "test/approved-anime",
+                  "model_choice": "research-cpu-fake-model",
                   "model_identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                   "negative_prompt": "text, watermark, telescope",
                   "parameters": {
@@ -2690,7 +2754,7 @@
                 },
                 "registry_metadata": {
                   "model": {
-                    "id": "test/approved-anime",
+                    "id": "research-cpu-fake-model",
                     "license_id": "test-only",
                     "license_status": "approved",
                     "license_url": null,
@@ -2702,7 +2766,7 @@
                   },
                   "style": null
                 },
-                "request_hash": "770763e5d0f76714e94f9f1474d89a19cbd9d489589286d82436269d4d892269",
+                "request_hash": "ff5b0f21108838b16242ff51ae3ed63d1253767dcc9b2ef387b7efb01e959374",
                 "round_number": 1,
                 "route": {
                   "authorization_scope": "private",
@@ -2714,7 +2778,7 @@
                   "height": 320,
                   "identity_strength": "cryptographic",
                   "identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                  "model_id": "test/approved-anime",
+                  "model_id": "research-cpu-fake-model",
                   "operation": "txt2img",
                   "profile": "standalone-illustration",
                   "prompt_compiler_id": "natural-v1",
@@ -2779,7 +2843,7 @@
                 "warnings": []
               }
             ],
-            "run_id": "20260916T055244Z-5d60900fd118",
+            "run_id": "20260916T075926Z-5fd1a0b80e00",
             "schema_version": 1,
             "stage_budget": {
               "consumed": 2,
@@ -2794,48 +2858,72 @@
             "path_kind": "two-stage"
           },
           "research_metadata": {
-            "duplicate_execution": false,
-            "duplicate_submission": false,
-            "first_boundary_resolution": "resolved",
-            "injection_confirmed": true,
-            "oracle_evaluable": true,
+            "boundary_classification": {
+              "mapping_version": "deterministic-fault-coverage-v2",
+              "reason": "no_first_call_product_error_observed",
+              "recovery_state": "not_needed",
+              "state": "resolved"
+            },
+            "injection_confirmed": null,
             "scheduled": true,
-            "started": true
+            "started": true,
+            "worker_execution_entry_ids": [
+              "F00-two-stage:execution-0001"
+            ]
           },
           "source_sha": "da65d57047b5a59e3403b49adf4605a1c0497c58",
           "validator_version": "product-validate-v1"
         }
       },
+      "recovery": {
+        "recovery_invocation_count": 0,
+        "same_job": false,
+        "state": "not_needed"
+      },
       "reported_attempt_statuses": [
         "completed"
       ],
       "scheduled": true,
+      "second_error": null,
       "started": true,
-      "submission_count": 1
+      "submitted_job_ids": [
+        "cpu-two-stage-f00-0001"
+      ],
+      "worker_execution_entry_ids": [
+        "F00-two-stage:execution-0001"
+      ]
     },
     {
-      "backend_runner_invocation_count": 2,
+      "backend_submission_count": 2,
+      "backend_worker_invocation_count": 2,
+      "boundary_classification": {
+        "mapping_version": "deterministic-fault-coverage-v2",
+        "reason": "new_backend_submission_observed_after_ambiguous_first_call",
+        "recovery_state": "new_submission_after_fault",
+        "state": "unresolved"
+      },
       "case_id": "F02-single-stage",
       "duplicate_execution": true,
       "duplicate_submission": true,
+      "fault_class": "fault",
       "fault_id": "F02",
       "final_product_state": "generated",
-      "first_boundary_resolution": "unresolved",
+      "first_error": {
+        "category": "backend",
+        "code": "backend_request_failed",
+        "details": {
+          "barrier": "after_execution_before_job_id_response"
+        },
+        "raised": true
+      },
+      "first_error_barrier": "after_execution_before_job_id_response",
+      "first_error_code": "backend_request_failed",
+      "first_error_job_id": null,
       "first_product_state": "created",
       "injection_confirmed": true,
       "oracle_evaluable": true,
       "oracle_execution_count": 2,
       "path_kind": "single-stage",
-      "product_first_call": {
-        "category": "backend",
-        "code": "backend_request_failed",
-        "details": {
-          "barrier": "after_execution_before_client_response",
-          "job_id": "cpu-single-1"
-        },
-        "raised": true
-      },
-      "product_second_call": null,
       "product_second_call_succeeded": true,
       "raw_and_normalized": {
         "normalized_record": {
@@ -2856,7 +2944,7 @@
           },
           "input_digest": null,
           "interpreted_state": {
-            "approval_state": "unknown",
+            "approval_state": "not_required",
             "domain_verdict": "not_evaluated",
             "evidence_state": "partial",
             "execution_state": "succeeded",
@@ -2867,14 +2955,14 @@
           },
           "job_id": null,
           "mapping_reason": {
-            "approval_state": "approval_state_missing_is_unknown",
+            "approval_state": "provided_approval_state",
             "domain_verdict": "domain_verdict_missing_is_not_evaluated",
             "evidence_state": "artifact_hash_exists_without_independent_validation",
             "execution_state": "execution_state_supplied_by_independent_oracle",
             "recovery_state": "no_unresolved_report_or_oracle_gap",
             "submission_state": "reported_attempt_or_terminal_run_proves_intent_not_execution"
           },
-          "mapping_version": "research-normalization-v1",
+          "mapping_version": "research-normalization-v2",
           "oracle_job_id": null,
           "oracle_state": {
             "artifact_hash": "11f2c9c919dcaaa53fcfbf16290e641da61f2122a8921cc01c56fa96e219ce5e",
@@ -2882,48 +2970,56 @@
             "events": [
               {
                 "event": "request_received",
-                "job_id": "cpu-single-1",
+                "job_id": "cpu-single-stage-f02-0001",
                 "operation_id": "F02-single-stage-operation",
                 "prompt_id": "F02-single-stage-operation"
               },
               {
                 "event": "queue_item_created",
-                "job_id": "cpu-single-1",
+                "job_id": "cpu-single-stage-f02-0001",
                 "operation_id": "F02-single-stage-operation",
                 "prompt_id": "F02-single-stage-operation"
               },
               {
                 "event": "execution_started",
                 "execution_instance_id": "F02-single-stage:execution-0001",
-                "job_id": "cpu-single-1",
+                "job_id": "cpu-single-stage-f02-0001",
                 "operation_id": "F02-single-stage-operation",
                 "prompt_id": "F02-single-stage-operation"
               },
               {
+                "artifact_hash": "11f2c9c919dcaaa53fcfbf16290e641da61f2122a8921cc01c56fa96e219ce5e",
                 "event": "execution_finished",
                 "execution_instance_id": "F02-single-stage:execution-0001",
                 "outcome": "succeeded"
               },
               {
                 "event": "request_received",
-                "job_id": "cpu-single-2",
+                "job_id": "cpu-single-stage-f02-0002",
                 "operation_id": "F02-single-stage-operation",
                 "prompt_id": "F02-single-stage-operation"
               },
               {
                 "event": "queue_item_created",
-                "job_id": "cpu-single-2",
+                "job_id": "cpu-single-stage-f02-0002",
+                "operation_id": "F02-single-stage-operation",
+                "prompt_id": "F02-single-stage-operation"
+              },
+              {
+                "event": "job_id_revealed",
+                "job_id": "cpu-single-stage-f02-0002",
                 "operation_id": "F02-single-stage-operation",
                 "prompt_id": "F02-single-stage-operation"
               },
               {
                 "event": "execution_started",
                 "execution_instance_id": "F02-single-stage:execution-0002",
-                "job_id": "cpu-single-2",
+                "job_id": "cpu-single-stage-f02-0002",
                 "operation_id": "F02-single-stage-operation",
                 "prompt_id": "F02-single-stage-operation"
               },
               {
+                "artifact_hash": "11f2c9c919dcaaa53fcfbf16290e641da61f2122a8921cc01c56fa96e219ce5e",
                 "event": "execution_finished",
                 "execution_instance_id": "F02-single-stage:execution-0002",
                 "outcome": "succeeded"
@@ -2937,8 +3033,8 @@
             "execution_started": 2,
             "execution_state": "succeeded",
             "job_ids": [
-              "cpu-single-1",
-              "cpu-single-2"
+              "cpu-single-stage-f02-0001",
+              "cpu-single-stage-f02-0002"
             ],
             "oracle_evaluable": true,
             "oracle_type": "independent_cpu_execution_oracle_v1",
@@ -2964,12 +3060,11 @@
                   "category": "backend",
                   "code": "backend_request_failed",
                   "details": {
-                    "barrier": "after_execution_before_client_response",
-                    "job_id": "cpu-single-1"
+                    "barrier": "after_execution_before_job_id_response"
                   },
-                  "message": "Synthetic F02 response-loss barrier."
+                  "message": "Synthetic F02 response loss after backend execution."
                 },
-                "failed_at": "2026-09-16T05:52:44Z",
+                "failed_at": "2026-09-16T07:59:26Z",
                 "generation_plan": {
                   "authorization_scope": "private",
                   "backend": "webui",
@@ -2981,7 +3076,7 @@
                   "identity_strength": "cryptographic",
                   "intent": "A calm coast at dawn.",
                   "max_rounds": 2,
-                  "model_choice": "test/approved-anime",
+                  "model_choice": "research-cpu-fake-model",
                   "model_identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                   "negative_prompt": "watermark, text",
                   "parameters": {
@@ -2999,7 +3094,7 @@
                   "workflow_template_version": null
                 },
                 "idempotency_key": "F02-single-stage-operation",
-                "request_hash": "52b372ad3d952c0e9b15a39ce0a6b99ef7d4b2692ee18783623becd040cf361d",
+                "request_hash": "4d640a809a04e43c90c4bb860143780cba7cfbe864f7ac9852f185b2c3ed0029",
                 "route": {
                   "authorization_scope": "private",
                   "backend": "webui",
@@ -3008,7 +3103,7 @@
                   "height": 256,
                   "identity_strength": "cryptographic",
                   "identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                  "model_id": "test/approved-anime",
+                  "model_id": "research-cpu-fake-model",
                   "operation": "txt2img",
                   "profile": "standalone-illustration",
                   "prompt_compiler_id": "sd15-tags-v1",
@@ -3022,7 +3117,7 @@
                   "workflow_template_version": null
                 },
                 "seed": 42,
-                "started_at": "2026-09-16T05:52:44Z",
+                "started_at": "2026-09-16T07:59:26Z",
                 "status": "failed"
               },
               {
@@ -3051,7 +3146,7 @@
                   "negative_prompt": "watermark, text",
                   "positive_prompt": "calm coast at dawn"
                 },
-                "completed_at": "2026-09-16T05:52:44Z",
+                "completed_at": "2026-09-16T07:59:26Z",
                 "generation_plan": {
                   "authorization_scope": "private",
                   "backend": "webui",
@@ -3063,7 +3158,7 @@
                   "identity_strength": "cryptographic",
                   "intent": "A calm coast at dawn.",
                   "max_rounds": 2,
-                  "model_choice": "test/approved-anime",
+                  "model_choice": "research-cpu-fake-model",
                   "model_identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                   "negative_prompt": "watermark, text",
                   "parameters": {
@@ -3088,7 +3183,7 @@
                   "sha256": "11f2c9c919dcaaa53fcfbf16290e641da61f2122a8921cc01c56fa96e219ce5e",
                   "width": 256
                 },
-                "request_hash": "52b372ad3d952c0e9b15a39ce0a6b99ef7d4b2692ee18783623becd040cf361d",
+                "request_hash": "4d640a809a04e43c90c4bb860143780cba7cfbe864f7ac9852f185b2c3ed0029",
                 "round_number": 1,
                 "route": {
                   "authorization_scope": "private",
@@ -3098,7 +3193,7 @@
                   "height": 256,
                   "identity_strength": "cryptographic",
                   "identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                  "model_id": "test/approved-anime",
+                  "model_id": "research-cpu-fake-model",
                   "operation": "txt2img",
                   "profile": "standalone-illustration",
                   "prompt_compiler_id": "sd15-tags-v1",
@@ -3112,7 +3207,7 @@
                   "workflow_template_version": null
                 },
                 "seed": 42,
-                "started_at": "2026-09-16T05:52:44Z",
+                "started_at": "2026-09-16T07:59:26Z",
                 "status": "completed"
               }
             ],
@@ -3297,7 +3392,7 @@
                 },
                 "style": null
               },
-              "model_choice": "test/approved-anime",
+              "model_choice": "research-cpu-fake-model",
               "model_identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
               "model_record": {
                 "backend": "webui",
@@ -3305,7 +3400,7 @@
                 "byte_size": 1,
                 "endpoint_identity": "endpoint:test",
                 "format": ".safetensors",
-                "id": "test/approved-anime",
+                "id": "research-cpu-fake-model",
                 "identity_strength": "cryptographic",
                 "identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "license_id": "test-only",
@@ -3338,7 +3433,7 @@
                 "height": 256,
                 "identity_strength": "cryptographic",
                 "identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "model_id": "test/approved-anime",
+                "model_id": "research-cpu-fake-model",
                 "operation": "txt2img",
                 "profile": "standalone-illustration",
                 "prompt_compiler_id": "sd15-tags-v1",
@@ -3397,7 +3492,7 @@
                   "identity_strength": "cryptographic",
                   "intent": "A calm coast at dawn.",
                   "max_rounds": 2,
-                  "model_choice": "test/approved-anime",
+                  "model_choice": "research-cpu-fake-model",
                   "model_identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                   "negative_prompt": "watermark, text",
                   "parameters": {
@@ -3433,7 +3528,7 @@
                 },
                 "registry_metadata": {
                   "model": {
-                    "id": "test/approved-anime",
+                    "id": "research-cpu-fake-model",
                     "license_id": "test-only",
                     "license_status": "approved",
                     "license_url": null,
@@ -3445,7 +3540,7 @@
                   },
                   "style": null
                 },
-                "request_hash": "52b372ad3d952c0e9b15a39ce0a6b99ef7d4b2692ee18783623becd040cf361d",
+                "request_hash": "4d640a809a04e43c90c4bb860143780cba7cfbe864f7ac9852f185b2c3ed0029",
                 "round_number": 1,
                 "route": {
                   "authorization_scope": "private",
@@ -3455,7 +3550,7 @@
                   "height": 256,
                   "identity_strength": "cryptographic",
                   "identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                  "model_id": "test/approved-anime",
+                  "model_id": "research-cpu-fake-model",
                   "operation": "txt2img",
                   "profile": "standalone-illustration",
                   "prompt_compiler_id": "sd15-tags-v1",
@@ -3473,17 +3568,18 @@
                 "warnings": []
               }
             ],
-            "run_id": "20260916T055244Z-7031fa4842d9",
+            "run_id": "20260916T075926Z-827e3b5349cc",
             "schema_version": 1,
             "state": "generated",
             "warnings": []
           },
-          "request_digest": "52b372ad3d952c0e9b15a39ce0a6b99ef7d4b2692ee18783623becd040cf361d",
+          "request_digest": "4d640a809a04e43c90c4bb860143780cba7cfbe864f7ac9852f185b2c3ed0029",
           "schema_version": 1,
           "source_sha": "da65d57047b5a59e3403b49adf4605a1c0497c58",
           "validator_version": "product-validate-v1"
         },
         "raw_record": {
+          "approval_state": "not_required",
           "backend_instance": {
             "backend": "cpu-fake",
             "instance": "F02-single-stage"
@@ -3494,48 +3590,56 @@
             "events": [
               {
                 "event": "request_received",
-                "job_id": "cpu-single-1",
+                "job_id": "cpu-single-stage-f02-0001",
                 "operation_id": "F02-single-stage-operation",
                 "prompt_id": "F02-single-stage-operation"
               },
               {
                 "event": "queue_item_created",
-                "job_id": "cpu-single-1",
+                "job_id": "cpu-single-stage-f02-0001",
                 "operation_id": "F02-single-stage-operation",
                 "prompt_id": "F02-single-stage-operation"
               },
               {
                 "event": "execution_started",
                 "execution_instance_id": "F02-single-stage:execution-0001",
-                "job_id": "cpu-single-1",
+                "job_id": "cpu-single-stage-f02-0001",
                 "operation_id": "F02-single-stage-operation",
                 "prompt_id": "F02-single-stage-operation"
               },
               {
+                "artifact_hash": "11f2c9c919dcaaa53fcfbf16290e641da61f2122a8921cc01c56fa96e219ce5e",
                 "event": "execution_finished",
                 "execution_instance_id": "F02-single-stage:execution-0001",
                 "outcome": "succeeded"
               },
               {
                 "event": "request_received",
-                "job_id": "cpu-single-2",
+                "job_id": "cpu-single-stage-f02-0002",
                 "operation_id": "F02-single-stage-operation",
                 "prompt_id": "F02-single-stage-operation"
               },
               {
                 "event": "queue_item_created",
-                "job_id": "cpu-single-2",
+                "job_id": "cpu-single-stage-f02-0002",
+                "operation_id": "F02-single-stage-operation",
+                "prompt_id": "F02-single-stage-operation"
+              },
+              {
+                "event": "job_id_revealed",
+                "job_id": "cpu-single-stage-f02-0002",
                 "operation_id": "F02-single-stage-operation",
                 "prompt_id": "F02-single-stage-operation"
               },
               {
                 "event": "execution_started",
                 "execution_instance_id": "F02-single-stage:execution-0002",
-                "job_id": "cpu-single-2",
+                "job_id": "cpu-single-stage-f02-0002",
                 "operation_id": "F02-single-stage-operation",
                 "prompt_id": "F02-single-stage-operation"
               },
               {
+                "artifact_hash": "11f2c9c919dcaaa53fcfbf16290e641da61f2122a8921cc01c56fa96e219ce5e",
                 "event": "execution_finished",
                 "execution_instance_id": "F02-single-stage:execution-0002",
                 "outcome": "succeeded"
@@ -3549,8 +3653,8 @@
             "execution_started": 2,
             "execution_state": "succeeded",
             "job_ids": [
-              "cpu-single-1",
-              "cpu-single-2"
+              "cpu-single-stage-f02-0001",
+              "cpu-single-stage-f02-0002"
             ],
             "oracle_evaluable": true,
             "oracle_type": "independent_cpu_execution_oracle_v1",
@@ -3574,12 +3678,11 @@
                   "category": "backend",
                   "code": "backend_request_failed",
                   "details": {
-                    "barrier": "after_execution_before_client_response",
-                    "job_id": "cpu-single-1"
+                    "barrier": "after_execution_before_job_id_response"
                   },
-                  "message": "Synthetic F02 response-loss barrier."
+                  "message": "Synthetic F02 response loss after backend execution."
                 },
-                "failed_at": "2026-09-16T05:52:44Z",
+                "failed_at": "2026-09-16T07:59:26Z",
                 "generation_plan": {
                   "authorization_scope": "private",
                   "backend": "webui",
@@ -3591,7 +3694,7 @@
                   "identity_strength": "cryptographic",
                   "intent": "A calm coast at dawn.",
                   "max_rounds": 2,
-                  "model_choice": "test/approved-anime",
+                  "model_choice": "research-cpu-fake-model",
                   "model_identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                   "negative_prompt": "watermark, text",
                   "parameters": {
@@ -3609,7 +3712,7 @@
                   "workflow_template_version": null
                 },
                 "idempotency_key": "F02-single-stage-operation",
-                "request_hash": "52b372ad3d952c0e9b15a39ce0a6b99ef7d4b2692ee18783623becd040cf361d",
+                "request_hash": "4d640a809a04e43c90c4bb860143780cba7cfbe864f7ac9852f185b2c3ed0029",
                 "route": {
                   "authorization_scope": "private",
                   "backend": "webui",
@@ -3618,7 +3721,7 @@
                   "height": 256,
                   "identity_strength": "cryptographic",
                   "identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                  "model_id": "test/approved-anime",
+                  "model_id": "research-cpu-fake-model",
                   "operation": "txt2img",
                   "profile": "standalone-illustration",
                   "prompt_compiler_id": "sd15-tags-v1",
@@ -3632,7 +3735,7 @@
                   "workflow_template_version": null
                 },
                 "seed": 42,
-                "started_at": "2026-09-16T05:52:44Z",
+                "started_at": "2026-09-16T07:59:26Z",
                 "status": "failed"
               },
               {
@@ -3661,7 +3764,7 @@
                   "negative_prompt": "watermark, text",
                   "positive_prompt": "calm coast at dawn"
                 },
-                "completed_at": "2026-09-16T05:52:44Z",
+                "completed_at": "2026-09-16T07:59:26Z",
                 "generation_plan": {
                   "authorization_scope": "private",
                   "backend": "webui",
@@ -3673,7 +3776,7 @@
                   "identity_strength": "cryptographic",
                   "intent": "A calm coast at dawn.",
                   "max_rounds": 2,
-                  "model_choice": "test/approved-anime",
+                  "model_choice": "research-cpu-fake-model",
                   "model_identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                   "negative_prompt": "watermark, text",
                   "parameters": {
@@ -3698,7 +3801,7 @@
                   "sha256": "11f2c9c919dcaaa53fcfbf16290e641da61f2122a8921cc01c56fa96e219ce5e",
                   "width": 256
                 },
-                "request_hash": "52b372ad3d952c0e9b15a39ce0a6b99ef7d4b2692ee18783623becd040cf361d",
+                "request_hash": "4d640a809a04e43c90c4bb860143780cba7cfbe864f7ac9852f185b2c3ed0029",
                 "round_number": 1,
                 "route": {
                   "authorization_scope": "private",
@@ -3708,7 +3811,7 @@
                   "height": 256,
                   "identity_strength": "cryptographic",
                   "identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                  "model_id": "test/approved-anime",
+                  "model_id": "research-cpu-fake-model",
                   "operation": "txt2img",
                   "profile": "standalone-illustration",
                   "prompt_compiler_id": "sd15-tags-v1",
@@ -3722,7 +3825,7 @@
                   "workflow_template_version": null
                 },
                 "seed": 42,
-                "started_at": "2026-09-16T05:52:44Z",
+                "started_at": "2026-09-16T07:59:26Z",
                 "status": "completed"
               }
             ],
@@ -3907,7 +4010,7 @@
                 },
                 "style": null
               },
-              "model_choice": "test/approved-anime",
+              "model_choice": "research-cpu-fake-model",
               "model_identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
               "model_record": {
                 "backend": "webui",
@@ -3915,7 +4018,7 @@
                 "byte_size": 1,
                 "endpoint_identity": "endpoint:test",
                 "format": ".safetensors",
-                "id": "test/approved-anime",
+                "id": "research-cpu-fake-model",
                 "identity_strength": "cryptographic",
                 "identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "license_id": "test-only",
@@ -3948,7 +4051,7 @@
                 "height": 256,
                 "identity_strength": "cryptographic",
                 "identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "model_id": "test/approved-anime",
+                "model_id": "research-cpu-fake-model",
                 "operation": "txt2img",
                 "profile": "standalone-illustration",
                 "prompt_compiler_id": "sd15-tags-v1",
@@ -4007,7 +4110,7 @@
                   "identity_strength": "cryptographic",
                   "intent": "A calm coast at dawn.",
                   "max_rounds": 2,
-                  "model_choice": "test/approved-anime",
+                  "model_choice": "research-cpu-fake-model",
                   "model_identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                   "negative_prompt": "watermark, text",
                   "parameters": {
@@ -4043,7 +4146,7 @@
                 },
                 "registry_metadata": {
                   "model": {
-                    "id": "test/approved-anime",
+                    "id": "research-cpu-fake-model",
                     "license_id": "test-only",
                     "license_status": "approved",
                     "license_url": null,
@@ -4055,7 +4158,7 @@
                   },
                   "style": null
                 },
-                "request_hash": "52b372ad3d952c0e9b15a39ce0a6b99ef7d4b2692ee18783623becd040cf361d",
+                "request_hash": "4d640a809a04e43c90c4bb860143780cba7cfbe864f7ac9852f185b2c3ed0029",
                 "round_number": 1,
                 "route": {
                   "authorization_scope": "private",
@@ -4065,7 +4168,7 @@
                   "height": 256,
                   "identity_strength": "cryptographic",
                   "identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                  "model_id": "test/approved-anime",
+                  "model_id": "research-cpu-fake-model",
                   "operation": "txt2img",
                   "profile": "standalone-illustration",
                   "prompt_compiler_id": "sd15-tags-v1",
@@ -4083,7 +4186,7 @@
                 "warnings": []
               }
             ],
-            "run_id": "20260916T055244Z-7031fa4842d9",
+            "run_id": "20260916T075926Z-827e3b5349cc",
             "schema_version": 1,
             "state": "generated",
             "warnings": []
@@ -4094,160 +4197,163 @@
             "path_kind": "single-stage"
           },
           "research_metadata": {
-            "duplicate_execution": true,
-            "duplicate_submission": true,
-            "first_boundary_resolution": "unresolved",
+            "boundary_classification": {
+              "mapping_version": "deterministic-fault-coverage-v2",
+              "reason": "new_backend_submission_observed_after_ambiguous_first_call",
+              "recovery_state": "new_submission_after_fault",
+              "state": "unresolved"
+            },
             "injection_confirmed": true,
-            "oracle_evaluable": true,
             "scheduled": true,
-            "started": true
+            "started": true,
+            "worker_execution_entry_ids": [
+              "F02-single-stage:execution-0001",
+              "F02-single-stage:execution-0002"
+            ]
           },
           "source_sha": "da65d57047b5a59e3403b49adf4605a1c0497c58",
           "validator_version": "product-validate-v1"
         }
+      },
+      "recovery": {
+        "recovery_invocation_count": 0,
+        "same_job": false,
+        "state": "new_submission_after_fault"
       },
       "reported_attempt_statuses": [
         "failed",
         "completed"
       ],
       "scheduled": true,
+      "second_error": null,
       "started": true,
-      "submission_count": 2
+      "submitted_job_ids": [
+        "cpu-single-stage-f02-0001",
+        "cpu-single-stage-f02-0002"
+      ],
+      "worker_execution_entry_ids": [
+        "F02-single-stage:execution-0001",
+        "F02-single-stage:execution-0002"
+      ]
     },
     {
-      "backend_runner_invocation_count": 2,
+      "backend_submission_count": 1,
+      "backend_worker_invocation_count": 1,
+      "boundary_classification": {
+        "mapping_version": "deterministic-fault-coverage-v2",
+        "reason": "first_call_outcome_ambiguous_without_durable_job_recovery",
+        "recovery_state": "outcome_unknown",
+        "state": "unresolved"
+      },
       "case_id": "F02-two-stage",
-      "duplicate_execution": true,
-      "duplicate_submission": true,
+      "duplicate_execution": false,
+      "duplicate_submission": false,
+      "fault_class": "fault",
       "fault_id": "F02",
-      "final_product_state": "generated",
-      "first_boundary_resolution": "unresolved",
-      "first_product_state": "created",
-      "injection_confirmed": true,
-      "oracle_evaluable": true,
-      "oracle_execution_count": 2,
-      "path_kind": "two-stage",
-      "product_first_call": {
+      "final_product_state": "partial",
+      "first_error": {
         "category": "backend",
         "code": "backend_request_failed",
         "details": {
-          "barrier": "after_queue_and_execution_before_job_callback",
-          "job_id": "cpu-two-stage-f02"
+          "barrier": "after_execution_before_job_id_response"
         },
         "raised": true
       },
-      "product_second_call": null,
-      "product_second_call_succeeded": true,
+      "first_error_barrier": "after_execution_before_job_id_response",
+      "first_error_code": "backend_request_failed",
+      "first_error_job_id": null,
+      "first_product_state": "partial",
+      "injection_confirmed": true,
+      "oracle_evaluable": true,
+      "oracle_execution_count": 1,
+      "path_kind": "two-stage",
+      "product_second_call_succeeded": false,
       "raw_and_normalized": {
         "normalized_record": {
-          "artifact_hash": "a351bc16743410baebf8ef19392e2cc746fab6d30fa2174bb139f68e0df00a03",
+          "artifact_hash": null,
           "backend_instance": {
             "backend": "cpu-fake",
             "instance": "F02-two-stage"
           },
           "exporter_version": "research-exporter-v1",
           "field_reasons": {
-            "artifact_hash": "derived_from_reported_round_artifact",
+            "artifact_hash": "artifact_hash_missing",
             "backend_instance": "provided_backend_instance",
             "input_digest": "input_digest_missing",
-            "job_id": "derived_from_durable_reported_backend_job",
+            "job_id": "job_id_missing",
             "request_digest": "provided_reported_attempts.request_hash",
             "source_sha": "provided_source_sha",
             "validator_version": "provided_validator_version"
           },
           "input_digest": null,
           "interpreted_state": {
-            "approval_state": "unknown",
+            "approval_state": "not_required",
             "domain_verdict": "not_evaluated",
-            "evidence_state": "partial",
+            "evidence_state": "missing",
             "execution_state": "succeeded",
             "execution_verified": false,
             "execution_verified_reason": "required_independent_execution_artifact_job_or_approval_evidence_is_incomplete",
             "recovery_state": "not_needed",
-            "submission_state": "job_identified"
+            "submission_state": "intent_recorded"
           },
-          "job_id": "cpu-two-stage-f02",
+          "job_id": null,
           "mapping_reason": {
-            "approval_state": "approval_state_missing_is_unknown",
+            "approval_state": "provided_approval_state",
             "domain_verdict": "domain_verdict_missing_is_not_evaluated",
-            "evidence_state": "artifact_hash_exists_without_independent_validation",
+            "evidence_state": "artifact_hash_missing",
             "execution_state": "execution_state_supplied_by_independent_oracle",
             "recovery_state": "no_unresolved_report_or_oracle_gap",
-            "submission_state": "explicit_or_observed_job_id_is_available"
+            "submission_state": "reported_attempt_or_terminal_run_proves_intent_not_execution"
           },
-          "mapping_version": "research-normalization-v1",
-          "oracle_job_id": "cpu-two-stage-f02",
+          "mapping_version": "research-normalization-v2",
+          "oracle_job_id": "cpu-two-stage-f02-0001",
           "oracle_state": {
             "artifact_hash": "a351bc16743410baebf8ef19392e2cc746fab6d30fa2174bb139f68e0df00a03",
             "case_id": "F02-two-stage",
             "events": [
               {
                 "event": "request_received",
-                "job_id": "cpu-two-stage-f02",
+                "job_id": "cpu-two-stage-f02-0001",
                 "operation_id": "F02-two-stage-operation",
                 "prompt_id": "F02-two-stage-operation"
               },
               {
                 "event": "queue_item_created",
-                "job_id": "cpu-two-stage-f02",
+                "job_id": "cpu-two-stage-f02-0001",
                 "operation_id": "F02-two-stage-operation",
                 "prompt_id": "F02-two-stage-operation"
               },
               {
                 "event": "execution_started",
                 "execution_instance_id": "F02-two-stage:execution-0001",
-                "job_id": "cpu-two-stage-f02",
+                "job_id": "cpu-two-stage-f02-0001",
                 "operation_id": "F02-two-stage-operation",
                 "prompt_id": "F02-two-stage-operation"
               },
               {
+                "artifact_hash": "a351bc16743410baebf8ef19392e2cc746fab6d30fa2174bb139f68e0df00a03",
                 "event": "execution_finished",
                 "execution_instance_id": "F02-two-stage:execution-0001",
-                "outcome": "succeeded"
-              },
-              {
-                "event": "request_received",
-                "job_id": "cpu-two-stage-f02",
-                "operation_id": "F02-two-stage-operation",
-                "prompt_id": "F02-two-stage-operation"
-              },
-              {
-                "event": "queue_item_created",
-                "job_id": "cpu-two-stage-f02",
-                "operation_id": "F02-two-stage-operation",
-                "prompt_id": "F02-two-stage-operation"
-              },
-              {
-                "event": "execution_started",
-                "execution_instance_id": "F02-two-stage:execution-0002",
-                "job_id": "cpu-two-stage-f02",
-                "operation_id": "F02-two-stage-operation",
-                "prompt_id": "F02-two-stage-operation"
-              },
-              {
-                "event": "execution_finished",
-                "execution_instance_id": "F02-two-stage:execution-0002",
                 "outcome": "succeeded"
               }
             ],
-            "execution_finished": 2,
+            "execution_finished": 1,
             "execution_instances": [
-              "F02-two-stage:execution-0001",
-              "F02-two-stage:execution-0002"
+              "F02-two-stage:execution-0001"
             ],
-            "execution_started": 2,
+            "execution_started": 1,
             "execution_state": "succeeded",
             "job_ids": [
-              "cpu-two-stage-f02"
+              "cpu-two-stage-f02-0001"
             ],
             "oracle_evaluable": true,
             "oracle_type": "independent_cpu_execution_oracle_v1",
-            "queue_item_created": 2,
-            "request_received": 2
+            "queue_item_created": 1,
+            "request_received": 1
           },
           "oracle_state_reason": "provided_by_independent_oracle",
           "record_id": "F02-two-stage",
-          "reported_job_id": "cpu-two-stage-f02",
+          "reported_job_id": null,
           "reported_state": {
             "active_attempt": null,
             "attempts": [
@@ -4270,12 +4376,10 @@
                   "category": "backend",
                   "code": "backend_request_failed",
                   "details": {
-                    "barrier": "after_queue_and_execution_before_job_callback",
-                    "job_id": "cpu-two-stage-f02"
+                    "barrier": "after_execution_before_job_id_response"
                   },
-                  "message": "Synthetic F02 response loss before durable job ID."
+                  "message": "Synthetic F02 response loss after backend execution."
                 },
-                "failed_at": "2026-09-16T05:52:44Z",
                 "generation_plan": {
                   "authorization_scope": "private",
                   "backend": "comfyui",
@@ -4308,7 +4412,7 @@
                   "identity_strength": "cryptographic",
                   "intent": "A calm coast at dawn.",
                   "max_rounds": 2,
-                  "model_choice": "test/approved-anime",
+                  "model_choice": "research-cpu-fake-model",
                   "model_identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                   "negative_prompt": "text, watermark, telescope",
                   "parameters": {
@@ -4329,235 +4433,9 @@
                   "workflow_template_version": 1
                 },
                 "idempotency_key": "F02-two-stage-operation",
-                "request_hash": "770763e5d0f76714e94f9f1474d89a19cbd9d489589286d82436269d4d892269",
-                "route": {
-                  "authorization_scope": "private",
-                  "backend": "comfyui",
-                  "component_bundle_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
-                  "control_sha256": "fffa3a0c07c3578c24a96d3f91e80bc80f8d67c5da4cad2523e2473ca6e5658b",
-                  "endpoint_identity": "endpoint:test",
-                  "expires_at": 9999999999.0,
-                  "height": 320,
-                  "identity_strength": "cryptographic",
-                  "identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                  "model_id": "test/approved-anime",
-                  "operation": "txt2img",
-                  "profile": "standalone-illustration",
-                  "prompt_compiler_id": "natural-v1",
-                  "prompt_compiler_version": 1,
-                  "requirements": {
-                    "two_stage_layout": {
-                      "canvas": {
-                        "height": 320,
-                        "width": 640
-                      },
-                      "copy_protected_rect": {
-                        "height": 320,
-                        "width": 224,
-                        "x": 0,
-                        "y": 0
-                      },
-                      "feather_pixels": 0,
-                      "mode": "copy-subject-two-stage-v1",
-                      "subject_mask_rect": {
-                        "height": 288,
-                        "width": 320,
-                        "x": 304,
-                        "y": 16
-                      },
-                      "vae_grow_mask_by": 0
-                    }
-                  },
-                  "route_token": "route:test-2",
-                  "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
-                  "style": null,
-                  "width": 640,
-                  "workflow_template_id": "sdxl-two-stage-copy-subject",
-                  "workflow_template_version": 1
-                },
-                "seed": 42,
-                "started_at": "2026-09-16T05:52:44Z",
-                "status": "failed"
-              },
-              {
-                "action": "initial",
-                "backend_job": {
-                  "backend": "comfyui",
-                  "job_id": "cpu-two-stage-f02"
-                },
-                "backend_result": {
-                  "backend": "comfyui",
-                  "component_bundle_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
-                  "control_sha256": "fffa3a0c07c3578c24a96d3f91e80bc80f8d67c5da4cad2523e2473ca6e5658b",
-                  "endpoint_identity": "endpoint:test",
-                  "height": 320,
-                  "identity_strength": "cryptographic",
-                  "mask_output": {
-                    "path": "round-01-mask.png"
-                  },
-                  "mode": "txt2img",
-                  "model": "actual-loaded-model",
-                  "model_identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                  "ok": true,
-                  "path": "round-01.png",
-                  "prompt_compiler_id": "natural-v1",
-                  "prompt_compiler_version": 1,
-                  "seed": 42,
-                  "stage_outputs": {
-                    "base": {
-                      "path": "round-01-base.png"
-                    },
-                    "final": {
-                      "path": "round-01.png"
-                    }
-                  },
-                  "subject_seed": 43,
-                  "width": 640,
-                  "workflow_job_id": "job:two-stage-test",
-                  "workflow_template_id": "sdxl-two-stage-copy-subject",
-                  "workflow_template_version": 1
-                },
-                "change_summary": "Bounded CPU fault characterization.",
-                "compiled_prompt": {
-                  "compiler_id": "natural-v1",
-                  "compiler_version": 1,
-                  "negative_prompt": "text, watermark, telescope",
-                  "positive_prompt": "dark quiet observatory background"
-                },
-                "compiled_subject_prompt": {
-                  "compiler_id": "natural-v1",
-                  "compiler_version": 1,
-                  "negative_prompt": "cropped subject, duplicate telescope",
-                  "positive_prompt": "one complete brass telescope on a tripod"
-                },
-                "completed_at": "2026-09-16T05:52:44Z",
-                "generation_plan": {
-                  "authorization_scope": "private",
-                  "backend": "comfyui",
-                  "constraints": {
-                    "height": 320,
-                    "two_stage_layout": {
-                      "canvas": {
-                        "height": 320,
-                        "width": 640
-                      },
-                      "copy_protected_rect": {
-                        "height": 320,
-                        "width": 224,
-                        "x": 0,
-                        "y": 0
-                      },
-                      "feather_pixels": 0,
-                      "mode": "copy-subject-two-stage-v1",
-                      "subject_mask_rect": {
-                        "height": 288,
-                        "width": 320,
-                        "x": 304,
-                        "y": 16
-                      },
-                      "vae_grow_mask_by": 0
-                    },
-                    "width": 640
-                  },
-                  "endpoint_identity": "endpoint:test",
-                  "identity_strength": "cryptographic",
-                  "intent": "A calm coast at dawn.",
-                  "max_rounds": 2,
-                  "model_choice": "test/approved-anime",
-                  "model_identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                  "negative_prompt": "text, watermark, telescope",
-                  "parameters": {
-                    "two_stage_conditioning": {
-                      "subject_denoise": 0.9,
-                      "subject_negative_prompt": "cropped subject, duplicate telescope",
-                      "subject_prompt": "one complete brass telescope on a tripod"
-                    }
-                  },
-                  "positive_prompt": "dark quiet observatory background",
-                  "profile": "standalone-illustration",
-                  "prompt_compiler_id": "natural-v1",
-                  "prompt_compiler_version": 1,
-                  "route_token": "route:test-2",
-                  "style": null,
-                  "upscale_policy": "off",
-                  "workflow_template_id": "sdxl-two-stage-copy-subject",
-                  "workflow_template_version": 1
-                },
-                "idempotency_key": "F02-two-stage-operation",
-                "image": {
-                  "height": 320,
-                  "mime_type": "image/png",
-                  "path": "round-01.png",
-                  "sha256": "a351bc16743410baebf8ef19392e2cc746fab6d30fa2174bb139f68e0df00a03",
-                  "width": 640
-                },
-                "mask_artifact": {
-                  "height": 320,
-                  "mime_type": "image/png",
-                  "path": "round-01-mask.png",
-                  "sha256": "4a6f76ce737a2e1160c00f783450c8a9d16c6c058109ce3f0e49805d74e52c68",
-                  "soft_mask_validation": {
-                    "channels": 3,
-                    "copy_nonzero_pixels": 0,
-                    "edge_profiles_checked": 1216,
-                    "feather_monotonic": true,
-                    "feather_pixels": 0,
-                    "height": 320,
-                    "interior_positive_pixels": 90948,
-                    "outside_nonzero_pixels": 0,
-                    "width": 640
-                  },
-                  "width": 640
-                },
-                "request_hash": "770763e5d0f76714e94f9f1474d89a19cbd9d489589286d82436269d4d892269",
-                "round_number": 1,
-                "route": {
-                  "authorization_scope": "private",
-                  "backend": "comfyui",
-                  "component_bundle_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
-                  "control_sha256": "fffa3a0c07c3578c24a96d3f91e80bc80f8d67c5da4cad2523e2473ca6e5658b",
-                  "endpoint_identity": "endpoint:test",
-                  "expires_at": 9999999999.0,
-                  "height": 320,
-                  "identity_strength": "cryptographic",
-                  "identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                  "model_id": "test/approved-anime",
-                  "operation": "txt2img",
-                  "profile": "standalone-illustration",
-                  "prompt_compiler_id": "natural-v1",
-                  "prompt_compiler_version": 1,
-                  "requirements": {
-                    "two_stage_layout": {
-                      "canvas": {
-                        "height": 320,
-                        "width": 640
-                      },
-                      "copy_protected_rect": {
-                        "height": 320,
-                        "width": 224,
-                        "x": 0,
-                        "y": 0
-                      },
-                      "feather_pixels": 0,
-                      "mode": "copy-subject-two-stage-v1",
-                      "subject_mask_rect": {
-                        "height": 288,
-                        "width": 320,
-                        "x": 304,
-                        "y": 16
-                      },
-                      "vae_grow_mask_by": 0
-                    }
-                  },
-                  "route_token": "route:test-2",
-                  "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
-                  "style": null,
-                  "width": 640,
-                  "workflow_template_id": "sdxl-two-stage-copy-subject",
-                  "workflow_template_version": 1
-                },
-                "seed": 42,
-                "stages": [
+                "partial_at": "2026-09-16T07:59:26Z",
+                "request_hash": "ff5b0f21108838b16242ff51ae3ed63d1253767dcc9b2ef387b7efb01e959374",
+                "retained_stages": [
                   {
                     "image": {
                       "height": 320,
@@ -4581,17 +4459,64 @@
                     "seed": 43
                   }
                 ],
-                "started_at": "2026-09-16T05:52:44Z",
-                "status": "completed"
+                "route": {
+                  "authorization_scope": "private",
+                  "backend": "comfyui",
+                  "component_bundle_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+                  "control_sha256": "fffa3a0c07c3578c24a96d3f91e80bc80f8d67c5da4cad2523e2473ca6e5658b",
+                  "endpoint_identity": "endpoint:test",
+                  "expires_at": 9999999999.0,
+                  "height": 320,
+                  "identity_strength": "cryptographic",
+                  "identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                  "model_id": "research-cpu-fake-model",
+                  "operation": "txt2img",
+                  "profile": "standalone-illustration",
+                  "prompt_compiler_id": "natural-v1",
+                  "prompt_compiler_version": 1,
+                  "requirements": {
+                    "two_stage_layout": {
+                      "canvas": {
+                        "height": 320,
+                        "width": 640
+                      },
+                      "copy_protected_rect": {
+                        "height": 320,
+                        "width": 224,
+                        "x": 0,
+                        "y": 0
+                      },
+                      "feather_pixels": 0,
+                      "mode": "copy-subject-two-stage-v1",
+                      "subject_mask_rect": {
+                        "height": 288,
+                        "width": 320,
+                        "x": 304,
+                        "y": 16
+                      },
+                      "vae_grow_mask_by": 0
+                    }
+                  },
+                  "route_token": "route:test-2",
+                  "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+                  "style": null,
+                  "width": 640,
+                  "workflow_template_id": "sdxl-two-stage-copy-subject",
+                  "workflow_template_version": 1
+                },
+                "seed": 42,
+                "stage_units": 2,
+                "started_at": "2026-09-16T07:59:26Z",
+                "status": "partial"
               }
             ],
             "final": null,
-            "last_stable_state": "generated",
-            "manifest_revision": 7,
+            "last_stable_state": "partial",
+            "manifest_revision": 3,
             "masks": [],
             "parent": null,
             "recoverable_next_actions": [
-              "record_review"
+              "get_run"
             ],
             "request": {
               "authorization_scope": "private",
@@ -4814,7 +4739,7 @@
                 },
                 "style": null
               },
-              "model_choice": "test/approved-anime",
+              "model_choice": "research-cpu-fake-model",
               "model_identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
               "model_record": {
                 "backend": "webui",
@@ -4822,7 +4747,7 @@
                 "byte_size": 1,
                 "endpoint_identity": "endpoint:test",
                 "format": ".safetensors",
-                "id": "test/approved-anime",
+                "id": "research-cpu-fake-model",
                 "identity_strength": "cryptographic",
                 "identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "license_id": "test-only",
@@ -4857,7 +4782,7 @@
                 "height": 320,
                 "identity_strength": "cryptographic",
                 "identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "model_id": "test/approved-anime",
+                "model_id": "research-cpu-fake-model",
                 "operation": "txt2img",
                 "profile": "standalone-illustration",
                 "prompt_compiler_id": "natural-v1",
@@ -4899,259 +4824,23 @@
               "workflow_template_version": 1
             },
             "reviews": [],
-            "rounds": [
-              {
-                "action": "initial",
-                "backend": "comfyui",
-                "backend_result": {
-                  "backend": "comfyui",
-                  "component_bundle_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
-                  "control_sha256": "fffa3a0c07c3578c24a96d3f91e80bc80f8d67c5da4cad2523e2473ca6e5658b",
-                  "endpoint_identity": "endpoint:test",
-                  "height": 320,
-                  "identity_strength": "cryptographic",
-                  "mask_output": {
-                    "path": "round-01-mask.png"
-                  },
-                  "mode": "txt2img",
-                  "model": "actual-loaded-model",
-                  "model_identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                  "ok": true,
-                  "path": "round-01.png",
-                  "prompt_compiler_id": "natural-v1",
-                  "prompt_compiler_version": 1,
-                  "seed": 42,
-                  "stage_outputs": {
-                    "base": {
-                      "path": "round-01-base.png"
-                    },
-                    "final": {
-                      "path": "round-01.png"
-                    }
-                  },
-                  "subject_seed": 43,
-                  "width": 640,
-                  "workflow_job_id": "job:two-stage-test",
-                  "workflow_template_id": "sdxl-two-stage-copy-subject",
-                  "workflow_template_version": 1
-                },
-                "change_summary": "Bounded CPU fault characterization.",
-                "compiled_prompt": {
-                  "compiler_id": "natural-v1",
-                  "compiler_version": 1,
-                  "negative_prompt": "text, watermark, telescope",
-                  "positive_prompt": "dark quiet observatory background"
-                },
-                "compiled_subject_prompt": {
-                  "compiler_id": "natural-v1",
-                  "compiler_version": 1,
-                  "negative_prompt": "cropped subject, duplicate telescope",
-                  "positive_prompt": "one complete brass telescope on a tripod"
-                },
-                "generation_plan": {
-                  "authorization_scope": "private",
-                  "backend": "comfyui",
-                  "constraints": {
-                    "height": 320,
-                    "two_stage_layout": {
-                      "canvas": {
-                        "height": 320,
-                        "width": 640
-                      },
-                      "copy_protected_rect": {
-                        "height": 320,
-                        "width": 224,
-                        "x": 0,
-                        "y": 0
-                      },
-                      "feather_pixels": 0,
-                      "mode": "copy-subject-two-stage-v1",
-                      "subject_mask_rect": {
-                        "height": 288,
-                        "width": 320,
-                        "x": 304,
-                        "y": 16
-                      },
-                      "vae_grow_mask_by": 0
-                    },
-                    "width": 640
-                  },
-                  "endpoint_identity": "endpoint:test",
-                  "identity_strength": "cryptographic",
-                  "intent": "A calm coast at dawn.",
-                  "max_rounds": 2,
-                  "model_choice": "test/approved-anime",
-                  "model_identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                  "negative_prompt": "text, watermark, telescope",
-                  "parameters": {
-                    "two_stage_conditioning": {
-                      "subject_denoise": 0.9,
-                      "subject_negative_prompt": "cropped subject, duplicate telescope",
-                      "subject_prompt": "one complete brass telescope on a tripod"
-                    }
-                  },
-                  "positive_prompt": "dark quiet observatory background",
-                  "profile": "standalone-illustration",
-                  "prompt_compiler_id": "natural-v1",
-                  "prompt_compiler_version": 1,
-                  "route_token": "route:test-2",
-                  "style": null,
-                  "upscale_policy": "off",
-                  "workflow_template_id": "sdxl-two-stage-copy-subject",
-                  "workflow_template_version": 1
-                },
-                "idempotency_key": "F02-two-stage-operation",
-                "image": {
-                  "height": 320,
-                  "mime_type": "image/png",
-                  "path": "round-01.png",
-                  "sha256": "a351bc16743410baebf8ef19392e2cc746fab6d30fa2174bb139f68e0df00a03",
-                  "width": 640
-                },
-                "mask_artifact": {
-                  "height": 320,
-                  "mime_type": "image/png",
-                  "path": "round-01-mask.png",
-                  "sha256": "4a6f76ce737a2e1160c00f783450c8a9d16c6c058109ce3f0e49805d74e52c68",
-                  "soft_mask_validation": {
-                    "channels": 3,
-                    "copy_nonzero_pixels": 0,
-                    "edge_profiles_checked": 1216,
-                    "feather_monotonic": true,
-                    "feather_pixels": 0,
-                    "height": 320,
-                    "interior_positive_pixels": 90948,
-                    "outside_nonzero_pixels": 0,
-                    "width": 640
-                  },
-                  "width": 640
-                },
-                "mode": "txt2img",
-                "model": "actual-loaded-model",
-                "pixel_preservation": {
-                  "checked_pixels": 112640,
-                  "copy_mismatched_pixels": 0,
-                  "mismatched_pixels": 0,
-                  "protected_rect": {
-                    "height": 320,
-                    "width": 224,
-                    "x": 0,
-                    "y": 0
-                  }
-                },
-                "preview": {
-                  "height": 320,
-                  "mime_type": "image/jpeg",
-                  "path": "round-01-preview.jpg",
-                  "sha256": "6f1e4b29c6fc7b5ed4b0cf4897a4433fb8e483ad8ac223c68c8b4838a1b465fb",
-                  "width": 640
-                },
-                "registry_metadata": {
-                  "model": {
-                    "id": "test/approved-anime",
-                    "license_id": "test-only",
-                    "license_status": "approved",
-                    "license_url": null,
-                    "source": "test-fixture"
-                  },
-                  "profile": {
-                    "id": "standalone-illustration",
-                    "schema_version": 1
-                  },
-                  "style": null
-                },
-                "request_hash": "770763e5d0f76714e94f9f1474d89a19cbd9d489589286d82436269d4d892269",
-                "round_number": 1,
-                "route": {
-                  "authorization_scope": "private",
-                  "backend": "comfyui",
-                  "component_bundle_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
-                  "control_sha256": "fffa3a0c07c3578c24a96d3f91e80bc80f8d67c5da4cad2523e2473ca6e5658b",
-                  "endpoint_identity": "endpoint:test",
-                  "expires_at": 9999999999.0,
-                  "height": 320,
-                  "identity_strength": "cryptographic",
-                  "identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                  "model_id": "test/approved-anime",
-                  "operation": "txt2img",
-                  "profile": "standalone-illustration",
-                  "prompt_compiler_id": "natural-v1",
-                  "prompt_compiler_version": 1,
-                  "requirements": {
-                    "two_stage_layout": {
-                      "canvas": {
-                        "height": 320,
-                        "width": 640
-                      },
-                      "copy_protected_rect": {
-                        "height": 320,
-                        "width": 224,
-                        "x": 0,
-                        "y": 0
-                      },
-                      "feather_pixels": 0,
-                      "mode": "copy-subject-two-stage-v1",
-                      "subject_mask_rect": {
-                        "height": 288,
-                        "width": 320,
-                        "x": 304,
-                        "y": 16
-                      },
-                      "vae_grow_mask_by": 0
-                    }
-                  },
-                  "route_token": "route:test-2",
-                  "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
-                  "style": null,
-                  "width": 640,
-                  "workflow_template_id": "sdxl-two-stage-copy-subject",
-                  "workflow_template_version": 1
-                },
-                "seed": 42,
-                "stage_units": 2,
-                "stages": [
-                  {
-                    "image": {
-                      "height": 320,
-                      "mime_type": "image/png",
-                      "path": "round-01-base.png",
-                      "sha256": "a351bc16743410baebf8ef19392e2cc746fab6d30fa2174bb139f68e0df00a03",
-                      "width": 640
-                    },
-                    "role": "base",
-                    "seed": 42
-                  },
-                  {
-                    "image": {
-                      "height": 320,
-                      "mime_type": "image/png",
-                      "path": "round-01.png",
-                      "sha256": "a351bc16743410baebf8ef19392e2cc746fab6d30fa2174bb139f68e0df00a03",
-                      "width": 640
-                    },
-                    "role": "subject",
-                    "seed": 43
-                  }
-                ],
-                "status": "generated",
-                "warnings": []
-              }
-            ],
-            "run_id": "20260916T055244Z-e5aab7fd350e",
+            "rounds": [],
+            "run_id": "20260916T075926Z-6023aadf9942",
             "schema_version": 1,
             "stage_budget": {
               "consumed": 2,
               "maximum": 4
             },
-            "state": "generated",
+            "state": "partial",
             "warnings": []
           },
-          "request_digest": "770763e5d0f76714e94f9f1474d89a19cbd9d489589286d82436269d4d892269",
+          "request_digest": "ff5b0f21108838b16242ff51ae3ed63d1253767dcc9b2ef387b7efb01e959374",
           "schema_version": 1,
           "source_sha": "da65d57047b5a59e3403b49adf4605a1c0497c58",
           "validator_version": "product-validate-v1"
         },
         "raw_record": {
+          "approval_state": "not_required",
           "backend_instance": {
             "backend": "cpu-fake",
             "instance": "F02-two-stage"
@@ -5162,67 +4851,43 @@
             "events": [
               {
                 "event": "request_received",
-                "job_id": "cpu-two-stage-f02",
+                "job_id": "cpu-two-stage-f02-0001",
                 "operation_id": "F02-two-stage-operation",
                 "prompt_id": "F02-two-stage-operation"
               },
               {
                 "event": "queue_item_created",
-                "job_id": "cpu-two-stage-f02",
+                "job_id": "cpu-two-stage-f02-0001",
                 "operation_id": "F02-two-stage-operation",
                 "prompt_id": "F02-two-stage-operation"
               },
               {
                 "event": "execution_started",
                 "execution_instance_id": "F02-two-stage:execution-0001",
-                "job_id": "cpu-two-stage-f02",
+                "job_id": "cpu-two-stage-f02-0001",
                 "operation_id": "F02-two-stage-operation",
                 "prompt_id": "F02-two-stage-operation"
               },
               {
+                "artifact_hash": "a351bc16743410baebf8ef19392e2cc746fab6d30fa2174bb139f68e0df00a03",
                 "event": "execution_finished",
                 "execution_instance_id": "F02-two-stage:execution-0001",
-                "outcome": "succeeded"
-              },
-              {
-                "event": "request_received",
-                "job_id": "cpu-two-stage-f02",
-                "operation_id": "F02-two-stage-operation",
-                "prompt_id": "F02-two-stage-operation"
-              },
-              {
-                "event": "queue_item_created",
-                "job_id": "cpu-two-stage-f02",
-                "operation_id": "F02-two-stage-operation",
-                "prompt_id": "F02-two-stage-operation"
-              },
-              {
-                "event": "execution_started",
-                "execution_instance_id": "F02-two-stage:execution-0002",
-                "job_id": "cpu-two-stage-f02",
-                "operation_id": "F02-two-stage-operation",
-                "prompt_id": "F02-two-stage-operation"
-              },
-              {
-                "event": "execution_finished",
-                "execution_instance_id": "F02-two-stage:execution-0002",
                 "outcome": "succeeded"
               }
             ],
-            "execution_finished": 2,
+            "execution_finished": 1,
             "execution_instances": [
-              "F02-two-stage:execution-0001",
-              "F02-two-stage:execution-0002"
+              "F02-two-stage:execution-0001"
             ],
-            "execution_started": 2,
+            "execution_started": 1,
             "execution_state": "succeeded",
             "job_ids": [
-              "cpu-two-stage-f02"
+              "cpu-two-stage-f02-0001"
             ],
             "oracle_evaluable": true,
             "oracle_type": "independent_cpu_execution_oracle_v1",
-            "queue_item_created": 2,
-            "request_received": 2
+            "queue_item_created": 1,
+            "request_received": 1
           },
           "record_id": "F02-two-stage",
           "reported_state": {
@@ -5247,12 +4912,10 @@
                   "category": "backend",
                   "code": "backend_request_failed",
                   "details": {
-                    "barrier": "after_queue_and_execution_before_job_callback",
-                    "job_id": "cpu-two-stage-f02"
+                    "barrier": "after_execution_before_job_id_response"
                   },
-                  "message": "Synthetic F02 response loss before durable job ID."
+                  "message": "Synthetic F02 response loss after backend execution."
                 },
-                "failed_at": "2026-09-16T05:52:44Z",
                 "generation_plan": {
                   "authorization_scope": "private",
                   "backend": "comfyui",
@@ -5285,7 +4948,7 @@
                   "identity_strength": "cryptographic",
                   "intent": "A calm coast at dawn.",
                   "max_rounds": 2,
-                  "model_choice": "test/approved-anime",
+                  "model_choice": "research-cpu-fake-model",
                   "model_identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                   "negative_prompt": "text, watermark, telescope",
                   "parameters": {
@@ -5306,235 +4969,9 @@
                   "workflow_template_version": 1
                 },
                 "idempotency_key": "F02-two-stage-operation",
-                "request_hash": "770763e5d0f76714e94f9f1474d89a19cbd9d489589286d82436269d4d892269",
-                "route": {
-                  "authorization_scope": "private",
-                  "backend": "comfyui",
-                  "component_bundle_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
-                  "control_sha256": "fffa3a0c07c3578c24a96d3f91e80bc80f8d67c5da4cad2523e2473ca6e5658b",
-                  "endpoint_identity": "endpoint:test",
-                  "expires_at": 9999999999.0,
-                  "height": 320,
-                  "identity_strength": "cryptographic",
-                  "identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                  "model_id": "test/approved-anime",
-                  "operation": "txt2img",
-                  "profile": "standalone-illustration",
-                  "prompt_compiler_id": "natural-v1",
-                  "prompt_compiler_version": 1,
-                  "requirements": {
-                    "two_stage_layout": {
-                      "canvas": {
-                        "height": 320,
-                        "width": 640
-                      },
-                      "copy_protected_rect": {
-                        "height": 320,
-                        "width": 224,
-                        "x": 0,
-                        "y": 0
-                      },
-                      "feather_pixels": 0,
-                      "mode": "copy-subject-two-stage-v1",
-                      "subject_mask_rect": {
-                        "height": 288,
-                        "width": 320,
-                        "x": 304,
-                        "y": 16
-                      },
-                      "vae_grow_mask_by": 0
-                    }
-                  },
-                  "route_token": "route:test-2",
-                  "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
-                  "style": null,
-                  "width": 640,
-                  "workflow_template_id": "sdxl-two-stage-copy-subject",
-                  "workflow_template_version": 1
-                },
-                "seed": 42,
-                "started_at": "2026-09-16T05:52:44Z",
-                "status": "failed"
-              },
-              {
-                "action": "initial",
-                "backend_job": {
-                  "backend": "comfyui",
-                  "job_id": "cpu-two-stage-f02"
-                },
-                "backend_result": {
-                  "backend": "comfyui",
-                  "component_bundle_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
-                  "control_sha256": "fffa3a0c07c3578c24a96d3f91e80bc80f8d67c5da4cad2523e2473ca6e5658b",
-                  "endpoint_identity": "endpoint:test",
-                  "height": 320,
-                  "identity_strength": "cryptographic",
-                  "mask_output": {
-                    "path": "round-01-mask.png"
-                  },
-                  "mode": "txt2img",
-                  "model": "actual-loaded-model",
-                  "model_identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                  "ok": true,
-                  "path": "round-01.png",
-                  "prompt_compiler_id": "natural-v1",
-                  "prompt_compiler_version": 1,
-                  "seed": 42,
-                  "stage_outputs": {
-                    "base": {
-                      "path": "round-01-base.png"
-                    },
-                    "final": {
-                      "path": "round-01.png"
-                    }
-                  },
-                  "subject_seed": 43,
-                  "width": 640,
-                  "workflow_job_id": "job:two-stage-test",
-                  "workflow_template_id": "sdxl-two-stage-copy-subject",
-                  "workflow_template_version": 1
-                },
-                "change_summary": "Bounded CPU fault characterization.",
-                "compiled_prompt": {
-                  "compiler_id": "natural-v1",
-                  "compiler_version": 1,
-                  "negative_prompt": "text, watermark, telescope",
-                  "positive_prompt": "dark quiet observatory background"
-                },
-                "compiled_subject_prompt": {
-                  "compiler_id": "natural-v1",
-                  "compiler_version": 1,
-                  "negative_prompt": "cropped subject, duplicate telescope",
-                  "positive_prompt": "one complete brass telescope on a tripod"
-                },
-                "completed_at": "2026-09-16T05:52:44Z",
-                "generation_plan": {
-                  "authorization_scope": "private",
-                  "backend": "comfyui",
-                  "constraints": {
-                    "height": 320,
-                    "two_stage_layout": {
-                      "canvas": {
-                        "height": 320,
-                        "width": 640
-                      },
-                      "copy_protected_rect": {
-                        "height": 320,
-                        "width": 224,
-                        "x": 0,
-                        "y": 0
-                      },
-                      "feather_pixels": 0,
-                      "mode": "copy-subject-two-stage-v1",
-                      "subject_mask_rect": {
-                        "height": 288,
-                        "width": 320,
-                        "x": 304,
-                        "y": 16
-                      },
-                      "vae_grow_mask_by": 0
-                    },
-                    "width": 640
-                  },
-                  "endpoint_identity": "endpoint:test",
-                  "identity_strength": "cryptographic",
-                  "intent": "A calm coast at dawn.",
-                  "max_rounds": 2,
-                  "model_choice": "test/approved-anime",
-                  "model_identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                  "negative_prompt": "text, watermark, telescope",
-                  "parameters": {
-                    "two_stage_conditioning": {
-                      "subject_denoise": 0.9,
-                      "subject_negative_prompt": "cropped subject, duplicate telescope",
-                      "subject_prompt": "one complete brass telescope on a tripod"
-                    }
-                  },
-                  "positive_prompt": "dark quiet observatory background",
-                  "profile": "standalone-illustration",
-                  "prompt_compiler_id": "natural-v1",
-                  "prompt_compiler_version": 1,
-                  "route_token": "route:test-2",
-                  "style": null,
-                  "upscale_policy": "off",
-                  "workflow_template_id": "sdxl-two-stage-copy-subject",
-                  "workflow_template_version": 1
-                },
-                "idempotency_key": "F02-two-stage-operation",
-                "image": {
-                  "height": 320,
-                  "mime_type": "image/png",
-                  "path": "round-01.png",
-                  "sha256": "a351bc16743410baebf8ef19392e2cc746fab6d30fa2174bb139f68e0df00a03",
-                  "width": 640
-                },
-                "mask_artifact": {
-                  "height": 320,
-                  "mime_type": "image/png",
-                  "path": "round-01-mask.png",
-                  "sha256": "4a6f76ce737a2e1160c00f783450c8a9d16c6c058109ce3f0e49805d74e52c68",
-                  "soft_mask_validation": {
-                    "channels": 3,
-                    "copy_nonzero_pixels": 0,
-                    "edge_profiles_checked": 1216,
-                    "feather_monotonic": true,
-                    "feather_pixels": 0,
-                    "height": 320,
-                    "interior_positive_pixels": 90948,
-                    "outside_nonzero_pixels": 0,
-                    "width": 640
-                  },
-                  "width": 640
-                },
-                "request_hash": "770763e5d0f76714e94f9f1474d89a19cbd9d489589286d82436269d4d892269",
-                "round_number": 1,
-                "route": {
-                  "authorization_scope": "private",
-                  "backend": "comfyui",
-                  "component_bundle_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
-                  "control_sha256": "fffa3a0c07c3578c24a96d3f91e80bc80f8d67c5da4cad2523e2473ca6e5658b",
-                  "endpoint_identity": "endpoint:test",
-                  "expires_at": 9999999999.0,
-                  "height": 320,
-                  "identity_strength": "cryptographic",
-                  "identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                  "model_id": "test/approved-anime",
-                  "operation": "txt2img",
-                  "profile": "standalone-illustration",
-                  "prompt_compiler_id": "natural-v1",
-                  "prompt_compiler_version": 1,
-                  "requirements": {
-                    "two_stage_layout": {
-                      "canvas": {
-                        "height": 320,
-                        "width": 640
-                      },
-                      "copy_protected_rect": {
-                        "height": 320,
-                        "width": 224,
-                        "x": 0,
-                        "y": 0
-                      },
-                      "feather_pixels": 0,
-                      "mode": "copy-subject-two-stage-v1",
-                      "subject_mask_rect": {
-                        "height": 288,
-                        "width": 320,
-                        "x": 304,
-                        "y": 16
-                      },
-                      "vae_grow_mask_by": 0
-                    }
-                  },
-                  "route_token": "route:test-2",
-                  "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
-                  "style": null,
-                  "width": 640,
-                  "workflow_template_id": "sdxl-two-stage-copy-subject",
-                  "workflow_template_version": 1
-                },
-                "seed": 42,
-                "stages": [
+                "partial_at": "2026-09-16T07:59:26Z",
+                "request_hash": "ff5b0f21108838b16242ff51ae3ed63d1253767dcc9b2ef387b7efb01e959374",
+                "retained_stages": [
                   {
                     "image": {
                       "height": 320,
@@ -5558,17 +4995,64 @@
                     "seed": 43
                   }
                 ],
-                "started_at": "2026-09-16T05:52:44Z",
-                "status": "completed"
+                "route": {
+                  "authorization_scope": "private",
+                  "backend": "comfyui",
+                  "component_bundle_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+                  "control_sha256": "fffa3a0c07c3578c24a96d3f91e80bc80f8d67c5da4cad2523e2473ca6e5658b",
+                  "endpoint_identity": "endpoint:test",
+                  "expires_at": 9999999999.0,
+                  "height": 320,
+                  "identity_strength": "cryptographic",
+                  "identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                  "model_id": "research-cpu-fake-model",
+                  "operation": "txt2img",
+                  "profile": "standalone-illustration",
+                  "prompt_compiler_id": "natural-v1",
+                  "prompt_compiler_version": 1,
+                  "requirements": {
+                    "two_stage_layout": {
+                      "canvas": {
+                        "height": 320,
+                        "width": 640
+                      },
+                      "copy_protected_rect": {
+                        "height": 320,
+                        "width": 224,
+                        "x": 0,
+                        "y": 0
+                      },
+                      "feather_pixels": 0,
+                      "mode": "copy-subject-two-stage-v1",
+                      "subject_mask_rect": {
+                        "height": 288,
+                        "width": 320,
+                        "x": 304,
+                        "y": 16
+                      },
+                      "vae_grow_mask_by": 0
+                    }
+                  },
+                  "route_token": "route:test-2",
+                  "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+                  "style": null,
+                  "width": 640,
+                  "workflow_template_id": "sdxl-two-stage-copy-subject",
+                  "workflow_template_version": 1
+                },
+                "seed": 42,
+                "stage_units": 2,
+                "started_at": "2026-09-16T07:59:26Z",
+                "status": "partial"
               }
             ],
             "final": null,
-            "last_stable_state": "generated",
-            "manifest_revision": 7,
+            "last_stable_state": "partial",
+            "manifest_revision": 3,
             "masks": [],
             "parent": null,
             "recoverable_next_actions": [
-              "record_review"
+              "get_run"
             ],
             "request": {
               "authorization_scope": "private",
@@ -5791,7 +5275,7 @@
                 },
                 "style": null
               },
-              "model_choice": "test/approved-anime",
+              "model_choice": "research-cpu-fake-model",
               "model_identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
               "model_record": {
                 "backend": "webui",
@@ -5799,7 +5283,7 @@
                 "byte_size": 1,
                 "endpoint_identity": "endpoint:test",
                 "format": ".safetensors",
-                "id": "test/approved-anime",
+                "id": "research-cpu-fake-model",
                 "identity_strength": "cryptographic",
                 "identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "license_id": "test-only",
@@ -5834,7 +5318,7 @@
                 "height": 320,
                 "identity_strength": "cryptographic",
                 "identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "model_id": "test/approved-anime",
+                "model_id": "research-cpu-fake-model",
                 "operation": "txt2img",
                 "profile": "standalone-illustration",
                 "prompt_compiler_id": "natural-v1",
@@ -5876,251 +5360,14 @@
               "workflow_template_version": 1
             },
             "reviews": [],
-            "rounds": [
-              {
-                "action": "initial",
-                "backend": "comfyui",
-                "backend_result": {
-                  "backend": "comfyui",
-                  "component_bundle_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
-                  "control_sha256": "fffa3a0c07c3578c24a96d3f91e80bc80f8d67c5da4cad2523e2473ca6e5658b",
-                  "endpoint_identity": "endpoint:test",
-                  "height": 320,
-                  "identity_strength": "cryptographic",
-                  "mask_output": {
-                    "path": "round-01-mask.png"
-                  },
-                  "mode": "txt2img",
-                  "model": "actual-loaded-model",
-                  "model_identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                  "ok": true,
-                  "path": "round-01.png",
-                  "prompt_compiler_id": "natural-v1",
-                  "prompt_compiler_version": 1,
-                  "seed": 42,
-                  "stage_outputs": {
-                    "base": {
-                      "path": "round-01-base.png"
-                    },
-                    "final": {
-                      "path": "round-01.png"
-                    }
-                  },
-                  "subject_seed": 43,
-                  "width": 640,
-                  "workflow_job_id": "job:two-stage-test",
-                  "workflow_template_id": "sdxl-two-stage-copy-subject",
-                  "workflow_template_version": 1
-                },
-                "change_summary": "Bounded CPU fault characterization.",
-                "compiled_prompt": {
-                  "compiler_id": "natural-v1",
-                  "compiler_version": 1,
-                  "negative_prompt": "text, watermark, telescope",
-                  "positive_prompt": "dark quiet observatory background"
-                },
-                "compiled_subject_prompt": {
-                  "compiler_id": "natural-v1",
-                  "compiler_version": 1,
-                  "negative_prompt": "cropped subject, duplicate telescope",
-                  "positive_prompt": "one complete brass telescope on a tripod"
-                },
-                "generation_plan": {
-                  "authorization_scope": "private",
-                  "backend": "comfyui",
-                  "constraints": {
-                    "height": 320,
-                    "two_stage_layout": {
-                      "canvas": {
-                        "height": 320,
-                        "width": 640
-                      },
-                      "copy_protected_rect": {
-                        "height": 320,
-                        "width": 224,
-                        "x": 0,
-                        "y": 0
-                      },
-                      "feather_pixels": 0,
-                      "mode": "copy-subject-two-stage-v1",
-                      "subject_mask_rect": {
-                        "height": 288,
-                        "width": 320,
-                        "x": 304,
-                        "y": 16
-                      },
-                      "vae_grow_mask_by": 0
-                    },
-                    "width": 640
-                  },
-                  "endpoint_identity": "endpoint:test",
-                  "identity_strength": "cryptographic",
-                  "intent": "A calm coast at dawn.",
-                  "max_rounds": 2,
-                  "model_choice": "test/approved-anime",
-                  "model_identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                  "negative_prompt": "text, watermark, telescope",
-                  "parameters": {
-                    "two_stage_conditioning": {
-                      "subject_denoise": 0.9,
-                      "subject_negative_prompt": "cropped subject, duplicate telescope",
-                      "subject_prompt": "one complete brass telescope on a tripod"
-                    }
-                  },
-                  "positive_prompt": "dark quiet observatory background",
-                  "profile": "standalone-illustration",
-                  "prompt_compiler_id": "natural-v1",
-                  "prompt_compiler_version": 1,
-                  "route_token": "route:test-2",
-                  "style": null,
-                  "upscale_policy": "off",
-                  "workflow_template_id": "sdxl-two-stage-copy-subject",
-                  "workflow_template_version": 1
-                },
-                "idempotency_key": "F02-two-stage-operation",
-                "image": {
-                  "height": 320,
-                  "mime_type": "image/png",
-                  "path": "round-01.png",
-                  "sha256": "a351bc16743410baebf8ef19392e2cc746fab6d30fa2174bb139f68e0df00a03",
-                  "width": 640
-                },
-                "mask_artifact": {
-                  "height": 320,
-                  "mime_type": "image/png",
-                  "path": "round-01-mask.png",
-                  "sha256": "4a6f76ce737a2e1160c00f783450c8a9d16c6c058109ce3f0e49805d74e52c68",
-                  "soft_mask_validation": {
-                    "channels": 3,
-                    "copy_nonzero_pixels": 0,
-                    "edge_profiles_checked": 1216,
-                    "feather_monotonic": true,
-                    "feather_pixels": 0,
-                    "height": 320,
-                    "interior_positive_pixels": 90948,
-                    "outside_nonzero_pixels": 0,
-                    "width": 640
-                  },
-                  "width": 640
-                },
-                "mode": "txt2img",
-                "model": "actual-loaded-model",
-                "pixel_preservation": {
-                  "checked_pixels": 112640,
-                  "copy_mismatched_pixels": 0,
-                  "mismatched_pixels": 0,
-                  "protected_rect": {
-                    "height": 320,
-                    "width": 224,
-                    "x": 0,
-                    "y": 0
-                  }
-                },
-                "preview": {
-                  "height": 320,
-                  "mime_type": "image/jpeg",
-                  "path": "round-01-preview.jpg",
-                  "sha256": "6f1e4b29c6fc7b5ed4b0cf4897a4433fb8e483ad8ac223c68c8b4838a1b465fb",
-                  "width": 640
-                },
-                "registry_metadata": {
-                  "model": {
-                    "id": "test/approved-anime",
-                    "license_id": "test-only",
-                    "license_status": "approved",
-                    "license_url": null,
-                    "source": "test-fixture"
-                  },
-                  "profile": {
-                    "id": "standalone-illustration",
-                    "schema_version": 1
-                  },
-                  "style": null
-                },
-                "request_hash": "770763e5d0f76714e94f9f1474d89a19cbd9d489589286d82436269d4d892269",
-                "round_number": 1,
-                "route": {
-                  "authorization_scope": "private",
-                  "backend": "comfyui",
-                  "component_bundle_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
-                  "control_sha256": "fffa3a0c07c3578c24a96d3f91e80bc80f8d67c5da4cad2523e2473ca6e5658b",
-                  "endpoint_identity": "endpoint:test",
-                  "expires_at": 9999999999.0,
-                  "height": 320,
-                  "identity_strength": "cryptographic",
-                  "identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                  "model_id": "test/approved-anime",
-                  "operation": "txt2img",
-                  "profile": "standalone-illustration",
-                  "prompt_compiler_id": "natural-v1",
-                  "prompt_compiler_version": 1,
-                  "requirements": {
-                    "two_stage_layout": {
-                      "canvas": {
-                        "height": 320,
-                        "width": 640
-                      },
-                      "copy_protected_rect": {
-                        "height": 320,
-                        "width": 224,
-                        "x": 0,
-                        "y": 0
-                      },
-                      "feather_pixels": 0,
-                      "mode": "copy-subject-two-stage-v1",
-                      "subject_mask_rect": {
-                        "height": 288,
-                        "width": 320,
-                        "x": 304,
-                        "y": 16
-                      },
-                      "vae_grow_mask_by": 0
-                    }
-                  },
-                  "route_token": "route:test-2",
-                  "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
-                  "style": null,
-                  "width": 640,
-                  "workflow_template_id": "sdxl-two-stage-copy-subject",
-                  "workflow_template_version": 1
-                },
-                "seed": 42,
-                "stage_units": 2,
-                "stages": [
-                  {
-                    "image": {
-                      "height": 320,
-                      "mime_type": "image/png",
-                      "path": "round-01-base.png",
-                      "sha256": "a351bc16743410baebf8ef19392e2cc746fab6d30fa2174bb139f68e0df00a03",
-                      "width": 640
-                    },
-                    "role": "base",
-                    "seed": 42
-                  },
-                  {
-                    "image": {
-                      "height": 320,
-                      "mime_type": "image/png",
-                      "path": "round-01.png",
-                      "sha256": "a351bc16743410baebf8ef19392e2cc746fab6d30fa2174bb139f68e0df00a03",
-                      "width": 640
-                    },
-                    "role": "subject",
-                    "seed": 43
-                  }
-                ],
-                "status": "generated",
-                "warnings": []
-              }
-            ],
-            "run_id": "20260916T055244Z-e5aab7fd350e",
+            "rounds": [],
+            "run_id": "20260916T075926Z-6023aadf9942",
             "schema_version": 1,
             "stage_budget": {
               "consumed": 2,
               "maximum": 4
             },
-            "state": "generated",
+            "state": "partial",
             "warnings": []
           },
           "request": {
@@ -6129,49 +5376,79 @@
             "path_kind": "two-stage"
           },
           "research_metadata": {
-            "duplicate_execution": true,
-            "duplicate_submission": true,
-            "first_boundary_resolution": "unresolved",
+            "boundary_classification": {
+              "mapping_version": "deterministic-fault-coverage-v2",
+              "reason": "first_call_outcome_ambiguous_without_durable_job_recovery",
+              "recovery_state": "outcome_unknown",
+              "state": "unresolved"
+            },
             "injection_confirmed": true,
-            "oracle_evaluable": true,
             "scheduled": true,
-            "started": true
+            "started": true,
+            "worker_execution_entry_ids": [
+              "F02-two-stage:execution-0001"
+            ]
           },
           "source_sha": "da65d57047b5a59e3403b49adf4605a1c0497c58",
           "validator_version": "product-validate-v1"
         }
       },
+      "recovery": {
+        "recovery_invocation_count": 0,
+        "same_job": false,
+        "state": "outcome_unknown"
+      },
       "reported_attempt_statuses": [
-        "failed",
-        "completed"
+        "partial"
       ],
       "scheduled": true,
+      "second_error": {
+        "category": "state",
+        "code": "two_stage_run_partial",
+        "details": {},
+        "raised": true
+      },
       "started": true,
-      "submission_count": 2
+      "submitted_job_ids": [
+        "cpu-two-stage-f02-0001"
+      ],
+      "worker_execution_entry_ids": [
+        "F02-two-stage:execution-0001"
+      ]
     },
     {
-      "backend_runner_invocation_count": 2,
+      "backend_submission_count": 2,
+      "backend_worker_invocation_count": 2,
+      "boundary_classification": {
+        "mapping_version": "deterministic-fault-coverage-v2",
+        "reason": "new_backend_submission_observed_after_ambiguous_first_call",
+        "recovery_state": "new_submission_after_fault",
+        "state": "unresolved"
+      },
       "case_id": "F03-single-stage",
       "duplicate_execution": true,
       "duplicate_submission": true,
+      "fault_class": "fault",
       "fault_id": "F03",
       "final_product_state": "generated",
-      "first_boundary_resolution": "unresolved",
+      "first_error": {
+        "category": "state",
+        "code": "comfyui_job_timed_out",
+        "details": {
+          "barrier": "after_job_id_known_before_completion_response",
+          "job_id": "cpu-single-stage-f03-0001",
+          "state": "completed"
+        },
+        "raised": true
+      },
+      "first_error_barrier": "after_job_id_known_before_completion_response",
+      "first_error_code": "comfyui_job_timed_out",
+      "first_error_job_id": "cpu-single-stage-f03-0001",
       "first_product_state": "created",
       "injection_confirmed": true,
       "oracle_evaluable": true,
       "oracle_execution_count": 2,
       "path_kind": "single-stage",
-      "product_first_call": {
-        "category": "backend",
-        "code": "backend_request_failed",
-        "details": {
-          "barrier": "after_execution_before_client_response",
-          "job_id": "cpu-single-1"
-        },
-        "raised": true
-      },
-      "product_second_call": null,
       "product_second_call_succeeded": true,
       "raw_and_normalized": {
         "normalized_record": {
@@ -6192,7 +5469,7 @@
           },
           "input_digest": null,
           "interpreted_state": {
-            "approval_state": "unknown",
+            "approval_state": "not_required",
             "domain_verdict": "not_evaluated",
             "evidence_state": "partial",
             "execution_state": "succeeded",
@@ -6203,14 +5480,14 @@
           },
           "job_id": null,
           "mapping_reason": {
-            "approval_state": "approval_state_missing_is_unknown",
+            "approval_state": "provided_approval_state",
             "domain_verdict": "domain_verdict_missing_is_not_evaluated",
             "evidence_state": "artifact_hash_exists_without_independent_validation",
             "execution_state": "execution_state_supplied_by_independent_oracle",
             "recovery_state": "no_unresolved_report_or_oracle_gap",
             "submission_state": "reported_attempt_or_terminal_run_proves_intent_not_execution"
           },
-          "mapping_version": "research-normalization-v1",
+          "mapping_version": "research-normalization-v2",
           "oracle_job_id": null,
           "oracle_state": {
             "artifact_hash": "11f2c9c919dcaaa53fcfbf16290e641da61f2122a8921cc01c56fa96e219ce5e",
@@ -6218,48 +5495,62 @@
             "events": [
               {
                 "event": "request_received",
-                "job_id": "cpu-single-1",
+                "job_id": "cpu-single-stage-f03-0001",
                 "operation_id": "F03-single-stage-operation",
                 "prompt_id": "F03-single-stage-operation"
               },
               {
                 "event": "queue_item_created",
-                "job_id": "cpu-single-1",
+                "job_id": "cpu-single-stage-f03-0001",
+                "operation_id": "F03-single-stage-operation",
+                "prompt_id": "F03-single-stage-operation"
+              },
+              {
+                "event": "job_id_revealed",
+                "job_id": "cpu-single-stage-f03-0001",
                 "operation_id": "F03-single-stage-operation",
                 "prompt_id": "F03-single-stage-operation"
               },
               {
                 "event": "execution_started",
                 "execution_instance_id": "F03-single-stage:execution-0001",
-                "job_id": "cpu-single-1",
+                "job_id": "cpu-single-stage-f03-0001",
                 "operation_id": "F03-single-stage-operation",
                 "prompt_id": "F03-single-stage-operation"
               },
               {
+                "artifact_hash": "11f2c9c919dcaaa53fcfbf16290e641da61f2122a8921cc01c56fa96e219ce5e",
                 "event": "execution_finished",
                 "execution_instance_id": "F03-single-stage:execution-0001",
                 "outcome": "succeeded"
               },
               {
                 "event": "request_received",
-                "job_id": "cpu-single-2",
+                "job_id": "cpu-single-stage-f03-0002",
                 "operation_id": "F03-single-stage-operation",
                 "prompt_id": "F03-single-stage-operation"
               },
               {
                 "event": "queue_item_created",
-                "job_id": "cpu-single-2",
+                "job_id": "cpu-single-stage-f03-0002",
+                "operation_id": "F03-single-stage-operation",
+                "prompt_id": "F03-single-stage-operation"
+              },
+              {
+                "event": "job_id_revealed",
+                "job_id": "cpu-single-stage-f03-0002",
                 "operation_id": "F03-single-stage-operation",
                 "prompt_id": "F03-single-stage-operation"
               },
               {
                 "event": "execution_started",
                 "execution_instance_id": "F03-single-stage:execution-0002",
-                "job_id": "cpu-single-2",
+                "job_id": "cpu-single-stage-f03-0002",
                 "operation_id": "F03-single-stage-operation",
                 "prompt_id": "F03-single-stage-operation"
               },
               {
+                "artifact_hash": "11f2c9c919dcaaa53fcfbf16290e641da61f2122a8921cc01c56fa96e219ce5e",
                 "event": "execution_finished",
                 "execution_instance_id": "F03-single-stage:execution-0002",
                 "outcome": "succeeded"
@@ -6273,8 +5564,8 @@
             "execution_started": 2,
             "execution_state": "succeeded",
             "job_ids": [
-              "cpu-single-1",
-              "cpu-single-2"
+              "cpu-single-stage-f03-0001",
+              "cpu-single-stage-f03-0002"
             ],
             "oracle_evaluable": true,
             "oracle_type": "independent_cpu_execution_oracle_v1",
@@ -6297,15 +5588,16 @@
                   "positive_prompt": "calm coast at dawn"
                 },
                 "error": {
-                  "category": "backend",
-                  "code": "backend_request_failed",
+                  "category": "state",
+                  "code": "comfyui_job_timed_out",
                   "details": {
-                    "barrier": "after_execution_before_client_response",
-                    "job_id": "cpu-single-1"
+                    "barrier": "after_job_id_known_before_completion_response",
+                    "job_id": "cpu-single-stage-f03-0001",
+                    "state": "completed"
                   },
-                  "message": "Synthetic F03 response-loss barrier."
+                  "message": "Synthetic F03 completion response loss after job ID became known."
                 },
-                "failed_at": "2026-09-16T05:52:44Z",
+                "failed_at": "2026-09-16T07:59:26Z",
                 "generation_plan": {
                   "authorization_scope": "private",
                   "backend": "webui",
@@ -6317,7 +5609,7 @@
                   "identity_strength": "cryptographic",
                   "intent": "A calm coast at dawn.",
                   "max_rounds": 2,
-                  "model_choice": "test/approved-anime",
+                  "model_choice": "research-cpu-fake-model",
                   "model_identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                   "negative_prompt": "watermark, text",
                   "parameters": {
@@ -6335,7 +5627,7 @@
                   "workflow_template_version": null
                 },
                 "idempotency_key": "F03-single-stage-operation",
-                "request_hash": "52b372ad3d952c0e9b15a39ce0a6b99ef7d4b2692ee18783623becd040cf361d",
+                "request_hash": "4d640a809a04e43c90c4bb860143780cba7cfbe864f7ac9852f185b2c3ed0029",
                 "route": {
                   "authorization_scope": "private",
                   "backend": "webui",
@@ -6344,7 +5636,7 @@
                   "height": 256,
                   "identity_strength": "cryptographic",
                   "identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                  "model_id": "test/approved-anime",
+                  "model_id": "research-cpu-fake-model",
                   "operation": "txt2img",
                   "profile": "standalone-illustration",
                   "prompt_compiler_id": "sd15-tags-v1",
@@ -6358,7 +5650,7 @@
                   "workflow_template_version": null
                 },
                 "seed": 42,
-                "started_at": "2026-09-16T05:52:44Z",
+                "started_at": "2026-09-16T07:59:26Z",
                 "status": "failed"
               },
               {
@@ -6387,7 +5679,7 @@
                   "negative_prompt": "watermark, text",
                   "positive_prompt": "calm coast at dawn"
                 },
-                "completed_at": "2026-09-16T05:52:44Z",
+                "completed_at": "2026-09-16T07:59:26Z",
                 "generation_plan": {
                   "authorization_scope": "private",
                   "backend": "webui",
@@ -6399,7 +5691,7 @@
                   "identity_strength": "cryptographic",
                   "intent": "A calm coast at dawn.",
                   "max_rounds": 2,
-                  "model_choice": "test/approved-anime",
+                  "model_choice": "research-cpu-fake-model",
                   "model_identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                   "negative_prompt": "watermark, text",
                   "parameters": {
@@ -6424,7 +5716,7 @@
                   "sha256": "11f2c9c919dcaaa53fcfbf16290e641da61f2122a8921cc01c56fa96e219ce5e",
                   "width": 256
                 },
-                "request_hash": "52b372ad3d952c0e9b15a39ce0a6b99ef7d4b2692ee18783623becd040cf361d",
+                "request_hash": "4d640a809a04e43c90c4bb860143780cba7cfbe864f7ac9852f185b2c3ed0029",
                 "round_number": 1,
                 "route": {
                   "authorization_scope": "private",
@@ -6434,7 +5726,7 @@
                   "height": 256,
                   "identity_strength": "cryptographic",
                   "identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                  "model_id": "test/approved-anime",
+                  "model_id": "research-cpu-fake-model",
                   "operation": "txt2img",
                   "profile": "standalone-illustration",
                   "prompt_compiler_id": "sd15-tags-v1",
@@ -6448,7 +5740,7 @@
                   "workflow_template_version": null
                 },
                 "seed": 42,
-                "started_at": "2026-09-16T05:52:44Z",
+                "started_at": "2026-09-16T07:59:26Z",
                 "status": "completed"
               }
             ],
@@ -6633,7 +5925,7 @@
                 },
                 "style": null
               },
-              "model_choice": "test/approved-anime",
+              "model_choice": "research-cpu-fake-model",
               "model_identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
               "model_record": {
                 "backend": "webui",
@@ -6641,7 +5933,7 @@
                 "byte_size": 1,
                 "endpoint_identity": "endpoint:test",
                 "format": ".safetensors",
-                "id": "test/approved-anime",
+                "id": "research-cpu-fake-model",
                 "identity_strength": "cryptographic",
                 "identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "license_id": "test-only",
@@ -6674,7 +5966,7 @@
                 "height": 256,
                 "identity_strength": "cryptographic",
                 "identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "model_id": "test/approved-anime",
+                "model_id": "research-cpu-fake-model",
                 "operation": "txt2img",
                 "profile": "standalone-illustration",
                 "prompt_compiler_id": "sd15-tags-v1",
@@ -6733,7 +6025,7 @@
                   "identity_strength": "cryptographic",
                   "intent": "A calm coast at dawn.",
                   "max_rounds": 2,
-                  "model_choice": "test/approved-anime",
+                  "model_choice": "research-cpu-fake-model",
                   "model_identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                   "negative_prompt": "watermark, text",
                   "parameters": {
@@ -6769,7 +6061,7 @@
                 },
                 "registry_metadata": {
                   "model": {
-                    "id": "test/approved-anime",
+                    "id": "research-cpu-fake-model",
                     "license_id": "test-only",
                     "license_status": "approved",
                     "license_url": null,
@@ -6781,7 +6073,7 @@
                   },
                   "style": null
                 },
-                "request_hash": "52b372ad3d952c0e9b15a39ce0a6b99ef7d4b2692ee18783623becd040cf361d",
+                "request_hash": "4d640a809a04e43c90c4bb860143780cba7cfbe864f7ac9852f185b2c3ed0029",
                 "round_number": 1,
                 "route": {
                   "authorization_scope": "private",
@@ -6791,7 +6083,7 @@
                   "height": 256,
                   "identity_strength": "cryptographic",
                   "identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                  "model_id": "test/approved-anime",
+                  "model_id": "research-cpu-fake-model",
                   "operation": "txt2img",
                   "profile": "standalone-illustration",
                   "prompt_compiler_id": "sd15-tags-v1",
@@ -6809,17 +6101,18 @@
                 "warnings": []
               }
             ],
-            "run_id": "20260916T055244Z-efb18afc227e",
+            "run_id": "20260916T075926Z-f59c1543c093",
             "schema_version": 1,
             "state": "generated",
             "warnings": []
           },
-          "request_digest": "52b372ad3d952c0e9b15a39ce0a6b99ef7d4b2692ee18783623becd040cf361d",
+          "request_digest": "4d640a809a04e43c90c4bb860143780cba7cfbe864f7ac9852f185b2c3ed0029",
           "schema_version": 1,
           "source_sha": "da65d57047b5a59e3403b49adf4605a1c0497c58",
           "validator_version": "product-validate-v1"
         },
         "raw_record": {
+          "approval_state": "not_required",
           "backend_instance": {
             "backend": "cpu-fake",
             "instance": "F03-single-stage"
@@ -6830,48 +6123,62 @@
             "events": [
               {
                 "event": "request_received",
-                "job_id": "cpu-single-1",
+                "job_id": "cpu-single-stage-f03-0001",
                 "operation_id": "F03-single-stage-operation",
                 "prompt_id": "F03-single-stage-operation"
               },
               {
                 "event": "queue_item_created",
-                "job_id": "cpu-single-1",
+                "job_id": "cpu-single-stage-f03-0001",
+                "operation_id": "F03-single-stage-operation",
+                "prompt_id": "F03-single-stage-operation"
+              },
+              {
+                "event": "job_id_revealed",
+                "job_id": "cpu-single-stage-f03-0001",
                 "operation_id": "F03-single-stage-operation",
                 "prompt_id": "F03-single-stage-operation"
               },
               {
                 "event": "execution_started",
                 "execution_instance_id": "F03-single-stage:execution-0001",
-                "job_id": "cpu-single-1",
+                "job_id": "cpu-single-stage-f03-0001",
                 "operation_id": "F03-single-stage-operation",
                 "prompt_id": "F03-single-stage-operation"
               },
               {
+                "artifact_hash": "11f2c9c919dcaaa53fcfbf16290e641da61f2122a8921cc01c56fa96e219ce5e",
                 "event": "execution_finished",
                 "execution_instance_id": "F03-single-stage:execution-0001",
                 "outcome": "succeeded"
               },
               {
                 "event": "request_received",
-                "job_id": "cpu-single-2",
+                "job_id": "cpu-single-stage-f03-0002",
                 "operation_id": "F03-single-stage-operation",
                 "prompt_id": "F03-single-stage-operation"
               },
               {
                 "event": "queue_item_created",
-                "job_id": "cpu-single-2",
+                "job_id": "cpu-single-stage-f03-0002",
+                "operation_id": "F03-single-stage-operation",
+                "prompt_id": "F03-single-stage-operation"
+              },
+              {
+                "event": "job_id_revealed",
+                "job_id": "cpu-single-stage-f03-0002",
                 "operation_id": "F03-single-stage-operation",
                 "prompt_id": "F03-single-stage-operation"
               },
               {
                 "event": "execution_started",
                 "execution_instance_id": "F03-single-stage:execution-0002",
-                "job_id": "cpu-single-2",
+                "job_id": "cpu-single-stage-f03-0002",
                 "operation_id": "F03-single-stage-operation",
                 "prompt_id": "F03-single-stage-operation"
               },
               {
+                "artifact_hash": "11f2c9c919dcaaa53fcfbf16290e641da61f2122a8921cc01c56fa96e219ce5e",
                 "event": "execution_finished",
                 "execution_instance_id": "F03-single-stage:execution-0002",
                 "outcome": "succeeded"
@@ -6885,8 +6192,8 @@
             "execution_started": 2,
             "execution_state": "succeeded",
             "job_ids": [
-              "cpu-single-1",
-              "cpu-single-2"
+              "cpu-single-stage-f03-0001",
+              "cpu-single-stage-f03-0002"
             ],
             "oracle_evaluable": true,
             "oracle_type": "independent_cpu_execution_oracle_v1",
@@ -6907,15 +6214,16 @@
                   "positive_prompt": "calm coast at dawn"
                 },
                 "error": {
-                  "category": "backend",
-                  "code": "backend_request_failed",
+                  "category": "state",
+                  "code": "comfyui_job_timed_out",
                   "details": {
-                    "barrier": "after_execution_before_client_response",
-                    "job_id": "cpu-single-1"
+                    "barrier": "after_job_id_known_before_completion_response",
+                    "job_id": "cpu-single-stage-f03-0001",
+                    "state": "completed"
                   },
-                  "message": "Synthetic F03 response-loss barrier."
+                  "message": "Synthetic F03 completion response loss after job ID became known."
                 },
-                "failed_at": "2026-09-16T05:52:44Z",
+                "failed_at": "2026-09-16T07:59:26Z",
                 "generation_plan": {
                   "authorization_scope": "private",
                   "backend": "webui",
@@ -6927,7 +6235,7 @@
                   "identity_strength": "cryptographic",
                   "intent": "A calm coast at dawn.",
                   "max_rounds": 2,
-                  "model_choice": "test/approved-anime",
+                  "model_choice": "research-cpu-fake-model",
                   "model_identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                   "negative_prompt": "watermark, text",
                   "parameters": {
@@ -6945,7 +6253,7 @@
                   "workflow_template_version": null
                 },
                 "idempotency_key": "F03-single-stage-operation",
-                "request_hash": "52b372ad3d952c0e9b15a39ce0a6b99ef7d4b2692ee18783623becd040cf361d",
+                "request_hash": "4d640a809a04e43c90c4bb860143780cba7cfbe864f7ac9852f185b2c3ed0029",
                 "route": {
                   "authorization_scope": "private",
                   "backend": "webui",
@@ -6954,7 +6262,7 @@
                   "height": 256,
                   "identity_strength": "cryptographic",
                   "identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                  "model_id": "test/approved-anime",
+                  "model_id": "research-cpu-fake-model",
                   "operation": "txt2img",
                   "profile": "standalone-illustration",
                   "prompt_compiler_id": "sd15-tags-v1",
@@ -6968,7 +6276,7 @@
                   "workflow_template_version": null
                 },
                 "seed": 42,
-                "started_at": "2026-09-16T05:52:44Z",
+                "started_at": "2026-09-16T07:59:26Z",
                 "status": "failed"
               },
               {
@@ -6997,7 +6305,7 @@
                   "negative_prompt": "watermark, text",
                   "positive_prompt": "calm coast at dawn"
                 },
-                "completed_at": "2026-09-16T05:52:44Z",
+                "completed_at": "2026-09-16T07:59:26Z",
                 "generation_plan": {
                   "authorization_scope": "private",
                   "backend": "webui",
@@ -7009,7 +6317,7 @@
                   "identity_strength": "cryptographic",
                   "intent": "A calm coast at dawn.",
                   "max_rounds": 2,
-                  "model_choice": "test/approved-anime",
+                  "model_choice": "research-cpu-fake-model",
                   "model_identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                   "negative_prompt": "watermark, text",
                   "parameters": {
@@ -7034,7 +6342,7 @@
                   "sha256": "11f2c9c919dcaaa53fcfbf16290e641da61f2122a8921cc01c56fa96e219ce5e",
                   "width": 256
                 },
-                "request_hash": "52b372ad3d952c0e9b15a39ce0a6b99ef7d4b2692ee18783623becd040cf361d",
+                "request_hash": "4d640a809a04e43c90c4bb860143780cba7cfbe864f7ac9852f185b2c3ed0029",
                 "round_number": 1,
                 "route": {
                   "authorization_scope": "private",
@@ -7044,7 +6352,7 @@
                   "height": 256,
                   "identity_strength": "cryptographic",
                   "identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                  "model_id": "test/approved-anime",
+                  "model_id": "research-cpu-fake-model",
                   "operation": "txt2img",
                   "profile": "standalone-illustration",
                   "prompt_compiler_id": "sd15-tags-v1",
@@ -7058,7 +6366,7 @@
                   "workflow_template_version": null
                 },
                 "seed": 42,
-                "started_at": "2026-09-16T05:52:44Z",
+                "started_at": "2026-09-16T07:59:26Z",
                 "status": "completed"
               }
             ],
@@ -7243,7 +6551,7 @@
                 },
                 "style": null
               },
-              "model_choice": "test/approved-anime",
+              "model_choice": "research-cpu-fake-model",
               "model_identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
               "model_record": {
                 "backend": "webui",
@@ -7251,7 +6559,7 @@
                 "byte_size": 1,
                 "endpoint_identity": "endpoint:test",
                 "format": ".safetensors",
-                "id": "test/approved-anime",
+                "id": "research-cpu-fake-model",
                 "identity_strength": "cryptographic",
                 "identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "license_id": "test-only",
@@ -7284,7 +6592,7 @@
                 "height": 256,
                 "identity_strength": "cryptographic",
                 "identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "model_id": "test/approved-anime",
+                "model_id": "research-cpu-fake-model",
                 "operation": "txt2img",
                 "profile": "standalone-illustration",
                 "prompt_compiler_id": "sd15-tags-v1",
@@ -7343,7 +6651,7 @@
                   "identity_strength": "cryptographic",
                   "intent": "A calm coast at dawn.",
                   "max_rounds": 2,
-                  "model_choice": "test/approved-anime",
+                  "model_choice": "research-cpu-fake-model",
                   "model_identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                   "negative_prompt": "watermark, text",
                   "parameters": {
@@ -7379,7 +6687,7 @@
                 },
                 "registry_metadata": {
                   "model": {
-                    "id": "test/approved-anime",
+                    "id": "research-cpu-fake-model",
                     "license_id": "test-only",
                     "license_status": "approved",
                     "license_url": null,
@@ -7391,7 +6699,7 @@
                   },
                   "style": null
                 },
-                "request_hash": "52b372ad3d952c0e9b15a39ce0a6b99ef7d4b2692ee18783623becd040cf361d",
+                "request_hash": "4d640a809a04e43c90c4bb860143780cba7cfbe864f7ac9852f185b2c3ed0029",
                 "round_number": 1,
                 "route": {
                   "authorization_scope": "private",
@@ -7401,7 +6709,7 @@
                   "height": 256,
                   "identity_strength": "cryptographic",
                   "identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                  "model_id": "test/approved-anime",
+                  "model_id": "research-cpu-fake-model",
                   "operation": "txt2img",
                   "profile": "standalone-illustration",
                   "prompt_compiler_id": "sd15-tags-v1",
@@ -7419,7 +6727,7 @@
                 "warnings": []
               }
             ],
-            "run_id": "20260916T055244Z-efb18afc227e",
+            "run_id": "20260916T075926Z-f59c1543c093",
             "schema_version": 1,
             "state": "generated",
             "warnings": []
@@ -7430,50 +6738,78 @@
             "path_kind": "single-stage"
           },
           "research_metadata": {
-            "duplicate_execution": true,
-            "duplicate_submission": true,
-            "first_boundary_resolution": "unresolved",
+            "boundary_classification": {
+              "mapping_version": "deterministic-fault-coverage-v2",
+              "reason": "new_backend_submission_observed_after_ambiguous_first_call",
+              "recovery_state": "new_submission_after_fault",
+              "state": "unresolved"
+            },
             "injection_confirmed": true,
-            "oracle_evaluable": true,
             "scheduled": true,
-            "started": true
+            "started": true,
+            "worker_execution_entry_ids": [
+              "F03-single-stage:execution-0001",
+              "F03-single-stage:execution-0002"
+            ]
           },
           "source_sha": "da65d57047b5a59e3403b49adf4605a1c0497c58",
           "validator_version": "product-validate-v1"
         }
+      },
+      "recovery": {
+        "recovery_invocation_count": 0,
+        "same_job": false,
+        "state": "new_submission_after_fault"
       },
       "reported_attempt_statuses": [
         "failed",
         "completed"
       ],
       "scheduled": true,
+      "second_error": null,
       "started": true,
-      "submission_count": 2
+      "submitted_job_ids": [
+        "cpu-single-stage-f03-0001",
+        "cpu-single-stage-f03-0002"
+      ],
+      "worker_execution_entry_ids": [
+        "F03-single-stage:execution-0001",
+        "F03-single-stage:execution-0002"
+      ]
     },
     {
-      "backend_runner_invocation_count": 2,
+      "backend_submission_count": 1,
+      "backend_worker_invocation_count": 2,
+      "boundary_classification": {
+        "mapping_version": "deterministic-fault-coverage-v2",
+        "reason": "same_job_reconciliation_observed_without_new_backend_submission",
+        "recovery_state": "same_job_reconciled",
+        "state": "resolved"
+      },
       "case_id": "F03-two-stage",
       "duplicate_execution": false,
       "duplicate_submission": false,
+      "fault_class": "fault",
       "fault_id": "F03",
       "final_product_state": "generated",
-      "first_boundary_resolution": "resolved",
+      "first_error": {
+        "category": "state",
+        "code": "comfyui_job_timed_out",
+        "details": {
+          "barrier": "after_job_id_known_before_completion_response",
+          "job_id": "cpu-two-stage-f03-0001",
+          "state": "completed"
+        },
+        "raised": true
+      },
+      "first_error_barrier": "after_job_id_known_before_completion_response",
+      "first_error_code": "comfyui_job_timed_out",
+      "first_error_job_id": "cpu-two-stage-f03-0001",
       "first_product_state": "unresolved",
       "injection_confirmed": true,
       "oracle_evaluable": true,
       "oracle_execution_count": 1,
       "path_kind": "two-stage",
-      "product_first_call": {
-        "category": "state",
-        "code": "comfyui_job_timed_out",
-        "details": {
-          "barrier": "after_execution_before_completion_signal",
-          "job_id": "cpu-two-stage-f03",
-          "state": "completed"
-        },
-        "raised": true
-      },
-      "product_second_call": null,
       "product_second_call_succeeded": true,
       "raw_and_normalized": {
         "normalized_record": {
@@ -7494,7 +6830,7 @@
           },
           "input_digest": null,
           "interpreted_state": {
-            "approval_state": "unknown",
+            "approval_state": "not_required",
             "domain_verdict": "not_evaluated",
             "evidence_state": "partial",
             "execution_state": "succeeded",
@@ -7503,41 +6839,48 @@
             "recovery_state": "not_needed",
             "submission_state": "job_identified"
           },
-          "job_id": "cpu-two-stage-f03",
+          "job_id": "cpu-two-stage-f03-0001",
           "mapping_reason": {
-            "approval_state": "approval_state_missing_is_unknown",
+            "approval_state": "provided_approval_state",
             "domain_verdict": "domain_verdict_missing_is_not_evaluated",
             "evidence_state": "artifact_hash_exists_without_independent_validation",
             "execution_state": "execution_state_supplied_by_independent_oracle",
             "recovery_state": "no_unresolved_report_or_oracle_gap",
             "submission_state": "explicit_or_observed_job_id_is_available"
           },
-          "mapping_version": "research-normalization-v1",
-          "oracle_job_id": "cpu-two-stage-f03",
+          "mapping_version": "research-normalization-v2",
+          "oracle_job_id": "cpu-two-stage-f03-0001",
           "oracle_state": {
             "artifact_hash": "a351bc16743410baebf8ef19392e2cc746fab6d30fa2174bb139f68e0df00a03",
             "case_id": "F03-two-stage",
             "events": [
               {
                 "event": "request_received",
-                "job_id": "cpu-two-stage-f03",
+                "job_id": "cpu-two-stage-f03-0001",
                 "operation_id": "F03-two-stage-operation",
                 "prompt_id": "F03-two-stage-operation"
               },
               {
                 "event": "queue_item_created",
-                "job_id": "cpu-two-stage-f03",
+                "job_id": "cpu-two-stage-f03-0001",
+                "operation_id": "F03-two-stage-operation",
+                "prompt_id": "F03-two-stage-operation"
+              },
+              {
+                "event": "job_id_revealed",
+                "job_id": "cpu-two-stage-f03-0001",
                 "operation_id": "F03-two-stage-operation",
                 "prompt_id": "F03-two-stage-operation"
               },
               {
                 "event": "execution_started",
                 "execution_instance_id": "F03-two-stage:execution-0001",
-                "job_id": "cpu-two-stage-f03",
+                "job_id": "cpu-two-stage-f03-0001",
                 "operation_id": "F03-two-stage-operation",
                 "prompt_id": "F03-two-stage-operation"
               },
               {
+                "artifact_hash": "a351bc16743410baebf8ef19392e2cc746fab6d30fa2174bb139f68e0df00a03",
                 "event": "execution_finished",
                 "execution_instance_id": "F03-two-stage:execution-0001",
                 "outcome": "succeeded"
@@ -7550,7 +6893,7 @@
             "execution_started": 1,
             "execution_state": "succeeded",
             "job_ids": [
-              "cpu-two-stage-f03"
+              "cpu-two-stage-f03-0001"
             ],
             "oracle_evaluable": true,
             "oracle_type": "independent_cpu_execution_oracle_v1",
@@ -7559,7 +6902,7 @@
           },
           "oracle_state_reason": "provided_by_independent_oracle",
           "record_id": "F03-two-stage",
-          "reported_job_id": "cpu-two-stage-f03",
+          "reported_job_id": "cpu-two-stage-f03-0001",
           "reported_state": {
             "active_attempt": null,
             "attempts": [
@@ -7567,7 +6910,7 @@
                 "action": "initial",
                 "backend_job": {
                   "backend": "comfyui",
-                  "job_id": "cpu-two-stage-f03"
+                  "job_id": "cpu-two-stage-f03-0001"
                 },
                 "change_summary": "Bounded CPU fault characterization.",
                 "compiled_prompt": {
@@ -7586,11 +6929,11 @@
                   "category": "state",
                   "code": "comfyui_job_timed_out",
                   "details": {
-                    "barrier": "after_execution_before_completion_signal",
-                    "job_id": "cpu-two-stage-f03",
+                    "barrier": "after_job_id_known_before_completion_response",
+                    "job_id": "cpu-two-stage-f03-0001",
                     "state": "completed"
                   },
-                  "message": "Synthetic F03 completion response loss."
+                  "message": "Synthetic F03 completion response loss after job ID became known."
                 },
                 "generation_plan": {
                   "authorization_scope": "private",
@@ -7624,7 +6967,7 @@
                   "identity_strength": "cryptographic",
                   "intent": "A calm coast at dawn.",
                   "max_rounds": 2,
-                  "model_choice": "test/approved-anime",
+                  "model_choice": "research-cpu-fake-model",
                   "model_identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                   "negative_prompt": "text, watermark, telescope",
                   "parameters": {
@@ -7645,7 +6988,7 @@
                   "workflow_template_version": 1
                 },
                 "idempotency_key": "F03-two-stage-operation",
-                "request_hash": "770763e5d0f76714e94f9f1474d89a19cbd9d489589286d82436269d4d892269",
+                "request_hash": "ff5b0f21108838b16242ff51ae3ed63d1253767dcc9b2ef387b7efb01e959374",
                 "route": {
                   "authorization_scope": "private",
                   "backend": "comfyui",
@@ -7656,7 +6999,7 @@
                   "height": 320,
                   "identity_strength": "cryptographic",
                   "identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                  "model_id": "test/approved-anime",
+                  "model_id": "research-cpu-fake-model",
                   "operation": "txt2img",
                   "profile": "standalone-illustration",
                   "prompt_compiler_id": "natural-v1",
@@ -7692,15 +7035,15 @@
                   "workflow_template_version": 1
                 },
                 "seed": 42,
-                "started_at": "2026-09-16T05:52:44Z",
+                "started_at": "2026-09-16T07:59:26Z",
                 "status": "unresolved",
-                "unresolved_at": "2026-09-16T05:52:44Z"
+                "unresolved_at": "2026-09-16T07:59:26Z"
               },
               {
                 "action": "initial",
                 "backend_job": {
                   "backend": "comfyui",
-                  "job_id": "cpu-two-stage-f03"
+                  "job_id": "cpu-two-stage-f03-0001"
                 },
                 "backend_result": {
                   "backend": "comfyui",
@@ -7730,7 +7073,7 @@
                   },
                   "subject_seed": 43,
                   "width": 640,
-                  "workflow_job_id": "job:two-stage-test",
+                  "workflow_job_id": "cpu-two-stage-f03-0001",
                   "workflow_template_id": "sdxl-two-stage-copy-subject",
                   "workflow_template_version": 1
                 },
@@ -7747,7 +7090,7 @@
                   "negative_prompt": "cropped subject, duplicate telescope",
                   "positive_prompt": "one complete brass telescope on a tripod"
                 },
-                "completed_at": "2026-09-16T05:52:45Z",
+                "completed_at": "2026-09-16T07:59:27Z",
                 "generation_plan": {
                   "authorization_scope": "private",
                   "backend": "comfyui",
@@ -7780,7 +7123,7 @@
                   "identity_strength": "cryptographic",
                   "intent": "A calm coast at dawn.",
                   "max_rounds": 2,
-                  "model_choice": "test/approved-anime",
+                  "model_choice": "research-cpu-fake-model",
                   "model_identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                   "negative_prompt": "text, watermark, telescope",
                   "parameters": {
@@ -7826,7 +7169,7 @@
                   },
                   "width": 640
                 },
-                "request_hash": "770763e5d0f76714e94f9f1474d89a19cbd9d489589286d82436269d4d892269",
+                "request_hash": "ff5b0f21108838b16242ff51ae3ed63d1253767dcc9b2ef387b7efb01e959374",
                 "round_number": 1,
                 "route": {
                   "authorization_scope": "private",
@@ -7838,7 +7181,7 @@
                   "height": 320,
                   "identity_strength": "cryptographic",
                   "identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                  "model_id": "test/approved-anime",
+                  "model_id": "research-cpu-fake-model",
                   "operation": "txt2img",
                   "profile": "standalone-illustration",
                   "prompt_compiler_id": "natural-v1",
@@ -7898,7 +7241,7 @@
                     "seed": 43
                   }
                 ],
-                "started_at": "2026-09-16T05:52:44Z",
+                "started_at": "2026-09-16T07:59:26Z",
                 "status": "completed"
               }
             ],
@@ -8131,7 +7474,7 @@
                 },
                 "style": null
               },
-              "model_choice": "test/approved-anime",
+              "model_choice": "research-cpu-fake-model",
               "model_identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
               "model_record": {
                 "backend": "webui",
@@ -8139,7 +7482,7 @@
                 "byte_size": 1,
                 "endpoint_identity": "endpoint:test",
                 "format": ".safetensors",
-                "id": "test/approved-anime",
+                "id": "research-cpu-fake-model",
                 "identity_strength": "cryptographic",
                 "identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "license_id": "test-only",
@@ -8174,7 +7517,7 @@
                 "height": 320,
                 "identity_strength": "cryptographic",
                 "identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "model_id": "test/approved-anime",
+                "model_id": "research-cpu-fake-model",
                 "operation": "txt2img",
                 "profile": "standalone-illustration",
                 "prompt_compiler_id": "natural-v1",
@@ -8248,7 +7591,7 @@
                   },
                   "subject_seed": 43,
                   "width": 640,
-                  "workflow_job_id": "job:two-stage-test",
+                  "workflow_job_id": "cpu-two-stage-f03-0001",
                   "workflow_template_id": "sdxl-two-stage-copy-subject",
                   "workflow_template_version": 1
                 },
@@ -8297,7 +7640,7 @@
                   "identity_strength": "cryptographic",
                   "intent": "A calm coast at dawn.",
                   "max_rounds": 2,
-                  "model_choice": "test/approved-anime",
+                  "model_choice": "research-cpu-fake-model",
                   "model_identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                   "negative_prompt": "text, watermark, telescope",
                   "parameters": {
@@ -8365,7 +7708,7 @@
                 },
                 "registry_metadata": {
                   "model": {
-                    "id": "test/approved-anime",
+                    "id": "research-cpu-fake-model",
                     "license_id": "test-only",
                     "license_status": "approved",
                     "license_url": null,
@@ -8377,7 +7720,7 @@
                   },
                   "style": null
                 },
-                "request_hash": "770763e5d0f76714e94f9f1474d89a19cbd9d489589286d82436269d4d892269",
+                "request_hash": "ff5b0f21108838b16242ff51ae3ed63d1253767dcc9b2ef387b7efb01e959374",
                 "round_number": 1,
                 "route": {
                   "authorization_scope": "private",
@@ -8389,7 +7732,7 @@
                   "height": 320,
                   "identity_strength": "cryptographic",
                   "identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                  "model_id": "test/approved-anime",
+                  "model_id": "research-cpu-fake-model",
                   "operation": "txt2img",
                   "profile": "standalone-illustration",
                   "prompt_compiler_id": "natural-v1",
@@ -8454,7 +7797,7 @@
                 "warnings": []
               }
             ],
-            "run_id": "20260916T055244Z-2727154d7dda",
+            "run_id": "20260916T075926Z-4607a35840cb",
             "schema_version": 1,
             "stage_budget": {
               "consumed": 2,
@@ -8463,12 +7806,13 @@
             "state": "generated",
             "warnings": []
           },
-          "request_digest": "770763e5d0f76714e94f9f1474d89a19cbd9d489589286d82436269d4d892269",
+          "request_digest": "ff5b0f21108838b16242ff51ae3ed63d1253767dcc9b2ef387b7efb01e959374",
           "schema_version": 1,
           "source_sha": "da65d57047b5a59e3403b49adf4605a1c0497c58",
           "validator_version": "product-validate-v1"
         },
         "raw_record": {
+          "approval_state": "not_required",
           "backend_instance": {
             "backend": "cpu-fake",
             "instance": "F03-two-stage"
@@ -8479,24 +7823,31 @@
             "events": [
               {
                 "event": "request_received",
-                "job_id": "cpu-two-stage-f03",
+                "job_id": "cpu-two-stage-f03-0001",
                 "operation_id": "F03-two-stage-operation",
                 "prompt_id": "F03-two-stage-operation"
               },
               {
                 "event": "queue_item_created",
-                "job_id": "cpu-two-stage-f03",
+                "job_id": "cpu-two-stage-f03-0001",
+                "operation_id": "F03-two-stage-operation",
+                "prompt_id": "F03-two-stage-operation"
+              },
+              {
+                "event": "job_id_revealed",
+                "job_id": "cpu-two-stage-f03-0001",
                 "operation_id": "F03-two-stage-operation",
                 "prompt_id": "F03-two-stage-operation"
               },
               {
                 "event": "execution_started",
                 "execution_instance_id": "F03-two-stage:execution-0001",
-                "job_id": "cpu-two-stage-f03",
+                "job_id": "cpu-two-stage-f03-0001",
                 "operation_id": "F03-two-stage-operation",
                 "prompt_id": "F03-two-stage-operation"
               },
               {
+                "artifact_hash": "a351bc16743410baebf8ef19392e2cc746fab6d30fa2174bb139f68e0df00a03",
                 "event": "execution_finished",
                 "execution_instance_id": "F03-two-stage:execution-0001",
                 "outcome": "succeeded"
@@ -8509,7 +7860,7 @@
             "execution_started": 1,
             "execution_state": "succeeded",
             "job_ids": [
-              "cpu-two-stage-f03"
+              "cpu-two-stage-f03-0001"
             ],
             "oracle_evaluable": true,
             "oracle_type": "independent_cpu_execution_oracle_v1",
@@ -8524,7 +7875,7 @@
                 "action": "initial",
                 "backend_job": {
                   "backend": "comfyui",
-                  "job_id": "cpu-two-stage-f03"
+                  "job_id": "cpu-two-stage-f03-0001"
                 },
                 "change_summary": "Bounded CPU fault characterization.",
                 "compiled_prompt": {
@@ -8543,11 +7894,11 @@
                   "category": "state",
                   "code": "comfyui_job_timed_out",
                   "details": {
-                    "barrier": "after_execution_before_completion_signal",
-                    "job_id": "cpu-two-stage-f03",
+                    "barrier": "after_job_id_known_before_completion_response",
+                    "job_id": "cpu-two-stage-f03-0001",
                     "state": "completed"
                   },
-                  "message": "Synthetic F03 completion response loss."
+                  "message": "Synthetic F03 completion response loss after job ID became known."
                 },
                 "generation_plan": {
                   "authorization_scope": "private",
@@ -8581,7 +7932,7 @@
                   "identity_strength": "cryptographic",
                   "intent": "A calm coast at dawn.",
                   "max_rounds": 2,
-                  "model_choice": "test/approved-anime",
+                  "model_choice": "research-cpu-fake-model",
                   "model_identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                   "negative_prompt": "text, watermark, telescope",
                   "parameters": {
@@ -8602,7 +7953,7 @@
                   "workflow_template_version": 1
                 },
                 "idempotency_key": "F03-two-stage-operation",
-                "request_hash": "770763e5d0f76714e94f9f1474d89a19cbd9d489589286d82436269d4d892269",
+                "request_hash": "ff5b0f21108838b16242ff51ae3ed63d1253767dcc9b2ef387b7efb01e959374",
                 "route": {
                   "authorization_scope": "private",
                   "backend": "comfyui",
@@ -8613,7 +7964,7 @@
                   "height": 320,
                   "identity_strength": "cryptographic",
                   "identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                  "model_id": "test/approved-anime",
+                  "model_id": "research-cpu-fake-model",
                   "operation": "txt2img",
                   "profile": "standalone-illustration",
                   "prompt_compiler_id": "natural-v1",
@@ -8649,15 +8000,15 @@
                   "workflow_template_version": 1
                 },
                 "seed": 42,
-                "started_at": "2026-09-16T05:52:44Z",
+                "started_at": "2026-09-16T07:59:26Z",
                 "status": "unresolved",
-                "unresolved_at": "2026-09-16T05:52:44Z"
+                "unresolved_at": "2026-09-16T07:59:26Z"
               },
               {
                 "action": "initial",
                 "backend_job": {
                   "backend": "comfyui",
-                  "job_id": "cpu-two-stage-f03"
+                  "job_id": "cpu-two-stage-f03-0001"
                 },
                 "backend_result": {
                   "backend": "comfyui",
@@ -8687,7 +8038,7 @@
                   },
                   "subject_seed": 43,
                   "width": 640,
-                  "workflow_job_id": "job:two-stage-test",
+                  "workflow_job_id": "cpu-two-stage-f03-0001",
                   "workflow_template_id": "sdxl-two-stage-copy-subject",
                   "workflow_template_version": 1
                 },
@@ -8704,7 +8055,7 @@
                   "negative_prompt": "cropped subject, duplicate telescope",
                   "positive_prompt": "one complete brass telescope on a tripod"
                 },
-                "completed_at": "2026-09-16T05:52:45Z",
+                "completed_at": "2026-09-16T07:59:27Z",
                 "generation_plan": {
                   "authorization_scope": "private",
                   "backend": "comfyui",
@@ -8737,7 +8088,7 @@
                   "identity_strength": "cryptographic",
                   "intent": "A calm coast at dawn.",
                   "max_rounds": 2,
-                  "model_choice": "test/approved-anime",
+                  "model_choice": "research-cpu-fake-model",
                   "model_identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                   "negative_prompt": "text, watermark, telescope",
                   "parameters": {
@@ -8783,7 +8134,7 @@
                   },
                   "width": 640
                 },
-                "request_hash": "770763e5d0f76714e94f9f1474d89a19cbd9d489589286d82436269d4d892269",
+                "request_hash": "ff5b0f21108838b16242ff51ae3ed63d1253767dcc9b2ef387b7efb01e959374",
                 "round_number": 1,
                 "route": {
                   "authorization_scope": "private",
@@ -8795,7 +8146,7 @@
                   "height": 320,
                   "identity_strength": "cryptographic",
                   "identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                  "model_id": "test/approved-anime",
+                  "model_id": "research-cpu-fake-model",
                   "operation": "txt2img",
                   "profile": "standalone-illustration",
                   "prompt_compiler_id": "natural-v1",
@@ -8855,7 +8206,7 @@
                     "seed": 43
                   }
                 ],
-                "started_at": "2026-09-16T05:52:44Z",
+                "started_at": "2026-09-16T07:59:26Z",
                 "status": "completed"
               }
             ],
@@ -9088,7 +8439,7 @@
                 },
                 "style": null
               },
-              "model_choice": "test/approved-anime",
+              "model_choice": "research-cpu-fake-model",
               "model_identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
               "model_record": {
                 "backend": "webui",
@@ -9096,7 +8447,7 @@
                 "byte_size": 1,
                 "endpoint_identity": "endpoint:test",
                 "format": ".safetensors",
-                "id": "test/approved-anime",
+                "id": "research-cpu-fake-model",
                 "identity_strength": "cryptographic",
                 "identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 "license_id": "test-only",
@@ -9131,7 +8482,7 @@
                 "height": 320,
                 "identity_strength": "cryptographic",
                 "identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                "model_id": "test/approved-anime",
+                "model_id": "research-cpu-fake-model",
                 "operation": "txt2img",
                 "profile": "standalone-illustration",
                 "prompt_compiler_id": "natural-v1",
@@ -9205,7 +8556,7 @@
                   },
                   "subject_seed": 43,
                   "width": 640,
-                  "workflow_job_id": "job:two-stage-test",
+                  "workflow_job_id": "cpu-two-stage-f03-0001",
                   "workflow_template_id": "sdxl-two-stage-copy-subject",
                   "workflow_template_version": 1
                 },
@@ -9254,7 +8605,7 @@
                   "identity_strength": "cryptographic",
                   "intent": "A calm coast at dawn.",
                   "max_rounds": 2,
-                  "model_choice": "test/approved-anime",
+                  "model_choice": "research-cpu-fake-model",
                   "model_identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                   "negative_prompt": "text, watermark, telescope",
                   "parameters": {
@@ -9322,7 +8673,7 @@
                 },
                 "registry_metadata": {
                   "model": {
-                    "id": "test/approved-anime",
+                    "id": "research-cpu-fake-model",
                     "license_id": "test-only",
                     "license_status": "approved",
                     "license_url": null,
@@ -9334,7 +8685,7 @@
                   },
                   "style": null
                 },
-                "request_hash": "770763e5d0f76714e94f9f1474d89a19cbd9d489589286d82436269d4d892269",
+                "request_hash": "ff5b0f21108838b16242ff51ae3ed63d1253767dcc9b2ef387b7efb01e959374",
                 "round_number": 1,
                 "route": {
                   "authorization_scope": "private",
@@ -9346,7 +8697,7 @@
                   "height": 320,
                   "identity_strength": "cryptographic",
                   "identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                  "model_id": "test/approved-anime",
+                  "model_id": "research-cpu-fake-model",
                   "operation": "txt2img",
                   "profile": "standalone-illustration",
                   "prompt_compiler_id": "natural-v1",
@@ -9411,7 +8762,7 @@
                 "warnings": []
               }
             ],
-            "run_id": "20260916T055244Z-2727154d7dda",
+            "run_id": "20260916T075926Z-4607a35840cb",
             "schema_version": 1,
             "stage_budget": {
               "consumed": 2,
@@ -9426,48 +8777,106 @@
             "path_kind": "two-stage"
           },
           "research_metadata": {
-            "duplicate_execution": false,
-            "duplicate_submission": true,
-            "first_boundary_resolution": "resolved",
+            "boundary_classification": {
+              "mapping_version": "deterministic-fault-coverage-v2",
+              "reason": "same_job_reconciliation_observed_without_new_backend_submission",
+              "recovery_state": "same_job_reconciled",
+              "state": "resolved"
+            },
             "injection_confirmed": true,
-            "oracle_evaluable": true,
             "scheduled": true,
-            "started": true
+            "started": true,
+            "worker_execution_entry_ids": [
+              "F03-two-stage:execution-0001"
+            ]
           },
           "source_sha": "da65d57047b5a59e3403b49adf4605a1c0497c58",
           "validator_version": "product-validate-v1"
         }
+      },
+      "recovery": {
+        "recovery_invocation_count": 1,
+        "same_job": true,
+        "state": "same_job_reconciled"
       },
       "reported_attempt_statuses": [
         "unresolved",
         "completed"
       ],
       "scheduled": true,
+      "second_error": null,
       "started": true,
-      "submission_count": 1
+      "submitted_job_ids": [
+        "cpu-two-stage-f03-0001"
+      ],
+      "worker_execution_entry_ids": [
+        "F03-two-stage:execution-0001"
+      ]
     }
   ],
   "denominators": {
-    "failed": 3,
-    "injection-confirmed": 6,
-    "not-run": 0,
-    "oracle-evaluable": 6,
-    "resolved": 3,
-    "scheduled": 6,
-    "started": 6,
-    "unresolved": 3
+    "all_cases": {
+      "failed": 2,
+      "not-run": 0,
+      "oracle-evaluable": 6,
+      "resolved": 3,
+      "scheduled": 6,
+      "started": 6,
+      "unresolved": 3
+    },
+    "control_cases": {
+      "failed": 0,
+      "not-run": 0,
+      "oracle-evaluable": 2,
+      "resolved": 2,
+      "scheduled": 2,
+      "started": 2,
+      "unresolved": 0
+    },
+    "fault_cases": {
+      "failed": 2,
+      "injection-confirmed": 4,
+      "not-run": 0,
+      "oracle-evaluable": 4,
+      "resolved": 1,
+      "scheduled": 4,
+      "started": 4,
+      "unresolved": 3
+    }
   },
-  "execution_metrics": {
-    "duplicate_execution_operation_count": 3,
-    "duplicate_execution_rate": 0.5,
-    "oracle_evaluable_operation_count": 6,
-    "post_counts_are_not_execution_counts": true
+  "deterministic_fault_coverage": {
+    "fault_case_count": 4,
+    "injection_confirmed_case_count": 4,
+    "mapping_version": "deterministic-fault-coverage-v2",
+    "not_deployment_failure_rate": true,
+    "oracle_evaluable_case_count": 4,
+    "resolved_case_ids": [
+      "F03-two-stage"
+    ],
+    "unresolved_case_ids": [
+      "F02-single-stage",
+      "F02-two-stage",
+      "F03-single-stage"
+    ]
+  },
+  "execution_observations": {
+    "counts_are_not_deployment_failure_or_duplicate_execution_rates": true,
+    "duplicate_execution_case_ids": [
+      "F02-single-stage",
+      "F03-single-stage"
+    ],
+    "duplicate_submission_case_ids": [
+      "F02-single-stage",
+      "F03-single-stage"
+    ],
+    "post_counts_are_not_execution_counts": true,
+    "scope": "deterministic_cpu_fake_backend_only"
   },
   "interpretation": {
     "failed": "at least one product attempt was reported failed; this is not backend execution failure truth",
-    "not_run": "scheduled package cases that were not executed",
-    "resolved": "first fault boundary was resolved by the product path, including same-job two-stage recovery",
-    "unresolved": "first fault boundary remained ambiguous to the product caller or had no durable recovery binding"
+    "not_run": "scheduled cases that were not executed",
+    "resolved": "the versioned mapping observed either no first-call fault or same-job reconciliation without a new backend submission",
+    "unresolved": "the versioned mapping observed an ambiguous first-call boundary followed by no same-job reconciliation"
   },
   "ledger_trusted_sha": "d8ef0bccc84269b7d4a627adce5f6025a17ab024",
   "oracle_self_checks": [
@@ -9688,6 +9097,6 @@
       }
     }
   ],
-  "package": "bounded-cpu-w0-w1-w2",
-  "schema_version": 1
+  "package": "deterministic-fault-coverage-v2",
+  "schema_version": 2
 }
