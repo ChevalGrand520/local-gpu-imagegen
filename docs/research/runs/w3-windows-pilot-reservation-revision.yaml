@@ -1,0 +1,16 @@
+reservation_revision:
+  actor: Capricorn
+  reason: unexpected interruption
+  original_start: 2026-09-17T03:52:22Z
+  original_end: 2026-09-17T04:22:22Z
+  revised_start: 2026-09-17T05:07:59.0143506Z
+  revised_end: 2026-09-17T07:07:59.0143506Z
+  revised_at: 2026-09-17T05:07:59.0143506Z
+  revision_before_run: true
+  evidence_source: >-
+    Conversation authorization "批准延长到2个小时后" followed by the recorded
+    PowerShell Get-Date UTC output establishing revised_start and revised_end.
+  classification: valid_scheduled_run
+  classification_basis: >-
+    revised_at (2026-09-17T05:07:59.0143506Z) precedes pilot started_at
+    (2026-09-17T06:42:35Z); the pilot is within the revised reservation.
