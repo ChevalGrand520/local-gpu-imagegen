@@ -6,7 +6,7 @@
 - Origin Mode: plan + bounded design review.
 - Origin Date: 2026-09-18.
 - Verification Status: DESIGN_REVIEWED / NOT_RUN.
-- Version Label: `paired-ambiguous-submit-v1`.
+- Version Label: `paired-ambiguous-submit-v2`; v1 was invalidated before interpretation because F00 single-stage failed from a research-harness-only result field.
 - Trusted ledger: `d8ef0bccc84269b7d4a627adce5f6025a17ab024`; contract guard PASS before this plan.
 - Frozen B2: `da65d57047b5a59e3403b49adf4605a1c0497c58`.
 - W2 research harness base: `a7482fedda8c98a3d31df916638fc241473316dc`; its product subtree must match B2.
@@ -135,12 +135,12 @@ If the oracle is incomplete, retain the row and downgrade it to submission-level
 | protocol | `docs/research/dsn-paired-fault-protocol.md` | this reviewed plan |
 | common runner | `scripts/research/run_paired_fault_matrix.py` | identical bytes in B2/W3 research worktrees |
 | semantic tests | `tests/research/test_paired_fault_matrix.py` | assert barriers, identities, counts, recovery, and denominators |
-| B2 raw result | `docs/research/runs/paired-v1-b2.json` | generated once; immutable after commit |
-| W3 raw result | `docs/research/runs/paired-v1-w3.json` | generated once; immutable after commit |
-| comparison | `docs/research/runs/paired-v1-comparison.json` | deterministic join by fault/path; no hidden row deletion |
-| execution log | `docs/research/runs/paired-v1-commands.md` | exact commands, exit codes, durations, versions, and failures |
+| B2 raw result | `docs/research/runs/paired-v2-b2.json` | generated once; immutable after commit |
+| W3 raw result | `docs/research/runs/paired-v2-w3.json` | generated once; immutable after commit |
+| comparison | `docs/research/runs/paired-v2-comparison.json` | deterministic join by fault/path; no hidden row deletion |
+| execution log | `docs/research/runs/paired-v2-commands.md` | exact commands, exit codes, durations, versions, and failures |
 
-Raw result writers must refuse overwrite. Existing W2 and Windows pilot evidence remains unchanged.
+Raw result writers must refuse overwrite. The three `paired-v1-*.json` files are retained as invalid harness-run evidence and excluded from all paired conclusions. Existing W2 and Windows pilot evidence remains unchanged.
 
 ## 7. Monitoring, resource limits, and stops
 
