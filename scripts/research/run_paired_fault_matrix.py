@@ -6,7 +6,9 @@ import argparse
 import copy
 import hashlib
 import json
+import platform
 import socket
+import subprocess
 import sys
 import threading
 from collections.abc import Callable
@@ -14,11 +16,11 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 
 
+ROOT = Path(__file__).resolve().parents[2]
 if __package__ in {None, ""}:
-    _root = Path(__file__).resolve().parents[2]
-    if str(_root) not in sys.path:
-        sys.path.insert(0, str(_root))
-    _scripts_root = _root / "scripts"
+    if str(ROOT) not in sys.path:
+        sys.path.insert(0, str(ROOT))
+    _scripts_root = ROOT / "scripts"
     if str(_scripts_root) not in sys.path:
         sys.path.insert(0, str(_scripts_root))
 
@@ -320,6 +322,7 @@ def run_matrix(*, system_label: str, source_sha: str) -> dict[str, object]:
         "system_label": system_label,
         "source_sha": source_sha,
         "ledger_trusted_sha": LEDGER_SHA,
+        "runtime_identity": _runtime_identity(),
         "transport_preflight": preflight,
         "oracle_self_checks": self_checks,
         "denominators": {
@@ -430,6 +433,35 @@ def _transport_preflight() -> dict[str, object]:
                 "submission_outcome_unknown": error.details.get("submission_outcome") == "unknown",
             }
     raise AssertionError("response-loss preflight unexpectedly returned a response")
+
+
+def _runtime_identity() -> dict[str, object]:
+    files = {
+        "execution_oracle.py": ROOT / "scripts" / "research" / "execution_oracle.py",
+        "run_paired_fault_matrix.py": Path(__file__).resolve(),
+        "test_paired_fault_matrix.py": ROOT / "tests" / "research" / "test_paired_fault_matrix.py",
+    }
+    return {
+        "checkout_head": _git_value("rev-parse", "HEAD"),
+        "checkout_branch": _git_value("branch", "--show-current") or "detached",
+        "python_version": platform.python_version(),
+        "output_root_policy": "isolated_temporary_run_root_per_case",
+        "harness_sha256": {
+            name: hashlib.sha256(path.read_bytes()).hexdigest()
+            for name, path in files.items()
+        },
+    }
+
+
+def _git_value(*arguments: str) -> str:
+    completed = subprocess.run(
+        ["git", *arguments],
+        cwd=ROOT,
+        check=True,
+        capture_output=True,
+        text=True,
+    )
+    return completed.stdout.strip()
 
 
 def _call_and_capture(callable_value: object, request: dict[str, object]) -> dict[str, object] | None:
