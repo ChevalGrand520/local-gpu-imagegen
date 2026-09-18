@@ -119,6 +119,30 @@ class ExportRecordTests(unittest.TestCase):
         self.assertFalse(exported["interpreted_state"]["execution_verified"])
         self.assertIn("independent_execution_artifact_job", exported["interpreted_state"]["execution_verified_reason"])
 
+    def test_unresolved_report_cannot_be_verified_with_exact_oracle_binding(self) -> None:
+        exported = export_record({
+            "record_id": "unresolved-success-1",
+            "job_id": "job-1",
+            "artifact_hash": "a" * 64,
+            "reported_state": {"state": "unresolved"},
+            "artifact_validation": {"status": "verified", "independent": True},
+            "approval_state": "valid",
+            "oracle_state": {
+                "execution_state": "succeeded",
+                "oracle_evaluable": True,
+                "execution_started": 1,
+                "execution_finished": 1,
+                "job_id": "job-1",
+                "artifact_hash": "a" * 64,
+            },
+        })
+        interpreted = exported["interpreted_state"]
+        self.assertEqual(interpreted["execution_state"], "succeeded")
+        self.assertEqual(interpreted["evidence_state"], "verified")
+        self.assertEqual(interpreted["recovery_state"], "required")
+        self.assertFalse(interpreted["execution_verified"])
+        self.assertIn("unresolved", interpreted["execution_verified_reason"])
+
     def test_contradictory_oracle_is_unknown_and_not_verified(self) -> None:
         exported = export_record({
             "record_id": "contradiction-1",
