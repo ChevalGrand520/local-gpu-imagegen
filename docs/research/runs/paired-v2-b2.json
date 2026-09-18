@@ -1,0 +1,4614 @@
+{
+  "cases": [
+    {
+      "backend_submission_count": 1,
+      "boundary_classification": {
+        "reason": "no_first_call_product_error_observed",
+        "recovery_state": "not_needed",
+        "state": "resolved"
+      },
+      "case_id": "F00-single-stage",
+      "duplicate_execution": false,
+      "duplicate_submission": false,
+      "fault_class": "control",
+      "fault_id": "F00",
+      "final_product_state": "generated",
+      "first_error": null,
+      "first_error_barrier": null,
+      "first_error_code": null,
+      "first_error_job_id": null,
+      "first_error_submission_outcome": null,
+      "first_product_state": "generated",
+      "injection_confirmed": null,
+      "observation_window_closed": true,
+      "oracle_evaluable": true,
+      "oracle_execution_count": 1,
+      "oracle_state": {
+        "artifact_hash": "11f2c9c919dcaaa53fcfbf16290e641da61f2122a8921cc01c56fa96e219ce5e",
+        "case_id": "F00-single-stage",
+        "events": [
+          {
+            "event": "request_received",
+            "job_id": "cpu-single-stage-f00-0001",
+            "operation_id": "F00-single-stage-operation",
+            "prompt_id": "F00-single-stage-operation"
+          },
+          {
+            "event": "queue_item_created",
+            "job_id": "cpu-single-stage-f00-0001",
+            "operation_id": "F00-single-stage-operation",
+            "prompt_id": "F00-single-stage-operation"
+          },
+          {
+            "event": "execution_started",
+            "execution_instance_id": "F00-single-stage:execution-0001",
+            "job_id": "cpu-single-stage-f00-0001",
+            "operation_id": "F00-single-stage-operation",
+            "prompt_id": "F00-single-stage-operation"
+          },
+          {
+            "artifact_hash": "11f2c9c919dcaaa53fcfbf16290e641da61f2122a8921cc01c56fa96e219ce5e",
+            "event": "execution_finished",
+            "execution_instance_id": "F00-single-stage:execution-0001",
+            "outcome": "succeeded"
+          },
+          {
+            "event": "job_id_revealed",
+            "job_id": "cpu-single-stage-f00-0001",
+            "operation_id": "F00-single-stage-operation",
+            "prompt_id": "F00-single-stage-operation"
+          }
+        ],
+        "execution_finished": 1,
+        "execution_instances": [
+          "F00-single-stage:execution-0001"
+        ],
+        "execution_started": 1,
+        "execution_state": "succeeded",
+        "job_ids": [
+          "cpu-single-stage-f00-0001"
+        ],
+        "oracle_evaluable": true,
+        "oracle_type": "independent_cpu_execution_oracle_v1",
+        "queue_item_created": 1,
+        "request_received": 1
+      },
+      "path_kind": "single-stage",
+      "raw_reported_state": {
+        "active_attempt": null,
+        "attempts": [
+          {
+            "action": "initial",
+            "backend_result": {
+              "backend": "webui",
+              "endpoint_identity": "endpoint:test",
+              "height": 256,
+              "identity_strength": "cryptographic",
+              "mode": "txt2img",
+              "model": "actual-loaded-model",
+              "model_identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "ok": true,
+              "path": "round-01.png",
+              "prompt_compiler_id": "sd15-tags-v1",
+              "prompt_compiler_version": 1,
+              "seed": 42,
+              "width": 256,
+              "workflow_template_id": null,
+              "workflow_template_version": null
+            },
+            "change_summary": "Initial candidate.",
+            "compiled_prompt": {
+              "compiler_id": "sd15-tags-v1",
+              "compiler_version": 1,
+              "negative_prompt": "watermark, text",
+              "positive_prompt": "calm coast at dawn"
+            },
+            "completed_at": "2026-09-18T15:23:22Z",
+            "generation_plan": {
+              "authorization_scope": "private",
+              "backend": "webui",
+              "constraints": {
+                "height": 256,
+                "width": 256
+              },
+              "endpoint_identity": "endpoint:test",
+              "identity_strength": "cryptographic",
+              "intent": "A calm coast at dawn.",
+              "max_rounds": 2,
+              "model_choice": "research-cpu-fake-model",
+              "model_identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "negative_prompt": "watermark, text",
+              "parameters": {
+                "mode": "txt2img",
+                "scheduler": "euler"
+              },
+              "positive_prompt": "calm coast at dawn",
+              "profile": "standalone-illustration",
+              "prompt_compiler_id": "sd15-tags-v1",
+              "prompt_compiler_version": 1,
+              "route_token": "route:test-1",
+              "style": null,
+              "upscale_policy": "off",
+              "workflow_template_id": null,
+              "workflow_template_version": null
+            },
+            "idempotency_key": "F00-single-stage-operation",
+            "image": {
+              "height": 256,
+              "mime_type": "image/png",
+              "path": "round-01.png",
+              "sha256": "11f2c9c919dcaaa53fcfbf16290e641da61f2122a8921cc01c56fa96e219ce5e",
+              "width": 256
+            },
+            "request_hash": "4d640a809a04e43c90c4bb860143780cba7cfbe864f7ac9852f185b2c3ed0029",
+            "round_number": 1,
+            "route": {
+              "authorization_scope": "private",
+              "backend": "webui",
+              "endpoint_identity": "endpoint:test",
+              "expires_at": 9999999999.0,
+              "height": 256,
+              "identity_strength": "cryptographic",
+              "identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "model_id": "research-cpu-fake-model",
+              "operation": "txt2img",
+              "profile": "standalone-illustration",
+              "prompt_compiler_id": "sd15-tags-v1",
+              "prompt_compiler_version": 1,
+              "requirements": {},
+              "route_token": "route:test-1",
+              "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+              "style": null,
+              "width": 256,
+              "workflow_template_id": null,
+              "workflow_template_version": null
+            },
+            "seed": 42,
+            "started_at": "2026-09-18T15:23:22Z",
+            "status": "completed"
+          }
+        ],
+        "final": null,
+        "last_stable_state": "generated",
+        "manifest_revision": 4,
+        "masks": [],
+        "parent": null,
+        "recoverable_next_actions": [
+          "record_review"
+        ],
+        "request": {
+          "authorization_scope": "private",
+          "available_backends": [
+            "webui",
+            "diffusers"
+          ],
+          "backend": "webui",
+          "constraints": {
+            "height": 256,
+            "width": 256
+          },
+          "endpoint_identity": "endpoint:test",
+          "identity_strength": "cryptographic",
+          "intent": "A calm coast at dawn.",
+          "max_rounds": 2,
+          "merged_profile": {
+            "constraints": {
+              "aspect_ratio": "1:1",
+              "backend": "auto",
+              "height": 256,
+              "max_rounds": 3,
+              "upscale_policy": "auto",
+              "width": 256
+            },
+            "explore_mutable": [
+              "seed",
+              "steps",
+              "guidance_scale",
+              "regional_conditioning",
+              "two_stage_conditioning"
+            ],
+            "hard_failures": [
+              "missing_subject",
+              "severe_anatomy",
+              "unreadable_text",
+              "watermark",
+              "explicit_constraint_violation"
+            ],
+            "profile": {
+              "aliases": [
+                "illustration",
+                "single image",
+                "artwork"
+              ],
+              "defaults": {
+                "aspect_ratio": "1:1"
+              },
+              "description": "A single finished illustration intended to stand on its own.",
+              "examples": {
+                "character": [
+                  "Draw a character illustration of a sailor at sunset."
+                ],
+                "environment": [
+                  "Create an illustrated coastal environment after rain."
+                ],
+                "wallpaper": [
+                  "Make a wide desktop wallpaper of a calm ocean horizon."
+                ]
+              },
+              "explore_mutable": [
+                "seed",
+                "steps",
+                "guidance_scale",
+                "regional_conditioning",
+                "two_stage_conditioning"
+              ],
+              "hard_failures": [
+                "missing_subject",
+                "severe_anatomy",
+                "unreadable_text",
+                "watermark",
+                "explicit_constraint_violation"
+              ],
+              "id": "standalone-illustration",
+              "kind": "use_case",
+              "prohibited_content": [
+                "Do not add unrequested text or watermarks."
+              ],
+              "prompt_guidance": [
+                "State the subject, composition, lighting, and requested medium."
+              ],
+              "refine_mutable": [
+                "denoise_strength",
+                "steps",
+                "guidance_scale",
+                "regional_conditioning",
+                "two_stage_conditioning"
+              ],
+              "rubric": {
+                "detail_quality": {
+                  "critical": true,
+                  "description": "Important requested details are clear and deliberate.",
+                  "weight": 2
+                },
+                "face_quality": {
+                  "critical": true,
+                  "description": "Prominent visible faces are coherent, expressive, and anatomically plausible.",
+                  "weight": 2
+                },
+                "hand_quality": {
+                  "critical": true,
+                  "description": "Prominent visible hands have plausible anatomy and readable poses.",
+                  "weight": 2
+                },
+                "style_consistency": {
+                  "critical": true,
+                  "description": "The requested visual style is applied consistently.",
+                  "weight": 2
+                },
+                "subject_completeness": {
+                  "critical": true,
+                  "description": "The requested subject is complete and recognizable.",
+                  "weight": 2
+                }
+              },
+              "schema_version": 1,
+              "subtypes": [
+                "character",
+                "environment",
+                "wallpaper"
+              ]
+            },
+            "refine_mutable": [
+              "denoise_strength",
+              "steps",
+              "guidance_scale",
+              "regional_conditioning",
+              "two_stage_conditioning"
+            ],
+            "rubric": {
+              "artifact_control": {
+                "critical": true,
+                "weight": 1
+              },
+              "composition": {
+                "critical": true,
+                "weight": 1
+              },
+              "detail_quality": {
+                "critical": true,
+                "description": "Important requested details are clear and deliberate.",
+                "weight": 2
+              },
+              "face_quality": {
+                "critical": true,
+                "description": "Prominent visible faces are coherent, expressive, and anatomically plausible.",
+                "weight": 2
+              },
+              "hand_quality": {
+                "critical": true,
+                "description": "Prominent visible hands have plausible anatomy and readable poses.",
+                "weight": 2
+              },
+              "intent_adherence": {
+                "critical": true,
+                "weight": 1
+              },
+              "style_consistency": {
+                "critical": true,
+                "description": "The requested visual style is applied consistently.",
+                "weight": 2
+              },
+              "subject_completeness": {
+                "critical": true,
+                "description": "The requested subject is complete and recognizable.",
+                "weight": 2
+              },
+              "user_constraints": {
+                "weight": 1
+              }
+            },
+            "style": null
+          },
+          "model_choice": "research-cpu-fake-model",
+          "model_identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "model_record": {
+            "backend": "webui",
+            "backend_model_id": "actual-loaded-model",
+            "byte_size": 1,
+            "endpoint_identity": "endpoint:test",
+            "format": ".safetensors",
+            "id": "research-cpu-fake-model",
+            "identity_strength": "cryptographic",
+            "identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "license_id": "test-only",
+            "license_status": "approved",
+            "license_url": null,
+            "metadata": {},
+            "modified_ns": 1,
+            "public_evidence_eligible": true,
+            "recommended": {
+              "guidance": 6.0,
+              "resolution": {
+                "height": 256,
+                "width": 256
+              },
+              "sampler": "Euler a",
+              "scheduler": null,
+              "steps": 4
+            },
+            "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "source": "test-fixture"
+          },
+          "profile": "standalone-illustration",
+          "prompt_compiler_id": "sd15-tags-v1",
+          "prompt_compiler_version": 1,
+          "route": {
+            "authorization_scope": "private",
+            "backend": "webui",
+            "endpoint_identity": "endpoint:test",
+            "expires_at": 9999999999.0,
+            "height": 256,
+            "identity_strength": "cryptographic",
+            "identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "model_id": "research-cpu-fake-model",
+            "operation": "txt2img",
+            "profile": "standalone-illustration",
+            "prompt_compiler_id": "sd15-tags-v1",
+            "prompt_compiler_version": 1,
+            "requirements": {},
+            "route_token": "route:test-1",
+            "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "style": null,
+            "width": 256,
+            "workflow_template_id": null,
+            "workflow_template_version": null
+          },
+          "route_token": "route:test-1",
+          "style": null,
+          "upscale_policy": "off",
+          "workflow_template_id": null,
+          "workflow_template_version": null
+        },
+        "reviews": [],
+        "rounds": [
+          {
+            "action": "initial",
+            "backend": "webui",
+            "backend_result": {
+              "backend": "webui",
+              "endpoint_identity": "endpoint:test",
+              "height": 256,
+              "identity_strength": "cryptographic",
+              "mode": "txt2img",
+              "model": "actual-loaded-model",
+              "model_identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "ok": true,
+              "path": "round-01.png",
+              "prompt_compiler_id": "sd15-tags-v1",
+              "prompt_compiler_version": 1,
+              "seed": 42,
+              "width": 256,
+              "workflow_template_id": null,
+              "workflow_template_version": null
+            },
+            "change_summary": "Initial candidate.",
+            "compiled_prompt": {
+              "compiler_id": "sd15-tags-v1",
+              "compiler_version": 1,
+              "negative_prompt": "watermark, text",
+              "positive_prompt": "calm coast at dawn"
+            },
+            "generation_plan": {
+              "authorization_scope": "private",
+              "backend": "webui",
+              "constraints": {
+                "height": 256,
+                "width": 256
+              },
+              "endpoint_identity": "endpoint:test",
+              "identity_strength": "cryptographic",
+              "intent": "A calm coast at dawn.",
+              "max_rounds": 2,
+              "model_choice": "research-cpu-fake-model",
+              "model_identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "negative_prompt": "watermark, text",
+              "parameters": {
+                "mode": "txt2img",
+                "scheduler": "euler"
+              },
+              "positive_prompt": "calm coast at dawn",
+              "profile": "standalone-illustration",
+              "prompt_compiler_id": "sd15-tags-v1",
+              "prompt_compiler_version": 1,
+              "route_token": "route:test-1",
+              "style": null,
+              "upscale_policy": "off",
+              "workflow_template_id": null,
+              "workflow_template_version": null
+            },
+            "idempotency_key": "F00-single-stage-operation",
+            "image": {
+              "height": 256,
+              "mime_type": "image/png",
+              "path": "round-01.png",
+              "sha256": "11f2c9c919dcaaa53fcfbf16290e641da61f2122a8921cc01c56fa96e219ce5e",
+              "width": 256
+            },
+            "mode": "txt2img",
+            "model": "actual-loaded-model",
+            "preview": {
+              "height": 256,
+              "mime_type": "image/jpeg",
+              "path": "round-01-preview.jpg",
+              "sha256": "fb62b3fb664fb679166dec487f60cdf788c7c71573b7633372bba97464b68783",
+              "width": 256
+            },
+            "registry_metadata": {
+              "model": {
+                "id": "research-cpu-fake-model",
+                "license_id": "test-only",
+                "license_status": "approved",
+                "license_url": null,
+                "source": "test-fixture"
+              },
+              "profile": {
+                "id": "standalone-illustration",
+                "schema_version": 1
+              },
+              "style": null
+            },
+            "request_hash": "4d640a809a04e43c90c4bb860143780cba7cfbe864f7ac9852f185b2c3ed0029",
+            "round_number": 1,
+            "route": {
+              "authorization_scope": "private",
+              "backend": "webui",
+              "endpoint_identity": "endpoint:test",
+              "expires_at": 9999999999.0,
+              "height": 256,
+              "identity_strength": "cryptographic",
+              "identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "model_id": "research-cpu-fake-model",
+              "operation": "txt2img",
+              "profile": "standalone-illustration",
+              "prompt_compiler_id": "sd15-tags-v1",
+              "prompt_compiler_version": 1,
+              "requirements": {},
+              "route_token": "route:test-1",
+              "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+              "style": null,
+              "width": 256,
+              "workflow_template_id": null,
+              "workflow_template_version": null
+            },
+            "seed": 42,
+            "status": "generated",
+            "warnings": []
+          }
+        ],
+        "run_id": "20260918T152322Z-f35f0ea706b6",
+        "schema_version": 1,
+        "state": "generated",
+        "warnings": []
+      },
+      "recovery": {
+        "recovery_invocation_count": 0,
+        "same_job": false,
+        "state": "not_needed"
+      },
+      "reported_attempt_statuses": [
+        "completed"
+      ],
+      "scheduled": true,
+      "second_error": null,
+      "second_error_code": null,
+      "started": true,
+      "submitted_job_ids": [
+        "cpu-single-stage-f00-0001"
+      ],
+      "valid_completion": true,
+      "worker_execution_entry_count": 1,
+      "worker_execution_entry_ids": [
+        "F00-single-stage:execution-0001"
+      ]
+    },
+    {
+      "backend_submission_count": 1,
+      "boundary_classification": {
+        "reason": "no_first_call_product_error_observed",
+        "recovery_state": "not_needed",
+        "state": "resolved"
+      },
+      "case_id": "F00-two-stage",
+      "duplicate_execution": false,
+      "duplicate_submission": false,
+      "fault_class": "control",
+      "fault_id": "F00",
+      "final_product_state": "generated",
+      "first_error": null,
+      "first_error_barrier": null,
+      "first_error_code": null,
+      "first_error_job_id": null,
+      "first_error_submission_outcome": null,
+      "first_product_state": "generated",
+      "injection_confirmed": null,
+      "observation_window_closed": true,
+      "oracle_evaluable": true,
+      "oracle_execution_count": 1,
+      "oracle_state": {
+        "artifact_hash": "a351bc16743410baebf8ef19392e2cc746fab6d30fa2174bb139f68e0df00a03",
+        "case_id": "F00-two-stage",
+        "events": [
+          {
+            "event": "request_received",
+            "job_id": "cpu-two-stage-f00-0001",
+            "operation_id": "F00-two-stage-operation",
+            "prompt_id": "F00-two-stage-operation"
+          },
+          {
+            "event": "queue_item_created",
+            "job_id": "cpu-two-stage-f00-0001",
+            "operation_id": "F00-two-stage-operation",
+            "prompt_id": "F00-two-stage-operation"
+          },
+          {
+            "event": "execution_started",
+            "execution_instance_id": "F00-two-stage:execution-0001",
+            "job_id": "cpu-two-stage-f00-0001",
+            "operation_id": "F00-two-stage-operation",
+            "prompt_id": "F00-two-stage-operation"
+          },
+          {
+            "artifact_hash": "a351bc16743410baebf8ef19392e2cc746fab6d30fa2174bb139f68e0df00a03",
+            "event": "execution_finished",
+            "execution_instance_id": "F00-two-stage:execution-0001",
+            "outcome": "succeeded"
+          },
+          {
+            "event": "job_id_revealed",
+            "job_id": "cpu-two-stage-f00-0001",
+            "operation_id": "F00-two-stage-operation",
+            "prompt_id": "F00-two-stage-operation"
+          }
+        ],
+        "execution_finished": 1,
+        "execution_instances": [
+          "F00-two-stage:execution-0001"
+        ],
+        "execution_started": 1,
+        "execution_state": "succeeded",
+        "job_ids": [
+          "cpu-two-stage-f00-0001"
+        ],
+        "oracle_evaluable": true,
+        "oracle_type": "independent_cpu_execution_oracle_v1",
+        "queue_item_created": 1,
+        "request_received": 1
+      },
+      "path_kind": "two-stage",
+      "raw_reported_state": {
+        "active_attempt": null,
+        "attempts": [
+          {
+            "action": "initial",
+            "backend_job": {
+              "backend": "comfyui",
+              "job_id": "cpu-two-stage-f00-0001"
+            },
+            "backend_result": {
+              "backend": "comfyui",
+              "component_bundle_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+              "control_sha256": "fffa3a0c07c3578c24a96d3f91e80bc80f8d67c5da4cad2523e2473ca6e5658b",
+              "endpoint_identity": "endpoint:test",
+              "height": 320,
+              "identity_strength": "cryptographic",
+              "mask_output": {
+                "path": "round-01-mask.png"
+              },
+              "mode": "txt2img",
+              "model": "actual-loaded-model",
+              "model_identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "ok": true,
+              "path": "round-01.png",
+              "prompt_compiler_id": "natural-v1",
+              "prompt_compiler_version": 1,
+              "seed": 42,
+              "stage_outputs": {
+                "base": {
+                  "path": "round-01-base.png"
+                },
+                "final": {
+                  "path": "round-01.png"
+                }
+              },
+              "subject_seed": 43,
+              "width": 640,
+              "workflow_job_id": "cpu-two-stage-f00-0001",
+              "workflow_template_id": "sdxl-two-stage-copy-subject",
+              "workflow_template_version": 1
+            },
+            "change_summary": "Paired deterministic CPU fault characterization.",
+            "compiled_prompt": {
+              "compiler_id": "natural-v1",
+              "compiler_version": 1,
+              "negative_prompt": "text, watermark, telescope",
+              "positive_prompt": "dark quiet observatory background"
+            },
+            "compiled_subject_prompt": {
+              "compiler_id": "natural-v1",
+              "compiler_version": 1,
+              "negative_prompt": "cropped subject, duplicate telescope",
+              "positive_prompt": "one complete brass telescope on a tripod"
+            },
+            "completed_at": "2026-09-18T15:23:23Z",
+            "generation_plan": {
+              "authorization_scope": "private",
+              "backend": "comfyui",
+              "constraints": {
+                "height": 320,
+                "two_stage_layout": {
+                  "canvas": {
+                    "height": 320,
+                    "width": 640
+                  },
+                  "copy_protected_rect": {
+                    "height": 320,
+                    "width": 224,
+                    "x": 0,
+                    "y": 0
+                  },
+                  "feather_pixels": 0,
+                  "mode": "copy-subject-two-stage-v1",
+                  "subject_mask_rect": {
+                    "height": 288,
+                    "width": 320,
+                    "x": 304,
+                    "y": 16
+                  },
+                  "vae_grow_mask_by": 0
+                },
+                "width": 640
+              },
+              "endpoint_identity": "endpoint:test",
+              "identity_strength": "cryptographic",
+              "intent": "A calm coast at dawn.",
+              "max_rounds": 2,
+              "model_choice": "research-cpu-fake-model",
+              "model_identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "negative_prompt": "text, watermark, telescope",
+              "parameters": {
+                "two_stage_conditioning": {
+                  "subject_denoise": 0.9,
+                  "subject_negative_prompt": "cropped subject, duplicate telescope",
+                  "subject_prompt": "one complete brass telescope on a tripod"
+                }
+              },
+              "positive_prompt": "dark quiet observatory background",
+              "profile": "standalone-illustration",
+              "prompt_compiler_id": "natural-v1",
+              "prompt_compiler_version": 1,
+              "route_token": "route:test-2",
+              "style": null,
+              "upscale_policy": "off",
+              "workflow_template_id": "sdxl-two-stage-copy-subject",
+              "workflow_template_version": 1
+            },
+            "idempotency_key": "F00-two-stage-operation",
+            "image": {
+              "height": 320,
+              "mime_type": "image/png",
+              "path": "round-01.png",
+              "sha256": "a351bc16743410baebf8ef19392e2cc746fab6d30fa2174bb139f68e0df00a03",
+              "width": 640
+            },
+            "mask_artifact": {
+              "height": 320,
+              "mime_type": "image/png",
+              "path": "round-01-mask.png",
+              "sha256": "4a6f76ce737a2e1160c00f783450c8a9d16c6c058109ce3f0e49805d74e52c68",
+              "soft_mask_validation": {
+                "channels": 3,
+                "copy_nonzero_pixels": 0,
+                "edge_profiles_checked": 1216,
+                "feather_monotonic": true,
+                "feather_pixels": 0,
+                "height": 320,
+                "interior_positive_pixels": 90948,
+                "outside_nonzero_pixels": 0,
+                "width": 640
+              },
+              "width": 640
+            },
+            "request_hash": "47d1108d40170e5289469b56a3983115fb841b61b46e32d82bf8aca806bd7f09",
+            "round_number": 1,
+            "route": {
+              "authorization_scope": "private",
+              "backend": "comfyui",
+              "component_bundle_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+              "control_sha256": "fffa3a0c07c3578c24a96d3f91e80bc80f8d67c5da4cad2523e2473ca6e5658b",
+              "endpoint_identity": "endpoint:test",
+              "expires_at": 9999999999.0,
+              "height": 320,
+              "identity_strength": "cryptographic",
+              "identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "model_id": "research-cpu-fake-model",
+              "operation": "txt2img",
+              "profile": "standalone-illustration",
+              "prompt_compiler_id": "natural-v1",
+              "prompt_compiler_version": 1,
+              "requirements": {
+                "two_stage_layout": {
+                  "canvas": {
+                    "height": 320,
+                    "width": 640
+                  },
+                  "copy_protected_rect": {
+                    "height": 320,
+                    "width": 224,
+                    "x": 0,
+                    "y": 0
+                  },
+                  "feather_pixels": 0,
+                  "mode": "copy-subject-two-stage-v1",
+                  "subject_mask_rect": {
+                    "height": 288,
+                    "width": 320,
+                    "x": 304,
+                    "y": 16
+                  },
+                  "vae_grow_mask_by": 0
+                }
+              },
+              "route_token": "route:test-2",
+              "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+              "style": null,
+              "width": 640,
+              "workflow_template_id": "sdxl-two-stage-copy-subject",
+              "workflow_template_version": 1
+            },
+            "seed": 42,
+            "stages": [
+              {
+                "image": {
+                  "height": 320,
+                  "mime_type": "image/png",
+                  "path": "round-01-base.png",
+                  "sha256": "a351bc16743410baebf8ef19392e2cc746fab6d30fa2174bb139f68e0df00a03",
+                  "width": 640
+                },
+                "role": "base",
+                "seed": 42
+              },
+              {
+                "image": {
+                  "height": 320,
+                  "mime_type": "image/png",
+                  "path": "round-01.png",
+                  "sha256": "a351bc16743410baebf8ef19392e2cc746fab6d30fa2174bb139f68e0df00a03",
+                  "width": 640
+                },
+                "role": "subject",
+                "seed": 43
+              }
+            ],
+            "started_at": "2026-09-18T15:23:23Z",
+            "status": "completed"
+          }
+        ],
+        "final": null,
+        "last_stable_state": "generated",
+        "manifest_revision": 5,
+        "masks": [],
+        "parent": null,
+        "recoverable_next_actions": [
+          "record_review"
+        ],
+        "request": {
+          "authorization_scope": "private",
+          "available_backends": [
+            "webui",
+            "diffusers",
+            "comfyui"
+          ],
+          "backend": "comfyui",
+          "constraints": {
+            "height": 320,
+            "two_stage_layout": {
+              "canvas": {
+                "height": 320,
+                "width": 640
+              },
+              "copy_protected_rect": {
+                "height": 320,
+                "width": 224,
+                "x": 0,
+                "y": 0
+              },
+              "feather_pixels": 0,
+              "mode": "copy-subject-two-stage-v1",
+              "subject_mask_rect": {
+                "height": 288,
+                "width": 320,
+                "x": 304,
+                "y": 16
+              },
+              "vae_grow_mask_by": 0
+            },
+            "width": 640
+          },
+          "endpoint_identity": "endpoint:test",
+          "identity_strength": "cryptographic",
+          "initial_two_stage_conditioning": {
+            "subject_denoise": 0.9,
+            "subject_negative_prompt": "cropped subject, duplicate telescope",
+            "subject_prompt": "one complete brass telescope on a tripod"
+          },
+          "intent": "A calm coast at dawn.",
+          "max_rounds": 2,
+          "merged_profile": {
+            "constraints": {
+              "aspect_ratio": "1:1",
+              "backend": "auto",
+              "height": 320,
+              "max_rounds": 3,
+              "two_stage_layout": {
+                "canvas": {
+                  "height": 320,
+                  "width": 640
+                },
+                "copy_protected_rect": {
+                  "height": 320,
+                  "width": 224,
+                  "x": 0,
+                  "y": 0
+                },
+                "feather_pixels": 0,
+                "mode": "copy-subject-two-stage-v1",
+                "subject_mask_rect": {
+                  "height": 288,
+                  "width": 320,
+                  "x": 304,
+                  "y": 16
+                },
+                "vae_grow_mask_by": 0
+              },
+              "upscale_policy": "auto",
+              "width": 640
+            },
+            "explore_mutable": [
+              "seed",
+              "steps",
+              "guidance_scale",
+              "regional_conditioning",
+              "two_stage_conditioning"
+            ],
+            "hard_failures": [
+              "missing_subject",
+              "severe_anatomy",
+              "unreadable_text",
+              "watermark",
+              "explicit_constraint_violation"
+            ],
+            "profile": {
+              "aliases": [
+                "illustration",
+                "single image",
+                "artwork"
+              ],
+              "defaults": {
+                "aspect_ratio": "1:1"
+              },
+              "description": "A single finished illustration intended to stand on its own.",
+              "examples": {
+                "character": [
+                  "Draw a character illustration of a sailor at sunset."
+                ],
+                "environment": [
+                  "Create an illustrated coastal environment after rain."
+                ],
+                "wallpaper": [
+                  "Make a wide desktop wallpaper of a calm ocean horizon."
+                ]
+              },
+              "explore_mutable": [
+                "seed",
+                "steps",
+                "guidance_scale",
+                "regional_conditioning",
+                "two_stage_conditioning"
+              ],
+              "hard_failures": [
+                "missing_subject",
+                "severe_anatomy",
+                "unreadable_text",
+                "watermark",
+                "explicit_constraint_violation"
+              ],
+              "id": "standalone-illustration",
+              "kind": "use_case",
+              "prohibited_content": [
+                "Do not add unrequested text or watermarks."
+              ],
+              "prompt_guidance": [
+                "State the subject, composition, lighting, and requested medium."
+              ],
+              "refine_mutable": [
+                "denoise_strength",
+                "steps",
+                "guidance_scale",
+                "regional_conditioning",
+                "two_stage_conditioning"
+              ],
+              "rubric": {
+                "detail_quality": {
+                  "critical": true,
+                  "description": "Important requested details are clear and deliberate.",
+                  "weight": 2
+                },
+                "face_quality": {
+                  "critical": true,
+                  "description": "Prominent visible faces are coherent, expressive, and anatomically plausible.",
+                  "weight": 2
+                },
+                "hand_quality": {
+                  "critical": true,
+                  "description": "Prominent visible hands have plausible anatomy and readable poses.",
+                  "weight": 2
+                },
+                "style_consistency": {
+                  "critical": true,
+                  "description": "The requested visual style is applied consistently.",
+                  "weight": 2
+                },
+                "subject_completeness": {
+                  "critical": true,
+                  "description": "The requested subject is complete and recognizable.",
+                  "weight": 2
+                }
+              },
+              "schema_version": 1,
+              "subtypes": [
+                "character",
+                "environment",
+                "wallpaper"
+              ]
+            },
+            "refine_mutable": [
+              "denoise_strength",
+              "steps",
+              "guidance_scale",
+              "regional_conditioning",
+              "two_stage_conditioning"
+            ],
+            "rubric": {
+              "artifact_control": {
+                "critical": true,
+                "weight": 1
+              },
+              "composition": {
+                "critical": true,
+                "weight": 1
+              },
+              "detail_quality": {
+                "critical": true,
+                "description": "Important requested details are clear and deliberate.",
+                "weight": 2
+              },
+              "face_quality": {
+                "critical": true,
+                "description": "Prominent visible faces are coherent, expressive, and anatomically plausible.",
+                "weight": 2
+              },
+              "hand_quality": {
+                "critical": true,
+                "description": "Prominent visible hands have plausible anatomy and readable poses.",
+                "weight": 2
+              },
+              "intent_adherence": {
+                "critical": true,
+                "weight": 1
+              },
+              "style_consistency": {
+                "critical": true,
+                "description": "The requested visual style is applied consistently.",
+                "weight": 2
+              },
+              "subject_completeness": {
+                "critical": true,
+                "description": "The requested subject is complete and recognizable.",
+                "weight": 2
+              },
+              "user_constraints": {
+                "weight": 1
+              }
+            },
+            "style": null
+          },
+          "model_choice": "research-cpu-fake-model",
+          "model_identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "model_record": {
+            "backend": "webui",
+            "backend_model_id": "actual-loaded-model",
+            "byte_size": 1,
+            "endpoint_identity": "endpoint:test",
+            "format": ".safetensors",
+            "id": "research-cpu-fake-model",
+            "identity_strength": "cryptographic",
+            "identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "license_id": "test-only",
+            "license_status": "approved",
+            "license_url": null,
+            "metadata": {},
+            "modified_ns": 1,
+            "public_evidence_eligible": true,
+            "recommended": {
+              "guidance": 6.0,
+              "resolution": {
+                "height": 256,
+                "width": 256
+              },
+              "sampler": "Euler a",
+              "scheduler": null,
+              "steps": 4
+            },
+            "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "source": "test-fixture"
+          },
+          "profile": "standalone-illustration",
+          "prompt_compiler_id": "natural-v1",
+          "prompt_compiler_version": 1,
+          "route": {
+            "authorization_scope": "private",
+            "backend": "comfyui",
+            "component_bundle_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "control_sha256": "fffa3a0c07c3578c24a96d3f91e80bc80f8d67c5da4cad2523e2473ca6e5658b",
+            "endpoint_identity": "endpoint:test",
+            "expires_at": 9999999999.0,
+            "height": 320,
+            "identity_strength": "cryptographic",
+            "identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "model_id": "research-cpu-fake-model",
+            "operation": "txt2img",
+            "profile": "standalone-illustration",
+            "prompt_compiler_id": "natural-v1",
+            "prompt_compiler_version": 1,
+            "requirements": {
+              "two_stage_layout": {
+                "canvas": {
+                  "height": 320,
+                  "width": 640
+                },
+                "copy_protected_rect": {
+                  "height": 320,
+                  "width": 224,
+                  "x": 0,
+                  "y": 0
+                },
+                "feather_pixels": 0,
+                "mode": "copy-subject-two-stage-v1",
+                "subject_mask_rect": {
+                  "height": 288,
+                  "width": 320,
+                  "x": 304,
+                  "y": 16
+                },
+                "vae_grow_mask_by": 0
+              }
+            },
+            "route_token": "route:test-2",
+            "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "style": null,
+            "width": 640,
+            "workflow_template_id": "sdxl-two-stage-copy-subject",
+            "workflow_template_version": 1
+          },
+          "route_token": "route:test-2",
+          "style": null,
+          "upscale_policy": "off",
+          "workflow_template_id": "sdxl-two-stage-copy-subject",
+          "workflow_template_version": 1
+        },
+        "reviews": [],
+        "rounds": [
+          {
+            "action": "initial",
+            "backend": "comfyui",
+            "backend_result": {
+              "backend": "comfyui",
+              "component_bundle_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+              "control_sha256": "fffa3a0c07c3578c24a96d3f91e80bc80f8d67c5da4cad2523e2473ca6e5658b",
+              "endpoint_identity": "endpoint:test",
+              "height": 320,
+              "identity_strength": "cryptographic",
+              "mask_output": {
+                "path": "round-01-mask.png"
+              },
+              "mode": "txt2img",
+              "model": "actual-loaded-model",
+              "model_identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "ok": true,
+              "path": "round-01.png",
+              "prompt_compiler_id": "natural-v1",
+              "prompt_compiler_version": 1,
+              "seed": 42,
+              "stage_outputs": {
+                "base": {
+                  "path": "round-01-base.png"
+                },
+                "final": {
+                  "path": "round-01.png"
+                }
+              },
+              "subject_seed": 43,
+              "width": 640,
+              "workflow_job_id": "cpu-two-stage-f00-0001",
+              "workflow_template_id": "sdxl-two-stage-copy-subject",
+              "workflow_template_version": 1
+            },
+            "change_summary": "Paired deterministic CPU fault characterization.",
+            "compiled_prompt": {
+              "compiler_id": "natural-v1",
+              "compiler_version": 1,
+              "negative_prompt": "text, watermark, telescope",
+              "positive_prompt": "dark quiet observatory background"
+            },
+            "compiled_subject_prompt": {
+              "compiler_id": "natural-v1",
+              "compiler_version": 1,
+              "negative_prompt": "cropped subject, duplicate telescope",
+              "positive_prompt": "one complete brass telescope on a tripod"
+            },
+            "generation_plan": {
+              "authorization_scope": "private",
+              "backend": "comfyui",
+              "constraints": {
+                "height": 320,
+                "two_stage_layout": {
+                  "canvas": {
+                    "height": 320,
+                    "width": 640
+                  },
+                  "copy_protected_rect": {
+                    "height": 320,
+                    "width": 224,
+                    "x": 0,
+                    "y": 0
+                  },
+                  "feather_pixels": 0,
+                  "mode": "copy-subject-two-stage-v1",
+                  "subject_mask_rect": {
+                    "height": 288,
+                    "width": 320,
+                    "x": 304,
+                    "y": 16
+                  },
+                  "vae_grow_mask_by": 0
+                },
+                "width": 640
+              },
+              "endpoint_identity": "endpoint:test",
+              "identity_strength": "cryptographic",
+              "intent": "A calm coast at dawn.",
+              "max_rounds": 2,
+              "model_choice": "research-cpu-fake-model",
+              "model_identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "negative_prompt": "text, watermark, telescope",
+              "parameters": {
+                "two_stage_conditioning": {
+                  "subject_denoise": 0.9,
+                  "subject_negative_prompt": "cropped subject, duplicate telescope",
+                  "subject_prompt": "one complete brass telescope on a tripod"
+                }
+              },
+              "positive_prompt": "dark quiet observatory background",
+              "profile": "standalone-illustration",
+              "prompt_compiler_id": "natural-v1",
+              "prompt_compiler_version": 1,
+              "route_token": "route:test-2",
+              "style": null,
+              "upscale_policy": "off",
+              "workflow_template_id": "sdxl-two-stage-copy-subject",
+              "workflow_template_version": 1
+            },
+            "idempotency_key": "F00-two-stage-operation",
+            "image": {
+              "height": 320,
+              "mime_type": "image/png",
+              "path": "round-01.png",
+              "sha256": "a351bc16743410baebf8ef19392e2cc746fab6d30fa2174bb139f68e0df00a03",
+              "width": 640
+            },
+            "mask_artifact": {
+              "height": 320,
+              "mime_type": "image/png",
+              "path": "round-01-mask.png",
+              "sha256": "4a6f76ce737a2e1160c00f783450c8a9d16c6c058109ce3f0e49805d74e52c68",
+              "soft_mask_validation": {
+                "channels": 3,
+                "copy_nonzero_pixels": 0,
+                "edge_profiles_checked": 1216,
+                "feather_monotonic": true,
+                "feather_pixels": 0,
+                "height": 320,
+                "interior_positive_pixels": 90948,
+                "outside_nonzero_pixels": 0,
+                "width": 640
+              },
+              "width": 640
+            },
+            "mode": "txt2img",
+            "model": "actual-loaded-model",
+            "pixel_preservation": {
+              "checked_pixels": 112640,
+              "copy_mismatched_pixels": 0,
+              "mismatched_pixels": 0,
+              "protected_rect": {
+                "height": 320,
+                "width": 224,
+                "x": 0,
+                "y": 0
+              }
+            },
+            "preview": {
+              "height": 320,
+              "mime_type": "image/jpeg",
+              "path": "round-01-preview.jpg",
+              "sha256": "6f1e4b29c6fc7b5ed4b0cf4897a4433fb8e483ad8ac223c68c8b4838a1b465fb",
+              "width": 640
+            },
+            "registry_metadata": {
+              "model": {
+                "id": "research-cpu-fake-model",
+                "license_id": "test-only",
+                "license_status": "approved",
+                "license_url": null,
+                "source": "test-fixture"
+              },
+              "profile": {
+                "id": "standalone-illustration",
+                "schema_version": 1
+              },
+              "style": null
+            },
+            "request_hash": "47d1108d40170e5289469b56a3983115fb841b61b46e32d82bf8aca806bd7f09",
+            "round_number": 1,
+            "route": {
+              "authorization_scope": "private",
+              "backend": "comfyui",
+              "component_bundle_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+              "control_sha256": "fffa3a0c07c3578c24a96d3f91e80bc80f8d67c5da4cad2523e2473ca6e5658b",
+              "endpoint_identity": "endpoint:test",
+              "expires_at": 9999999999.0,
+              "height": 320,
+              "identity_strength": "cryptographic",
+              "identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "model_id": "research-cpu-fake-model",
+              "operation": "txt2img",
+              "profile": "standalone-illustration",
+              "prompt_compiler_id": "natural-v1",
+              "prompt_compiler_version": 1,
+              "requirements": {
+                "two_stage_layout": {
+                  "canvas": {
+                    "height": 320,
+                    "width": 640
+                  },
+                  "copy_protected_rect": {
+                    "height": 320,
+                    "width": 224,
+                    "x": 0,
+                    "y": 0
+                  },
+                  "feather_pixels": 0,
+                  "mode": "copy-subject-two-stage-v1",
+                  "subject_mask_rect": {
+                    "height": 288,
+                    "width": 320,
+                    "x": 304,
+                    "y": 16
+                  },
+                  "vae_grow_mask_by": 0
+                }
+              },
+              "route_token": "route:test-2",
+              "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+              "style": null,
+              "width": 640,
+              "workflow_template_id": "sdxl-two-stage-copy-subject",
+              "workflow_template_version": 1
+            },
+            "seed": 42,
+            "stage_units": 2,
+            "stages": [
+              {
+                "image": {
+                  "height": 320,
+                  "mime_type": "image/png",
+                  "path": "round-01-base.png",
+                  "sha256": "a351bc16743410baebf8ef19392e2cc746fab6d30fa2174bb139f68e0df00a03",
+                  "width": 640
+                },
+                "role": "base",
+                "seed": 42
+              },
+              {
+                "image": {
+                  "height": 320,
+                  "mime_type": "image/png",
+                  "path": "round-01.png",
+                  "sha256": "a351bc16743410baebf8ef19392e2cc746fab6d30fa2174bb139f68e0df00a03",
+                  "width": 640
+                },
+                "role": "subject",
+                "seed": 43
+              }
+            ],
+            "status": "generated",
+            "warnings": []
+          }
+        ],
+        "run_id": "20260918T152323Z-9707cad123f7",
+        "schema_version": 1,
+        "stage_budget": {
+          "consumed": 2,
+          "maximum": 4
+        },
+        "state": "generated",
+        "warnings": []
+      },
+      "recovery": {
+        "recovery_invocation_count": 0,
+        "same_job": false,
+        "state": "not_needed"
+      },
+      "reported_attempt_statuses": [
+        "completed"
+      ],
+      "scheduled": true,
+      "second_error": null,
+      "second_error_code": null,
+      "started": true,
+      "submitted_job_ids": [
+        "cpu-two-stage-f00-0001"
+      ],
+      "valid_completion": true,
+      "worker_execution_entry_count": 1,
+      "worker_execution_entry_ids": [
+        "F00-two-stage:execution-0001"
+      ]
+    },
+    {
+      "backend_submission_count": 2,
+      "boundary_classification": {
+        "reason": "new_backend_submission_observed_after_fault",
+        "recovery_state": "new_submission_after_fault",
+        "state": "unresolved"
+      },
+      "case_id": "F02-single-stage",
+      "duplicate_execution": true,
+      "duplicate_submission": true,
+      "fault_class": "fault",
+      "fault_id": "F02",
+      "final_product_state": "generated",
+      "first_error": {
+        "category": "state",
+        "code": "backend_request_failed",
+        "details": {
+          "barrier": "after_execution_before_job_id_response",
+          "error_type": "RemoteDisconnected"
+        },
+        "raised": true
+      },
+      "first_error_barrier": "after_execution_before_job_id_response",
+      "first_error_code": "backend_request_failed",
+      "first_error_job_id": null,
+      "first_error_submission_outcome": null,
+      "first_product_state": "created",
+      "injection_confirmed": true,
+      "observation_window_closed": true,
+      "oracle_evaluable": true,
+      "oracle_execution_count": 2,
+      "oracle_state": {
+        "artifact_hash": "11f2c9c919dcaaa53fcfbf16290e641da61f2122a8921cc01c56fa96e219ce5e",
+        "case_id": "F02-single-stage",
+        "events": [
+          {
+            "event": "request_received",
+            "job_id": "cpu-single-stage-f02-0001",
+            "operation_id": "F02-single-stage-operation",
+            "prompt_id": "F02-single-stage-operation"
+          },
+          {
+            "event": "queue_item_created",
+            "job_id": "cpu-single-stage-f02-0001",
+            "operation_id": "F02-single-stage-operation",
+            "prompt_id": "F02-single-stage-operation"
+          },
+          {
+            "event": "execution_started",
+            "execution_instance_id": "F02-single-stage:execution-0001",
+            "job_id": "cpu-single-stage-f02-0001",
+            "operation_id": "F02-single-stage-operation",
+            "prompt_id": "F02-single-stage-operation"
+          },
+          {
+            "artifact_hash": "11f2c9c919dcaaa53fcfbf16290e641da61f2122a8921cc01c56fa96e219ce5e",
+            "event": "execution_finished",
+            "execution_instance_id": "F02-single-stage:execution-0001",
+            "outcome": "succeeded"
+          },
+          {
+            "event": "request_received",
+            "job_id": "cpu-single-stage-f02-0002",
+            "operation_id": "F02-single-stage-operation",
+            "prompt_id": "F02-single-stage-operation"
+          },
+          {
+            "event": "queue_item_created",
+            "job_id": "cpu-single-stage-f02-0002",
+            "operation_id": "F02-single-stage-operation",
+            "prompt_id": "F02-single-stage-operation"
+          },
+          {
+            "event": "execution_started",
+            "execution_instance_id": "F02-single-stage:execution-0002",
+            "job_id": "cpu-single-stage-f02-0002",
+            "operation_id": "F02-single-stage-operation",
+            "prompt_id": "F02-single-stage-operation"
+          },
+          {
+            "artifact_hash": "11f2c9c919dcaaa53fcfbf16290e641da61f2122a8921cc01c56fa96e219ce5e",
+            "event": "execution_finished",
+            "execution_instance_id": "F02-single-stage:execution-0002",
+            "outcome": "succeeded"
+          },
+          {
+            "event": "job_id_revealed",
+            "job_id": "cpu-single-stage-f02-0002",
+            "operation_id": "F02-single-stage-operation",
+            "prompt_id": "F02-single-stage-operation"
+          }
+        ],
+        "execution_finished": 2,
+        "execution_instances": [
+          "F02-single-stage:execution-0001",
+          "F02-single-stage:execution-0002"
+        ],
+        "execution_started": 2,
+        "execution_state": "succeeded",
+        "job_ids": [
+          "cpu-single-stage-f02-0001",
+          "cpu-single-stage-f02-0002"
+        ],
+        "oracle_evaluable": true,
+        "oracle_type": "independent_cpu_execution_oracle_v1",
+        "queue_item_created": 2,
+        "request_received": 2
+      },
+      "path_kind": "single-stage",
+      "raw_reported_state": {
+        "active_attempt": null,
+        "attempts": [
+          {
+            "action": "initial",
+            "change_summary": "Initial candidate.",
+            "compiled_prompt": {
+              "compiler_id": "sd15-tags-v1",
+              "compiler_version": 1,
+              "negative_prompt": "watermark, text",
+              "positive_prompt": "calm coast at dawn"
+            },
+            "error": {
+              "category": "state",
+              "code": "backend_request_failed",
+              "details": {
+                "barrier": "after_execution_before_job_id_response",
+                "error_type": "RemoteDisconnected"
+              },
+              "message": "Backend request failed."
+            },
+            "failed_at": "2026-09-18T15:23:23Z",
+            "generation_plan": {
+              "authorization_scope": "private",
+              "backend": "webui",
+              "constraints": {
+                "height": 256,
+                "width": 256
+              },
+              "endpoint_identity": "endpoint:test",
+              "identity_strength": "cryptographic",
+              "intent": "A calm coast at dawn.",
+              "max_rounds": 2,
+              "model_choice": "research-cpu-fake-model",
+              "model_identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "negative_prompt": "watermark, text",
+              "parameters": {
+                "mode": "txt2img",
+                "scheduler": "euler"
+              },
+              "positive_prompt": "calm coast at dawn",
+              "profile": "standalone-illustration",
+              "prompt_compiler_id": "sd15-tags-v1",
+              "prompt_compiler_version": 1,
+              "route_token": "route:test-1",
+              "style": null,
+              "upscale_policy": "off",
+              "workflow_template_id": null,
+              "workflow_template_version": null
+            },
+            "idempotency_key": "F02-single-stage-operation",
+            "request_hash": "4d640a809a04e43c90c4bb860143780cba7cfbe864f7ac9852f185b2c3ed0029",
+            "route": {
+              "authorization_scope": "private",
+              "backend": "webui",
+              "endpoint_identity": "endpoint:test",
+              "expires_at": 9999999999.0,
+              "height": 256,
+              "identity_strength": "cryptographic",
+              "identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "model_id": "research-cpu-fake-model",
+              "operation": "txt2img",
+              "profile": "standalone-illustration",
+              "prompt_compiler_id": "sd15-tags-v1",
+              "prompt_compiler_version": 1,
+              "requirements": {},
+              "route_token": "route:test-1",
+              "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+              "style": null,
+              "width": 256,
+              "workflow_template_id": null,
+              "workflow_template_version": null
+            },
+            "seed": 42,
+            "started_at": "2026-09-18T15:23:23Z",
+            "status": "failed"
+          },
+          {
+            "action": "initial",
+            "backend_result": {
+              "backend": "webui",
+              "endpoint_identity": "endpoint:test",
+              "height": 256,
+              "identity_strength": "cryptographic",
+              "mode": "txt2img",
+              "model": "actual-loaded-model",
+              "model_identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "ok": true,
+              "path": "round-01.png",
+              "prompt_compiler_id": "sd15-tags-v1",
+              "prompt_compiler_version": 1,
+              "seed": 42,
+              "width": 256,
+              "workflow_template_id": null,
+              "workflow_template_version": null
+            },
+            "change_summary": "Initial candidate.",
+            "compiled_prompt": {
+              "compiler_id": "sd15-tags-v1",
+              "compiler_version": 1,
+              "negative_prompt": "watermark, text",
+              "positive_prompt": "calm coast at dawn"
+            },
+            "completed_at": "2026-09-18T15:23:23Z",
+            "generation_plan": {
+              "authorization_scope": "private",
+              "backend": "webui",
+              "constraints": {
+                "height": 256,
+                "width": 256
+              },
+              "endpoint_identity": "endpoint:test",
+              "identity_strength": "cryptographic",
+              "intent": "A calm coast at dawn.",
+              "max_rounds": 2,
+              "model_choice": "research-cpu-fake-model",
+              "model_identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "negative_prompt": "watermark, text",
+              "parameters": {
+                "mode": "txt2img",
+                "scheduler": "euler"
+              },
+              "positive_prompt": "calm coast at dawn",
+              "profile": "standalone-illustration",
+              "prompt_compiler_id": "sd15-tags-v1",
+              "prompt_compiler_version": 1,
+              "route_token": "route:test-1",
+              "style": null,
+              "upscale_policy": "off",
+              "workflow_template_id": null,
+              "workflow_template_version": null
+            },
+            "idempotency_key": "F02-single-stage-operation",
+            "image": {
+              "height": 256,
+              "mime_type": "image/png",
+              "path": "round-01.png",
+              "sha256": "11f2c9c919dcaaa53fcfbf16290e641da61f2122a8921cc01c56fa96e219ce5e",
+              "width": 256
+            },
+            "request_hash": "4d640a809a04e43c90c4bb860143780cba7cfbe864f7ac9852f185b2c3ed0029",
+            "round_number": 1,
+            "route": {
+              "authorization_scope": "private",
+              "backend": "webui",
+              "endpoint_identity": "endpoint:test",
+              "expires_at": 9999999999.0,
+              "height": 256,
+              "identity_strength": "cryptographic",
+              "identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "model_id": "research-cpu-fake-model",
+              "operation": "txt2img",
+              "profile": "standalone-illustration",
+              "prompt_compiler_id": "sd15-tags-v1",
+              "prompt_compiler_version": 1,
+              "requirements": {},
+              "route_token": "route:test-1",
+              "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+              "style": null,
+              "width": 256,
+              "workflow_template_id": null,
+              "workflow_template_version": null
+            },
+            "seed": 42,
+            "started_at": "2026-09-18T15:23:23Z",
+            "status": "completed"
+          }
+        ],
+        "final": null,
+        "last_stable_state": "generated",
+        "manifest_revision": 6,
+        "masks": [],
+        "parent": null,
+        "recoverable_next_actions": [
+          "record_review"
+        ],
+        "request": {
+          "authorization_scope": "private",
+          "available_backends": [
+            "webui",
+            "diffusers"
+          ],
+          "backend": "webui",
+          "constraints": {
+            "height": 256,
+            "width": 256
+          },
+          "endpoint_identity": "endpoint:test",
+          "identity_strength": "cryptographic",
+          "intent": "A calm coast at dawn.",
+          "max_rounds": 2,
+          "merged_profile": {
+            "constraints": {
+              "aspect_ratio": "1:1",
+              "backend": "auto",
+              "height": 256,
+              "max_rounds": 3,
+              "upscale_policy": "auto",
+              "width": 256
+            },
+            "explore_mutable": [
+              "seed",
+              "steps",
+              "guidance_scale",
+              "regional_conditioning",
+              "two_stage_conditioning"
+            ],
+            "hard_failures": [
+              "missing_subject",
+              "severe_anatomy",
+              "unreadable_text",
+              "watermark",
+              "explicit_constraint_violation"
+            ],
+            "profile": {
+              "aliases": [
+                "illustration",
+                "single image",
+                "artwork"
+              ],
+              "defaults": {
+                "aspect_ratio": "1:1"
+              },
+              "description": "A single finished illustration intended to stand on its own.",
+              "examples": {
+                "character": [
+                  "Draw a character illustration of a sailor at sunset."
+                ],
+                "environment": [
+                  "Create an illustrated coastal environment after rain."
+                ],
+                "wallpaper": [
+                  "Make a wide desktop wallpaper of a calm ocean horizon."
+                ]
+              },
+              "explore_mutable": [
+                "seed",
+                "steps",
+                "guidance_scale",
+                "regional_conditioning",
+                "two_stage_conditioning"
+              ],
+              "hard_failures": [
+                "missing_subject",
+                "severe_anatomy",
+                "unreadable_text",
+                "watermark",
+                "explicit_constraint_violation"
+              ],
+              "id": "standalone-illustration",
+              "kind": "use_case",
+              "prohibited_content": [
+                "Do not add unrequested text or watermarks."
+              ],
+              "prompt_guidance": [
+                "State the subject, composition, lighting, and requested medium."
+              ],
+              "refine_mutable": [
+                "denoise_strength",
+                "steps",
+                "guidance_scale",
+                "regional_conditioning",
+                "two_stage_conditioning"
+              ],
+              "rubric": {
+                "detail_quality": {
+                  "critical": true,
+                  "description": "Important requested details are clear and deliberate.",
+                  "weight": 2
+                },
+                "face_quality": {
+                  "critical": true,
+                  "description": "Prominent visible faces are coherent, expressive, and anatomically plausible.",
+                  "weight": 2
+                },
+                "hand_quality": {
+                  "critical": true,
+                  "description": "Prominent visible hands have plausible anatomy and readable poses.",
+                  "weight": 2
+                },
+                "style_consistency": {
+                  "critical": true,
+                  "description": "The requested visual style is applied consistently.",
+                  "weight": 2
+                },
+                "subject_completeness": {
+                  "critical": true,
+                  "description": "The requested subject is complete and recognizable.",
+                  "weight": 2
+                }
+              },
+              "schema_version": 1,
+              "subtypes": [
+                "character",
+                "environment",
+                "wallpaper"
+              ]
+            },
+            "refine_mutable": [
+              "denoise_strength",
+              "steps",
+              "guidance_scale",
+              "regional_conditioning",
+              "two_stage_conditioning"
+            ],
+            "rubric": {
+              "artifact_control": {
+                "critical": true,
+                "weight": 1
+              },
+              "composition": {
+                "critical": true,
+                "weight": 1
+              },
+              "detail_quality": {
+                "critical": true,
+                "description": "Important requested details are clear and deliberate.",
+                "weight": 2
+              },
+              "face_quality": {
+                "critical": true,
+                "description": "Prominent visible faces are coherent, expressive, and anatomically plausible.",
+                "weight": 2
+              },
+              "hand_quality": {
+                "critical": true,
+                "description": "Prominent visible hands have plausible anatomy and readable poses.",
+                "weight": 2
+              },
+              "intent_adherence": {
+                "critical": true,
+                "weight": 1
+              },
+              "style_consistency": {
+                "critical": true,
+                "description": "The requested visual style is applied consistently.",
+                "weight": 2
+              },
+              "subject_completeness": {
+                "critical": true,
+                "description": "The requested subject is complete and recognizable.",
+                "weight": 2
+              },
+              "user_constraints": {
+                "weight": 1
+              }
+            },
+            "style": null
+          },
+          "model_choice": "research-cpu-fake-model",
+          "model_identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "model_record": {
+            "backend": "webui",
+            "backend_model_id": "actual-loaded-model",
+            "byte_size": 1,
+            "endpoint_identity": "endpoint:test",
+            "format": ".safetensors",
+            "id": "research-cpu-fake-model",
+            "identity_strength": "cryptographic",
+            "identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "license_id": "test-only",
+            "license_status": "approved",
+            "license_url": null,
+            "metadata": {},
+            "modified_ns": 1,
+            "public_evidence_eligible": true,
+            "recommended": {
+              "guidance": 6.0,
+              "resolution": {
+                "height": 256,
+                "width": 256
+              },
+              "sampler": "Euler a",
+              "scheduler": null,
+              "steps": 4
+            },
+            "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "source": "test-fixture"
+          },
+          "profile": "standalone-illustration",
+          "prompt_compiler_id": "sd15-tags-v1",
+          "prompt_compiler_version": 1,
+          "route": {
+            "authorization_scope": "private",
+            "backend": "webui",
+            "endpoint_identity": "endpoint:test",
+            "expires_at": 9999999999.0,
+            "height": 256,
+            "identity_strength": "cryptographic",
+            "identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "model_id": "research-cpu-fake-model",
+            "operation": "txt2img",
+            "profile": "standalone-illustration",
+            "prompt_compiler_id": "sd15-tags-v1",
+            "prompt_compiler_version": 1,
+            "requirements": {},
+            "route_token": "route:test-1",
+            "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "style": null,
+            "width": 256,
+            "workflow_template_id": null,
+            "workflow_template_version": null
+          },
+          "route_token": "route:test-1",
+          "style": null,
+          "upscale_policy": "off",
+          "workflow_template_id": null,
+          "workflow_template_version": null
+        },
+        "reviews": [],
+        "rounds": [
+          {
+            "action": "initial",
+            "backend": "webui",
+            "backend_result": {
+              "backend": "webui",
+              "endpoint_identity": "endpoint:test",
+              "height": 256,
+              "identity_strength": "cryptographic",
+              "mode": "txt2img",
+              "model": "actual-loaded-model",
+              "model_identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "ok": true,
+              "path": "round-01.png",
+              "prompt_compiler_id": "sd15-tags-v1",
+              "prompt_compiler_version": 1,
+              "seed": 42,
+              "width": 256,
+              "workflow_template_id": null,
+              "workflow_template_version": null
+            },
+            "change_summary": "Initial candidate.",
+            "compiled_prompt": {
+              "compiler_id": "sd15-tags-v1",
+              "compiler_version": 1,
+              "negative_prompt": "watermark, text",
+              "positive_prompt": "calm coast at dawn"
+            },
+            "generation_plan": {
+              "authorization_scope": "private",
+              "backend": "webui",
+              "constraints": {
+                "height": 256,
+                "width": 256
+              },
+              "endpoint_identity": "endpoint:test",
+              "identity_strength": "cryptographic",
+              "intent": "A calm coast at dawn.",
+              "max_rounds": 2,
+              "model_choice": "research-cpu-fake-model",
+              "model_identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "negative_prompt": "watermark, text",
+              "parameters": {
+                "mode": "txt2img",
+                "scheduler": "euler"
+              },
+              "positive_prompt": "calm coast at dawn",
+              "profile": "standalone-illustration",
+              "prompt_compiler_id": "sd15-tags-v1",
+              "prompt_compiler_version": 1,
+              "route_token": "route:test-1",
+              "style": null,
+              "upscale_policy": "off",
+              "workflow_template_id": null,
+              "workflow_template_version": null
+            },
+            "idempotency_key": "F02-single-stage-operation",
+            "image": {
+              "height": 256,
+              "mime_type": "image/png",
+              "path": "round-01.png",
+              "sha256": "11f2c9c919dcaaa53fcfbf16290e641da61f2122a8921cc01c56fa96e219ce5e",
+              "width": 256
+            },
+            "mode": "txt2img",
+            "model": "actual-loaded-model",
+            "preview": {
+              "height": 256,
+              "mime_type": "image/jpeg",
+              "path": "round-01-preview.jpg",
+              "sha256": "fb62b3fb664fb679166dec487f60cdf788c7c71573b7633372bba97464b68783",
+              "width": 256
+            },
+            "registry_metadata": {
+              "model": {
+                "id": "research-cpu-fake-model",
+                "license_id": "test-only",
+                "license_status": "approved",
+                "license_url": null,
+                "source": "test-fixture"
+              },
+              "profile": {
+                "id": "standalone-illustration",
+                "schema_version": 1
+              },
+              "style": null
+            },
+            "request_hash": "4d640a809a04e43c90c4bb860143780cba7cfbe864f7ac9852f185b2c3ed0029",
+            "round_number": 1,
+            "route": {
+              "authorization_scope": "private",
+              "backend": "webui",
+              "endpoint_identity": "endpoint:test",
+              "expires_at": 9999999999.0,
+              "height": 256,
+              "identity_strength": "cryptographic",
+              "identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "model_id": "research-cpu-fake-model",
+              "operation": "txt2img",
+              "profile": "standalone-illustration",
+              "prompt_compiler_id": "sd15-tags-v1",
+              "prompt_compiler_version": 1,
+              "requirements": {},
+              "route_token": "route:test-1",
+              "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+              "style": null,
+              "width": 256,
+              "workflow_template_id": null,
+              "workflow_template_version": null
+            },
+            "seed": 42,
+            "status": "generated",
+            "warnings": []
+          }
+        ],
+        "run_id": "20260918T152323Z-aede91b8d850",
+        "schema_version": 1,
+        "state": "generated",
+        "warnings": []
+      },
+      "recovery": {
+        "recovery_invocation_count": 0,
+        "same_job": false,
+        "state": "new_submission_after_fault"
+      },
+      "reported_attempt_statuses": [
+        "failed",
+        "completed"
+      ],
+      "scheduled": true,
+      "second_error": null,
+      "second_error_code": null,
+      "started": true,
+      "submitted_job_ids": [
+        "cpu-single-stage-f02-0001",
+        "cpu-single-stage-f02-0002"
+      ],
+      "valid_completion": true,
+      "worker_execution_entry_count": 2,
+      "worker_execution_entry_ids": [
+        "F02-single-stage:execution-0001",
+        "F02-single-stage:execution-0002"
+      ]
+    },
+    {
+      "backend_submission_count": 1,
+      "boundary_classification": {
+        "reason": "first_call_outcome_ambiguous_without_durable_job_recovery",
+        "recovery_state": "outcome_unknown",
+        "state": "unresolved"
+      },
+      "case_id": "F02-two-stage",
+      "duplicate_execution": false,
+      "duplicate_submission": false,
+      "fault_class": "fault",
+      "fault_id": "F02",
+      "final_product_state": "partial",
+      "first_error": {
+        "category": "state",
+        "code": "backend_request_failed",
+        "details": {
+          "barrier": "after_execution_before_job_id_response",
+          "error_type": "RemoteDisconnected"
+        },
+        "raised": true
+      },
+      "first_error_barrier": "after_execution_before_job_id_response",
+      "first_error_code": "backend_request_failed",
+      "first_error_job_id": null,
+      "first_error_submission_outcome": null,
+      "first_product_state": "partial",
+      "injection_confirmed": true,
+      "observation_window_closed": true,
+      "oracle_evaluable": true,
+      "oracle_execution_count": 1,
+      "oracle_state": {
+        "artifact_hash": "a351bc16743410baebf8ef19392e2cc746fab6d30fa2174bb139f68e0df00a03",
+        "case_id": "F02-two-stage",
+        "events": [
+          {
+            "event": "request_received",
+            "job_id": "cpu-two-stage-f02-0001",
+            "operation_id": "F02-two-stage-operation",
+            "prompt_id": "F02-two-stage-operation"
+          },
+          {
+            "event": "queue_item_created",
+            "job_id": "cpu-two-stage-f02-0001",
+            "operation_id": "F02-two-stage-operation",
+            "prompt_id": "F02-two-stage-operation"
+          },
+          {
+            "event": "execution_started",
+            "execution_instance_id": "F02-two-stage:execution-0001",
+            "job_id": "cpu-two-stage-f02-0001",
+            "operation_id": "F02-two-stage-operation",
+            "prompt_id": "F02-two-stage-operation"
+          },
+          {
+            "artifact_hash": "a351bc16743410baebf8ef19392e2cc746fab6d30fa2174bb139f68e0df00a03",
+            "event": "execution_finished",
+            "execution_instance_id": "F02-two-stage:execution-0001",
+            "outcome": "succeeded"
+          }
+        ],
+        "execution_finished": 1,
+        "execution_instances": [
+          "F02-two-stage:execution-0001"
+        ],
+        "execution_started": 1,
+        "execution_state": "succeeded",
+        "job_ids": [
+          "cpu-two-stage-f02-0001"
+        ],
+        "oracle_evaluable": true,
+        "oracle_type": "independent_cpu_execution_oracle_v1",
+        "queue_item_created": 1,
+        "request_received": 1
+      },
+      "path_kind": "two-stage",
+      "raw_reported_state": {
+        "active_attempt": null,
+        "attempts": [
+          {
+            "action": "initial",
+            "change_summary": "Paired deterministic CPU fault characterization.",
+            "compiled_prompt": {
+              "compiler_id": "natural-v1",
+              "compiler_version": 1,
+              "negative_prompt": "text, watermark, telescope",
+              "positive_prompt": "dark quiet observatory background"
+            },
+            "compiled_subject_prompt": {
+              "compiler_id": "natural-v1",
+              "compiler_version": 1,
+              "negative_prompt": "cropped subject, duplicate telescope",
+              "positive_prompt": "one complete brass telescope on a tripod"
+            },
+            "error": {
+              "category": "state",
+              "code": "backend_request_failed",
+              "details": {
+                "barrier": "after_execution_before_job_id_response",
+                "error_type": "RemoteDisconnected"
+              },
+              "message": "Backend request failed."
+            },
+            "generation_plan": {
+              "authorization_scope": "private",
+              "backend": "comfyui",
+              "constraints": {
+                "height": 320,
+                "two_stage_layout": {
+                  "canvas": {
+                    "height": 320,
+                    "width": 640
+                  },
+                  "copy_protected_rect": {
+                    "height": 320,
+                    "width": 224,
+                    "x": 0,
+                    "y": 0
+                  },
+                  "feather_pixels": 0,
+                  "mode": "copy-subject-two-stage-v1",
+                  "subject_mask_rect": {
+                    "height": 288,
+                    "width": 320,
+                    "x": 304,
+                    "y": 16
+                  },
+                  "vae_grow_mask_by": 0
+                },
+                "width": 640
+              },
+              "endpoint_identity": "endpoint:test",
+              "identity_strength": "cryptographic",
+              "intent": "A calm coast at dawn.",
+              "max_rounds": 2,
+              "model_choice": "research-cpu-fake-model",
+              "model_identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "negative_prompt": "text, watermark, telescope",
+              "parameters": {
+                "two_stage_conditioning": {
+                  "subject_denoise": 0.9,
+                  "subject_negative_prompt": "cropped subject, duplicate telescope",
+                  "subject_prompt": "one complete brass telescope on a tripod"
+                }
+              },
+              "positive_prompt": "dark quiet observatory background",
+              "profile": "standalone-illustration",
+              "prompt_compiler_id": "natural-v1",
+              "prompt_compiler_version": 1,
+              "route_token": "route:test-2",
+              "style": null,
+              "upscale_policy": "off",
+              "workflow_template_id": "sdxl-two-stage-copy-subject",
+              "workflow_template_version": 1
+            },
+            "idempotency_key": "F02-two-stage-operation",
+            "partial_at": "2026-09-18T15:23:24Z",
+            "request_hash": "47d1108d40170e5289469b56a3983115fb841b61b46e32d82bf8aca806bd7f09",
+            "retained_stages": [
+              {
+                "image": {
+                  "height": 320,
+                  "mime_type": "image/png",
+                  "path": "round-01-base.png",
+                  "sha256": "a351bc16743410baebf8ef19392e2cc746fab6d30fa2174bb139f68e0df00a03",
+                  "width": 640
+                },
+                "role": "base",
+                "seed": 42
+              },
+              {
+                "image": {
+                  "height": 320,
+                  "mime_type": "image/png",
+                  "path": "round-01.png",
+                  "sha256": "a351bc16743410baebf8ef19392e2cc746fab6d30fa2174bb139f68e0df00a03",
+                  "width": 640
+                },
+                "role": "subject",
+                "seed": 43
+              }
+            ],
+            "route": {
+              "authorization_scope": "private",
+              "backend": "comfyui",
+              "component_bundle_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+              "control_sha256": "fffa3a0c07c3578c24a96d3f91e80bc80f8d67c5da4cad2523e2473ca6e5658b",
+              "endpoint_identity": "endpoint:test",
+              "expires_at": 9999999999.0,
+              "height": 320,
+              "identity_strength": "cryptographic",
+              "identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "model_id": "research-cpu-fake-model",
+              "operation": "txt2img",
+              "profile": "standalone-illustration",
+              "prompt_compiler_id": "natural-v1",
+              "prompt_compiler_version": 1,
+              "requirements": {
+                "two_stage_layout": {
+                  "canvas": {
+                    "height": 320,
+                    "width": 640
+                  },
+                  "copy_protected_rect": {
+                    "height": 320,
+                    "width": 224,
+                    "x": 0,
+                    "y": 0
+                  },
+                  "feather_pixels": 0,
+                  "mode": "copy-subject-two-stage-v1",
+                  "subject_mask_rect": {
+                    "height": 288,
+                    "width": 320,
+                    "x": 304,
+                    "y": 16
+                  },
+                  "vae_grow_mask_by": 0
+                }
+              },
+              "route_token": "route:test-2",
+              "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+              "style": null,
+              "width": 640,
+              "workflow_template_id": "sdxl-two-stage-copy-subject",
+              "workflow_template_version": 1
+            },
+            "seed": 42,
+            "stage_units": 2,
+            "started_at": "2026-09-18T15:23:24Z",
+            "status": "partial"
+          }
+        ],
+        "final": null,
+        "last_stable_state": "partial",
+        "manifest_revision": 3,
+        "masks": [],
+        "parent": null,
+        "recoverable_next_actions": [
+          "get_run"
+        ],
+        "request": {
+          "authorization_scope": "private",
+          "available_backends": [
+            "webui",
+            "diffusers",
+            "comfyui"
+          ],
+          "backend": "comfyui",
+          "constraints": {
+            "height": 320,
+            "two_stage_layout": {
+              "canvas": {
+                "height": 320,
+                "width": 640
+              },
+              "copy_protected_rect": {
+                "height": 320,
+                "width": 224,
+                "x": 0,
+                "y": 0
+              },
+              "feather_pixels": 0,
+              "mode": "copy-subject-two-stage-v1",
+              "subject_mask_rect": {
+                "height": 288,
+                "width": 320,
+                "x": 304,
+                "y": 16
+              },
+              "vae_grow_mask_by": 0
+            },
+            "width": 640
+          },
+          "endpoint_identity": "endpoint:test",
+          "identity_strength": "cryptographic",
+          "initial_two_stage_conditioning": {
+            "subject_denoise": 0.9,
+            "subject_negative_prompt": "cropped subject, duplicate telescope",
+            "subject_prompt": "one complete brass telescope on a tripod"
+          },
+          "intent": "A calm coast at dawn.",
+          "max_rounds": 2,
+          "merged_profile": {
+            "constraints": {
+              "aspect_ratio": "1:1",
+              "backend": "auto",
+              "height": 320,
+              "max_rounds": 3,
+              "two_stage_layout": {
+                "canvas": {
+                  "height": 320,
+                  "width": 640
+                },
+                "copy_protected_rect": {
+                  "height": 320,
+                  "width": 224,
+                  "x": 0,
+                  "y": 0
+                },
+                "feather_pixels": 0,
+                "mode": "copy-subject-two-stage-v1",
+                "subject_mask_rect": {
+                  "height": 288,
+                  "width": 320,
+                  "x": 304,
+                  "y": 16
+                },
+                "vae_grow_mask_by": 0
+              },
+              "upscale_policy": "auto",
+              "width": 640
+            },
+            "explore_mutable": [
+              "seed",
+              "steps",
+              "guidance_scale",
+              "regional_conditioning",
+              "two_stage_conditioning"
+            ],
+            "hard_failures": [
+              "missing_subject",
+              "severe_anatomy",
+              "unreadable_text",
+              "watermark",
+              "explicit_constraint_violation"
+            ],
+            "profile": {
+              "aliases": [
+                "illustration",
+                "single image",
+                "artwork"
+              ],
+              "defaults": {
+                "aspect_ratio": "1:1"
+              },
+              "description": "A single finished illustration intended to stand on its own.",
+              "examples": {
+                "character": [
+                  "Draw a character illustration of a sailor at sunset."
+                ],
+                "environment": [
+                  "Create an illustrated coastal environment after rain."
+                ],
+                "wallpaper": [
+                  "Make a wide desktop wallpaper of a calm ocean horizon."
+                ]
+              },
+              "explore_mutable": [
+                "seed",
+                "steps",
+                "guidance_scale",
+                "regional_conditioning",
+                "two_stage_conditioning"
+              ],
+              "hard_failures": [
+                "missing_subject",
+                "severe_anatomy",
+                "unreadable_text",
+                "watermark",
+                "explicit_constraint_violation"
+              ],
+              "id": "standalone-illustration",
+              "kind": "use_case",
+              "prohibited_content": [
+                "Do not add unrequested text or watermarks."
+              ],
+              "prompt_guidance": [
+                "State the subject, composition, lighting, and requested medium."
+              ],
+              "refine_mutable": [
+                "denoise_strength",
+                "steps",
+                "guidance_scale",
+                "regional_conditioning",
+                "two_stage_conditioning"
+              ],
+              "rubric": {
+                "detail_quality": {
+                  "critical": true,
+                  "description": "Important requested details are clear and deliberate.",
+                  "weight": 2
+                },
+                "face_quality": {
+                  "critical": true,
+                  "description": "Prominent visible faces are coherent, expressive, and anatomically plausible.",
+                  "weight": 2
+                },
+                "hand_quality": {
+                  "critical": true,
+                  "description": "Prominent visible hands have plausible anatomy and readable poses.",
+                  "weight": 2
+                },
+                "style_consistency": {
+                  "critical": true,
+                  "description": "The requested visual style is applied consistently.",
+                  "weight": 2
+                },
+                "subject_completeness": {
+                  "critical": true,
+                  "description": "The requested subject is complete and recognizable.",
+                  "weight": 2
+                }
+              },
+              "schema_version": 1,
+              "subtypes": [
+                "character",
+                "environment",
+                "wallpaper"
+              ]
+            },
+            "refine_mutable": [
+              "denoise_strength",
+              "steps",
+              "guidance_scale",
+              "regional_conditioning",
+              "two_stage_conditioning"
+            ],
+            "rubric": {
+              "artifact_control": {
+                "critical": true,
+                "weight": 1
+              },
+              "composition": {
+                "critical": true,
+                "weight": 1
+              },
+              "detail_quality": {
+                "critical": true,
+                "description": "Important requested details are clear and deliberate.",
+                "weight": 2
+              },
+              "face_quality": {
+                "critical": true,
+                "description": "Prominent visible faces are coherent, expressive, and anatomically plausible.",
+                "weight": 2
+              },
+              "hand_quality": {
+                "critical": true,
+                "description": "Prominent visible hands have plausible anatomy and readable poses.",
+                "weight": 2
+              },
+              "intent_adherence": {
+                "critical": true,
+                "weight": 1
+              },
+              "style_consistency": {
+                "critical": true,
+                "description": "The requested visual style is applied consistently.",
+                "weight": 2
+              },
+              "subject_completeness": {
+                "critical": true,
+                "description": "The requested subject is complete and recognizable.",
+                "weight": 2
+              },
+              "user_constraints": {
+                "weight": 1
+              }
+            },
+            "style": null
+          },
+          "model_choice": "research-cpu-fake-model",
+          "model_identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "model_record": {
+            "backend": "webui",
+            "backend_model_id": "actual-loaded-model",
+            "byte_size": 1,
+            "endpoint_identity": "endpoint:test",
+            "format": ".safetensors",
+            "id": "research-cpu-fake-model",
+            "identity_strength": "cryptographic",
+            "identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "license_id": "test-only",
+            "license_status": "approved",
+            "license_url": null,
+            "metadata": {},
+            "modified_ns": 1,
+            "public_evidence_eligible": true,
+            "recommended": {
+              "guidance": 6.0,
+              "resolution": {
+                "height": 256,
+                "width": 256
+              },
+              "sampler": "Euler a",
+              "scheduler": null,
+              "steps": 4
+            },
+            "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "source": "test-fixture"
+          },
+          "profile": "standalone-illustration",
+          "prompt_compiler_id": "natural-v1",
+          "prompt_compiler_version": 1,
+          "route": {
+            "authorization_scope": "private",
+            "backend": "comfyui",
+            "component_bundle_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "control_sha256": "fffa3a0c07c3578c24a96d3f91e80bc80f8d67c5da4cad2523e2473ca6e5658b",
+            "endpoint_identity": "endpoint:test",
+            "expires_at": 9999999999.0,
+            "height": 320,
+            "identity_strength": "cryptographic",
+            "identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "model_id": "research-cpu-fake-model",
+            "operation": "txt2img",
+            "profile": "standalone-illustration",
+            "prompt_compiler_id": "natural-v1",
+            "prompt_compiler_version": 1,
+            "requirements": {
+              "two_stage_layout": {
+                "canvas": {
+                  "height": 320,
+                  "width": 640
+                },
+                "copy_protected_rect": {
+                  "height": 320,
+                  "width": 224,
+                  "x": 0,
+                  "y": 0
+                },
+                "feather_pixels": 0,
+                "mode": "copy-subject-two-stage-v1",
+                "subject_mask_rect": {
+                  "height": 288,
+                  "width": 320,
+                  "x": 304,
+                  "y": 16
+                },
+                "vae_grow_mask_by": 0
+              }
+            },
+            "route_token": "route:test-2",
+            "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "style": null,
+            "width": 640,
+            "workflow_template_id": "sdxl-two-stage-copy-subject",
+            "workflow_template_version": 1
+          },
+          "route_token": "route:test-2",
+          "style": null,
+          "upscale_policy": "off",
+          "workflow_template_id": "sdxl-two-stage-copy-subject",
+          "workflow_template_version": 1
+        },
+        "reviews": [],
+        "rounds": [],
+        "run_id": "20260918T152324Z-a91d26b17d4b",
+        "schema_version": 1,
+        "stage_budget": {
+          "consumed": 2,
+          "maximum": 4
+        },
+        "state": "partial",
+        "warnings": []
+      },
+      "recovery": {
+        "recovery_invocation_count": 0,
+        "same_job": false,
+        "state": "outcome_unknown"
+      },
+      "reported_attempt_statuses": [
+        "partial"
+      ],
+      "scheduled": true,
+      "second_error": {
+        "category": "state",
+        "code": "two_stage_run_partial",
+        "details": {},
+        "raised": true
+      },
+      "second_error_code": "two_stage_run_partial",
+      "started": true,
+      "submitted_job_ids": [
+        "cpu-two-stage-f02-0001"
+      ],
+      "valid_completion": false,
+      "worker_execution_entry_count": 1,
+      "worker_execution_entry_ids": [
+        "F02-two-stage:execution-0001"
+      ]
+    },
+    {
+      "backend_submission_count": 2,
+      "boundary_classification": {
+        "reason": "new_backend_submission_observed_after_fault",
+        "recovery_state": "new_submission_after_fault",
+        "state": "unresolved"
+      },
+      "case_id": "F03-single-stage",
+      "duplicate_execution": true,
+      "duplicate_submission": true,
+      "fault_class": "fault",
+      "fault_id": "F03",
+      "final_product_state": "generated",
+      "first_error": {
+        "category": "state",
+        "code": "comfyui_job_timed_out",
+        "details": {
+          "barrier": "after_job_id_known_before_completion_response",
+          "job_id": "cpu-single-stage-f03-0001",
+          "state": "completed"
+        },
+        "raised": true
+      },
+      "first_error_barrier": "after_job_id_known_before_completion_response",
+      "first_error_code": "comfyui_job_timed_out",
+      "first_error_job_id": "cpu-single-stage-f03-0001",
+      "first_error_submission_outcome": null,
+      "first_product_state": "created",
+      "injection_confirmed": true,
+      "observation_window_closed": true,
+      "oracle_evaluable": true,
+      "oracle_execution_count": 2,
+      "oracle_state": {
+        "artifact_hash": "11f2c9c919dcaaa53fcfbf16290e641da61f2122a8921cc01c56fa96e219ce5e",
+        "case_id": "F03-single-stage",
+        "events": [
+          {
+            "event": "request_received",
+            "job_id": "cpu-single-stage-f03-0001",
+            "operation_id": "F03-single-stage-operation",
+            "prompt_id": "F03-single-stage-operation"
+          },
+          {
+            "event": "queue_item_created",
+            "job_id": "cpu-single-stage-f03-0001",
+            "operation_id": "F03-single-stage-operation",
+            "prompt_id": "F03-single-stage-operation"
+          },
+          {
+            "event": "execution_started",
+            "execution_instance_id": "F03-single-stage:execution-0001",
+            "job_id": "cpu-single-stage-f03-0001",
+            "operation_id": "F03-single-stage-operation",
+            "prompt_id": "F03-single-stage-operation"
+          },
+          {
+            "artifact_hash": "11f2c9c919dcaaa53fcfbf16290e641da61f2122a8921cc01c56fa96e219ce5e",
+            "event": "execution_finished",
+            "execution_instance_id": "F03-single-stage:execution-0001",
+            "outcome": "succeeded"
+          },
+          {
+            "event": "job_id_revealed",
+            "job_id": "cpu-single-stage-f03-0001",
+            "operation_id": "F03-single-stage-operation",
+            "prompt_id": "F03-single-stage-operation"
+          },
+          {
+            "event": "request_received",
+            "job_id": "cpu-single-stage-f03-0002",
+            "operation_id": "F03-single-stage-operation",
+            "prompt_id": "F03-single-stage-operation"
+          },
+          {
+            "event": "queue_item_created",
+            "job_id": "cpu-single-stage-f03-0002",
+            "operation_id": "F03-single-stage-operation",
+            "prompt_id": "F03-single-stage-operation"
+          },
+          {
+            "event": "execution_started",
+            "execution_instance_id": "F03-single-stage:execution-0002",
+            "job_id": "cpu-single-stage-f03-0002",
+            "operation_id": "F03-single-stage-operation",
+            "prompt_id": "F03-single-stage-operation"
+          },
+          {
+            "artifact_hash": "11f2c9c919dcaaa53fcfbf16290e641da61f2122a8921cc01c56fa96e219ce5e",
+            "event": "execution_finished",
+            "execution_instance_id": "F03-single-stage:execution-0002",
+            "outcome": "succeeded"
+          },
+          {
+            "event": "job_id_revealed",
+            "job_id": "cpu-single-stage-f03-0002",
+            "operation_id": "F03-single-stage-operation",
+            "prompt_id": "F03-single-stage-operation"
+          }
+        ],
+        "execution_finished": 2,
+        "execution_instances": [
+          "F03-single-stage:execution-0001",
+          "F03-single-stage:execution-0002"
+        ],
+        "execution_started": 2,
+        "execution_state": "succeeded",
+        "job_ids": [
+          "cpu-single-stage-f03-0001",
+          "cpu-single-stage-f03-0002"
+        ],
+        "oracle_evaluable": true,
+        "oracle_type": "independent_cpu_execution_oracle_v1",
+        "queue_item_created": 2,
+        "request_received": 2
+      },
+      "path_kind": "single-stage",
+      "raw_reported_state": {
+        "active_attempt": null,
+        "attempts": [
+          {
+            "action": "initial",
+            "change_summary": "Initial candidate.",
+            "compiled_prompt": {
+              "compiler_id": "sd15-tags-v1",
+              "compiler_version": 1,
+              "negative_prompt": "watermark, text",
+              "positive_prompt": "calm coast at dawn"
+            },
+            "error": {
+              "category": "state",
+              "code": "comfyui_job_timed_out",
+              "details": {
+                "barrier": "after_job_id_known_before_completion_response",
+                "job_id": "cpu-single-stage-f03-0001",
+                "state": "completed"
+              },
+              "message": "Synthetic completion response loss after the job ID became known."
+            },
+            "failed_at": "2026-09-18T15:23:24Z",
+            "generation_plan": {
+              "authorization_scope": "private",
+              "backend": "webui",
+              "constraints": {
+                "height": 256,
+                "width": 256
+              },
+              "endpoint_identity": "endpoint:test",
+              "identity_strength": "cryptographic",
+              "intent": "A calm coast at dawn.",
+              "max_rounds": 2,
+              "model_choice": "research-cpu-fake-model",
+              "model_identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "negative_prompt": "watermark, text",
+              "parameters": {
+                "mode": "txt2img",
+                "scheduler": "euler"
+              },
+              "positive_prompt": "calm coast at dawn",
+              "profile": "standalone-illustration",
+              "prompt_compiler_id": "sd15-tags-v1",
+              "prompt_compiler_version": 1,
+              "route_token": "route:test-1",
+              "style": null,
+              "upscale_policy": "off",
+              "workflow_template_id": null,
+              "workflow_template_version": null
+            },
+            "idempotency_key": "F03-single-stage-operation",
+            "request_hash": "4d640a809a04e43c90c4bb860143780cba7cfbe864f7ac9852f185b2c3ed0029",
+            "route": {
+              "authorization_scope": "private",
+              "backend": "webui",
+              "endpoint_identity": "endpoint:test",
+              "expires_at": 9999999999.0,
+              "height": 256,
+              "identity_strength": "cryptographic",
+              "identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "model_id": "research-cpu-fake-model",
+              "operation": "txt2img",
+              "profile": "standalone-illustration",
+              "prompt_compiler_id": "sd15-tags-v1",
+              "prompt_compiler_version": 1,
+              "requirements": {},
+              "route_token": "route:test-1",
+              "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+              "style": null,
+              "width": 256,
+              "workflow_template_id": null,
+              "workflow_template_version": null
+            },
+            "seed": 42,
+            "started_at": "2026-09-18T15:23:24Z",
+            "status": "failed"
+          },
+          {
+            "action": "initial",
+            "backend_result": {
+              "backend": "webui",
+              "endpoint_identity": "endpoint:test",
+              "height": 256,
+              "identity_strength": "cryptographic",
+              "mode": "txt2img",
+              "model": "actual-loaded-model",
+              "model_identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "ok": true,
+              "path": "round-01.png",
+              "prompt_compiler_id": "sd15-tags-v1",
+              "prompt_compiler_version": 1,
+              "seed": 42,
+              "width": 256,
+              "workflow_template_id": null,
+              "workflow_template_version": null
+            },
+            "change_summary": "Initial candidate.",
+            "compiled_prompt": {
+              "compiler_id": "sd15-tags-v1",
+              "compiler_version": 1,
+              "negative_prompt": "watermark, text",
+              "positive_prompt": "calm coast at dawn"
+            },
+            "completed_at": "2026-09-18T15:23:24Z",
+            "generation_plan": {
+              "authorization_scope": "private",
+              "backend": "webui",
+              "constraints": {
+                "height": 256,
+                "width": 256
+              },
+              "endpoint_identity": "endpoint:test",
+              "identity_strength": "cryptographic",
+              "intent": "A calm coast at dawn.",
+              "max_rounds": 2,
+              "model_choice": "research-cpu-fake-model",
+              "model_identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "negative_prompt": "watermark, text",
+              "parameters": {
+                "mode": "txt2img",
+                "scheduler": "euler"
+              },
+              "positive_prompt": "calm coast at dawn",
+              "profile": "standalone-illustration",
+              "prompt_compiler_id": "sd15-tags-v1",
+              "prompt_compiler_version": 1,
+              "route_token": "route:test-1",
+              "style": null,
+              "upscale_policy": "off",
+              "workflow_template_id": null,
+              "workflow_template_version": null
+            },
+            "idempotency_key": "F03-single-stage-operation",
+            "image": {
+              "height": 256,
+              "mime_type": "image/png",
+              "path": "round-01.png",
+              "sha256": "11f2c9c919dcaaa53fcfbf16290e641da61f2122a8921cc01c56fa96e219ce5e",
+              "width": 256
+            },
+            "request_hash": "4d640a809a04e43c90c4bb860143780cba7cfbe864f7ac9852f185b2c3ed0029",
+            "round_number": 1,
+            "route": {
+              "authorization_scope": "private",
+              "backend": "webui",
+              "endpoint_identity": "endpoint:test",
+              "expires_at": 9999999999.0,
+              "height": 256,
+              "identity_strength": "cryptographic",
+              "identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "model_id": "research-cpu-fake-model",
+              "operation": "txt2img",
+              "profile": "standalone-illustration",
+              "prompt_compiler_id": "sd15-tags-v1",
+              "prompt_compiler_version": 1,
+              "requirements": {},
+              "route_token": "route:test-1",
+              "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+              "style": null,
+              "width": 256,
+              "workflow_template_id": null,
+              "workflow_template_version": null
+            },
+            "seed": 42,
+            "started_at": "2026-09-18T15:23:24Z",
+            "status": "completed"
+          }
+        ],
+        "final": null,
+        "last_stable_state": "generated",
+        "manifest_revision": 6,
+        "masks": [],
+        "parent": null,
+        "recoverable_next_actions": [
+          "record_review"
+        ],
+        "request": {
+          "authorization_scope": "private",
+          "available_backends": [
+            "webui",
+            "diffusers"
+          ],
+          "backend": "webui",
+          "constraints": {
+            "height": 256,
+            "width": 256
+          },
+          "endpoint_identity": "endpoint:test",
+          "identity_strength": "cryptographic",
+          "intent": "A calm coast at dawn.",
+          "max_rounds": 2,
+          "merged_profile": {
+            "constraints": {
+              "aspect_ratio": "1:1",
+              "backend": "auto",
+              "height": 256,
+              "max_rounds": 3,
+              "upscale_policy": "auto",
+              "width": 256
+            },
+            "explore_mutable": [
+              "seed",
+              "steps",
+              "guidance_scale",
+              "regional_conditioning",
+              "two_stage_conditioning"
+            ],
+            "hard_failures": [
+              "missing_subject",
+              "severe_anatomy",
+              "unreadable_text",
+              "watermark",
+              "explicit_constraint_violation"
+            ],
+            "profile": {
+              "aliases": [
+                "illustration",
+                "single image",
+                "artwork"
+              ],
+              "defaults": {
+                "aspect_ratio": "1:1"
+              },
+              "description": "A single finished illustration intended to stand on its own.",
+              "examples": {
+                "character": [
+                  "Draw a character illustration of a sailor at sunset."
+                ],
+                "environment": [
+                  "Create an illustrated coastal environment after rain."
+                ],
+                "wallpaper": [
+                  "Make a wide desktop wallpaper of a calm ocean horizon."
+                ]
+              },
+              "explore_mutable": [
+                "seed",
+                "steps",
+                "guidance_scale",
+                "regional_conditioning",
+                "two_stage_conditioning"
+              ],
+              "hard_failures": [
+                "missing_subject",
+                "severe_anatomy",
+                "unreadable_text",
+                "watermark",
+                "explicit_constraint_violation"
+              ],
+              "id": "standalone-illustration",
+              "kind": "use_case",
+              "prohibited_content": [
+                "Do not add unrequested text or watermarks."
+              ],
+              "prompt_guidance": [
+                "State the subject, composition, lighting, and requested medium."
+              ],
+              "refine_mutable": [
+                "denoise_strength",
+                "steps",
+                "guidance_scale",
+                "regional_conditioning",
+                "two_stage_conditioning"
+              ],
+              "rubric": {
+                "detail_quality": {
+                  "critical": true,
+                  "description": "Important requested details are clear and deliberate.",
+                  "weight": 2
+                },
+                "face_quality": {
+                  "critical": true,
+                  "description": "Prominent visible faces are coherent, expressive, and anatomically plausible.",
+                  "weight": 2
+                },
+                "hand_quality": {
+                  "critical": true,
+                  "description": "Prominent visible hands have plausible anatomy and readable poses.",
+                  "weight": 2
+                },
+                "style_consistency": {
+                  "critical": true,
+                  "description": "The requested visual style is applied consistently.",
+                  "weight": 2
+                },
+                "subject_completeness": {
+                  "critical": true,
+                  "description": "The requested subject is complete and recognizable.",
+                  "weight": 2
+                }
+              },
+              "schema_version": 1,
+              "subtypes": [
+                "character",
+                "environment",
+                "wallpaper"
+              ]
+            },
+            "refine_mutable": [
+              "denoise_strength",
+              "steps",
+              "guidance_scale",
+              "regional_conditioning",
+              "two_stage_conditioning"
+            ],
+            "rubric": {
+              "artifact_control": {
+                "critical": true,
+                "weight": 1
+              },
+              "composition": {
+                "critical": true,
+                "weight": 1
+              },
+              "detail_quality": {
+                "critical": true,
+                "description": "Important requested details are clear and deliberate.",
+                "weight": 2
+              },
+              "face_quality": {
+                "critical": true,
+                "description": "Prominent visible faces are coherent, expressive, and anatomically plausible.",
+                "weight": 2
+              },
+              "hand_quality": {
+                "critical": true,
+                "description": "Prominent visible hands have plausible anatomy and readable poses.",
+                "weight": 2
+              },
+              "intent_adherence": {
+                "critical": true,
+                "weight": 1
+              },
+              "style_consistency": {
+                "critical": true,
+                "description": "The requested visual style is applied consistently.",
+                "weight": 2
+              },
+              "subject_completeness": {
+                "critical": true,
+                "description": "The requested subject is complete and recognizable.",
+                "weight": 2
+              },
+              "user_constraints": {
+                "weight": 1
+              }
+            },
+            "style": null
+          },
+          "model_choice": "research-cpu-fake-model",
+          "model_identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "model_record": {
+            "backend": "webui",
+            "backend_model_id": "actual-loaded-model",
+            "byte_size": 1,
+            "endpoint_identity": "endpoint:test",
+            "format": ".safetensors",
+            "id": "research-cpu-fake-model",
+            "identity_strength": "cryptographic",
+            "identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "license_id": "test-only",
+            "license_status": "approved",
+            "license_url": null,
+            "metadata": {},
+            "modified_ns": 1,
+            "public_evidence_eligible": true,
+            "recommended": {
+              "guidance": 6.0,
+              "resolution": {
+                "height": 256,
+                "width": 256
+              },
+              "sampler": "Euler a",
+              "scheduler": null,
+              "steps": 4
+            },
+            "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "source": "test-fixture"
+          },
+          "profile": "standalone-illustration",
+          "prompt_compiler_id": "sd15-tags-v1",
+          "prompt_compiler_version": 1,
+          "route": {
+            "authorization_scope": "private",
+            "backend": "webui",
+            "endpoint_identity": "endpoint:test",
+            "expires_at": 9999999999.0,
+            "height": 256,
+            "identity_strength": "cryptographic",
+            "identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "model_id": "research-cpu-fake-model",
+            "operation": "txt2img",
+            "profile": "standalone-illustration",
+            "prompt_compiler_id": "sd15-tags-v1",
+            "prompt_compiler_version": 1,
+            "requirements": {},
+            "route_token": "route:test-1",
+            "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "style": null,
+            "width": 256,
+            "workflow_template_id": null,
+            "workflow_template_version": null
+          },
+          "route_token": "route:test-1",
+          "style": null,
+          "upscale_policy": "off",
+          "workflow_template_id": null,
+          "workflow_template_version": null
+        },
+        "reviews": [],
+        "rounds": [
+          {
+            "action": "initial",
+            "backend": "webui",
+            "backend_result": {
+              "backend": "webui",
+              "endpoint_identity": "endpoint:test",
+              "height": 256,
+              "identity_strength": "cryptographic",
+              "mode": "txt2img",
+              "model": "actual-loaded-model",
+              "model_identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "ok": true,
+              "path": "round-01.png",
+              "prompt_compiler_id": "sd15-tags-v1",
+              "prompt_compiler_version": 1,
+              "seed": 42,
+              "width": 256,
+              "workflow_template_id": null,
+              "workflow_template_version": null
+            },
+            "change_summary": "Initial candidate.",
+            "compiled_prompt": {
+              "compiler_id": "sd15-tags-v1",
+              "compiler_version": 1,
+              "negative_prompt": "watermark, text",
+              "positive_prompt": "calm coast at dawn"
+            },
+            "generation_plan": {
+              "authorization_scope": "private",
+              "backend": "webui",
+              "constraints": {
+                "height": 256,
+                "width": 256
+              },
+              "endpoint_identity": "endpoint:test",
+              "identity_strength": "cryptographic",
+              "intent": "A calm coast at dawn.",
+              "max_rounds": 2,
+              "model_choice": "research-cpu-fake-model",
+              "model_identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "negative_prompt": "watermark, text",
+              "parameters": {
+                "mode": "txt2img",
+                "scheduler": "euler"
+              },
+              "positive_prompt": "calm coast at dawn",
+              "profile": "standalone-illustration",
+              "prompt_compiler_id": "sd15-tags-v1",
+              "prompt_compiler_version": 1,
+              "route_token": "route:test-1",
+              "style": null,
+              "upscale_policy": "off",
+              "workflow_template_id": null,
+              "workflow_template_version": null
+            },
+            "idempotency_key": "F03-single-stage-operation",
+            "image": {
+              "height": 256,
+              "mime_type": "image/png",
+              "path": "round-01.png",
+              "sha256": "11f2c9c919dcaaa53fcfbf16290e641da61f2122a8921cc01c56fa96e219ce5e",
+              "width": 256
+            },
+            "mode": "txt2img",
+            "model": "actual-loaded-model",
+            "preview": {
+              "height": 256,
+              "mime_type": "image/jpeg",
+              "path": "round-01-preview.jpg",
+              "sha256": "fb62b3fb664fb679166dec487f60cdf788c7c71573b7633372bba97464b68783",
+              "width": 256
+            },
+            "registry_metadata": {
+              "model": {
+                "id": "research-cpu-fake-model",
+                "license_id": "test-only",
+                "license_status": "approved",
+                "license_url": null,
+                "source": "test-fixture"
+              },
+              "profile": {
+                "id": "standalone-illustration",
+                "schema_version": 1
+              },
+              "style": null
+            },
+            "request_hash": "4d640a809a04e43c90c4bb860143780cba7cfbe864f7ac9852f185b2c3ed0029",
+            "round_number": 1,
+            "route": {
+              "authorization_scope": "private",
+              "backend": "webui",
+              "endpoint_identity": "endpoint:test",
+              "expires_at": 9999999999.0,
+              "height": 256,
+              "identity_strength": "cryptographic",
+              "identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "model_id": "research-cpu-fake-model",
+              "operation": "txt2img",
+              "profile": "standalone-illustration",
+              "prompt_compiler_id": "sd15-tags-v1",
+              "prompt_compiler_version": 1,
+              "requirements": {},
+              "route_token": "route:test-1",
+              "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+              "style": null,
+              "width": 256,
+              "workflow_template_id": null,
+              "workflow_template_version": null
+            },
+            "seed": 42,
+            "status": "generated",
+            "warnings": []
+          }
+        ],
+        "run_id": "20260918T152324Z-bf512750dc41",
+        "schema_version": 1,
+        "state": "generated",
+        "warnings": []
+      },
+      "recovery": {
+        "recovery_invocation_count": 0,
+        "same_job": false,
+        "state": "new_submission_after_fault"
+      },
+      "reported_attempt_statuses": [
+        "failed",
+        "completed"
+      ],
+      "scheduled": true,
+      "second_error": null,
+      "second_error_code": null,
+      "started": true,
+      "submitted_job_ids": [
+        "cpu-single-stage-f03-0001",
+        "cpu-single-stage-f03-0002"
+      ],
+      "valid_completion": true,
+      "worker_execution_entry_count": 2,
+      "worker_execution_entry_ids": [
+        "F03-single-stage:execution-0001",
+        "F03-single-stage:execution-0002"
+      ]
+    },
+    {
+      "backend_submission_count": 1,
+      "boundary_classification": {
+        "reason": "same_job_reconciliation_observed_without_worker_reentry",
+        "recovery_state": "same_job_reconciled",
+        "state": "resolved"
+      },
+      "case_id": "F03-two-stage",
+      "duplicate_execution": false,
+      "duplicate_submission": false,
+      "fault_class": "fault",
+      "fault_id": "F03",
+      "final_product_state": "generated",
+      "first_error": {
+        "category": "state",
+        "code": "comfyui_job_timed_out",
+        "details": {
+          "barrier": "after_job_id_known_before_completion_response",
+          "job_id": "cpu-two-stage-f03-0001",
+          "state": "completed"
+        },
+        "raised": true
+      },
+      "first_error_barrier": "after_job_id_known_before_completion_response",
+      "first_error_code": "comfyui_job_timed_out",
+      "first_error_job_id": "cpu-two-stage-f03-0001",
+      "first_error_submission_outcome": null,
+      "first_product_state": "unresolved",
+      "injection_confirmed": true,
+      "observation_window_closed": true,
+      "oracle_evaluable": true,
+      "oracle_execution_count": 1,
+      "oracle_state": {
+        "artifact_hash": "a351bc16743410baebf8ef19392e2cc746fab6d30fa2174bb139f68e0df00a03",
+        "case_id": "F03-two-stage",
+        "events": [
+          {
+            "event": "request_received",
+            "job_id": "cpu-two-stage-f03-0001",
+            "operation_id": "F03-two-stage-operation",
+            "prompt_id": "F03-two-stage-operation"
+          },
+          {
+            "event": "queue_item_created",
+            "job_id": "cpu-two-stage-f03-0001",
+            "operation_id": "F03-two-stage-operation",
+            "prompt_id": "F03-two-stage-operation"
+          },
+          {
+            "event": "execution_started",
+            "execution_instance_id": "F03-two-stage:execution-0001",
+            "job_id": "cpu-two-stage-f03-0001",
+            "operation_id": "F03-two-stage-operation",
+            "prompt_id": "F03-two-stage-operation"
+          },
+          {
+            "artifact_hash": "a351bc16743410baebf8ef19392e2cc746fab6d30fa2174bb139f68e0df00a03",
+            "event": "execution_finished",
+            "execution_instance_id": "F03-two-stage:execution-0001",
+            "outcome": "succeeded"
+          },
+          {
+            "event": "job_id_revealed",
+            "job_id": "cpu-two-stage-f03-0001",
+            "operation_id": "F03-two-stage-operation",
+            "prompt_id": "F03-two-stage-operation"
+          }
+        ],
+        "execution_finished": 1,
+        "execution_instances": [
+          "F03-two-stage:execution-0001"
+        ],
+        "execution_started": 1,
+        "execution_state": "succeeded",
+        "job_ids": [
+          "cpu-two-stage-f03-0001"
+        ],
+        "oracle_evaluable": true,
+        "oracle_type": "independent_cpu_execution_oracle_v1",
+        "queue_item_created": 1,
+        "request_received": 1
+      },
+      "path_kind": "two-stage",
+      "raw_reported_state": {
+        "active_attempt": null,
+        "attempts": [
+          {
+            "action": "initial",
+            "backend_job": {
+              "backend": "comfyui",
+              "job_id": "cpu-two-stage-f03-0001"
+            },
+            "change_summary": "Paired deterministic CPU fault characterization.",
+            "compiled_prompt": {
+              "compiler_id": "natural-v1",
+              "compiler_version": 1,
+              "negative_prompt": "text, watermark, telescope",
+              "positive_prompt": "dark quiet observatory background"
+            },
+            "compiled_subject_prompt": {
+              "compiler_id": "natural-v1",
+              "compiler_version": 1,
+              "negative_prompt": "cropped subject, duplicate telescope",
+              "positive_prompt": "one complete brass telescope on a tripod"
+            },
+            "error": {
+              "category": "state",
+              "code": "comfyui_job_timed_out",
+              "details": {
+                "barrier": "after_job_id_known_before_completion_response",
+                "job_id": "cpu-two-stage-f03-0001",
+                "state": "completed"
+              },
+              "message": "Synthetic completion response loss after the job ID became known."
+            },
+            "generation_plan": {
+              "authorization_scope": "private",
+              "backend": "comfyui",
+              "constraints": {
+                "height": 320,
+                "two_stage_layout": {
+                  "canvas": {
+                    "height": 320,
+                    "width": 640
+                  },
+                  "copy_protected_rect": {
+                    "height": 320,
+                    "width": 224,
+                    "x": 0,
+                    "y": 0
+                  },
+                  "feather_pixels": 0,
+                  "mode": "copy-subject-two-stage-v1",
+                  "subject_mask_rect": {
+                    "height": 288,
+                    "width": 320,
+                    "x": 304,
+                    "y": 16
+                  },
+                  "vae_grow_mask_by": 0
+                },
+                "width": 640
+              },
+              "endpoint_identity": "endpoint:test",
+              "identity_strength": "cryptographic",
+              "intent": "A calm coast at dawn.",
+              "max_rounds": 2,
+              "model_choice": "research-cpu-fake-model",
+              "model_identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "negative_prompt": "text, watermark, telescope",
+              "parameters": {
+                "two_stage_conditioning": {
+                  "subject_denoise": 0.9,
+                  "subject_negative_prompt": "cropped subject, duplicate telescope",
+                  "subject_prompt": "one complete brass telescope on a tripod"
+                }
+              },
+              "positive_prompt": "dark quiet observatory background",
+              "profile": "standalone-illustration",
+              "prompt_compiler_id": "natural-v1",
+              "prompt_compiler_version": 1,
+              "route_token": "route:test-2",
+              "style": null,
+              "upscale_policy": "off",
+              "workflow_template_id": "sdxl-two-stage-copy-subject",
+              "workflow_template_version": 1
+            },
+            "idempotency_key": "F03-two-stage-operation",
+            "request_hash": "47d1108d40170e5289469b56a3983115fb841b61b46e32d82bf8aca806bd7f09",
+            "route": {
+              "authorization_scope": "private",
+              "backend": "comfyui",
+              "component_bundle_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+              "control_sha256": "fffa3a0c07c3578c24a96d3f91e80bc80f8d67c5da4cad2523e2473ca6e5658b",
+              "endpoint_identity": "endpoint:test",
+              "expires_at": 9999999999.0,
+              "height": 320,
+              "identity_strength": "cryptographic",
+              "identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "model_id": "research-cpu-fake-model",
+              "operation": "txt2img",
+              "profile": "standalone-illustration",
+              "prompt_compiler_id": "natural-v1",
+              "prompt_compiler_version": 1,
+              "requirements": {
+                "two_stage_layout": {
+                  "canvas": {
+                    "height": 320,
+                    "width": 640
+                  },
+                  "copy_protected_rect": {
+                    "height": 320,
+                    "width": 224,
+                    "x": 0,
+                    "y": 0
+                  },
+                  "feather_pixels": 0,
+                  "mode": "copy-subject-two-stage-v1",
+                  "subject_mask_rect": {
+                    "height": 288,
+                    "width": 320,
+                    "x": 304,
+                    "y": 16
+                  },
+                  "vae_grow_mask_by": 0
+                }
+              },
+              "route_token": "route:test-2",
+              "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+              "style": null,
+              "width": 640,
+              "workflow_template_id": "sdxl-two-stage-copy-subject",
+              "workflow_template_version": 1
+            },
+            "seed": 42,
+            "started_at": "2026-09-18T15:23:25Z",
+            "status": "unresolved",
+            "unresolved_at": "2026-09-18T15:23:25Z"
+          },
+          {
+            "action": "initial",
+            "backend_job": {
+              "backend": "comfyui",
+              "job_id": "cpu-two-stage-f03-0001"
+            },
+            "backend_result": {
+              "backend": "comfyui",
+              "component_bundle_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+              "control_sha256": "fffa3a0c07c3578c24a96d3f91e80bc80f8d67c5da4cad2523e2473ca6e5658b",
+              "endpoint_identity": "endpoint:test",
+              "height": 320,
+              "identity_strength": "cryptographic",
+              "mask_output": {
+                "path": "round-01-mask.png"
+              },
+              "mode": "txt2img",
+              "model": "actual-loaded-model",
+              "model_identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "ok": true,
+              "path": "round-01.png",
+              "prompt_compiler_id": "natural-v1",
+              "prompt_compiler_version": 1,
+              "seed": 42,
+              "stage_outputs": {
+                "base": {
+                  "path": "round-01-base.png"
+                },
+                "final": {
+                  "path": "round-01.png"
+                }
+              },
+              "subject_seed": 43,
+              "width": 640,
+              "workflow_job_id": "cpu-two-stage-f03-0001",
+              "workflow_template_id": "sdxl-two-stage-copy-subject",
+              "workflow_template_version": 1
+            },
+            "change_summary": "Paired deterministic CPU fault characterization.",
+            "compiled_prompt": {
+              "compiler_id": "natural-v1",
+              "compiler_version": 1,
+              "negative_prompt": "text, watermark, telescope",
+              "positive_prompt": "dark quiet observatory background"
+            },
+            "compiled_subject_prompt": {
+              "compiler_id": "natural-v1",
+              "compiler_version": 1,
+              "negative_prompt": "cropped subject, duplicate telescope",
+              "positive_prompt": "one complete brass telescope on a tripod"
+            },
+            "completed_at": "2026-09-18T15:23:25Z",
+            "generation_plan": {
+              "authorization_scope": "private",
+              "backend": "comfyui",
+              "constraints": {
+                "height": 320,
+                "two_stage_layout": {
+                  "canvas": {
+                    "height": 320,
+                    "width": 640
+                  },
+                  "copy_protected_rect": {
+                    "height": 320,
+                    "width": 224,
+                    "x": 0,
+                    "y": 0
+                  },
+                  "feather_pixels": 0,
+                  "mode": "copy-subject-two-stage-v1",
+                  "subject_mask_rect": {
+                    "height": 288,
+                    "width": 320,
+                    "x": 304,
+                    "y": 16
+                  },
+                  "vae_grow_mask_by": 0
+                },
+                "width": 640
+              },
+              "endpoint_identity": "endpoint:test",
+              "identity_strength": "cryptographic",
+              "intent": "A calm coast at dawn.",
+              "max_rounds": 2,
+              "model_choice": "research-cpu-fake-model",
+              "model_identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "negative_prompt": "text, watermark, telescope",
+              "parameters": {
+                "two_stage_conditioning": {
+                  "subject_denoise": 0.9,
+                  "subject_negative_prompt": "cropped subject, duplicate telescope",
+                  "subject_prompt": "one complete brass telescope on a tripod"
+                }
+              },
+              "positive_prompt": "dark quiet observatory background",
+              "profile": "standalone-illustration",
+              "prompt_compiler_id": "natural-v1",
+              "prompt_compiler_version": 1,
+              "route_token": "route:test-2",
+              "style": null,
+              "upscale_policy": "off",
+              "workflow_template_id": "sdxl-two-stage-copy-subject",
+              "workflow_template_version": 1
+            },
+            "idempotency_key": "F03-two-stage-operation",
+            "image": {
+              "height": 320,
+              "mime_type": "image/png",
+              "path": "round-01.png",
+              "sha256": "a351bc16743410baebf8ef19392e2cc746fab6d30fa2174bb139f68e0df00a03",
+              "width": 640
+            },
+            "mask_artifact": {
+              "height": 320,
+              "mime_type": "image/png",
+              "path": "round-01-mask.png",
+              "sha256": "4a6f76ce737a2e1160c00f783450c8a9d16c6c058109ce3f0e49805d74e52c68",
+              "soft_mask_validation": {
+                "channels": 3,
+                "copy_nonzero_pixels": 0,
+                "edge_profiles_checked": 1216,
+                "feather_monotonic": true,
+                "feather_pixels": 0,
+                "height": 320,
+                "interior_positive_pixels": 90948,
+                "outside_nonzero_pixels": 0,
+                "width": 640
+              },
+              "width": 640
+            },
+            "request_hash": "47d1108d40170e5289469b56a3983115fb841b61b46e32d82bf8aca806bd7f09",
+            "round_number": 1,
+            "route": {
+              "authorization_scope": "private",
+              "backend": "comfyui",
+              "component_bundle_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+              "control_sha256": "fffa3a0c07c3578c24a96d3f91e80bc80f8d67c5da4cad2523e2473ca6e5658b",
+              "endpoint_identity": "endpoint:test",
+              "expires_at": 9999999999.0,
+              "height": 320,
+              "identity_strength": "cryptographic",
+              "identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "model_id": "research-cpu-fake-model",
+              "operation": "txt2img",
+              "profile": "standalone-illustration",
+              "prompt_compiler_id": "natural-v1",
+              "prompt_compiler_version": 1,
+              "requirements": {
+                "two_stage_layout": {
+                  "canvas": {
+                    "height": 320,
+                    "width": 640
+                  },
+                  "copy_protected_rect": {
+                    "height": 320,
+                    "width": 224,
+                    "x": 0,
+                    "y": 0
+                  },
+                  "feather_pixels": 0,
+                  "mode": "copy-subject-two-stage-v1",
+                  "subject_mask_rect": {
+                    "height": 288,
+                    "width": 320,
+                    "x": 304,
+                    "y": 16
+                  },
+                  "vae_grow_mask_by": 0
+                }
+              },
+              "route_token": "route:test-2",
+              "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+              "style": null,
+              "width": 640,
+              "workflow_template_id": "sdxl-two-stage-copy-subject",
+              "workflow_template_version": 1
+            },
+            "seed": 42,
+            "stages": [
+              {
+                "image": {
+                  "height": 320,
+                  "mime_type": "image/png",
+                  "path": "round-01-base.png",
+                  "sha256": "a351bc16743410baebf8ef19392e2cc746fab6d30fa2174bb139f68e0df00a03",
+                  "width": 640
+                },
+                "role": "base",
+                "seed": 42
+              },
+              {
+                "image": {
+                  "height": 320,
+                  "mime_type": "image/png",
+                  "path": "round-01.png",
+                  "sha256": "a351bc16743410baebf8ef19392e2cc746fab6d30fa2174bb139f68e0df00a03",
+                  "width": 640
+                },
+                "role": "subject",
+                "seed": 43
+              }
+            ],
+            "started_at": "2026-09-18T15:23:25Z",
+            "status": "completed"
+          }
+        ],
+        "final": null,
+        "last_stable_state": "generated",
+        "manifest_revision": 7,
+        "masks": [],
+        "parent": null,
+        "recoverable_next_actions": [
+          "record_review"
+        ],
+        "request": {
+          "authorization_scope": "private",
+          "available_backends": [
+            "webui",
+            "diffusers",
+            "comfyui"
+          ],
+          "backend": "comfyui",
+          "constraints": {
+            "height": 320,
+            "two_stage_layout": {
+              "canvas": {
+                "height": 320,
+                "width": 640
+              },
+              "copy_protected_rect": {
+                "height": 320,
+                "width": 224,
+                "x": 0,
+                "y": 0
+              },
+              "feather_pixels": 0,
+              "mode": "copy-subject-two-stage-v1",
+              "subject_mask_rect": {
+                "height": 288,
+                "width": 320,
+                "x": 304,
+                "y": 16
+              },
+              "vae_grow_mask_by": 0
+            },
+            "width": 640
+          },
+          "endpoint_identity": "endpoint:test",
+          "identity_strength": "cryptographic",
+          "initial_two_stage_conditioning": {
+            "subject_denoise": 0.9,
+            "subject_negative_prompt": "cropped subject, duplicate telescope",
+            "subject_prompt": "one complete brass telescope on a tripod"
+          },
+          "intent": "A calm coast at dawn.",
+          "max_rounds": 2,
+          "merged_profile": {
+            "constraints": {
+              "aspect_ratio": "1:1",
+              "backend": "auto",
+              "height": 320,
+              "max_rounds": 3,
+              "two_stage_layout": {
+                "canvas": {
+                  "height": 320,
+                  "width": 640
+                },
+                "copy_protected_rect": {
+                  "height": 320,
+                  "width": 224,
+                  "x": 0,
+                  "y": 0
+                },
+                "feather_pixels": 0,
+                "mode": "copy-subject-two-stage-v1",
+                "subject_mask_rect": {
+                  "height": 288,
+                  "width": 320,
+                  "x": 304,
+                  "y": 16
+                },
+                "vae_grow_mask_by": 0
+              },
+              "upscale_policy": "auto",
+              "width": 640
+            },
+            "explore_mutable": [
+              "seed",
+              "steps",
+              "guidance_scale",
+              "regional_conditioning",
+              "two_stage_conditioning"
+            ],
+            "hard_failures": [
+              "missing_subject",
+              "severe_anatomy",
+              "unreadable_text",
+              "watermark",
+              "explicit_constraint_violation"
+            ],
+            "profile": {
+              "aliases": [
+                "illustration",
+                "single image",
+                "artwork"
+              ],
+              "defaults": {
+                "aspect_ratio": "1:1"
+              },
+              "description": "A single finished illustration intended to stand on its own.",
+              "examples": {
+                "character": [
+                  "Draw a character illustration of a sailor at sunset."
+                ],
+                "environment": [
+                  "Create an illustrated coastal environment after rain."
+                ],
+                "wallpaper": [
+                  "Make a wide desktop wallpaper of a calm ocean horizon."
+                ]
+              },
+              "explore_mutable": [
+                "seed",
+                "steps",
+                "guidance_scale",
+                "regional_conditioning",
+                "two_stage_conditioning"
+              ],
+              "hard_failures": [
+                "missing_subject",
+                "severe_anatomy",
+                "unreadable_text",
+                "watermark",
+                "explicit_constraint_violation"
+              ],
+              "id": "standalone-illustration",
+              "kind": "use_case",
+              "prohibited_content": [
+                "Do not add unrequested text or watermarks."
+              ],
+              "prompt_guidance": [
+                "State the subject, composition, lighting, and requested medium."
+              ],
+              "refine_mutable": [
+                "denoise_strength",
+                "steps",
+                "guidance_scale",
+                "regional_conditioning",
+                "two_stage_conditioning"
+              ],
+              "rubric": {
+                "detail_quality": {
+                  "critical": true,
+                  "description": "Important requested details are clear and deliberate.",
+                  "weight": 2
+                },
+                "face_quality": {
+                  "critical": true,
+                  "description": "Prominent visible faces are coherent, expressive, and anatomically plausible.",
+                  "weight": 2
+                },
+                "hand_quality": {
+                  "critical": true,
+                  "description": "Prominent visible hands have plausible anatomy and readable poses.",
+                  "weight": 2
+                },
+                "style_consistency": {
+                  "critical": true,
+                  "description": "The requested visual style is applied consistently.",
+                  "weight": 2
+                },
+                "subject_completeness": {
+                  "critical": true,
+                  "description": "The requested subject is complete and recognizable.",
+                  "weight": 2
+                }
+              },
+              "schema_version": 1,
+              "subtypes": [
+                "character",
+                "environment",
+                "wallpaper"
+              ]
+            },
+            "refine_mutable": [
+              "denoise_strength",
+              "steps",
+              "guidance_scale",
+              "regional_conditioning",
+              "two_stage_conditioning"
+            ],
+            "rubric": {
+              "artifact_control": {
+                "critical": true,
+                "weight": 1
+              },
+              "composition": {
+                "critical": true,
+                "weight": 1
+              },
+              "detail_quality": {
+                "critical": true,
+                "description": "Important requested details are clear and deliberate.",
+                "weight": 2
+              },
+              "face_quality": {
+                "critical": true,
+                "description": "Prominent visible faces are coherent, expressive, and anatomically plausible.",
+                "weight": 2
+              },
+              "hand_quality": {
+                "critical": true,
+                "description": "Prominent visible hands have plausible anatomy and readable poses.",
+                "weight": 2
+              },
+              "intent_adherence": {
+                "critical": true,
+                "weight": 1
+              },
+              "style_consistency": {
+                "critical": true,
+                "description": "The requested visual style is applied consistently.",
+                "weight": 2
+              },
+              "subject_completeness": {
+                "critical": true,
+                "description": "The requested subject is complete and recognizable.",
+                "weight": 2
+              },
+              "user_constraints": {
+                "weight": 1
+              }
+            },
+            "style": null
+          },
+          "model_choice": "research-cpu-fake-model",
+          "model_identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "model_record": {
+            "backend": "webui",
+            "backend_model_id": "actual-loaded-model",
+            "byte_size": 1,
+            "endpoint_identity": "endpoint:test",
+            "format": ".safetensors",
+            "id": "research-cpu-fake-model",
+            "identity_strength": "cryptographic",
+            "identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "license_id": "test-only",
+            "license_status": "approved",
+            "license_url": null,
+            "metadata": {},
+            "modified_ns": 1,
+            "public_evidence_eligible": true,
+            "recommended": {
+              "guidance": 6.0,
+              "resolution": {
+                "height": 256,
+                "width": 256
+              },
+              "sampler": "Euler a",
+              "scheduler": null,
+              "steps": 4
+            },
+            "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "source": "test-fixture"
+          },
+          "profile": "standalone-illustration",
+          "prompt_compiler_id": "natural-v1",
+          "prompt_compiler_version": 1,
+          "route": {
+            "authorization_scope": "private",
+            "backend": "comfyui",
+            "component_bundle_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "control_sha256": "fffa3a0c07c3578c24a96d3f91e80bc80f8d67c5da4cad2523e2473ca6e5658b",
+            "endpoint_identity": "endpoint:test",
+            "expires_at": 9999999999.0,
+            "height": 320,
+            "identity_strength": "cryptographic",
+            "identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "model_id": "research-cpu-fake-model",
+            "operation": "txt2img",
+            "profile": "standalone-illustration",
+            "prompt_compiler_id": "natural-v1",
+            "prompt_compiler_version": 1,
+            "requirements": {
+              "two_stage_layout": {
+                "canvas": {
+                  "height": 320,
+                  "width": 640
+                },
+                "copy_protected_rect": {
+                  "height": 320,
+                  "width": 224,
+                  "x": 0,
+                  "y": 0
+                },
+                "feather_pixels": 0,
+                "mode": "copy-subject-two-stage-v1",
+                "subject_mask_rect": {
+                  "height": 288,
+                  "width": 320,
+                  "x": 304,
+                  "y": 16
+                },
+                "vae_grow_mask_by": 0
+              }
+            },
+            "route_token": "route:test-2",
+            "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "style": null,
+            "width": 640,
+            "workflow_template_id": "sdxl-two-stage-copy-subject",
+            "workflow_template_version": 1
+          },
+          "route_token": "route:test-2",
+          "style": null,
+          "upscale_policy": "off",
+          "workflow_template_id": "sdxl-two-stage-copy-subject",
+          "workflow_template_version": 1
+        },
+        "reviews": [],
+        "rounds": [
+          {
+            "action": "initial",
+            "backend": "comfyui",
+            "backend_result": {
+              "backend": "comfyui",
+              "component_bundle_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+              "control_sha256": "fffa3a0c07c3578c24a96d3f91e80bc80f8d67c5da4cad2523e2473ca6e5658b",
+              "endpoint_identity": "endpoint:test",
+              "height": 320,
+              "identity_strength": "cryptographic",
+              "mask_output": {
+                "path": "round-01-mask.png"
+              },
+              "mode": "txt2img",
+              "model": "actual-loaded-model",
+              "model_identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "ok": true,
+              "path": "round-01.png",
+              "prompt_compiler_id": "natural-v1",
+              "prompt_compiler_version": 1,
+              "seed": 42,
+              "stage_outputs": {
+                "base": {
+                  "path": "round-01-base.png"
+                },
+                "final": {
+                  "path": "round-01.png"
+                }
+              },
+              "subject_seed": 43,
+              "width": 640,
+              "workflow_job_id": "cpu-two-stage-f03-0001",
+              "workflow_template_id": "sdxl-two-stage-copy-subject",
+              "workflow_template_version": 1
+            },
+            "change_summary": "Paired deterministic CPU fault characterization.",
+            "compiled_prompt": {
+              "compiler_id": "natural-v1",
+              "compiler_version": 1,
+              "negative_prompt": "text, watermark, telescope",
+              "positive_prompt": "dark quiet observatory background"
+            },
+            "compiled_subject_prompt": {
+              "compiler_id": "natural-v1",
+              "compiler_version": 1,
+              "negative_prompt": "cropped subject, duplicate telescope",
+              "positive_prompt": "one complete brass telescope on a tripod"
+            },
+            "generation_plan": {
+              "authorization_scope": "private",
+              "backend": "comfyui",
+              "constraints": {
+                "height": 320,
+                "two_stage_layout": {
+                  "canvas": {
+                    "height": 320,
+                    "width": 640
+                  },
+                  "copy_protected_rect": {
+                    "height": 320,
+                    "width": 224,
+                    "x": 0,
+                    "y": 0
+                  },
+                  "feather_pixels": 0,
+                  "mode": "copy-subject-two-stage-v1",
+                  "subject_mask_rect": {
+                    "height": 288,
+                    "width": 320,
+                    "x": 304,
+                    "y": 16
+                  },
+                  "vae_grow_mask_by": 0
+                },
+                "width": 640
+              },
+              "endpoint_identity": "endpoint:test",
+              "identity_strength": "cryptographic",
+              "intent": "A calm coast at dawn.",
+              "max_rounds": 2,
+              "model_choice": "research-cpu-fake-model",
+              "model_identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "negative_prompt": "text, watermark, telescope",
+              "parameters": {
+                "two_stage_conditioning": {
+                  "subject_denoise": 0.9,
+                  "subject_negative_prompt": "cropped subject, duplicate telescope",
+                  "subject_prompt": "one complete brass telescope on a tripod"
+                }
+              },
+              "positive_prompt": "dark quiet observatory background",
+              "profile": "standalone-illustration",
+              "prompt_compiler_id": "natural-v1",
+              "prompt_compiler_version": 1,
+              "route_token": "route:test-2",
+              "style": null,
+              "upscale_policy": "off",
+              "workflow_template_id": "sdxl-two-stage-copy-subject",
+              "workflow_template_version": 1
+            },
+            "idempotency_key": "F03-two-stage-operation",
+            "image": {
+              "height": 320,
+              "mime_type": "image/png",
+              "path": "round-01.png",
+              "sha256": "a351bc16743410baebf8ef19392e2cc746fab6d30fa2174bb139f68e0df00a03",
+              "width": 640
+            },
+            "mask_artifact": {
+              "height": 320,
+              "mime_type": "image/png",
+              "path": "round-01-mask.png",
+              "sha256": "4a6f76ce737a2e1160c00f783450c8a9d16c6c058109ce3f0e49805d74e52c68",
+              "soft_mask_validation": {
+                "channels": 3,
+                "copy_nonzero_pixels": 0,
+                "edge_profiles_checked": 1216,
+                "feather_monotonic": true,
+                "feather_pixels": 0,
+                "height": 320,
+                "interior_positive_pixels": 90948,
+                "outside_nonzero_pixels": 0,
+                "width": 640
+              },
+              "width": 640
+            },
+            "mode": "txt2img",
+            "model": "actual-loaded-model",
+            "pixel_preservation": {
+              "checked_pixels": 112640,
+              "copy_mismatched_pixels": 0,
+              "mismatched_pixels": 0,
+              "protected_rect": {
+                "height": 320,
+                "width": 224,
+                "x": 0,
+                "y": 0
+              }
+            },
+            "preview": {
+              "height": 320,
+              "mime_type": "image/jpeg",
+              "path": "round-01-preview.jpg",
+              "sha256": "6f1e4b29c6fc7b5ed4b0cf4897a4433fb8e483ad8ac223c68c8b4838a1b465fb",
+              "width": 640
+            },
+            "registry_metadata": {
+              "model": {
+                "id": "research-cpu-fake-model",
+                "license_id": "test-only",
+                "license_status": "approved",
+                "license_url": null,
+                "source": "test-fixture"
+              },
+              "profile": {
+                "id": "standalone-illustration",
+                "schema_version": 1
+              },
+              "style": null
+            },
+            "request_hash": "47d1108d40170e5289469b56a3983115fb841b61b46e32d82bf8aca806bd7f09",
+            "round_number": 1,
+            "route": {
+              "authorization_scope": "private",
+              "backend": "comfyui",
+              "component_bundle_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+              "control_sha256": "fffa3a0c07c3578c24a96d3f91e80bc80f8d67c5da4cad2523e2473ca6e5658b",
+              "endpoint_identity": "endpoint:test",
+              "expires_at": 9999999999.0,
+              "height": 320,
+              "identity_strength": "cryptographic",
+              "identity_token": "model:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "model_id": "research-cpu-fake-model",
+              "operation": "txt2img",
+              "profile": "standalone-illustration",
+              "prompt_compiler_id": "natural-v1",
+              "prompt_compiler_version": 1,
+              "requirements": {
+                "two_stage_layout": {
+                  "canvas": {
+                    "height": 320,
+                    "width": 640
+                  },
+                  "copy_protected_rect": {
+                    "height": 320,
+                    "width": 224,
+                    "x": 0,
+                    "y": 0
+                  },
+                  "feather_pixels": 0,
+                  "mode": "copy-subject-two-stage-v1",
+                  "subject_mask_rect": {
+                    "height": 288,
+                    "width": 320,
+                    "x": 304,
+                    "y": 16
+                  },
+                  "vae_grow_mask_by": 0
+                }
+              },
+              "route_token": "route:test-2",
+              "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+              "style": null,
+              "width": 640,
+              "workflow_template_id": "sdxl-two-stage-copy-subject",
+              "workflow_template_version": 1
+            },
+            "seed": 42,
+            "stage_units": 2,
+            "stages": [
+              {
+                "image": {
+                  "height": 320,
+                  "mime_type": "image/png",
+                  "path": "round-01-base.png",
+                  "sha256": "a351bc16743410baebf8ef19392e2cc746fab6d30fa2174bb139f68e0df00a03",
+                  "width": 640
+                },
+                "role": "base",
+                "seed": 42
+              },
+              {
+                "image": {
+                  "height": 320,
+                  "mime_type": "image/png",
+                  "path": "round-01.png",
+                  "sha256": "a351bc16743410baebf8ef19392e2cc746fab6d30fa2174bb139f68e0df00a03",
+                  "width": 640
+                },
+                "role": "subject",
+                "seed": 43
+              }
+            ],
+            "status": "generated",
+            "warnings": []
+          }
+        ],
+        "run_id": "20260918T152325Z-a6f02982a455",
+        "schema_version": 1,
+        "stage_budget": {
+          "consumed": 2,
+          "maximum": 4
+        },
+        "state": "generated",
+        "warnings": []
+      },
+      "recovery": {
+        "recovery_invocation_count": 1,
+        "same_job": true,
+        "state": "same_job_reconciled"
+      },
+      "reported_attempt_statuses": [
+        "unresolved",
+        "completed"
+      ],
+      "scheduled": true,
+      "second_error": null,
+      "second_error_code": null,
+      "started": true,
+      "submitted_job_ids": [
+        "cpu-two-stage-f03-0001"
+      ],
+      "valid_completion": true,
+      "worker_execution_entry_count": 1,
+      "worker_execution_entry_ids": [
+        "F03-two-stage:execution-0001"
+      ]
+    }
+  ],
+  "denominators": {
+    "control_cases": {
+      "failed": 0,
+      "not-run": 0,
+      "oracle-evaluable": 2,
+      "resolved": 2,
+      "scheduled": 2,
+      "started": 2,
+      "unresolved": 0
+    },
+    "fault_cases": {
+      "failed": 2,
+      "injection-confirmed": 4,
+      "not-run": 0,
+      "oracle-evaluable": 4,
+      "resolved": 1,
+      "scheduled": 4,
+      "started": 4,
+      "unresolved": 3
+    }
+  },
+  "interpretation": {
+    "failed": "product attempt status only; not backend execution failure truth",
+    "not_deployment_failure_or_duplicate_execution_rate": true,
+    "post_counts_are_not_execution_counts": true,
+    "scope": "deterministic_cpu_synthetic_worker_observation"
+  },
+  "ledger_trusted_sha": "d8ef0bccc84269b7d4a627adce5f6025a17ab024",
+  "oracle_self_checks": [
+    {
+      "name": "two_post_zero_execution",
+      "passed": true,
+      "snapshot": {
+        "case_id": "self-two-post-zero",
+        "events": [
+          {
+            "event": "request_received",
+            "job_id": "job-a",
+            "operation_id": "op",
+            "prompt_id": "prompt-a"
+          },
+          {
+            "event": "queue_item_created",
+            "job_id": "job-a",
+            "operation_id": "op",
+            "prompt_id": "prompt-a"
+          },
+          {
+            "event": "request_received",
+            "job_id": "job-a",
+            "operation_id": "op",
+            "prompt_id": "prompt-a"
+          },
+          {
+            "event": "queue_item_created",
+            "job_id": "job-a",
+            "operation_id": "op",
+            "prompt_id": "prompt-a"
+          }
+        ],
+        "execution_finished": 0,
+        "execution_instances": [],
+        "execution_started": 0,
+        "execution_state": "not_started",
+        "job_ids": [
+          "job-a"
+        ],
+        "oracle_evaluable": true,
+        "oracle_type": "independent_cpu_execution_oracle_v1",
+        "queue_item_created": 2,
+        "request_received": 2
+      }
+    },
+    {
+      "name": "two_post_one_execution",
+      "passed": true,
+      "snapshot": {
+        "case_id": "self-two-post-one",
+        "events": [
+          {
+            "event": "request_received",
+            "job_id": "job-0",
+            "operation_id": "op",
+            "prompt_id": "prompt-a"
+          },
+          {
+            "event": "queue_item_created",
+            "job_id": "job-0",
+            "operation_id": "op",
+            "prompt_id": "prompt-a"
+          },
+          {
+            "event": "request_received",
+            "job_id": "job-1",
+            "operation_id": "op",
+            "prompt_id": "prompt-a"
+          },
+          {
+            "event": "queue_item_created",
+            "job_id": "job-1",
+            "operation_id": "op",
+            "prompt_id": "prompt-a"
+          },
+          {
+            "event": "execution_started",
+            "execution_instance_id": "self-two-post-one:execution-0001",
+            "job_id": "job-1",
+            "operation_id": "op",
+            "prompt_id": "prompt-a"
+          },
+          {
+            "event": "execution_finished",
+            "execution_instance_id": "self-two-post-one:execution-0001",
+            "outcome": "succeeded"
+          }
+        ],
+        "execution_finished": 1,
+        "execution_instances": [
+          "self-two-post-one:execution-0001"
+        ],
+        "execution_started": 1,
+        "execution_state": "succeeded",
+        "job_ids": [
+          "job-0",
+          "job-1"
+        ],
+        "oracle_evaluable": true,
+        "oracle_type": "independent_cpu_execution_oracle_v1",
+        "queue_item_created": 2,
+        "request_received": 2
+      }
+    },
+    {
+      "name": "same_prompt_id_two_executions",
+      "passed": true,
+      "snapshot": {
+        "case_id": "self-same-prompt-two-executions",
+        "events": [
+          {
+            "event": "request_received",
+            "job_id": "job-1",
+            "operation_id": "op",
+            "prompt_id": "prompt-same"
+          },
+          {
+            "event": "queue_item_created",
+            "job_id": "job-1",
+            "operation_id": "op",
+            "prompt_id": "prompt-same"
+          },
+          {
+            "event": "execution_started",
+            "execution_instance_id": "self-same-prompt-two-executions:execution-0001",
+            "job_id": "job-1",
+            "operation_id": "op",
+            "prompt_id": "prompt-same"
+          },
+          {
+            "event": "execution_finished",
+            "execution_instance_id": "self-same-prompt-two-executions:execution-0001",
+            "outcome": "succeeded"
+          },
+          {
+            "event": "request_received",
+            "job_id": "job-2",
+            "operation_id": "op",
+            "prompt_id": "prompt-same"
+          },
+          {
+            "event": "queue_item_created",
+            "job_id": "job-2",
+            "operation_id": "op",
+            "prompt_id": "prompt-same"
+          },
+          {
+            "event": "execution_started",
+            "execution_instance_id": "self-same-prompt-two-executions:execution-0002",
+            "job_id": "job-2",
+            "operation_id": "op",
+            "prompt_id": "prompt-same"
+          },
+          {
+            "event": "execution_finished",
+            "execution_instance_id": "self-same-prompt-two-executions:execution-0002",
+            "outcome": "succeeded"
+          }
+        ],
+        "execution_finished": 2,
+        "execution_instances": [
+          "self-same-prompt-two-executions:execution-0001",
+          "self-same-prompt-two-executions:execution-0002"
+        ],
+        "execution_started": 2,
+        "execution_state": "succeeded",
+        "job_ids": [
+          "job-1",
+          "job-2"
+        ],
+        "oracle_evaluable": true,
+        "oracle_type": "independent_cpu_execution_oracle_v1",
+        "queue_item_created": 2,
+        "request_received": 2
+      }
+    },
+    {
+      "name": "started_completion_signal_lost",
+      "passed": true,
+      "snapshot": {
+        "case_id": "self-started-completion-lost",
+        "events": [
+          {
+            "event": "request_received",
+            "job_id": "job-lost",
+            "operation_id": "op",
+            "prompt_id": "prompt-lost"
+          },
+          {
+            "event": "queue_item_created",
+            "job_id": "job-lost",
+            "operation_id": "op",
+            "prompt_id": "prompt-lost"
+          },
+          {
+            "event": "execution_started",
+            "execution_instance_id": "self-started-completion-lost:execution-0001",
+            "job_id": "job-lost",
+            "operation_id": "op",
+            "prompt_id": "prompt-lost"
+          }
+        ],
+        "execution_finished": 0,
+        "execution_instances": [
+          "self-started-completion-lost:execution-0001"
+        ],
+        "execution_started": 1,
+        "execution_state": "unknown",
+        "job_ids": [
+          "job-lost"
+        ],
+        "oracle_evaluable": false,
+        "oracle_type": "independent_cpu_execution_oracle_v1",
+        "queue_item_created": 1,
+        "request_received": 1
+      }
+    }
+  ],
+  "protocol_version": "paired-ambiguous-submit-v2",
+  "runtime_identity": {
+    "checkout_branch": "research/paired-b2",
+    "checkout_head": "10e6d5c7d9e0b0950bdfaba3f6062e5cad86417e",
+    "harness_sha256": {
+      "execution_oracle.py": "ad763f7f35f9ec0024eb24cea9e9c76f1c430c907af57bf92f48eb64dfe3ffaa",
+      "run_paired_fault_matrix.py": "dead74d91c72c3bce107a16941ffcd45f852054f9aa1d58aaf16a29c3aa1ffc4",
+      "test_paired_fault_matrix.py": "1a391562f89b9e203035850fe8116ceaa527d5489c19fdc90b5b8fd95dc7311c"
+    },
+    "output_root_policy": "isolated_temporary_run_root_per_case",
+    "python_version": "3.12.14"
+  },
+  "schema_version": 1,
+  "source_sha": "da65d57047b5a59e3403b49adf4605a1c0497c58",
+  "system_label": "B2",
+  "transport_preflight": {
+    "error_code": "backend_request_failed",
+    "error_details": {
+      "error_type": "RemoteDisconnected"
+    },
+    "request_accepted": true,
+    "submission_outcome_unknown": false
+  }
+}

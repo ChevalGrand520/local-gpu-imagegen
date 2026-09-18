@@ -33,7 +33,7 @@
 | C4 §1、§2.3：恢复未知 job | `engine.py::recoverable_next_actions` 返回 get_run；store 拒绝新提交 | W3 历史文档明确没有新增 reconciliation；本轮同 run 阻止重发测试通过 | 这是保守阻塞；未知 job 自动恢复未实现。不能写成已解决恢复完成问题 |
 | C5 §4：已知 job two-stage 恢复 | B2 已有逻辑；`test_two_stage_timeout_recovers_exact_job_without_resubmission` | 本轮测试通过；W2 F03-two-stage 已有 same-job 路径 | 属于既有能力，不归为 W3 新贡献 |
 | C6 §4：六个 case 的故障覆盖 | a7482fe `run_fault_matrix.py`、`tests/research/test_run_fault_matrix.py` | 在 a7482fe 实跑 3 tests，setUpClass 执行六个 cases；断言 barrier、job、submission/execution、恢复状态 | 六个预设 CPU fixture 的条件覆盖；不是实际 ComfyUI adapter HTTP 端到端实验，也不是部署概率 |
-| C7 W3 相比 B2 降低重复执行 | W2 F02 抛出的异常缺少 W3 marker；W3 定向 runner 使用 marker | 本轮仅有分层测试，无同协议、同注入边界的 B2/W3 execution 对照 | 尚不能写净改善或重复执行减少数字；直接运行继承的矩阵不会验证 W3 marker 路径 |
+| C7 W3 相比 B2 改变重复执行 | paired-v2 common runner；B2 `da65d57`；W3 `d45173a` | 相同 localhost POST 响应丢失、相同 harness hash、独立 worker-entry oracle；12 个产品 case 全部 oracle-evaluable | F02 single-stage 中 W3 比 B2 少 1 次提交和 1 次合成执行，但从 B2 的窗口内完成变为 W3 unresolved。只能报告这一配对收益—代价，不能写部署率或净可靠性提升 |
 | C8 摘要、§4：Windows 集成示例 | a7d3e36 evidence；6a74046 reservation；客户端 d45173a | 本轮读取版本化摘要，PR #4 GitHub 状态 MERGED；没有读取本地 PNG/manifest 或现场重跑 | 可引用已记录的一次 generated/unreviewed pilot；摘要来源已追溯，原始图像及日志本轮未独立验证 |
 | C9 摘要、贡献 4：reproducible integration path | CPU 命令可重跑；Windows 文档只有一次运行记录与哈希 | CPU 定向测试本轮复现；Windows 无第二次复现材料 | CPU 可复跑和单次 Windows 示例分别陈述，不合并为跨环境完整复现 |
 | C10 贡献 1–4：独创性 | 初稿仅列功能；参考文献尚为待补主题 | 本轮未进行新的文献综述或外部 baseline 测试 | 技术存在不等于新颖；保留 novelty pending，不赋予录用概率 |
@@ -83,7 +83,10 @@ assert x['interpreted_state']['execution_verified'] is True
 | --- | ---: | ---: | --- | ---: | ---: | ---: | ---: | ---: |
 | W2 F00 | 2 | 2 | N/A | 2 | 2 | 0 | 0 | 0 |
 | W2 F02/F03 | 4 | 4 | 4 | 4 | 1 | 3 | 2 | 0 |
-| 新 W3 配对 execution 实验 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| paired-v2 B2 F00 | 2 | 2 | N/A | 2 | 2 | 0 | 0 | 0 |
+| paired-v2 B2 F02/F03 | 4 | 4 | 4 | 4 | 1 | 3 | 2 | 0 |
+| paired-v2 W3 F00 | 2 | 2 | N/A | 2 | 2 | 0 | 0 | 0 |
+| paired-v2 W3 F02/F03 | 4 | 4 | 4 | 4 | 1 | 3 | 1 | 0 |
 
 failed 是存在 product failed attempt 的 case 数，与 unresolved 可以重叠；各列不可直接相加作为互斥分类。W2 合成重复执行观察仅 F02-single-stage、F03-single-stage 两例，不能沿用初版“三例”或 0.5。
 
@@ -112,4 +115,4 @@ Python 3.12.14，Pillow 12.3.0。裸 3.12 的 PIL 导入最初失败（退出 1�
 
 ## 后续唯一工作单元
 
-E1 已按冻结 §5.1 修正。后续唯一工作单元是先设计并审查同协议 B2/W3 故障对照的最小方案，再决定是否执行；正常 Windows pilot 重跑不直接回答 W3 的异常路径效果。当前没有足够证据把项目描述为“已实现未知 job 自动恢复”或“已证明可靠性净改善”。
+E1 和 paired-v2 CPU 对照均已完成。后续唯一工作单元是由高级模型基于 paired-v2 的收益—代价做 DSN 稿件闸门复审：决定主张应停留在工具展示/案例研究，还是还需一个真实 ComfyUI F02 语义核验。当前没有足够证据把项目描述为“已实现未知 job 自动恢复”“已证明部署失败率”或“已证明可靠性净改善”。
