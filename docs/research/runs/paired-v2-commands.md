@@ -109,3 +109,7 @@ Therefore the deterministic schedule contains one paired arm with one fewer synt
 ## Resource and privacy boundary
 
 No GPU, model, remote backend, Windows service, ROS2 process, or production output root was used. Localhost HTTP and isolated temporary run roots only. The JSON contains test fixture identities and synthetic artifact metadata; no PNG, model, user input, credential, or private dataset is included.
+
+## Delivery status
+
+Local commits completed. The first normal pushes failed with an HTTP/2 framing error for B2 and a stalled W3 connection that was stopped after more than 90 seconds. One bounded retry used command-local `-c http.version=HTTP/1.1`; B2 then returned an empty reply and W3 could not connect to `github.com:443`. After these two network failures, no further push was attempted. No Git configuration was persisted, no history was rewritten, and PR #6 remains at its previously published protocol-only revision until network access is restored.
