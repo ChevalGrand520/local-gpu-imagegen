@@ -50,10 +50,15 @@ class PairedFaultMatrixTests(unittest.TestCase):
                     self.assertEqual(case["oracle_execution_count"], 1)
                     self.assertEqual(case["recovery"]["state"], "outcome_unknown_blocked")
                     self.assertEqual(case["second_error_code"], "submission_outcome_unknown")
-                else:
+                elif path_kind == "single-stage":
                     self.assertEqual(case["backend_submission_count"], 2)
                     self.assertEqual(case["oracle_execution_count"], 2)
                     self.assertEqual(case["recovery"]["state"], "new_submission_after_fault")
+                else:
+                    self.assertEqual(case["backend_submission_count"], 1)
+                    self.assertEqual(case["oracle_execution_count"], 1)
+                    self.assertEqual(case["recovery"]["state"], "outcome_unknown")
+                    self.assertEqual(case["second_error_code"], "two_stage_run_partial")
 
     def test_f03_two_stage_recovers_same_job_without_worker_reentry(self) -> None:
         case = self.cases["F03-two-stage"]
