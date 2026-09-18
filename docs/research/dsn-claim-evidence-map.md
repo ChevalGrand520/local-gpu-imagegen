@@ -4,14 +4,14 @@
 
 - Origin: academic-research-suite / experiment-agent, bounded evidence validation.
 - Date: 2026-09-18.
-- Status: PARTIALLY_VERIFIED. Targeted CPU checks rerun; no live backend rerun.
+- Status: PARTIALLY_VERIFIED. E1 exporter semantics corrected with a regression test; no live backend rerun.
 - Product/evidence input: `17e0bbaa8866f46fdbda6eac48763779ac07047b`.
 - W3 client: `d45173af75d404ad79dc14568edd4c45f654abd2`.
 - W2 correction: `a7482fedda8c98a3d31df916638fc241473316dc`.
 - Frozen B2: `da65d57047b5a59e3403b49adf4605a1c0497c58`.
 - Trusted ledger: `d8ef0bccc84269b7d4a627adce5f6025a17ab024`; guard PASS, 14 protected files.
 - Draft reviewed: `dsn-tool-description-draft.md` v0.1, SHA-256 `8e05523bc4f641915f372437f067bb20f7730962c253590141db3721e514c00a` (external working draft, not part of this commit).
-- Scope: claim tracing and existing CPU checks. No new research design, product fix, GPU experiment, or manuscript revision.
+- Scope: claim tracing, exporter interpretation correction, and CPU checks. No new research design, product fix, GPU experiment, or manuscript revision.
 
 ## 实际状态修正
 
@@ -27,7 +27,7 @@
 
 | ID / 初稿位置 | 代码与提交 | 本轮或历史证据 | 允许结论 / 缺口 |
 | --- | --- | --- | --- |
-| C1 摘要、§2.1：reported / interpreted / oracle 分离 | a7482fe `scripts/research/export_records.py::export_record`；`research-normalization-v2` | 本轮 exporter 10 tests 通过（包含在 133 项中），检查输入保持、未知、错配、路径与覆盖拒绝 | 已有只读规范化功能；不能宣称全部语义正确，见 E1 反例 |
+| C1 摘要、§2.1：reported / interpreted / oracle 分离 | a7482fe `scripts/research/export_records.py::export_record`；本分支 E1 修正；`research-normalization-v2` | exporter 11 tests 通过；新增 unresolved + exact oracle binding 回归，另检查输入保持、未知、错配、路径与覆盖拒绝 | 已有只读规范化功能；unresolved 不再升级为 execution verified。仍不能据此推断部署故障率 |
 | C2 摘要、贡献 2：执行 oracle | a7482fe `execution_oracle.py::ExecutionOracle`；`run_fault_matrix.py::CpuFakeBackendWorker._run_worker` | 本轮 oracle 5 tests 通过；W2 matrix 3 tests 通过 | 独立于产品返回状态的内存事件计数，观察 CPU delegate 入口；不是独立进程、耐崩溃日志或真实 GPU 执行观察 |
 | C3 摘要、贡献 3：阻止未知提交后的重发 | b3689e0、1f31bd0；`backends/base.py:255`、`engine.py:403,1487`、`run_store.py:559,1177` | 本轮 base/store 114 tests 与 engine 定向 4 tests 通过 | 对显式 `submission_outcome=unknown` 的异常，在同一 run 入口阻止相同或不同 key 再提交；不保证绕过入口或新建 run 时不重复 |
 | C4 §1、§2.3：恢复未知 job | `engine.py::recoverable_next_actions` 返回 get_run；store 拒绝新提交 | W3 历史文档明确没有新增 reconciliation；本轮同 run 阻止重发测试通过 | 这是保守阻塞；未知 job 自动恢复未实现。不能写成已解决恢复完成问题 |
@@ -38,9 +38,9 @@
 | C9 摘要、贡献 4：reproducible integration path | CPU 命令可重跑；Windows 文档只有一次运行记录与哈希 | CPU 定向测试本轮复现；Windows 无第二次复现材料 | CPU 可复跑和单次 Windows 示例分别陈述，不合并为跨环境完整复现 |
 | C10 贡献 1–4：独创性 | 初稿仅列功能；参考文献尚为待补主题 | 本轮未进行新的文献综述或外部 baseline 测试 | 技术存在不等于新颖；保留 novelty pending，不赋予录用概率 |
 
-## E1：exporter unresolved 反例
+## E1：exporter unresolved 反例与修正
 
-冻结设计 §5.1 要求 `execution_verified=true` 时无 unresolved。当前 `export_records.py:493` 的合取条件检查 execution、job、artifact、oracle 和 approval，却没有排除 reported unresolved / recovery required。
+冻结设计 §5.1 要求 `execution_verified=true` 时无 unresolved。修正前 `export_records.py` 的合取条件检查 execution、job、artifact、oracle 和 approval，却没有排除 reported unresolved / recovery required。
 
 本轮只读内存探针输入如下；所有身份为合成字段，不是真实作业：
 
@@ -65,7 +65,9 @@ assert x['interpreted_state']['recovery_state'] == 'required'
 assert x['interpreted_state']['execution_verified'] is True
 ```
 
-实际退出 0，输出同时包含 `recovery_state=required` 与 `execution_verified=true`。这是确认反例的退出码，不是契约通过。它说明 exporter 存在契约缺口，不表示 B2 产品发布了错误产物，也不能计为真实 false-verification rate。本轮不修代码、不回写历史记录。
+修正前探针退出 0，输出同时包含 `recovery_state=required` 与 `execution_verified=true`。这是确认反例的退出码，不是契约通过。它说明 exporter 曾存在契约缺口，不表示 B2 产品发布了错误产物，也不能计为真实 false-verification rate。
+
+本分支先把同一反例加入 `test_unresolved_report_cannot_be_verified_with_exact_oracle_binding`。修正前该测试退出 1，失败点为 `True is not false`；随后解释层增加恢复状态约束，只有 `not_needed` 或明确的 `resolved` 才可能满足 `execution_verified=true`。修正后仍保留 oracle 的 `execution_state=succeeded`、精确 job/artifact binding 和 `evidence_state=verified`，但 `recovery_state=required` 使 `execution_verified=false`，原因记录为 `unresolved_or_reconciling_recovery_state_prevents_execution_verification`。这修复解释语义，不回写历史导出，也不改变产品恢复逻辑。
 
 ## Oracle 与矩阵的具体边界
 
@@ -100,11 +102,14 @@ Python 3.12.14，Pillow 12.3.0。裸 3.12 的 PIL 导入最初失败（退出 1�
 7. W3：`uv run --offline --python 3.12 --with 'Pillow>=10' python -m unittest tests.research.test_execution_oracle tests.research.test_export_records tests.test_backend_base tests.test_run_store tests.test_asset_run_engine.AssetRunEngineTests.test_ambiguous_single_stage_submit_blocks_resubmission tests.test_asset_run_engine.AssetRunEngineTests.test_ambiguous_submit_persists_unknown_when_pending_cleanup_fails tests.test_asset_run_engine.AssetRunEngineTests.test_backend_failure_is_recorded_without_consuming_round tests.test_asset_run_engine.AssetRunEngineTests.test_two_stage_timeout_recovers_exact_job_without_resubmission`：退出 0；133 tests / 0 fail / 0 error / 0 skip，5.428 s。
 8. W2 a7482fe：`uv run --offline --no-project --python 3.12 --with 'Pillow>=10' python -m unittest tests.research.test_run_fault_matrix`：退出 0；3 tests / 0 fail / 0 error / 0 skip，0.558 s；包含六个 case。
 9. W3：`uv run --offline --no-project --python 3.12 --with 'Pillow>=10' python -`，stdin 为 E1 探针：退出 0，反例成立。
+10. 本分支 E1 回归单测（修正前）：退出 1；1 test / 1 failure，确认 `execution_verified` 错误为 true。
+11. 同一回归单测（修正后）：退出 0；1 test / 0 failure。
+12. `... python -m unittest tests.research.test_export_records`：退出 0；11 tests / 0 fail / 0 error / 0 skip。
+13. `... python -m unittest tests.research.test_execution_oracle tests.research.test_export_records tests.research.test_run_fault_matrix`：退出 0；19 tests / 0 fail / 0 error / 0 skip，0.568 s。
+14. `... python -m compileall -q scripts/research tests/research`：退出 0。
 
 没有复跑全量 suite，历史全量失败仍保留在原日志，定向通过不能写为全仓通过。本轮活动为目录恢复、静态核验和约 6 秒的报告测试运行；未启动新的执行指标实验。
 
 ## 后续唯一工作单元
 
-先解决 E1 exporter 的 unresolved 语义缺口：新增能失败的回归测试，按冻结 §5.1 修正解释层，保留 raw reported/oracle，验证已有合法、缺失、错配与未知用例。只涉及 research exporter/tests，不应改产品恢复或历史证据。本表只提出该修正，尚未执行。
-
-完成后再决定同协议 B2/W3 故障对照的最小方案；正常 Windows pilot 重跑不直接回答 W3 的异常路径效果。当前没有足够证据把项目描述为“已实现未知 job 自动恢复”或“已证明可靠性净改善”。
+E1 已按冻结 §5.1 修正。后续唯一工作单元是先设计并审查同协议 B2/W3 故障对照的最小方案，再决定是否执行；正常 Windows pilot 重跑不直接回答 W3 的异常路径效果。当前没有足够证据把项目描述为“已实现未知 job 自动恢复”或“已证明可靠性净改善”。
