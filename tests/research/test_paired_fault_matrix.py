@@ -28,6 +28,15 @@ class PairedFaultMatrixTests(unittest.TestCase):
         self.assertEqual(self.matrix["protocol_version"], "paired-ambiguous-submit-v1")
         self.assertEqual(self.matrix["system_label"], "CURRENT")
         self.assertEqual(self.matrix["source_sha"], "1" * 40)
+        runtime = self.matrix["runtime_identity"]
+        self.assertEqual(len(runtime["checkout_head"]), 40)
+        self.assertTrue(runtime["python_version"])
+        self.assertEqual(runtime["output_root_policy"], "isolated_temporary_run_root_per_case")
+        self.assertEqual(
+            set(runtime["harness_sha256"]),
+            {"execution_oracle.py", "run_paired_fault_matrix.py", "test_paired_fault_matrix.py"},
+        )
+        self.assertTrue(all(len(value) == 64 for value in runtime["harness_sha256"].values()))
         self.assertEqual(self.matrix["denominators"]["control_cases"]["scheduled"], 2)
         self.assertEqual(self.matrix["denominators"]["fault_cases"]["scheduled"], 4)
         self.assertNotIn("injection-confirmed", self.matrix["denominators"]["control_cases"])
