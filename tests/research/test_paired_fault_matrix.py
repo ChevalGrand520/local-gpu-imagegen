@@ -25,7 +25,7 @@ class PairedFaultMatrixTests(unittest.TestCase):
         cls.cases = {case["case_id"]: case for case in cls.matrix["cases"]}
 
     def test_protocol_identity_and_denominators_are_explicit(self) -> None:
-        self.assertEqual(self.matrix["protocol_version"], "paired-ambiguous-submit-v1")
+        self.assertEqual(self.matrix["protocol_version"], "paired-ambiguous-submit-v2")
         self.assertEqual(self.matrix["system_label"], "CURRENT")
         self.assertEqual(self.matrix["source_sha"], "1" * 40)
         runtime = self.matrix["runtime_identity"]
@@ -42,6 +42,16 @@ class PairedFaultMatrixTests(unittest.TestCase):
         self.assertNotIn("injection-confirmed", self.matrix["denominators"]["control_cases"])
         self.assertEqual(self.matrix["denominators"]["fault_cases"]["injection-confirmed"], 4)
         self.assertEqual(len(self.matrix["oracle_self_checks"]), 4)
+
+    def test_f00_controls_complete_without_product_error(self) -> None:
+        for path_kind in ("single-stage", "two-stage"):
+            with self.subTest(path_kind=path_kind):
+                case = self.cases[f"F00-{path_kind}"]
+                self.assertIsNone(case["first_error_code"])
+                self.assertTrue(case["valid_completion"])
+                self.assertEqual(case["recovery"]["state"], "not_needed")
+                self.assertEqual(case["backend_submission_count"], 1)
+                self.assertEqual(case["oracle_execution_count"], 1)
 
     def test_f02_uses_transport_marker_and_worker_observations_consistently(self) -> None:
         marker = self.matrix["transport_preflight"]["submission_outcome_unknown"]

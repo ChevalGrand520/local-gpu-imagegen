@@ -35,7 +35,7 @@ from tests.test_asset_run_engine import (  # noqa: E402
 )
 
 
-PROTOCOL_VERSION = "paired-ambiguous-submit-v1"
+PROTOCOL_VERSION = "paired-ambiguous-submit-v2"
 LEDGER_SHA = "d8ef0bccc84269b7d4a627adce5f6025a17ab024"
 RESEARCH_MODEL_ID = "research-cpu-fake-model"
 CASE_SPECS = (
@@ -196,7 +196,8 @@ class PairedCpuBackend:
         self.worker_execution_entry_ids.append(execution_id)
         try:
             result = self.delegate(request)
-            result = _with_job_id(result, job_id)
+            if self.path_kind == "two-stage":
+                result = _with_job_id(result, job_id)
             artifact_hash = _result_artifact_hash(result, self.path_kind)
         except Exception:
             self.oracle.execution_finished(execution_id, outcome="failed")
