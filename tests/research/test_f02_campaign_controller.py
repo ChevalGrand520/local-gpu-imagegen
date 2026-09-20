@@ -8,10 +8,10 @@ from pathlib import Path
 import tempfile
 import unittest
 
-from research_pilots.f02_campaign import ProductCallOutcome, run_campaign
-from research_pilots.f02_loopback import ProxyReceipt
-from research_pilots.f02_oracle import ExecutionBinding, OracleDecision
-from research_pilots.f02_preflight import PreflightReport
+from scripts.research.f02_campaign import ProductCallOutcome, run_campaign
+from scripts.research.f02_loopback import ProxyReceipt
+from scripts.research.f02_oracle import ExecutionBinding, OracleDecision
+from scripts.research.f02_preflight import PreflightReport
 
 
 class _FakeProxy:

@@ -9,9 +9,9 @@ import unittest
 from datetime import datetime, timezone
 from unittest.mock import patch
 
-from research_pilots.f02_loopback import OneShotLoopbackFaultProxy, ProxyConfigurationError
-from research_pilots.f02_oracle import ComfyUIEventOracle
-from research_pilots.f02_preflight import run_preflight
+from scripts.research.f02_loopback import OneShotLoopbackFaultProxy, ProxyConfigurationError
+from scripts.research.f02_oracle import ComfyUIEventOracle
+from scripts.research.f02_preflight import run_preflight
 
 
 class _Upstream:
@@ -166,9 +166,9 @@ class PreflightReservationTests(unittest.TestCase):
                 "no_concurrent_gpu_work": True,
             },
         }
-        with patch("research_pilots.f02_preflight._contract_check", side_effect=AssertionError("must not query")), \
-             patch("research_pilots.f02_preflight._gpu_check", side_effect=AssertionError("must not query")), \
-             patch("research_pilots.f02_preflight._backend_check", side_effect=AssertionError("must not query")):
+        with patch("scripts.research.f02_preflight._contract_check", side_effect=AssertionError("must not query")), \
+             patch("scripts.research.f02_preflight._gpu_check", side_effect=AssertionError("must not query")), \
+             patch("scripts.research.f02_preflight._backend_check", side_effect=AssertionError("must not query")):
             report = run_preflight(config, now=datetime(2026, 9, 17, 4, 0, tzinfo=timezone.utc))
         self.assertEqual(report.status, "FAIL")
         self.assertEqual([check.name for check in report.checks], ["reservation", "frozen_identity_config"])

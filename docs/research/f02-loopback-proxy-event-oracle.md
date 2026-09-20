@@ -11,19 +11,19 @@ start services, submit prompts, repeat cases, or enlarge the campaign.
 
 ## Components
 
-- `research_pilots.f02_loopback.OneShotLoopbackFaultProxy` binds only to a
+- `scripts.research.f02_loopback.OneShotLoopbackFaultProxy` binds only to a
   numeric loopback address and accepts only the reviewed ComfyUI HTTP path
   allowlist.  In F00 it forwards request bodies and responses unchanged.  In
   F02 it forwards the first `POST /prompt` once, records the request digest and
   accepted `prompt_id` in proxy-only evidence, and closes the client response
   before returning any backend acceptance bytes.  It never fabricates success.
-- `research_pilots.f02_oracle.ComfyUIEventOracle` uses a read-only ComfyUI
+- `scripts.research.f02_oracle.ComfyUIEventOracle` uses a read-only ComfyUI
   WebSocket plus read-only `/history/<prompt_id>` queries.  An execution is
   evaluable only when it has a backend `execution_start`, a backend terminal
   `executing` event with `node: null`, and corroborating successful history.
   Prompt IDs, POST counts, history alone, and artifact counts alone are never
   promoted to execution counts.
-- `research_pilots.f02_preflight` is a no-write, no-generation gate.  It checks
+- `scripts.research.f02_preflight` is a no-write, no-generation gate.  It checks
   an explicit reservation before hardware or backend observation, then checks
   the ledger contract, detached B2/W3 identities, host/GPU/model/backend
   identities, and future fresh output roots.  A non-active reservation stops
@@ -39,7 +39,7 @@ reported as duplicate execution.
 
 ## Campaign controller
 
-`research_pilots.f02_campaign` is the only orchestration entry point.  It takes
+`scripts.research.f02_campaign` is the only orchestration entry point.  It takes
 a **private, reviewed JSON configuration** and runs the immutable order `B2
 F00`, `W3 F00`, `B2 F02`, `W3 F02` after `run_preflight` returns `PASS`.
 

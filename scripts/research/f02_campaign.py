@@ -19,9 +19,9 @@ import subprocess
 import time
 from typing import Callable, Mapping, Sequence
 
-from research_pilots.f02_loopback import OneShotLoopbackFaultProxy, ProxyReceipt
-from research_pilots.f02_oracle import ComfyUIEventOracle, OracleDecision
-from research_pilots.f02_preflight import PreflightReport, run_preflight
+from scripts.research.f02_loopback import OneShotLoopbackFaultProxy, ProxyReceipt
+from scripts.research.f02_oracle import ComfyUIEventOracle, OracleDecision
+from scripts.research.f02_preflight import PreflightReport, run_preflight
 
 
 B2_SHA = "da65d57047b5a59e3403b49adf4605a1c0497c58"
