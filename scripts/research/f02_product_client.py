@@ -11,6 +11,7 @@ from __future__ import annotations
 import hashlib
 import json
 import os
+import re
 from pathlib import Path
 import subprocess
 import sys
@@ -39,10 +40,26 @@ CONSTRAINTS = {
     "height": HEIGHT,
 }
 INPUT_DIGEST = hashlib.sha256(b"no-input").hexdigest()
+_STABLE_ERROR_CODE = re.compile(r"^[a-z][a-z0-9_]{0,63}$")
 
 
 class ProductClientError(RuntimeError):
-    pass
+    @property
+    def stable_code(self) -> str:
+        candidate = str(self).split(":", 1)[0]
+        return candidate if _STABLE_ERROR_CODE.fullmatch(candidate) else "product_client_error"
+
+
+def _safe_exception_code(error: BaseException) -> str:
+    if isinstance(error, ProductClientError):
+        return error.stable_code
+    if isinstance(error, json.JSONDecodeError):
+        return "invalid_json"
+    if isinstance(error, OSError):
+        code = f"oserror_{type(error).__name__}"
+        return code if _STABLE_ERROR_CODE.fullmatch(code) else "oserror"
+    code = f"unexpected_{type(error).__name__}"
+    return code if _STABLE_ERROR_CODE.fullmatch(code) else "unexpected_error"
 
 
 def _digest(value: object) -> str:
@@ -62,13 +79,17 @@ def _file_sha256(path: Path) -> str | None:
 
 def _structured(response: dict[str, Any]) -> dict[str, Any]:
     if "error" in response:
-        raise ProductClientError(f"jsonrpc_error:{response['error']}")
+        raise ProductClientError("jsonrpc_error")
     result = response.get("result")
     if not isinstance(result, dict):
         raise ProductClientError("missing_result")
     if result.get("isError"):
         structured = result.get("structuredContent")
-        raise ProductClientError(f"tool_error:{structured!r}")
+        error = structured.get("error") if isinstance(structured, dict) else None
+        code = error.get("code") if isinstance(error, dict) else None
+        if not isinstance(code, str) or not _STABLE_ERROR_CODE.fullmatch(code):
+            code = "tool_error"
+        raise ProductClientError(code)
     value = result.get("structuredContent")
     if isinstance(value, dict):
         return value
@@ -117,8 +138,7 @@ class StdioMcp:
         while True:
             line = self.process.stdout.readline()
             if not line:
-                stderr = self.process.stderr.read() if self.process.stderr is not None else ""
-                raise ProductClientError(f"server_eof:{stderr[-500:]}")
+                raise ProductClientError("server_eof")
             response = json.loads(line)
             if response.get("id") == self.sequence:
                 return _structured(response)
@@ -461,9 +481,12 @@ def run(root: Path, *, case_id: str, operation_key: str, output_root: str, call_
     env["LOCAL_GPU_IMAGEGEN_COMFYUI_MANAGED"] = "0"
     env["LOCAL_GPU_IMAGEGEN_COMFYUI_STARTUP_WAIT_SECONDS"] = "0"
     client = StdioMcp(root, env)
+    stage = "initialize"
     try:
         _initialise(client)
+        stage = "private_catalog"
         client.call("local_gpu_list_profiles", {"authorization_scope": "private"})
+        stage = "model_route"
         route_info = _discover_route(client)
         boundary = route_info["boundary"]
         start_arguments = {
@@ -479,13 +502,16 @@ def run(root: Path, *, case_id: str, operation_key: str, output_root: str, call_
             "max_rounds": 1,
             "upscale_policy": "off",
         }
+        stage = "start_run"
         started = client.call("local_gpu_start_run", start_arguments)
         run_id = started.get("run_id")
         if not isinstance(run_id, str) or not run_id:
             raise ProductClientError("run_id_missing")
+        stage = "read_run"
         manifest = client.call("local_gpu_get_run", {"run_id": run_id})
         seed = 4100 + call_index
         plan = _build_plan(manifest["request"], seed)
+        stage = "generate_round"
         generated = client.call(
             "local_gpu_generate_round",
             {
@@ -501,6 +527,7 @@ def run(root: Path, *, case_id: str, operation_key: str, output_root: str, call_
         route = manifest["request"]["route"]
         digests = _request_digests(manifest["request"], plan, route)
         artifact_hashes = _artifact_hashes(generated, root)
+        stage = "artifact_validation"
         if not artifact_hashes:
             raise ProductClientError("artifact_hash_missing")
         return {
@@ -523,7 +550,9 @@ def run(root: Path, *, case_id: str, operation_key: str, output_root: str, call_
             "operation_key": operation_key,
             "reported_state": "unresolved",
             "artifact_hashes": [],
-            "client_error": str(exc),
+            "client_error_schema_version": 1,
+            "client_error_code": exc.stable_code,
+            "client_error_stage": stage,
             "case_id": case_id,
             "call_index": call_index,
         }
@@ -545,17 +574,17 @@ def main() -> int:
             print(json.dumps(probe(root), sort_keys=True, separators=(",", ":")))
             return 0
         except (OSError, ProductClientError, json.JSONDecodeError) as exc:
-            print(json.dumps({"reported_state": "failed", "client_error": str(exc)}, sort_keys=True))
+            print(json.dumps({"reported_state": "failed", "client_error_schema_version": 1, "client_error_code": _safe_exception_code(exc), "client_error_stage": "route_probe"}, sort_keys=True))
             return 2
     if catalog_argument:
         try:
             print(json.dumps(catalog(root), sort_keys=True, separators=(",", ":")))
             return 0
         except (OSError, ProductClientError, json.JSONDecodeError) as exc:
-            print(json.dumps({"reported_state": "failed", "client_error": str(exc)}, sort_keys=True))
+            print(json.dumps({"reported_state": "failed", "client_error_schema_version": 1, "client_error_code": _safe_exception_code(exc), "client_error_stage": "catalog_probe"}, sort_keys=True))
             return 2
     if not output_root:
-        print(json.dumps({"reported_state": "failed", "client_error": "output_root_missing"}, sort_keys=True))
+        print(json.dumps({"reported_state": "failed", "client_error_schema_version": 1, "client_error_code": "output_root_missing", "client_error_stage": "launch"}, sort_keys=True))
         return 2
     result = run(root, case_id=case_id, operation_key=operation_key, output_root=output_root, call_index=call_index)
     print(json.dumps(result, sort_keys=True, separators=(",", ":")))

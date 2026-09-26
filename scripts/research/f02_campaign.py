@@ -15,6 +15,7 @@ import argparse
 import json
 from pathlib import Path
 import os
+import re
 import subprocess
 import time
 from typing import Callable, Mapping, Sequence
@@ -40,6 +41,11 @@ _REQUEST_FIELDS = (
     "route_identity",
     "validator_version",
 )
+_CLIENT_ERROR_CODE = re.compile(r"^[a-z][a-z0-9_]{0,63}$")
+_CLIENT_ERROR_STAGES = frozenset({
+    "initialize", "private_catalog", "model_route", "start_run", "read_run",
+    "generate_round", "artifact_validation", "route_probe", "catalog_probe", "launch",
+})
 
 
 class CampaignConfigurationError(ValueError):
@@ -53,6 +59,7 @@ class CaseSpec:
     fault_mode: str
     command: tuple[str, ...]
     working_directory: str
+    research_model_path: str
     output_root: str
     operation_key: str
 
@@ -399,7 +406,8 @@ def _invoke_subprocess(spec: CaseSpec, call_index: int, proxy_url: str, timeout_
         "LOCAL_GPU_IMAGEGEN_COMFYUI_URL": proxy_url,
         "LOCAL_GPU_IMAGEGEN_COMFYUI_MANAGED": "0",
         "LOCAL_GPU_IMAGEGEN_COMFYUI_STARTUP_WAIT_SECONDS": "0",
-        "LOCAL_GPU_IMAGEGEN_OUTPUT_ROOT": spec.output_root,
+        "LOCAL_GPU_IMAGEGEN_OUTPUT_DIR": spec.output_root,
+        "LOCAL_GPU_IMAGEGEN_RESEARCH_MODEL_PATH": spec.research_model_path,
         "LOCAL_GPU_IMAGEGEN_F02_CASE_ID": spec.case_id,
         "LOCAL_GPU_IMAGEGEN_F02_FAULT_MODE": spec.fault_mode,
         "LOCAL_GPU_IMAGEGEN_F02_CALL_INDEX": str(call_index),
@@ -438,6 +446,8 @@ def _parse_config(config: dict[str, object]) -> tuple[dict[str, object], dict[st
     output_roots = _mapping(campaign.get("output_roots"), "campaign.output_roots")
     operation_keys = _mapping(campaign.get("operation_keys"), "campaign.operation_keys")
     clients = _mapping(preflight.get("clients"), "preflight.clients")
+    environment = _mapping(preflight.get("environment"), "preflight.environment")
+    research_model_path = _text(environment.get("model_path"), "preflight.environment.model_path")
     specs: dict[str, CaseSpec] = {}
     for system, fault in CASE_ORDER:
         case_id = f"{system}_{fault}"
@@ -451,6 +461,7 @@ def _parse_config(config: dict[str, object]) -> tuple[dict[str, object], dict[st
         specs[case_id] = CaseSpec(
             case_id=case_id, system=system, fault_mode=fault, command=tuple(command_value),
             working_directory=_text(client.get("root"), f"preflight.clients.{system}.root"),
+            research_model_path=research_model_path,
             output_root=_text(output_roots.get(case_id), f"campaign.output_roots.{case_id}"),
             operation_key=_text(operation_keys.get(case_id), f"campaign.operation_keys.{case_id}"),
         )
@@ -493,7 +504,7 @@ def _oracle_status(decisions: Sequence[OracleDecision]) -> str:
 
 def _sanitize_call(call: ProductCallOutcome) -> dict[str, object]:
     result = call.result or {}
-    return {
+    sanitized = {
         "exit_code": call.exit_code,
         "timed_out": call.timed_out,
         "reported_state": call.reported_state,
@@ -503,6 +514,14 @@ def _sanitize_call(call: ProductCallOutcome) -> dict[str, object]:
         "result_digests": {field: result.get(field) for field in _REQUEST_FIELDS if isinstance(result.get(field), str)},
         "artifact_hashes": [value for value in result.get("artifact_hashes", []) if isinstance(value, str) and _sha256_hex(value)] if isinstance(result.get("artifact_hashes"), list) else [],
     }
+    error_code = result.get("client_error_code")
+    if result.get("client_error_schema_version") == 1 and isinstance(error_code, str) and _CLIENT_ERROR_CODE.fullmatch(error_code):
+        sanitized["client_error_schema_version"] = 1
+        sanitized["client_error_code"] = error_code
+    error_stage = result.get("client_error_stage")
+    if isinstance(error_stage, str) and error_stage in _CLIENT_ERROR_STAGES:
+        sanitized["client_error_stage"] = error_stage
+    return sanitized
 
 
 def _sanitize_receipt(receipt: ProxyReceipt) -> dict[str, object]:

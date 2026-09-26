@@ -38,13 +38,23 @@ finalization, or visual review occurred.
 
 ## Limitation and next step
 
-The sanitized campaign record retained stdout hashes but dropped the
-product client's `client_error`, so the exact reason each F00 call failed
-before proxy submission is unknown. Preserve these unresolved F00 observations
-as-is. The next step is to add path-redacted error-code capture to the research
-evidence, diagnose the client failure without submitting `/prompt`, then use a
-separate reservation before any new campaign. Do not describe these observations
-as backend execution failures.
+The original sanitized campaign record retained stdout hashes but dropped the
+product client's `client_error`; its raw text cannot be recovered. A source and
+launch-configuration audit identified the deterministic blocker: the client
+requires `LOCAL_GPU_IMAGEGEN_RESEARCH_MODEL_PATH` before route discovery, while
+the campaign subprocess did not pass that variable. Thus the product client
+returned `pinned_model_path_missing` at `model_route`, before any proxy request.
+The observed zero `/prompt` receipts are consistent with this pre-submission
+client error; the error code itself was not present in the original JSONL and is
+therefore a source-confirmed diagnosis, not a field recovered from the old run.
+
+The research caller and campaign launcher now emit only a stable error code and
+stage, pass the exact model path from private preflight configuration, and send
+the per-case output root through the product's `LOCAL_GPU_IMAGEGEN_OUTPUT_DIR`
+setting. These fixes apply only to future invocations. Preserve the two old F00
+observations as unresolved; both F02 cases remain not-run. A separate active
+reservation is required before any new campaign. Do not describe these
+observations as backend execution failures.
 
 The complete campaign report and JSONL evidence remain in the Windows
 user-local research/output state and are not part of this repository record.
