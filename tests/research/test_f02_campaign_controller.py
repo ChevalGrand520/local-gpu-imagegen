@@ -104,7 +104,10 @@ class CampaignControllerTests(unittest.TestCase):
         roots = {case_id: str(root / case_id) for case_id in ("B2_F00", "W3_F00", "B2_F02", "W3_F02")}
         return {
             "preflight": {
-                "environment": {"backend_url": "http://127.0.0.1:8202"},
+                "environment": {
+                    "backend_url": "http://127.0.0.1:8202",
+                    "model_path": "fake-model.safetensors",
+                },
                 "clients": {
                     "B2": {"root": "b2-root", "sha": "da65d57047b5a59e3403b49adf4605a1c0497c58"},
                     "W3": {"root": "w3-root", "sha": "d45173af75d404ad79dc14568edd4c45f654abd2"},
