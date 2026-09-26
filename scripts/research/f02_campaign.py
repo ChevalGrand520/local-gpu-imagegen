@@ -407,6 +407,7 @@ def _invoke_subprocess(spec: CaseSpec, call_index: int, proxy_url: str, timeout_
         "LOCAL_GPU_IMAGEGEN_COMFYUI_MANAGED": "0",
         "LOCAL_GPU_IMAGEGEN_COMFYUI_STARTUP_WAIT_SECONDS": "0",
         "LOCAL_GPU_IMAGEGEN_OUTPUT_DIR": spec.output_root,
+        "LOCAL_GPU_IMAGEGEN_OUTPUT_ROOT": spec.output_root,
         "LOCAL_GPU_IMAGEGEN_RESEARCH_MODEL_PATH": spec.research_model_path,
         "LOCAL_GPU_IMAGEGEN_F02_CASE_ID": spec.case_id,
         "LOCAL_GPU_IMAGEGEN_F02_FAULT_MODE": spec.fault_mode,

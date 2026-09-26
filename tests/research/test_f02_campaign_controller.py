@@ -5,10 +5,12 @@ from __future__ import annotations
 from datetime import datetime, timezone
 from hashlib import sha256
 from pathlib import Path
+import subprocess
 import tempfile
 import unittest
+from unittest.mock import patch
 
-from scripts.research.f02_campaign import ProductCallOutcome, run_campaign
+from scripts.research.f02_campaign import CaseSpec, ProductCallOutcome, _invoke_subprocess, run_campaign
 from scripts.research.f02_loopback import ProxyReceipt
 from scripts.research.f02_oracle import ExecutionBinding, OracleDecision
 from scripts.research.f02_preflight import PreflightReport
@@ -98,6 +100,31 @@ class CampaignControllerTests(unittest.TestCase):
             "route_identity": "sdxl-txt2img",
             "validator_version": "pilot-v1",
         }
+
+    def test_subprocess_receives_case_output_root_for_client_and_server(self) -> None:
+        spec = CaseSpec(
+            case_id="B2_F00",
+            system="B2",
+            fault_mode="F00",
+            command=("fake-python", "fake-client.py"),
+            working_directory="fake-client-root",
+            research_model_path="fake-model.safetensors",
+            output_root="fresh-output-root",
+            operation_key="op-B2-F00",
+        )
+        completed = subprocess.CompletedProcess(
+            args=list(spec.command),
+            returncode=0,
+            stdout='{"reported_state":"resolved"}',
+            stderr="",
+        )
+        with patch("scripts.research.f02_campaign.subprocess.run", return_value=completed) as run:
+            outcome = _invoke_subprocess(spec, 1, "http://127.0.0.1:39191", 900)
+
+        self.assertEqual(outcome.reported_state, "resolved")
+        child_env = run.call_args.kwargs["env"]
+        self.assertEqual(child_env["LOCAL_GPU_IMAGEGEN_OUTPUT_ROOT"], spec.output_root)
+        self.assertEqual(child_env["LOCAL_GPU_IMAGEGEN_OUTPUT_DIR"], spec.output_root)
 
     def _config(self) -> dict[str, object]:
         root = Path(self.temp.name)
