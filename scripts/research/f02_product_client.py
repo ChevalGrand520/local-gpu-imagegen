@@ -40,6 +40,7 @@ CONSTRAINTS = {
     "height": HEIGHT,
 }
 INPUT_DIGEST = hashlib.sha256(b"no-input").hexdigest()
+ROUTE_VRAM_CEILING_GB = 12.0
 _STABLE_ERROR_CODE = re.compile(r"^[a-z][a-z0-9_]{0,63}$")
 
 
@@ -315,7 +316,7 @@ def _discover_route(client: StdioMcp) -> dict[str, Any]:
             "width": WIDTH,
             "height": HEIGHT,
             "affinity_tags": [],
-            "required_vram_gb": 10.0,
+            "required_vram_gb": ROUTE_VRAM_CEILING_GB,
             "preferred_model_id": MODEL_ID,
         },
     )
