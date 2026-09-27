@@ -1,6 +1,7 @@
 \documentclass[conference,letterpaper,10pt]{IEEEtran}
 \usepackage[T1]{fontenc}
 \usepackage{cite}
+\usepackage{graphicx}
 \usepackage{url}
 \usepackage[hidelinks]{hyperref}
 \hypersetup{pdftitle={Evidence-Bound Recovery for Ambiguous Submissions in Local Generative-AI Pipelines},pdfauthor={}}
@@ -43,8 +44,8 @@ Windows demonstration tests visibility across the client--backend boundary.
 It does not establish that the guard reduces execution counts in that protocol.
 The contribution is an inspectable integration of evidence interpretation,
 run-scoped control and backend observation. Section 6 compares its scope with
-idempotent APIs, workflow execution and tracing. An exhaustive nearest-tool
-review remains open; no first-of-its-kind claim is made.
+idempotent APIs, workflow execution and tracing. The contribution is scoped to this implementation and evaluated failure
+windows; no first-of-its-kind claim is made.
 
 \section{Failure model and evidence semantics}
 
@@ -91,6 +92,32 @@ invoke the engine, retry a request or update the source run. Its output writer
 uses exclusive file creation. These are implementation properties, not a
 claim of complete filesystem security.
 
+\subsection{Using the evidence record}
+
+An investigator first inspects the run manifest and the recorded submission
+outcome. If submission is explicitly unknown, inspection must preserve that
+uncertainty: the missing job identifier must not be synthesized from a later
+successful call. Backend observation is then associated with the relevant
+request and execution instance, while artifact checks retain their own result.
+The export command writes a new record and refuses to overwrite an existing
+export:
+\begin{quote}\small\ttfamily
+python -m\\
+scripts.research.export\_records\\
+--input run-record.json --output evidence.json
+\end{quote}
+The exported record lets a reader inspect reported state, interpreted state,
+mapping reasons and oracle evidence without invoking recovery. It does not
+acquire a missing oracle automatically. The Windows observer export and the
+normalized exporter schema are separate interfaces; a complete automatic
+conversion between them is not established by the pilot.
+
+For example, an unresolved run and successful backend evidence may coexist.
+The execution field can describe the observed backend outcome while recovery
+remains required and execution verification remains false. This separation is
+the intended diagnostic output, rather than an error to hide by replacing the
+original run state with the latest call's result.
+
 \subsection{Recovery guard and its scope}
 
 \texttt{AssetRunEngine} and \texttt{RunStore} preserve the explicit transport marker
@@ -136,21 +163,23 @@ function excludes the seed and does not use its plan argument.
 
 \begin{figure}[t]
 \centering
-\setlength{\fboxsep}{5pt}
-\begin{tabular}{c}
-\fbox{Product engine, run store and adapter}\\[3pt]
-$\downarrow$ prompt transport\\[3pt]
-\fbox{Research shim and fault proxy}\\[3pt]
-$\downarrow$ accepted submission\\[3pt]
-\fbox{ComfyUI backend}\\[3pt]
-$\downarrow$ events and history\\[3pt]
-\fbox{Observer and second-call gate}
-\end{tabular}
-\caption{Product and research boundaries. The controller's second call creates
- a fresh run. The exporter separately normalizes reported records; it does not
- trigger the controller or change the source run.}
+\includegraphics[width=\columnwidth]{figures/recovery-scope.pdf}
+\caption{Scope of the product guard, derived from the reviewed store and engine
+entry points. A new run has separate state. Dashed arrows denote a separate
+caller decision, not automatic reconciliation.}
 \label{fig:architecture}
 \end{figure}
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.96\textwidth]{figures/f02-sequence.pdf}
+\caption{Controlled F02 protocol. The proxy hides the accepted response;
+backend observation gates a second call that creates a fresh run with a changed
+seed. Retained receipts and bindings support the two submissions and the
+ordering of the second receipt after the first completion binding. Spacing is
+schematic, not a measured latency or GPU-runtime plot.}
+\label{fig:sequence}
+\end{figure*}
 
 \section{Evidence and demonstration}
 
@@ -172,9 +201,39 @@ the earlier 40-test result is not a full-suite result for the final shim.
 Neither count is an experimental sample size. Exact immutable source binding
 of the historical test worktrees remains incomplete.
 
-Earlier paired CPU results are documented separately. They must not be
-pooled with the Windows cases: the synthetic same-run path and the fresh-run
-Windows client do not exercise the same recovery scope.
+Table~\ref{tab:cpu} reports the retained paired CPU matrix. Reanalysis checked
+all twelve synthetic traces: each execution-start identifier was unique within
+its case and matched a finish identifier, and request-received counts matched
+the stored submission totals. The control cases are separate from injected
+cases. The invalid earlier matrix version, whose single-stage control failed
+because of a harness result-field mismatch, is excluded.
+
+\begin{table*}[t]
+\caption{Deterministic CPU fault coverage from the retained paired-v2 matrix.
+S/E means submissions/executions. ``Complete'' is the fixture's valid-completion
+flag. These are twelve synthetic traces, not deployment samples.}
+\label{tab:cpu}
+\centering
+\begin{tabular}{llcccll}
+\hline
+Fault & Path & B2 S/E & W3 S/E & Complete (B2/W3) & B2 recovery & W3 recovery\\
+\hline
+F00 & Single stage & 1/1 & 1/1 & yes/yes & Not needed & Not needed\\
+F00 & Two stage & 1/1 & 1/1 & yes/yes & Not needed & Not needed\\
+F02 & Single stage & 2/2 & 1/1 & yes/no & New submission & Unknown; blocked\\
+F02 & Two stage & 1/1 & 1/1 & no/no & Unknown & Unknown; blocked\\
+F03 & Single stage & 2/2 & 2/2 & yes/yes & New submission & New submission\\
+F03 & Two stage & 1/1 & 1/1 & yes/yes & Same job reconciled & Same job reconciled\\
+\hline
+\end{tabular}
+\end{table*}
+
+The distinguishing F02 single-stage fixture has a concrete cost: W3 limits the
+synthetic executions to one but does not complete the product operation in the
+observation window. This is evidence of conservative blocking, not a net
+reliability improvement. The unchanged F03 two-stage row exercises existing
+known-job recovery. These CPU paths must not be pooled with the Windows
+fresh-run protocol in Fig.~\ref{fig:sequence}.
 
 \subsection{Four controlled Windows cases}
 
@@ -206,8 +265,11 @@ W3 & F02 & 2 & 2/2 & U $\to$ R\\
 
 The campaign totals were six calls, six proxy submissions and six bound
 execution instances. The F02 second call used a fresh run and changed seed.
-Counts were read from the retained campaign report; raw events have not been
-independently reconstructed in this manuscript revision. No rate is estimated.
+The four report records matched the corresponding retained JSONL cases.
+Their six execution bindings had distinct identifiers, completed-history flags
+and terminal-event labels. For both F02 cases, the second proxy receipt followed
+the first completion binding. Full raw-event reconstruction remains unavailable.
+No rate is estimated.
 
 The report identifies an RTX 5070 Ti Laptop GPU and ComfyUI v0.30.0 at a pinned source revision, with model and workflow hashes
 checked against the campaign configuration. These are recorded environment
@@ -240,28 +302,29 @@ those bindings, not substitute aggregate event counts.
 
 \section{Reproducibility and limitations}
 
-The source and retained reports support inspection of the protocol. Frozen B2
-and W3 product revisions are distinct from the research harness revision;
-a reproduction must preserve all three identities. Historical commands and
-source identifiers are recorded in the companion evidence ledger. A fresh
-clean-checkout reproduction has not been performed for this revision.
+The paired CPU records preserve product revisions, harness digests and event
+traces. The Windows source and report identities are recorded separately in
+the companion evidence ledger. The audit and figure-generation scripts consume
+existing records only; they do not run the generation backend. Reanalysis is
+reproducible from the included derived records, while recreating the Windows
+campaign also requires the pinned backend, model, workflow and private setup.
+A fresh clean-checkout execution of that campaign was not performed.
 
-Raw Windows campaign JSONL, private configurations, model files and generated
-images remain Windows-local according to the retained report. Read-only follow-up
-inspected the retained campaign-report fields and computed its file hash.
-This did not independently reconstruct raw WebSocket events or verify image
-content. A sanitized
-per-call event/history manifest and its binding checks are still required for
-independent inspection of Table~\ref{tab:cases}. The availability of source and a summary
-is not equivalent to a complete distributable reproduction package.
+The retained Windows JSONL records contain sanitized case summaries,
+execution bindings and aggregate event counts, rather than full raw WebSocket
+messages and history snapshots. Thus the audit verifies internal consistency
+of retained bindings; it cannot independently reconstruct every backend event.
+The derived, path-redacted evidence extract and a read-only audit script are
+included with the manuscript source. No backend call is needed to rerun that
+consistency check.
 
-
-Artifact evidence has its own boundary. The research client computes content
-hashes for returned artifacts, whereas oracle-exported path fingerprints hash
-metadata strings. A path fingerprint is not a content hash. Completed backend
-history and a content hash do not establish visual quality, task acceptance or
-finalization. Earlier protected-pixel or mask-validation results from a
-different pilot are not imported into this campaign.
+Read-only hashing found that the four generated-call artifact hashes matched
+current output image bytes on the Windows host. Each case had one product-output
+PNG; the unresolved first F02 call recorded no product artifact hash. Therefore
+these checks do not verify the first F02 execution's output bytes. The oracle's
+path fingerprints hash metadata strings and cannot substitute for content
+hashes. Neither a matching content hash nor completed history establishes
+visual quality or final user acceptance.
 
 Observation depends on receiving and binding backend events within the harness
 window. Missing events limit evaluability; they do not establish non-execution.
@@ -290,6 +353,13 @@ different boundary by creating a new run after observation. Keeping these
 scopes separate explains why the demonstration can be oracle-evaluable without
 showing automatic recovery or a W3 reduction in executions.
 
+Reliable State Machines provide a stronger control contract within their
+programming model: persistent state and runtime-managed atomic processing
+support failure transparency and exactly-once input processing
+\cite{rsm2019}. Our tool does not place the external generator inside such a
+transactional runtime. It exposes uncertainty at that boundary and restricts
+one product entry path, rather than claiming an equivalent processing guarantee.
+
 Temporal's Activity documentation describes the same lost-completion boundary:
 a worker may finish an Activity and crash before reporting completion, leading
 to a retry. It recommends idempotent Activities \cite{temporal}. This is an important
@@ -312,13 +382,19 @@ the response to suppress, while the observer separately checks execution. This
 comparison does not show that Toxiproxy could not support an equivalent setup;
 no comparative implementation or usability measurement was performed.
 
+Filibuster's project overview describes synthesizing fault-injected test
+variations from developer integration tests to check application error handling
+\cite{filibuster}. Our fixed case set does not provide that automatic search
+coverage. It concentrates on evidence interpretation at a selected submission
+barrier and preserves a separate backend observation channel. The comparison
+uses the project overview, not a reproduction of Filibuster's research results.
+
 This is a documentation-based comparison of responsibilities, not a performance
 benchmark or a feature-absence survey. The practical contribution is making the
 relationship between client ambiguity, backend observation and permitted claims
-inspectable for a local generation workflow. A broader academic and
-reconciliation-system nearest-work comparison remains incomplete.
- No superiority or exhaustive novelty claim follows from the
-selected sources.
+inspectable for a local generation workflow. The comparisons delimit the tool
+responsibilities; they do not establish superiority, exhaustive novelty,
+or measured developer productivity.
 
 \section{Conclusion}
 
@@ -330,6 +406,19 @@ call and reconciliation of the original run. These bounded observations support
 an evidence-preserving tool description. They do not establish automatic
 unknown-job recovery, deployment-wide reliability or natural duplicate-execution
 rates.
+
+\section*{Data, code and responsible use}
+The manuscript source includes derived Windows evidence, retained CPU-record
+pointers, a deterministic audit script and figure sources. Models, private
+configuration, generated images and raw host paths are not redistributed in
+this package. The analysis concerns controlled software executions; it makes
+no claim about human participants or image-quality acceptance. Human-subjects
+or institutional-ethics determinations are not inferred from this scope.
+
+OpenAI Codex assisted with manuscript drafting, source inspection, record
+consistency checks and figure-generation code. The AI-assisted review is an
+internal, single-context check and not independent peer review. Human authors
+must approve the final claims, attribution, declarations and submission.
 
 \bibliographystyle{IEEEtran}
 \bibliography{references}

@@ -71,3 +71,20 @@ No global LaTeX installation was made; the temporary compiler is outside Git.
 
 Vendored CTAN class/style files retain upstream trailing whitespace byte-for-byte;
 local .gitattributes exempts only these two files from whitespace linting.
+
+## v0.4 completed technical manuscript package
+
+The active manuscript is main.tex/main.pdf; docs/research/dsn-tool-description-draft.md
+is the archived v0.3 planning draft, not the latest typeset text. This revision
+adds two vector diagrams, a paired CPU coverage table, a Windows case table,
+read-only retained-evidence audit, current artifact-byte matching and expanded
+related work. No experiment was rerun.
+
+Regenerate derived evidence: `python3 paper/scripts/audit_retained_evidence.py`
+from repository root. Regenerate diagrams with a Python environment containing
+reportlab: `python3 paper/scripts/build_figures.py`. Run the LaTeX build in paper/.
+
+Final checks supersede the older four-page build snapshot above; see the updated
+compile-report.json. ARS internal review: review/ARS_REVIEW.md. This is an inline
+self-review, not independent peer review. Pending author-owned declarations:
+review/AUTHOR_DECLARATIONS.md. Chinese reading abstract: review/ABSTRACT_ZH.md.

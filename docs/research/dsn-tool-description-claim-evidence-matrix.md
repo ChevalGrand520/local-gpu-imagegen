@@ -1,3 +1,7 @@
+> v0.4 continuation: the active manuscript is `paper/main.tex` and `paper/main.pdf`.
+> This document preserves the v0.3 planning/audit snapshot. Current evidence
+> disposition and review are in `paper/evidence/` and `paper/review/ARS_REVIEW.md`.
+
 # DSN claim–evidence matrix — 2026-09-27
 
 Status: working evidence map; semantic judgment is same-family/provisional.

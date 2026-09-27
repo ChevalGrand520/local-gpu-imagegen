@@ -53,3 +53,14 @@ raw evidence are pending. Artifact bytes have not been rehashed here.
 G04: related work is expanded with official workflow/tracing documentation;
 nearest fault-injection comparison and broader novelty assessment remain open.
 No changed scientific denominator, new experiment or probability estimate.
+
+## v0.4 read-only audit
+
+The four retained JSONL case objects exactly matched the four campaign-report
+records. Six retained execution IDs were distinct, and both F02 second receipts
+followed the first completion binding. Four generated-call content hashes
+matched current output PNG bytes. The first unresolved F02 calls have no product
+artifact hash and their output bytes are not covered. JSONL contains sanitized
+bindings/counts, not raw WebSocket/history snapshots; full reconstruction is
+unavailable from this retained export. See paper/evidence/windows-audit.json
+and paper/evidence/audit-results.json for the path-redacted extraction/checks.

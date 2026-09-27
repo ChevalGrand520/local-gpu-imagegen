@@ -1,3 +1,7 @@
+> v0.4 continuation: the active manuscript is `paper/main.tex` and `paper/main.pdf`.
+> This document preserves the v0.3 planning/audit snapshot. Current evidence
+> disposition and review are in `paper/evidence/` and `paper/review/ARS_REVIEW.md`.
+
 # Evidence-gap annotations and revision record
 
 Date: 2026-09-27. Applies to external v0.1 outline/draft and new v0.3.
