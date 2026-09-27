@@ -68,3 +68,6 @@ and rendered pages are retained locally in ignored build/.
 
 Tectonic used T1 font encoding to avoid XeTeX TU/ptm font substitution.
 No global LaTeX installation was made; the temporary compiler is outside Git.
+
+Vendored CTAN class/style files retain upstream trailing whitespace byte-for-byte;
+local .gitattributes exempts only these two files from whitespace linting.

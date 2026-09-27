@@ -1,0 +1,3 @@
+# Preserve vendored CTAN sources byte-for-byte, including upstream whitespace.
+IEEEtran.cls -whitespace
+IEEEtran.bst -whitespace
