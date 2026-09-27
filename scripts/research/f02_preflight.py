@@ -142,7 +142,16 @@ def _client_checks(clients: dict[str, object]) -> list[Check]:
         status = _run(["git", "-C", root, "status", "--porcelain", "--branch"])
         branch = _run(["git", "-C", root, "branch", "--show-current"])
         actual = head.stdout.strip()
-        clean_detached = status.returncode == 0 and not status.stdout.strip() and branch.returncode == 0 and not branch.stdout.strip()
+        status_changes = [
+            line for line in status.stdout.splitlines()
+            if line and not line.startswith("## ")
+        ]
+        clean_detached = (
+            status.returncode == 0
+            and not status_changes
+            and branch.returncode == 0
+            and not branch.stdout.strip()
+        )
         passed = actual == expected_sha == configured_sha and clean_detached
         summary = f"head={actual or 'unavailable'}; detached_clean={clean_detached}"
         checks.append(_check(f"client_{label}", passed, head.args, head.returncode, summary, {"expected": expected_sha}))
