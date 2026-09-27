@@ -1,11 +1,11 @@
 # Evidence-Bound Recovery for Ambiguous Submissions in Local Generative-AI Pipelines
 
-Working manuscript v0.2 — DSN Tool Description — 2026-09-27
+Working manuscript v0.3 — DSN Tool Description — 2026-09-27
 
 > Internal, evidence-bounded draft. Source baseline:
 > `5cd100f2b4a4a7aaeac1fd707fc248bae46f239c`. Windows results below are
-> attributed to the versioned campaign report, not independently recounted
-> from raw Windows-local records in this writing revision. Internal tags refer
+> checked against the retained Windows campaign-report fields. Backend events
+> have not been independently reconstructed and image bytes remain unchecked. Internal tags refer
 > to the [claim matrix](dsn-tool-description-claim-evidence-matrix.md) and
 > [gap register](dsn-tool-description-evidence-gaps.md); retain them until closed.
 
@@ -62,8 +62,10 @@ exporter; a same-run guard whose unresolved state remains visible; and CPU and
 Windows fault-observation workflows with separate evidence boundaries. The
 Windows demonstration tests visibility across the client–backend boundary.
 It does not establish that the guard reduces execution counts in that protocol.
-The novelty of this combination relative to existing fault-injection and
-workflow tools remains to be assessed. `[CITE-GAP:G04]`
+The contribution is an inspectable integration of evidence interpretation,
+run-scoped control and backend observation. Section 6 compares its scope with
+idempotent APIs, workflow execution and tracing. An exhaustive nearest-tool
+review remains open; no first-of-its-kind claim is made. `[CITE-GAP:G04]`
 
 ## 2. Failure model and evidence semantics
 
@@ -178,12 +180,15 @@ exercise cases in which submission and execution counts differ and in which a
 shared prompt identifier does not imply a single execution. These are fixed
 semantic checks, not randomly sampled deployments.
 
-A versioned Windows preparation report records 40 research component tests
-passing under Python 3.15.0a8 [E2]. We retain this as historical component
-evidence. It is not a new test run performed during manuscript revision, a count
-of independent experimental samples, or verification on the project's
-Python 3.11/3.12 CI environments. The precise invocation and test provenance
-for the final endpoint-shim revision remain to be linked. `[EVIDENCE-GAP:G02]`
+Historical command output records 40 research component tests passing in
+7.110 seconds using `py -3.15 -B -m unittest discover -s tests\research -v`,
+with `OK` and exit code 0 [E4]. The preparation report identifies the runtime
+as Windows Python 3.15.0a8 [E2]. A later macOS check targeted the transport shim
+and campaign controller: seven tests passed in 0.003 seconds, followed by
+successful compilation and whitespace checks [E4]. These are distinct stages;
+the earlier 40-test result is not a full-suite result for the final shim.
+Neither count is an experimental sample size. Exact immutable source binding
+of the historical test worktrees remains incomplete. `[EVIDENCE-GAP:G02]`
 
 Earlier paired CPU results are documented separately [E3]. They must not be
 pooled with the Windows cases: the synthetic same-run path and the fresh-run
@@ -203,7 +208,8 @@ the observations without converting these counts into a success probability.
 | B2 | F02 | 2 | 2 | 2 | unresolved | resolved | yes |
 | W3 | F02 | 2 | 2 | 2 | unresolved | resolved | yes |
 
-Table 1. Report-backed observations for four predetermined cases [E1]. Call
+Table 1. Observations for four predetermined cases [E1], cross-checked against
+the retained campaign-report fields [E4]. Call
 labels are research-client classifications; the F02 second call is a new run
 with a changed seed. Execution instances are backend-event bindings, not counts
 inferred from POSTs. The campaign totals are six calls, six submissions and six
@@ -224,12 +230,14 @@ a duplicate execution of an identical generation request.
 ### 4.3 Resolution labels require an explicit aggregation rule
 
 A resolved second call does not erase the first call's unresolved result or
-show that its original run was reconciled. The campaign report's aggregate
-row lists four resolved cases and zero unresolved cases, while the inspected
-controller computes `resolved` and `unresolved` as separate any-call flags.
-Those flags can both be true for an F02 case. We therefore use the per-call
-sequence in Table 1 and leave the aggregate discrepancy unresolved rather than
-publishing a recovery-success rate. `[EVIDENCE-GAP:G01]`
+show that its original run was reconciled. Read-only inspection of the retained
+campaign report [E4] confirmed that both F02 records carry `resolved=1` and
+`unresolved=1`. These are independent any-call flags: across the four cases,
+`resolved` sums to four and `unresolved` to two. They are overlapping counts,
+not mutually exclusive outcomes. The earlier Markdown summary's zero unresolved
+cases is therefore not the controller aggregation. Table 1 preserves the call
+sequence; the evidence addendum records this correction without rewriting the
+historical report. No recovery-success rate is inferred.
 
 There is also a counting distinction within the observer export. Successive
 oracle decisions retain cumulative raw-event snapshots, so summing their event
@@ -253,8 +261,10 @@ assumed to reproduce the historical count of 40. Exact environment/dependency
 capture and clean-checkout reproduction remain open. `[EVIDENCE-GAP:G02,G05]`
 
 Raw Windows campaign JSONL, private configurations, model files and generated
-images remain Windows-local according to [E1]. This manuscript revision
-inspected the versioned summary and source, not those raw files. A sanitized
+images remain Windows-local according to [E1]. Read-only follow-up
+inspected the retained campaign-report fields and computed its file hash [E4].
+This did not independently reconstruct raw WebSocket events or verify image
+content. A sanitized
 per-call event/history manifest and its binding checks are still required for
 independent inspection of Table 1. The availability of source and a summary
 is not equivalent to a complete distributable reproduction package.
@@ -294,13 +304,43 @@ different boundary by creating a new run after observation. Keeping these
 scopes separate explains why the demonstration can be oracle-evaluable without
 showing automatic recovery or a W3 reduction in executions.
 
-A complete positioning against fault-injection frameworks, workflow
-reconciliation systems and tracing tools is still missing. The current
-references establish background concepts, not novelty or comparative tool
-superiority. The next literature revision should compare request identity,
-observation provenance, recovery scope and artifact binding explicitly.
-`[CITE-GAP:G04]` Closing that gap requires a literature comparison, not a new
-performance or reliability claim.
+Temporal's Activity documentation describes the same lost-completion boundary:
+a worker may finish an Activity and crash before reporting completion, leading
+to a retry. It recommends idempotent Activities [3]. This is an important
+comparison because durable workflow state alone does not eliminate uncertainty
+about external side effects. Our same-run guard withholds a submission under
+explicit uncertainty, but supplies no equivalent general workflow-execution or
+automatic reconciliation guarantee.
+
+OpenTelemetry represents operations through spans and uses trace context to
+relate observations across a request [4]. Such correlation provides a useful
+representation for a distributed execution path. In this tool, the additional
+application-specific rule is which observations permit an execution claim:
+backend start and terminal events must bind to completed history, and unresolved
+product recovery can still veto `execution_verified`. Correlation identifiers
+alone are not used as execution counts.
+
+| Mechanism | Identity / observation | Recovery responsibility | Relation to this tool |
+|---|---|---|---|
+| Idempotent APIs [2] | Caller token under service contract | Service handles repeated intent | No such backend guarantee is established here |
+| Temporal Activities [3] | Workflow/Activity execution and completion reporting | Retries require idempotent side effects | Our block is scoped to an unresolved product run |
+| OpenTelemetry traces [4] | Instrumented spans and trace context | Tracing describes operations | Our interpretation adds backend and artifact evidence conditions |
+| Toxiproxy [5] | Configurable TCP proxy and connection faults | Application handles the induced failure | Our F02 injection selects an accepted-response boundary |
+| This tool | Run records, proxy receipts, backend events/history | Same-run block; harness gates a fresh-run call | Unknown states remain explicit; no global deduplication |
+
+Toxiproxy provides configurable TCP connection fault injection for testing [5].
+Our research proxy uses an application-level acceptance condition to select
+the response to suppress, while the observer separately checks execution. This
+comparison does not show that Toxiproxy could not support an equivalent setup;
+no comparative implementation or usability measurement was performed.
+
+This is a documentation-based comparison of responsibilities, not a performance
+benchmark or a feature-absence survey. The practical contribution is making the
+relationship between client ambiguity, backend observation and permitted claims
+inspectable for a local generation workflow. A broader academic and
+reconciliation-system nearest-work comparison remains incomplete.
+`[CITE-GAP:G04]` No superiority or exhaustive novelty claim follows from the
+selected sources.
 
 ## 7. Conclusion
 
@@ -323,7 +363,16 @@ Calls.” *ACM Transactions on Computer Systems* 2(1), 39–59, 1984.
 *Amazon Builders’ Library*.
 [Authoritative article](https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/).
 
-Both sources were accessed for this writing revision on 2026-09-27. They are
+[3] Temporal Technologies. “Activity Definition,” sections on idempotency.
+[Official documentation](https://docs.temporal.io/activity-definition).
+
+[4] OpenTelemetry Authors. “Traces.”
+[Official documentation](https://opentelemetry.io/docs/concepts/signals/traces/).
+
+[5] Shopify. “Toxiproxy.” Official project README.
+[Project documentation](https://github.com/Shopify/toxiproxy).
+
+Sources were accessed for this writing revision on 2026-09-27. They are
 conceptual references, not evidence for this implementation's measured behavior.
 The bibliography is incomplete under G04; target-year DSN formatting is pending
 under G05.
@@ -335,3 +384,5 @@ under G05.
 - [E3: historical component and paired-CPU evidence map](dsn-claim-evidence-map.md).
 - [Current claim matrix](dsn-tool-description-claim-evidence-matrix.md).
 - [Evidence gaps and change rationale](dsn-tool-description-evidence-gaps.md).
+
+- [E4: retained report and historical test reconciliation](dsn-evidence-reconciliation-20260927.md).

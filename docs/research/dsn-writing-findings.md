@@ -17,3 +17,12 @@ existence checks. No changes to product, experiments or historical run records.
 Next work: resolve existing-evidence provenance/aggregation, complete nearest-tool
 literature comparison, verify target-year DSN format, then remove only closed
 internal annotations. New experiments remain outside this writing task.
+
+## v0.3
+
+Windows retained report inspection resolves G01 at field level: overlapping
+resolved=4 and unresolved=2. Test log provenance distinguishes early Windows
+40 tests from later macOS 7 targeted tests. Source hashes at historical test time
+remain unverified. Related work adds Temporal, OpenTelemetry and Toxiproxy from
+official documentation; no experimental comparison or exhaustive novelty claim.
+This revision was locally checked, not re-reviewed by the v0.2 secondary agent.

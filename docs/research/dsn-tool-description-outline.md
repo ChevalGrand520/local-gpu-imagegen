@@ -1,4 +1,4 @@
-# DSN Tool Description outline — v0.2
+# DSN Tool Description outline — v0.3
 
 Date: 2026-09-27. Working manuscript, not submission-ready.
 Evidence baseline: `5cd100f2b4a4a7aaeac1fd707fc248bae46f239c`.
@@ -70,7 +70,7 @@ Recorded B2/W3/backend identities go into reproducibility notes.
 ### 4.3 What resolution means
 
 Explain generated→resolved mapping, original unresolved run not reconciled,
-seed changes and digest limitation. Mark G01 aggregate discrepancy visibly;
+seed changes and digest limitation. Explain the corrected G01 aggregation explicitly;
 do not publish an unresolved=0 or success-rate aggregate.
 
 ## 5. Reproducibility and limitations
@@ -112,7 +112,7 @@ case counts → fresh-run qualification → scoped tool conclusion.
 
 ## Release gates
 
-- [ ] Reconcile G01 using existing raw evidence and explicit aggregation schema.
+- [x] Reconcile G01 against retained report fields using overlapping any-call flags.
 - [ ] Resolve G02 test invocation and final-shim provenance.
 - [ ] Review a sanitized raw evidence bundle; do not equate summaries with raw audit.
 - [ ] Complete nearest-tool comparison and verified references.
@@ -121,3 +121,15 @@ case counts → fresh-run qualification → scoped tool conclusion.
 - [ ] Human author reviews interpretation, attribution and availability statements.
 
 These are manuscript gaps, not authorization to run further experiments.
+
+## v0.3 evidence update
+
+See [reconciliation addendum](dsn-evidence-reconciliation-20260927.md). G01 is
+closed for aggregation: direct Windows report inspection confirms overlapping
+any-call counts resolved=4, unresolved=2. The original Markdown 4/0 row remains
+historical, not the paper’s controller aggregation. G02 is partially closed:
+40-test Windows command/output and later 7-test macOS shim/controller check
+are located; exact immutable test-source provenance remains open. G03 still
+requires raw-event reconstruction and artifact-byte checks. G04 now includes
+Temporal and OpenTelemetry responsibility comparisons, not an exhaustive survey.
+This update supersedes historical open-status wording above.

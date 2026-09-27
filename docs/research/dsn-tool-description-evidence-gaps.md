@@ -1,13 +1,13 @@
 # Evidence-gap annotations and revision record
 
-Date: 2026-09-27. Applies to external v0.1 outline/draft and new v0.2.
+Date: 2026-09-27. Applies to external v0.1 outline/draft and new v0.3.
 Tags: `EVIDENCE-GAP:Gxx` unresolved source issue; `SCOPE:Cxx` bounded claim;
 `CITE-GAP:G04` literature gap. Matrix IDs provide the full permitted scope.
 The old working files are preserved outside this checkout.
 
 ## v0.1 statement audit
 
-| Original location / wording | Issue | v0.2 disposition |
+| Original location / wording | Issue | v0.3 disposition |
 |---|---|---|
 | Abstract: “blocks blind resubmission” | Missing same-run, marker and entry-point scope | C03, scope stated in §3.2 |
 | Abstract: “binds requests ... artifacts ...” | Field presence does not establish every exact binding | Describe nullable fields and validation rules, C01–C02 |
@@ -26,7 +26,7 @@ The old working files are preserved outside this checkout.
 | Outline §8: clean reproduction and distributable manifests | Planned deliverables, not completed evidence | G03/G05 placeholders |
 | Outline §10 and contributions: novelty | No nearest-tool review | Verified conceptual references, explicit G04 |
 
-## New evidence issues visible in v0.2
+## Historical v0.2 evidence issues (updated disposition below)
 
 1. **G01 aggregation:** E1 final-case table says unresolved=0. `_case_record`
    uses independent any-call flags. Each F02 has an unresolved first call.
@@ -53,7 +53,7 @@ The old working files are preserved outside this checkout.
   are introduced because the fixed cases do not estimate a population rate.
 - Claim repetition: abstract introduces; §3 explains mechanism; §4 demonstrates
   and bounds; §6 interprets; §7 concludes. Full provenance stays in the matrix.
-- v0.1 §4 was an evaluation plan, not a completed Results section. v0.2 §4 is a
+- v0.1 §4 was an evaluation plan, not a completed Results section. v0.3 §4 is a
   report-backed Results section; word-count comparison is recorded in the
   writing verification report, not used as a scientific result.
 
@@ -63,3 +63,15 @@ The old working files are preserved outside this checkout.
 同 run 阻止重发是产品能力；观察完成后新建 run 是研究 harness 的流程。
 两者分别陈述，避免用自然语言把不同作用域拼成未经验证的恢复闭环。
 所有缺口只列为后续工作，本轮不触发实验。
+
+## v0.3 evidence update
+
+See [reconciliation addendum](dsn-evidence-reconciliation-20260927.md). G01 is
+closed for aggregation: direct Windows report inspection confirms overlapping
+any-call counts resolved=4, unresolved=2. The original Markdown 4/0 row remains
+historical, not the paper’s controller aggregation. G02 is partially closed:
+40-test Windows command/output and later 7-test macOS shim/controller check
+are located; exact immutable test-source provenance remains open. G03 still
+requires raw-event reconstruction and artifact-byte checks. G04 now includes
+Temporal and OpenTelemetry responsibility comparisons, not an exhaustive survey.
+This update supersedes historical open-status wording above.

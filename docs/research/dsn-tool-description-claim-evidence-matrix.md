@@ -44,7 +44,7 @@ before submission.
 | C04 | Unknown-job automatic reconciliation exists | S:E5; H:E3 C4 | Unsupported; `get_run` is inspection guidance | Need durable same-run reconciliation and acceptance evidence; do not imply implementation |
 | C05 | Known-job two-stage recovery (§3) | H:E3 C5; S:engine | Existing capability, distinct from no-job-ID branch | Not a W3 novelty claim or Windows F02 demonstration |
 | C06 | CPU oracle observes worker-entry events (§4.1) | S:E6; H:E3 C2,C6 | Deterministic synthetic coverage | Same-process observer; no crash-durable or GPU-kernel oracle claim |
-| C07 | 40 CPU research/component tests passed (§4.1) | H:E2 | Reported Windows Python 3.15.0a8 component-suite result | Exact test selection/log and final-shim test provenance not established by E1; not current Mac or supported-Python CI result |
+| C07 | 40 CPU research/component tests passed (§4.1) | H:E2 | Reported Windows Python 3.15.0a8 component-suite result | Commands/logs located in reconciliation addendum: earlier Windows 40, later macOS 7; immutable test-source binding still pending; not current Mac or supported-Python CI result |
 | C08 | Windows campaign 4/4 oracle-evaluable (§4.2) | H:E1 | Four fixed cases: B2/W3 × F00/F02 | Raw event recount pending; not a reliability probability |
 | C09 | Each F00: 1 submission, 1 execution (§4.2 table) | H:E1 | Separate normal controls | Not fault cases; not part of fault-injection denominator |
 | C10 | Each F02: 2 submissions, 2 executions (§4.2 table) | H:E1; S:E9–E10 | Two observed execution instances per controlled case | No same-payload duplicate claim or natural duplicate-execution rate |
@@ -54,7 +54,7 @@ before submission.
 | C14 | W3 reduces real repeated execution | H:E1 | Unsupported: B2 and W3 both have 2/2 in F02 | CPU paired fixture differences cannot transfer to this Windows protocol |
 | C15 | Endpoint-preserving injection (§3.3) | S:E7; H:E1 | Research shim intercepts prompt transport while identity client retains endpoint | Not native ComfyUI or shipped product feature; no identity-security proof |
 | C16 | Independent Windows execution oracle (§3.3) | S:E8; H:E1 | Independent of product return value, dependent on backend WS + history; matching client ID | No hardware-independent monitor, replay-proof event IDs or crash completeness |
-| C17 | 4 resolved / 0 unresolved (§4.2) | H:E1 table versus S:E9 `_case_record` | **OPEN discrepancy G01**: report final-case summary differs from any-call flags | Do not publish aggregate unresolved=0 as controller output or recovery success rate |
+| C17 | 4 resolved / 0 unresolved (§4.2) | H:E1 table versus S:E9 `_case_record` | **RECONCILED G01**: retained report confirms any-call resolved=4, unresolved=2 | Do not publish aggregate unresolved=0 as controller output or recovery success rate |
 | C18 | Artifact identity and visual acceptance (§5) | H:E1; S:E8–E10 | Report says hashes retained; content hashes and path hashes have distinct roles | Raw images/hashes not checked here; path hash is not content integrity, history is not visual acceptance |
 | C19 | ComfyUI/model scope (§4.2, §5) | H:E1 | Recorded v0.30.0 at `b1693ecba9f5b65f8c80ab36b195ab963ec92413`; pinned configuration only | No backend-version/model generalization; model/workflow hash values require approved manifest |
 | C20 | Reproducible integration package (§5) | H:E1,E3; S:versioned tools | Inspectable source and historical demonstration | Clean-checkout reproduction, sanitized raw bundle and third-party Windows replay pending |
@@ -88,14 +88,27 @@ before submission.
 
 ## Release gaps
 
-G01: reconcile final-case versus any-call unresolved definitions using retained
-raw records, without editing original historical evidence.
-G02: exact 40-test invocation and source/runtime provenance for the final shim.
+G01: closed at retained-report field level; any-call sums are 4 resolved and
+2 unresolved. Full event reconstruction remains G03. Historical evidence is unchanged.
+G02: invocation/output located; exact immutable test-source provenance remains open.
 G03: sanitized raw per-call/event/history manifest and hash verification.
 `_sanitize_oracle` sums cumulative event snapshots; use deduplicated execution
 bindings rather than its `event_counts` for published execution totals.
-G04: nearest-tool comparison and completed verified bibliography.
+G04: selected Temporal/OpenTelemetry/Toxiproxy comparisons added; broader academic
+nearest-work review remains open.
 G05: clean-checkout artifact reproduction and actual target-year DSN formatting.
 G06: visual/domain acceptance and model generalization are absent, not implied.
 
 No new experiment is requested or authorized by this gap list.
+
+## v0.3 evidence update
+
+See [reconciliation addendum](dsn-evidence-reconciliation-20260927.md). G01 is
+closed for aggregation: direct Windows report inspection confirms overlapping
+any-call counts resolved=4, unresolved=2. The original Markdown 4/0 row remains
+historical, not the paper’s controller aggregation. G02 is partially closed:
+40-test Windows command/output and later 7-test macOS shim/controller check
+are located; exact immutable test-source provenance remains open. G03 still
+requires raw-event reconstruction and artifact-byte checks. G04 now includes
+Temporal and OpenTelemetry responsibility comparisons, not an exhaustive survey.
+This update supersedes historical open-status wording above.
