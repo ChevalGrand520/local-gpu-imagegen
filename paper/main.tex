@@ -10,7 +10,7 @@
 \author{\IEEEauthorblockN{Anonymous submission draft}}
 \maketitle
 \begin{abstract}
-A lost submission response can leave a generation client uncertain whether its backend executed a request. We describe evidence-bound recovery tooling for local image-generation pipelines: a versioned evidence exporter, a same-run submission guard, and controlled fault injection with backend observation. The exporter separates reported state, interpretation and oracle evidence. The guard preserves explicitly unknown outcomes without claiming automatic reconciliation. Four fixed Windows/ComfyUI control and response-loss cases produced retained execution bindings. Each control had one submission and one retained binding; each injected case had an unresolved first call and a resolved second call, with two submissions and two retained bindings. The retained export also contains cumulative event counts that exceed the binding counts in F02; those counts are not used as execution totals. The second call created a fresh run with a different seed after observed completion. The demonstration establishes bounded execution visibility, not recovery of the original run or fewer executions. Deployment rates and output-quality improvement remain unmeasured.
+A lost submission response can leave a generation client uncertain whether its backend executed a request. We describe evidence-bound recovery tooling for local image-generation pipelines: a versioned evidence exporter, a same-run submission guard, and controlled fault injection with backend observation. The exporter separates reported state, interpretation and oracle evidence. The guard preserves explicitly unknown outcomes without claiming automatic reconciliation. Four fixed Windows/ComfyUI control and response-loss cases produced retained execution bindings. Each control had one submission and one retained binding; each injected case had an unresolved first call and a resolved second call, with two submissions and two retained bindings. The retained export also contains cumulative event counts that exceed the binding counts in F02; those counts are not used as execution totals. The second call created a fresh run with a different seed after observed completion. The Windows demonstration does not exercise the same-run guard: every F02 second call creates a new run outside its scope. It therefore establishes retained observation, not guard efficacy, recovery of the original run or fewer executions. Deployment rates and output-quality improvement remain unmeasured.
 \end{abstract}
 \section{Introduction}
 
@@ -133,6 +133,14 @@ path and is not attributed to this no-job-ID guard. The resulting tradeoff is
 explicit: the guard withholds another submission through that run while the
 required evidence is unavailable; it does not guarantee eventual completion.
 
+A pipeline integrator can use this distinction when a generation UI receives a
+disconnect after sending a request: the exporter preserves the unknown outcome,
+the same-run entry blocks another submission, and the operator must inspect or
+reconcile the run through an available backend-specific mechanism. The guard can
+also conservatively withhold work when a request failed before backend acceptance,
+so its false-positive cost is delayed completion rather than a claimed reliability
+gain.
+
 
 \subsection{Controlled observation on Windows}
 
@@ -155,7 +163,10 @@ monitor or a crash-durable audit log.
 The controller permits the second F02 product call only after the first
 execution has a bindable completion. The client creates a new run on each call
 and uses \texttt{seed = 4100 + call\_index}. This is observation-gated fresh-run
-generation, not automatic reconciliation of the original run. Matching frozen
+generation, not automatic reconciliation of the original run. Because the new
+run is outside the same-run guard, the Windows campaign does not measure the
+guard's blocking effect; that effect appears only in the CPU F02 single-stage
+fixture, where blocking trades a second execution for an incomplete operation. Matching frozen
 request digests does not establish full prompt equality: the inspected digest
 function excludes the seed and does not use its plan argument.
 
@@ -176,7 +187,8 @@ caller decision, not automatic reconciliation.}
 \caption{Controlled F02 protocol. The proxy hides the accepted response;
 backend observation gates a second call that creates a fresh run with a changed
 seed. Retained receipts and bindings support the two submissions and the
-ordering of the second receipt after the first completion binding. Spacing is
+ordering of the second receipt after the first retained binding. The campaign
+does not exercise the same-run guard. Spacing is
 schematic, not a measured latency or GPU-runtime plot.}
 \label{fig:sequence}
 \end{figure*}
@@ -250,8 +262,12 @@ flags and terminal-event labels. The same retained records report three cumulati
 Because snapshot boundaries and payload discriminators are not retained, the
 extra event counts cannot be assigned to calls or converted into execution totals.
 For both F02 cases, the second proxy receipt followed the first retained binding.
-Full raw-event reconstruction remains unavailable.
-No rate is estimated. The phrase "oracle-evaluable" refers to the retained
+Full raw-event reconstruction remains unavailable. The retained export also
+shows three cumulative \texttt{execution\_start} events in each F02 case while
+two execution bindings are retained. The aggregation sums cumulative snapshots
+without per-snapshot boundaries, so the extra event cannot be attributed or
+excluded. We therefore report binding counts as retained-record counts, not as
+complete execution ground truth. No rate is estimated. The phrase "oracle-evaluable" refers to the retained
 binding record and should not be read as a complete independent raw-event audit.
 
 The report identifies an RTX 5070 Ti Laptop GPU and ComfyUI v0.30.0 at a pinned source revision, with model and workflow hashes

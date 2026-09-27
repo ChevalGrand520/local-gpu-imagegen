@@ -1,5 +1,5 @@
 {
-  "status": "v0.5 pre-submission rechecked technical draft; author review required",
+  "status": "v0.6 DS-reviewed scope revision; author review required",
   "pages_total": 5,
   "abstract_words": 131,
   "figures": 2,
@@ -19,11 +19,13 @@
   "undefined_citations": 0,
   "undefined_references": 0,
   "overfull_boxes": 0,
-  "underfull_box_notices": 7,
-  "pdf_sha256": "5b76d0e5f1844e4b272e612b2f46a4e1966d1a096a85668a2cf80620987d4298",
-  "pdf_bytes": 93202,
+  "underfull_box_notices": 6,
+  "pdf_sha256": "406af17a9002f4b2b27ca87f8f8ebc67faf661491378006064b0f81f60dc8ae1",
+  "pdf_bytes": 95249,
   "compiler": "Tectonic 0.17.0",
   "submission_ready": false,
   "remaining": "author declarations, target edition, independent assessment; empirical limits stated in manuscript",
-  "tables_generated_from_checked_records": true
+  "tables_generated_from_checked_records": true,
+  "external_review": "DS round 2 substantive; Claude round aborted before file access",
+  "venue_fit": "BORDERLINE, continue after revision; do not lower solely for evidence gaps"
 }
