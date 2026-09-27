@@ -38,6 +38,10 @@
   ],
   "unique_windows_binding_ids": 6,
   "recorded_artifact_hash_matches": 4,
+  "cumulative_event_count_discrepancies": {
+    "B2_F02": 1,
+    "W3_F02": 1
+  },
   "windows_verification_boundary": "report/JSONL equality and image-byte matching are retained inspection receipts; originals are not in this package",
   "raw_windows_event_reconstruction": "unavailable: no complete raw events/history snapshots",
   "cpu_cases": [

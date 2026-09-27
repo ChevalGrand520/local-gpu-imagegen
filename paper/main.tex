@@ -10,7 +10,7 @@
 \author{\IEEEauthorblockN{Anonymous submission draft}}
 \maketitle
 \begin{abstract}
-A lost submission response can leave a generation client uncertain whether its backend executed a request. We describe evidence-bound recovery tooling for local image-generation pipelines: a versioned evidence exporter, a same-run submission guard, and controlled fault injection with backend observation. The exporter separates reported state, interpretation and oracle evidence. The guard preserves explicitly unknown outcomes without claiming automatic reconciliation. Four fixed Windows/ComfyUI control and response-loss cases were oracle-evaluable. Each control had one submission and one observed execution; each injected case had an unresolved first call and a resolved second call, with two submissions and executions. The second call created a fresh run with a different seed after observed completion. The demonstration establishes bounded execution visibility, not recovery of the original run or fewer executions. Deployment rates and output-quality improvement remain unmeasured.
+A lost submission response can leave a generation client uncertain whether its backend executed a request. We describe evidence-bound recovery tooling for local image-generation pipelines: a versioned evidence exporter, a same-run submission guard, and controlled fault injection with backend observation. The exporter separates reported state, interpretation and oracle evidence. The guard preserves explicitly unknown outcomes without claiming automatic reconciliation. Four fixed Windows/ComfyUI control and response-loss cases produced retained execution bindings. Each control had one submission and one retained binding; each injected case had an unresolved first call and a resolved second call, with two submissions and two retained bindings. The retained export also contains cumulative event counts that exceed the binding counts in F02; those counts are not used as execution totals. The second call created a fresh run with a different seed after observed completion. The demonstration establishes bounded execution visibility, not recovery of the original run or fewer executions. Deployment rates and output-quality improvement remain unmeasured.
 \end{abstract}
 \section{Introduction}
 
@@ -241,22 +241,27 @@ research-client calls. All four cases were oracle-evaluable.}
 \input{tables/windows-rows.tex}
 \end{table}
 
-The campaign totals were six calls, six proxy submissions and six bound
+The campaign totals were six calls, six proxy submissions and six retained bound
 execution instances. The F02 second call used a fresh run and changed seed.
 The four report records matched the corresponding retained JSONL cases.
-Their six execution bindings had distinct identifiers, completed-history flags
-and terminal-event labels. For both F02 cases, the second proxy receipt followed
-the first completion binding. Full raw-event reconstruction remains unavailable.
-No rate is estimated.
+Their six retained execution bindings had distinct identifiers, completed-history
+flags and terminal-event labels. The same retained records report three cumulative
+\texttt{execution\_start} events in each F02 case, while only two bindings are present.
+Because snapshot boundaries and payload discriminators are not retained, the
+extra event counts cannot be assigned to calls or converted into execution totals.
+For both F02 cases, the second proxy receipt followed the first retained binding.
+Full raw-event reconstruction remains unavailable.
+No rate is estimated. The phrase "oracle-evaluable" refers to the retained
+binding record and should not be read as a complete independent raw-event audit.
 
 The report identifies an RTX 5070 Ti Laptop GPU and ComfyUI v0.30.0 at a pinned source revision, with model and workflow hashes
 checked against the campaign configuration. These are recorded environment
 facts for this campaign. They do not establish behavior across other models,
 backend versions or machines.
 
-Both systems produced two observed executions in F02. This demonstrates that
-the research observer could retain execution evidence despite the first call's
-ambiguous outcome. It does not demonstrate an execution-count advantage for W3.
+Both systems produced two retained execution bindings in F02. This demonstrates
+that the research export retained execution identifiers despite the first call's
+ambiguous outcome. It does not resolve the cumulative event-count discrepancy. It does not demonstrate an execution-count advantage for W3.
 Because the second call changed run and seed, the table also does not establish
 a duplicate execution of an identical generation request.
 
@@ -289,7 +294,7 @@ campaign also requires the pinned backend, model, workflow and private setup.
 A fresh clean-checkout execution of that campaign was not performed.
 
 The retained Windows JSONL records contain sanitized case summaries,
-execution bindings and aggregate event counts, rather than full raw WebSocket
+execution bindings, terminal labels and aggregate event counts, rather than full raw WebSocket
 messages and history snapshots. Thus the audit verifies internal consistency
 of retained bindings; it cannot independently reconstruct every backend event.
 The derived, path-redacted evidence extract and a read-only audit script are

@@ -53,7 +53,7 @@ def audit(root):
         require(c['report_equals_jsonl_case'] is True, f'{name}: recorded report/JSONL mismatch')
         require(c['submissions'] == c['executions'] == len(c['bindings']) == len(c['calls']) == n,
                 f'{name}: counts disagree')
-        require(c['classifications']['oracle_evaluable'] == 1, f'{name}: not evaluable')
+        require(c['classifications']['oracle_evaluable'] == 1, f'{name}: retained export is not evaluable')
         states = [x['state'] for x in c['calls']]
         require(states == (['unresolved', 'resolved'] if n == 2 else ['resolved']),
                 f'{name}: unexpected call sequence')
@@ -116,6 +116,7 @@ def audit(root):
         'scope': 'offline consistency check of retained data; no experiment or host access',
         'windows_cases': windows, 'unique_windows_binding_ids': len(set(ids)),
         'recorded_artifact_hash_matches': artifact_checks,
+        'cumulative_event_count_discrepancies': {c['case_id']: c['event_counts'].get('execution_start', 0) - c['executions'] for c in w['cases'] if c['event_counts'].get('execution_start', 0) != c['executions']},
         'windows_verification_boundary': 'report/JSONL equality and image-byte matching are retained inspection receipts; originals are not in this package',
         'raw_windows_event_reconstruction': 'unavailable: no complete raw events/history snapshots',
         'cpu_cases': cpu,

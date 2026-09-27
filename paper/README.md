@@ -100,3 +100,14 @@ hashing on this machine. See review/PRE_SUBMISSION_RECHECK.md for the findings.
 `make package` creates delivery/dsn-tool-description-v0.5.zip with a checksum
 manifest. This is an author-review package, not a complete tool distribution
 or a certified anonymous submission artifact. It preserves scientific limits.
+
+
+## Independent review disposition
+
+The external DeepSeek-harness review is stored outside the common input as an
+author-supplied review record, and its disposition is in review/INDEPENDENT_REVIEW_RESPONSE.md.
+It found a real cumulative event-count versus binding-count discrepancy and a
+missing terminal-payload discriminator. The manuscript now reports these as
+limitations and uses retained bindings as a narrow count. This response is not
+authoritative independent verification and does not claim the missing payloads
+were recovered.
