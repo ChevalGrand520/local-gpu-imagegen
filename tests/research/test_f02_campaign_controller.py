@@ -111,6 +111,7 @@ class CampaignControllerTests(unittest.TestCase):
             research_model_path="fake-model.safetensors",
             output_root="fresh-output-root",
             operation_key="op-B2-F00",
+            backend_url="http://127.0.0.1:8202",
         )
         completed = subprocess.CompletedProcess(
             args=list(spec.command),
@@ -125,6 +126,11 @@ class CampaignControllerTests(unittest.TestCase):
         child_env = run.call_args.kwargs["env"]
         self.assertEqual(child_env["LOCAL_GPU_IMAGEGEN_OUTPUT_ROOT"], spec.output_root)
         self.assertEqual(child_env["LOCAL_GPU_IMAGEGEN_OUTPUT_DIR"], spec.output_root)
+        self.assertEqual(child_env["LOCAL_GPU_IMAGEGEN_COMFYUI_URL"], spec.backend_url)
+        self.assertEqual(
+            child_env["LOCAL_GPU_IMAGEGEN_RESEARCH_PROMPT_PROXY_URL"],
+            "http://127.0.0.1:39191",
+        )
 
     def _config(self) -> dict[str, object]:
         root = Path(self.temp.name)

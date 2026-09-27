@@ -62,6 +62,7 @@ class CaseSpec:
     research_model_path: str
     output_root: str
     operation_key: str
+    backend_url: str = ""
 
 
 @dataclass(frozen=True)
@@ -403,7 +404,8 @@ def _invoke_subprocess(spec: CaseSpec, call_index: int, proxy_url: str, timeout_
         raise TimeoutError("case hard timeout elapsed before product call")
     env = os.environ.copy()
     env.update({
-        "LOCAL_GPU_IMAGEGEN_COMFYUI_URL": proxy_url,
+        "LOCAL_GPU_IMAGEGEN_COMFYUI_URL": spec.backend_url or proxy_url,
+        "LOCAL_GPU_IMAGEGEN_RESEARCH_PROMPT_PROXY_URL": proxy_url,
         "LOCAL_GPU_IMAGEGEN_COMFYUI_MANAGED": "0",
         "LOCAL_GPU_IMAGEGEN_COMFYUI_STARTUP_WAIT_SECONDS": "0",
         "LOCAL_GPU_IMAGEGEN_OUTPUT_DIR": spec.output_root,
@@ -448,6 +450,7 @@ def _parse_config(config: dict[str, object]) -> tuple[dict[str, object], dict[st
     operation_keys = _mapping(campaign.get("operation_keys"), "campaign.operation_keys")
     clients = _mapping(preflight.get("clients"), "preflight.clients")
     environment = _mapping(preflight.get("environment"), "preflight.environment")
+    backend_url = _text(environment.get("backend_url"), "preflight.environment.backend_url")
     research_model_path = _text(environment.get("model_path"), "preflight.environment.model_path")
     specs: dict[str, CaseSpec] = {}
     for system, fault in CASE_ORDER:
@@ -465,6 +468,7 @@ def _parse_config(config: dict[str, object]) -> tuple[dict[str, object], dict[st
             research_model_path=research_model_path,
             output_root=_text(output_roots.get(case_id), f"campaign.output_roots.{case_id}"),
             operation_key=_text(operation_keys.get(case_id), f"campaign.operation_keys.{case_id}"),
+            backend_url=backend_url,
         )
     _validate_fresh_roots(preflight, specs)
     return preflight, campaign, specs, frozen_request, Path(evidence_text)

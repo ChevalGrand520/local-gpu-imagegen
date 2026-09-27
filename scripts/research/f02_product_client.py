@@ -111,8 +111,14 @@ class StdioMcp:
         server = root / "scripts" / "mcp_server.py"
         if not server.is_file():
             raise ProductClientError(f"missing_server:{server}")
+        launcher = Path(__file__).with_name("f02_transport_launcher.py")
+        command = (
+            [sys.executable, str(launcher), str(server)]
+            if env.get("LOCAL_GPU_IMAGEGEN_RESEARCH_PROMPT_PROXY_URL")
+            else [sys.executable, str(server)]
+        )
         self.process = subprocess.Popen(
-            [sys.executable, str(server)],
+            command,
             cwd=root,
             env=env,
             stdin=subprocess.PIPE,
