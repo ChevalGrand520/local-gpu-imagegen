@@ -60,7 +60,7 @@ class _FakeOracle:
     non_evaluable_cases: set[str] = set()
 
     def __init__(self, _backend_url: str, *, backend_boot_identity: str, observer_id: str, timeout_seconds: float) -> None:
-        self.case_id = observer_id.split("-")[2]
+        self.case_id = observer_id[3:] if observer_id.startswith("op-") else observer_id.split("-")[2]
         self.backend_boot_identity = backend_boot_identity
         self.timeout_seconds = timeout_seconds
 

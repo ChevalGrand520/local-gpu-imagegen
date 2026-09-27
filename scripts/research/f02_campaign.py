@@ -240,7 +240,10 @@ def _run_case(
     status = "completed"
 
     with proxy_factory(backend_url, fault_mode=spec.fault_mode, timeout_seconds=30.0) as proxy:
-        observer_id = f"f02-pilot-{_safe_token(spec.case_id)}-{sha256(spec.operation_key.encode()).hexdigest()[:12]}"
+        # ComfyUI routes execution events by the request's client_id. The
+        # product adapter binds that field to the operation key, so the
+        # independent observer must subscribe to the same client_id.
+        observer_id = spec.operation_key
         oracle = oracle_factory(
             backend_url,
             backend_boot_identity=backend_boot_identity,
