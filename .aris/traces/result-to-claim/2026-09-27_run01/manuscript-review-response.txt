@@ -1,0 +1,5 @@
+No material factual or scope issues found in the revised draft, outline, matrix, and gap register.
+
+The manuscript correctly retains the crucial qualifications: fresh-run second calls, changed seeds, equal B2/W3 execution counts, scoped same-run blocking, call-label semantics, G01 aggregation discrepancy, and report-backed rather than independently audited Windows numbers.
+
+Verdict remains partial/provisional, same-family. Raw-data reconciliation, final-shim test provenance, literature positioning, and reproduction/venue requirements remain open. This was a bounded continuation of the existing review, with no tests or new independent audit.

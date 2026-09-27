@@ -1,0 +1,22 @@
+[
+  {
+    "id": "C07",
+    "value": "40 tests passed",
+    "source": "docs/research/runs/w3-windows-f02-retry-20260927.md"
+  },
+  {
+    "id": "C10",
+    "value": "2 submissions and 2 executions",
+    "source": "docs/research/runs/w3-windows-f02-endpoint-shim-20260927.md"
+  },
+  {
+    "id": "C13",
+    "value": "seed = 4100 + call_index",
+    "source": "scripts/research/f02_product_client.py"
+  },
+  {
+    "id": "C17",
+    "value": "int(any(call.reported_state == \"unresolved\" for call in calls))",
+    "source": "scripts/research/f02_campaign.py"
+  }
+]

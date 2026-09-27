@@ -1,0 +1,14 @@
+{
+  "claim_supported": "partial",
+  "review_independence": "same-family",
+  "acceptance_status": "provisional",
+  "integrity_status": "unavailable",
+  "reviewer_task": "/root/claim_boundary_review",
+  "confidence": {
+    "source_semantics": "high",
+    "windows_report": "medium"
+  },
+  "routing_action": "continue bounded draft; preserve evidence gaps; no experiments",
+  "precheck": "docs/research/dsn-evidence-precheck.json",
+  "submission_ready": false
+}

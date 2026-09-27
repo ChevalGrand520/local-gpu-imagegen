@@ -1,0 +1,18 @@
+{
+  "checks": "documentation only; no product tests or experiments",
+  "relative_links": "pass",
+  "table_cases": 4,
+  "table_totals": {
+    "calls": 6,
+    "submissions": 6,
+    "execution_instances": 6
+  },
+  "source_precheck": "4 strings verified; existence only",
+  "word_counts_whitespace": {
+    "old_evaluation_plan": 193,
+    "new_results_including_table_and_gap_tags": 600,
+    "draft_total": 2630
+  },
+  "source_baseline": "5cd100f2b4a4a7aaeac1fd707fc248bae46f239c",
+  "draft_sha256": "88c48f65d2ce17233ab27d578df8236c9ae2d13e82dd32a9ad5f4a21aee8690f"
+}
