@@ -14,3 +14,11 @@ Observer receipt timestamps must not be interpreted as GPU execution durations.
 
 Figures: build_figures.py (reportlab) creates protocol and scope diagrams.
 They are schematic; no fabricated timing values or statistical estimates.
+
+## v0.5 audit boundary
+
+The offline checker counts four retained hash-match receipts; it does not
+re-read the Windows images. `report_equals_jsonl_case` likewise records the
+prior remote inspection, not access to both originals in this package.
+The two LaTeX tables under paper/tables are regenerated from checked records.
+Missing cases/checks and conflicting completion/recovery labels fail explicitly.

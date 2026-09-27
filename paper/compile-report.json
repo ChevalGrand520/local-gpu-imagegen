@@ -1,5 +1,5 @@
 {
-  "status": "v0.4 technical manuscript compiled; author review required",
+  "status": "v0.5 pre-submission rechecked technical draft; author review required",
   "pages_total": 5,
   "abstract_words": 131,
   "figures": 2,
@@ -20,9 +20,10 @@
   "undefined_references": 0,
   "overfull_boxes": 0,
   "underfull_box_notices": 7,
-  "pdf_sha256": "92d7116fe0bb36708c43532c9609d93b992abd71a23ee7eec40f4eeaf05815f8",
-  "pdf_bytes": 93097,
+  "pdf_sha256": "5b76d0e5f1844e4b272e612b2f46a4e1966d1a096a85668a2cf80620987d4298",
+  "pdf_bytes": 93202,
   "compiler": "Tectonic 0.17.0",
   "submission_ready": false,
-  "remaining": "author declarations, target edition, independent assessment; empirical limits stated in manuscript"
+  "remaining": "author declarations, target edition, independent assessment; empirical limits stated in manuscript",
+  "tables_generated_from_checked_records": true
 }

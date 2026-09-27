@@ -44,8 +44,8 @@ Windows demonstration tests visibility across the client--backend boundary.
 It does not establish that the guard reduces execution counts in that protocol.
 The contribution is an inspectable integration of evidence interpretation,
 run-scoped control and backend observation. Section 6 compares its scope with
-idempotent APIs, workflow execution and tracing. The contribution is scoped to this implementation and evaluated failure
-windows; no first-of-its-kind claim is made.
+idempotent APIs, workflow execution and tracing. The evaluated contribution
+is this implementation and its failure windows.
 
 \section{Failure model and evidence semantics}
 
@@ -185,7 +185,8 @@ schematic, not a measured latency or GPU-runtime plot.}
 
 \subsection{CPU components and deterministic fixtures}
 
-The CPU harness separates submission events from synthetic worker-entry events.
+We denote the frozen baseline product revision by B2 and the revision with
+the same-run ambiguity guard by W3. The CPU harness separates submission events from synthetic worker-entry events.
 Its fixtures cover normal operation and response loss before and after job-ID
 acquisition, including single-stage and two-stage paths. Oracle self-checks
 exercise cases in which submission and execution counts differ and in which a
@@ -214,18 +215,7 @@ S/E means submissions/executions. ``Complete'' is the fixture's valid-completion
 flag. These are twelve synthetic traces, not deployment samples.}
 \label{tab:cpu}
 \centering
-\begin{tabular}{llcccll}
-\hline
-Fault & Path & B2 S/E & W3 S/E & Complete (B2/W3) & B2 recovery & W3 recovery\\
-\hline
-F00 & Single stage & 1/1 & 1/1 & yes/yes & Not needed & Not needed\\
-F00 & Two stage & 1/1 & 1/1 & yes/yes & Not needed & Not needed\\
-F02 & Single stage & 2/2 & 1/1 & yes/no & New submission & Unknown; blocked\\
-F02 & Two stage & 1/1 & 1/1 & no/no & Unknown & Unknown; blocked\\
-F03 & Single stage & 2/2 & 2/2 & yes/yes & New submission & New submission\\
-F03 & Two stage & 1/1 & 1/1 & yes/yes & Same job reconciled & Same job reconciled\\
-\hline
-\end{tabular}
+\input{tables/cpu-rows.tex}
 \end{table*}
 
 The distinguishing F02 single-stage fixture has a concrete cost: W3 limits the
@@ -237,10 +227,7 @@ fresh-run protocol in Fig.~\ref{fig:sequence}.
 
 \subsection{Four controlled Windows cases}
 
-We denote the frozen baseline product revision by B2 and the revision with
-the same-run ambiguity guard by W3. The endpoint-preserving campaign report
-records both revisions under F00 and
-F02. All four fixed cases were oracle-evaluable; the two F00 cases were controls
+The endpoint-preserving campaign report records B2 and W3 under F00 and F02. All four fixed cases were oracle-evaluable; the two F00 cases were controls
 and the two F02 cases had confirmed response-loss injection. Table~\ref{tab:cases} reports
 the observations without converting these counts into a success probability.
 
@@ -251,16 +238,7 @@ proxy submissions/bound execution instances; U/R are unresolved/resolved
 research-client calls. All four cases were oracle-evaluable.}
 \label{tab:cases}
 \centering
-\begin{tabular}{llccc}
-\hline
-System & Case & Calls & S/E & Call sequence\\
-\hline
-B2 & F00 & 1 & 1/1 & R\\
-W3 & F00 & 1 & 1/1 & R\\
-B2 & F02 & 2 & 2/2 & U $\to$ R\\
-W3 & F02 & 2 & 2/2 & U $\to$ R\\
-\hline
-\end{tabular}
+\input{tables/windows-rows.tex}
 \end{table}
 
 The campaign totals were six calls, six proxy submissions and six bound
@@ -315,8 +293,10 @@ execution bindings and aggregate event counts, rather than full raw WebSocket
 messages and history snapshots. Thus the audit verifies internal consistency
 of retained bindings; it cannot independently reconstruct every backend event.
 The derived, path-redacted evidence extract and a read-only audit script are
-included with the manuscript source. No backend call is needed to rerun that
-consistency check.
+included with the manuscript source. The offline script checks this derived
+extract and regenerates the two result tables. The recorded report/JSONL equality
+and image-byte matches are inspection receipts; rerunning the script does not
+repeat those host-side checks. No backend call is needed.
 
 Read-only hashing found that the four generated-call artifact hashes matched
 current output image bytes on the Windows host. Each case had one product-output

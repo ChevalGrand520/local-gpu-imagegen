@@ -88,3 +88,15 @@ Final checks supersede the older four-page build snapshot above; see the updated
 compile-report.json. ARS internal review: review/ARS_REVIEW.md. This is an inline
 self-review, not independent peer review. Pending author-owned declarations:
 review/AUTHOR_DECLARATIONS.md. Chinese reading abstract: review/ABSTRACT_ZH.md.
+
+## v0.5 pre-submission recheck
+
+Two result tables now regenerate from validated retained records. `make audit`
+updates them; `make pdf` runs the audit before LaTeX. Four malformed-record
+negative checks are recorded in review/AUDIT_NEGATIVE_CHECKS.json.
+The checker counts historical Windows byte-match receipts, not fresh image
+hashing on this machine. See review/PRE_SUBMISSION_RECHECK.md for the findings.
+
+`make package` creates delivery/dsn-tool-description-v0.5.zip with a checksum
+manifest. This is an author-review package, not a complete tool distribution
+or a certified anonymous submission artifact. It preserves scientific limits.
