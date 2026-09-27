@@ -1,0 +1,14 @@
+{
+  "class": "IEEEtran 1.8b",
+  "bibliography_style": "IEEEtran 1.14",
+  "sources": [
+    "https://mirrors.ctan.org/macros/latex/contrib/IEEEtran/IEEEtran.cls",
+    "https://mirrors.ctan.org/macros/latex/contrib/IEEEtran/bibtex/IEEEtran.bst"
+  ],
+  "sha256": {
+    "IEEEtran.cls": "da751920a317ed318b7b5cd7fa585a6cc7d28502d457856382e9be24b10a3bd7",
+    "IEEEtran.bst": "314f0ece704568faf827011bac498650691b2b5ee06320720830e782416d5a5f"
+  },
+  "venue_baseline": "https://dsn2026.github.io/cfpapers.html",
+  "actual_target_edition": "not yet confirmed"
+}

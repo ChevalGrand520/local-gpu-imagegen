@@ -1,0 +1,18 @@
+{
+  "status": "compiled and visually inspected working draft",
+  "pages_total": 4,
+  "page_size": "US Letter 612 x 792 pt",
+  "abstract_words": 131,
+  "all_fonts_embedded": true,
+  "font_family": "IEEEtran Times-compatible Nimbus Roman, T1 encoding",
+  "undefined_citations": 0,
+  "undefined_references": 0,
+  "overfull_boxes": 0,
+  "underfull_boxes": 5,
+  "pdf_bytes": 47307,
+  "pdf_sha256": "57009786ae8fb7669716e381e96a902a542b650a56b8d16b75cdc13a29ce9062",
+  "compiler": "Tectonic 0.17.0",
+  "visual_review": "four-page rendered contact sheet inspected; no clipping, overlap or missing figure/table observed",
+  "venue_baseline": "DSN 2026: 7 pages excluding references; actual target edition unconfirmed",
+  "submission_ready": false
+}
