@@ -1,7 +1,7 @@
 {
-  "status": "v0.6 DS-reviewed scope revision; author review required",
-  "pages_total": 5,
-  "abstract_words": 131,
+  "status": "v0.6 evidence wording and package correction; not submission ready",
+  "pages_total": 6,
+  "abstract_words": 134,
   "figures": 2,
   "tables": 2,
   "references": 7,
@@ -19,13 +19,13 @@
   "undefined_citations": 0,
   "undefined_references": 0,
   "overfull_boxes": 0,
-  "underfull_box_notices": 6,
-  "pdf_sha256": "406af17a9002f4b2b27ca87f8f8ebc67faf661491378006064b0f81f60dc8ae1",
-  "pdf_bytes": 95249,
+  "underfull_box_notices": 7,
+  "pdf_sha256": "a1ce138cad4c32e0b6c1d213df06c45735d418ae5afc182c612eadeb31e8c94c",
+  "pdf_bytes": 95485,
   "compiler": "Tectonic 0.17.0",
   "submission_ready": false,
   "remaining": "author declarations, target edition, independent assessment; empirical limits stated in manuscript",
   "tables_generated_from_checked_records": true,
   "external_review": "DS round 2 substantive; Claude round aborted before file access",
-  "venue_fit": "BORDERLINE, continue after revision; do not lower solely for evidence gaps"
+  "venue_fit": "DSN Tool retained as candidate; target edition and institutional category recognition unconfirmed"
 }

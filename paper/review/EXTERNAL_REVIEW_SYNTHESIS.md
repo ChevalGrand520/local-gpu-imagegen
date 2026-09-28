@@ -11,11 +11,11 @@ an editorial decision.
   after revision; do not lower venue merely to hide evidence or packaging gaps.
 - **R1:** the Windows campaign creates a new run for every F02 second call, so
   it does not exercise the same-run guard. The manuscript now says this in the
-  abstract and method, and identifies CPU F02 single-stage as the only measured
-  guard case.
+  abstract and method, and distinguishes CPU blocking in F02 fixtures from the execution-count
+  difference observed in the single-stage fixture.
 - **R2:** each F02 retained export has cumulative `execution_start=3` versus two
-  bindings. This is now named in the manuscript. It is an unresolved cumulative
-  snapshot discrepancy, not evidence of a third execution.
+  bindings. This is now named in the manuscript. The exporter sums cumulative snapshots and can count prior events again.
+  This is not evidence of a third execution; original snapshots are unavailable.
 - **R3:** the review package now includes exporter and guard implementation files
   through the package builder, plus the evidence addendum. It still does not
   include private models, raw Windows payloads or a complete campaign rerun.
@@ -26,6 +26,10 @@ an editorial decision.
   package.
 
 ## Review disagreement / correction
+
+The reported first-completion-before-second-receipt ordering is expected: the
+controller gates the second call on first-call completion. It is not a timing
+contradiction.
 
 The DS review correctly identified the cumulative-count mismatch and package
 limits. It recommended no longer treating the Windows campaign as guard

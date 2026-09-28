@@ -10,8 +10,8 @@ decision.
 - The retained export reports cumulative `execution_start=3` in each F02 case,
   while two execution bindings are retained. The manuscript now reports both
   fields and calls the latter **retained execution bindings**. It does not use
-  cumulative snapshots as execution totals. This is a real unresolved export
-  discrepancy, not a cosmetic wording issue.
+  cumulative snapshots as execution totals. The source explains the aggregation: cumulative snapshots recount earlier
+  events. Original snapshot payloads remain unavailable for re-audit.
 - The terminal discriminator is not retained. The audit's `terminal_event ==
   "executing"` check is a self-consistency check on the derived record, not an
   independent payload-level completion proof. The manuscript now says this
@@ -27,8 +27,10 @@ decision.
 ## Findings not adopted as demonstrated errors
 
 - `execution_start=3` does not prove a third distinct execution. The retained
-  export lacks per-snapshot boundaries and payloads. It is reported as an
-  unresolved discrepancy, not converted into a third execution count.
+  export lacks per-snapshot boundaries and payloads. The source-level aggregation explains why the count can exceed bindings;
+  it is not converted into a third execution count.
+- Two of six calls, not three, lack product artifact hashes: the first unresolved
+  call in each F02 case. Four byte-match receipts cover two distinct hashes.
 - Identical F02 output hashes do not prove cache reuse or same-seed execution.
   The package does not retain enough preimage data to make that inference.
 - Absence of original host files from the external review packet is a package

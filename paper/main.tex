@@ -10,7 +10,7 @@
 \author{\IEEEauthorblockN{Anonymous submission draft}}
 \maketitle
 \begin{abstract}
-A lost submission response can leave a generation client uncertain whether its backend executed a request. We describe evidence-bound recovery tooling for local image-generation pipelines: a versioned evidence exporter, a same-run submission guard, and controlled fault injection with backend observation. The exporter separates reported state, interpretation and oracle evidence. The guard preserves explicitly unknown outcomes without claiming automatic reconciliation. Four fixed Windows/ComfyUI control and response-loss cases produced retained execution bindings. Each control had one submission and one retained binding; each injected case had an unresolved first call and a resolved second call, with two submissions and two retained bindings. The retained export also contains cumulative event counts that exceed the binding counts in F02; those counts are not used as execution totals. The second call created a fresh run with a different seed after observed completion. The Windows demonstration does not exercise the same-run guard: every F02 second call creates a new run outside its scope. It therefore establishes retained observation, not guard efficacy, recovery of the original run or fewer executions. Deployment rates and output-quality improvement remain unmeasured.
+A lost submission response can leave a generation client uncertain whether its backend executed a request. We describe evidence-bound recovery tooling for local image-generation pipelines: an evidence exporter, a same-run submission guard, and controlled fault injection with backend observation. The exporter separates reported state, interpretation, and oracle evidence. Four fixed Windows/ComfyUI cases retained one execution binding per control and two per response-loss case. Each response-loss case had an unresolved first call and a resolved second call. The second call created a fresh run outside the guard's scope; this demonstration does not establish guard efficacy or recovery of the original run. CPU fixtures expose the guard's tradeoff between withholding a submission and leaving an operation incomplete. Retained bindings support record-level auditing, not independent reconstruction of all backend events. Deployment rates and output-quality improvements remain unmeasured.
 \end{abstract}
 \section{Introduction}
 
@@ -43,7 +43,7 @@ Windows fault-observation workflows with separate evidence boundaries. The
 Windows demonstration tests visibility across the client--backend boundary.
 It does not establish that the guard reduces execution counts in that protocol.
 The contribution is an inspectable integration of evidence interpretation,
-run-scoped control and backend observation. Section 6 compares its scope with
+run-scoped control and backend observation. Section~\ref{sec:related} compares its scope with
 idempotent APIs, workflow execution and tracing. The evaluated contribution
 is this implementation and its failure windows.
 
@@ -165,8 +165,8 @@ execution has a bindable completion. The client creates a new run on each call
 and uses \texttt{seed = 4100 + call\_index}. This is observation-gated fresh-run
 generation, not automatic reconciliation of the original run. Because the new
 run is outside the same-run guard, the Windows campaign does not measure the
-guard's blocking effect; that effect appears only in the CPU F02 single-stage
-fixture, where blocking trades a second execution for an incomplete operation. Matching frozen
+guard's blocking effect. CPU F02 fixtures exercise blocking; in the single-stage
+fixture, W3 has one execution rather than B2's two, while leaving the operation incomplete. Matching frozen
 request digests does not establish full prompt equality: the inspected digest
 function excludes the seed and does not use its plan argument.
 
@@ -257,18 +257,17 @@ The campaign totals were six calls, six proxy submissions and six retained bound
 execution instances. The F02 second call used a fresh run and changed seed.
 The four report records matched the corresponding retained JSONL cases.
 Their six retained execution bindings had distinct identifiers, completed-history
-flags and terminal-event labels. The same retained records report three cumulative
-\texttt{execution\_start} events in each F02 case, while only two bindings are present.
-Because snapshot boundaries and payload discriminators are not retained, the
-extra event counts cannot be assigned to calls or converted into execution totals.
-For both F02 cases, the second proxy receipt followed the first retained binding.
-Full raw-event reconstruction remains unavailable. The retained export also
-shows three cumulative \texttt{execution\_start} events in each F02 case while
-two execution bindings are retained. The aggregation sums cumulative snapshots
-without per-snapshot boundaries, so the extra event cannot be attributed or
-excluded. We therefore report binding counts as retained-record counts, not as
-complete execution ground truth. No rate is estimated. The phrase "oracle-evaluable" refers to the retained
-binding record and should not be read as a complete independent raw-event audit.
+flags and terminal-event labels. In both B2\_F02 and W3\_F02, the export reports
+\texttt{execution\_start=3}, two proxy submissions and two retained bindings.
+The exporter sums events across cumulative decision snapshots; earlier events
+can therefore be counted again (one start followed by two starts gives three
+aggregate entries). This aggregation does not establish a third execution.
+The original snapshot boundaries are unavailable for independent reconstruction.
+We report the two bindings per case as retained-record counts, not complete
+execution ground truth. The first binding's completion precedes the second
+receipt, as required by the controller's observation gate; these timestamps
+belong to different calls. No rate is estimated. Here, ``oracle-evaluable''
+refers to the retained binding record, not an independent raw-event audit.
 
 The report identifies an RTX 5070 Ti Laptop GPU and ComfyUI v0.30.0 at a pinned source revision, with model and workflow hashes
 checked against the campaign configuration. These are recorded environment
@@ -313,6 +312,10 @@ The retained Windows JSONL records contain sanitized case summaries,
 execution bindings, terminal labels and aggregate event counts, rather than full raw WebSocket
 messages and history snapshots. Thus the audit verifies internal consistency
 of retained bindings; it cannot independently reconstruct every backend event.
+The source oracle recognizes completion using an \texttt{executing} event with
+\texttt{node=null}, together with completed history. The offline audit's check
+of the exported \texttt{executing} label is only a consistency check: that label
+is set by construction and lacks the original node and payload discriminator.
 The derived, path-redacted evidence extract and a read-only audit script are
 included with the manuscript source. The offline script checks this derived
 extract and regenerates the two result tables. The recorded report/JSONL equality
@@ -337,6 +340,7 @@ robustness. No GPU run, model download or new experiment was performed for this
 manuscript revision.
 
 \section{Related work and discussion}
+\label{sec:related}
 
 RPC failure semantics provide the conceptual starting point: a failed
 communication does not necessarily settle whether a remote operation ran \cite{birrell1984}.
