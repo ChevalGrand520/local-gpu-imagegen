@@ -55,3 +55,7 @@
 ## 认证矩阵
 
 已建立 [投稿目标与成果认证矩阵](venue-certification-matrix-20260928.md)。当前核对结果：DSN 与 ISSRE 为 B 类候选，APSEC/QRS 为 C 类候选（来自公开转换副本，仍需学校确认）；DSN Tool 不自动等同 CCF B Regular；IEEE Access 的 SCI/JCR/中科院分区尚未填入未经核实的数字。
+
+## 已批准目标集合
+
+当前只维护四条路线：DSN Tool、IEEE Access（按 SCI 三区候选规划，待浙大院系和当年分区确认）、ISSRE Regular、ICSA/WICSA 需分开：软件架构 ICSA 暂不作为主投，WICSA 在公开 2026 转换副本中为 C 类。

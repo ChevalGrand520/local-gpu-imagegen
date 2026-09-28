@@ -12,7 +12,9 @@ CCF 官方第七版说明明确：目录中的会议论文指 Full/Regular paper
 | ISSRE | **B** | Regular 才是稳妥的 CCF 会议论文形式；Tool/short/industry 类别需学校确认 | 不适用 | 比 DSN Tool 更适合 Regular 目标，但当前证据不足 |
 | APSEC | **C** | Regular 与 SEIP/Short 的认定不能混用 | 不适用 | 工程实践可匹配，升学含金量低于 B 类候选 |
 | QRS | **C** | Regular/short/workshop 必须分开核对 | 不适用 | 主题匹配，不能作为高录用率保底 |
-| IEEE Access | 不适用（期刊） | 学校按 SCI/SCIE、JCR/中科院分区和发表时间认定 | IEEE 官方需逐年确认；不把 Scopus/EI 当 SCI | 期刊备选，需扩展研究论证和证据 |
+| ICSA（Software Architecture） | 当前 2026 转换副本未找到 ICSA 条目；不要与计算机体系结构 ISCA 混淆 | 需查目标学院是否自定义认定 | 不适用 | 当前稿件架构内容不足，暂不列入主投 |
+| WICSA | **C** | 需为软件架构主题的 Regular 论文 | 不适用 | 与当前可靠性证据链有交集，但不是首选 |
+| IEEE Access | 不适用（期刊） | 本规划暂按 **SCI 三区候选**处理；最终仍按投稿/录用年度和浙大院系规则确认 | SCI/SCIE、JCR 与中科院分区需逐年核验 | 期刊备选，需扩展研究论证和证据 |
 
 ## 来源与可信等级
 
@@ -27,7 +29,8 @@ CCF 官方第七版说明明确：目录中的会议论文指 Full/Regular paper
 
 1. **当前交付：DSN Tool 候选。** 价值在可检查的工具集成和证据边界；不能按 CCF B Regular 自动计入。
 2. **中期升级：ISSRE Regular。** 只有当“证据契约相对普通日志/追踪增加可验证判定能力”得到充分实验支持，才值得转向。
-3. **期刊备选：IEEE Access。** 需要扩展为完整期刊稿；SCI/SCIE、JCR 与中科院分区必须按投稿/录用年份确认。
+3. **期刊备选：IEEE Access。** 本规划暂按 SCI 三区候选处理；需要扩展为完整期刊稿，正式认定仍按浙大院系规则和当年目录确认。
+4. **ICSA 暂不列入主目标。** 软件架构领域的 ICSA 与计算机体系结构 ISCA 不能混淆；公开 2026 CCF 转换副本未找到 ICSA 条目，WICSA 则列为 C 类。
 4. **保底候选：APSEC/QRS。** 当前转换副本显示为 C 类；不应为了 C 类标签牺牲论文匹配，也不把会议整体录用率当单篇概率。
 
 ## 必须向目标学校确认的问题
