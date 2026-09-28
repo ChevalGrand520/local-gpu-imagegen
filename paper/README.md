@@ -37,6 +37,14 @@ extraction. It contains synthetic exporter inputs and retained derived records;
 it is not a full backend distribution, an anonymous submission artifact, or a
 new experiment.
 
+The separately sanitized candidate is built with
+`python3 paper/scripts/package_anonymous_demo.py`. It normalizes archive
+timestamps and source-module names, records an author-side source/delivery hash
+map outside the ZIP, and runs the same offline checker after extraction. It is
+still an internal candidate: publicly indexed source or data may be recognizable.
+DSN 2027's artifact-evaluation track is separate from research-paper review
+and does not require the artifact at initial paper submission.
+
 With TeX Live/MacTeX:
 
 ```sh
