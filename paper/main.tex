@@ -91,6 +91,13 @@ the product's recovery obligation has been discharged. The exporter does not
 invoke the engine, retry a request or update the source run. Its output writer
 uses exclusive file creation. These are implementation properties, not a
 claim of complete filesystem security.
+The interpretation assumes that supplied oracle and artifact-validator records
+have trustworthy provenance. The exporter checks their stated fields and
+bindings; it does not authenticate their origin or reconstruct missing raw
+events. In the current mapping, absent source revision, backend-instance or
+validator-version metadata need not by themselves prevent
+\texttt{execution\_verified}. That flag denotes satisfaction of this mapping's
+evidence policy, not independent certification of the input record.
 
 \subsection{Using the evidence record}
 
