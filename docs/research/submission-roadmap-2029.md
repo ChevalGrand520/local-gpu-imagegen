@@ -47,3 +47,7 @@
 ## M0/M1 判定（2026-09-28）
 
 最近工作检查发现 arXiv:2609.29095v1，与候选 Regular 论点明显重叠。B0 的20条构造验证通过；72案例产品矩阵未启动，GPU未运行。详见 [门槛报告](../../refine-logs/M0_M1_GATE_REPORT.md)。下一步优先裁决贡献差异，而非扩大实验。
+
+### 逐项对照后的修正
+
+[贡献对照](../../refine-logs/CLAIM_OVERLAP_REVIEW.md)确认历史实现与具体工具差异。当前为 PROCEED WITH CAUTION，保留 Tool；Regular 证据与差异仍不足。不是全项目创新性被否定，也不是自动恢复矩阵执行。
