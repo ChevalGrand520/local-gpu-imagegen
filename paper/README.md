@@ -102,7 +102,7 @@ from repository root. Regenerate diagrams with a Python environment containing
 reportlab: `python3 paper/scripts/build_figures.py`. Run the LaTeX build in paper/.
 
 Final checks supersede the older four-page build snapshot above. The current
-six-page draft and 134-word abstract are recorded in compile-report.json. ARS
+six-page draft and 135-word abstract are recorded in compile-report.json. ARS
 internal review: review/ARS_REVIEW.md. This is an inline
 self-review, not independent peer review. Pending author-owned declarations:
 review/AUTHOR_DECLARATIONS.md. Chinese reading abstract: review/ABSTRACT_ZH.md.

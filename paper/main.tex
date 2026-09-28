@@ -10,7 +10,7 @@
 \author{\IEEEauthorblockN{Anonymous submission draft}}
 \maketitle
 \begin{abstract}
-A lost submission response can leave a generation client uncertain whether its backend executed a request. We describe evidence-bound recovery tooling for local image-generation pipelines: an evidence exporter, a same-run submission guard, and controlled fault injection with backend observation. The exporter separates reported state, interpretation, and oracle evidence. Four fixed Windows/ComfyUI cases retained one execution binding per control and two per response-loss case. Each response-loss case had an unresolved first call and a resolved second call. The second call created a fresh run outside the guard's scope; this demonstration does not establish guard efficacy or recovery of the original run. CPU fixtures expose the guard's tradeoff between withholding a submission and leaving an operation incomplete. Retained bindings support record-level auditing, not independent reconstruction of all backend events. Deployment rates and output-quality improvements remain unmeasured.
+A lost submission response can leave a generation client uncertain whether its backend executed a request. We describe evidence-bound recovery tooling for local image-generation pipelines: an evidence exporter, a same-run submission guard, and controlled fault injection with backend observation. The exporter separates reported state, interpretation, and oracle evidence. Four fixed Windows/ComfyUI cases retained one execution binding per control and two per response-loss case. Each response-loss case had an unresolved first call and a resolved second call. The second call created a fresh run outside the guard's scope; this demonstration does not establish guard efficacy or recovery of the original run. Only synthetic CPU fixtures exercise the guard, exposing incomplete operation as a cost of withholding submission. Retained bindings support record-level auditing, not independent reconstruction of all backend events. Deployment rates and output-quality improvements remain unmeasured.
 \end{abstract}
 \section{Introduction}
 
@@ -241,12 +241,15 @@ flag. These are twelve synthetic traces, not deployment samples.}
 \input{tables/cpu-rows.tex}
 \end{table*}
 
-The distinguishing F02 single-stage fixture has a concrete cost: W3 limits the
-synthetic executions to one but does not complete the product operation in the
-observation window. This is evidence of conservative blocking, not a net
-reliability improvement. The unchanged F03 two-stage row exercises existing
-known-job recovery. These CPU paths must not be pooled with the Windows
-fresh-run protocol in Fig.~\ref{fig:sequence}.
+The distinguishing F02 single-stage fixture has a concrete cost: W3 blocks a
+second product submission. Its synthetic worker records one successful start
+and finish with an artifact, yet the product operation remains incomplete in
+the observation window. B2 submits twice and completes in this fixture. The
+guard's direct action is withholding a submission; the corresponding difference
+in synthetic execution counts is not a measured real-backend reduction. The
+unchanged F03 two-stage row exercises existing known-job recovery. These CPU
+paths must not be pooled with the Windows fresh-run protocol in
+Fig.~\ref{fig:sequence}.
 
 \subsection{Four controlled Windows cases}
 
@@ -270,12 +273,18 @@ The four report records matched the corresponding retained JSONL cases.
 Their six retained execution bindings had distinct identifiers, completed-history
 flags and terminal-event labels. In both B2\_F02 and W3\_F02, the export reports
 \texttt{execution\_start=3}, two proxy submissions and two retained bindings.
-The exporter sums events across cumulative decision snapshots; earlier events
-can therefore be counted again (one start followed by two starts gives three
-aggregate entries). This aggregation does not establish a third execution.
-The original snapshot boundaries are unavailable for independent reconstruction.
-We report the two bindings per case as retained-record counts, not complete
-execution ground truth. The first binding's completion precedes the second
+Each F02 case has two observer decisions. The oracle's \texttt{raw\_events}
+field is cumulative, while the export counts the entire event list of each
+decision. For example, if the first list contains start A and the second
+contains A and B, the sum is $1+2=3$ entries for two distinct starts. Each F00
+case has only one decision, so this recounting opportunity is absent there.
+The uniqueness check concerns the two retained binding identifiers per F02
+case, not the three aggregate entries. This source-level mechanism makes the
+reported count compatible with two bindings; it does not reconstruct the
+historical lists. Because the original snapshot boundaries and payloads are
+unavailable, an additional unbound start cannot be independently excluded.
+We report two retained bindings per case, not a complete execution ground
+truth. The first binding's completion precedes the second
 receipt, as required by the controller's observation gate; these timestamps
 belong to different calls. No rate is estimated. Here, ``oracle-evaluable''
 refers to the retained binding record, not an independent raw-event audit.
@@ -287,7 +296,10 @@ backend versions or machines.
 
 Both systems produced two retained execution bindings in F02. This demonstrates
 that the research export retained execution identifiers despite the first call's
-ambiguous outcome. It does not resolve the cumulative event-count discrepancy. It does not demonstrate an execution-count advantage for W3.
+ambiguous outcome. The source explains how the aggregate count can exceed the
+binding count, but the retained extract does not independently resolve the
+historical event sequence. The cases do not demonstrate an execution-count
+advantage for W3.
 Because the second call changed run and seed, the table also does not establish
 a duplicate execution of an identical generation request.
 
