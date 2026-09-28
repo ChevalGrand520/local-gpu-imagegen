@@ -38,3 +38,8 @@
 
 先形成有明确假设、预算、指标和停止条件的实验提案，再由用户决定是否执行。
 在回答上述问题前，不把当前 Tool 稿仅改标题后称为成熟 Regular 论文。
+
+## 已形成的补证提案
+
+见 [Regular 补证提案](../../refine-logs/EXPERIMENT_PLAN.md) 与 [执行跟踪](../../refine-logs/EXPERIMENT_TRACKER.md)。
+2026-09-28 已完成规划；所有新实验仍为 NOT RUN。优先建议 M0/M1，GPU 阶段另行批准。
