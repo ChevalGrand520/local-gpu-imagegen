@@ -108,3 +108,7 @@
 ## 2026-09-28 有界可行性判定
 
 见 [Regular 可行性报告](../../refine-logs/REGULAR_FEASIBILITY_DECISION.md)。现有 exporter 的增量判定能力尚不成立；ISSRE Regular 保持条件目标，不扩大矩阵。Tool 应补充受信输入边界。IEEE Access 的“SCI三区”未完成当年权威核验，不作为确定认证事实。
+
+## IEEE Access 准备阶段
+
+已建立 [期刊扩稿门槛](ieee-access-expansion-gate-20260928.md)。连续收稿提高时间可控性，但现有 Tool 稿尚不满足 Applied Research 所需的定量验证。先确定研究问题、等信息量日志基线、独立答案和证据采集方案；这些通过后再写完整期刊稿。DSN Tool 仍保持独立版本，避免重复投稿。
