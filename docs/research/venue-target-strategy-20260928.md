@@ -104,3 +104,7 @@
 2. 并行维护 ISSRE Regular 的差异化问题，但不运行未经新批准的实验；
 3. 将 IEEE Access 作为 SCI 三区候选的期刊扩展路线；
 4. ICSA 暂停，直到架构主题和认证规则明确。
+
+## 2026-09-28 有界可行性判定
+
+见 [Regular 可行性报告](../../refine-logs/REGULAR_FEASIBILITY_DECISION.md)。现有 exporter 的增量判定能力尚不成立；ISSRE Regular 保持条件目标，不扩大矩阵。Tool 应补充受信输入边界。IEEE Access 的“SCI三区”未完成当年权威核验，不作为确定认证事实。

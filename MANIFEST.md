@@ -17,3 +17,5 @@
 | 20260928_114959 | refine-logs/EXPERIMENT_TRACKER_20260928_114959.md | review | bounded claim comparison; no new experiments |
 | 2026-09-28 | docs/research/venue-certification-matrix-20260928.md | venue | CCF/SCI certification matrix with source limits |
 | 2026-09-28 | docs/research/venue-target-strategy-20260928.md | venue | target-specific paper versions and decision gates |
+| 2026-09-28 | refine-logs/REGULAR_FEASIBILITY_DECISION.md | review | bounded CPU feasibility; trust-boundary limits |
+| 2026-09-28 | docs/research/runs/regular-feasibility-witness-20260928.json | implementation | two synthetic records, not backend experiments |

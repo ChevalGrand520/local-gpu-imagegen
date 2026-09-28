@@ -1,0 +1,91 @@
+{
+  "protocol": "regular-feasibility-logical-witness-v1",
+  "scope": "two synthetic summary records; no real execution or measured accuracy",
+  "exporter_sha256": "665435d573218d041a3512e9bcc772391b622f8f4f09d6aeaabe2c3a8022b63c",
+  "witnesses": [
+    {
+      "case": "complete_summary",
+      "input": {
+        "reported_state": {
+          "state": "generated"
+        },
+        "job_id": "job-1",
+        "artifact_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "approval_state": "valid",
+        "artifact_validation": {
+          "status": "verified",
+          "independent": true
+        },
+        "oracle_state": {
+          "execution_state": "succeeded",
+          "oracle_evaluable": true,
+          "execution_started": 1,
+          "execution_finished": 1,
+          "job_id": "job-1",
+          "artifact_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        }
+      },
+      "interpreted": {
+        "submission_state": "job_identified",
+        "execution_state": "succeeded",
+        "evidence_state": "verified",
+        "recovery_state": "not_needed",
+        "domain_verdict": "not_evaluated",
+        "approval_state": "valid",
+        "execution_verified": true,
+        "execution_verified_reason": "independent_execution_and_artifact_evidence_satisfy_all_required_bindings"
+      },
+      "simple_complete_summary_policy": true,
+      "missing_provenance_fields": [
+        "source_sha",
+        "backend_instance",
+        "validator_version"
+      ]
+    },
+    {
+      "case": "original_run_unresolved",
+      "input": {
+        "reported_state": {
+          "state": "unresolved"
+        },
+        "job_id": "job-1",
+        "artifact_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "approval_state": "valid",
+        "artifact_validation": {
+          "status": "verified",
+          "independent": true
+        },
+        "oracle_state": {
+          "execution_state": "succeeded",
+          "oracle_evaluable": true,
+          "execution_started": 1,
+          "execution_finished": 1,
+          "job_id": "job-1",
+          "artifact_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        }
+      },
+      "interpreted": {
+        "submission_state": "job_identified",
+        "execution_state": "succeeded",
+        "evidence_state": "verified",
+        "recovery_state": "required",
+        "domain_verdict": "not_evaluated",
+        "approval_state": "valid",
+        "execution_verified": false,
+        "execution_verified_reason": "unresolved_or_reconciling_recovery_state_prevents_execution_verification"
+      },
+      "simple_complete_summary_policy": false,
+      "missing_provenance_fields": [
+        "source_sha",
+        "backend_instance",
+        "validator_version"
+      ]
+    }
+  ],
+  "conclusions": [
+    "For this complete-summary pair, a simple policy matches the exporter; not global equivalence.",
+    "A verified output is possible without source, backend-instance or validator-version provenance.",
+    "The exporter trusts supplied oracle and independent-validator assertions; it does not authenticate their origin.",
+    "Identical supplied records yield identical decisions even if one record is stale or fabricated; this is a trust-boundary limit, not an observed production failure."
+  ]
+}
