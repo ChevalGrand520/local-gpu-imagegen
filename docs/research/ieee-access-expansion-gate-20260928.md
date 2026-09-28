@@ -42,9 +42,7 @@ IEEE Access accepts submissions continuously and has no conference-style annual 
 
 ## Immediate preparation without new experiments
 
-- Freeze a claim/evidence table for the Access questions; mark missing cells as NOT RUN.
-- Draft the equal-information log baseline and independent answer-key protocol on paper.
-- Map existing CPU/Windows records to the proposed variables without reclassifying them.
+- A [claim/evidence table and equal-information baseline protocol](ieee-access-evidence-map-20260928.md) now mark missing cells as NOT RUN and map the existing CPU/Windows records to proposed variables without reclassification.
 - Prepare author-owned metadata and journal-template migration only after the scientific scope is fixed.
 
 Decision point: evaluate whether the baseline and contract differ on a meaningful, reproducible task. Only a positive, bounded result justifies expanding to a full Research Article or Applied Research manuscript.

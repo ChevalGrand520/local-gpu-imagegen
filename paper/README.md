@@ -30,6 +30,13 @@ CTAN supplied the class instead. Fonts/margins are not manually reduced.
 
 ## Build
 
+The small local reviewer demonstration is built with
+`python3 paper/scripts/package_reviewer_demo.py` from the repository root. Its
+`paper/examples/README.md` gives a single offline command that runs in a clean
+extraction. It contains synthetic exporter inputs and retained derived records;
+it is not a full backend distribution, an anonymous submission artifact, or a
+new experiment.
+
 With TeX Live/MacTeX:
 
 ```sh
