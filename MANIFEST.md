@@ -15,3 +15,4 @@
 | 20260928_114959 | refine-logs/CLAIM_OVERLAP_REVIEW.md | review | bounded claim comparison; no new experiments |
 | 20260928_114959 | refine-logs/CONTRIBUTION_TIMELINE.json | review | bounded claim comparison; no new experiments |
 | 20260928_114959 | refine-logs/EXPERIMENT_TRACKER_20260928_114959.md | review | bounded claim comparison; no new experiments |
+| 2026-09-28 | docs/research/venue-certification-matrix-20260928.md | venue | CCF/SCI certification matrix with source limits |
