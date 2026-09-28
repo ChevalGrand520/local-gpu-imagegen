@@ -15,10 +15,12 @@ https://dsn2026.github.io/cfpapers.html
 - First page states paper type; abstract no more than 150 words.
 - Single PDF with embedded fonts, double-blind anonymization; under 15 MB recommended.
 
-The 2026 deadline has passed. This is a verified formatting baseline, not a
-claim of compliance with an unverified 2027 CFP. Confirm the actual target
-edition before submission. The generic ARIS IEEE references-in-limit default
-is overridden by the explicit DSN reference exemption above.
+The official DSN 2027 CFP is now available at
+https://dsn2027-berlin.github.io/call-for-contributions/ . It retains the Tool
+seven-page limit, 150-word abstract maximum and reference exemption. Abstracts
+are due November 25, 2026 and full papers December 2, 2026 (AoE). The HotCRP
+site displayed "Submissions are currently closed" on September 28. The generic
+ARS IEEE references-in-limit default is overridden by the explicit DSN rule.
 
 IEEEtran.cls is the unmodified CTAN class:
 https://mirrors.ctan.org/macros/latex/contrib/IEEEtran/IEEEtran.cls

@@ -8,10 +8,10 @@ These fields are not invented or certified by this writing task.
 - Conflicts of interest: author declaration pending; no "none" fabricated.
 - Ethics declaration: controlled software execution scope described; institutional
   determinations not inferred. Authors confirm whether other regulated data applies.
-- AI-use statement: actual Codex assistance described in manuscript; final wording
-  and target-venue policy require author review.
-- Target edition: DSN Tool Description approved, year not confirmed; 2026 deadline
-  has passed. Formatting baseline is not a submission invitation.
+- AI-use statement: actual Codex assistance now has a distinct `AI Tool Usage`
+  section required by the DSN 2027 CFP; authors must verify its scope and wording.
+- Target edition: DSN 2027 Tool Description. Abstract deadline November 25, 2026;
+  full paper deadline December 2, 2026 (AoE). HotCRP was closed on September 28.
 - Artifact release/access location: repository package exists; anonymous reviewer
   delivery and release approval remain author decisions.
 

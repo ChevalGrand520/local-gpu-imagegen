@@ -1,5 +1,5 @@
 {
-  "status": "v0.7 trust-boundary revision; not submission ready",
+  "status": "DSN 2027 Tool working draft; portal closed; author fields pending",
   "pages_total": 6,
   "abstract_words": 134,
   "figures": 2,
@@ -19,12 +19,12 @@
   "undefined_citations": 0,
   "undefined_references": 0,
   "overfull_boxes": 0,
-  "underfull_box_notices": 6,
-  "pdf_sha256": "be50c4a12c7edd398bc79971c06f19ff7fa1639b67dd78677842edbd20e2ad6d",
-  "pdf_bytes": 97245,
+  "underfull_box_notices": 7,
+  "pdf_sha256": "4125853f980e1fa3b71f8d4a86d4e5cb4181698504ece29403fb6e8dc8271418",
+  "pdf_bytes": 97514,
   "compiler": "Tectonic 0.17.0",
   "submission_ready": false,
-  "remaining": "target-edition CFP, author declarations, anonymity and reviewer artifact, final author approval",
+  "remaining": "HotCRP opening; title and author list; anonymity/artifact review; author declarations and final approval",
   "tables_generated_from_checked_records": true,
   "external_review": "DS round 2 substantive; Claude round aborted before file access",
   "venue_fit": "DSN Tool retained as candidate; target edition and institutional category recognition unconfirmed"
