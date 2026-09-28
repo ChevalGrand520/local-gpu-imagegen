@@ -51,7 +51,7 @@ tectonic --keep-logs main.tex
 
 ## Scope and editorial changes
 
-The 131-word abstract preserves the primary claim and fresh-run limitation.
+The current abstract preserves the primary claim and fresh-run limitation.
 The result table is made column-width; the architecture is a vector LaTeX
 figure. Internal claim tags and private provenance paths are not printed;
 scientific limitations remain in the text. Administrative evidence references
@@ -64,9 +64,9 @@ This is a typeset working draft, not submission-ready: raw-event reconstruction,
 artifact-byte verification, broader academic positioning and target-year rules
 remain open. No experiments were run to produce this document.
 
-## Build verification
+## Historical build verification
 
-Compiled with Tectonic 0.17.0: 4 pages including references, US Letter.
+The earlier four-page draft compiled with Tectonic 0.17.0, US Letter.
 All seven font subsets are embedded. No undefined citations/references or
 overfull boxes. Five underfull hbox notices remain (loose spacing); rendered
 pages were inspected without clipping or overlap. The PDF is about 47 KB;
@@ -93,8 +93,9 @@ Regenerate derived evidence: `python3 paper/scripts/audit_retained_evidence.py`
 from repository root. Regenerate diagrams with a Python environment containing
 reportlab: `python3 paper/scripts/build_figures.py`. Run the LaTeX build in paper/.
 
-Final checks supersede the older four-page build snapshot above; see the updated
-compile-report.json. ARS internal review: review/ARS_REVIEW.md. This is an inline
+Final checks supersede the older four-page build snapshot above. The current
+six-page draft and 134-word abstract are recorded in compile-report.json. ARS
+internal review: review/ARS_REVIEW.md. This is an inline
 self-review, not independent peer review. Pending author-owned declarations:
 review/AUTHOR_DECLARATIONS.md. Chinese reading abstract: review/ABSTRACT_ZH.md.
 

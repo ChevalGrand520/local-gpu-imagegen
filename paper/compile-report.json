@@ -1,5 +1,5 @@
 {
-  "status": "DSN 2027 Tool working draft with offline demonstration; author and anonymity gates open",
+  "status": "DSN 2027 Tool working draft rebuilt after preliminary anonymity audit; author and artifact gates open",
   "pages_total": 6,
   "abstract_words": 134,
   "figures": 2,
@@ -20,11 +20,11 @@
   "undefined_references": 0,
   "overfull_boxes": 0,
   "underfull_box_notices": 8,
-  "pdf_sha256": "78fbfd237bc1ddcdc1d35632baec58b7972e0c6dd00a16bae3d2957f5005f2e5",
-  "pdf_bytes": 97743,
+  "pdf_sha256": "7117df51a7872387d7ac46a6efc1141e5e3b044b3a4afeeac31285e9798250af",
+  "pdf_bytes": 97723,
   "compiler": "Tectonic 0.17.0",
   "submission_ready": false,
-  "remaining": "HotCRP opening; title and author list; anonymity/artifact review; author declarations and final approval",
+  "remaining": "HotCRP opening; final author/title list; anonymous artifact decision and visual PDF review; declarations and author approval",
   "tables_generated_from_checked_records": true,
   "external_review": "DS round 2 substantive; Claude round aborted before file access",
   "venue_fit": "DSN Tool retained as candidate; target edition and institutional category recognition unconfirmed"
