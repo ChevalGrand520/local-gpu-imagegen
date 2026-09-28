@@ -358,6 +358,20 @@ different boundary by creating a new run after observation. Keeping these
 scopes separate explains why the demonstration can be oracle-evaluable without
 showing automatic recovery or a W3 reduction in executions.
 
+A recent preprint by Li studies ambiguous writes in a simulated service
+benchmark, comparing model, harness and tool-contract effects on duplicate
+side effects \cite{li2026exactlyonce}. Its guard combines read-back verification,
+idempotency keys where supported, delayed re-verification, blocking unverifiable
+non-idempotent repeats, and uncertainty annotations. Our guard has a narrower
+control rule: an explicitly unknown submission blocks further submission through
+the same run, without automatic read-back or reconciliation. The shared principle
+of withholding unsafe retries is not a novelty claim. The tool-specific object
+here is the inspectable integration of preserved reported state, versioned
+interpretation with reasons, and backend observation in a local generation
+pipeline. This is an implementation distinction, not evidence of superiority
+over that guard or of a new general recovery principle. The studies use different
+workloads and evidence sources; their outcome counts are not directly comparable.
+
 Reliable State Machines provide a stronger control contract within their
 programming model: persistent state and runtime-managed atomic processing
 support failure transparency and exactly-once input processing

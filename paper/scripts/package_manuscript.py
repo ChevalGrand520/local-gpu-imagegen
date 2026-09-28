@@ -18,6 +18,7 @@ def main():
               ('paired-v2-b2.json', 'paired-v2-w3.json', 'paired-v2-comparison.json', 'paired-v2-commands.md')]
     files += [ROOT / 'docs/research/dsn-evidence-reconciliation-20260927.md']
     files += [ROOT / name for name in (
+        'scripts/research/export_records.py',
         'scripts/research/f02_campaign.py',
         'scripts/research/f02_oracle.py',
         'scripts/research/f02_product_client.py',
@@ -32,7 +33,7 @@ def main():
         'files': {str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest()
                   for p in sorted(files)},
     }
-    dest = PAPER / 'delivery/dsn-tool-description-v0.6.zip'
+    dest = PAPER / 'delivery/dsn-tool-description-v0.7.zip'
     dest.parent.mkdir(exist_ok=True)
     with zipfile.ZipFile(dest, 'w', zipfile.ZIP_DEFLATED) as z:
         for p in sorted(files):

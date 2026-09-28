@@ -27,3 +27,7 @@ The two academic references support background/positioning; official tool docs
 support only documented responsibilities. No comparative performance is claimed.
 Birrell DOI not inserted because the publisher endpoint was inaccessible in
 this pass; primary PDF bibliographic metadata remains the verified citation.
+
+## 2026-09-28: closest-work addition
+
+Added li2026exactlyonce: Jiapeng Li, arXiv:2609.29095v1, submitted 2026-09-24. Author/title/version verified against the official arXiv abstract page in this task; guard components grounded in v1 Section 5 (Recovery conditions), simulated-service scope in Sections 4 and 7. No numerical results or priority claim imported. The paper is identified as a preprint; no acceptance status inferred. This is an author-side citation check, not an independent review.

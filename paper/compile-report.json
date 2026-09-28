@@ -1,10 +1,10 @@
 {
-  "status": "v0.6 evidence wording and package correction; not submission ready",
+  "status": "v0.7 closest-work positioning; not submission ready",
   "pages_total": 6,
   "abstract_words": 134,
   "figures": 2,
   "tables": 2,
-  "references": 7,
+  "references": 8,
   "page_size": "US Letter",
   "all_fonts_embedded_including_figures": true,
   "fonts": {
@@ -20,8 +20,8 @@
   "undefined_references": 0,
   "overfull_boxes": 0,
   "underfull_box_notices": 7,
-  "pdf_sha256": "a1ce138cad4c32e0b6c1d213df06c45735d418ae5afc182c612eadeb31e8c94c",
-  "pdf_bytes": 95485,
+  "pdf_sha256": "a30a7f43cf257f0c2abadc46ad1ceb849a9d61bfc68882f04b045d43093efbb9",
+  "pdf_bytes": 96806,
   "compiler": "Tectonic 0.17.0",
   "submission_ready": false,
   "remaining": "author declarations, target edition, independent assessment; empirical limits stated in manuscript",
