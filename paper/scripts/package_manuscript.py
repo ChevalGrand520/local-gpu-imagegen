@@ -20,6 +20,7 @@ def main():
     files += [ROOT / 'docs/research/runs' / name for name in
               ('paired-v2-b2.json', 'paired-v2-w3.json', 'paired-v2-comparison.json', 'paired-v2-commands.md')]
     files += [ROOT / 'docs/research/dsn-evidence-reconciliation-20260927.md']
+    files += [ROOT / 'docs/research/dsn-next-evidence-gates-20260929.md']
     files += [ROOT / name for name in (
         'scripts/research/export_records.py',
         'scripts/research/f02_campaign.py',

@@ -12,7 +12,8 @@ manifests without adding artifact-validator assertions; none passes composite
 verification. This is read-only reanalysis, not backend replay or a Windows
 observer-to-exporter conversion. Earlier v0.2 demo archives and W2 records
 remain historical v2 outputs; the v0.3 anonymous demo candidate carries the
-current rules.
+current rules. The Windows same-run and observer-conversion capture criteria are
+recorded in `../docs/research/dsn-next-evidence-gates-20260929.md`.
 
 ## Verified format baseline
 
