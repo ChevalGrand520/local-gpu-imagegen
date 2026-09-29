@@ -13,6 +13,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
+sys.path.insert(0, str(ROOT / "scripts"))
 
 
 def run() -> dict[str, object]:
@@ -46,14 +47,40 @@ def run() -> dict[str, object]:
                 "input_sha256": hashlib.sha256(source.read_bytes()).hexdigest(),
             }
         from paper.scripts.audit_retained_evidence import audit
+        from scripts.research.export_records import export_record
 
         retained = audit(ROOT)
+        normalized_cpu = []
+        for system in ("b2", "w3"):
+            source = ROOT / "docs/research/runs" / f"paired-v2-{system}.json"
+            for case in json.loads(source.read_text(encoding="utf-8"))["cases"]:
+                exported = export_record({
+                    "record_id": case["case_id"],
+                    "reported_state": case["raw_reported_state"],
+                    "oracle_state": case["oracle_state"],
+                })
+                state = exported["interpreted_state"]
+                if exported["reported_state"] != case["raw_reported_state"]:
+                    raise ValueError(f"{system}/{case['case_id']}: product manifest changed")
+                if exported["oracle_state"] != case["oracle_state"]:
+                    raise ValueError(f"{system}/{case['case_id']}: oracle observation changed")
+                if state["execution_verified"]:
+                    raise ValueError(f"{system}/{case['case_id']}: missing validator was promoted to verified")
+                normalized_cpu.append({
+                    "system": system,
+                    "case_id": case["case_id"],
+                    "reported": case["raw_reported_state"].get("state"),
+                    "evidence": state["evidence_state"],
+                    "recovery": state["recovery_state"],
+                    "execution_verified": state["execution_verified"],
+                })
         return {
-            "scope": "synthetic exporter inputs plus offline consistency of retained derived records; no backend execution",
+            "scope": "synthetic exporter inputs plus offline normalization and consistency of retained CPU records; no backend execution",
             "examples": examples,
             "retained_windows_cases": len(retained["windows_cases"]),
             "retained_binding_ids": retained["unique_windows_binding_ids"],
             "cpu_synthetic_traces": 2 * len(retained["cpu_cases"]),
+            "retained_cpu_normalization": normalized_cpu,
         }
 
 

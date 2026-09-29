@@ -26,7 +26,7 @@ from local_gpu_imagegen.run_store import request_hash
 
 EXPORT_SCHEMA_VERSION = 1
 EXPORTER_VERSION = "research-exporter-v1"
-MAPPING_VERSION = "research-normalization-v2"
+MAPPING_VERSION = "research-normalization-v3"
 UNKNOWN = "unknown"
 _MISSING = object()
 
@@ -105,6 +105,8 @@ def export_record(
         artifact_hash,
         oracle_artifact_hash,
         oracle_job_id,
+        reported_job_id,
+        reported_artifact_hash,
     )
 
     record_id = record.get("record_id", reported_object.get("run_id"))
@@ -432,6 +434,8 @@ def _interpret_state(
     artifact_hash: object,
     oracle_artifact_hash: object,
     oracle_job_id: object,
+    reported_job_id: object,
+    reported_artifact_hash: object,
 ) -> tuple[dict[str, object], dict[str, str]]:
     reasons: dict[str, str] = {}
     reported_name = reported.get("state")
@@ -465,6 +469,8 @@ def _interpret_state(
         oracle_artifact_hash,
         job_id,
         oracle_job_id,
+        reported_job_id,
+        reported_artifact_hash,
     )
     reasons["evidence_state"] = evidence_reason
 
@@ -613,7 +619,17 @@ def _evidence_state(
     oracle_artifact_hash: object,
     job_id: object,
     oracle_job_id: object,
+    reported_job_id: object,
+    reported_artifact_hash: object,
 ) -> tuple[str, str]:
+    if reported_job_id is not None and reported_job_id != UNKNOWN and reported_job_id != job_id:
+        return "mismatch", "reported_manifest_job_id_differs_from_selected_job_id"
+    if (
+        reported_artifact_hash is not None
+        and reported_artifact_hash != UNKNOWN
+        and reported_artifact_hash != artifact_hash
+    ):
+        return "mismatch", "reported_manifest_artifact_hash_differs_from_selected_artifact_hash"
     if (
         job_id not in {None, UNKNOWN}
         and oracle_job_id not in {None, UNKNOWN}
@@ -656,6 +672,8 @@ def _recovery_state(reported: dict[str, object], execution: str) -> tuple[str, s
         return "required", "oracle_execution_is_not_resolved"
     if reported.get("state") == UNKNOWN:
         return UNKNOWN, "reported_state_is_explicitly_unknown"
+    if reported.get("state") is None:
+        return UNKNOWN, "reported_run_state_is_missing"
     return "not_needed", "no_unresolved_report_or_oracle_gap"
 
 

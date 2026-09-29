@@ -21,6 +21,7 @@ FILES = (
     "docs/research/runs/paired-v2-comparison.json",
     "scripts/research/__init__.py",
     "scripts/research/export_records.py",
+    "tests/research/test_export_records.py",
     "scripts/local_gpu_imagegen/__init__.py",
     "scripts/local_gpu_imagegen/artifacts.py",
     "scripts/local_gpu_imagegen/errors.py",

@@ -80,12 +80,16 @@ record. It copies reported state, records the mapping version and reasons, and
 retains supplied oracle state separately. The schema includes source identity,
 request and input digests, backend identity, job identifier, artifact hash and
 validator version. Missing fields carry explicit reasons instead of fabricated
-values. The inspected mapping is \texttt{research-normalization-v2}.
+values. The inspected mapping is \texttt{research-normalization-v3}.
 
 Interpretation checks more than an execution-success label. Job and artifact
 bindings, approval and validation evidence, and recovery state constrain the
 \texttt{execution\_verified} decision. An unresolved recovery state prevents this flag
 from becoming true even when other evidence reports successful execution.
+The current mapping also keeps recovery unknown when the reported run state is
+missing and marks a disagreement between manifest and selected job or artifact
+identity as an evidence mismatch. These rules prevent omission or a top-level
+field from silently strengthening the composite decision.
 This permits the record to express backend completion without asserting that
 the product's recovery obligation has been discharged. The exporter does not
 invoke the engine, retry a request or update the source run. Its output writer
@@ -119,9 +123,11 @@ acquire a missing oracle automatically. The Windows observer export and the
 normalized exporter schema are separate interfaces; a complete automatic
 conversion between them is not established by the pilot.
 The companion offline demonstration supplies two synthetic records that differ
-in the original run's status. It runs the exporter and the retained-record
-audit without a backend. These inputs illustrate the mapping; their supplied
-oracle assertions are not experimental observations or authenticated evidence.
+in the original run's status. It also normalizes twelve previously retained
+CPU product manifests alongside their fixture oracle records, without adding
+artifact-validation assertions. All twelve remain unverified by the composite
+policy. This demonstrates the mapping's behavior on retained product records,
+not an independent replay or certification of their original events.
 
 For example, an unresolved run and successful backend evidence may coexist.
 The execution field can describe the observed backend outcome while recovery
@@ -149,8 +155,8 @@ disconnect after sending a request: the exporter preserves the unknown outcome,
 the same-run entry blocks another submission, and the operator must inspect or
 reconcile the run through an available backend-specific mechanism. The guard can
 also conservatively withhold work when a request failed before backend acceptance,
-so its false-positive cost is delayed completion rather than a claimed reliability
-gain.
+so its observed false-positive cost is an incomplete operation; eventual
+completion is not established.
 
 
 \subsection{Controlled observation on Windows}

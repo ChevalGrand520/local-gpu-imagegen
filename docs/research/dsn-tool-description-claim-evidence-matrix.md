@@ -1,6 +1,12 @@
 > v0.4 continuation: the active manuscript is `paper/main.tex` and `paper/main.pdf`.
 > This document preserves the v0.3 planning/audit snapshot. Current evidence
 > disposition and review are in `paper/evidence/` and `paper/review/ARS_REVIEW.md`.
+> Current correction (2026-09-29): the live exporter uses
+> `research-normalization-v3`, which withholds verification for a missing
+> reported run state and for manifest/top-level identity conflicts. The v2
+> entries below are historical planning and W2-record claims, not a current
+> correctness certificate. See `paper/main.tex` and
+> `tests/research/test_export_records.py` for the current policy and checks.
 
 # DSN claim–evidence matrix — 2026-09-27
 

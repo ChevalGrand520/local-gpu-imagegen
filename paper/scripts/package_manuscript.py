@@ -2,6 +2,7 @@
 from pathlib import Path
 import hashlib
 import json
+import subprocess
 import zipfile
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -11,7 +12,9 @@ SUFFIXES = {'.aux', '.bbl', '.blg', '.out', '.log', '.pyc'}
 
 
 def main():
-    files = [p for p in PAPER.rglob('*') if p.is_file()
+    tracked = subprocess.check_output(['git', 'ls-files', '-z', '--', 'paper'], cwd=ROOT)
+    files = [ROOT / name.decode('utf-8') for name in tracked.split(b'\0') if name]
+    files = [p for p in files if p.is_file()
              and not any(x in EXCLUDED for x in p.relative_to(PAPER).parts)
              and p.suffix not in SUFFIXES]
     files += [ROOT / 'docs/research/runs' / name for name in
@@ -33,7 +36,7 @@ def main():
         'files': {str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest()
                   for p in sorted(files)},
     }
-    dest = PAPER / 'delivery/dsn-tool-description-v0.7.zip'
+    dest = PAPER / 'delivery/dsn-tool-description-v0.8.zip'
     dest.parent.mkdir(exist_ok=True)
     with zipfile.ZipFile(dest, 'w', zipfile.ZIP_DEFLATED) as z:
         for p in sorted(files):

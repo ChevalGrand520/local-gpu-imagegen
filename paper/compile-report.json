@@ -1,5 +1,5 @@
 {
-  "status": "DSN 2027 Tool working draft with DSH source-count clarification; author and evidence gates open",
+  "status": "DSN 2027 Tool working draft with exporter v3 correction; author and evidence gates open",
   "pages_total": 6,
   "abstract_words": 135,
   "figures": 2,
@@ -20,12 +20,12 @@
   "undefined_citations": 0,
   "undefined_references": 0,
   "overfull_boxes": 0,
-  "underfull_box_notices": 7,
-  "pdf_sha256": "6c209691ea4f1ea157a57cf8dd3a85c484b8b33929a85c75c9ec02bc81a1f9b7",
-  "pdf_bytes": 99697,
+  "underfull_box_notices": 8,
+  "pdf_sha256": "b5ad981f6f8d45f5e46268692dfe81dba83f9a76a2071ea54790d23ce771901b",
+  "pdf_bytes": 99860,
   "compiler": "Tectonic 0.17.0",
   "submission_ready": false,
-  "remaining": "HotCRP opening; final author/title list; anonymous artifact decision and visual PDF review; declarations and author approval",
+  "remaining": "Windows same-run guard observation; observer-to-exporter conversion; final author/title list; anonymous artifact decision; visual PDF review and author declarations",
   "tables_generated_from_checked_records": true,
   "external_review": "DS round 2 substantive; Claude round aborted before file access",
   "venue_fit": "DSN Tool retained as candidate; target edition and institutional category recognition unconfirmed"

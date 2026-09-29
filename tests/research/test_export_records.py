@@ -45,7 +45,7 @@ class ExportRecordTests(unittest.TestCase):
         self.assertEqual(exported["reported_state"], record["reported_state"])
         self.assertEqual(exported["interpreted_state"]["execution_state"], "succeeded")
         self.assertTrue(exported["interpreted_state"]["execution_verified"])
-        self.assertEqual(exported["mapping_version"], "research-normalization-v2")
+        self.assertEqual(exported["mapping_version"], "research-normalization-v3")
         self.assertEqual(exported["request_digest"], "d" * 64)
         self.assertEqual(exported["field_reasons"]["request_digest"], "provided_reported_attempts.request_hash")
 
@@ -142,6 +142,60 @@ class ExportRecordTests(unittest.TestCase):
         self.assertEqual(interpreted["recovery_state"], "required")
         self.assertFalse(interpreted["execution_verified"])
         self.assertIn("unresolved", interpreted["execution_verified_reason"])
+
+    def test_missing_reported_run_state_cannot_clear_recovery(self) -> None:
+        base = {
+            "job_id": "job-1",
+            "artifact_hash": "a" * 64,
+            "artifact_validation": {"status": "verified", "independent": True},
+            "approval_state": "valid",
+            "oracle_state": {
+                "execution_state": "succeeded",
+                "oracle_evaluable": True,
+                "execution_started": 1,
+                "execution_finished": 1,
+                "job_id": "job-1",
+                "artifact_hash": "a" * 64,
+            },
+        }
+        for reported in ({"run_id": "run-1"}, None):
+            with self.subTest(reported=reported):
+                record = {**base, "reported_state": reported}
+                original = copy.deepcopy(record)
+                exported = export_record(record)
+                self.assertEqual(record, original)
+                self.assertEqual(exported["interpreted_state"]["recovery_state"], "unknown")
+                self.assertFalse(exported["interpreted_state"]["execution_verified"])
+
+    def test_manifest_identity_conflict_cannot_be_masked_by_top_level_fields(self) -> None:
+        base = {
+            "job_id": "job-1",
+            "artifact_hash": "a" * 64,
+            "artifact_validation": {"status": "verified", "independent": True},
+            "approval_state": "valid",
+            "oracle_state": {
+                "execution_state": "succeeded",
+                "oracle_evaluable": True,
+                "execution_started": 1,
+                "execution_finished": 1,
+                "job_id": "job-1",
+                "artifact_hash": "a" * 64,
+            },
+        }
+        for reported, expected_reason in (
+            ({"state": "generated", "attempts": [{"backend_job": {"job_id": "other-job"}}]},
+             "reported_manifest_job_id_differs_from_selected_job_id"),
+            ({"state": "generated", "rounds": [{"image": {"sha256": "b" * 64}}]},
+             "reported_manifest_artifact_hash_differs_from_selected_artifact_hash"),
+        ):
+            with self.subTest(expected_reason=expected_reason):
+                record = {**base, "reported_state": reported}
+                original = copy.deepcopy(record)
+                exported = export_record(record)
+                self.assertEqual(record, original)
+                self.assertEqual(exported["interpreted_state"]["evidence_state"], "mismatch")
+                self.assertEqual(exported["mapping_reason"]["evidence_state"], expected_reason)
+                self.assertFalse(exported["interpreted_state"]["execution_verified"])
 
     def test_contradictory_oracle_is_unknown_and_not_verified(self) -> None:
         exported = export_record({

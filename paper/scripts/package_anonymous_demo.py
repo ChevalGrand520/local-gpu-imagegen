@@ -11,8 +11,8 @@ from pathlib import Path
 from package_reviewer_demo import FILES, ROOT
 
 
-DEST = ROOT / "paper/delivery/evidence-tool-anonymous-demo-v0.2.zip"
-PRIVATE_MAP = ROOT / "paper/delivery/evidence-tool-anonymous-mapping-v0.2.json"
+DEST = ROOT / "paper/delivery/evidence-tool-anonymous-demo-v0.3.zip"
+PRIVATE_MAP = ROOT / "paper/delivery/evidence-tool-anonymous-mapping-v0.3.json"
 EPOCH = (2020, 1, 1, 0, 0, 0)
 SOURCE_README = "paper/examples/README.md"
 ANONYMOUS_README = "paper/examples/anonymous-demo-README.md"

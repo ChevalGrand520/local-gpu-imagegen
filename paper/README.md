@@ -4,6 +4,16 @@
 Markdown draft remains the argument/evidence working copy; it is not the
 submission file. Output is `main.pdf` after compilation.
 
+The active manuscript now describes `research-normalization-v3`. Missing or
+null reported run state leaves recovery unknown, and a durable-manifest job or
+artifact identity conflicting with the selected top-level identity is an
+evidence mismatch. The offline checker normalizes twelve retained CPU product
+manifests without adding artifact-validator assertions; none passes composite
+verification. This is read-only reanalysis, not backend replay or a Windows
+observer-to-exporter conversion. Earlier v0.2 demo archives and W2 records
+remain historical v2 outputs; the v0.3 anonymous demo candidate carries the
+current rules.
+
 ## Verified format baseline
 
 DSN 2026 Research Track CFP, accessed 2026-09-27:
@@ -115,7 +125,7 @@ negative checks are recorded in review/AUDIT_NEGATIVE_CHECKS.json.
 The checker counts historical Windows byte-match receipts, not fresh image
 hashing on this machine. See review/PRE_SUBMISSION_RECHECK.md for the findings.
 
-`make package` creates delivery/dsn-tool-description-v0.5.zip with a checksum
+`make package` creates delivery/dsn-tool-description-v0.8.zip with a checksum
 manifest. This is an author-review package, not a complete tool distribution
 or a certified anonymous submission artifact. It preserves scientific limits.
 
