@@ -1,0 +1,32 @@
+{
+  "status": "DSN 2027 Tool working draft with exporter v3 correction; author and evidence gates open",
+  "pages_total": 6,
+  "abstract_words": 135,
+  "figures": 2,
+  "tables": 2,
+  "references": 8,
+  "page_size": "US Letter",
+  "all_fonts_embedded_including_figures": true,
+  "fonts": {
+    "/IHAIZV+NimbusRomNo9L-Regu": true,
+    "/BZIVMZ+NimbusRomNo9L-MediItal": true,
+    "/IXFAWU+NimbusRomNo9L-Medi": true,
+    "/TQTHRL+NimbusMonL-Regu": true,
+    "/YEUUOC+NimbusRomNo9L-ReguItal": true,
+    "/AKHCZK+CMR10": true,
+    "/AAAAAA+BitstreamVeraSans-Roman": true,
+    "/VDVGTR+CMSY8": true
+  },
+  "undefined_citations": 0,
+  "undefined_references": 0,
+  "overfull_boxes": 0,
+  "underfull_box_notices": 8,
+  "pdf_sha256": "b5ad981f6f8d45f5e46268692dfe81dba83f9a76a2071ea54790d23ce771901b",
+  "pdf_bytes": 99860,
+  "compiler": "Tectonic 0.17.0",
+  "submission_ready": false,
+  "remaining": "Windows same-run guard observation; observer-to-exporter conversion; final author/title list; anonymous artifact decision; visual PDF review and author declarations",
+  "tables_generated_from_checked_records": true,
+  "external_review": "DS round 2 substantive; Claude round aborted before file access",
+  "venue_fit": "DSN Tool retained as candidate; target edition and institutional category recognition unconfirmed"
+}

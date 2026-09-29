@@ -1,0 +1,6 @@
+{
+  "result": "PASS",
+  "scope": "clean-directory author-review ZIP extraction, manifest hashes, offline retained-evidence audit and table-byte equality",
+  "new_experiment": false,
+  "anonymous_submission_certified": false
+}

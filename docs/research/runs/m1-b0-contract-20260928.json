@@ -1,0 +1,1737 @@
+{
+  "status": "passed",
+  "scope": "20 hand-constructed correctness fixtures; not product campaign or deployment accuracy",
+  "python": "3.13.15",
+  "contract_sha256": "358fa76ef9fe133bdaa9c4555f68c18478435727c2c936abfc0c2019e97254c8",
+  "checks": [
+    {
+      "name": "complete",
+      "record": {
+        "operation_id": "op",
+        "epoch": "epoch",
+        "closed": true,
+        "final_seq": 4,
+        "snapshots": [
+          {
+            "first_seq": 1,
+            "last_seq": 4,
+            "events": [
+              {
+                "operation_id": "op",
+                "run_id": "run",
+                "call_id": "call",
+                "attempt_id": "attempt",
+                "epoch": "epoch",
+                "kind": "accepted",
+                "seq": 1,
+                "event_id": "e1",
+                "monotonic_ns": 1,
+                "job_id": "job"
+              },
+              {
+                "operation_id": "op",
+                "run_id": "run",
+                "call_id": "call",
+                "attempt_id": "attempt",
+                "epoch": "epoch",
+                "kind": "execution_start",
+                "seq": 2,
+                "event_id": "e2",
+                "monotonic_ns": 2,
+                "job_id": "job",
+                "execution_id": "execution"
+              },
+              {
+                "operation_id": "op",
+                "run_id": "run",
+                "call_id": "call",
+                "attempt_id": "attempt",
+                "epoch": "epoch",
+                "kind": "terminal",
+                "seq": 3,
+                "event_id": "e3",
+                "monotonic_ns": 3,
+                "job_id": "job",
+                "execution_id": "execution",
+                "node": null,
+                "history_completed": true,
+                "artifact_sha256": [
+                  "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                ]
+              },
+              {
+                "operation_id": "op",
+                "run_id": "run",
+                "call_id": "call",
+                "attempt_id": "attempt",
+                "epoch": "epoch",
+                "kind": "window_closed",
+                "seq": 4,
+                "event_id": "e4",
+                "monotonic_ns": 4,
+                "job_id": "job"
+              }
+            ]
+          }
+        ]
+      },
+      "expected_state": "verified",
+      "expected_executions": 1,
+      "actual": {
+        "state": "verified",
+        "executions": 1,
+        "reason": "closed synthetic lifecycle"
+      },
+      "passed": true
+    },
+    {
+      "name": "duplicate_snapshot",
+      "record": {
+        "operation_id": "op",
+        "epoch": "epoch",
+        "closed": true,
+        "final_seq": 4,
+        "snapshots": [
+          {
+            "first_seq": 1,
+            "last_seq": 4,
+            "events": [
+              {
+                "operation_id": "op",
+                "run_id": "run",
+                "call_id": "call",
+                "attempt_id": "attempt",
+                "epoch": "epoch",
+                "kind": "accepted",
+                "seq": 1,
+                "event_id": "e1",
+                "monotonic_ns": 1,
+                "job_id": "job"
+              },
+              {
+                "operation_id": "op",
+                "run_id": "run",
+                "call_id": "call",
+                "attempt_id": "attempt",
+                "epoch": "epoch",
+                "kind": "execution_start",
+                "seq": 2,
+                "event_id": "e2",
+                "monotonic_ns": 2,
+                "job_id": "job",
+                "execution_id": "execution"
+              },
+              {
+                "operation_id": "op",
+                "run_id": "run",
+                "call_id": "call",
+                "attempt_id": "attempt",
+                "epoch": "epoch",
+                "kind": "terminal",
+                "seq": 3,
+                "event_id": "e3",
+                "monotonic_ns": 3,
+                "job_id": "job",
+                "execution_id": "execution",
+                "node": null,
+                "history_completed": true,
+                "artifact_sha256": [
+                  "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                ]
+              },
+              {
+                "operation_id": "op",
+                "run_id": "run",
+                "call_id": "call",
+                "attempt_id": "attempt",
+                "epoch": "epoch",
+                "kind": "window_closed",
+                "seq": 4,
+                "event_id": "e4",
+                "monotonic_ns": 4,
+                "job_id": "job"
+              }
+            ]
+          },
+          {
+            "first_seq": 1,
+            "last_seq": 4,
+            "events": [
+              {
+                "operation_id": "op",
+                "run_id": "run",
+                "call_id": "call",
+                "attempt_id": "attempt",
+                "epoch": "epoch",
+                "kind": "accepted",
+                "seq": 1,
+                "event_id": "e1",
+                "monotonic_ns": 1,
+                "job_id": "job"
+              },
+              {
+                "operation_id": "op",
+                "run_id": "run",
+                "call_id": "call",
+                "attempt_id": "attempt",
+                "epoch": "epoch",
+                "kind": "execution_start",
+                "seq": 2,
+                "event_id": "e2",
+                "monotonic_ns": 2,
+                "job_id": "job",
+                "execution_id": "execution"
+              },
+              {
+                "operation_id": "op",
+                "run_id": "run",
+                "call_id": "call",
+                "attempt_id": "attempt",
+                "epoch": "epoch",
+                "kind": "terminal",
+                "seq": 3,
+                "event_id": "e3",
+                "monotonic_ns": 3,
+                "job_id": "job",
+                "execution_id": "execution",
+                "node": null,
+                "history_completed": true,
+                "artifact_sha256": [
+                  "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                ]
+              },
+              {
+                "operation_id": "op",
+                "run_id": "run",
+                "call_id": "call",
+                "attempt_id": "attempt",
+                "epoch": "epoch",
+                "kind": "window_closed",
+                "seq": 4,
+                "event_id": "e4",
+                "monotonic_ns": 4,
+                "job_id": "job"
+              }
+            ]
+          }
+        ]
+      },
+      "expected_state": "verified",
+      "expected_executions": 1,
+      "actual": {
+        "state": "verified",
+        "executions": 1,
+        "reason": "closed synthetic lifecycle"
+      },
+      "passed": true
+    },
+    {
+      "name": "arrival_order_reversed",
+      "record": {
+        "operation_id": "op",
+        "epoch": "epoch",
+        "closed": true,
+        "final_seq": 4,
+        "snapshots": [
+          {
+            "first_seq": 1,
+            "last_seq": 4,
+            "events": [
+              {
+                "operation_id": "op",
+                "run_id": "run",
+                "call_id": "call",
+                "attempt_id": "attempt",
+                "epoch": "epoch",
+                "kind": "window_closed",
+                "seq": 4,
+                "event_id": "e4",
+                "monotonic_ns": 4,
+                "job_id": "job"
+              },
+              {
+                "operation_id": "op",
+                "run_id": "run",
+                "call_id": "call",
+                "attempt_id": "attempt",
+                "epoch": "epoch",
+                "kind": "terminal",
+                "seq": 3,
+                "event_id": "e3",
+                "monotonic_ns": 3,
+                "job_id": "job",
+                "execution_id": "execution",
+                "node": null,
+                "history_completed": true,
+                "artifact_sha256": [
+                  "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                ]
+              },
+              {
+                "operation_id": "op",
+                "run_id": "run",
+                "call_id": "call",
+                "attempt_id": "attempt",
+                "epoch": "epoch",
+                "kind": "execution_start",
+                "seq": 2,
+                "event_id": "e2",
+                "monotonic_ns": 2,
+                "job_id": "job",
+                "execution_id": "execution"
+              },
+              {
+                "operation_id": "op",
+                "run_id": "run",
+                "call_id": "call",
+                "attempt_id": "attempt",
+                "epoch": "epoch",
+                "kind": "accepted",
+                "seq": 1,
+                "event_id": "e1",
+                "monotonic_ns": 1,
+                "job_id": "job"
+              }
+            ]
+          }
+        ]
+      },
+      "expected_state": "verified",
+      "expected_executions": 1,
+      "actual": {
+        "state": "verified",
+        "executions": 1,
+        "reason": "closed synthetic lifecycle"
+      },
+      "passed": true
+    },
+    {
+      "name": "cumulative_snapshots",
+      "record": {
+        "operation_id": "op",
+        "epoch": "epoch",
+        "closed": true,
+        "final_seq": 4,
+        "snapshots": [
+          {
+            "first_seq": 1,
+            "last_seq": 2,
+            "events": [
+              {
+                "operation_id": "op",
+                "run_id": "run",
+                "call_id": "call",
+                "attempt_id": "attempt",
+                "epoch": "epoch",
+                "kind": "accepted",
+                "seq": 1,
+                "event_id": "e1",
+                "monotonic_ns": 1,
+                "job_id": "job"
+              },
+              {
+                "operation_id": "op",
+                "run_id": "run",
+                "call_id": "call",
+                "attempt_id": "attempt",
+                "epoch": "epoch",
+                "kind": "execution_start",
+                "seq": 2,
+                "event_id": "e2",
+                "monotonic_ns": 2,
+                "job_id": "job",
+                "execution_id": "execution"
+              }
+            ]
+          },
+          {
+            "first_seq": 1,
+            "last_seq": 4,
+            "events": [
+              {
+                "operation_id": "op",
+                "run_id": "run",
+                "call_id": "call",
+                "attempt_id": "attempt",
+                "epoch": "epoch",
+                "kind": "accepted",
+                "seq": 1,
+                "event_id": "e1",
+                "monotonic_ns": 1,
+                "job_id": "job"
+              },
+              {
+                "operation_id": "op",
+                "run_id": "run",
+                "call_id": "call",
+                "attempt_id": "attempt",
+                "epoch": "epoch",
+                "kind": "execution_start",
+                "seq": 2,
+                "event_id": "e2",
+                "monotonic_ns": 2,
+                "job_id": "job",
+                "execution_id": "execution"
+              },
+              {
+                "operation_id": "op",
+                "run_id": "run",
+                "call_id": "call",
+                "attempt_id": "attempt",
+                "epoch": "epoch",
+                "kind": "terminal",
+                "seq": 3,
+                "event_id": "e3",
+                "monotonic_ns": 3,
+                "job_id": "job",
+                "execution_id": "execution",
+                "node": null,
+                "history_completed": true,
+                "artifact_sha256": [
+                  "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                ]
+              },
+              {
+                "operation_id": "op",
+                "run_id": "run",
+                "call_id": "call",
+                "attempt_id": "attempt",
+                "epoch": "epoch",
+                "kind": "window_closed",
+                "seq": 4,
+                "event_id": "e4",
+                "monotonic_ns": 4,
+                "job_id": "job"
+              }
+            ]
+          }
+        ]
+      },
+      "expected_state": "verified",
+      "expected_executions": 1,
+      "actual": {
+        "state": "verified",
+        "executions": 1,
+        "reason": "closed synthetic lifecycle"
+      },
+      "passed": true
+    },
+    {
+      "name": "missing_operation_id",
+      "record": {
+        "operation_id": "op",
+        "epoch": "epoch",
+        "closed": true,
+        "final_seq": 4,
+        "snapshots": [
+          {
+            "first_seq": 1,
+            "last_seq": 4,
+            "events": [
+              {
+                "operation_id": "op",
+                "run_id": "run",
+                "call_id": "call",
+                "attempt_id": "attempt",
+                "epoch": "epoch",
+                "kind": "accepted",
+                "seq": 1,
+                "event_id": "e1",
+                "monotonic_ns": 1,
+                "job_id": "job"
+              },
+              {
+                "run_id": "run",
+                "call_id": "call",
+                "attempt_id": "attempt",
+                "epoch": "epoch",
+                "kind": "execution_start",
+                "seq": 2,
+                "event_id": "e2",
+                "monotonic_ns": 2,
+                "job_id": "job",
+                "execution_id": "execution"
+              },
+              {
+                "operation_id": "op",
+                "run_id": "run",
+                "call_id": "call",
+                "attempt_id": "attempt",
+                "epoch": "epoch",
+                "kind": "terminal",
+                "seq": 3,
+                "event_id": "e3",
+                "monotonic_ns": 3,
+                "job_id": "job",
+                "execution_id": "execution",
+                "node": null,
+                "history_completed": true,
+                "artifact_sha256": [
+                  "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                ]
+              },
+              {
+                "operation_id": "op",
+                "run_id": "run",
+                "call_id": "call",
+                "attempt_id": "attempt",
+                "epoch": "epoch",
+                "kind": "window_closed",
+                "seq": 4,
+                "event_id": "e4",
+                "monotonic_ns": 4,
+                "job_id": "job"
+              }
+            ]
+          }
+        ]
+      },
+      "expected_state": "unknown",
+      "expected_executions": null,
+      "actual": {
+        "state": "unknown",
+        "executions": null,
+        "reason": "'operation_id'"
+      },
+      "passed": true
+    },
+    {
+      "name": "missing_run_id",
+      "record": {
+        "operation_id": "op",
+        "epoch": "epoch",
+        "closed": true,
+        "final_seq": 4,
+        "snapshots": [
+          {
+            "first_seq": 1,
+            "last_seq": 4,
+            "events": [
+              {
+                "operation_id": "op",
+                "run_id": "run",
+                "call_id": "call",
+                "attempt_id": "attempt",
+                "epoch": "epoch",
+                "kind": "accepted",
+                "seq": 1,
+                "event_id": "e1",
+                "monotonic_ns": 1,
+                "job_id": "job"
+              },
+              {
+                "operation_id": "op",
+                "call_id": "call",
+                "attempt_id": "attempt",
+                "epoch": "epoch",
+                "kind": "execution_start",
+                "seq": 2,
+                "event_id": "e2",
+                "monotonic_ns": 2,
+                "job_id": "job",
+                "execution_id": "execution"
+              },
+              {
+                "operation_id": "op",
+                "run_id": "run",
+                "call_id": "call",
+                "attempt_id": "attempt",
+                "epoch": "epoch",
+                "kind": "terminal",
+                "seq": 3,
+                "event_id": "e3",
+                "monotonic_ns": 3,
+                "job_id": "job",
+                "execution_id": "execution",
+                "node": null,
+                "history_completed": true,
+                "artifact_sha256": [
+                  "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                ]
+              },
+              {
+                "operation_id": "op",
+                "run_id": "run",
+                "call_id": "call",
+                "attempt_id": "attempt",
+                "epoch": "epoch",
+                "kind": "window_closed",
+                "seq": 4,
+                "event_id": "e4",
+                "monotonic_ns": 4,
+                "job_id": "job"
+              }
+            ]
+          }
+        ]
+      },
+      "expected_state": "unknown",
+      "expected_executions": null,
+      "actual": {
+        "state": "unknown",
+        "executions": null,
+        "reason": "identity missing"
+      },
+      "passed": true
+    },
+    {
+      "name": "missing_call_id",
+      "record": {
+        "operation_id": "op",
+        "epoch": "epoch",
+        "closed": true,
+        "final_seq": 4,
+        "snapshots": [
+          {
+            "first_seq": 1,
+            "last_seq": 4,
+            "events": [
+              {
+                "operation_id": "op",
+                "run_id": "run",
+                "call_id": "call",
+                "attempt_id": "attempt",
+                "epoch": "epoch",
+                "kind": "accepted",
+                "seq": 1,
+                "event_id": "e1",
+                "monotonic_ns": 1,
+                "job_id": "job"
+              },
+              {
+                "operation_id": "op",
+                "run_id": "run",
+                "attempt_id": "attempt",
+                "epoch": "epoch",
+                "kind": "execution_start",
+                "seq": 2,
+                "event_id": "e2",
+                "monotonic_ns": 2,
+                "job_id": "job",
+                "execution_id": "execution"
+              },
+              {
+                "operation_id": "op",
+                "run_id": "run",
+                "call_id": "call",
+                "attempt_id": "attempt",
+                "epoch": "epoch",
+                "kind": "terminal",
+                "seq": 3,
+                "event_id": "e3",
+                "monotonic_ns": 3,
+                "job_id": "job",
+                "execution_id": "execution",
+                "node": null,
+                "history_completed": true,
+                "artifact_sha256": [
+                  "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                ]
+              },
+              {
+                "operation_id": "op",
+                "run_id": "run",
+                "call_id": "call",
+                "attempt_id": "attempt",
+                "epoch": "epoch",
+                "kind": "window_closed",
+                "seq": 4,
+                "event_id": "e4",
+                "monotonic_ns": 4,
+                "job_id": "job"
+              }
+            ]
+          }
+        ]
+      },
+      "expected_state": "unknown",
+      "expected_executions": null,
+      "actual": {
+        "state": "unknown",
+        "executions": null,
+        "reason": "identity missing"
+      },
+      "passed": true
+    },
+    {
+      "name": "missing_attempt_id",
+      "record": {
+        "operation_id": "op",
+        "epoch": "epoch",
+        "closed": true,
+        "final_seq": 4,
+        "snapshots": [
+          {
+            "first_seq": 1,
+            "last_seq": 4,
+            "events": [
+              {
+                "operation_id": "op",
+                "run_id": "run",
+                "call_id": "call",
+                "attempt_id": "attempt",
+                "epoch": "epoch",
+                "kind": "accepted",
+                "seq": 1,
+                "event_id": "e1",
+                "monotonic_ns": 1,
+                "job_id": "job"
+              },
+              {
+                "operation_id": "op",
+                "run_id": "run",
+                "call_id": "call",
+                "epoch": "epoch",
+                "kind": "execution_start",
+                "seq": 2,
+                "event_id": "e2",
+                "monotonic_ns": 2,
+                "job_id": "job",
+                "execution_id": "execution"
+              },
+              {
+                "operation_id": "op",
+                "run_id": "run",
+                "call_id": "call",
+                "attempt_id": "attempt",
+                "epoch": "epoch",
+                "kind": "terminal",
+                "seq": 3,
+                "event_id": "e3",
+                "monotonic_ns": 3,
+                "job_id": "job",
+                "execution_id": "execution",
+                "node": null,
+                "history_completed": true,
+                "artifact_sha256": [
+                  "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                ]
+              },
+              {
+                "operation_id": "op",
+                "run_id": "run",
+                "call_id": "call",
+                "attempt_id": "attempt",
+                "epoch": "epoch",
+                "kind": "window_closed",
+                "seq": 4,
+                "event_id": "e4",
+                "monotonic_ns": 4,
+                "job_id": "job"
+              }
+            ]
+          }
+        ]
+      },
+      "expected_state": "unknown",
+      "expected_executions": null,
+      "actual": {
+        "state": "unknown",
+        "executions": null,
+        "reason": "identity missing"
+      },
+      "passed": true
+    },
+    {
+      "name": "missing_event_id",
+      "record": {
+        "operation_id": "op",
+        "epoch": "epoch",
+        "closed": true,
+        "final_seq": 4,
+        "snapshots": [
+          {
+            "first_seq": 1,
+            "last_seq": 4,
+            "events": [
+              {
+                "operation_id": "op",
+                "run_id": "run",
+                "call_id": "call",
+                "attempt_id": "attempt",
+                "epoch": "epoch",
+                "kind": "accepted",
+                "seq": 1,
+                "event_id": "e1",
+                "monotonic_ns": 1,
+                "job_id": "job"
+              },
+              {
+                "operation_id": "op",
+                "run_id": "run",
+                "call_id": "call",
+                "attempt_id": "attempt",
+                "epoch": "epoch",
+                "kind": "execution_start",
+                "seq": 2,
+                "monotonic_ns": 2,
+                "job_id": "job",
+                "execution_id": "execution"
+              },
+              {
+                "operation_id": "op",
+                "run_id": "run",
+                "call_id": "call",
+                "attempt_id": "attempt",
+                "epoch": "epoch",
+                "kind": "terminal",
+                "seq": 3,
+                "event_id": "e3",
+                "monotonic_ns": 3,
+                "job_id": "job",
+                "execution_id": "execution",
+                "node": null,
+                "history_completed": true,
+                "artifact_sha256": [
+                  "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                ]
+              },
+              {
+                "operation_id": "op",
+                "run_id": "run",
+                "call_id": "call",
+                "attempt_id": "attempt",
+                "epoch": "epoch",
+                "kind": "window_closed",
+                "seq": 4,
+                "event_id": "e4",
+                "monotonic_ns": 4,
+                "job_id": "job"
+              }
+            ]
+          }
+        ]
+      },
+      "expected_state": "unknown",
+      "expected_executions": null,
+      "actual": {
+        "state": "unknown",
+        "executions": null,
+        "reason": "identity missing"
+      },
+      "passed": true
+    },
+    {
+      "name": "missing_epoch",
+      "record": {
+        "operation_id": "op",
+        "epoch": "epoch",
+        "closed": true,
+        "final_seq": 4,
+        "snapshots": [
+          {
+            "first_seq": 1,
+            "last_seq": 4,
+            "events": [
+              {
+                "operation_id": "op",
+                "run_id": "run",
+                "call_id": "call",
+                "attempt_id": "attempt",
+                "epoch": "epoch",
+                "kind": "accepted",
+                "seq": 1,
+                "event_id": "e1",
+                "monotonic_ns": 1,
+                "job_id": "job"
+              },
+              {
+                "operation_id": "op",
+                "run_id": "run",
+                "call_id": "call",
+                "attempt_id": "attempt",
+                "kind": "execution_start",
+                "seq": 2,
+                "event_id": "e2",
+                "monotonic_ns": 2,
+                "job_id": "job",
+                "execution_id": "execution"
+              },
+              {
+                "operation_id": "op",
+                "run_id": "run",
+                "call_id": "call",
+                "attempt_id": "attempt",
+                "epoch": "epoch",
+                "kind": "terminal",
+                "seq": 3,
+                "event_id": "e3",
+                "monotonic_ns": 3,
+                "job_id": "job",
+                "execution_id": "execution",
+                "node": null,
+                "history_completed": true,
+                "artifact_sha256": [
+                  "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                ]
+              },
+              {
+                "operation_id": "op",
+                "run_id": "run",
+                "call_id": "call",
+                "attempt_id": "attempt",
+                "epoch": "epoch",
+                "kind": "window_closed",
+                "seq": 4,
+                "event_id": "e4",
+                "monotonic_ns": 4,
+                "job_id": "job"
+              }
+            ]
+          }
+        ]
+      },
+      "expected_state": "unknown",
+      "expected_executions": null,
+      "actual": {
+        "state": "unknown",
+        "executions": null,
+        "reason": "'epoch'"
+      },
+      "passed": true
+    },
+    {
+      "name": "missing_monotonic_ns",
+      "record": {
+        "operation_id": "op",
+        "epoch": "epoch",
+        "closed": true,
+        "final_seq": 4,
+        "snapshots": [
+          {
+            "first_seq": 1,
+            "last_seq": 4,
+            "events": [
+              {
+                "operation_id": "op",
+                "run_id": "run",
+                "call_id": "call",
+                "attempt_id": "attempt",
+                "epoch": "epoch",
+                "kind": "accepted",
+                "seq": 1,
+                "event_id": "e1",
+                "monotonic_ns": 1,
+                "job_id": "job"
+              },
+              {
+                "operation_id": "op",
+                "run_id": "run",
+                "call_id": "call",
+                "attempt_id": "attempt",
+                "epoch": "epoch",
+                "kind": "execution_start",
+                "seq": 2,
+                "event_id": "e2",
+                "job_id": "job",
+                "execution_id": "execution"
+              },
+              {
+                "operation_id": "op",
+                "run_id": "run",
+                "call_id": "call",
+                "attempt_id": "attempt",
+                "epoch": "epoch",
+                "kind": "terminal",
+                "seq": 3,
+                "event_id": "e3",
+                "monotonic_ns": 3,
+                "job_id": "job",
+                "execution_id": "execution",
+                "node": null,
+                "history_completed": true,
+                "artifact_sha256": [
+                  "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                ]
+              },
+              {
+                "operation_id": "op",
+                "run_id": "run",
+                "call_id": "call",
+                "attempt_id": "attempt",
+                "epoch": "epoch",
+                "kind": "window_closed",
+                "seq": 4,
+                "event_id": "e4",
+                "monotonic_ns": 4,
+                "job_id": "job"
+              }
+            ]
+          }
+        ]
+      },
+      "expected_state": "unknown",
+      "expected_executions": null,
+      "actual": {
+        "state": "unknown",
+        "executions": null,
+        "reason": "'monotonic_ns'"
+      },
+      "passed": true
+    },
+    {
+      "name": "missing_terminal_node",
+      "record": {
+        "operation_id": "op",
+        "epoch": "epoch",
+        "closed": true,
+        "final_seq": 4,
+        "snapshots": [
+          {
+            "first_seq": 1,
+            "last_seq": 4,
+            "events": [
+              {
+                "operation_id": "op",
+                "run_id": "run",
+                "call_id": "call",
+                "attempt_id": "attempt",
+                "epoch": "epoch",
+                "kind": "accepted",
+                "seq": 1,
+                "event_id": "e1",
+                "monotonic_ns": 1,
+                "job_id": "job"
+              },
+              {
+                "operation_id": "op",
+                "run_id": "run",
+                "call_id": "call",
+                "attempt_id": "attempt",
+                "epoch": "epoch",
+                "kind": "execution_start",
+                "seq": 2,
+                "event_id": "e2",
+                "monotonic_ns": 2,
+                "job_id": "job",
+                "execution_id": "execution"
+              },
+              {
+                "operation_id": "op",
+                "run_id": "run",
+                "call_id": "call",
+                "attempt_id": "attempt",
+                "epoch": "epoch",
+                "kind": "terminal",
+                "seq": 3,
+                "event_id": "e3",
+                "monotonic_ns": 3,
+                "job_id": "job",
+                "execution_id": "execution",
+                "history_completed": true,
+                "artifact_sha256": [
+                  "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                ]
+              },
+              {
+                "operation_id": "op",
+                "run_id": "run",
+                "call_id": "call",
+                "attempt_id": "attempt",
+                "epoch": "epoch",
+                "kind": "window_closed",
+                "seq": 4,
+                "event_id": "e4",
+                "monotonic_ns": 4,
+                "job_id": "job"
+              }
+            ]
+          }
+        ]
+      },
+      "expected_state": "unknown",
+      "expected_executions": null,
+      "actual": {
+        "state": "unknown",
+        "executions": null,
+        "reason": "terminal discriminator missing"
+      },
+      "passed": true
+    },
+    {
+      "name": "nonnull_terminal_node",
+      "record": {
+        "operation_id": "op",
+        "epoch": "epoch",
+        "closed": true,
+        "final_seq": 4,
+        "snapshots": [
+          {
+            "first_seq": 1,
+            "last_seq": 4,
+            "events": [
+              {
+                "operation_id": "op",
+                "run_id": "run",
+                "call_id": "call",
+                "attempt_id": "attempt",
+                "epoch": "epoch",
+                "kind": "accepted",
+                "seq": 1,
+                "event_id": "e1",
+                "monotonic_ns": 1,
+                "job_id": "job"
+              },
+              {
+                "operation_id": "op",
+                "run_id": "run",
+                "call_id": "call",
+                "attempt_id": "attempt",
+                "epoch": "epoch",
+                "kind": "execution_start",
+                "seq": 2,
+                "event_id": "e2",
+                "monotonic_ns": 2,
+                "job_id": "job",
+                "execution_id": "execution"
+              },
+              {
+                "operation_id": "op",
+                "run_id": "run",
+                "call_id": "call",
+                "attempt_id": "attempt",
+                "epoch": "epoch",
+                "kind": "terminal",
+                "seq": 3,
+                "event_id": "e3",
+                "monotonic_ns": 3,
+                "job_id": "job",
+                "execution_id": "execution",
+                "node": "node-1",
+                "history_completed": true,
+                "artifact_sha256": [
+                  "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                ]
+              },
+              {
+                "operation_id": "op",
+                "run_id": "run",
+                "call_id": "call",
+                "attempt_id": "attempt",
+                "epoch": "epoch",
+                "kind": "window_closed",
+                "seq": 4,
+                "event_id": "e4",
+                "monotonic_ns": 4,
+                "job_id": "job"
+              }
+            ]
+          }
+        ]
+      },
+      "expected_state": "unknown",
+      "expected_executions": null,
+      "actual": {
+        "state": "unknown",
+        "executions": null,
+        "reason": "terminal discriminator missing"
+      },
+      "passed": true
+    },
+    {
+      "name": "incomplete_history",
+      "record": {
+        "operation_id": "op",
+        "epoch": "epoch",
+        "closed": true,
+        "final_seq": 4,
+        "snapshots": [
+          {
+            "first_seq": 1,
+            "last_seq": 4,
+            "events": [
+              {
+                "operation_id": "op",
+                "run_id": "run",
+                "call_id": "call",
+                "attempt_id": "attempt",
+                "epoch": "epoch",
+                "kind": "accepted",
+                "seq": 1,
+                "event_id": "e1",
+                "monotonic_ns": 1,
+                "job_id": "job"
+              },
+              {
+                "operation_id": "op",
+                "run_id": "run",
+                "call_id": "call",
+                "attempt_id": "attempt",
+                "epoch": "epoch",
+                "kind": "execution_start",
+                "seq": 2,
+                "event_id": "e2",
+                "monotonic_ns": 2,
+                "job_id": "job",
+                "execution_id": "execution"
+              },
+              {
+                "operation_id": "op",
+                "run_id": "run",
+                "call_id": "call",
+                "attempt_id": "attempt",
+                "epoch": "epoch",
+                "kind": "terminal",
+                "seq": 3,
+                "event_id": "e3",
+                "monotonic_ns": 3,
+                "job_id": "job",
+                "execution_id": "execution",
+                "node": null,
+                "history_completed": false,
+                "artifact_sha256": [
+                  "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                ]
+              },
+              {
+                "operation_id": "op",
+                "run_id": "run",
+                "call_id": "call",
+                "attempt_id": "attempt",
+                "epoch": "epoch",
+                "kind": "window_closed",
+                "seq": 4,
+                "event_id": "e4",
+                "monotonic_ns": 4,
+                "job_id": "job"
+              }
+            ]
+          }
+        ]
+      },
+      "expected_state": "unknown",
+      "expected_executions": null,
+      "actual": {
+        "state": "unknown",
+        "executions": null,
+        "reason": "terminal discriminator missing"
+      },
+      "passed": true
+    },
+    {
+      "name": "missing_artifact",
+      "record": {
+        "operation_id": "op",
+        "epoch": "epoch",
+        "closed": true,
+        "final_seq": 4,
+        "snapshots": [
+          {
+            "first_seq": 1,
+            "last_seq": 4,
+            "events": [
+              {
+                "operation_id": "op",
+                "run_id": "run",
+                "call_id": "call",
+                "attempt_id": "attempt",
+                "epoch": "epoch",
+                "kind": "accepted",
+                "seq": 1,
+                "event_id": "e1",
+                "monotonic_ns": 1,
+                "job_id": "job"
+              },
+              {
+                "operation_id": "op",
+                "run_id": "run",
+                "call_id": "call",
+                "attempt_id": "attempt",
+                "epoch": "epoch",
+                "kind": "execution_start",
+                "seq": 2,
+                "event_id": "e2",
+                "monotonic_ns": 2,
+                "job_id": "job",
+                "execution_id": "execution"
+              },
+              {
+                "operation_id": "op",
+                "run_id": "run",
+                "call_id": "call",
+                "attempt_id": "attempt",
+                "epoch": "epoch",
+                "kind": "terminal",
+                "seq": 3,
+                "event_id": "e3",
+                "monotonic_ns": 3,
+                "job_id": "job",
+                "execution_id": "execution",
+                "node": null,
+                "history_completed": true,
+                "artifact_sha256": []
+              },
+              {
+                "operation_id": "op",
+                "run_id": "run",
+                "call_id": "call",
+                "attempt_id": "attempt",
+                "epoch": "epoch",
+                "kind": "window_closed",
+                "seq": 4,
+                "event_id": "e4",
+                "monotonic_ns": 4,
+                "job_id": "job"
+              }
+            ]
+          }
+        ]
+      },
+      "expected_state": "unknown",
+      "expected_executions": null,
+      "actual": {
+        "state": "unknown",
+        "executions": null,
+        "reason": "artifact receipt missing"
+      },
+      "passed": true
+    },
+    {
+      "name": "missing_event",
+      "record": {
+        "operation_id": "op",
+        "epoch": "epoch",
+        "closed": true,
+        "final_seq": 4,
+        "snapshots": [
+          {
+            "first_seq": 1,
+            "last_seq": 4,
+            "events": [
+              {
+                "operation_id": "op",
+                "run_id": "run",
+                "call_id": "call",
+                "attempt_id": "attempt",
+                "epoch": "epoch",
+                "kind": "accepted",
+                "seq": 1,
+                "event_id": "e1",
+                "monotonic_ns": 1,
+                "job_id": "job"
+              },
+              {
+                "operation_id": "op",
+                "run_id": "run",
+                "call_id": "call",
+                "attempt_id": "attempt",
+                "epoch": "epoch",
+                "kind": "terminal",
+                "seq": 3,
+                "event_id": "e3",
+                "monotonic_ns": 3,
+                "job_id": "job",
+                "execution_id": "execution",
+                "node": null,
+                "history_completed": true,
+                "artifact_sha256": [
+                  "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                ]
+              },
+              {
+                "operation_id": "op",
+                "run_id": "run",
+                "call_id": "call",
+                "attempt_id": "attempt",
+                "epoch": "epoch",
+                "kind": "window_closed",
+                "seq": 4,
+                "event_id": "e4",
+                "monotonic_ns": 4,
+                "job_id": "job"
+              }
+            ]
+          }
+        ]
+      },
+      "expected_state": "unknown",
+      "expected_executions": null,
+      "actual": {
+        "state": "unknown",
+        "executions": null,
+        "reason": "incomplete snapshot"
+      },
+      "passed": true
+    },
+    {
+      "name": "missing_snapshot_boundary",
+      "record": {
+        "operation_id": "op",
+        "epoch": "epoch",
+        "closed": true,
+        "final_seq": 4,
+        "snapshots": [
+          {
+            "first_seq": 1,
+            "events": [
+              {
+                "operation_id": "op",
+                "run_id": "run",
+                "call_id": "call",
+                "attempt_id": "attempt",
+                "epoch": "epoch",
+                "kind": "accepted",
+                "seq": 1,
+                "event_id": "e1",
+                "monotonic_ns": 1,
+                "job_id": "job"
+              },
+              {
+                "operation_id": "op",
+                "run_id": "run",
+                "call_id": "call",
+                "attempt_id": "attempt",
+                "epoch": "epoch",
+                "kind": "execution_start",
+                "seq": 2,
+                "event_id": "e2",
+                "monotonic_ns": 2,
+                "job_id": "job",
+                "execution_id": "execution"
+              },
+              {
+                "operation_id": "op",
+                "run_id": "run",
+                "call_id": "call",
+                "attempt_id": "attempt",
+                "epoch": "epoch",
+                "kind": "terminal",
+                "seq": 3,
+                "event_id": "e3",
+                "monotonic_ns": 3,
+                "job_id": "job",
+                "execution_id": "execution",
+                "node": null,
+                "history_completed": true,
+                "artifact_sha256": [
+                  "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                ]
+              },
+              {
+                "operation_id": "op",
+                "run_id": "run",
+                "call_id": "call",
+                "attempt_id": "attempt",
+                "epoch": "epoch",
+                "kind": "window_closed",
+                "seq": 4,
+                "event_id": "e4",
+                "monotonic_ns": 4,
+                "job_id": "job"
+              }
+            ]
+          }
+        ]
+      },
+      "expected_state": "unknown",
+      "expected_executions": null,
+      "actual": {
+        "state": "unknown",
+        "executions": null,
+        "reason": "'last_seq'"
+      },
+      "passed": true
+    },
+    {
+      "name": "restart_without_binding",
+      "record": {
+        "operation_id": "op",
+        "epoch": "epoch",
+        "closed": true,
+        "final_seq": 4,
+        "snapshots": [
+          {
+            "first_seq": 1,
+            "last_seq": 4,
+            "events": [
+              {
+                "operation_id": "op",
+                "run_id": "run",
+                "call_id": "call",
+                "attempt_id": "attempt",
+                "epoch": "epoch",
+                "kind": "accepted",
+                "seq": 1,
+                "event_id": "e1",
+                "monotonic_ns": 1,
+                "job_id": "job"
+              },
+              {
+                "operation_id": "op",
+                "run_id": "run",
+                "call_id": "call",
+                "attempt_id": "attempt",
+                "epoch": "epoch",
+                "kind": "execution_start",
+                "seq": 2,
+                "event_id": "e2",
+                "monotonic_ns": 2,
+                "job_id": "job",
+                "execution_id": "execution"
+              },
+              {
+                "operation_id": "op",
+                "run_id": "run",
+                "call_id": "call",
+                "attempt_id": "attempt",
+                "epoch": "restarted",
+                "kind": "terminal",
+                "seq": 3,
+                "event_id": "e3",
+                "monotonic_ns": 3,
+                "job_id": "job",
+                "execution_id": "execution",
+                "node": null,
+                "history_completed": true,
+                "artifact_sha256": [
+                  "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                ]
+              },
+              {
+                "operation_id": "op",
+                "run_id": "run",
+                "call_id": "call",
+                "attempt_id": "attempt",
+                "epoch": "epoch",
+                "kind": "window_closed",
+                "seq": 4,
+                "event_id": "e4",
+                "monotonic_ns": 4,
+                "job_id": "job"
+              }
+            ]
+          }
+        ]
+      },
+      "expected_state": "unknown",
+      "expected_executions": null,
+      "actual": {
+        "state": "unknown",
+        "executions": null,
+        "reason": "identity changed"
+      },
+      "passed": true
+    },
+    {
+      "name": "conflicting_duplicate",
+      "record": {
+        "operation_id": "op",
+        "epoch": "epoch",
+        "closed": true,
+        "final_seq": 4,
+        "snapshots": [
+          {
+            "first_seq": 1,
+            "last_seq": 4,
+            "events": [
+              {
+                "operation_id": "op",
+                "run_id": "run",
+                "call_id": "call",
+                "attempt_id": "attempt",
+                "epoch": "epoch",
+                "kind": "accepted",
+                "seq": 1,
+                "event_id": "e1",
+                "monotonic_ns": 1,
+                "job_id": "job"
+              },
+              {
+                "operation_id": "op",
+                "run_id": "run",
+                "call_id": "call",
+                "attempt_id": "attempt",
+                "epoch": "epoch",
+                "kind": "execution_start",
+                "seq": 2,
+                "event_id": "e2",
+                "monotonic_ns": 2,
+                "job_id": "job",
+                "execution_id": "execution"
+              },
+              {
+                "operation_id": "op",
+                "run_id": "run",
+                "call_id": "call",
+                "attempt_id": "attempt",
+                "epoch": "epoch",
+                "kind": "terminal",
+                "seq": 3,
+                "event_id": "e3",
+                "monotonic_ns": 3,
+                "job_id": "job",
+                "execution_id": "execution",
+                "node": null,
+                "history_completed": true,
+                "artifact_sha256": [
+                  "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                ]
+              },
+              {
+                "operation_id": "op",
+                "run_id": "run",
+                "call_id": "call",
+                "attempt_id": "attempt",
+                "epoch": "epoch",
+                "kind": "window_closed",
+                "seq": 4,
+                "event_id": "e4",
+                "monotonic_ns": 4,
+                "job_id": "job"
+              }
+            ]
+          },
+          {
+            "first_seq": 1,
+            "last_seq": 4,
+            "events": [
+              {
+                "operation_id": "op",
+                "run_id": "run",
+                "call_id": "call",
+                "attempt_id": "attempt",
+                "epoch": "epoch",
+                "kind": "accepted",
+                "seq": 1,
+                "event_id": "e1",
+                "monotonic_ns": 1,
+                "job_id": "job"
+              },
+              {
+                "operation_id": "op",
+                "run_id": "run",
+                "call_id": "call",
+                "attempt_id": "attempt",
+                "epoch": "epoch",
+                "kind": "execution_start",
+                "seq": 2,
+                "event_id": "e2",
+                "monotonic_ns": 2,
+                "job_id": "conflict",
+                "execution_id": "execution"
+              },
+              {
+                "operation_id": "op",
+                "run_id": "run",
+                "call_id": "call",
+                "attempt_id": "attempt",
+                "epoch": "epoch",
+                "kind": "terminal",
+                "seq": 3,
+                "event_id": "e3",
+                "monotonic_ns": 3,
+                "job_id": "job",
+                "execution_id": "execution",
+                "node": null,
+                "history_completed": true,
+                "artifact_sha256": [
+                  "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                ]
+              },
+              {
+                "operation_id": "op",
+                "run_id": "run",
+                "call_id": "call",
+                "attempt_id": "attempt",
+                "epoch": "epoch",
+                "kind": "window_closed",
+                "seq": 4,
+                "event_id": "e4",
+                "monotonic_ns": 4,
+                "job_id": "job"
+              }
+            ]
+          }
+        ]
+      },
+      "expected_state": "unknown",
+      "expected_executions": null,
+      "actual": {
+        "state": "unknown",
+        "executions": null,
+        "reason": "event ID conflict"
+      },
+      "passed": true
+    },
+    {
+      "name": "open_window",
+      "record": {
+        "operation_id": "op",
+        "epoch": "epoch",
+        "closed": false,
+        "final_seq": 4,
+        "snapshots": [
+          {
+            "first_seq": 1,
+            "last_seq": 4,
+            "events": [
+              {
+                "operation_id": "op",
+                "run_id": "run",
+                "call_id": "call",
+                "attempt_id": "attempt",
+                "epoch": "epoch",
+                "kind": "accepted",
+                "seq": 1,
+                "event_id": "e1",
+                "monotonic_ns": 1,
+                "job_id": "job"
+              },
+              {
+                "operation_id": "op",
+                "run_id": "run",
+                "call_id": "call",
+                "attempt_id": "attempt",
+                "epoch": "epoch",
+                "kind": "execution_start",
+                "seq": 2,
+                "event_id": "e2",
+                "monotonic_ns": 2,
+                "job_id": "job",
+                "execution_id": "execution"
+              },
+              {
+                "operation_id": "op",
+                "run_id": "run",
+                "call_id": "call",
+                "attempt_id": "attempt",
+                "epoch": "epoch",
+                "kind": "terminal",
+                "seq": 3,
+                "event_id": "e3",
+                "monotonic_ns": 3,
+                "job_id": "job",
+                "execution_id": "execution",
+                "node": null,
+                "history_completed": true,
+                "artifact_sha256": [
+                  "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                ]
+              },
+              {
+                "operation_id": "op",
+                "run_id": "run",
+                "call_id": "call",
+                "attempt_id": "attempt",
+                "epoch": "epoch",
+                "kind": "window_closed",
+                "seq": 4,
+                "event_id": "e4",
+                "monotonic_ns": 4,
+                "job_id": "job"
+              }
+            ]
+          }
+        ]
+      },
+      "expected_state": "unknown",
+      "expected_executions": null,
+      "actual": {
+        "state": "unknown",
+        "executions": null,
+        "reason": "window or operation identity missing"
+      },
+      "passed": true
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+*.aux
+*.bbl
+*.blg
+*.out
+*.log
+*.synctex.gz
+*.fdb_latexmk
+*.fls
+build/
+delivery/

@@ -1,0 +1,9 @@
+Confirmed: claim_supported=partial; review_independence=same-family; acceptance_status=provisional.
+
+The deterministic precheck verifies all four cited strings exist. It does not validate Windows raw observations or strengthen the semantic verdict.
+
+The new matrix correctly incorporates the important boundaries: fresh runs, changed seeds, research-client resolved, same-run guard scope, conditional oracle independence, and G01's conflicting aggregation semantics. No correction to the overall judgment is needed.
+
+One useful addition: under C16 or G03, record that _sanitize_oracle sums cumulative raw_events snapshots, potentially counting first-call events again. Published execution totals should use deduplicated execution bindings, not event_counts.
+
+Confidence remains high for inspected implementation semantics; medium for historical Windows observations. This completes precheck incorporation, without new testing or an independent audit.

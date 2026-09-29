@@ -1,0 +1,14 @@
+{
+  "revision": "v0.3",
+  "checks": "documentation-only",
+  "old_words": 2630,
+  "new_words": 3085,
+  "draft_sha256": "bcaae75dfbc077a2b62350c2f0ee152f2267ae4709d54e50736da18f160cb6e1",
+  "new_experiments": false,
+  "G01": "report aggregation reconciled",
+  "G02": "partial: historical 40 versus later targeted 7",
+  "review_status": "local revision check; prior v0.2 reviewer verdict not a fresh v0.3 review",
+  "relative_links": "pass",
+  "case_table_arithmetic": "6 calls, 6 submissions, 6 execution instances",
+  "literature_sources": "3 primary documentation sources verified"
+}

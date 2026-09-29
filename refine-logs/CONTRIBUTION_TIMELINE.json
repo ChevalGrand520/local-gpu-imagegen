@@ -1,0 +1,41 @@
+{
+  "scope": "local Git metadata; not independently timestamped public disclosure",
+  "commits": [
+    {
+      "sha": "ad1ca0257036120f68df0f1a750aedf09f146b31",
+      "author_date": "2026-09-16T14:01:36+08:00",
+      "committer_date": "2026-09-16T14:01:36+08:00",
+      "subject": "research: add bounded CPU evidence package"
+    },
+    {
+      "sha": "b3689e067a1ffda97a7ce294f0f23fc1c0415ddb",
+      "author_date": "2026-09-16T17:13:29+08:00",
+      "committer_date": "2026-09-16T17:13:29+08:00",
+      "subject": "fix: block ambiguous backend submissions"
+    },
+    {
+      "sha": "50c190da19f5ed056b05efff42370715f7691b99",
+      "author_date": "2026-09-18T22:47:31+08:00",
+      "committer_date": "2026-09-18T22:47:31+08:00",
+      "subject": "docs(research): bind DSN claims to verified evidence and gaps"
+    },
+    {
+      "sha": "eb8df8174d92c23b3475e172dff777fb812901ff",
+      "author_date": "2026-09-18T22:53:23+08:00",
+      "committer_date": "2026-09-18T22:53:23+08:00",
+      "subject": "fix(research): reject unresolved execution verification"
+    },
+    {
+      "sha": "cba9debbb59a1f8b17b2e6830b91700003913d6e",
+      "author_date": "2026-09-20T13:05:09+08:00",
+      "committer_date": "2026-09-20T13:05:09+08:00",
+      "subject": "research: add loopback fault oracle controller"
+    },
+    {
+      "sha": "5cd100f2b4a4a7aaeac1fd707fc248bae46f239c",
+      "author_date": "2026-09-27T10:51:58+08:00",
+      "committer_date": "2026-09-27T10:51:58+08:00",
+      "subject": "docs(research): record endpoint preserving Windows pilot"
+    }
+  ]
+}

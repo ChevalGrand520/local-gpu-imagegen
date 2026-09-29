@@ -1,0 +1,16 @@
+{
+  "record_id": "synthetic-complete",
+  "reported_state": {"state": "generated", "run_id": "synthetic-run-1"},
+  "job_id": "synthetic-job-1",
+  "artifact_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "artifact_validation": {"status": "verified", "independent": true},
+  "approval_state": "valid",
+  "oracle_state": {
+    "execution_state": "succeeded",
+    "oracle_evaluable": true,
+    "execution_started": 1,
+    "execution_finished": 1,
+    "job_id": "synthetic-job-1",
+    "artifact_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  }
+}

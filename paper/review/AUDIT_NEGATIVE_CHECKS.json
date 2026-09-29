@@ -1,0 +1,25 @@
+{
+  "scope": "temporary edited record copies only; not scientific experiments",
+  "checks": [
+    {
+      "mutation": "missing_case",
+      "rejected": true,
+      "reason": "Windows: missing, duplicate or unexpected case"
+    },
+    {
+      "mutation": "missing_artifact_check",
+      "rejected": true,
+      "reason": "B2_F00: missing or unexpected artifact check"
+    },
+    {
+      "mutation": "changed_cpu_completion",
+      "rejected": true,
+      "reason": "F00-single-stage/b2: completion disagrees"
+    },
+    {
+      "mutation": "duplicate_finish",
+      "rejected": true,
+      "reason": "F00-single-stage/b2: execution events disagree"
+    }
+  ]
+}

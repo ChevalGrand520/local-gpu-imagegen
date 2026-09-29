@@ -1,0 +1,145 @@
+{
+  "scope": "offline consistency check of retained data; no experiment or host access",
+  "windows_cases": [
+    {
+      "case": "B2_F00",
+      "submissions": 1,
+      "retained_execution_bindings": 1,
+      "call_states": [
+        "resolved"
+      ]
+    },
+    {
+      "case": "W3_F00",
+      "submissions": 1,
+      "retained_execution_bindings": 1,
+      "call_states": [
+        "resolved"
+      ]
+    },
+    {
+      "case": "B2_F02",
+      "submissions": 2,
+      "retained_execution_bindings": 2,
+      "call_states": [
+        "unresolved",
+        "resolved"
+      ]
+    },
+    {
+      "case": "W3_F02",
+      "submissions": 2,
+      "retained_execution_bindings": 2,
+      "call_states": [
+        "unresolved",
+        "resolved"
+      ]
+    }
+  ],
+  "unique_windows_binding_ids": 6,
+  "recorded_artifact_hash_matches": 4,
+  "cumulative_event_count_discrepancies": {
+    "B2_F02": 1,
+    "W3_F02": 1
+  },
+  "windows_verification_boundary": "report/JSONL equality and image-byte matching are retained inspection receipts; originals are not in this package",
+  "raw_windows_event_reconstruction": "unavailable: no complete raw events/history snapshots",
+  "cpu_cases": [
+    {
+      "case": "F00-single-stage",
+      "b2": {
+        "submissions": 1,
+        "executions": 1,
+        "completion": true,
+        "recovery": "not_needed"
+      },
+      "w3": {
+        "submissions": 1,
+        "executions": 1,
+        "completion": true,
+        "recovery": "not_needed"
+      }
+    },
+    {
+      "case": "F00-two-stage",
+      "b2": {
+        "submissions": 1,
+        "executions": 1,
+        "completion": true,
+        "recovery": "not_needed"
+      },
+      "w3": {
+        "submissions": 1,
+        "executions": 1,
+        "completion": true,
+        "recovery": "not_needed"
+      }
+    },
+    {
+      "case": "F02-single-stage",
+      "b2": {
+        "submissions": 2,
+        "executions": 2,
+        "completion": true,
+        "recovery": "new_submission_after_fault"
+      },
+      "w3": {
+        "submissions": 1,
+        "executions": 1,
+        "completion": false,
+        "recovery": "outcome_unknown_blocked"
+      }
+    },
+    {
+      "case": "F02-two-stage",
+      "b2": {
+        "submissions": 1,
+        "executions": 1,
+        "completion": false,
+        "recovery": "outcome_unknown"
+      },
+      "w3": {
+        "submissions": 1,
+        "executions": 1,
+        "completion": false,
+        "recovery": "outcome_unknown_blocked"
+      }
+    },
+    {
+      "case": "F03-single-stage",
+      "b2": {
+        "submissions": 2,
+        "executions": 2,
+        "completion": true,
+        "recovery": "new_submission_after_fault"
+      },
+      "w3": {
+        "submissions": 2,
+        "executions": 2,
+        "completion": true,
+        "recovery": "new_submission_after_fault"
+      }
+    },
+    {
+      "case": "F03-two-stage",
+      "b2": {
+        "submissions": 1,
+        "executions": 1,
+        "completion": true,
+        "recovery": "same_job_reconciled"
+      },
+      "w3": {
+        "submissions": 1,
+        "executions": 1,
+        "completion": true,
+        "recovery": "same_job_reconciled"
+      }
+    }
+  ],
+  "input_hashes": {
+    "paper/evidence/windows-audit.json": "f256e122cd5e7d58152b8532048728f015b2b2d60040e84a99f5514d8b30732a",
+    "docs/research/runs/paired-v2-b2.json": "3ad68bdb1aaf3c6befc2f6518da276bd31cc1665173b0b6c507a0a15547493f8",
+    "docs/research/runs/paired-v2-w3.json": "891bdc27cfd4f5c1e12002975519d5f4e32e8531d9be7455fdad2bf217d157ba",
+    "docs/research/runs/paired-v2-comparison.json": "c533c40d194d92000f3f48fede638b352432253b0e6aecd549cf80fb9b8a7d5d"
+  }
+}

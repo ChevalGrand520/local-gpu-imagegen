@@ -1,0 +1,374 @@
+{
+  "jsonl_sha256": "5994d2fc9f5cc9aa8755fa4e53d31a6e883c2e7d6aed5f7f9b998c5846162dd9",
+  "jsonl_rows": 4,
+  "report_sha256": "5c946b67f840876fa4a6a44bf39c7cdf4604d655fdc0197123acd675cebc55f2",
+  "schema": "dsn-readonly-evidence-audit-v1",
+  "cases": [
+    {
+      "current_output_content_hashes": [
+        "dfc97e42a12d2fb3d1e359be52db6270b6acec01bc4377b0549c94e9b019b04a"
+      ],
+      "output_png_count": 1,
+      "classifications": {
+        "failed": 0,
+        "injection_confirmed": "N/A",
+        "not_run": 0,
+        "oracle_evaluable": 1,
+        "resolved": 1,
+        "scheduled": 1,
+        "started": 1,
+        "unresolved": 0
+      },
+      "report_equals_jsonl_case": true,
+      "bindings": [
+        {
+          "artifact_path_sha256": [
+            "f2ef956384dc8fd636f782fb2f46ce5404a4e7bc2c0a653acc6c1045d77cd5c7",
+            "e0ee8bb50685e05fa0f47ed04203ae953fdfd055f5bd2892ea186504254f8c3a"
+          ],
+          "execution_instance_id": "execution:4c365244f5516065ef8c5f352477e715facee1c1c50588cdf9764f5fcdff5ae4",
+          "finished_at": 1790477074.7594476,
+          "history_completed": true,
+          "started_at": 1790477074.7593815,
+          "terminal_event": "executing"
+        }
+      ],
+      "event_counts": {
+        "executed": 1,
+        "executing": 1,
+        "execution_cached": 1,
+        "execution_start": 1,
+        "execution_success": 1,
+        "progress_state": 1,
+        "status": 4
+      },
+      "calls": [
+        {
+          "artifact_checks": [
+            {
+              "recorded_hash": "dfc97e42a12d2fb3d1e359be52db6270b6acec01bc4377b0549c94e9b019b04a",
+              "matches_current_output_bytes": true
+            }
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "state": "resolved"
+        }
+      ],
+      "case_id": "B2_F00",
+      "receipts": [
+        {
+          "body_bytes": 967,
+          "body_sha256": "6278ea4204e7962467d53f0140118497beaa2697895c2dda88179423ab526576",
+          "failure": null,
+          "forwarded": true,
+          "method": "POST",
+          "oracle_job_id_sha256": "b953dc84c0ebfa265023304e0e9031516a19e4139d8a4cdb2849511ee34a34c3",
+          "path": "/prompt",
+          "received_at": 1790477071.898852,
+          "response_dropped": false,
+          "sequence": 1,
+          "upstream_status": 200
+        }
+      ],
+      "oracle_fields": [
+        "bindings",
+        "event_counts",
+        "reason",
+        "status"
+      ],
+      "executions": 1,
+      "submissions": 1
+    },
+    {
+      "current_output_content_hashes": [
+        "dfc97e42a12d2fb3d1e359be52db6270b6acec01bc4377b0549c94e9b019b04a"
+      ],
+      "output_png_count": 1,
+      "classifications": {
+        "failed": 0,
+        "injection_confirmed": "N/A",
+        "not_run": 0,
+        "oracle_evaluable": 1,
+        "resolved": 1,
+        "scheduled": 1,
+        "started": 1,
+        "unresolved": 0
+      },
+      "report_equals_jsonl_case": true,
+      "bindings": [
+        {
+          "artifact_path_sha256": [
+            "f2ef956384dc8fd636f782fb2f46ce5404a4e7bc2c0a653acc6c1045d77cd5c7",
+            "e0ee8bb50685e05fa0f47ed04203ae953fdfd055f5bd2892ea186504254f8c3a"
+          ],
+          "execution_instance_id": "execution:b606dc8f4309fe81b0318555150c7284ab0c9e83908d7c8f9f3bb710788f1896",
+          "finished_at": 1790477103.8270278,
+          "history_completed": true,
+          "started_at": 1790477103.8269641,
+          "terminal_event": "executing"
+        }
+      ],
+      "event_counts": {
+        "executed": 1,
+        "executing": 1,
+        "execution_cached": 1,
+        "execution_start": 1,
+        "execution_success": 1,
+        "progress_state": 1,
+        "status": 4
+      },
+      "calls": [
+        {
+          "artifact_checks": [
+            {
+              "recorded_hash": "dfc97e42a12d2fb3d1e359be52db6270b6acec01bc4377b0549c94e9b019b04a",
+              "matches_current_output_bytes": true
+            }
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "state": "resolved"
+        }
+      ],
+      "case_id": "W3_F00",
+      "receipts": [
+        {
+          "body_bytes": 967,
+          "body_sha256": "154cbd6ee802fb57d26f1a81d3dd77966ee798b663691f561ec9849307675f4a",
+          "failure": null,
+          "forwarded": true,
+          "method": "POST",
+          "oracle_job_id_sha256": "0cf9c4468aac46e27dc3e98219b6912f75c1b2b648e6f6bf816e620beef45405",
+          "path": "/prompt",
+          "received_at": 1790477101.2816541,
+          "response_dropped": false,
+          "sequence": 1,
+          "upstream_status": 200
+        }
+      ],
+      "oracle_fields": [
+        "bindings",
+        "event_counts",
+        "reason",
+        "status"
+      ],
+      "executions": 1,
+      "submissions": 1
+    },
+    {
+      "current_output_content_hashes": [
+        "10bd87ec909a4ad1c30e157d1e9338aaab765a4b3c8c450052380dad8c504fa4"
+      ],
+      "output_png_count": 1,
+      "classifications": {
+        "failed": 0,
+        "injection_confirmed": 1,
+        "not_run": 0,
+        "oracle_evaluable": 1,
+        "resolved": 1,
+        "scheduled": 1,
+        "started": 1,
+        "unresolved": 1
+      },
+      "report_equals_jsonl_case": true,
+      "bindings": [
+        {
+          "artifact_path_sha256": [
+            "f2ef956384dc8fd636f782fb2f46ce5404a4e7bc2c0a653acc6c1045d77cd5c7",
+            "e0ee8bb50685e05fa0f47ed04203ae953fdfd055f5bd2892ea186504254f8c3a"
+          ],
+          "execution_instance_id": "execution:20ed7da78b7977e7041294328a848946f6a7c4f0b22b15234bf08a8a9c399007",
+          "finished_at": 1790477130.9148974,
+          "history_completed": true,
+          "started_at": 1790477130.7082722,
+          "terminal_event": "executing"
+        },
+        {
+          "artifact_path_sha256": [
+            "e9d99fd157194f47596261591a4e915102163492426e6c73a35311f015fae4e5",
+            "e0ee8bb50685e05fa0f47ed04203ae953fdfd055f5bd2892ea186504254f8c3a"
+          ],
+          "execution_instance_id": "execution:d1c028e60462c811f0283145ab1893e02631080b4f5f8c7c5390db35ee765552",
+          "finished_at": 1790477171.8477974,
+          "history_completed": true,
+          "started_at": 1790477171.846998,
+          "terminal_event": "executing"
+        }
+      ],
+      "event_counts": {
+        "executed": 3,
+        "executing": 6,
+        "execution_cached": 3,
+        "execution_start": 3,
+        "execution_success": 3,
+        "progress": 30,
+        "progress_state": 38,
+        "status": 11
+      },
+      "calls": [
+        {
+          "artifact_checks": [],
+          "exit_code": 0,
+          "timed_out": false,
+          "state": "unresolved"
+        },
+        {
+          "artifact_checks": [
+            {
+              "recorded_hash": "10bd87ec909a4ad1c30e157d1e9338aaab765a4b3c8c450052380dad8c504fa4",
+              "matches_current_output_bytes": true
+            }
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "state": "resolved"
+        }
+      ],
+      "case_id": "B2_F02",
+      "receipts": [
+        {
+          "body_bytes": 967,
+          "body_sha256": "6c4ded99b0b826beb5b5daffaf5b60acab882cf61f22b779aa894fa8f3294b79",
+          "failure": null,
+          "forwarded": true,
+          "method": "POST",
+          "oracle_job_id_sha256": "eb14997f1f1bd02a80a5e42679dd5ecc5da976414b78231cf2de3bb0a4a5da7a",
+          "path": "/prompt",
+          "received_at": 1790477130.6640792,
+          "response_dropped": true,
+          "sequence": 1,
+          "upstream_status": 200
+        },
+        {
+          "body_bytes": 967,
+          "body_sha256": "1da46427985d9ae688027304922f16fcabc5ea446c039546a30f4ec9156adc78",
+          "failure": null,
+          "forwarded": true,
+          "method": "POST",
+          "oracle_job_id_sha256": "6acab09ed312eecbf068bb15fa6ba8d5202579ec47b93cb6360afbc12ec27eed",
+          "path": "/prompt",
+          "received_at": 1790477157.31423,
+          "response_dropped": false,
+          "sequence": 2,
+          "upstream_status": 200
+        }
+      ],
+      "oracle_fields": [
+        "bindings",
+        "event_counts",
+        "reason",
+        "status"
+      ],
+      "executions": 2,
+      "submissions": 2
+    },
+    {
+      "current_output_content_hashes": [
+        "10bd87ec909a4ad1c30e157d1e9338aaab765a4b3c8c450052380dad8c504fa4"
+      ],
+      "output_png_count": 1,
+      "classifications": {
+        "failed": 0,
+        "injection_confirmed": 1,
+        "not_run": 0,
+        "oracle_evaluable": 1,
+        "resolved": 1,
+        "scheduled": 1,
+        "started": 1,
+        "unresolved": 1
+      },
+      "report_equals_jsonl_case": true,
+      "bindings": [
+        {
+          "artifact_path_sha256": [
+            "142fc5e63ad0738fb729b9aac40311fe2ffa5c0a0ac0e34d9b8b60a89b6662dc",
+            "e0ee8bb50685e05fa0f47ed04203ae953fdfd055f5bd2892ea186504254f8c3a"
+          ],
+          "execution_instance_id": "execution:b0493244e5d2a0e00a7017b15616b45ef7427d91f7da9d292eced63bc728d48f",
+          "finished_at": 1790477210.784971,
+          "history_completed": true,
+          "started_at": 1790477198.4702127,
+          "terminal_event": "executing"
+        },
+        {
+          "artifact_path_sha256": [
+            "39468da51f437815cf1064835a26d3dc28a13936db8715ebb5111d090d72fb70",
+            "e0ee8bb50685e05fa0f47ed04203ae953fdfd055f5bd2892ea186504254f8c3a"
+          ],
+          "execution_instance_id": "execution:2259cda2b8e508fc137819593b85e9d63b9e2d36b828de9e196ec1cec2e829ea",
+          "finished_at": 1790477251.881206,
+          "history_completed": true,
+          "started_at": 1790477251.8803391,
+          "terminal_event": "executing"
+        }
+      ],
+      "event_counts": {
+        "executed": 3,
+        "executing": 12,
+        "execution_cached": 3,
+        "execution_start": 3,
+        "execution_success": 3,
+        "progress": 90,
+        "progress_state": 108,
+        "status": 11
+      },
+      "calls": [
+        {
+          "artifact_checks": [],
+          "exit_code": 0,
+          "timed_out": false,
+          "state": "unresolved"
+        },
+        {
+          "artifact_checks": [
+            {
+              "recorded_hash": "10bd87ec909a4ad1c30e157d1e9338aaab765a4b3c8c450052380dad8c504fa4",
+              "matches_current_output_bytes": true
+            }
+          ],
+          "exit_code": 0,
+          "timed_out": false,
+          "state": "resolved"
+        }
+      ],
+      "case_id": "W3_F02",
+      "receipts": [
+        {
+          "body_bytes": 967,
+          "body_sha256": "9294b979ae0616df4f222d43c2065e68349e127c91c4d9748c9200754514a367",
+          "failure": null,
+          "forwarded": true,
+          "method": "POST",
+          "oracle_job_id_sha256": "7ab16340366dd7b0b90505f888599ef500b8900f858a6e8aed98715bccb7734d",
+          "path": "/prompt",
+          "received_at": 1790477198.433582,
+          "response_dropped": true,
+          "sequence": 1,
+          "upstream_status": 200
+        },
+        {
+          "body_bytes": 967,
+          "body_sha256": "d886eae6dd2dbaf90d3a9ea4d9bea17b55f402b109102a20d11e6b1dbe3c325b",
+          "failure": null,
+          "forwarded": true,
+          "method": "POST",
+          "oracle_job_id_sha256": "bdf76f64a0fe325e4b08376bb2a4b70416d39b047a182e5370da8da8a517ebda",
+          "path": "/prompt",
+          "received_at": 1790477237.6182256,
+          "response_dropped": false,
+          "sequence": 2,
+          "upstream_status": 200
+        }
+      ],
+      "oracle_fields": [
+        "bindings",
+        "event_counts",
+        "reason",
+        "status"
+      ],
+      "executions": 2,
+      "submissions": 2
+    }
+  ]
+}
