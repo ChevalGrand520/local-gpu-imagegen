@@ -1,5 +1,13 @@
 # DSN Tool: next evidence gates (2026-09-29)
 
+Update (2026-10-01): Gate W was attempted on the frozen Windows product and
+stopped. F00 completed; F02 call 2 reused the same run/arguments but returned
+`model_identity_drifted` before the target ambiguity guard. Gate W remains open.
+Raw transport and manifest capture passed an offline consistency audit for this
+new run only. Gate X remains open. See `runs/f02-same-run-windows-20261001.md`;
+zero additional POSTs do not establish the target guard's effect, and these new
+raw payloads are not recovered historical data.
+
 This is an execution plan, not a report of new Windows observations. The
 current manuscript is `paper/main.tex`; the current exporter mapping is
 `research-normalization-v3`. Historical W2 records and earlier demo archives

@@ -10,7 +10,7 @@
 \author{\IEEEauthorblockN{Anonymous submission draft}}
 \maketitle
 \begin{abstract}
-A lost submission response can leave a generation client uncertain whether its backend executed a request. We describe evidence-bound recovery tooling for local image-generation pipelines: an evidence exporter, a same-run submission guard, and controlled fault injection with backend observation. The exporter separates reported state, interpretation, and oracle evidence. Four fixed Windows/ComfyUI cases retained one execution binding per control and two per response-loss case. Each response-loss case had an unresolved first call and a resolved second call. The second call created a fresh run outside the guard's scope; this demonstration does not establish guard efficacy or recovery of the original run. Only synthetic CPU fixtures exercise the guard, exposing incomplete operation as a cost of withholding submission. Retained bindings support record-level auditing, not independent reconstruction of all backend events. Deployment rates and output-quality improvements remain unmeasured.
+A lost submission response can leave a generation client uncertain whether its backend executed a request. We describe an evidence exporter, a same-run submission guard, and controlled fault injection for local image-generation pipelines. The exporter separates reported state, interpretation, and oracle evidence. Four fixed Windows/ComfyUI cases retained one execution binding per control and two per response-loss case; their second calls created fresh runs outside the guard. A subsequent two-case same-run campaign retained raw transport, but model-identity validation rejected its retry before the ambiguity guard. Zero additional submissions therefore do not establish that guard's efficacy. Synthetic CPU fixtures exercise its blocking behavior and expose incomplete operation as a cost. Raw payloads support reconstruction of the new retained bindings, while the historical event gap remains. Original-run reconciliation, deployment rates, physical GPU execution counts and output-quality improvements remain unestablished.
 \end{abstract}
 \section{Introduction}
 
@@ -155,7 +155,8 @@ disconnect after sending a request: the exporter preserves the unknown outcome,
 the same-run entry blocks another submission, and the operator must inspect or
 reconcile the run through an available backend-specific mechanism. The guard can
 also conservatively withhold work when a request failed before backend acceptance,
-so its observed false-positive cost is an incomplete operation; eventual
+which is a potential false-positive direction. In the accepted-response-loss
+CPU fixture, the observed cost is an incomplete client operation; eventual
 completion is not established.
 
 
@@ -178,7 +179,7 @@ trusts the backend's event and history interfaces, and it is not a physical GPU
 monitor or a crash-durable audit log.
 
 The controller permits the second F02 product call only after the first
-execution has a bindable completion. The client creates a new run on each call
+execution has a bindable completion. In this historical protocol, the client creates a new run on each call
 and uses \texttt{seed = 4100 + call\_index}. This is observation-gated fresh-run
 generation, not automatic reconciliation of the original run. Because the new
 run is outside the same-run guard, the Windows campaign does not measure the
@@ -309,6 +310,52 @@ advantage for W3.
 Because the second call changed run and seed, the table also does not establish
 a duplicate execution of an identical generation request.
 
+\subsection{Same-run scope test and a masked guard}
+
+A subsequent campaign retained the frozen W3 product but used a separate
+\texttt{same-run-guard-v1} research caller. F00 invoked one generation call.
+F02 saved the first run and complete generation arguments, then reused them
+verbatim after the controller reported a bindable first completion. The retained
+capture does not independently timestamp the retry invocation. The seed, operation key and run
+identifier were checked, along with before/after durable manifests. Table~\ref{tab:samerun}
+reports this protocol separately from the four historical cases.
+
+\begin{table}[t]
+\caption{Two fixed same-run Windows cases. C/S/E denote product calls,
+proxy submissions and bound backend lifecycles. The F02 retry was rejected
+by model-identity validation; it does not establish the target guard's effect.}
+\label{tab:samerun}
+\centering
+\begin{tabular}{lcccl}
+\hline
+Case & C & S & E & Client calls \\
+\hline
+W3 F00 & 1 & 1 & 1 & resolved \\
+W3 F02 & 2 & 1 & 1 & unresolved / unresolved \\
+\hline
+\end{tabular}
+\end{table}
+
+The F00 control completed. F02 suppressed one accepted response and retained
+an unresolved original manifest with unknown submission and no backend job.
+The second call returned \texttt{model\_identity\_drifted} at generation,
+rather than the required \texttt{submission\_outcome\_unknown}. It generated no
+new POST and left the manifest byte-identical. The controller stopped with
+\texttt{submission\_guard\_observed=false}: another rejection masks the target
+mechanism, so withholding a submission cannot be attributed to that guard.
+The cause of the identity disagreement is unverified; its error code does not
+by itself establish changed model bytes.
+
+The private capture retained 90 F00 and 10 F02 WebSocket text payloads and one
+history response per case. Offline reanalysis checked byte hashes and channel
+sequences, reconstructed one start and one \texttt{executing} event with
+\texttt{node=null} per case, and bound them to successful history and the
+published execution identifiers. This checks received, retained evidence;
+it supplies no authenticity or completeness guarantee. F02 included a cache
+event and no progress events, so its lifecycle binding is not evidence of new
+physical GPU computation. These new payloads do not recover the missing
+historical event lists. No third call or fresh-run fallback was made.
+
 \subsection{Resolution labels require an explicit aggregation rule}
 
 A resolved second call does not erase the first call's unresolved result or
@@ -335,9 +382,11 @@ the companion evidence ledger. The audit and figure-generation scripts consume
 existing records only; they do not run the generation backend. Reanalysis is
 reproducible from the included derived records, while recreating the Windows
 campaign also requires the pinned backend, model, workflow and private setup.
-A fresh clean-checkout execution of that campaign was not performed.
+A fresh reproduction of that historical four-case campaign was not performed.
+The subsequent same-run test used a separate detached research checkout,
+preserved the frozen product revisions, and retained its negative result.
 
-The retained Windows JSONL records contain sanitized case summaries,
+The historical Windows JSONL records contain sanitized case summaries,
 execution bindings, terminal labels and aggregate event counts, rather than full raw WebSocket
 messages and history snapshots. Thus the audit verifies internal consistency
 of retained bindings; it cannot independently reconstruct every backend event.
@@ -365,8 +414,11 @@ The same-process CPU observer and backend-origin Windows observer have different
 failure boundaries, neither of which establishes crash-complete auditability.
 The fixed case set contains no basis for deployment failure frequency, natural
 duplicate-execution frequency, performance improvement or broad model
-robustness. No GPU run, model download or new experiment was performed for this
-manuscript revision.
+robustness. The subsequent two-case Windows test is a new controlled backend
+experiment, with no model download; it remains separate from the historical
+campaign and does not demonstrate the target guard's efficacy. Private raw
+captures are excluded from the reviewer package, so its public audit receipt
+cannot substitute for third-party access to those bytes.
 
 \section{Related work and discussion}
 \label{sec:related}
@@ -448,10 +500,13 @@ or measured developer productivity.
 
 The tool preserves ambiguous client outcomes alongside separately bound
 execution evidence and implements a conservative guard within an unresolved
-run. The controlled Windows cases demonstrate execution visibility under lost
+run. The historical Windows cases demonstrate execution visibility under lost
 acceptance responses, while exposing the distinction between a new successful
 call and reconciliation of the original run. These bounded observations support
-an evidence-preserving tool description. They do not establish automatic
+an evidence-preserving tool description. The same-run test adds raw-event
+retention and a negative result: model-identity validation masks the target
+guard. It establishes neither guard efficacy nor new physical GPU work.
+These results do not establish automatic
 unknown-job recovery, deployment-wide reliability or natural duplicate-execution
 rates.
 

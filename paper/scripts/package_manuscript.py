@@ -27,6 +27,9 @@ def main():
         'scripts/research/f02_oracle.py',
         'scripts/research/f02_product_client.py',
         'scripts/research/f02_loopback.py',
+        'scripts/research/f02_capture.py',
+        'scripts/research/f02_same_run_campaign.py',
+        'scripts/research/run_reserved_windows_same_run.py',
         'scripts/local_gpu_imagegen/engine.py',
         'scripts/local_gpu_imagegen/run_store.py',
         'scripts/local_gpu_imagegen/backends/base.py',
@@ -37,7 +40,8 @@ def main():
         'files': {str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest()
                   for p in sorted(files)},
     }
-    dest = PAPER / 'delivery/dsn-tool-description-v0.8.zip'
+    files += [ROOT / 'docs/research/runs/f02-same-run-windows-20261001.md']
+    dest = PAPER / 'delivery/dsn-tool-description-v0.9.zip'
     dest.parent.mkdir(exist_ok=True)
     with zipfile.ZipFile(dest, 'w', zipfile.ZIP_DEFLATED) as z:
         for p in sorted(files):

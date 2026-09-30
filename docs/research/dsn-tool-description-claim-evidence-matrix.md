@@ -10,6 +10,25 @@
 
 # DSN claim–evidence matrix — 2026-09-27
 
+## Current live evidence update: 2026-10-01
+
+This update precedes manuscript revision and supersedes current-status readings
+of the historical rows below. Source: `runs/f02-same-run-windows-20261001.md`,
+`paper/evidence/windows-same-run-20261001.json`, exact private transport captures,
+and `paper/scripts/audit_same_run_capture.py`.
+
+| Claim | Disposition | Permitted statement / remaining gap |
+|---|---|---|
+| C03/C14: real same-run guard effect | Not established | F02 reused run/arguments, but model_identity_drifted rejected call 2 before the target guard; zero new POST does not attribute a guard effect |
+| New C23: two-case same-run campaign | Observed | F00 1 call/1 POST/1 binding; F02 2 calls/1 POST/1 binding, unresolved/unresolved; STOPPED |
+| New C24: raw transport reconstruction | Supported for this capture only | 90/10 WS payloads and 1 history response per case, hashes/sequence/start/node-null terminal/history checked; does not repair historical raw-event absence |
+| New C25: physical execution/repeated work | Unsupported | F02 has cached event and no progress event; lifecycle binding is not physical GPU work |
+| New C26: persistent original ambiguity | Supported retained manifests | Same F02 run remains unresolved, unknown submission, no job; before/after retry bytes identical |
+| C20: reproducibility | Partial | Offline raw-capture audit ran; private payloads are not reviewer redistribution; no successful live guard replay |
+
+No population rate, controlled comparative improvement, model-byte drift cause,
+automatic reconciliation or original-run completion is inferred.
+
 Status: working evidence map; semantic judgment is same-family/provisional.
 No submission-readiness or independent raw-data audit is claimed.
 

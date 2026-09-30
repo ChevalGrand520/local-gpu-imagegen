@@ -1,0 +1,1219 @@
+{
+  "audit_skill": "paper-claim-audit",
+  "verdict": "WARN",
+  "reason_code": "declared_evidence_coverage_gaps",
+  "summary": "WARN for the whole-manuscript evidence coverage; PASS for the new same-run empirical claims and retained-byte consistency. No numerical mismatch found. Historical/source-only claims lack declared direct evidence.",
+  "same_run_empirical_verdict": "PASS",
+  "numeric_mismatch_count": 0,
+  "audited_input_hashes": {
+    "main.tex": "sha256:1185fca24a268b79bdae3505705da819cd362995bcf8d9846d3e1d8083c81c74",
+    "evidence/windows-audit.json": "sha256:f256e122cd5e7d58152b8532048728f015b2b2d60040e84a99f5514d8b30732a",
+    "evidence/windows-same-run-20261001.json": "sha256:29315ed3915a3199a5eb6a8ebe1981baa88937d0a74348ae127cb2d9fdd7d112",
+    "evidence/windows-same-run-audit-20261001.json": "sha256:32e6f4d2f7cfa6e5e2a766466a113b07b5ad1185b203bd0eb25b7d5f197b79b7",
+    "/Users/chevalgrand/Documents/ paper dsn/review-checkouts/local-gpu-imagegen-dsn-writing/docs/research/runs/paired-v2-b2.json": "sha256:3ad68bdb1aaf3c6befc2f6518da276bd31cc1665173b0b6c507a0a15547493f8",
+    "/Users/chevalgrand/Documents/ paper dsn/review-checkouts/local-gpu-imagegen-dsn-writing/docs/research/runs/paired-v2-w3.json": "sha256:891bdc27cfd4f5c1e12002975519d5f4e32e8531d9be7455fdad2bf217d157ba",
+    "/Users/chevalgrand/Documents/ paper dsn/review-checkouts/local-gpu-imagegen-dsn-writing/docs/research/runs/paired-v2-comparison.json": "sha256:c533c40d194d92000f3f48fede638b352432253b0e6aecd549cf80fb9b8a7d5d",
+    "tables/cpu-rows.tex": "sha256:a570f681103ad4e593142006151fa0b381d9a9a8e7216c2e24a599ea0a7d5b83",
+    "tables/windows-rows.tex": "sha256:f426e71b1ea66ed0673f2ce45f5eb209a5aa9c81597a97d33bb920dc96aa13e1",
+    "evidence/audit-results.json": "sha256:4b0bc4a3aeed91460ddf02e32a783b2eb02f04af3d3a51e2ad957f72c6c02192",
+    "/Users/chevalgrand/Documents/ paper dsn/review-checkouts/local-gpu-imagegen-dsn-writing/docs/research/runs/paired-v2-commands.md": "sha256:37ccb0c3208d895ec5eefa1ba7d9ca122fe2a33b5ed75e8c8f2e1d31ab24264c",
+    "delivery/private-same-run-20261001/capture/W3_F00/call-1-after.json": "sha256:e2c03a24f026ea41a725430b8342452460fa21886fc86d094c38c9bbbee3f9a8",
+    "delivery/private-same-run-20261001/capture/W3_F00/call-1-before.json": "sha256:876364e578acfbf72a1a393aa32310365fe684beff4c23d0bc0bb30bee8a9aaf",
+    "delivery/private-same-run-20261001/capture/W3_F00/call-1-invocation.json": "sha256:9d41a3627b023668d9f5f65405489a27ea94888b25d90366a07dd01f27ecae13",
+    "delivery/private-same-run-20261001/capture/W3_F00/call-1-outcome.json": "sha256:ab8ed7de4b79aa7b87321e61a478adca432cf171b0eb38e11bb77fe8dbcec05a",
+    "delivery/private-same-run-20261001/capture/W3_F00/call-1-result.json": "sha256:7f234a7c32649cb56fa9c79cbbc74d20cdd7462f2618757513bf2545c664a2da",
+    "delivery/private-same-run-20261001/capture/W3_F00/oracle-snapshot-1.json": "sha256:fe6f65768fac447ceb3e6dd5637d7280d51a3f072db60edd51511dc0266037b1",
+    "delivery/private-same-run-20261001/capture/W3_F00/oracle-transport-final.json": "sha256:594d1ffb96f02abb1403e93e58fbea0ee3f4717b29bfaa8b0e2c448806df0e8d",
+    "delivery/private-same-run-20261001/capture/W3_F00/proxy-receipts.json": "sha256:ea56690f3e6f050db5d5f5319900342fab6ac68fb988f694570074e4149382f0",
+    "delivery/private-same-run-20261001/capture/W3_F00/session.json": "sha256:6291839bca214e5708694a91785e6503c5a0e10592b86b19770653fa08cc443b",
+    "delivery/private-same-run-20261001/capture/W3_F02/call-1-after.json": "sha256:bf01ac68ab60a932fdaf047d7d58902c0c1430c59ea421ec161f9902275f7e6a",
+    "delivery/private-same-run-20261001/capture/W3_F02/call-1-before.json": "sha256:bd9f7c18bf50be3c941ffdc4d730999ff78ba8e5b9f8ecf5cc375c51d73d3884",
+    "delivery/private-same-run-20261001/capture/W3_F02/call-1-invocation.json": "sha256:1251eb08e0ce1b8d0908001edf58e2f787eec134273aaf04b45eb1fd815a97e8",
+    "delivery/private-same-run-20261001/capture/W3_F02/call-1-outcome.json": "sha256:4dec07306ddafd0b3e09414d5a499104dcf2cb468fcf1487c84b78fb1585d396",
+    "delivery/private-same-run-20261001/capture/W3_F02/call-1-result.json": "sha256:b8ae671be4fc82a46d58e56783f30a664544b4ab72b5a3ac1bbee88f79d39407",
+    "delivery/private-same-run-20261001/capture/W3_F02/call-2-after.json": "sha256:bf01ac68ab60a932fdaf047d7d58902c0c1430c59ea421ec161f9902275f7e6a",
+    "delivery/private-same-run-20261001/capture/W3_F02/call-2-before.json": "sha256:bf01ac68ab60a932fdaf047d7d58902c0c1430c59ea421ec161f9902275f7e6a",
+    "delivery/private-same-run-20261001/capture/W3_F02/call-2-invocation.json": "sha256:db6627560fc65806545b27dda41371156e28025ce05f10f5a842dab4ac96ddc7",
+    "delivery/private-same-run-20261001/capture/W3_F02/call-2-outcome.json": "sha256:b108f4b0fbcb7c4babe1afbb0dfe75524217775720e2480d0dde7c6403b4d3ed",
+    "delivery/private-same-run-20261001/capture/W3_F02/call-2-result.json": "sha256:7221ba8d201e5e0acd276763f509ed8f697ad8305fe0e43432c0f85c108b213f",
+    "delivery/private-same-run-20261001/capture/W3_F02/oracle-snapshot-1.json": "sha256:74a6168c1d7ffe149a7edc570ff4511aa774f96800c4cbe4f38097f3fa0c1b71",
+    "delivery/private-same-run-20261001/capture/W3_F02/oracle-transport-final.json": "sha256:46e02939e6598883938761661dbc448cc55c1930f81b7da43933487efd0e4c7e",
+    "delivery/private-same-run-20261001/capture/W3_F02/proxy-receipts.json": "sha256:65ac20001f3d5cfdf14185fa219d7e21c72cf75989918f63570eb76966d83a73",
+    "delivery/private-same-run-20261001/capture/W3_F02/session.json": "sha256:c90c737239522262cc362445136af7ee3e6ff56adc8f37140638fa8ee6a45780",
+    "delivery/private-same-run-20261001/capture/configuration.json": "sha256:b9a9efbdd408eebc1a3b6056ac3e7102f19ffc6dc8b419dc2e43294991be4980",
+    "delivery/private-same-run-20261001/capture/harness-source-hashes.json": "sha256:d2ff83f4cf6a50c8aeea94983be607efa43ff7662e521efe5679ce8cacaf869a",
+    "delivery/private-same-run-20261001/capture/preflight.json": "sha256:80c36bcb3a21bc27faa8438567dcc976c6cd2cfe800c2942e58d8a6ee19918f5"
+  },
+  "trace_path": ".aris/traces/paper-claim-audit/20261001_run01/",
+  "thread_id": "/root/new_capture_claim_audit",
+  "executor_model": "not_exposed_to_reviewer",
+  "executor_family": "openai",
+  "reviewer_model": "inherited_runtime_not_independently_identified",
+  "reviewer_family": "openai",
+  "review_independence": "same-family",
+  "acceptance_status": "provisional",
+  "reviewer_reasoning": "inherited",
+  "generated_at": "2026-09-30T17:22:13.183Z",
+  "scope": {
+    "declared_input_count": 37,
+    "fresh_agent": true,
+    "executor_narratives_consulted": false,
+    "prior_audit_receipt_policy": "Declared JSON audit receipts were read but their new raw-payload assertions were independently recomputed.",
+    "network_or_backend_calls": false,
+    "evidence_or_manuscript_modified": false,
+    "forbidden_private_contents_in_report": false,
+    "retained_consistency_is_not_authenticity_or_completeness": true,
+    "third_party_submission_acceptance": false,
+    "optional_missing_input": "examples/expected-summary.json"
+  },
+  "details": {
+    "total_claims": 66,
+    "status_counts": {
+      "exact_match": 45,
+      "missing_evidence": 19,
+      "ambiguous_mapping": 2
+    },
+    "mismatches": [],
+    "issues": [
+      {
+        "severity": "WARN",
+        "claim_ids": [
+          "C018",
+          "C019",
+          "C020"
+        ],
+        "finding": "Historical 40-test/7.110-second, Windows Python 3.15.0a8, and 7-test/0.003-second receipts are absent from the declared inputs.",
+        "action": "Attach original command outputs or retain them as explicitly not reverified by this audit."
+      },
+      {
+        "severity": "WARN",
+        "claim_ids": [
+          "C007",
+          "C008"
+        ],
+        "finding": "The two-record offline demo and all-twelve-unverified normalization output are not present; only the twelve CPU source records are verified.",
+        "action": "Include the actual normalization outputs; do not infer the result from source-manifest count."
+      },
+      {
+        "severity": "WARN",
+        "finding": "Historical fresh-run/seed formula, environment details, cumulative-decision implementation, and old-summary zero count require historical source/receipts beyond the derived extract.",
+        "action": "Keep report-level attribution distinct from independent reconstruction and supply those sources for wider assurance."
+      },
+      {
+        "severity": "WARN",
+        "finding": "Implementation properties, external related-work facts, detached checkout state, no-download history and final package declarations are outside the declared raw-result set.",
+        "action": "Use separate source/citation/package checks; this bounded audit does not certify them."
+      }
+    ],
+    "claims": [
+      {
+        "claim_id": "C001",
+        "location": "main.tex:13-13",
+        "title": "Abstract empirical totals and guarded negative interpretation",
+        "paper_text": "A lost submission response can leave a generation client uncertain whether its backend executed a request. We describe an evidence exporter, a same-run submission guard, and controlled fault injection for local image-generation pipelines. The exporter separates reported state, interpretation, and oracle evidence. Four fixed Windows/ComfyUI cases retained one execution binding per control and two per response-loss case; their second calls created fresh runs outside the guard. A subsequent two-case same-run campaign retained raw transport, but model-identity validation rejected its retry before the ambiguity guard. Zero additional submissions therefore do not establish that guard's efficacy. Synthetic CPU fixtures exercise its blocking behavior and expose incomplete operation as a cost. Raw payloads support reconstruction of the new retained bindings, while the historical event gap remains. Original-run reconciliation, deployment rates, physical GPU execution counts and output-quality improvements remain unestablished.",
+        "paper_value": "Abstract empirical totals and guarded negative interpretation",
+        "evidence_file": [
+          "evidence/windows-audit.json",
+          "evidence/windows-same-run-20261001.json",
+          "delivery/private-same-run-20261001/capture",
+          "docs/research/runs/paired-v2-b2.json",
+          "docs/research/runs/paired-v2-w3.json",
+          "docs/research/runs/paired-v2-comparison.json"
+        ],
+        "evidence_value": "Historical controls 1 binding each; historical response-loss cases 2 each; new campaign 2 cases; no added F02 submission; target guard not observed.",
+        "status": "exact_match",
+        "details": "Repeated detailed claims are audited individually below. This is retained evidence consistency, not authentication.",
+        "fix": ""
+      },
+      {
+        "claim_id": "C002",
+        "location": "main.tex:33-48",
+        "title": "Implementation comprises export, run guard and separate observation boundaries",
+        "paper_text": "Our prototype combines persistent run records, generation orchestration,\na ComfyUI adapter and artifact handling. We describe tooling that preserves the\nclient's evidence, applies versioned interpretation rules, and records backend\nobservations independently of the client's returned status. Its product guard\nis deliberately narrower: an explicitly unknown submission blocks further\nsubmission through the same unresolved run at the reviewed entry points.\n\nThe tool description has three parts: an evidence representation and read-only\nexporter; a same-run guard whose unresolved state remains visible; and CPU and\nWindows fault-observation workflows with separate evidence boundaries. The\nWindows demonstration tests visibility across the client--backend boundary.\nIt does not establish that the guard reduces execution counts in that protocol.\nThe contribution is an inspectable integration of evidence interpretation,\nrun-scoped control and backend observation. Section~\\ref{sec:related} compares its scope with\nidempotent APIs, workflow execution and tracing. The evaluated contribution\nis this implementation and its failure windows.",
+        "paper_value": "Implementation comprises export, run guard and separate observation boundaries",
+        "evidence_file": [],
+        "evidence_value": "Implementation source is not in the declared input set.",
+        "status": "missing_evidence",
+        "details": "Recorded results do not establish every entry-point implementation property.",
+        "fix": "Supply source inspection inputs if implementation verification is required."
+      },
+      {
+        "claim_id": "C003",
+        "location": "main.tex:52-64",
+        "title": "Product calls, submissions and execution observations are distinct; F00/F02/F03 scope",
+        "paper_text": "A \\textbf{product call} is an invocation by the research client. A \\textbf{run} is the\npersistent product object created by \\texttt{local\\_gpu\\_start\\_run}. A \\textbf{submission} in\nthe Windows results is a proxy-observed \\texttt{POST /prompt}; a call that fails before\nthat boundary need not produce a submission. An \\textbf{execution instance} is an\nobservation bound to backend execution events. CPU fixtures instead observe\nthe synthetic worker entry. These units are not interchangeable.\n\nF00 is a normal control. F02 suppresses the first accepted submission response,\ncreating a window in which the client lacks an acknowledged job identifier.\nF03, covered by the CPU fixtures rather than the Windows campaign reported\nhere, concerns loss of completion information after a job identifier is known.\nAn explicit rejection and a missing response have different evidential meanings.\nNeither should be silently converted into a backend execution outcome.",
+        "paper_value": "Product calls, submissions and execution observations are distinct; F00/F02/F03 scope",
+        "evidence_file": [
+          "docs/research/runs/paired-v2-b2.json",
+          "docs/research/runs/paired-v2-w3.json",
+          "docs/research/runs/paired-v2-comparison.json",
+          "evidence/windows-audit.json",
+          "evidence/windows-same-run-20261001.json",
+          "delivery/private-same-run-20261001/capture"
+        ],
+        "evidence_value": "Same-run F02 has 2 calls, 1 POST and 1 retained lifecycle; CPU matrix has F00/F02/F03, Windows records have F00/F02.",
+        "status": "exact_match",
+        "details": "Operational units and scope match the retained records.",
+        "fix": ""
+      },
+      {
+        "claim_id": "C004",
+        "location": "main.tex:66-72",
+        "title": "Research-client resolved/unresolved labels and durable-state distinction",
+        "paper_text": "The evidence model distinguishes reported state, interpreted state and oracle\nstate. In addition, the Windows research client emits its own call-level labels.\nIts \\texttt{resolved} label is derived from a generated product result after checking\nfor artifact hashes. Its \\texttt{unresolved} label can arise from several client errors.\nThus a research-client label alone does not prove that a durable product\nmanifest has a particular recovery state. In F02, the proxy's accepted-response\nloss and the oracle binding provide the additional context.",
+        "paper_value": "Research-client resolved/unresolved labels and durable-state distinction",
+        "evidence_file": [
+          "evidence/windows-audit.json",
+          "evidence/windows-same-run-20261001.json",
+          "delivery/private-same-run-20261001/capture"
+        ],
+        "evidence_value": "New F00 resolved/generated; new F02 unresolved/unresolved; old F02 unresolved then resolved.",
+        "status": "exact_match",
+        "details": "The observed labels and states agree; general client implementation is not separately source-audited.",
+        "fix": ""
+      },
+      {
+        "claim_id": "C005",
+        "location": "main.tex:78-104",
+        "title": "Versioned exporter policy, provenance limits and exclusive non-mutating output",
+        "paper_text": "The exporter accepts a record or run manifest and produces a separate normalized\nrecord. It copies reported state, records the mapping version and reasons, and\nretains supplied oracle state separately. The schema includes source identity,\nrequest and input digests, backend identity, job identifier, artifact hash and\nvalidator version. Missing fields carry explicit reasons instead of fabricated\nvalues. The inspected mapping is \\texttt{research-normalization-v3}.\n\nInterpretation checks more than an execution-success label. Job and artifact\nbindings, approval and validation evidence, and recovery state constrain the\n\\texttt{execution\\_verified} decision. An unresolved recovery state prevents this flag\nfrom becoming true even when other evidence reports successful execution.\nThe current mapping also keeps recovery unknown when the reported run state is\nmissing and marks a disagreement between manifest and selected job or artifact\nidentity as an evidence mismatch. These rules prevent omission or a top-level\nfield from silently strengthening the composite decision.\nThis permits the record to express backend completion without asserting that\nthe product's recovery obligation has been discharged. The exporter does not\ninvoke the engine, retry a request or update the source run. Its output writer\nuses exclusive file creation. These are implementation properties, not a\nclaim of complete filesystem security.\nThe interpretation assumes that supplied oracle and artifact-validator records\nhave trustworthy provenance. The exporter checks their stated fields and\nbindings; it does not authenticate their origin or reconstruct missing raw\nevents. In the current mapping, absent source revision, backend-instance or\nvalidator-version metadata need not by themselves prevent\n\\texttt{execution\\_verified}. That flag denotes satisfaction of this mapping's\nevidence policy, not independent certification of the input record.",
+        "paper_value": "Versioned exporter policy, provenance limits and exclusive non-mutating output",
+        "evidence_file": [],
+        "evidence_value": "No exporter source or normalized outputs were declared.",
+        "status": "missing_evidence",
+        "details": "The declared raw records cannot validate research-normalization-v3, exclusive creation, unknown-state policy or metadata veto rules.",
+        "fix": "Include exporter source and mapping fixtures in an implementation audit."
+      },
+      {
+        "claim_id": "C006",
+        "location": "main.tex:108-124",
+        "title": "Read-only exporter command and separate observer/normalizer interfaces",
+        "paper_text": "An investigator first inspects the run manifest and the recorded submission\noutcome. If submission is explicitly unknown, inspection must preserve that\nuncertainty: the missing job identifier must not be synthesized from a later\nsuccessful call. Backend observation is then associated with the relevant\nrequest and execution instance, while artifact checks retain their own result.\nThe export command writes a new record and refuses to overwrite an existing\nexport:\n\\begin{quote}\\small\\ttfamily\npython -m\\\\\nscripts.research.export\\_records\\\\\n--input run-record.json --output evidence.json\n\\end{quote}\nThe exported record lets a reader inspect reported state, interpreted state,\nmapping reasons and oracle evidence without invoking recovery. It does not\nacquire a missing oracle automatically. The Windows observer export and the\nnormalized exporter schema are separate interfaces; a complete automatic\nconversion between them is not established by the pilot.",
+        "paper_value": "Read-only exporter command and separate observer/normalizer interfaces",
+        "evidence_file": [],
+        "evidence_value": "No command output or exporter code in the declared set.",
+        "status": "missing_evidence",
+        "details": "These are implementation/workflow claims, not validated by the supplied Windows records.",
+        "fix": ""
+      },
+      {
+        "claim_id": "C007",
+        "location": "main.tex:125-126",
+        "title": "Offline demonstration supplies two synthetic records",
+        "paper_text": "The companion offline demonstration supplies two synthetic records that differ\nin the original run's status. It also normalizes twelve previously retained",
+        "paper_value": "Offline demonstration supplies two synthetic records",
+        "evidence_file": [],
+        "evidence_value": "Requested optional examples/expected-summary.json is absent.",
+        "status": "missing_evidence",
+        "details": "No demonstration result or the two example inputs were supplied.",
+        "fix": "Include the actual demo output or remove the number from claims verified by this audit."
+      },
+      {
+        "claim_id": "C008",
+        "location": "main.tex:126-130",
+        "title": "Twelve retained CPU manifests normalize to twelve unverified outputs",
+        "paper_text": "in the original run's status. It also normalizes twelve previously retained\nCPU product manifests alongside their fixture oracle records, without adding\nartifact-validation assertions. All twelve remain unverified by the composite\npolicy. This demonstrates the mapping's behavior on retained product records,\nnot an independent replay or certification of their original events.",
+        "paper_value": "Twelve retained CPU manifests normalize to twelve unverified outputs",
+        "evidence_file": [
+          "docs/research/runs/paired-v2-b2.json",
+          "docs/research/runs/paired-v2-w3.json",
+          "docs/research/runs/paired-v2-comparison.json"
+        ],
+        "evidence_value": "Twelve source manifests exist; normalized outputs and normalizer execution receipt are absent.",
+        "status": "missing_evidence",
+        "details": "The denominator 12 is verified; the all-unverified normalization result is not.",
+        "fix": "Include the retained normalization results."
+      },
+      {
+        "claim_id": "C009",
+        "location": "main.tex:132-151",
+        "title": "Unresolved backend completion can coexist with blocked same-run recovery; no automatic reconciliation",
+        "paper_text": "For example, an unresolved run and successful backend evidence may coexist.\nThe execution field can describe the observed backend outcome while recovery\nremains required and execution verification remains false. This separation is\nthe intended diagnostic output, rather than an error to hide by replacing the\noriginal run state with the latest call's result.\n\n\\subsection{Recovery guard and its scope}\n\n\\texttt{AssetRunEngine} and \\texttt{RunStore} preserve the explicit transport marker\n\\texttt{submission\\_outcome=unknown} as an unresolved attempt. The reviewed submission\nentry checks that unresolved attempt before permitting further generation.\nThe guard applies within the same run, including attempts with a different\nidempotency key. The corresponding inspection action is \\texttt{get\\_run}.\n\nThis guard does not discover a missing backend job identifier or reconcile an\nunknown job automatically. A newly created run lies outside the prior run's\nguard. Existing recovery for a known job in a two-stage operation is a separate\npath and is not attributed to this no-job-ID guard. The resulting tradeoff is\nexplicit: the guard withholds another submission through that run while the\nrequired evidence is unavailable; it does not guarantee eventual completion.",
+        "paper_value": "Unresolved backend completion can coexist with blocked same-run recovery; no automatic reconciliation",
+        "evidence_file": [
+          "docs/research/runs/paired-v2-b2.json",
+          "docs/research/runs/paired-v2-w3.json",
+          "docs/research/runs/paired-v2-comparison.json"
+        ],
+        "evidence_value": "W3 F02 cases retain completed synthetic lifecycles, unresolved product state and outcome_unknown_blocked.",
+        "status": "exact_match",
+        "details": "Observed fixture behavior supports this bounded claim; different-key entry-point universality requires source evidence.",
+        "fix": ""
+      },
+      {
+        "claim_id": "C010",
+        "location": "main.tex:143-144",
+        "title": "Same-run guard includes a different idempotency key",
+        "paper_text": "The guard applies within the same run, including attempts with a different\nidempotency key. The corresponding inspection action is \\texttt{get\\_run}.",
+        "paper_value": "Same-run guard includes a different idempotency key",
+        "evidence_file": [
+          "docs/research/runs/paired-v2-b2.json",
+          "docs/research/runs/paired-v2-w3.json",
+          "docs/research/runs/paired-v2-comparison.json"
+        ],
+        "evidence_value": "No explicit distinct-key counterfactual or relevant source in the declared set.",
+        "status": "missing_evidence",
+        "details": "The new Windows retry uses the same key and is rejected elsewhere.",
+        "fix": "Supply the corresponding test/source evidence."
+      },
+      {
+        "claim_id": "C011",
+        "location": "main.tex:153-160",
+        "title": "Potential pre-acceptance false positive separated from observed accepted-response-loss completion cost",
+        "paper_text": "A pipeline integrator can use this distinction when a generation UI receives a\ndisconnect after sending a request: the exporter preserves the unknown outcome,\nthe same-run entry blocks another submission, and the operator must inspect or\nreconcile the run through an available backend-specific mechanism. The guard can\nalso conservatively withhold work when a request failed before backend acceptance,\nwhich is a potential false-positive direction. In the accepted-response-loss\nCPU fixture, the observed cost is an incomplete client operation; eventual\ncompletion is not established.",
+        "paper_value": "Potential pre-acceptance false positive separated from observed accepted-response-loss completion cost",
+        "evidence_file": [
+          "docs/research/runs/paired-v2-b2.json",
+          "docs/research/runs/paired-v2-w3.json",
+          "docs/research/runs/paired-v2-comparison.json",
+          "evidence/windows-same-run-20261001.json",
+          "delivery/private-same-run-20261001/capture"
+        ],
+        "evidence_value": "The CPU accepted-response-loss fixture has an incomplete W3 client operation; a pre-acceptance false positive is explicitly described as potential.",
+        "status": "exact_match",
+        "details": "Revised source no longer calls the untested pre-acceptance case observed.",
+        "fix": ""
+      },
+      {
+        "claim_id": "C012",
+        "location": "main.tex:165-179",
+        "title": "Shim endpoint preservation, observer connection ordering and identifier construction",
+        "paper_text": "Figure~\\ref{fig:architecture} shows the product and research boundaries.\nThe research harness adds a transport shim and loopback fault proxy. The shim\nroutes prompt transport through the proxy while retaining the actual backend\nendpoint in the product's identity client. F02 drops the first response only\nafter backend acceptance. This arrangement is a research instrument, not a\nnative ComfyUI recovery feature.\n\nThe observer connects before the product invocation and uses the operation key\nas its ComfyUI client identifier, matching the product's event-routing identity.\n\\texttt{ComfyUIEventOracle} requires an execution-start event, a terminal event and\ncompleted history bound to a prompt identifier. It derives an execution-instance\nidentifier using the backend boot identity, prompt identifier and observed\nstart sequence. Its independence is from the product return value: it still\ntrusts the backend's event and history interfaces, and it is not a physical GPU\nmonitor or a crash-durable audit log.",
+        "paper_value": "Shim endpoint preservation, observer connection ordering and identifier construction",
+        "evidence_file": [
+          "evidence/windows-same-run-20261001.json",
+          "delivery/private-same-run-20261001/capture"
+        ],
+        "evidence_value": "New captures support event/history binding; shim implementation, connection-before-invocation proof and identifier derivation source are absent.",
+        "status": "missing_evidence",
+        "details": "Do not treat a source SHA record as independently inspected source.",
+        "fix": "Include the pinned shim/oracle source for these implementation properties."
+      },
+      {
+        "claim_id": "C013",
+        "location": "main.tex:181-189",
+        "title": "Historical second calls create fresh runs, use seed 4100 + call_index, and digest excludes seed/plan",
+        "paper_text": "The controller permits the second F02 product call only after the first\nexecution has a bindable completion. In this historical protocol, the client creates a new run on each call\nand uses \\texttt{seed = 4100 + call\\_index}. This is observation-gated fresh-run\ngeneration, not automatic reconciliation of the original run. Because the new\nrun is outside the same-run guard, the Windows campaign does not measure the\nguard's blocking effect. CPU F02 fixtures exercise blocking; in the single-stage\nfixture, W3 has one execution rather than B2's two, while leaving the operation incomplete. Matching frozen\nrequest digests does not establish full prompt equality: the inspected digest\nfunction excludes the seed and does not use its plan argument.",
+        "paper_value": "Historical second calls create fresh runs, use seed 4100 + call_index, and digest excludes seed/plan",
+        "evidence_file": [
+          "evidence/windows-audit.json"
+        ],
+        "evidence_value": "Historical extract has calls, receipts and bindings, but no run IDs, seed arguments or digest implementation.",
+        "status": "missing_evidence",
+        "details": "The new same-run session is a separate campaign and cannot fill this historical evidence gap.",
+        "fix": "Supply historical client source/argument receipts; keep this audit's historical scope at retained bindings."
+      },
+      {
+        "claim_id": "C014",
+        "location": "main.tex:181-182",
+        "title": "Historical first completion precedes second receipt",
+        "paper_text": "The controller permits the second F02 product call only after the first\nexecution has a bindable completion. In this historical protocol, the client creates a new run on each call",
+        "paper_value": "Historical first completion precedes second receipt",
+        "evidence_file": [
+          "evidence/windows-audit.json"
+        ],
+        "evidence_value": "Both F02 first-binding finish timestamps are earlier than the second proxy receipt.",
+        "status": "exact_match",
+        "details": "This verifies recorded ordering across calls; it does not recover original raw snapshots.",
+        "fix": ""
+      },
+      {
+        "claim_id": "C015",
+        "location": "main.tex:186-187",
+        "title": "CPU F02 single-stage W3 one versus B2 two executions, W3 incomplete",
+        "paper_text": "guard's blocking effect. CPU F02 fixtures exercise blocking; in the single-stage\nfixture, W3 has one execution rather than B2's two, while leaving the operation incomplete. Matching frozen",
+        "paper_value": "CPU F02 single-stage W3 one versus B2 two executions, W3 incomplete",
+        "evidence_file": [
+          "docs/research/runs/paired-v2-b2.json",
+          "docs/research/runs/paired-v2-w3.json",
+          "docs/research/runs/paired-v2-comparison.json"
+        ],
+        "evidence_value": "B2 S/E 2/2 complete; W3 S/E 1/1 incomplete.",
+        "status": "exact_match",
+        "details": "",
+        "fix": ""
+      },
+      {
+        "claim_id": "C016",
+        "location": "main.tex:196-210",
+        "title": "Figure scope/caption claims",
+        "paper_text": "\\caption{Scope of the product guard, derived from the reviewed store and engine\nentry points. A new run has separate state. Dashed arrows denote a separate\ncaller decision, not automatic reconciliation.}\n\\label{fig:architecture}\n\\end{figure}\n\n\\begin{figure*}[t]\n\\centering\n\\includegraphics[width=0.96\\textwidth]{figures/f02-sequence.pdf}\n\\caption{Controlled F02 protocol. The proxy hides the accepted response;\nbackend observation gates a second call that creates a fresh run with a changed\nseed. Retained receipts and bindings support the two submissions and the\nordering of the second receipt after the first retained binding. The campaign\ndoes not exercise the same-run guard. Spacing is\nschematic, not a measured latency or GPU-runtime plot.}",
+        "paper_value": "Figure scope/caption claims",
+        "evidence_file": [
+          "evidence/windows-audit.json"
+        ],
+        "evidence_value": "Historical 2-submission ordering is supported; figure artwork and source-based new-run/changed-seed proof were not declared.",
+        "status": "ambiguous_mapping",
+        "details": "Only the caption text was available; schematic visual fidelity was not examined.",
+        "fix": ""
+      },
+      {
+        "claim_id": "C017",
+        "location": "main.tex:218-224",
+        "title": "CPU normal/response-loss coverage and oracle self-checks",
+        "paper_text": "We denote the frozen baseline product revision by B2 and the revision with\nthe same-run ambiguity guard by W3. The CPU harness separates submission events from synthetic worker-entry events.\nIts fixtures cover normal operation and response loss before and after job-ID\nacquisition, including single-stage and two-stage paths. Oracle self-checks\nexercise cases in which submission and execution counts differ and in which a\nshared prompt identifier does not imply a single execution. These are fixed\nsemantic checks, not randomly sampled deployments.",
+        "paper_value": "CPU normal/response-loss coverage and oracle self-checks",
+        "evidence_file": [
+          "docs/research/runs/paired-v2-b2.json",
+          "docs/research/runs/paired-v2-w3.json",
+          "docs/research/runs/paired-v2-comparison.json"
+        ],
+        "evidence_value": "Each system has 6 fixed F00/F02/F03 by single/two-stage cases; 4 self-checks include 2 submissions/0 executions, 2/1, and shared-prompt 2 executions.",
+        "status": "exact_match",
+        "details": "All stored self-check flags are true; event records support the distinct units.",
+        "fix": ""
+      },
+      {
+        "claim_id": "C018",
+        "location": "main.tex:226-227",
+        "title": "40 tests in 7.110 seconds with OK and exit code 0",
+        "paper_text": "Historical command output records 40 research component tests passing in\n7.110 seconds using Python unittest discovery, with \\texttt{OK} and exit code 0. The preparation report identifies the runtime",
+        "paper_value": "40 tests in 7.110 seconds with OK and exit code 0",
+        "evidence_file": [
+          "docs/research/runs/paired-v2-commands.md"
+        ],
+        "evidence_value": "No such retained test output appears in declared command-output blocks.",
+        "status": "missing_evidence",
+        "details": "Accurate attribution to historical output does not supply that output to this audit.",
+        "fix": "Attach the exact historical command receipt or classify it as not reverified."
+      },
+      {
+        "claim_id": "C019",
+        "location": "main.tex:227-228",
+        "title": "Windows Python 3.15.0a8 historical runtime",
+        "paper_text": "7.110 seconds using Python unittest discovery, with \\texttt{OK} and exit code 0. The preparation report identifies the runtime\nas Windows Python 3.15.0a8. A later macOS check targeted the transport shim",
+        "paper_value": "Windows Python 3.15.0a8 historical runtime",
+        "evidence_file": [
+          "docs/research/runs/paired-v2-b2.json",
+          "docs/research/runs/paired-v2-w3.json",
+          "docs/research/runs/paired-v2-comparison.json"
+        ],
+        "evidence_value": "CPU matrix identifies Python 3.12.14 for its own stage; the stated Windows test-stage receipt is absent.",
+        "status": "missing_evidence",
+        "details": "The different CPU runtime is not a contradiction because the manuscript distinguishes stages.",
+        "fix": "Include the historical test runtime receipt."
+      },
+      {
+        "claim_id": "C020",
+        "location": "main.tex:228-233",
+        "title": "Seven macOS tests in 0.003 seconds and successful compile/whitespace checks",
+        "paper_text": "as Windows Python 3.15.0a8. A later macOS check targeted the transport shim\nand campaign controller: seven tests passed in 0.003 seconds, followed by\nsuccessful compilation and whitespace checks. These are distinct stages;\nthe earlier 40-test result is not a full-suite result for the final shim.\nNeither count is an experimental sample size. Exact immutable source binding\nof the historical test worktrees remains incomplete.",
+        "paper_value": "Seven macOS tests in 0.003 seconds and successful compile/whitespace checks",
+        "evidence_file": [],
+        "evidence_value": "No corresponding command result was declared.",
+        "status": "missing_evidence",
+        "details": "The 7-test stage cannot be inferred from the 12 CPU traces.",
+        "fix": "Include retained stdout/exit codes for this stage."
+      },
+      {
+        "claim_id": "C021",
+        "location": "main.tex:235-240",
+        "title": "Twelve unique and finished CPU traces with matching request totals",
+        "paper_text": "Table~\\ref{tab:cpu} reports the retained paired CPU matrix. Reanalysis checked\nall twelve synthetic traces: each execution-start identifier was unique within\nits case and matched a finish identifier, and request-received counts matched\nthe stored submission totals. The control cases are separate from injected\ncases. The invalid earlier matrix version, whose single-stage control failed\nbecause of a harness result-field mismatch, is excluded.",
+        "paper_value": "Twelve unique and finished CPU traces with matching request totals",
+        "evidence_file": [
+          "docs/research/runs/paired-v2-b2.json",
+          "docs/research/runs/paired-v2-w3.json",
+          "docs/research/runs/paired-v2-comparison.json"
+        ],
+        "evidence_value": "12/12 cases: execution-start IDs unique within case, exactly matching finish IDs; request_received totals equal stored submissions.",
+        "status": "exact_match",
+        "details": "The earlier v1 failure and its cause are not reconstructed from v2 records.",
+        "fix": ""
+      },
+      {
+        "claim_id": "C022",
+        "location": "main.tex:239-240",
+        "title": "Earlier control failure caused by harness result-field mismatch",
+        "paper_text": "cases. The invalid earlier matrix version, whose single-stage control failed\nbecause of a harness result-field mismatch, is excluded.",
+        "paper_value": "Earlier control failure caused by harness result-field mismatch",
+        "evidence_file": [
+          "docs/research/runs/paired-v2-commands.md"
+        ],
+        "evidence_value": "Only command blocks were consulted; no v1 raw result was declared.",
+        "status": "missing_evidence",
+        "details": "This historical exclusion rationale requires the old raw case or direct failure output.",
+        "fix": ""
+      },
+      {
+        "claim_id": "C023",
+        "location": "main.tex:243-248",
+        "title": "CPU table F00 Single stage",
+        "paper_text": "\\caption{Deterministic CPU fault coverage from the retained paired-v2 matrix.\nS/E means submissions/executions. ``Complete'' is the fixture's valid-completion\nflag. These are twelve synthetic traces, not deployment samples.}\n\\label{tab:cpu}\n\\centering\n\\input{tables/cpu-rows.tex}",
+        "paper_value": "CPU table F00 Single stage",
+        "evidence_file": [
+          "tables/cpu-rows.tex",
+          "docs/research/runs/paired-v2-b2.json",
+          "docs/research/runs/paired-v2-w3.json",
+          "docs/research/runs/paired-v2-comparison.json"
+        ],
+        "evidence_value": {
+          "b2_se": "1/1",
+          "w3_se": "1/1",
+          "complete": "yes/yes",
+          "recovery": "Not needed / Not needed"
+        },
+        "status": "exact_match",
+        "details": "All counts, completion flags and recovery categories match both per-system traces and paired comparison.",
+        "fix": ""
+      },
+      {
+        "claim_id": "C024",
+        "location": "main.tex:243-248",
+        "title": "CPU table F00 Two stage",
+        "paper_text": "\\caption{Deterministic CPU fault coverage from the retained paired-v2 matrix.\nS/E means submissions/executions. ``Complete'' is the fixture's valid-completion\nflag. These are twelve synthetic traces, not deployment samples.}\n\\label{tab:cpu}\n\\centering\n\\input{tables/cpu-rows.tex}",
+        "paper_value": "CPU table F00 Two stage",
+        "evidence_file": [
+          "tables/cpu-rows.tex",
+          "docs/research/runs/paired-v2-b2.json",
+          "docs/research/runs/paired-v2-w3.json",
+          "docs/research/runs/paired-v2-comparison.json"
+        ],
+        "evidence_value": {
+          "b2_se": "1/1",
+          "w3_se": "1/1",
+          "complete": "yes/yes",
+          "recovery": "Not needed / Not needed"
+        },
+        "status": "exact_match",
+        "details": "All counts, completion flags and recovery categories match both per-system traces and paired comparison.",
+        "fix": ""
+      },
+      {
+        "claim_id": "C025",
+        "location": "main.tex:243-248",
+        "title": "CPU table F02 Single stage",
+        "paper_text": "\\caption{Deterministic CPU fault coverage from the retained paired-v2 matrix.\nS/E means submissions/executions. ``Complete'' is the fixture's valid-completion\nflag. These are twelve synthetic traces, not deployment samples.}\n\\label{tab:cpu}\n\\centering\n\\input{tables/cpu-rows.tex}",
+        "paper_value": "CPU table F02 Single stage",
+        "evidence_file": [
+          "tables/cpu-rows.tex",
+          "docs/research/runs/paired-v2-b2.json",
+          "docs/research/runs/paired-v2-w3.json",
+          "docs/research/runs/paired-v2-comparison.json"
+        ],
+        "evidence_value": {
+          "b2_se": "2/2",
+          "w3_se": "1/1",
+          "complete": "yes/no",
+          "recovery": "New submission / Unknown; blocked"
+        },
+        "status": "exact_match",
+        "details": "All counts, completion flags and recovery categories match both per-system traces and paired comparison.",
+        "fix": ""
+      },
+      {
+        "claim_id": "C026",
+        "location": "main.tex:243-248",
+        "title": "CPU table F02 Two stage",
+        "paper_text": "\\caption{Deterministic CPU fault coverage from the retained paired-v2 matrix.\nS/E means submissions/executions. ``Complete'' is the fixture's valid-completion\nflag. These are twelve synthetic traces, not deployment samples.}\n\\label{tab:cpu}\n\\centering\n\\input{tables/cpu-rows.tex}",
+        "paper_value": "CPU table F02 Two stage",
+        "evidence_file": [
+          "tables/cpu-rows.tex",
+          "docs/research/runs/paired-v2-b2.json",
+          "docs/research/runs/paired-v2-w3.json",
+          "docs/research/runs/paired-v2-comparison.json"
+        ],
+        "evidence_value": {
+          "b2_se": "1/1",
+          "w3_se": "1/1",
+          "complete": "no/no",
+          "recovery": "Unknown / Unknown; blocked"
+        },
+        "status": "exact_match",
+        "details": "All counts, completion flags and recovery categories match both per-system traces and paired comparison.",
+        "fix": ""
+      },
+      {
+        "claim_id": "C027",
+        "location": "main.tex:243-248",
+        "title": "CPU table F03 Single stage",
+        "paper_text": "\\caption{Deterministic CPU fault coverage from the retained paired-v2 matrix.\nS/E means submissions/executions. ``Complete'' is the fixture's valid-completion\nflag. These are twelve synthetic traces, not deployment samples.}\n\\label{tab:cpu}\n\\centering\n\\input{tables/cpu-rows.tex}",
+        "paper_value": "CPU table F03 Single stage",
+        "evidence_file": [
+          "tables/cpu-rows.tex",
+          "docs/research/runs/paired-v2-b2.json",
+          "docs/research/runs/paired-v2-w3.json",
+          "docs/research/runs/paired-v2-comparison.json"
+        ],
+        "evidence_value": {
+          "b2_se": "2/2",
+          "w3_se": "2/2",
+          "complete": "yes/yes",
+          "recovery": "New submission / New submission"
+        },
+        "status": "exact_match",
+        "details": "All counts, completion flags and recovery categories match both per-system traces and paired comparison.",
+        "fix": ""
+      },
+      {
+        "claim_id": "C028",
+        "location": "main.tex:243-248",
+        "title": "CPU table F03 Two stage",
+        "paper_text": "\\caption{Deterministic CPU fault coverage from the retained paired-v2 matrix.\nS/E means submissions/executions. ``Complete'' is the fixture's valid-completion\nflag. These are twelve synthetic traces, not deployment samples.}\n\\label{tab:cpu}\n\\centering\n\\input{tables/cpu-rows.tex}",
+        "paper_value": "CPU table F03 Two stage",
+        "evidence_file": [
+          "tables/cpu-rows.tex",
+          "docs/research/runs/paired-v2-b2.json",
+          "docs/research/runs/paired-v2-w3.json",
+          "docs/research/runs/paired-v2-comparison.json"
+        ],
+        "evidence_value": {
+          "b2_se": "1/1",
+          "w3_se": "1/1",
+          "complete": "yes/yes",
+          "recovery": "Same job reconciled / Same job reconciled"
+        },
+        "status": "exact_match",
+        "details": "All counts, completion flags and recovery categories match both per-system traces and paired comparison.",
+        "fix": ""
+      },
+      {
+        "claim_id": "C029",
+        "location": "main.tex:251-259",
+        "title": "F02 single-stage successful synthetic artifact but incomplete W3 operation; F03 two-stage unchanged",
+        "paper_text": "The distinguishing F02 single-stage fixture has a concrete cost: W3 blocks a\nsecond product submission. Its synthetic worker records one successful start\nand finish with an artifact, yet the product operation remains incomplete in\nthe observation window. B2 submits twice and completes in this fixture. The\nguard's direct action is withholding a submission; the corresponding difference\nin synthetic execution counts is not a measured real-backend reduction. The\nunchanged F03 two-stage row exercises existing known-job recovery. These CPU\npaths must not be pooled with the Windows fresh-run protocol in\nFig.~\\ref{fig:sequence}.",
+        "paper_value": "F02 single-stage successful synthetic artifact but incomplete W3 operation; F03 two-stage unchanged",
+        "evidence_file": [
+          "docs/research/runs/paired-v2-b2.json",
+          "docs/research/runs/paired-v2-w3.json",
+          "docs/research/runs/paired-v2-comparison.json"
+        ],
+        "evidence_value": "W3 F02 has one start/finish plus artifact and valid_completion=false; B2 has two and true. F03 two-stage both have 1/1, true and same_job_reconciled.",
+        "status": "exact_match",
+        "details": "",
+        "fix": ""
+      },
+      {
+        "claim_id": "C030",
+        "location": "main.tex:263-271",
+        "title": "Four fixed historical cases, two controls/two injected, all oracle-evaluable",
+        "paper_text": "The endpoint-preserving campaign report records B2 and W3 under F00 and F02. All four fixed cases were oracle-evaluable; the two F00 cases were controls\nand the two F02 cases had confirmed response-loss injection. Table~\\ref{tab:cases} reports\nthe observations without converting these counts into a success probability.\n\n\n\\begin{table}[t]\n\\caption{Four fixed cases, checked against retained report fields. S/E are\nproxy submissions/bound execution instances; U/R are unresolved/resolved\nresearch-client calls. All four cases were oracle-evaluable.}",
+        "paper_value": "Four fixed historical cases, two controls/two injected, all oracle-evaluable",
+        "evidence_file": [
+          "evidence/windows-audit.json"
+        ],
+        "evidence_value": "4 cases; F00=2, F02=2; oracle_evaluable sum=4; both F02 injection_confirmed=1.",
+        "status": "exact_match",
+        "details": "This is retained report-field consistency, not independent event completeness.",
+        "fix": ""
+      },
+      {
+        "claim_id": "C031",
+        "location": "main.tex:269-274",
+        "title": "Historical Windows table B2_F00",
+        "paper_text": "\\caption{Four fixed cases, checked against retained report fields. S/E are\nproxy submissions/bound execution instances; U/R are unresolved/resolved\nresearch-client calls. All four cases were oracle-evaluable.}\n\\label{tab:cases}\n\\centering\n\\input{tables/windows-rows.tex}",
+        "paper_value": "Historical Windows table B2_F00",
+        "evidence_file": [
+          "tables/windows-rows.tex",
+          "evidence/windows-audit.json"
+        ],
+        "evidence_value": {
+          "calls": 1,
+          "se": "1/1",
+          "sequence": "R"
+        },
+        "status": "exact_match",
+        "details": "Matches retained case record.",
+        "fix": ""
+      },
+      {
+        "claim_id": "C032",
+        "location": "main.tex:269-274",
+        "title": "Historical Windows table W3_F00",
+        "paper_text": "\\caption{Four fixed cases, checked against retained report fields. S/E are\nproxy submissions/bound execution instances; U/R are unresolved/resolved\nresearch-client calls. All four cases were oracle-evaluable.}\n\\label{tab:cases}\n\\centering\n\\input{tables/windows-rows.tex}",
+        "paper_value": "Historical Windows table W3_F00",
+        "evidence_file": [
+          "tables/windows-rows.tex",
+          "evidence/windows-audit.json"
+        ],
+        "evidence_value": {
+          "calls": 1,
+          "se": "1/1",
+          "sequence": "R"
+        },
+        "status": "exact_match",
+        "details": "Matches retained case record.",
+        "fix": ""
+      },
+      {
+        "claim_id": "C033",
+        "location": "main.tex:269-274",
+        "title": "Historical Windows table B2_F02",
+        "paper_text": "\\caption{Four fixed cases, checked against retained report fields. S/E are\nproxy submissions/bound execution instances; U/R are unresolved/resolved\nresearch-client calls. All four cases were oracle-evaluable.}\n\\label{tab:cases}\n\\centering\n\\input{tables/windows-rows.tex}",
+        "paper_value": "Historical Windows table B2_F02",
+        "evidence_file": [
+          "tables/windows-rows.tex",
+          "evidence/windows-audit.json"
+        ],
+        "evidence_value": {
+          "calls": 2,
+          "se": "2/2",
+          "sequence": "U then R"
+        },
+        "status": "exact_match",
+        "details": "Matches retained case record.",
+        "fix": ""
+      },
+      {
+        "claim_id": "C034",
+        "location": "main.tex:269-274",
+        "title": "Historical Windows table W3_F02",
+        "paper_text": "\\caption{Four fixed cases, checked against retained report fields. S/E are\nproxy submissions/bound execution instances; U/R are unresolved/resolved\nresearch-client calls. All four cases were oracle-evaluable.}\n\\label{tab:cases}\n\\centering\n\\input{tables/windows-rows.tex}",
+        "paper_value": "Historical Windows table W3_F02",
+        "evidence_file": [
+          "tables/windows-rows.tex",
+          "evidence/windows-audit.json"
+        ],
+        "evidence_value": {
+          "calls": 2,
+          "se": "2/2",
+          "sequence": "U then R"
+        },
+        "status": "exact_match",
+        "details": "Matches retained case record.",
+        "fix": ""
+      },
+      {
+        "claim_id": "C035",
+        "location": "main.tex:277-281",
+        "title": "Historical six calls/submissions/bindings and six distinct completed binding IDs",
+        "paper_text": "The campaign totals were six calls, six proxy submissions and six retained bound\nexecution instances. The F02 second call used a fresh run and changed seed.\nThe four report records matched the corresponding retained JSONL cases.\nTheir six retained execution bindings had distinct identifiers, completed-history\nflags and terminal-event labels. In both B2\\_F02 and W3\\_F02, the export reports",
+        "paper_value": "Historical six calls/submissions/bindings and six distinct completed binding IDs",
+        "evidence_file": [
+          "evidence/windows-audit.json"
+        ],
+        "evidence_value": "Calls=6, receipts=6, retained bindings=6; all IDs distinct, history_completed=true, terminal_event=executing.",
+        "status": "exact_match",
+        "details": "Raw historical event payloads remain unavailable.",
+        "fix": ""
+      },
+      {
+        "claim_id": "C036",
+        "location": "main.tex:279-279",
+        "title": "Four report records matched JSONL cases",
+        "paper_text": "The four report records matched the corresponding retained JSONL cases.",
+        "paper_value": "Four report records matched JSONL cases",
+        "evidence_file": [
+          "evidence/windows-audit.json"
+        ],
+        "evidence_value": "4 report_equals_jsonl_case=true receipts.",
+        "status": "exact_match",
+        "details": "A retained inspection receipt, not a newly repeated report/JSONL byte comparison.",
+        "fix": ""
+      },
+      {
+        "claim_id": "C037",
+        "location": "main.tex:281-297",
+        "title": "Historical F02 aggregate execution_start=3 despite two bindings; example 1+2=3",
+        "paper_text": "flags and terminal-event labels. In both B2\\_F02 and W3\\_F02, the export reports\n\\texttt{execution\\_start=3}, two proxy submissions and two retained bindings.\nEach F02 case has two observer decisions. The oracle's \\texttt{raw\\_events}\nfield is cumulative, while the export counts the entire event list of each\ndecision. For example, if the first list contains start A and the second\ncontains A and B, the sum is $1+2=3$ entries for two distinct starts. Each F00\ncase has only one decision, so this recounting opportunity is absent there.\nThe uniqueness check concerns the two retained binding identifiers per F02\ncase, not the three aggregate entries. This source-level mechanism makes the\nreported count compatible with two bindings; it does not reconstruct the\nhistorical lists. Because the original snapshot boundaries and payloads are\nunavailable, an additional unbound start cannot be independently excluded.\nWe report two retained bindings per case, not a complete execution ground\ntruth. The first binding's completion precedes the second\nreceipt, as required by the controller's observation gate; these timestamps\nbelong to different calls. No rate is estimated. Here, ``oracle-evaluable''\nrefers to the retained binding record, not an independent raw-event audit.",
+        "paper_value": "Historical F02 aggregate execution_start=3 despite two bindings; example 1+2=3",
+        "evidence_file": [
+          "evidence/windows-audit.json"
+        ],
+        "evidence_value": "Each F02 event_counts.execution_start=3, submissions=2, bindings=2. Arithmetic 1+2=3 is correct.",
+        "status": "exact_match",
+        "details": "The example is explicitly hypothetical and does not reconstruct missing historical raw lists.",
+        "fix": ""
+      },
+      {
+        "claim_id": "C038",
+        "location": "main.tex:283-292",
+        "title": "Two historical cumulative observer decisions cause recounting opportunity",
+        "paper_text": "Each F02 case has two observer decisions. The oracle's \\texttt{raw\\_events}\nfield is cumulative, while the export counts the entire event list of each\ndecision. For example, if the first list contains start A and the second\ncontains A and B, the sum is $1+2=3$ entries for two distinct starts. Each F00\ncase has only one decision, so this recounting opportunity is absent there.\nThe uniqueness check concerns the two retained binding identifiers per F02\ncase, not the three aggregate entries. This source-level mechanism makes the\nreported count compatible with two bindings; it does not reconstruct the\nhistorical lists. Because the original snapshot boundaries and payloads are\nunavailable, an additional unbound start cannot be independently excluded.",
+        "paper_value": "Two historical cumulative observer decisions cause recounting opportunity",
+        "evidence_file": [
+          "evidence/windows-audit.json"
+        ],
+        "evidence_value": "Historical extract omits individual decisions and raw lists.",
+        "status": "missing_evidence",
+        "details": "Counts are compatible with this explanation; source-level mechanism and exact decision count cannot be independently verified from the declared files.",
+        "fix": "Supply oracle export source or label this mechanism as previously source-inspected."
+      },
+      {
+        "claim_id": "C039",
+        "location": "main.tex:299-302",
+        "title": "Historical RTX 5070 Ti Laptop GPU, ComfyUI v0.30.0 and pinned model/workflow checks",
+        "paper_text": "The report identifies an RTX 5070 Ti Laptop GPU and ComfyUI v0.30.0 at a pinned source revision, with model and workflow hashes\nchecked against the campaign configuration. These are recorded environment\nfacts for this campaign. They do not establish behavior across other models,\nbackend versions or machines.",
+        "paper_value": "Historical RTX 5070 Ti Laptop GPU, ComfyUI v0.30.0 and pinned model/workflow checks",
+        "evidence_file": [
+          "evidence/windows-audit.json"
+        ],
+        "evidence_value": "The historical extract lacks environment fields; the new private configuration records environment for a different campaign.",
+        "status": "missing_evidence",
+        "details": "New configuration cannot independently establish the historical environment.",
+        "fix": "Supply historical configuration/preflight receipt."
+      },
+      {
+        "claim_id": "C040",
+        "location": "main.tex:304-311",
+        "title": "Historical F02 has no demonstrated W3 count advantage or identical-request duplicate proof",
+        "paper_text": "Both systems produced two retained execution bindings in F02. This demonstrates\nthat the research export retained execution identifiers despite the first call's\nambiguous outcome. The source explains how the aggregate count can exceed the\nbinding count, but the retained extract does not independently resolve the\nhistorical event sequence. The cases do not demonstrate an execution-count\nadvantage for W3.\nBecause the second call changed run and seed, the table also does not establish\na duplicate execution of an identical generation request.",
+        "paper_value": "Historical F02 has no demonstrated W3 count advantage or identical-request duplicate proof",
+        "evidence_file": [
+          "evidence/windows-audit.json"
+        ],
+        "evidence_value": "Both historical F02 records have 2 retained bindings; request identity is not established by the declared historical evidence.",
+        "status": "exact_match",
+        "details": "Conservative scope is appropriate.",
+        "fix": ""
+      },
+      {
+        "claim_id": "C041",
+        "location": "main.tex:315-321",
+        "title": "New protocol, frozen W3 revision, saved same run and complete arguments",
+        "paper_text": "A subsequent campaign retained the frozen W3 product but used a separate\n\\texttt{same-run-guard-v1} research caller. F00 invoked one generation call.\nF02 saved the first run and complete generation arguments, then reused them\nverbatim after the controller reported a bindable first completion. The retained\ncapture does not independently timestamp the retry invocation. The seed, operation key and run\nidentifier were checked, along with before/after durable manifests. Table~\\ref{tab:samerun}\nreports this protocol separately from the four historical cases.",
+        "paper_value": "New protocol, frozen W3 revision, saved same run and complete arguments",
+        "evidence_file": [
+          "evidence/windows-same-run-20261001.json",
+          "delivery/private-same-run-20261001/capture"
+        ],
+        "evidence_value": "Protocol same-run-guard-v1; configured W3 source matches CPU W3 source; canonical full arguments hash matches both results; same run IDs, seed and key match internally.",
+        "status": "exact_match",
+        "details": "Argument equality is verified within retained session/result records; source files themselves were not rehashed.",
+        "fix": ""
+      },
+      {
+        "claim_id": "C042",
+        "location": "main.tex:317-321",
+        "title": "Controller-reported completion ordering with explicit missing retry timestamp",
+        "paper_text": "F02 saved the first run and complete generation arguments, then reused them\nverbatim after the controller reported a bindable first completion. The retained\ncapture does not independently timestamp the retry invocation. The seed, operation key and run\nidentifier were checked, along with before/after durable manifests. Table~\\ref{tab:samerun}\nreports this protocol separately from the four historical cases.",
+        "paper_value": "Controller-reported completion ordering with explicit missing retry timestamp",
+        "evidence_file": [
+          "evidence/windows-same-run-20261001.json",
+          "delivery/private-same-run-20261001/capture"
+        ],
+        "evidence_value": "The retained first completion and second call are present; no independent retry timestamp is retained.",
+        "status": "exact_match",
+        "details": "Revised source attributes ordering to the controller and explicitly discloses the missing independent timestamp.",
+        "fix": ""
+      },
+      {
+        "claim_id": "C043",
+        "location": "main.tex:323-337",
+        "title": "Same-run table W3 F00 C/S/E 1/1/1 resolved",
+        "paper_text": "\\begin{table}[t]\n\\caption{Two fixed same-run Windows cases. C/S/E denote product calls,\nproxy submissions and bound backend lifecycles. The F02 retry was rejected\nby model-identity validation; it does not establish the target guard's effect.}\n\\label{tab:samerun}\n\\centering\n\\begin{tabular}{lcccl}\n\\hline\nCase & C & S & E & Client calls \\\\\n\\hline\nW3 F00 & 1 & 1 & 1 & resolved \\\\\nW3 F02 & 2 & 1 & 1 & unresolved / unresolved \\\\\n\\hline\n\\end{tabular}\n\\end{table}",
+        "paper_value": "Same-run table W3 F00 C/S/E 1/1/1 resolved",
+        "evidence_file": [
+          "evidence/windows-same-run-20261001.json",
+          "delivery/private-same-run-20261001/capture"
+        ],
+        "evidence_value": "1 call result, 1 accepted POST receipt, 1 start/terminal/history binding; resolved and durable generated state.",
+        "status": "exact_match",
+        "details": "",
+        "fix": ""
+      },
+      {
+        "claim_id": "C044",
+        "location": "main.tex:323-337",
+        "title": "Same-run table W3 F02 C/S/E 2/1/1 unresolved/unresolved",
+        "paper_text": "\\begin{table}[t]\n\\caption{Two fixed same-run Windows cases. C/S/E denote product calls,\nproxy submissions and bound backend lifecycles. The F02 retry was rejected\nby model-identity validation; it does not establish the target guard's effect.}\n\\label{tab:samerun}\n\\centering\n\\begin{tabular}{lcccl}\n\\hline\nCase & C & S & E & Client calls \\\\\n\\hline\nW3 F00 & 1 & 1 & 1 & resolved \\\\\nW3 F02 & 2 & 1 & 1 & unresolved / unresolved \\\\\n\\hline\n\\end{tabular}\n\\end{table}",
+        "paper_value": "Same-run table W3 F02 C/S/E 2/1/1 unresolved/unresolved",
+        "evidence_file": [
+          "evidence/windows-same-run-20261001.json",
+          "delivery/private-same-run-20261001/capture"
+        ],
+        "evidence_value": "2 call results, 1 accepted POST receipt, 1 start/terminal/history binding; both unresolved.",
+        "status": "exact_match",
+        "details": "",
+        "fix": ""
+      },
+      {
+        "claim_id": "C045",
+        "location": "main.tex:339-340",
+        "title": "F00 completed; F02 accepted response was dropped; original manifest unresolved/unknown/no job",
+        "paper_text": "The F00 control completed. F02 suppressed one accepted response and retained\nan unresolved original manifest with unknown submission and no backend job.",
+        "paper_value": "F00 completed; F02 accepted response was dropped; original manifest unresolved/unknown/no job",
+        "evidence_file": [
+          "evidence/windows-same-run-20261001.json",
+          "delivery/private-same-run-20261001/capture"
+        ],
+        "evidence_value": "F00 generated/completed. F02 forwarded HTTP 200 receipt has response_dropped=true; manifest state and attempt unresolved, submission_outcome unknown; no durable job binding.",
+        "status": "exact_match",
+        "details": "",
+        "fix": ""
+      },
+      {
+        "claim_id": "C046",
+        "location": "main.tex:341-345",
+        "title": "Retry error model_identity_drifted, not submission_outcome_unknown; guard_observed=false",
+        "paper_text": "The second call returned \\texttt{model\\_identity\\_drifted} at generation,\nrather than the required \\texttt{submission\\_outcome\\_unknown}. It generated no\nnew POST and left the manifest byte-identical. The controller stopped with\n\\texttt{submission\\_guard\\_observed=false}: another rejection masks the target\nmechanism, so withholding a submission cannot be attributed to that guard.",
+        "paper_value": "Retry error model_identity_drifted, not submission_outcome_unknown; guard_observed=false",
+        "evidence_file": [
+          "evidence/windows-same-run-20261001.json",
+          "delivery/private-same-run-20261001/capture"
+        ],
+        "evidence_value": "Second result client_error_code=model_identity_drifted at generate_round; campaign STOPPED with guard_rejection_not_observed and submission_guard_observed=false.",
+        "status": "exact_match",
+        "details": "The evidence supports non-attribution to the target guard; it does not diagnose identity drift.",
+        "fix": ""
+      },
+      {
+        "claim_id": "C047",
+        "location": "main.tex:342-343",
+        "title": "No added POST and byte-identical manifest after retry",
+        "paper_text": "rather than the required \\texttt{submission\\_outcome\\_unknown}. It generated no\nnew POST and left the manifest byte-identical. The controller stopped with",
+        "paper_value": "No added POST and byte-identical manifest after retry",
+        "evidence_file": [
+          "evidence/windows-same-run-20261001.json",
+          "delivery/private-same-run-20261001/capture"
+        ],
+        "evidence_value": "Only one proxy receipt retained; first after, second before and second after manifest bytes are identical.",
+        "status": "exact_match",
+        "details": "No claim of completeness beyond the retained controlled record.",
+        "fix": ""
+      },
+      {
+        "claim_id": "C048",
+        "location": "main.tex:346-347",
+        "title": "Identity error does not prove changed model bytes",
+        "paper_text": "The cause of the identity disagreement is unverified; its error code does not\nby itself establish changed model bytes.",
+        "paper_value": "Identity error does not prove changed model bytes",
+        "evidence_file": [
+          "evidence/windows-same-run-20261001.json",
+          "delivery/private-same-run-20261001/capture"
+        ],
+        "evidence_value": "No model before/after byte comparison tied to the failure is present.",
+        "status": "exact_match",
+        "details": "Correctly limited inference.",
+        "fix": ""
+      },
+      {
+        "claim_id": "C049",
+        "location": "main.tex:349-350",
+        "title": "90 F00 and 10 F02 WebSocket payloads; one history response each",
+        "paper_text": "The private capture retained 90 F00 and 10 F02 WebSocket text payloads and one\nhistory response per case. Offline reanalysis checked byte hashes and channel",
+        "paper_value": "90 F00 and 10 F02 WebSocket payloads; one history response each",
+        "evidence_file": [
+          "evidence/windows-same-run-20261001.json",
+          "delivery/private-same-run-20261001/capture"
+        ],
+        "evidence_value": "Decoded 90 and 10 UTF-8 JSON payloads; 1 HTTP 200 history body per case.",
+        "status": "exact_match",
+        "details": "Recounted from base64 retained bytes rather than copied from prior audit.",
+        "fix": ""
+      },
+      {
+        "claim_id": "C050",
+        "location": "main.tex:349-352",
+        "title": "Payload byte hashes and per-channel sequences checked",
+        "paper_text": "The private capture retained 90 F00 and 10 F02 WebSocket text payloads and one\nhistory response per case. Offline reanalysis checked byte hashes and channel\nsequences, reconstructed one start and one \\texttt{executing} event with\n\\texttt{node=null} per case, and bound them to successful history and the",
+        "paper_value": "Payload byte hashes and per-channel sequences checked",
+        "evidence_file": [
+          "evidence/windows-same-run-20261001.json",
+          "delivery/private-same-run-20261001/capture"
+        ],
+        "evidence_value": "100/100 WebSocket body SHA256 values and 2/2 history SHA256 values match decoded bytes; sequences contiguous from 1 in each channel; final transport equals snapshot transport.",
+        "status": "exact_match",
+        "details": "23 per-case file hashes and both root preflight/configuration hashes also match the public extract; harness-hash dictionaries equal.",
+        "fix": ""
+      },
+      {
+        "claim_id": "C051",
+        "location": "main.tex:351-353",
+        "title": "One start and one executing node=null terminal per case, successful history and published binding IDs",
+        "paper_text": "sequences, reconstructed one start and one \\texttt{executing} event with\n\\texttt{node=null} per case, and bound them to successful history and the\npublished execution identifiers. This checks received, retained evidence;",
+        "paper_value": "One start and one executing node=null terminal per case, successful history and published binding IDs",
+        "evidence_file": [
+          "evidence/windows-same-run-20261001.json",
+          "delivery/private-same-run-20261001/capture"
+        ],
+        "evidence_value": "Each decoded start/terminal pair has matching prompt correlation with the receipt/history; history completed=true and status_str=success; binding timestamps and IDs agree with public record.",
+        "status": "exact_match",
+        "details": "Identifier association was checked; algorithmic rederivation of execution_instance_id was not possible without oracle source.",
+        "fix": ""
+      },
+      {
+        "claim_id": "C052",
+        "location": "main.tex:353-357",
+        "title": "Retained consistency is not authenticity/completeness; cache boundary and historical gap",
+        "paper_text": "published execution identifiers. This checks received, retained evidence;\nit supplies no authenticity or completeness guarantee. F02 included a cache\nevent and no progress events, so its lifecycle binding is not evidence of new\nphysical GPU computation. These new payloads do not recover the missing\nhistorical event lists. No third call or fresh-run fallback was made.",
+        "paper_value": "Retained consistency is not authenticity/completeness; cache boundary and historical gap",
+        "evidence_file": [
+          "evidence/windows-same-run-20261001.json",
+          "delivery/private-same-run-20261001/capture"
+        ],
+        "evidence_value": "F02 execution_cached=1, progress=0, while retained lifecycle=1; no raw historical lists are present.",
+        "status": "exact_match",
+        "details": "This cannot establish new physical GPU computation or repair historical raw-event evidence.",
+        "fix": ""
+      },
+      {
+        "claim_id": "C053",
+        "location": "main.tex:357-357",
+        "title": "No third call or fresh-run fallback",
+        "paper_text": "historical event lists. No third call or fresh-run fallback was made.",
+        "paper_value": "No third call or fresh-run fallback",
+        "evidence_file": [
+          "evidence/windows-same-run-20261001.json",
+          "delivery/private-same-run-20261001/capture"
+        ],
+        "evidence_value": "F02 retained invocation/result set contains calls 1 and 2 only; both use the same retained run; campaign stopped.",
+        "status": "exact_match",
+        "details": "Supported within the retained campaign; no global completeness guarantee.",
+        "fix": ""
+      },
+      {
+        "claim_id": "C054",
+        "location": "main.tex:361-369",
+        "title": "Historical overlapping resolved/unresolved flags sum to four and two",
+        "paper_text": "A resolved second call does not erase the first call's unresolved result or\nshow that its original run was reconciled. Read-only inspection of the retained\ncampaign report confirmed that both F02 records carry \\texttt{resolved=1} and\n\\texttt{unresolved=1}. These are independent any-call flags: across the four cases,\n\\texttt{resolved} sums to four and \\texttt{unresolved} to two. They are overlapping counts,\nnot mutually exclusive outcomes. The earlier Markdown summary's zero unresolved\ncases is therefore not the controller aggregation. Table~\\ref{tab:cases} preserves the call\nsequence; the evidence addendum records this correction without rewriting the\nhistorical report. No recovery-success rate is inferred.",
+        "paper_value": "Historical overlapping resolved/unresolved flags sum to four and two",
+        "evidence_file": [
+          "evidence/windows-audit.json"
+        ],
+        "evidence_value": "Each F02 has resolved=1 and unresolved=1; sums across four cases are resolved=4, unresolved=2.",
+        "status": "exact_match",
+        "details": "No mutually exclusive outcome/rate inference is made.",
+        "fix": ""
+      },
+      {
+        "claim_id": "C055",
+        "location": "main.tex:366-369",
+        "title": "Earlier Markdown summary had zero unresolved cases",
+        "paper_text": "not mutually exclusive outcomes. The earlier Markdown summary's zero unresolved\ncases is therefore not the controller aggregation. Table~\\ref{tab:cases} preserves the call\nsequence; the evidence addendum records this correction without rewriting the\nhistorical report. No recovery-success rate is inferred.",
+        "paper_value": "Earlier Markdown summary had zero unresolved cases",
+        "evidence_file": [
+          "evidence/windows-audit.json"
+        ],
+        "evidence_value": "That Markdown summary is excluded from declared inputs.",
+        "status": "missing_evidence",
+        "details": "Current retained classification totals are verified, but the old summary's exact zero is not.",
+        "fix": "Keep this as a separately sourced correction or include its original retained output."
+      },
+      {
+        "claim_id": "C056",
+        "location": "main.tex:371-375",
+        "title": "Execution count uses distinct bindings rather than cumulative aggregate event counts",
+        "paper_text": "There is also a counting distinction within the observer export. Successive\noracle decisions retain cumulative raw-event snapshots, so summing their event\ncounts can count earlier events again. The controller's execution count uses\ndistinct bound execution-instance identifiers. A raw-evidence audit must check\nthose bindings, not substitute aggregate event counts.",
+        "paper_value": "Execution count uses distinct bindings rather than cumulative aggregate event counts",
+        "evidence_file": [
+          "evidence/windows-audit.json"
+        ],
+        "evidence_value": "Historical F02 totals equal 2 distinct retained bindings while execution_start aggregates equal 3.",
+        "status": "exact_match",
+        "details": "The count distinction is directly visible; general export implementation requires source.",
+        "fix": ""
+      },
+      {
+        "claim_id": "C057",
+        "location": "main.tex:379-385",
+        "title": "CPU revisions, harness digests and traces preserved; no fresh historical reproduction claim",
+        "paper_text": "The paired CPU records preserve product revisions, harness digests and event\ntraces. The Windows source and report identities are recorded separately in\nthe companion evidence ledger. The audit and figure-generation scripts consume\nexisting records only; they do not run the generation backend. Reanalysis is\nreproducible from the included derived records, while recreating the Windows\ncampaign also requires the pinned backend, model, workflow and private setup.\nA fresh reproduction of that historical four-case campaign was not performed.",
+        "paper_value": "CPU revisions, harness digests and traces preserved; no fresh historical reproduction claim",
+        "evidence_file": [
+          "docs/research/runs/paired-v2-b2.json",
+          "docs/research/runs/paired-v2-w3.json",
+          "docs/research/runs/paired-v2-comparison.json"
+        ],
+        "evidence_value": "Both records contain product source revision, runtime checkout identity, three harness hashes and event traces; protocols explicitly synthetic.",
+        "status": "exact_match",
+        "details": "Presence is checked; provenance/authenticity is not.",
+        "fix": ""
+      },
+      {
+        "claim_id": "C058",
+        "location": "main.tex:381-384",
+        "title": "Audit/figure scripts are read-only and reproducibility from derived records",
+        "paper_text": "the companion evidence ledger. The audit and figure-generation scripts consume\nexisting records only; they do not run the generation backend. Reanalysis is\nreproducible from the included derived records, while recreating the Windows\ncampaign also requires the pinned backend, model, workflow and private setup.",
+        "paper_value": "Audit/figure scripts are read-only and reproducibility from derived records",
+        "evidence_file": [],
+        "evidence_value": "No script source or execution output is in the declared set.",
+        "status": "missing_evidence",
+        "details": "This review performed read-only computations but did not verify those scripts.",
+        "fix": ""
+      },
+      {
+        "claim_id": "C059",
+        "location": "main.tex:386-387",
+        "title": "Same-run used separate detached research checkout preserving frozen revisions",
+        "paper_text": "The subsequent same-run test used a separate detached research checkout,\npreserved the frozen product revisions, and retained its negative result.",
+        "paper_value": "Same-run used separate detached research checkout preserving frozen revisions",
+        "evidence_file": [
+          "evidence/windows-same-run-20261001.json",
+          "delivery/private-same-run-20261001/capture"
+        ],
+        "evidence_value": "Configuration records expected frozen W3 SHA and preflight client check passed; no detached-HEAD Git receipt is retained here.",
+        "status": "ambiguous_mapping",
+        "details": "Frozen revision record is consistent; detached checkout state and unchanged source trees are not independently established.",
+        "fix": "Include sanitized Git status/HEAD receipts for the research and product checkouts."
+      },
+      {
+        "claim_id": "C060",
+        "location": "main.tex:389-401",
+        "title": "Historical retained extract lacks raw events and only records consistency receipts",
+        "paper_text": "The historical Windows JSONL records contain sanitized case summaries,\nexecution bindings, terminal labels and aggregate event counts, rather than full raw WebSocket\nmessages and history snapshots. Thus the audit verifies internal consistency\nof retained bindings; it cannot independently reconstruct every backend event.\nThe source oracle recognizes completion using an \\texttt{executing} event with\n\\texttt{node=null}, together with completed history. The offline audit's check\nof the exported \\texttt{executing} label is only a consistency check: that label\nis set by construction and lacks the original node and payload discriminator.\nThe derived, path-redacted evidence extract and a read-only audit script are\nincluded with the manuscript source. The offline script checks this derived\nextract and regenerates the two result tables. The recorded report/JSONL equality\nand image-byte matches are inspection receipts; rerunning the script does not\nrepeat those host-side checks. No backend call is needed.",
+        "paper_value": "Historical retained extract lacks raw events and only records consistency receipts",
+        "evidence_file": [
+          "evidence/windows-audit.json"
+        ],
+        "evidence_value": "Oracle fields are bindings/event_counts/reason/status; no raw WebSocket/history bodies. Equality/image-match fields are retained booleans.",
+        "status": "exact_match",
+        "details": "The distinction from the new private raw capture is explicit and correct.",
+        "fix": ""
+      },
+      {
+        "claim_id": "C061",
+        "location": "main.tex:403-406",
+        "title": "Four generated-call artifact hashes matched host image bytes; one PNG per case; first F02 has no artifact hash",
+        "paper_text": "Read-only hashing found that the four generated-call artifact hashes matched\ncurrent output image bytes on the Windows host. Each case had one product-output\nPNG; the unresolved first F02 call recorded no product artifact hash. Therefore\nthese checks do not verify the first F02 execution's output bytes. The oracle's",
+        "paper_value": "Four generated-call artifact hashes matched host image bytes; one PNG per case; first F02 has no artifact hash",
+        "evidence_file": [
+          "evidence/windows-audit.json"
+        ],
+        "evidence_value": "4 artifact_checks records with matches_current_output_bytes=true; output_png_count=1 per case; first F02 calls have empty artifact_checks.",
+        "status": "exact_match",
+        "details": "Verified as retained host-side inspection receipts; image bytes were not supplied for independent hashing.",
+        "fix": ""
+      },
+      {
+        "claim_id": "C062",
+        "location": "main.tex:407-421",
+        "title": "Metadata fingerprints, missing-event limits, no rates/performance/GPU/quality inference",
+        "paper_text": "path fingerprints hash metadata strings and cannot substitute for content\nhashes. Neither a matching content hash nor completed history establishes\nvisual quality or final user acceptance.\n\nObservation depends on receiving and binding backend events within the harness\nwindow. Missing events limit evaluability; they do not establish non-execution.\nThe same-process CPU observer and backend-origin Windows observer have different\nfailure boundaries, neither of which establishes crash-complete auditability.\nThe fixed case set contains no basis for deployment failure frequency, natural\nduplicate-execution frequency, performance improvement or broad model\nrobustness. The subsequent two-case Windows test is a new controlled backend\nexperiment, with no model download; it remains separate from the historical\ncampaign and does not demonstrate the target guard's efficacy. Private raw\ncaptures are excluded from the reviewer package, so its public audit receipt\ncannot substitute for third-party access to those bytes.",
+        "paper_value": "Metadata fingerprints, missing-event limits, no rates/performance/GPU/quality inference",
+        "evidence_file": [
+          "docs/research/runs/paired-v2-b2.json",
+          "docs/research/runs/paired-v2-w3.json",
+          "docs/research/runs/paired-v2-comparison.json",
+          "evidence/windows-audit.json",
+          "evidence/windows-same-run-20261001.json",
+          "delivery/private-same-run-20261001/capture"
+        ],
+        "evidence_value": "New artifact metadata hashes match retained path strings, not image bytes; fixed finite cases contain no deployment sample or physical GPU trace.",
+        "status": "exact_match",
+        "details": "The manuscript correctly limits these conclusions.",
+        "fix": ""
+      },
+      {
+        "claim_id": "C063",
+        "location": "main.tex:417-421",
+        "title": "New controlled two-case test made no model download; raw bytes excluded from reviewer package",
+        "paper_text": "robustness. The subsequent two-case Windows test is a new controlled backend\nexperiment, with no model download; it remains separate from the historical\ncampaign and does not demonstrate the target guard's efficacy. Private raw\ncaptures are excluded from the reviewer package, so its public audit receipt\ncannot substitute for third-party access to those bytes.",
+        "paper_value": "New controlled two-case test made no model download; raw bytes excluded from reviewer package",
+        "evidence_file": [
+          "evidence/windows-same-run-20261001.json",
+          "delivery/private-same-run-20261001/capture"
+        ],
+        "evidence_value": "Two-case scope is verified; no-download history and final reviewer-package contents are not declared inputs.",
+        "status": "missing_evidence",
+        "details": "A configuration containing an existing model path does not establish absence of downloads.",
+        "fix": "Supply preparation/package inventory receipts if these procedural claims require independent verification."
+      },
+      {
+        "claim_id": "C064",
+        "location": "main.tex:426-497",
+        "title": "Related-work contracts and documentation-based scope comparison",
+        "paper_text": "RPC failure semantics provide the conceptual starting point: a failed\ncommunication does not necessarily settle whether a remote operation ran \\cite{birrell1984}.\nIdempotent API design addresses safe retries through an explicit contract,\nincluding caller-provided request identifiers \\cite{aws}. Our tool relies on neither\na prompt identifier nor a client idempotency key as sufficient evidence of\nbackend deduplication. Its role is to preserve and qualify observations when\nsuch a guarantee has not been established for the evaluated path.\n\nThe practical distinction is between observation and control. Backend events\ncan establish that work completed while the client's original run remains\nunresolved. Conversely, a conservative same-run guard can block a further\nsubmission without resolving that uncertainty. The Windows harness crosses a\ndifferent boundary by creating a new run after observation. Keeping these\nscopes separate explains why the demonstration can be oracle-evaluable without\nshowing automatic recovery or a W3 reduction in executions.\n\nA recent preprint by Li studies ambiguous writes in a simulated service\nbenchmark, comparing model, harness and tool-contract effects on duplicate\nside effects \\cite{li2026exactlyonce}. Its guard combines read-back verification,\nidempotency keys where supported, delayed re-verification, blocking unverifiable\nnon-idempotent repeats, and uncertainty annotations. Our guard has a narrower\ncontrol rule: an explicitly unknown submission blocks further submission through\nthe same run, without automatic read-back or reconciliation. The shared principle\nof withholding unsafe retries is not a novelty claim. The tool-specific object\nhere is the inspectable integration of preserved reported state, versioned\ninterpretation with reasons, and backend observation in a local generation\npipeline. This is an implementation distinction, not evidence of superiority\nover that guard or of a new general recovery principle. The studies use different\nworkloads and evidence sources; their outcome counts are not directly comparable.\n\nReliable State Machines provide a stronger control contract within their\nprogramming model: persistent state and runtime-managed atomic processing\nsupport failure transparency and exactly-once input processing\n\\cite{rsm2019}. Our tool does not place the external generator inside such a\ntransactional runtime. It exposes uncertainty at that boundary and restricts\none product entry path, rather than claiming an equivalent processing guarantee.\n\nTemporal's Activity documentation describes the same lost-completion boundary:\na worker may finish an Activity and crash before reporting completion, leading\nto a retry. It recommends idempotent Activities \\cite{temporal}. This is an important\ncomparison because durable workflow state alone does not eliminate uncertainty\nabout external side effects. Our same-run guard withholds a submission under\nexplicit uncertainty, but supplies no equivalent general workflow-execution or\nautomatic reconciliation guarantee.\n\nOpenTelemetry represents operations through spans and uses trace context to\nrelate observations across a request \\cite{otel}. Such correlation provides a useful\nrepresentation for a distributed execution path. In this tool, the additional\napplication-specific rule is which observations permit an execution claim:\nbackend start and terminal events must bind to completed history, and unresolved\nproduct recovery can still veto \\texttt{execution\\_verified}. Correlation identifiers\nalone are not used as execution counts.\n\nToxiproxy provides configurable TCP connection fault injection for testing \\cite{toxiproxy}.\nOur research proxy uses an application-level acceptance condition to select\nthe response to suppress, while the observer separately checks execution. This\ncomparison does not show that Toxiproxy could not support an equivalent setup;\nno comparative implementation or usability measurement was performed.\n\nFilibuster's project overview describes synthesizing fault-injected test\nvariations from developer integration tests to check application error handling\n\\cite{filibuster}. Our fixed case set does not provide that automatic search\ncoverage. It concentrates on evidence interpretation at a selected submission\nbarrier and preserves a separate backend observation channel. The comparison\nuses the project overview, not a reproduction of Filibuster's research results.\n\nThis is a documentation-based comparison of responsibilities, not a performance\nbenchmark or a feature-absence survey. The practical contribution is making the\nrelationship between client ambiguity, backend observation and permitted claims\ninspectable for a local generation workflow. The comparisons delimit the tool\nresponsibilities; they do not establish superiority, exhaustive novelty,\nor measured developer productivity.",
+        "paper_value": "Related-work contracts and documentation-based scope comparison",
+        "evidence_file": [],
+        "evidence_value": "Cited publications/documentation and bibliography were not declared audit inputs.",
+        "status": "missing_evidence",
+        "details": "No external factual verification was attempted; conservative non-superiority statements are consistent with the present evidence.",
+        "fix": "Use a separate citation/source audit for the external descriptions."
+      },
+      {
+        "claim_id": "C065",
+        "location": "main.tex:501-511",
+        "title": "Conclusion distinguishes historical visibility, masked same-run guard and unsupported general guarantees",
+        "paper_text": "The tool preserves ambiguous client outcomes alongside separately bound\nexecution evidence and implements a conservative guard within an unresolved\nrun. The historical Windows cases demonstrate execution visibility under lost\nacceptance responses, while exposing the distinction between a new successful\ncall and reconciliation of the original run. These bounded observations support\nan evidence-preserving tool description. The same-run test adds raw-event\nretention and a negative result: model-identity validation masks the target\nguard. It establishes neither guard efficacy nor new physical GPU work.\nThese results do not establish automatic\nunknown-job recovery, deployment-wide reliability or natural duplicate-execution\nrates.",
+        "paper_value": "Conclusion distinguishes historical visibility, masked same-run guard and unsupported general guarantees",
+        "evidence_file": [
+          "evidence/windows-audit.json",
+          "evidence/windows-same-run-20261001.json",
+          "delivery/private-same-run-20261001/capture"
+        ],
+        "evidence_value": "Historical retained visibility is supported; new retry is model_identity_drifted with guard false; no automatic recovery/rate/physical-GPU evidence.",
+        "status": "exact_match",
+        "details": "",
+        "fix": ""
+      },
+      {
+        "claim_id": "C066",
+        "location": "main.tex:513-527",
+        "title": "Package redistribution, human-subject and AI-usage statements",
+        "paper_text": "\\section*{Data, code and responsible use}\nThe manuscript source includes derived Windows evidence, retained CPU-record\npointers, a deterministic audit script and figure sources. Models, private\nconfiguration, generated images and raw host paths are not redistributed in\nthis package. The analysis concerns controlled software executions; it makes\nno claim about human participants or image-quality acceptance. Human-subjects\nor institutional-ethics determinations are not inferred from this scope.\n\n\\section*{AI Tool Usage}\nOpenAI Codex assisted with drafting portions of the manuscript, source\ninspection, record consistency checks, and code for Figs.~1--2. The review\nconducted with this tool was internal and within a single context, not\nindependent peer review. Human authors must verify the content, references,\nattribution, and final submission. No AI-generated data are reported as\nexperimental observations.",
+        "paper_value": "Package redistribution, human-subject and AI-usage statements",
+        "evidence_file": [],
+        "evidence_value": "Package inventory, author declarations and drafting history are outside the declared evidence set.",
+        "status": "missing_evidence",
+        "details": "These procedural/declaration claims are not empirically validated by raw execution results.",
+        "fix": ""
+      }
+    ],
+    "verification": {
+      "historical": {
+        "cases": 4,
+        "calls": 6,
+        "submissions": 6,
+        "distinct_retained_bindings": 6,
+        "oracle_evaluable": 4,
+        "resolved_any_call": 4,
+        "unresolved_any_call": 2,
+        "host_image_match_receipts": 4,
+        "independently_rehashed_images": 0,
+        "raw_event_reconstruction": false
+      },
+      "cpu": {
+        "cases": 12,
+        "unique_start_ids_and_matching_finishes": 12,
+        "request_counts_equal_submissions": 12,
+        "table_rows_matched": 6
+      },
+      "same_run": {
+        "F00": {
+          "calls": 1,
+          "submissions": 1,
+          "retained_bindings": 1,
+          "websocket_payloads": 90,
+          "history_responses": 1,
+          "execution_starts": 1,
+          "terminal_executing_node_null": 1,
+          "cache_events": 1,
+          "progress_events": 30,
+          "states": [
+            "resolved"
+          ]
+        },
+        "F02": {
+          "calls": 2,
+          "submissions": 1,
+          "retained_bindings": 1,
+          "websocket_payloads": 10,
+          "history_responses": 1,
+          "execution_starts": 1,
+          "terminal_executing_node_null": 1,
+          "cache_events": 1,
+          "progress_events": 0,
+          "states": [
+            "unresolved",
+            "unresolved"
+          ],
+          "retry_error": "model_identity_drifted",
+          "error_stage": "generate_round",
+          "guard_observed": false,
+          "retry_manifest_byte_identical": true,
+          "same_run_argument_digest_key_and_seed_checks": true
+        }
+      },
+      "raw_checks": {
+        "websocket_payload_hashes_matched": 100,
+        "history_payload_hashes_matched": 2,
+        "channel_sequences_contiguous": true,
+        "snapshot_transport_equals_final": true,
+        "per_case_capture_file_hashes_matched": 23,
+        "root_preflight_and_configuration_hashes_matched": true,
+        "harness_digest_dictionary_equal": true,
+        "raw_event_fields_equal_snapshot": true,
+        "raw_start_terminal_history_receipt_correlations_match": true,
+        "binding_timestamps_and_public_identifiers_match": true,
+        "artifact_metadata_path_hashes_match": true,
+        "execution_identifier_algorithm_independently_rederived": false
+      },
+      "corrected_during_audit": [
+        "Pre-acceptance false-positive risk is now explicitly potential; observed completion cost is attributed to the accepted-response-loss CPU fixture.",
+        "Same-run completion ordering is now controller-reported, with the absent independent retry timestamp disclosed."
+      ]
+    }
+  }
+}
+

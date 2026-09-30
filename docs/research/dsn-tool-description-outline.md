@@ -1,5 +1,18 @@
 # DSN Tool Description outline — v0.3
 
+## Revision plan: 2026-10-01
+
+- Preserve the historical four-case fresh-run campaign and its unresolved raw-event gap.
+- Add a separate two-case same-run scope test after the historical Windows results.
+- Report F00 1/1/1 and F02 2/1/1 calls/submissions/bindings; model-identity
+  validation masks the target guard, so efficacy is not established.
+- Add a compact table and raw-capture audit boundary; do not pool protocols.
+- Qualify caching, persistent original ambiguity, and retained-byte versus
+  independently authenticated/completely observed evidence.
+- Update abstract, limitations and conclusion. Keep the diagrams labelled as
+  historical fresh-run/scope illustrations, not new measurements.
+- This campaign is a negative result, not a successful recovery demonstration.
+
 Date: 2026-09-27. Working manuscript, not submission-ready.
 Evidence baseline: `5cd100f2b4a4a7aaeac1fd707fc248bae46f239c`.
 Claim authority: [matrix](dsn-tool-description-claim-evidence-matrix.md).

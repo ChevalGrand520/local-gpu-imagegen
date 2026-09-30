@@ -14,3 +14,6 @@ docs/evidence/client-sessions/*.json text eol=lf
 
 # Adoption event logs are canonical JSONL and back a SHA-256 hash chain.
 docs/evidence/adoption/**/events.jsonl text eol=lf
+
+# Preserve the exact Windows receipt bytes and its published SHA-256.
+paper/evidence/windows-same-run-20261001.json -text whitespace=cr-at-eol

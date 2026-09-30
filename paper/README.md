@@ -1,5 +1,14 @@
 # Standard manuscript source
 
+The v0.9 revision retains the October 1 Windows same-run campaign as a negative
+result: F02 made two product calls but one POST and one bound lifecycle. The
+retry returned `model_identity_drifted`, so the target ambiguity guard was not
+observed. Backend cache reuse also prevents a physical GPU-work claim. The
+campaign stopped and its owned backend was terminated. The public report and
+offline consistency receipt are under `evidence/windows-same-run-*20261001.json`;
+raw captures remain private and are excluded from the author-review package.
+The same-run evidence gate remains open. This draft is not submission-ready.
+
 `main.tex` and `references.bib` are the typeset manuscript source. The earlier
 Markdown draft remains the argument/evidence working copy; it is not the
 submission file. Output is `main.pdf` after compilation.

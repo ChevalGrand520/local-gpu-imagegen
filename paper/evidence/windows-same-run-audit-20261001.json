@@ -1,0 +1,10 @@
+{
+  "audit_status": "PASS",
+  "campaign_status": "STOPPED",
+  "report_sha256": "29315ed3915a3199a5eb6a8ebe1981baa88937d0a74348ae127cb2d9fdd7d112",
+  "scope": "retained-byte and event-binding consistency; no authenticity or completeness guarantee",
+  "cases": [
+    {"case": "W3_F00", "product_calls": 1, "submissions": 1, "raw_starts": 1, "raw_terminal_node_null": 1, "retained_bindings": 1, "websocket_messages": 90, "history_responses": 1, "cached_events": 1, "progress_events": 30, "call_states": ["resolved"], "second_error": null, "original_run_state": "generated", "guard_observed": false},
+    {"case": "W3_F02", "product_calls": 2, "submissions": 1, "raw_starts": 1, "raw_terminal_node_null": 1, "retained_bindings": 1, "websocket_messages": 10, "history_responses": 1, "cached_events": 1, "progress_events": 0, "call_states": ["unresolved", "unresolved"], "second_error": "model_identity_drifted", "original_run_state": "unresolved", "guard_observed": false}
+  ]
+}
