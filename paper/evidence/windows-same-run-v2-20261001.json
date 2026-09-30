@@ -1,0 +1,269 @@
+{
+  "harness_source_sha256": {
+    "f02_campaign.py": "ebc49c469ad40e2f0ab6ae3959fb3c3b1e677b15995a5393736679f56aa79165",
+    "f02_capture.py": "31bca3f3b4ffb14699eeb92b04f51e7403a26f7362728cceef60d5ad00285b11",
+    "f02_loopback.py": "2c3f30c72bde28ce58c0c2d085600e7a052260593206bdeb2f8b3a965257ce98",
+    "f02_oracle.py": "5c93a39178a3514a17e6e58f9efe2a474c7a9605459de8171749d78fecb881ec",
+    "f02_preflight.py": "a62a7053163bc642f5f8f486431203014933168e246cdb2c1bb881132f5a3ae0",
+    "f02_product_client.py": "82adfe2292a39ca9e377f676496f94e226355e07dd9d432e5dbf5765563aaa0f",
+    "f02_same_run_campaign.py": "66021435f491c6ac2790f615e847325aa43a1b814d406798686aa132f6ccd979",
+    "f02_transport_launcher.py": "960dfee8079be59be8dd12a18a16cbae96c400126ba8ccbadcf9baf87afa2d35",
+    "f02_transport_shim.py": "a34d429632bf4b1d568febfa3c017dd95d989d7df55c5801ed6e7855a64a10e2"
+  },
+  "preflight": {
+    "backend_boot_identity_sha256": "8a6458187ca252c4d05e7f333fefa1fe40eb32d00cf23a3dcfd938542de4f042",
+    "checked_at": "2026-09-30T17:52:14.808886+00:00",
+    "private_capture_sha256": "7de7b7846fe59af095b338553050d9a7eb7a4c04ba92b35c8d9170d34a40c1cc",
+    "private_configuration_sha256": "b377a3da705f6514b568c69dc4df4efa2dcf3a67dd176efc94d5083f54b33871",
+    "status": "PASS"
+  },
+  "protocol_version": "same-run-guard-v2",
+  "records": [
+    {
+      "artifact_count": 2,
+      "backend_acceptance_count": 1,
+      "case_id": "W3_F00",
+      "classifications": {
+        "failed": 0,
+        "injection_confirmed": "N/A",
+        "not_run": 0,
+        "oracle_evaluable": 1,
+        "resolved": 1,
+        "scheduled": 1,
+        "started": 1,
+        "unresolved": 0
+      },
+      "execution_finish_count": 1,
+      "fault_mode": "F00",
+      "oracle": {
+        "bindings": [
+          {
+            "artifact_path_sha256": [
+              "afd9208ef7e08731998abca60e921fa6bd68474d28ec973f5cfdb21980bba5f9",
+              "e0ee8bb50685e05fa0f47ed04203ae953fdfd055f5bd2892ea186504254f8c3a"
+            ],
+            "execution_instance_id": "execution:7c64a776d5f5d2937b77f127d973d5784013c87ac4105df7c9a911e259cf9a7d",
+            "finished_at": 1790790791.7524917,
+            "history_completed": true,
+            "started_at": 1790790791.7504942,
+            "terminal_event": "executing"
+          }
+        ],
+        "event_counts": {
+          "executed": 1,
+          "executing": 8,
+          "execution_cached": 1,
+          "execution_start": 1,
+          "execution_success": 1,
+          "progress": 30,
+          "progress_state": 44,
+          "status": 4
+        },
+        "reason": "backend websocket starts and terminal events bind to completed history",
+        "status": "evaluable"
+      },
+      "private_capture_sha256": {
+        "call-1-after.json": "ec06cbb197b63f58e3cfd168f5bcb89b8b12801a0954e9d4f84b5f4a9f46a04d",
+        "call-1-before.json": "d8fdd4988a68fffacd460c39cefd3933942fe2d3c2fbfa83d42454b4790d0ee9",
+        "call-1-invocation.json": "4fe4f3f8b56a950ec41338259e2c26936c509768c4b8f577dfb36f97daccca37",
+        "call-1-outcome.json": "2cbba8fa75c7a5a0ce9898a06ce85d97ece0329878a6732daa4476567ca8bb92",
+        "call-1-result.json": "d0a49410aa21c8d507ea49b6f0ad283faf739c129845cfcfe438999956c7781b",
+        "oracle-snapshot-1.json": "0e09cd81914bf7cf3d5796cd8ba8639cb905289507bf98d6312ad230c30de3bd",
+        "oracle-transport-final.json": "d33f06b5b2ee8bfc59c3e9d0945879d59205277f87a2362b6172a98b37f8275c",
+        "proxy-receipts.json": "34266cf81d37c54807700580ab3bfbde9935b626beb161c86149a14c582fc957",
+        "session.json": "04455876295ba44ede76e121675c67d0e935c12f21a70392acaa31230efef3f0"
+      },
+      "product_call_count": 1,
+      "product_calls": [
+        {
+          "artifact_hashes": [
+            "dfc97e42a12d2fb3d1e359be52db6270b6acec01bc4377b0549c94e9b019b04a"
+          ],
+          "exit_code": 0,
+          "failure": null,
+          "generate_arguments_sha256": "dd8fa1b9489f8a3fee27b07f07902419d1762cf72d32c87553a36ad1d077d9c2",
+          "manifest_after_sha256": "ec06cbb197b63f58e3cfd168f5bcb89b8b12801a0954e9d4f84b5f4a9f46a04d",
+          "manifest_before_sha256": "d8fdd4988a68fffacd460c39cefd3933942fe2d3c2fbfa83d42454b4790d0ee9",
+          "reported_state": "resolved",
+          "result_digests": {
+            "canonical_request_digest": "9d6c8624d7fe45937edc457e232233c85b53932d447776e1502cad2f49b36af7",
+            "compiled_prompt_digest": "9d0583d56d02e418139ff7af03ff24005e2056e1786259d8696085530093789a",
+            "input_digest": "f8aa45502b0949d3e578abe8edb541dd4f386765c215e335c2f544ca47000d2a",
+            "route_identity_sha256": "626e2fd7ff9bf808e30937d4d4baaa9a22026223df183ad4b185c7e6c64d4b56",
+            "validator_version": "product-validate-v1",
+            "workflow_graph_digest": "05f942291676182d08446b8855d6353a96e10fa3b059703a9f6d41e16d36000e"
+          },
+          "retry_scope": "same_run",
+          "run_id_sha256": "3a5332b7b6fe751001551575e4a57b2c76aa2cd89e8fe5b704afe562c9164202",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "7c3b306424014d1ed94c093f1297a066716f999f63d43ffc8d5830d811a09092",
+          "timed_out": false
+        }
+      ],
+      "product_command_sha256": "085ea0725894981bf4fa8facd7b8a2ae298fe2c5db64b679aa95f6f5dbca5a5b",
+      "proxy_prompt_count": 1,
+      "proxy_receipts": [
+        {
+          "body_bytes": 969,
+          "body_sha256": "7a646c2782719110de5910528023f8eb84ecb800497d145cbb483757a118fc81",
+          "failure": null,
+          "forwarded": true,
+          "method": "POST",
+          "oracle_job_id_sha256": "87b37bcba163c68317c43036c6c3c982f54b41b0998d5448afd5a0eec494eba3",
+          "path": "/prompt",
+          "received_at": 1790790762.5134587,
+          "response_dropped": false,
+          "sequence": 1,
+          "upstream_status": 200
+        }
+      ],
+      "request_matches_frozen": true,
+      "retry_scope": "same_run",
+      "status": "completed",
+      "stop_reason": null,
+      "submission_guard_observed": false,
+      "system": "W3",
+      "unique_execution_start_count": 1,
+      "working_directory_sha256": "0a8b08e62e3383aad1440edc2fb0ccf790211216cacf53dfde97721260b3e2d9"
+    },
+    {
+      "artifact_count": 2,
+      "backend_acceptance_count": 1,
+      "case_id": "W3_F02",
+      "classifications": {
+        "failed": 0,
+        "injection_confirmed": 1,
+        "not_run": 0,
+        "oracle_evaluable": 1,
+        "resolved": 0,
+        "scheduled": 1,
+        "started": 1,
+        "unresolved": 1
+      },
+      "execution_finish_count": 1,
+      "fault_mode": "F02",
+      "oracle": {
+        "bindings": [
+          {
+            "artifact_path_sha256": [
+              "afd9208ef7e08731998abca60e921fa6bd68474d28ec973f5cfdb21980bba5f9",
+              "e0ee8bb50685e05fa0f47ed04203ae953fdfd055f5bd2892ea186504254f8c3a"
+            ],
+            "execution_instance_id": "execution:de311ad9564274f117ecb4a27642570d326cb1a18de61b40257d529319de8cf9",
+            "finished_at": 1790790814.4527519,
+            "history_completed": true,
+            "started_at": 1790790814.227735,
+            "terminal_event": "executing"
+          }
+        ],
+        "event_counts": {
+          "executed": 1,
+          "executing": 1,
+          "execution_cached": 1,
+          "execution_start": 1,
+          "execution_success": 1,
+          "progress_state": 1,
+          "status": 4
+        },
+        "reason": "backend websocket starts and terminal events bind to completed history",
+        "status": "evaluable"
+      },
+      "private_capture_sha256": {
+        "call-1-after.json": "249dc1bb8ce226c06c04b0f6c0b962d8ad391076829657ff6d2f46a0a1ec9de3",
+        "call-1-before.json": "79cab5a0d10e434fa341286c658c62cc79d066130e81da4122b322d046bdbb97",
+        "call-1-invocation.json": "ad59951b8b736fa37b0fd890cfa9fddf012182ef972f4bc4997c7ae1328cf0aa",
+        "call-1-outcome.json": "e74c81449c73a76febbd31d24a24669694248c1d705ec656b3995e2a95d18534",
+        "call-1-result.json": "9c09bdb5b5ffac0d17c71602f762ce89843a83fff714c59e0f19dc0f789b2189",
+        "call-2-after.json": "249dc1bb8ce226c06c04b0f6c0b962d8ad391076829657ff6d2f46a0a1ec9de3",
+        "call-2-before.json": "249dc1bb8ce226c06c04b0f6c0b962d8ad391076829657ff6d2f46a0a1ec9de3",
+        "call-2-invocation.json": "6243391b79002b674bc12a1b636046ee93879f62552d766629d9784926e9f9b9",
+        "call-2-outcome.json": "184935cc5c8de618da53390ccec3d695d3befb7641c37469eaebabc9999d7381",
+        "call-2-result.json": "a60a070128faa3e6bd8bfce2c5c7708eaf1e5f4b7e5d0ab247753a11120e8837",
+        "oracle-snapshot-1.json": "983ea1c3045eb96aed8a40db8f74e9ec3d90eef3fa495b083885bfdfd2a58c2a",
+        "oracle-transport-final.json": "a4b8e4a4b3d2ec4fff18aed649864207d71bb0e45b8c673d61b0f9e4441f206b",
+        "proxy-receipts.json": "57920ca1f011e0fe7b96798e7dffb81bda3dcddc74a7ebd83a24960666b80fd5",
+        "session.json": "52e93a3fc1a5a3e748efe11b5c7a8f946f431eeecc027e60ddb704eb1ed59285"
+      },
+      "product_call_count": 2,
+      "product_calls": [
+        {
+          "artifact_hashes": [],
+          "client_error_code": "backend_request_failed",
+          "client_error_schema_version": 1,
+          "client_error_stage": "generate_round",
+          "exit_code": 0,
+          "failure": null,
+          "generate_arguments_sha256": "d1811249b54e6b70fc35cf807a94fe1842f45137c535c55a2dc69db9a4e17c57",
+          "manifest_after_sha256": "249dc1bb8ce226c06c04b0f6c0b962d8ad391076829657ff6d2f46a0a1ec9de3",
+          "manifest_before_sha256": "79cab5a0d10e434fa341286c658c62cc79d066130e81da4122b322d046bdbb97",
+          "reported_state": "unresolved",
+          "result_digests": {
+            "canonical_request_digest": "9d6c8624d7fe45937edc457e232233c85b53932d447776e1502cad2f49b36af7",
+            "compiled_prompt_digest": "9d0583d56d02e418139ff7af03ff24005e2056e1786259d8696085530093789a",
+            "input_digest": "f8aa45502b0949d3e578abe8edb541dd4f386765c215e335c2f544ca47000d2a",
+            "route_identity_sha256": "626e2fd7ff9bf808e30937d4d4baaa9a22026223df183ad4b185c7e6c64d4b56",
+            "validator_version": "product-validate-v1",
+            "workflow_graph_digest": "05f942291676182d08446b8855d6353a96e10fa3b059703a9f6d41e16d36000e"
+          },
+          "retry_scope": "same_run",
+          "run_id_sha256": "3fd5f130d6df211503d10530e406ff756b202df426c373fd85858073ec14b624",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "d718eb3468b1a41f6074f903cdcfb0f2b79eb9930450a6561b226784eab6686f",
+          "timed_out": false
+        },
+        {
+          "artifact_hashes": [],
+          "client_error_code": "submission_outcome_unknown",
+          "client_error_schema_version": 1,
+          "client_error_stage": "generate_round",
+          "exit_code": 0,
+          "failure": null,
+          "generate_arguments_sha256": "d1811249b54e6b70fc35cf807a94fe1842f45137c535c55a2dc69db9a4e17c57",
+          "manifest_after_sha256": "249dc1bb8ce226c06c04b0f6c0b962d8ad391076829657ff6d2f46a0a1ec9de3",
+          "manifest_before_sha256": "249dc1bb8ce226c06c04b0f6c0b962d8ad391076829657ff6d2f46a0a1ec9de3",
+          "reported_state": "unresolved",
+          "result_digests": {
+            "canonical_request_digest": "9d6c8624d7fe45937edc457e232233c85b53932d447776e1502cad2f49b36af7",
+            "compiled_prompt_digest": "9d0583d56d02e418139ff7af03ff24005e2056e1786259d8696085530093789a",
+            "input_digest": "f8aa45502b0949d3e578abe8edb541dd4f386765c215e335c2f544ca47000d2a",
+            "route_identity_sha256": "626e2fd7ff9bf808e30937d4d4baaa9a22026223df183ad4b185c7e6c64d4b56",
+            "validator_version": "product-validate-v1",
+            "workflow_graph_digest": "05f942291676182d08446b8855d6353a96e10fa3b059703a9f6d41e16d36000e"
+          },
+          "retry_scope": "same_run",
+          "run_id_sha256": "3fd5f130d6df211503d10530e406ff756b202df426c373fd85858073ec14b624",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "f40abded3a97e59f01102c3e84057c79af741731134f6c226e52a2a4ebb1a804",
+          "timed_out": false
+        }
+      ],
+      "product_command_sha256": "085ea0725894981bf4fa8facd7b8a2ae298fe2c5db64b679aa95f6f5dbca5a5b",
+      "proxy_prompt_count": 1,
+      "proxy_receipts": [
+        {
+          "body_bytes": 969,
+          "body_sha256": "4dc650fc8ce0f0f7f79c0b02f2671235995803b7958809b3eefde32721ee4fb9",
+          "failure": null,
+          "forwarded": true,
+          "method": "POST",
+          "oracle_job_id_sha256": "16a26652514171c9ee63843b8a4998df915ab9cfc04d47e6d18611b9494c452e",
+          "path": "/prompt",
+          "received_at": 1790790814.173441,
+          "response_dropped": true,
+          "sequence": 1,
+          "upstream_status": 200
+        }
+      ],
+      "request_matches_frozen": true,
+      "retry_scope": "same_run",
+      "status": "completed",
+      "stop_reason": null,
+      "submission_guard_observed": true,
+      "system": "W3",
+      "unique_execution_start_count": 1,
+      "working_directory_sha256": "0a8b08e62e3383aad1440edc2fb0ccf790211216cacf53dfde97721260b3e2d9"
+    }
+  ],
+  "scope": "same-run submission rejection; no natural rates, physical GPU execution or eventual completion claim",
+  "status": "COMPLETED"
+}

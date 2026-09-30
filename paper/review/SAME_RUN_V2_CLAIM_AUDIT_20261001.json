@@ -1,0 +1,385 @@
+{
+  "audit_skill": "paper-claim-audit",
+  "verdict": "WARN",
+  "reason_code": "bounded_guard_signature_verified_with_scope_limits",
+  "same_run_empirical_verdict": "PASS",
+  "summary": "V2 empirical counts, complete same-run argument reuse, unchanged manifests, and the observed submission_outcome_unknown guard signature PASS. Overall WARN only for bounded provenance/causal mappings; no numerical mismatch.",
+  "review_independence": "same-family",
+  "acceptance_status": "provisional",
+  "reviewer_context": "continuation_of_v1_reviewer_not_fresh_zero_context",
+  "reviewer_family": "openai",
+  "reviewer_model": "inherited_runtime_not_independently_identified",
+  "generated_at": "2026-09-30T18:01:44.322Z",
+  "audited_input_hashes": {
+    "main.tex": "sha256:d29ecd89bf053035dc05f21255768986d94e8e44feba521a269bb67620793e85",
+    "evidence/windows-same-run-v2-20261001.json": "sha256:5e29a4c0d9c9b592aa648c4ad50430e1225d09eb0676abbeee412595e40f0506",
+    "evidence/windows-same-run-v2-audit-20261001.json": "sha256:28bf8bdbd9caf830db39edd1aae297f956a84830e4d76eec50596008885239b6",
+    "/Users/chevalgrand/Documents/ paper dsn/review-checkouts/local-gpu-imagegen-dsn-writing/scripts/research/f02_product_client.py": "sha256:6f57f25e4f8f5b5d24ede1fe3df747dc75ab7e7d9ed68638307577d73a13ff00",
+    "/Users/chevalgrand/Documents/ paper dsn/review-checkouts/local-gpu-imagegen-dsn-writing/scripts/research/f02_same_run_campaign.py": "sha256:ae2984ddccfdee5ba80a557e6373145a2c483e12ce2d5365a2cf1f1fd308b60f",
+    "delivery/private-same-run-v2-20261001/capture/W3_F00/call-1-after.json": "sha256:ec06cbb197b63f58e3cfd168f5bcb89b8b12801a0954e9d4f84b5f4a9f46a04d",
+    "delivery/private-same-run-v2-20261001/capture/W3_F00/call-1-before.json": "sha256:d8fdd4988a68fffacd460c39cefd3933942fe2d3c2fbfa83d42454b4790d0ee9",
+    "delivery/private-same-run-v2-20261001/capture/W3_F00/call-1-invocation.json": "sha256:4fe4f3f8b56a950ec41338259e2c26936c509768c4b8f577dfb36f97daccca37",
+    "delivery/private-same-run-v2-20261001/capture/W3_F00/call-1-outcome.json": "sha256:2cbba8fa75c7a5a0ce9898a06ce85d97ece0329878a6732daa4476567ca8bb92",
+    "delivery/private-same-run-v2-20261001/capture/W3_F00/call-1-result.json": "sha256:d0a49410aa21c8d507ea49b6f0ad283faf739c129845cfcfe438999956c7781b",
+    "delivery/private-same-run-v2-20261001/capture/W3_F00/oracle-snapshot-1.json": "sha256:0e09cd81914bf7cf3d5796cd8ba8639cb905289507bf98d6312ad230c30de3bd",
+    "delivery/private-same-run-v2-20261001/capture/W3_F00/oracle-transport-final.json": "sha256:d33f06b5b2ee8bfc59c3e9d0945879d59205277f87a2362b6172a98b37f8275c",
+    "delivery/private-same-run-v2-20261001/capture/W3_F00/proxy-receipts.json": "sha256:34266cf81d37c54807700580ab3bfbde9935b626beb161c86149a14c582fc957",
+    "delivery/private-same-run-v2-20261001/capture/W3_F00/session.json": "sha256:04455876295ba44ede76e121675c67d0e935c12f21a70392acaa31230efef3f0",
+    "delivery/private-same-run-v2-20261001/capture/W3_F02/call-1-after.json": "sha256:249dc1bb8ce226c06c04b0f6c0b962d8ad391076829657ff6d2f46a0a1ec9de3",
+    "delivery/private-same-run-v2-20261001/capture/W3_F02/call-1-before.json": "sha256:79cab5a0d10e434fa341286c658c62cc79d066130e81da4122b322d046bdbb97",
+    "delivery/private-same-run-v2-20261001/capture/W3_F02/call-1-invocation.json": "sha256:ad59951b8b736fa37b0fd890cfa9fddf012182ef972f4bc4997c7ae1328cf0aa",
+    "delivery/private-same-run-v2-20261001/capture/W3_F02/call-1-outcome.json": "sha256:e74c81449c73a76febbd31d24a24669694248c1d705ec656b3995e2a95d18534",
+    "delivery/private-same-run-v2-20261001/capture/W3_F02/call-1-result.json": "sha256:9c09bdb5b5ffac0d17c71602f762ce89843a83fff714c59e0f19dc0f789b2189",
+    "delivery/private-same-run-v2-20261001/capture/W3_F02/call-2-after.json": "sha256:249dc1bb8ce226c06c04b0f6c0b962d8ad391076829657ff6d2f46a0a1ec9de3",
+    "delivery/private-same-run-v2-20261001/capture/W3_F02/call-2-before.json": "sha256:249dc1bb8ce226c06c04b0f6c0b962d8ad391076829657ff6d2f46a0a1ec9de3",
+    "delivery/private-same-run-v2-20261001/capture/W3_F02/call-2-invocation.json": "sha256:6243391b79002b674bc12a1b636046ee93879f62552d766629d9784926e9f9b9",
+    "delivery/private-same-run-v2-20261001/capture/W3_F02/call-2-outcome.json": "sha256:184935cc5c8de618da53390ccec3d695d3befb7641c37469eaebabc9999d7381",
+    "delivery/private-same-run-v2-20261001/capture/W3_F02/call-2-result.json": "sha256:a60a070128faa3e6bd8bfce2c5c7708eaf1e5f4b7e5d0ab247753a11120e8837",
+    "delivery/private-same-run-v2-20261001/capture/W3_F02/oracle-snapshot-1.json": "sha256:983ea1c3045eb96aed8a40db8f74e9ec3d90eef3fa495b083885bfdfd2a58c2a",
+    "delivery/private-same-run-v2-20261001/capture/W3_F02/oracle-transport-final.json": "sha256:a4b8e4a4b3d2ec4fff18aed649864207d71bb0e45b8c673d61b0f9e4441f206b",
+    "delivery/private-same-run-v2-20261001/capture/W3_F02/proxy-receipts.json": "sha256:57920ca1f011e0fe7b96798e7dffb81bda3dcddc74a7ebd83a24960666b80fd5",
+    "delivery/private-same-run-v2-20261001/capture/W3_F02/session.json": "sha256:52e93a3fc1a5a3e748efe11b5c7a8f946f431eeecc027e60ddb704eb1ed59285",
+    "delivery/private-same-run-v2-20261001/capture/configuration.json": "sha256:b377a3da705f6514b568c69dc4df4efa2dcf3a67dd176efc94d5083f54b33871",
+    "delivery/private-same-run-v2-20261001/capture/harness-source-hashes.json": "sha256:d5e1f410b86f1db26022489610f3dee15f881e58bb9a6413fcd04911c0ae8a1a",
+    "delivery/private-same-run-v2-20261001/capture/preflight.json": "sha256:7de7b7846fe59af095b338553050d9a7eb7a4c04ba92b35c8d9170d34a40c1cc"
+  },
+  "scope": {
+    "v2_only": true,
+    "prior_v1_audit_preserved": true,
+    "backend_calls": false,
+    "manuscript_or_evidence_edits": false,
+    "private_payloads_in_report": false,
+    "retained_consistency_not_authenticity_or_completeness": true,
+    "product_internal_source_audit": false
+  },
+  "details": {
+    "claims": [
+      {
+        "claim_id": "V2-01",
+        "location": "main.tex:13-13",
+        "paper_text": "A lost submission response can leave a generation client uncertain whether its backend executed a request. We describe an evidence exporter, a same-run submission guard, and controlled fault injection for local image-generation pipelines. The exporter separates reported state, interpretation, and oracle evidence. Four fixed Windows/ComfyUI cases retained one execution binding per control and two per response-loss case; their second calls created fresh runs outside the guard. A subsequent same-run campaign initially stopped at model-identity validation. Restoring the pinned process-local inventory in a revised research caller exposed the guard: the retry returned submission-outcome-unknown with no additional submission, while the original run remained unresolved. Synthetic CPU fixtures expose incomplete operation as a cost. Raw payloads support reconstruction of the new retained bindings; the historical event gap remains. Original-run reconciliation, deployment rates, physical GPU execution counts and output-quality improvements remain unestablished.",
+        "claim": "Abstract v2 guard observation and lack of reconciliation",
+        "status": "exact_match",
+        "evidence_value": "Retry error submission_outcome_unknown; total F02 POSTs 1; original run unresolved.",
+        "details": "Verified at the retained product interface; no claim of authenticated internal branch execution."
+      },
+      {
+        "claim_id": "V2-02",
+        "location": "main.tex:325-338",
+        "paper_text": "\\caption{Two cases per same-run Windows campaign. C/S/E denote product calls,\nproxy submissions and bound backend lifecycles. The F02 retry was rejected\nby model-identity validation in v1 and by the submission guard in v2.\nIdentical counts alone cannot distinguish these mechanisms.}\n\\label{tab:samerun}\n\\centering\n\\begin{tabular}{lcccl}\n\\hline\nCase / protocol & C & S & E & Client calls \\\\\n\\hline\nW3 F00 / v1 & 1 & 1 & 1 & resolved \\\\\nW3 F00 / v2 & 1 & 1 & 1 & resolved \\\\\nW3 F02 / v1 & 2 & 1 & 1 & unresolved / unresolved \\\\\nW3 F02 / v2 & 2 & 1 & 1 & unresolved / unresolved \\\\",
+        "claim": "V2 table F00 C/S/E 1/1/1 and F02 2/1/1; call labels",
+        "status": "exact_match",
+        "evidence_value": "F00 resolved; F02 unresolved/unresolved; two case types in v2.",
+        "details": "V1 rows are outside this follow-up's declared inputs and retain their prior audit."
+      },
+      {
+        "claim_id": "V2-03",
+        "location": "main.tex:353-356",
+        "paper_text": "A revised \\texttt{same-run-guard-v2} caller rebuilt the pinned model inventory\nin both fresh MCP processes, using the existing exact-file index, fingerprint\nand private-catalog checks. The frozen product was unchanged; complete generation arguments were reused\nunchanged within the same run. Locked-route validation was not bypassed. In a separate two-case",
+        "claim": "Both fresh MCP processes rebuild pinned inventory using exact-file index, fingerprint and private-catalog checks",
+        "status": "exact_match",
+        "evidence_value": "run_same_run creates a new StdioMcp and calls _discover_route before the call-index branch. _discover_route checks exact file, model SHA/identity, approved catalog bundle/workflow and recommendation boundary.",
+        "details": "Both inspected source files match captured source hashes when encoded with Windows CRLF line endings."
+      },
+      {
+        "claim_id": "V2-04",
+        "location": "main.tex:355-356",
+        "paper_text": "and private-catalog checks. The frozen product was unchanged; complete generation arguments were reused\nunchanged within the same run. Locked-route validation was not bypassed. In a separate two-case",
+        "claim": "Complete generation arguments reused unchanged within the same run",
+        "status": "exact_match",
+        "evidence_value": "Within v2 F02, canonical complete arguments digest, run identity, key, seed and request digest agree across both calls.",
+        "details": "Revised manuscript explicitly limits equality to the same run; canonical full-argument equality is verified."
+      },
+      {
+        "claim_id": "V2-05",
+        "location": "main.tex:355-356",
+        "paper_text": "and private-catalog checks. The frozen product was unchanged; complete generation arguments were reused\nunchanged within the same run. Locked-route validation was not bypassed. In a separate two-case",
+        "claim": "Frozen product unchanged and locked-route validation not bypassed",
+        "status": "ambiguous_mapping",
+        "evidence_value": "Retained configuration/preflight records frozen product identities. The research caller invokes normal local_gpu_generate_round with saved arguments; it introduces no validation-bypass option.",
+        "details": "Product source and before/after source-tree receipts are not declared inputs; this verifies caller behavior and recorded identity, not complete product-tree immutability or internal validation ordering."
+      },
+      {
+        "claim_id": "V2-06",
+        "location": "main.tex:357-359",
+        "paper_text": "campaign, the F02 retry returned \\texttt{submission\\_outcome\\_unknown} at generation.\nThe controller reported \\texttt{submission\\_guard\\_observed=true}, with one total\nPOST and an unchanged unresolved manifest. This observes the target guard's",
+        "claim": "Retry returns target error at generation and controller reports guard true",
+        "status": "exact_match",
+        "evidence_value": "Retained call-2 result and outcome both say submission_outcome_unknown at generate_round; exit 0, not timed out; report guard=true.",
+        "details": "_structured propagates structured MCP error.code; run_same_run captures it after calling generation. The controller requires this exact code/stage, no added receipt, and unchanged session/run/argument digests. It does not set guard=true from POST count alone."
+      },
+      {
+        "claim_id": "V2-07",
+        "location": "main.tex:358-359",
+        "paper_text": "The controller reported \\texttt{submission\\_guard\\_observed=true}, with one total\nPOST and an unchanged unresolved manifest. This observes the target guard's",
+        "claim": "One total POST and unchanged unresolved manifest",
+        "status": "exact_match",
+        "evidence_value": "One accepted dropped-response receipt; call-1-after, call-2-before and call-2-after bytes identical; run and attempt unresolved, submission_outcome unknown, durable_job_present=false.",
+        "details": ""
+      },
+      {
+        "claim_id": "V2-08",
+        "location": "main.tex:359-361",
+        "paper_text": "POST and an unchanged unresolved manifest. This observes the target guard's\nsubmission blocking for one fixed response-loss case; it does not establish\nreconciliation or eventual completion. The setup change supports a process-local",
+        "claim": "One fixed response-loss case observes submission blocking, without completion",
+        "status": "exact_match",
+        "evidence_value": "F02 has accepted-response loss, the expected stable product error and zero added retained POSTs; original run stays unresolved.",
+        "details": "This is a bounded observable guard-rejection result, not a population efficacy estimate or internal execution trace."
+      },
+      {
+        "claim_id": "V2-09",
+        "location": "main.tex:361-362",
+        "paper_text": "reconciliation or eventual completion. The setup change supports a process-local\ninventory explanation for v1, without proving its entire internal error path.",
+        "claim": "Inventory change supports v1 explanation without proving full cause",
+        "status": "ambiguous_mapping",
+        "evidence_value": "The v2 source runs inventory reconstruction before the retry and the target error is observed.",
+        "details": "V1 source and raw errors are not re-read in this v2-only pass. Causal v1 diagnosis remains a qualified hypothesis, as the text states."
+      },
+      {
+        "claim_id": "V2-10",
+        "location": "main.tex:364-365",
+        "paper_text": "Each campaign's private capture retained 90 F00 and 10 F02 WebSocket text payloads and one\nhistory response per case. Offline reanalysis checked byte hashes and channel",
+        "claim": "V2 captures 90 F00/10 F02 WebSocket payloads and one history response each",
+        "status": "exact_match",
+        "evidence_value": "Independent base64 decode: 90/10 text JSON payloads; 1 HTTP history response per case.",
+        "details": "The phrase 'each campaign' includes v1, which this follow-up does not recertify."
+      },
+      {
+        "claim_id": "V2-11",
+        "location": "main.tex:365-366",
+        "paper_text": "history response per case. Offline reanalysis checked byte hashes and channel\nsequences, reconstructed one start and one \\texttt{executing} event with",
+        "claim": "Byte hashes and channel sequences checked",
+        "status": "exact_match",
+        "evidence_value": "100/100 WebSocket and 2/2 history body hashes match; sequences contiguous from 1 within each channel; 23 per-case files and root preflight/config hashes match.",
+        "details": "Snapshot and final transport structures also agree."
+      },
+      {
+        "claim_id": "V2-12",
+        "location": "main.tex:366-368",
+        "paper_text": "sequences, reconstructed one start and one \\texttt{executing} event with\n\\texttt{node=null} per case, and bound them to successful history and the\npublished execution identifiers. This checks received, retained evidence;",
+        "claim": "One start, one executing node=null and successful history per case with published binding identity",
+        "status": "exact_match",
+        "evidence_value": "Raw event fields match snapshots; start/terminal/receipt/history correlation identities agree; successful completed histories and published binding timestamps/IDs agree.",
+        "details": "Association is checked; the oracle's identifier-construction algorithm is outside declared source."
+      },
+      {
+        "claim_id": "V2-13",
+        "location": "main.tex:368-371",
+        "paper_text": "published execution identifiers. This checks received, retained evidence;\nit supplies no authenticity or completeness guarantee. F02 included a cache\nevent and no progress events, so its lifecycle binding is not evidence of new\nphysical GPU computation. These new payloads do not recover the missing",
+        "claim": "No authenticity/completeness or fresh physical GPU inference",
+        "status": "exact_match",
+        "evidence_value": "F02 cache events 1, progress events 0; lifecycle binding 1.",
+        "details": "Counts support the stated limit, not absence or presence of physical GPU work."
+      },
+      {
+        "claim_id": "V2-14",
+        "location": "main.tex:371-372",
+        "paper_text": "physical GPU computation. These new payloads do not recover the missing\nhistorical event lists. No third call or fresh-run fallback was made.",
+        "claim": "New payloads do not recover historical events; no third call/fresh-run fallback",
+        "status": "exact_match",
+        "evidence_value": "V2 controller has at most calls 1 and 2; F00 returns after call 1, F02 returns after call 2; retained invocations match. Retry reads saved run instead of starting a run.",
+        "details": "No historical raw events are introduced; this is a bounded record and source check."
+      },
+      {
+        "claim_id": "V2-15",
+        "location": "main.tex:401-403",
+        "paper_text": "The subsequent same-run test used a separate detached research checkout,\npreserved the frozen product revisions, and retained the v1 negative result\nand separate v2 observation.",
+        "claim": "Separate v2 observation preserves v1 negative result",
+        "status": "exact_match",
+        "evidence_value": "Current manuscript retains the v1 model_identity_drifted/guard=false paragraph and explicitly separates v2.",
+        "details": "This follow-up writes no v1 files; detached checkout state is not verified by the declared capture."
+      },
+      {
+        "claim_id": "V2-16",
+        "location": "main.tex:433-438",
+        "paper_text": "robustness. The subsequent two-case Windows test is a new controlled backend\nexperiment, with no model download; it remains separate from the historical\ncampaign. The v2 follow-up observes the guard in one fixed case, not a\npopulation effect or execution-count advantage. Private raw\ncaptures are excluded from the reviewer package, so its public audit receipt\ncannot substitute for third-party access to those bytes.",
+        "claim": "One fixed v2 case does not establish population or execution-count advantage",
+        "status": "exact_match",
+        "evidence_value": "Only W3 F00/F02 appear in v2; no v2 B2 comparison or sampled population is supplied.",
+        "details": "No model download and reviewer-package exclusion are procedural statements not certified by this bounded audit."
+      }
+    ],
+    "total_claims": 16,
+    "status_counts": {
+      "exact_match": 14,
+      "ambiguous_mapping": 2
+    },
+    "numeric_mismatches": [],
+    "raw_verification": [
+      {
+        "case": "W3_F00",
+        "file_hashes_all_match": true,
+        "file_hash_count": 9,
+        "payload_hashes": {
+          "websocket_messages": true,
+          "history_responses": true
+        },
+        "sequences": {
+          "websocket_messages": true,
+          "history_responses": true
+        },
+        "snapshot_transport_equal": true,
+        "counts": {
+          "status": 4,
+          "execution_start": 1,
+          "execution_cached": 1,
+          "progress_state": 44,
+          "executing": 8,
+          "progress": 30,
+          "executed": 1,
+          "execution_success": 1
+        },
+        "websocket_count": 90,
+        "history_count": 1,
+        "start_count": 1,
+        "terminal_null_count": 1,
+        "prompt_binding_matches": true,
+        "binding_timestamps_match": true,
+        "public_binding_fields_match": true,
+        "raw_event_snapshot_match": true,
+        "public_counts_match": true,
+        "history_completed": true,
+        "history_success": true,
+        "receipt_count": 1,
+        "accepted_receipt": true,
+        "dropped": false,
+        "manifest_retry_byte_identical": null,
+        "guard_observed": false,
+        "calls": [
+          {
+            "index": 1,
+            "state": "resolved",
+            "code": null,
+            "stage": null,
+            "exit_code": 0,
+            "timed_out": false,
+            "capture_error_absent": true,
+            "result_equals_outcome": true,
+            "arg_digest_matches": true,
+            "run_identity_matches": true,
+            "operation_key_matches": true,
+            "context_matches": true,
+            "request_digest_matches": true,
+            "before_hash_matches": true,
+            "after_hash_matches": true,
+            "seed_matches": true,
+            "durable_state": "generated",
+            "attempt_status": "completed",
+            "submission_outcome": null,
+            "durable_job_present": false
+          }
+        ]
+      },
+      {
+        "case": "W3_F02",
+        "file_hashes_all_match": true,
+        "file_hash_count": 14,
+        "payload_hashes": {
+          "websocket_messages": true,
+          "history_responses": true
+        },
+        "sequences": {
+          "websocket_messages": true,
+          "history_responses": true
+        },
+        "snapshot_transport_equal": true,
+        "counts": {
+          "status": 4,
+          "execution_start": 1,
+          "execution_cached": 1,
+          "executed": 1,
+          "progress_state": 1,
+          "execution_success": 1,
+          "executing": 1
+        },
+        "websocket_count": 10,
+        "history_count": 1,
+        "start_count": 1,
+        "terminal_null_count": 1,
+        "prompt_binding_matches": true,
+        "binding_timestamps_match": true,
+        "public_binding_fields_match": true,
+        "raw_event_snapshot_match": true,
+        "public_counts_match": true,
+        "history_completed": true,
+        "history_success": true,
+        "receipt_count": 1,
+        "accepted_receipt": true,
+        "dropped": true,
+        "manifest_retry_byte_identical": true,
+        "guard_observed": true,
+        "calls": [
+          {
+            "index": 1,
+            "state": "unresolved",
+            "code": "backend_request_failed",
+            "stage": "generate_round",
+            "exit_code": 0,
+            "timed_out": false,
+            "capture_error_absent": true,
+            "result_equals_outcome": true,
+            "arg_digest_matches": true,
+            "run_identity_matches": true,
+            "operation_key_matches": true,
+            "context_matches": true,
+            "request_digest_matches": true,
+            "before_hash_matches": true,
+            "after_hash_matches": true,
+            "seed_matches": true,
+            "durable_state": "unresolved",
+            "attempt_status": "unresolved",
+            "submission_outcome": "unknown",
+            "durable_job_present": false
+          },
+          {
+            "index": 2,
+            "state": "unresolved",
+            "code": "submission_outcome_unknown",
+            "stage": "generate_round",
+            "exit_code": 0,
+            "timed_out": false,
+            "capture_error_absent": true,
+            "result_equals_outcome": true,
+            "arg_digest_matches": true,
+            "run_identity_matches": true,
+            "operation_key_matches": true,
+            "context_matches": true,
+            "request_digest_matches": true,
+            "before_hash_matches": true,
+            "after_hash_matches": true,
+            "seed_matches": true,
+            "durable_state": "unresolved",
+            "attempt_status": "unresolved",
+            "submission_outcome": "unknown",
+            "durable_job_present": false
+          }
+        ]
+      }
+    ],
+    "source_line_ending_checks": {
+      "f02_product_client.py": {
+        "local_sha256": "6f57f25e4f8f5b5d24ede1fe3df747dc75ab7e7d9ed68638307577d73a13ff00",
+        "captured_sha256": "82adfe2292a39ca9e377f676496f94e226355e07dd9d432e5dbf5765563aaa0f",
+        "crlf_sha256": "82adfe2292a39ca9e377f676496f94e226355e07dd9d432e5dbf5765563aaa0f",
+        "crlf_matches_capture": true
+      },
+      "f02_same_run_campaign.py": {
+        "local_sha256": "ae2984ddccfdee5ba80a557e6373145a2c483e12ce2d5365a2cf1f1fd308b60f",
+        "captured_sha256": "66021435f491c6ac2790f615e847325aa43a1b814d406798686aa132f6ccd979",
+        "crlf_sha256": "66021435f491c6ac2790f615e847325aa43a1b814d406798686aa132f6ccd979",
+        "crlf_matches_capture": true
+      }
+    },
+    "preflight_hash_ok": true,
+    "configuration_hash_ok": true,
+    "harness_hash_dictionary_equal": true,
+    "campaign_status": "COMPLETED"
+  },
+  "forensic_trace": {
+    "policy": "metadata_only_embedded_to_respect_two_file_write_scope",
+    "prompt_summary": "Bounded v2-only audit of current manuscript, v2 report/audit receipt, private v2 JSON capture, product caller and same-run controller. Verify guard attribution, unchanged arguments/manifests and lifecycle/cache counts; preserve v1 and write only the two named review artifacts.",
+    "response_summary": "V2 empirical counts, complete same-run argument reuse, unchanged manifests, and the observed submission_outcome_unknown guard signature PASS. Overall WARN only for bounded provenance/causal mappings; no numerical mismatch.",
+    "raw_capture_text_retained": false,
+    "independence_limit": "Same reviewer resumed from v1. This is fresh re-computation of v2 bytes, not a fresh zero-context reviewer."
+  }
+}

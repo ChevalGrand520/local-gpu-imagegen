@@ -1,3 +1,15 @@
+# v0.10 current revision
+
+A separate v2 Windows campaign observes the same-run submission guard after
+restoring pinned process-local inventory in both calls. F02 returns
+`submission_outcome_unknown` and adds no POST; original run remains unresolved.
+The v1 negative result remains in the manuscript and evidence. Physical GPU
+savings and eventual completion are unestablished. See v2 report/audit under
+`evidence/`. The offline converter retains lifecycle/recovery separation without an artifact
+validator assertion; all composite verifications remain false. Full converted
+records remain private. Submission readiness remains false; author and public
+artifact reproducibility decisions remain open.
+
 # Standard manuscript source
 
 The v0.9 revision retains the October 1 Windows same-run campaign as a negative

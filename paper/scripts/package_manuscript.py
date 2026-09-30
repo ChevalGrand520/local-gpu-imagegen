@@ -23,6 +23,7 @@ def main():
     files += [ROOT / 'docs/research/dsn-next-evidence-gates-20260929.md']
     files += [ROOT / name for name in (
         'scripts/research/export_records.py',
+        'scripts/research/convert_same_run_capture.py',
         'scripts/research/f02_campaign.py',
         'scripts/research/f02_oracle.py',
         'scripts/research/f02_product_client.py',
@@ -40,8 +41,9 @@ def main():
         'files': {str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest()
                   for p in sorted(files)},
     }
-    files += [ROOT / 'docs/research/runs/f02-same-run-windows-20261001.md']
-    dest = PAPER / 'delivery/dsn-tool-description-v0.9.zip'
+    files += [ROOT / 'docs/research/runs/f02-same-run-windows-20261001.md',
+              ROOT / 'docs/research/runs/f02-same-run-v2-windows-20261001.md']
+    dest = PAPER / 'delivery/dsn-tool-description-v0.10.zip'
     dest.parent.mkdir(exist_ok=True)
     with zipfile.ZipFile(dest, 'w', zipfile.ZIP_DEFLATED) as z:
         for p in sorted(files):

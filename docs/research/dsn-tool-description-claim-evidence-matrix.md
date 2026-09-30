@@ -1,3 +1,14 @@
+## 2026-10-01 v2 follow-up — supersedes current-gate wording below
+
+Separate same-run-guard-v2 campaign COMPLETED. Both fresh MCP processes now
+rebuild the exact pinned model inventory; frozen product and original generation
+arguments are unchanged. F02 retry returned submission_outcome_unknown,
+guard_observed=true, with two calls/one POST/one lifecycle binding and original
+run still unresolved. This supports fixed-case submission blocking, not GPU
+savings or eventual completion. V1 masking failure remains retained. Raw byte
+and binding audit PASS; observer-to-exporter conversion remains open. Details:
+`runs/f02-same-run-v2-windows-20261001.md`.
+
 > v0.4 continuation: the active manuscript is `paper/main.tex` and `paper/main.pdf`.
 > This document preserves the v0.3 planning/audit snapshot. Current evidence
 > disposition and review are in `paper/evidence/` and `paper/review/ARS_REVIEW.md`.

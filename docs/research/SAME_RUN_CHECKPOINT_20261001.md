@@ -1,3 +1,17 @@
+# Current checkpoint: v2 completed
+
+Research caller a8e58eb restores pinned inventory on both calls. Separate v2
+Windows campaign completed: F02 target guard observed, submission_outcome_unknown,
+2 calls/1 POST/1 bound lifecycle; original run remains unresolved. Offline audit
+passed; cached F02 is not physical GPU-work evidence. Backend cleanup verified.
+V1 and configuration-error attempts remain retained. See
+`runs/f02-same-run-v2-windows-20261001.md`. Offline observer-to-exporter prototype completed and reproduced from a clean
+copy; all composite verifications remain false. No further GPU campaign is
+required to document this fixed case. Public raw-artifact access and author
+submission decisions remain open.
+
+## Earlier checkpoint preserved
+
 # Same-run campaign checkpoint
 
 Branch: `codex/f02-same-run-capture`. Runner source: `6c2219e`.

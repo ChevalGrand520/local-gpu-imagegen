@@ -1,0 +1,145 @@
+{
+  "conversion_version": "windows-capture-conversion-v1",
+  "source_report_sha256": "5e29a4c0d9c9b592aa648c4ad50430e1225d09eb0676abbeee412595e40f0506",
+  "scope": "offline conversion; synthetic stress variants are not experiments",
+  "records": [
+    {
+      "case": "W3_F00",
+      "variant": "retained",
+      "interpreted_state": {
+        "submission_state": "job_identified",
+        "execution_state": "succeeded",
+        "evidence_state": "partial",
+        "recovery_state": "not_needed",
+        "domain_verdict": "not_evaluated",
+        "approval_state": "unknown",
+        "execution_verified": false,
+        "execution_verified_reason": "required_independent_execution_artifact_job_or_approval_evidence_is_incomplete"
+      },
+      "mapping_reason": {
+        "submission_state": "explicit_or_observed_job_id_is_available",
+        "execution_state": "execution_state_supplied_by_independent_oracle",
+        "evidence_state": "artifact_hash_exists_without_independent_validation",
+        "recovery_state": "no_unresolved_report_or_oracle_gap",
+        "domain_verdict": "domain_verdict_missing_is_not_evaluated",
+        "approval_state": "approval_state_missing_is_unknown"
+      },
+      "validator_version": null
+    },
+    {
+      "case": "W3_F00",
+      "variant": "synthetic_missing_state",
+      "interpreted_state": {
+        "submission_state": "job_identified",
+        "execution_state": "succeeded",
+        "evidence_state": "partial",
+        "recovery_state": "unknown",
+        "domain_verdict": "not_evaluated",
+        "approval_state": "unknown",
+        "execution_verified": false,
+        "execution_verified_reason": "unresolved_or_reconciling_recovery_state_prevents_execution_verification"
+      },
+      "mapping_reason": {
+        "submission_state": "explicit_or_observed_job_id_is_available",
+        "execution_state": "execution_state_supplied_by_independent_oracle",
+        "evidence_state": "artifact_hash_exists_without_independent_validation",
+        "recovery_state": "reported_run_state_is_missing",
+        "domain_verdict": "domain_verdict_missing_is_not_evaluated",
+        "approval_state": "approval_state_missing_is_unknown"
+      },
+      "validator_version": null
+    },
+    {
+      "case": "W3_F00",
+      "variant": "synthetic_identity_conflict",
+      "interpreted_state": {
+        "submission_state": "job_identified",
+        "execution_state": "succeeded",
+        "evidence_state": "mismatch",
+        "recovery_state": "not_needed",
+        "domain_verdict": "not_evaluated",
+        "approval_state": "unknown",
+        "execution_verified": false,
+        "execution_verified_reason": "required_independent_execution_artifact_job_or_approval_evidence_is_incomplete"
+      },
+      "mapping_reason": {
+        "submission_state": "explicit_or_observed_job_id_is_available",
+        "execution_state": "execution_state_supplied_by_independent_oracle",
+        "evidence_state": "reported_manifest_job_id_differs_from_selected_job_id",
+        "recovery_state": "no_unresolved_report_or_oracle_gap",
+        "domain_verdict": "domain_verdict_missing_is_not_evaluated",
+        "approval_state": "approval_state_missing_is_unknown"
+      },
+      "validator_version": null
+    },
+    {
+      "case": "W3_F02",
+      "variant": "retained",
+      "interpreted_state": {
+        "submission_state": "outcome_unknown",
+        "execution_state": "succeeded",
+        "evidence_state": "missing",
+        "recovery_state": "required",
+        "domain_verdict": "not_evaluated",
+        "approval_state": "unknown",
+        "execution_verified": false,
+        "execution_verified_reason": "unresolved_or_reconciling_recovery_state_prevents_execution_verification"
+      },
+      "mapping_reason": {
+        "submission_state": "reported_attempt_is_unresolved_without_a_durable_job_id",
+        "execution_state": "execution_state_supplied_by_independent_oracle",
+        "evidence_state": "artifact_hash_missing",
+        "recovery_state": "reported_state_requires_recovery_or_reconciliation",
+        "domain_verdict": "domain_verdict_missing_is_not_evaluated",
+        "approval_state": "approval_state_missing_is_unknown"
+      },
+      "validator_version": null
+    },
+    {
+      "case": "W3_F02",
+      "variant": "synthetic_missing_state",
+      "interpreted_state": {
+        "submission_state": "intent_recorded",
+        "execution_state": "succeeded",
+        "evidence_state": "missing",
+        "recovery_state": "unknown",
+        "domain_verdict": "not_evaluated",
+        "approval_state": "unknown",
+        "execution_verified": false,
+        "execution_verified_reason": "unresolved_or_reconciling_recovery_state_prevents_execution_verification"
+      },
+      "mapping_reason": {
+        "submission_state": "reported_attempt_or_terminal_run_proves_intent_not_execution",
+        "execution_state": "execution_state_supplied_by_independent_oracle",
+        "evidence_state": "artifact_hash_missing",
+        "recovery_state": "reported_run_state_is_missing",
+        "domain_verdict": "domain_verdict_missing_is_not_evaluated",
+        "approval_state": "approval_state_missing_is_unknown"
+      },
+      "validator_version": null
+    },
+    {
+      "case": "W3_F02",
+      "variant": "synthetic_identity_conflict",
+      "interpreted_state": {
+        "submission_state": "job_identified",
+        "execution_state": "succeeded",
+        "evidence_state": "mismatch",
+        "recovery_state": "required",
+        "domain_verdict": "not_evaluated",
+        "approval_state": "unknown",
+        "execution_verified": false,
+        "execution_verified_reason": "unresolved_or_reconciling_recovery_state_prevents_execution_verification"
+      },
+      "mapping_reason": {
+        "submission_state": "explicit_or_observed_job_id_is_available",
+        "execution_state": "execution_state_supplied_by_independent_oracle",
+        "evidence_state": "reported_job_id_differs_from_oracle_job_id",
+        "recovery_state": "reported_state_requires_recovery_or_reconciliation",
+        "domain_verdict": "domain_verdict_missing_is_not_evaluated",
+        "approval_state": "approval_state_missing_is_unknown"
+      },
+      "validator_version": null
+    }
+  ]
+}

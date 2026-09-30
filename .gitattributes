@@ -17,3 +17,5 @@ docs/evidence/adoption/**/events.jsonl text eol=lf
 
 # Preserve the exact Windows receipt bytes and its published SHA-256.
 paper/evidence/windows-same-run-20261001.json -text whitespace=cr-at-eol
+
+paper/evidence/windows-same-run-v2-20261001.json -text whitespace=cr-at-eol

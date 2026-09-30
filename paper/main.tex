@@ -10,7 +10,7 @@
 \author{\IEEEauthorblockN{Anonymous submission draft}}
 \maketitle
 \begin{abstract}
-A lost submission response can leave a generation client uncertain whether its backend executed a request. We describe an evidence exporter, a same-run submission guard, and controlled fault injection for local image-generation pipelines. The exporter separates reported state, interpretation, and oracle evidence. Four fixed Windows/ComfyUI cases retained one execution binding per control and two per response-loss case; their second calls created fresh runs outside the guard. A subsequent two-case same-run campaign retained raw transport, but model-identity validation rejected its retry before the ambiguity guard. Zero additional submissions therefore do not establish that guard's efficacy. Synthetic CPU fixtures exercise its blocking behavior and expose incomplete operation as a cost. Raw payloads support reconstruction of the new retained bindings, while the historical event gap remains. Original-run reconciliation, deployment rates, physical GPU execution counts and output-quality improvements remain unestablished.
+A lost submission response can leave a generation client uncertain whether its backend executed a request. We describe an evidence exporter, a same-run submission guard, and controlled fault injection for local image-generation pipelines. The exporter separates reported state, interpretation, and oracle evidence. Four fixed Windows/ComfyUI cases retained one execution binding per control and two per response-loss case; their second calls created fresh runs outside the guard. A subsequent same-run campaign initially stopped at model-identity validation. Restoring the pinned process-local inventory in a revised research caller exposed the guard: the retry returned submission-outcome-unknown with no additional submission, while the original run remained unresolved. Synthetic CPU fixtures expose incomplete operation as a cost. Raw payloads support reconstruction of the new retained bindings; the historical event gap remains. Original-run reconciliation, deployment rates, physical GPU execution counts and output-quality improvements remain unestablished.
 \end{abstract}
 \section{Introduction}
 
@@ -41,7 +41,8 @@ The tool description has three parts: an evidence representation and read-only
 exporter; a same-run guard whose unresolved state remains visible; and CPU and
 Windows fault-observation workflows with separate evidence boundaries. The
 Windows demonstration tests visibility across the client--backend boundary.
-It does not establish that the guard reduces execution counts in that protocol.
+A separate same-run follow-up observes submission blocking, while leaving the
+original run unresolved. Neither protocol establishes physical GPU savings.
 The contribution is an inspectable integration of evidence interpretation,
 run-scoped control and backend observation. Section~\ref{sec:related} compares its scope with
 idempotent APIs, workflow execution and tracing. The evaluated contribution
@@ -310,7 +311,7 @@ advantage for W3.
 Because the second call changed run and seed, the table also does not establish
 a duplicate execution of an identical generation request.
 
-\subsection{Same-run scope test and a masked guard}
+\subsection{Same-run scope tests and a recovered guard observation}
 
 A subsequent campaign retained the frozen W3 product but used a separate
 \texttt{same-run-guard-v1} research caller. F00 invoked one generation call.
@@ -321,17 +322,20 @@ identifier were checked, along with before/after durable manifests. Table~\ref{t
 reports this protocol separately from the four historical cases.
 
 \begin{table}[t]
-\caption{Two fixed same-run Windows cases. C/S/E denote product calls,
+\caption{Two cases per same-run Windows campaign. C/S/E denote product calls,
 proxy submissions and bound backend lifecycles. The F02 retry was rejected
-by model-identity validation; it does not establish the target guard's effect.}
+by model-identity validation in v1 and by the submission guard in v2.
+Identical counts alone cannot distinguish these mechanisms.}
 \label{tab:samerun}
 \centering
 \begin{tabular}{lcccl}
 \hline
-Case & C & S & E & Client calls \\
+Case / protocol & C & S & E & Client calls \\
 \hline
-W3 F00 & 1 & 1 & 1 & resolved \\
-W3 F02 & 2 & 1 & 1 & unresolved / unresolved \\
+W3 F00 / v1 & 1 & 1 & 1 & resolved \\
+W3 F00 / v2 & 1 & 1 & 1 & resolved \\
+W3 F02 / v1 & 2 & 1 & 1 & unresolved / unresolved \\
+W3 F02 / v2 & 2 & 1 & 1 & unresolved / unresolved \\
 \hline
 \end{tabular}
 \end{table}
@@ -346,7 +350,18 @@ mechanism, so withholding a submission cannot be attributed to that guard.
 The cause of the identity disagreement is unverified; its error code does not
 by itself establish changed model bytes.
 
-The private capture retained 90 F00 and 10 F02 WebSocket text payloads and one
+A revised \texttt{same-run-guard-v2} caller rebuilt the pinned model inventory
+in both fresh MCP processes, using the existing exact-file index, fingerprint
+and private-catalog checks. The frozen product was unchanged; complete generation arguments were reused
+unchanged within the same run. Locked-route validation was not bypassed. In a separate two-case
+campaign, the F02 retry returned \texttt{submission\_outcome\_unknown} at generation.
+The controller reported \texttt{submission\_guard\_observed=true}, with one total
+POST and an unchanged unresolved manifest. This observes the target guard's
+submission blocking for one fixed response-loss case; it does not establish
+reconciliation or eventual completion. The setup change supports a process-local
+inventory explanation for v1, without proving its entire internal error path.
+
+Each campaign's private capture retained 90 F00 and 10 F02 WebSocket text payloads and one
 history response per case. Offline reanalysis checked byte hashes and channel
 sequences, reconstructed one start and one \texttt{executing} event with
 \texttt{node=null} per case, and bound them to successful history and the
@@ -384,7 +399,8 @@ reproducible from the included derived records, while recreating the Windows
 campaign also requires the pinned backend, model, workflow and private setup.
 A fresh reproduction of that historical four-case campaign was not performed.
 The subsequent same-run test used a separate detached research checkout,
-preserved the frozen product revisions, and retained its negative result.
+preserved the frozen product revisions, and retained the v1 negative result
+and separate v2 observation.
 
 The historical Windows JSONL records contain sanitized case summaries,
 execution bindings, terminal labels and aggregate event counts, rather than full raw WebSocket
@@ -416,7 +432,8 @@ The fixed case set contains no basis for deployment failure frequency, natural
 duplicate-execution frequency, performance improvement or broad model
 robustness. The subsequent two-case Windows test is a new controlled backend
 experiment, with no model download; it remains separate from the historical
-campaign and does not demonstrate the target guard's efficacy. Private raw
+campaign. The v2 follow-up observes the guard in one fixed case, not a
+population effect or execution-count advantage. Private raw
 captures are excluded from the reviewer package, so its public audit receipt
 cannot substitute for third-party access to those bytes.
 
@@ -503,9 +520,9 @@ execution evidence and implements a conservative guard within an unresolved
 run. The historical Windows cases demonstrate execution visibility under lost
 acceptance responses, while exposing the distinction between a new successful
 call and reconciliation of the original run. These bounded observations support
-an evidence-preserving tool description. The same-run test adds raw-event
-retention and a negative result: model-identity validation masks the target
-guard. It establishes neither guard efficacy nor new physical GPU work.
+an evidence-preserving tool description. The same-run tests retain the initial masking failure and a revised-caller
+observation of the submission guard. The original run remains unresolved;
+blocking another submission does not establish new physical GPU savings.
 These results do not establish automatic
 unknown-job recovery, deployment-wide reliability or natural duplicate-execution
 rates.

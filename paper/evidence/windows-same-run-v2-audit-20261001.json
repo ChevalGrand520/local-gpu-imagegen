@@ -1,0 +1,45 @@
+{
+  "audit_status": "PASS",
+  "campaign_status": "COMPLETED",
+  "cases": [
+    {
+      "cached_events": 1,
+      "call_states": [
+        "resolved"
+      ],
+      "case": "W3_F00",
+      "guard_observed": false,
+      "history_responses": 1,
+      "original_run_state": "generated",
+      "product_calls": 1,
+      "progress_events": 30,
+      "raw_starts": 1,
+      "raw_terminal_node_null": 1,
+      "retained_bindings": 1,
+      "second_error": null,
+      "submissions": 1,
+      "websocket_messages": 90
+    },
+    {
+      "cached_events": 1,
+      "call_states": [
+        "unresolved",
+        "unresolved"
+      ],
+      "case": "W3_F02",
+      "guard_observed": true,
+      "history_responses": 1,
+      "original_run_state": "unresolved",
+      "product_calls": 2,
+      "progress_events": 0,
+      "raw_starts": 1,
+      "raw_terminal_node_null": 1,
+      "retained_bindings": 1,
+      "second_error": "submission_outcome_unknown",
+      "submissions": 1,
+      "websocket_messages": 10
+    }
+  ],
+  "report_sha256": "5e29a4c0d9c9b592aa648c4ad50430e1225d09eb0676abbeee412595e40f0506",
+  "scope": "retained-byte and event-binding consistency; no authenticity or completeness guarantee"
+}
