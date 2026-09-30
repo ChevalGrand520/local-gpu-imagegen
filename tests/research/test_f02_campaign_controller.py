@@ -127,6 +127,7 @@ class CampaignControllerTests(unittest.TestCase):
         self.assertEqual(child_env["LOCAL_GPU_IMAGEGEN_OUTPUT_ROOT"], spec.output_root)
         self.assertEqual(child_env["LOCAL_GPU_IMAGEGEN_OUTPUT_DIR"], spec.output_root)
         self.assertEqual(child_env["LOCAL_GPU_IMAGEGEN_COMFYUI_URL"], spec.backend_url)
+        self.assertEqual(child_env["LOCAL_GPU_IMAGEGEN_CLIENT_ROOT"], spec.working_directory)
         self.assertEqual(
             child_env["LOCAL_GPU_IMAGEGEN_RESEARCH_PROMPT_PROXY_URL"],
             "http://127.0.0.1:39191",

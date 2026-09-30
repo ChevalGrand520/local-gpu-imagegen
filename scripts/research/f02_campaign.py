@@ -63,6 +63,8 @@ class CaseSpec:
     output_root: str
     operation_key: str
     backend_url: str = ""
+    retry_scope: str = "fresh_run"
+    private_capture_root: str = ""
 
 
 @dataclass(frozen=True)
@@ -139,6 +141,8 @@ def run_campaign(
     issues a retry, third call, F03 case, or backend/service lifecycle action.
     """
     preflight_config, campaign, case_specs, frozen_request, evidence_path = _parse_config(config)
+    if campaign.get("protocol_version") == "same-run-guard-v1" or "same_run_capture_root" in campaign:
+        raise CampaignConfigurationError("same-run configuration requires f02_same_run_campaign entrypoint")
     preflight = preflight_runner(preflight_config)
     if preflight.status != "PASS":
         # In particular, this path does not create the evidence file.  The
@@ -418,6 +422,9 @@ def _invoke_subprocess(spec: CaseSpec, call_index: int, proxy_url: str, timeout_
         "LOCAL_GPU_IMAGEGEN_F02_FAULT_MODE": spec.fault_mode,
         "LOCAL_GPU_IMAGEGEN_F02_CALL_INDEX": str(call_index),
         "LOCAL_GPU_IMAGEGEN_F02_OPERATION_KEY": spec.operation_key,
+        "LOCAL_GPU_IMAGEGEN_F02_RETRY_SCOPE": spec.retry_scope,
+        "LOCAL_GPU_IMAGEGEN_F02_PRIVATE_CAPTURE_DIR": spec.private_capture_root,
+        "LOCAL_GPU_IMAGEGEN_CLIENT_ROOT": spec.working_directory,
     })
     try:
         result = subprocess.run(
@@ -529,6 +536,15 @@ def _sanitize_call(call: ProductCallOutcome) -> dict[str, object]:
     error_stage = result.get("client_error_stage")
     if isinstance(error_stage, str) and error_stage in _CLIENT_ERROR_STAGES:
         sanitized["client_error_stage"] = error_stage
+    for field in ("run_id_sha256", "generate_arguments_sha256", "manifest_before_sha256", "manifest_after_sha256"):
+        value = result.get(field)
+        if isinstance(value, str) and _sha256_hex(value):
+            sanitized[field] = value
+    if result.get("retry_scope") == "same_run":
+        sanitized["retry_scope"] = "same_run"
+        route_identity = sanitized["result_digests"].pop("route_identity", None)
+        if isinstance(route_identity, str):
+            sanitized["result_digests"]["route_identity_sha256"] = _digest_text(route_identity)
     return sanitized
 
 

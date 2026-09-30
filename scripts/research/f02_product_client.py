@@ -1,9 +1,10 @@
 """Research-only MCP product caller for the bounded Windows F02 campaign.
 
-Each invocation owns one fresh MCP stdio process.  The caller performs the
-normal discovery -> route -> start -> read -> generate path and emits only a
-small JSON result for the campaign controller.  It never starts a backend,
-retries a product call, finalizes a run, or performs visual review.
+Each invocation owns one fresh MCP stdio process. The default caller performs
+discovery -> route -> start -> read -> generate. The opt-in same-run mode
+reuses privately captured generation arguments for its second invocation.
+Neither mode automatically retries within an invocation, starts a backend,
+finalizes a run, or performs visual review.
 """
 
 from __future__ import annotations
@@ -16,6 +17,9 @@ from pathlib import Path
 import subprocess
 import sys
 from typing import Any
+
+if __package__ in {None, ""}:
+    sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
 
 MODEL_ID = "local:79ab0d76d73036128e376c4c"
@@ -567,6 +571,132 @@ def run(root: Path, *, case_id: str, operation_key: str, output_root: str, call_
         client.close()
 
 
+def run_same_run(
+    root: Path, *, case_id: str, operation_key: str, output_root: str,
+    call_index: int, capture_root: Path,
+) -> dict[str, Any]:
+    """One invocation of an explicit, privately captured same-run protocol.
+
+    Call 1 freezes the complete generation arguments before submission. Call 2
+    reuses them verbatim and refuses to proceed unless the original manifest
+    still contains the matching unknown/no-job unresolved attempt.
+    """
+    from scripts.research.f02_capture import manifest_summary, unknown_submission, write_private_json
+
+    if call_index not in (1, 2):
+        raise ProductClientError("same_run_call_index_invalid")
+    env = os.environ.copy()
+    env.setdefault("LOCAL_GPU_IMAGEGEN_COMFYUI_URL", "http://127.0.0.1:8202")
+    env["LOCAL_GPU_IMAGEGEN_OUTPUT_DIR"] = output_root
+    env["LOCAL_GPU_IMAGEGEN_COMFYUI_MANAGED"] = "0"
+    env["LOCAL_GPU_IMAGEGEN_COMFYUI_STARTUP_WAIT_SECONDS"] = "0"
+    context = {
+        "case_id": case_id, "operation_key": operation_key, "output_root": output_root,
+        "product_root": str(root.resolve()),
+        "backend_url": env["LOCAL_GPU_IMAGEGEN_COMFYUI_URL"],
+        "proxy_url": env.get("LOCAL_GPU_IMAGEGEN_RESEARCH_PROMPT_PROXY_URL"),
+    }
+    session: dict[str, Any] = {}
+    if call_index == 1:
+        capture_root.mkdir(mode=0o700)  # Existing captures cannot be reused accidentally.
+    else:
+        session = json.loads((capture_root / "session.json").read_text(encoding="utf-8"))
+        if not isinstance(session, dict) or not isinstance(session.get("request_digests"), dict):
+            raise ProductClientError("same_run_session_shape_invalid")
+        if session.get("context") != context or session.get("schema") != "f02-same-run-session-v1":
+            raise ProductClientError("same_run_session_context_mismatch")
+        if session.get("generate_arguments_sha256") != _digest(session.get("generate_arguments")):
+            raise ProductClientError("same_run_arguments_digest_mismatch")
+        arguments = session.get("generate_arguments")
+        if (not isinstance(arguments, dict) or arguments.get("run_id") != session.get("run_id")
+                or arguments.get("idempotency_key") != operation_key):
+            raise ProductClientError("same_run_arguments_identity_mismatch")
+        first_result = json.loads((capture_root / "call-1-result.json").read_text(encoding="utf-8"))
+        if (not isinstance(first_result, dict)
+                or first_result.get("generate_arguments_sha256") != session.get("generate_arguments_sha256")
+                or first_result.get("run_id_sha256") != hashlib.sha256(str(session.get("run_id")).encode()).hexdigest()):
+            raise ProductClientError("same_run_session_changed_since_first_call")
+    # Claim this invocation before opening a product process; never replay it.
+    write_private_json(capture_root, f"call-{call_index}-invocation.json", {"context": context, "call_index": call_index})
+    client = StdioMcp(root, env)
+    stage = "initialize"
+    run_id: str | None = None
+    result: dict[str, Any] = {"case_id": case_id, "call_index": call_index,
+                              "retry_scope": "same_run", "operation_key": operation_key,
+                              "artifact_hashes": []}
+    try:
+        _initialise(client)
+        if call_index == 1:
+            stage = "model_route"
+            boundary = _discover_route(client)["boundary"]
+            stage = "start_run"
+            started = client.call("local_gpu_start_run", {
+                "intent": INTENT, "profile": boundary["profile"], "subtype": SUBTYPE,
+                "style": boundary.get("style"), "constraints": dict(CONSTRAINTS),
+                "model_choice": boundary["model_choice"], "backend": boundary["backend"],
+                "authorization_scope": boundary["authorization_scope"],
+                "route_token": boundary["route_token"], "max_rounds": 1, "upscale_policy": "off",
+            })
+            run_id = started.get("run_id")
+        else:
+            run_id = session.get("run_id")
+        if not isinstance(run_id, str) or not run_id:
+            raise ProductClientError("run_id_missing")
+        result["run_id_sha256"] = hashlib.sha256(run_id.encode("utf-8")).hexdigest()
+        stage = "read_run"
+        manifest = client.call("local_gpu_get_run", {"run_id": run_id})
+        result["manifest_before_sha256"] = write_private_json(capture_root, f"call-{call_index}-before.json", manifest)
+        if manifest.get("run_id") != run_id:
+            raise ProductClientError("same_run_manifest_identity_mismatch")
+        if not isinstance(manifest.get("request"), dict):
+            raise ProductClientError("same_run_manifest_request_missing")
+        if call_index == 1:
+            seed = 4101
+            plan = _build_plan(manifest["request"], seed)
+            arguments = {
+                "run_id": run_id, "idempotency_key": operation_key,
+                "action": "initial", "edit_mode": "txt2img", "plan": plan, "seed": seed,
+                "change_summary": f"Bounded same-run F02 research case {case_id}.",
+            }
+            session = {
+                "schema": "f02-same-run-session-v1", "context": context, "run_id": run_id,
+                "request_sha256": _digest(manifest["request"]), "generate_arguments": arguments,
+                "generate_arguments_sha256": _digest(arguments),
+                "request_digests": _request_digests(manifest["request"], plan, manifest["request"]["route"]),
+            }
+            write_private_json(capture_root, "session.json", session)
+        result.update(session["request_digests"])
+        result["generate_arguments_sha256"] = session["generate_arguments_sha256"]
+        if call_index == 2:
+            if _digest(manifest.get("request")) != session["request_sha256"]:
+                raise ProductClientError("same_run_request_changed")
+            if not unknown_submission(manifest, operation_key):
+                raise ProductClientError("same_run_unknown_submission_missing")
+        stage = "generate_round"
+        generated = client.call("local_gpu_generate_round", session["generate_arguments"])
+        stage = "artifact_validation"
+        hashes = _artifact_hashes(generated, root)
+        if not hashes:
+            raise ProductClientError("artifact_hash_missing")
+        result.update({"reported_state": "resolved" if generated.get("state") == "generated" else "unresolved",
+                       "artifact_hashes": hashes})
+    except ProductClientError as exc:
+        result.update({"reported_state": "unresolved", "client_error_schema_version": 1,
+                       "client_error_code": exc.stable_code, "client_error_stage": stage})
+    finally:
+        try:
+            if run_id is not None:
+                after = client.call("local_gpu_get_run", {"run_id": run_id})
+                result["manifest_after_sha256"] = write_private_json(capture_root, f"call-{call_index}-after.json", after)
+                result.update(manifest_summary(after))
+        except (ProductClientError, OSError) as exc:
+            result["capture_error_code"] = _safe_exception_code(exc)
+        finally:
+            client.close()
+    write_private_json(capture_root, f"call-{call_index}-result.json", result)
+    return result
+
+
 def main() -> int:
     probe_argument = len(sys.argv) > 1 and sys.argv[1] == "--probe"
     catalog_argument = len(sys.argv) > 1 and sys.argv[1] == "--catalog"
@@ -593,7 +723,22 @@ def main() -> int:
     if not output_root:
         print(json.dumps({"reported_state": "failed", "client_error_schema_version": 1, "client_error_code": "output_root_missing", "client_error_stage": "launch"}, sort_keys=True))
         return 2
-    result = run(root, case_id=case_id, operation_key=operation_key, output_root=output_root, call_index=call_index)
+    scope = os.environ.get("LOCAL_GPU_IMAGEGEN_F02_RETRY_SCOPE", "fresh_run")
+    if scope == "same_run":
+        capture = os.environ.get("LOCAL_GPU_IMAGEGEN_F02_PRIVATE_CAPTURE_DIR")
+        if not capture:
+            print(json.dumps({"reported_state": "failed", "client_error_code": "private_capture_missing"}))
+            return 2
+        try:
+            result = run_same_run(root, case_id=case_id, operation_key=operation_key,
+                                  output_root=output_root, call_index=call_index, capture_root=Path(capture))
+        except (ProductClientError, OSError, ValueError) as exc:
+            result = {"reported_state": "failed", "client_error_schema_version": 1,
+                      "client_error_code": _safe_exception_code(exc), "client_error_stage": "launch"}
+    elif scope == "fresh_run":
+        result = run(root, case_id=case_id, operation_key=operation_key, output_root=output_root, call_index=call_index)
+    else:
+        result = {"reported_state": "failed", "client_error_code": "retry_scope_invalid"}
     print(json.dumps(result, sort_keys=True, separators=(",", ":")))
     return 0 if result.get("reported_state") != "failed" else 2
 

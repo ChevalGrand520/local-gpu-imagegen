@@ -78,6 +78,7 @@ class ComfyUIEventOracle:
         backend_boot_identity: str,
         observer_id: str,
         timeout_seconds: float = 5.0,
+        retain_raw_transport: bool = False,
     ) -> None:
         _require_loopback_http_url(backend_url)
         if not backend_boot_identity.strip():
@@ -98,6 +99,20 @@ class ComfyUIEventOracle:
         self._start_sequence = 0
         self._open_starts: dict[str, list[tuple[int, float]]] = {}
         self._terminal: dict[str, list[tuple[str, float]]] = {}
+        self._retain_raw_transport = retain_raw_transport
+        self._raw_ws_messages: list[dict[str, object]] = []
+        self._raw_history_responses: list[dict[str, object]] = []
+
+    def private_capture(self) -> dict[str, object]:
+        """Opt-in raw messages may contain private paths/prompts; never publish."""
+        return {
+            "schema": "f02-oracle-transport-capture-v1",
+            "retained": self._retain_raw_transport,
+            "backend_boot_identity": self.backend_boot_identity,
+            "observer_id": self.observer_id,
+            "websocket_messages": self._raw_ws_messages,
+            "history_responses": self._raw_history_responses,
+        }
 
     @property
     def raw_events(self) -> tuple[BackendEvent, ...]:
@@ -176,6 +191,13 @@ class ComfyUIEventOracle:
         return self._decision(requested)
 
     def _record_payload(self, payload: bytes) -> None:
+        received_at = time.time()
+        if self._retain_raw_transport:
+            self._raw_ws_messages.append({
+                "sequence": len(self._raw_ws_messages) + 1, "received_at": received_at,
+                "body_sha256": sha256(payload).hexdigest(),
+                "body_base64": base64.b64encode(payload).decode("ascii"),
+            })
         try:
             value = json.loads(payload.decode("utf-8"))
         except (UnicodeDecodeError, json.JSONDecodeError):
@@ -190,7 +212,7 @@ class ComfyUIEventOracle:
         node_value = data.get("node")
         node = str(node_value) if node_value is not None else None
         event = BackendEvent(
-            received_at=time.time(),
+            received_at=received_at,
             event_type=event_type,
             prompt_id=prompt_id,
             node=node,
@@ -266,9 +288,21 @@ class ComfyUIEventOracle:
             response = connection.getresponse()
             body = response.read()
         except OSError as exc:
+            if self._retain_raw_transport:
+                self._raw_history_responses.append({
+                    "sequence": len(self._raw_history_responses) + 1, "received_at": time.time(),
+                    "prompt_id": prompt_id, "transport_error": type(exc).__name__,
+                })
             return {"history_transport_error": type(exc).__name__}
         finally:
             connection.close()
+        if self._retain_raw_transport:
+            self._raw_history_responses.append({
+                "sequence": len(self._raw_history_responses) + 1,
+                "received_at": time.time(), "prompt_id": prompt_id, "http_status": response.status,
+                "body_sha256": sha256(body).hexdigest(),
+                "body_base64": base64.b64encode(body).decode("ascii"),
+            })
         if response.status != 200:
             return {"http_status": response.status, "body_sha256": sha256(body).hexdigest()}
         try:

@@ -5,6 +5,13 @@ current manuscript is `paper/main.tex`; the current exporter mapping is
 `research-normalization-v3`. Historical W2 records and earlier demo archives
 retain their original v2 meaning.
 
+Implementation update (2026-09-30): the separate `same-run-guard-v1` research
+entry and private raw-capture mode are implemented on
+`codex/f02-same-run-capture`. CPU software preflight is recorded in
+`runs/f02-same-run-cpu-preflight-20260930.md`; configuration and stopping rules
+are in `f02-same-run-capture-implementation-20260930.md`. Gates W and X below
+remain **live-evidence pending**, not completed by software tests.
+
 ## Completed without a new backend campaign
 
 1. `tests/research/test_export_records.py` checks that deleting the reported
