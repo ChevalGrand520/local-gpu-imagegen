@@ -51,7 +51,7 @@ def main():
         desktop_memory_baseline_accepted=True,
         actual_schedule="W3_F00 and W3_F02 only; legacy preflight four-case namespace retained")
     campaign = config["campaign"]
-    campaign["protocol_version"] = "same-run-guard-v1"
+    campaign["protocol_version"] = "same-run-guard-v2"
     campaign["same_run_capture_root"] = str(root / "capture")
     campaign["evidence_file"] = str(root / "public-evidence.json")
     source = Path(__file__).resolve().parent
