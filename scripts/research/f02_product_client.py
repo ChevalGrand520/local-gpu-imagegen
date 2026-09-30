@@ -626,9 +626,12 @@ def run_same_run(
                               "artifact_hashes": []}
     try:
         _initialise(client)
+        # Each call owns a fresh MCP process. Rebuild the pinned, process-local
+        # inventory before either creating a run or validating its locked route.
+        stage = "model_route"
+        route_context = _discover_route(client)
+        boundary = route_context["boundary"]
         if call_index == 1:
-            stage = "model_route"
-            boundary = _discover_route(client)["boundary"]
             stage = "start_run"
             started = client.call("local_gpu_start_run", {
                 "intent": INTENT, "profile": boundary["profile"], "subtype": SUBTYPE,

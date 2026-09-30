@@ -221,7 +221,7 @@ class SameRunEngineIntegrationTests(unittest.TestCase):
                 boundary = {"profile": "standalone-illustration", "model_choice": "fixture", "backend": "webui",
                             "authorization_scope": "private", "route_token": "fixture"}
                 with patch.object(client, "StdioMcp", EngineClient), patch.object(client, "_initialise"), \
-                     patch.object(client, "_discover_route", return_value={"boundary": boundary}), \
+                     patch.object(client, "_discover_route", return_value={"boundary": boundary}) as discovery, \
                      patch.object(client, "_build_plan", side_effect=lambda request, seed: fixture.plan(max_rounds=1, route=request["route"])):
                     kwargs = dict(case_id="W3_F02", operation_key="same-run-operation",
                                   output_root=str(fixture.output_root), capture_root=capture)
@@ -243,6 +243,7 @@ class SameRunEngineIntegrationTests(unittest.TestCase):
                     forbidden.assert_not_called()
                     session_path.write_bytes(original_session)
                     second = client.run_same_run(Path(folder), call_index=2, **kwargs)
+                    self.assertEqual(discovery.call_count, 2)
                     self.assertEqual(first["durable_submission_outcome"], "unknown")
                     self.assertEqual(second["client_error_code"], "submission_outcome_unknown")
                     self.assertEqual(second["client_error_stage"], "generate_round")

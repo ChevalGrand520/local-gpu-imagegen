@@ -26,7 +26,7 @@ from scripts.research.f02_preflight import run_preflight, _parse_time, _reservat
 from scripts.research.f02_product_client import _digest
 
 
-PROTOCOL = "same-run-guard-v1"
+PROTOCOL = "same-run-guard-v2"
 
 
 def _captured_call(root: Path, result: dict[str, object] | None, index: int,

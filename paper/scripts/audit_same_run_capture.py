@@ -22,7 +22,7 @@ def require(condition, message):
 
 def audit(report_path, capture):
     report = json.loads(report_path.read_text())
-    require(report['protocol_version'] == 'same-run-guard-v1', 'wrong protocol')
+    require(report['protocol_version'] in ('same-run-guard-v1', 'same-run-guard-v2'), 'wrong protocol')
     require(report['preflight']['status'] == 'PASS', 'preflight did not pass')
     for name, key in [('preflight.json', 'private_capture_sha256'),
                       ('configuration.json', 'private_configuration_sha256')]:
