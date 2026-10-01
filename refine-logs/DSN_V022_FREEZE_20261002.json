@@ -1,0 +1,15 @@
+{
+  "status": "FROZEN_NOT_SUBMITTED",
+  "version": "DSN Tool v0.22",
+  "tag": "dsn-tool-v0.22-frozen",
+  "snapshot_commit": "a53bdfaa70c0a966a0e373bd9038eecaba560d2b",
+  "files": {
+    "paper/main.tex": "6a9063660e51fa56a5a3375db402d29bbb8fbbe11bd5b9a22c21a9bd357b28b8",
+    "paper/main.pdf": "7208070c23683402ab0e6cfc9c4dfd16a31dff3c72c13833e0d7eee1512ed506",
+    "paper/references.bib": "2317fac5bebd14fc79417293084ded4bd44f8e59ddb63d2f8abe3c30517c1cb6"
+  },
+  "private_author_zip": "local only; not added to GitHub",
+  "raw_captures": "private outside repository; not uploaded",
+  "next_manuscript": "paper-access/; separate from frozen DSN source",
+  "publication": "GitHub version archive only, not conference submission or journal publication"
+}
