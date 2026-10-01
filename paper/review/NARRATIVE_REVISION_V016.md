@@ -25,3 +25,16 @@ unchanged. Code, retained measurements, source snapshots and the anonymous
 v0.5 demo are unchanged. Current compilation checks are in `compile-report.json`.
 The author archive remains private. This revision does not change submission
 readiness or establish an AI-detector score.
+
+## v0.17 follow-up
+
+Table III now states that its client labels are research-client call-level
+labels, ordered chronologically, with a slash separating two calls. The note
+distinguishes them from durable-run recovery states. Table cells are unchanged.
+
+The abstract identifies pipeline integrators investigating response loss as
+the intended users; it has 129 words. Section V is further consolidated from
+195 to 127 whitespace-delimited source words (about 35%). Full audit coverage
+remains in the companion evidence note, and adverse results remain in Section IV.
+Citation occurrences, figures and inline technical identifiers are unchanged.
+Compilation and the current page inspection are recorded in compile-report.json.

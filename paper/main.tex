@@ -10,7 +10,7 @@
 \author{\IEEEauthorblockN{Anonymous submission draft}}
 \maketitle
 \begin{abstract}
-When a local generation backend accepts a request but its response is lost, the client may retry work that has already finished. We present a tool that retains the client's unresolved submission record, exports its interpretation alongside backend evidence, and blocks further generation through the same run. Evaluation combines synthetic CPU fixtures with controlled Windows/ComfyUI response loss. The historical retries created fresh runs, so they left the guard untested. A later same-run campaign first encountered a model-identity rejection. With a revised caller that rebuilt pinned process-local inventory, the retry reached the submission guard and produced no further POST. The original run still required recovery. For an investigator, the resulting record exposes the disagreement between backend completion and client recovery that a successful later call can otherwise obscure.
+When a local generation backend accepts a request but its response is lost, the client may retry work that has already finished. We present a tool that retains the client's unresolved submission record, exports its interpretation alongside backend evidence, and blocks further generation through the same run. Evaluation combines synthetic CPU fixtures with controlled Windows/ComfyUI response loss. The historical retries created fresh runs, so they left the guard untested. A later same-run campaign first encountered a model-identity rejection. With a revised caller that rebuilt pinned process-local inventory, the retry reached the submission guard and produced no further POST. The original run still required recovery. For pipeline integrators investigating response loss, the record exposes the disagreement between backend completion and client recovery that a successful later call can otherwise obscure.
 \end{abstract}
 \section{Introduction}
 
@@ -327,6 +327,12 @@ W3 F02 / v1 & 2 & 1 & 1 & unresolved / unresolved \\
 W3 F02 / v2 & 2 & 1 & 1 & unresolved / unresolved \\
 \hline
 \end{tabular}
+\par\smallskip
+\begin{minipage}{\columnwidth}\footnotesize\raggedright
+Note: ``Client calls'' contains research-client call-level labels in call order.
+A slash separates the first and second call. These labels are distinct from
+durable-run recovery states.
+\end{minipage}
 \end{table}
 
 The F00 control completed. F02 suppressed one accepted response and retained
@@ -377,29 +383,22 @@ historical report. No recovery-success rate is inferred.
 
 \section{Reproducibility and limitations}
 
-Offline reproducibility rests on the retained CPU traces, Windows source/report
-ledger, audit scripts and figure sources. A live campaign additionally requires
-the pinned backend, model, workflow and private setup. The historical four cases
-and subsequent same-run campaigns remain separate, with both v1 and v2 retained.
-Raw captures are private.
+Offline checks use retained CPU traces, the Windows source/report ledger and
+sanitized projections. Live repetition requires the pinned backend, model,
+workflow and private setup. Historical and same-run campaigns remain separate.
 
-The main evidence gap is the historical event stream: JSONL supports consistency
-checks and table regeneration, but lacks the payloads needed to reconstruct the
-start-count discrepancy. The exported terminal label is assigned by construction;
-the oracle's completion rule additionally requires \texttt{executing} with
-\texttt{node=null} and completed history. Image-byte receipts cover four
-generated-call artifacts, leaving the first unresolved F02 output outside those
-checks. Path fingerprints describe metadata; visual quality and user acceptance
-require separate evaluation.
+Historical JSONL supports consistency checks but lacks the raw events needed to
+resolve the start-count discrepancy. Its constructed terminal label is weaker
+than the oracle's completion rule, which requires \texttt{executing} with
+\texttt{node=null} and completed history. Artifact receipts cover generated-call
+outputs, excluding the first unresolved F02 output.
 
-The observations depend on the observer's capture window and the recorded setup.
-The v2 case records run-scoped submission blocking. Deployment rates, performance
-comparisons, cross-model robustness and GPU savings require further measurement.
-The anonymous demo reproduces semantic mapping from sanitized projections;
-its four additional variants are synthetic. With no independent artifact
-validator, the converted F00 and F02 records both remain composite-unverified.
-Full conversion outcomes and audit coverage are documented in the companion
-evidence note.
+The fixed cases establish observations within the capture window, including v2
+submission blocking. Deployment rates and physical GPU savings require further
+measurement. The anonymous demo replays semantic mapping; four variants are
+synthetic, and converted F00 and F02 remain composite-unverified without an
+independent artifact validator. The companion evidence note details audit
+coverage.
 
 \section{Related work and discussion}
 \label{sec:related}

@@ -3,12 +3,13 @@ System Python 3.9 is unsupported. The manuscript author ZIP is PRIVATE and conta
 and audit paths. Only the separately sanitized anonymous demo is an external
 candidate; never distribute the full delivery directory.
 
-# v0.16 current revision
+# v0.17 current revision
 
-The current pass rewrites the abstract, operational explanation and conclusion,
-and halves the limitations section by consolidating scope statements. Detailed
-audit coverage remains in `evidence/REPRODUCIBILITY_SCOPE.md`; the main results
-retain adverse findings. See `review/NARRATIVE_REVISION_V016.md`. The preceding
+The current pass explains Table III's call-level labels below the table, names
+pipeline integrators in the abstract and further consolidates Section V to
+127 words. Detailed audit coverage remains in `evidence/REPRODUCIBILITY_SCOPE.md`;
+the main results retain adverse findings. The preceding narrative rewrite is
+recorded in `review/NARRATIVE_REVISION_V016.md`. The preceding
 Humanizer pass is recorded in `review/HUMANIZER_PASS_V015.md`, and bounded
 OPEN-item rechecks in `review/POLISH_AND_OPEN_ITEM_RECHECK_V014.md`.
 
