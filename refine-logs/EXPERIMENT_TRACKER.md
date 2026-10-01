@@ -19,5 +19,7 @@
 历史 CPU 回执见 `PAIRED_CPU_CHECKS_20261001.md` / JSON；当次71项 PASS。
 2026-10-01 14:21新增 runner 回执见 `PAIRED_WINDOWS_RUNNER_CPU_20261001.md`；全套92项 PASS，均为本机检查。
 CPU 的停止策略等价性、保守阻塞代价与普通解析脚本等价性均保留。
-下一步：等待训练结束，再核验有效独占预约与 Windows 原生接口，进行 M1。
+最新现场检查与部分采集见 `WINDOWS_PAIRED_PARTIAL_20261001.md`。
+M1 attempt A 端口检查停止，0调用；attempt B 两个F00完成，W3/F02在生命周期不可绑定时停止。
+B2/F02、两个FPRE未运行。当前预约已过期；下一步只读分析停止原因，修订协议后再安排新预约。
 PA1-R004 未启动；不能把 CPU 通过视作 Windows 现场门槛已满足。
