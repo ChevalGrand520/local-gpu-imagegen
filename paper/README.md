@@ -57,6 +57,16 @@ remain historical v2 outputs; the v0.3 anonymous demo candidate carries the
 current rules. The Windows same-run and observer-conversion capture criteria are
 recorded in `../docs/research/dsn-next-evidence-gates-20260929.md`.
 
+## Current working manuscript: v0.20
+
+The paired Windows results are integrated in `main.tex` and `main.pdf`.
+Historical narrative was condensed without changing retained measurements.
+The current PDF is six US Letter pages with a 128-word abstract; all nine font
+entries are embedded. Compile/visual details are in `compile-report.json`.
+Original v0.18 delivery archives and their freeze remain historical baselines.
+No new v0.20 delivery package has been generated; old review statements below
+do not certify the new working manuscript or its artifact alignment.
+
 ## Verified format baseline
 
 DSN 2026 Research Track CFP, accessed 2026-09-27:
@@ -74,6 +84,10 @@ seven-page limit, 150-word abstract maximum and reference exemption. Abstracts
 are due November 25, 2026 and full papers December 2, 2026 (AoE). The HotCRP
 site displayed "Submissions are currently closed" on September 28. The generic
 ARS IEEE references-in-limit default is overridden by the explicit DSN rule.
+
+Rechecked 2026-10-01 against the official DSN 2027 CFP: Tool descriptions are
+seven pages; reference-only pages are exempt. Thus v0.19's seventh reference-only
+page was not a page-limit violation. The v0.20 reduction improves concision.
 
 IEEEtran.cls is the unmodified CTAN class:
 https://mirrors.ctan.org/macros/latex/contrib/IEEEtran/IEEEtran.cls

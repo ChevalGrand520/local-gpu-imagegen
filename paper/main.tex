@@ -274,18 +274,13 @@ Their six retained execution bindings had distinct identifiers, completed-histor
 flags and terminal-event labels. In both B2\_F02 and W3\_F02, the export reports
 \texttt{execution\_start=3}, two proxy submissions and two retained bindings.
 
-Each F02 case has two observer decisions. The oracle's \texttt{raw\_events}
-field is cumulative, while the export counts the entire event list of each
-decision. For example, if the first list contains start A and the second
-contains A and B, the sum is $1+2=3$ entries for two distinct starts. Each F00
-case has only one decision, so this recounting opportunity is absent there.
-The uniqueness check concerns the two retained binding identifiers per F02
-case, not the three aggregate entries. This source-level mechanism makes the
-reported count compatible with two bindings; it does not reconstruct the
-historical lists. Because the original snapshot boundaries and payloads are
-unavailable, an additional unbound start cannot be independently excluded.
-We report two retained bindings per case, not a complete execution ground
-truth.
+The export sums cumulative \texttt{raw\_events} from two F02 decisions: a
+list containing start A followed by a list containing A and B contributes
+$1+2=3$ entries. Each F00 has only one decision. Distinct binding identifiers
+concern the two retained lifecycles, not those three entries. This mechanism
+explains compatibility with two bindings, but missing historical payloads and
+snapshot boundaries prevent excluding an additional unbound start. We report
+retained bindings rather than complete execution ground truth.
 
 The first binding's completion precedes the second
 receipt, as required by the controller's observation gate; these timestamps
@@ -304,13 +299,11 @@ executions of an identical generation request.
 
 \subsection{Same-run scope tests and a recovered guard observation}
 
-A subsequent campaign retained the frozen W3 product but used a separate
-\texttt{same-run-guard-v1} research caller. F00 invoked one generation call.
-F02 saved the first run and complete generation arguments, then reused them
-verbatim after the controller reported a bindable first completion. The retained
-capture does not independently timestamp the retry invocation. The seed, operation key and run
-identifier were checked, along with before/after durable manifests. Table~\ref{tab:samerun}
-reports this protocol separately from the four historical cases.
+Separate W3 same-run campaigns reused the original run and complete generation
+arguments after a bindable first completion. Checks covered seed, operation key,
+run identity and durable manifests; the capture lacks an independent retry
+invocation timestamp. Table~\ref{tab:samerun} keeps these protocols separate
+from the fresh-run campaign and the subsequent paired study.
 
 \begin{table}[t]
 \caption{Two cases per same-run Windows campaign. C/S/E denote product calls,
@@ -337,39 +330,24 @@ durable-run recovery states.
 \end{minipage}
 \end{table}
 
-The F00 control completed. F02 suppressed one accepted response and retained
-an unresolved original manifest with unknown submission and no backend job.
-The second call returned \texttt{model\_identity\_drifted} at generation,
-rather than the required \texttt{submission\_outcome\_unknown}. It generated no
-new POST and left the manifest byte-identical. The controller stopped with
-\texttt{submission\_guard\_observed=false}: another rejection masks the target
-mechanism, so withholding a submission cannot be attributed to that guard.
-The cause of the identity disagreement is unverified; its error code does not
-by itself establish changed model bytes.
+Both F00 controls completed. In v1, F02's retry returned
+\texttt{model\_identity\_drifted}, issued no new POST and left the unresolved
+manifest unchanged. This rejection masked the guard; its cause remains
+unverified and the code alone does not establish changed model bytes.
+The v2 caller rebuilt the pinned inventory in both fresh MCP processes while
+preserving product code and locked-route validation. Its F02 retry reached
+\texttt{submission\_outcome\_unknown}, with one F02-case POST and an unchanged
+unresolved manifest. The guard was observed, but the original run was not
+reconciled. The setup change supports a process-local inventory explanation
+for v1 without proving the complete internal error path.
 
-A revised \texttt{same-run-guard-v2} caller rebuilt the pinned model inventory
-in both fresh MCP processes, using the existing exact-file index, fingerprint
-and private-catalog checks. It reused the complete generation arguments within
-the same run, without changing the frozen product or bypassing locked-route
-validation. In a separate two-case
-campaign, the F02 retry returned \texttt{submission\_outcome\_unknown} at generation.
-The controller reported \texttt{submission\_guard\_observed=true}, with one total F02-case
-POST and an unchanged unresolved manifest. The retry thus reached the target
-guard and was blocked in one fixed response-loss case. The original run was
-not reconciled, and eventual completion remains unestablished. The setup change supports a process-local
-inventory explanation for v1, without proving its entire internal error path.
-
-Each campaign's private capture retained 90 F00 and 10 F02 WebSocket text payloads and one
-history response per case. Offline reanalysis checked byte hashes and channel
-sequences, reconstructed one start and one \texttt{executing} event with
-\texttt{node=null} per case, and bound them to successful history and the
-published execution identifiers. This reanalysis checks the received, retained
-evidence without authenticating it or establishing completeness. Both controls
-and F02 cases included cache events. In F02 the cached-node list contained
-nodes 3--9; there were zero \texttt{progress} messages but one
-\texttt{progress\_state} message, so its lifecycle binding is not evidence of new
-physical GPU computation. These new payloads do not recover the missing
-historical event lists. No third call or fresh-run fallback was made.
+Each campaign retained 90 F00 and 10 F02 WebSocket payloads and one history
+response per case. Offline checks rehashed bytes and reconstructed start,
+\texttt{executing(node=null)} and successful-history bindings. Both conditions
+included cache events. F02 cached nodes 3--9, with zero \texttt{progress} and
+one \texttt{progress\_state} message; it does not establish new physical GPU
+computation. These retained bytes neither authenticate execution nor recover
+the missing fresh-run event lists. No third call or fresh-run fallback occurred.
 
 \subsection{Paired submission control and completion cost}
 \label{sec:paired}
