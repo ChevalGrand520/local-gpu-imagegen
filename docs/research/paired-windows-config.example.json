@@ -1,0 +1,50 @@
+{
+  "protocol": "paired-ambiguity-v1",
+  "launch_enabled": false,
+  "cache_policy": "owned_process_per_operation_no_reset_between_calls",
+  "budget": {
+    "operations": 6,
+    "product_calls": 10,
+    "proxy_posts": 10,
+    "upstream_attempts": 8,
+    "wall_seconds": 3600,
+    "storage_bytes": 1073741824
+  },
+  "preflight": {
+    "ledger": {
+      "root": "<existing local frozen-ledger checkout>",
+      "anchor": "d8ef0bccc84269b7d4a627adce5f6025a17ab024"
+    },
+    "environment": {
+      "host_id": "<verified Windows hostname>",
+      "gpu_uuid": "<verified reserved GPU UUID>",
+      "gpu_model": "<verified reserved GPU model>",
+      "model_path": "<existing sd_xl_base_1.0.safetensors path>",
+      "model_sha256": "31e35c80fc4829d14f90153f4c74cd59c90b779f6afe05a74cd6120b893f7e5b",
+      "backend_url": "http://127.0.0.1:8202",
+      "comfy_version": "v0.30.0",
+      "comfy_sha": "b1693ecba9f5b65f8c80ab36b195ab963ec92413",
+      "comfy_root": "<existing frozen ComfyUI checkout>"
+    },
+    "clients": {
+      "B2": {
+        "root": "<existing detached clean B2 checkout>",
+        "sha": "da65d57047b5a59e3403b49adf4605a1c0497c58"
+      },
+      "W3": {
+        "root": "<existing detached clean W3 checkout>",
+        "sha": "d45173af75d404ad79dc14568edd4c45f654abd2"
+      }
+    },
+    "reservation": {
+      "owner": "<actual reservation owner; placeholder is not a reservation>",
+      "authorization": "<actual human launch authorization reference>",
+      "scope": "exactly six paired-ambiguity-v1 F00/F02/FPRE single-stage operations",
+      "start": "2000-01-01T00:00:00Z",
+      "end": "2000-01-01T01:00:00Z",
+      "hard_timeout_seconds": 3600,
+      "no_concurrent_gpu_work": true,
+      "training_state": "busy"
+    }
+  }
+}

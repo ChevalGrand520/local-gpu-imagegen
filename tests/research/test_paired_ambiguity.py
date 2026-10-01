@@ -202,6 +202,8 @@ class OperationControllerTests(unittest.TestCase):
         self.assertEqual(result["status"], "STOPPED")
         self.assertNotIn("call-2", order)
         self.assertEqual(result["product_call_count"], 1)
+        self.assertEqual(result["metrics"]["S_proxy"], 1)
+        self.assertIsNone(result["metrics"]["E_bound"])
 
 
 if __name__ == "__main__":

@@ -162,6 +162,7 @@ def _frozen_identity_config_check(
     ledger_anchor: str,
     environment: dict[str, object],
     reservation: dict[str, object],
+    *, expected_scope: str = "exactly four reviewed F00/F02 single-stage cases",
 ) -> Check:
     try:
         host_id = _string(environment, "host_id")
@@ -188,7 +189,7 @@ def _frozen_identity_config_check(
         "comfy_sha": comfy_sha == EXPECTED_COMFY_SHA,
         "model_filename": Path(model_path).name == EXPECTED_MODEL_FILENAME,
         "model_sha256": model_sha256 == EXPECTED_MODEL_SHA256,
-        "reservation_scope": scope == "exactly four reviewed F00/F02 single-stage cases",
+        "reservation_scope": scope == expected_scope,
         "no_concurrent_gpu_work": no_concurrent_gpu_work is True,
     }
     passed = all(expected.values())

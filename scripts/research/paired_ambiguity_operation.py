@@ -137,6 +137,8 @@ def run_operation(spec, *, evidence_root: Path, boot_identity: str, deadline: fl
             reason = str(error) if isinstance(error, ValueError) else type(error).__name__
             write_private_json(evidence_root, "operation-error.json", {"exception_class": type(error).__name__, "reason": reason})
         finally:
+            if metrics is None:
+                metrics = {**prompt_metrics(proxy.evidence(), proxy.stages), "E_bound": None}
             write_private_json(evidence_root, "proxy-receipts.json", proxy.evidence())
             write_private_json(evidence_root, "oracle-raw.json", oracle.private_capture())
             oracle.close()
