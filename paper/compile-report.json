@@ -1,7 +1,7 @@
 {
-  "status": "DSN Tool v0.12; external review corrections and execution-source snapshots",
+  "status": "DSN Tool v0.13; second review scope/runtime/dependency corrections",
   "pages_total": 7,
-  "abstract_words": 138,
+  "abstract_words": 139,
   "figures": 2,
   "tables": 3,
   "references": 8,
@@ -20,14 +20,14 @@
   "undefined_citations": 0,
   "undefined_references": 0,
   "overfull_boxes": 0,
-  "underfull_box_notices": 13,
-  "pdf_sha256": "a0feaff98c869769ec83cc953bea6668225e6f6a04b1e3efdebfe2c4460cdbef",
-  "pdf_bytes": 105286,
+  "underfull_box_notices": 14,
+  "pdf_sha256": "97f49e994ca7c03b7ae817fc44cf1f3a3a50d47d3b6962eaa5e62e292a8beab4",
+  "pdf_bytes": 105332,
   "compiler": "Tectonic 0.17.0",
   "submission_ready": false,
-  "remaining": "External review of revised v0.12; author declarations and artifact release decisions",
+  "remaining": "External review of v0.13; human declarations and external artifact release decisions",
   "tables_generated_from_checked_records": true,
   "external_review": "DS round 2 substantive; Claude round aborted before file access",
   "venue_fit": "DSN Tool retained as candidate; target edition and institutional category recognition unconfirmed",
-  "visual_check": "Current v0.12 changed pages 3 and 5 rendered and inspected; no obvious clipping or overlap. Final human acceptance pending."
+  "visual_check": "Current v0.13 pages 1 and 7 rendered and inspected; no obvious clipping or overlap. Prior v0.12 pages 3 and 5 review retained; final human acceptance pending."
 }

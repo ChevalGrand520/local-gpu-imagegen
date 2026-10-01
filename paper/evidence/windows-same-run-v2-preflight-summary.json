@@ -1,0 +1,59 @@
+{
+  "scope": "Whitelisted author-side receipt summary; not independent attestation; host/config details and command strings excluded",
+  "status": "PASS",
+  "checked_at": "2026-09-30T17:52:14.808886+00:00",
+  "private_receipt_sha256": "7de7b7846fe59af095b338553050d9a7eb7a4c04ba92b35c8d9170d34a40c1cc",
+  "checks": [
+    {
+      "name": "reservation",
+      "passed": true,
+      "exit_code": 0
+    },
+    {
+      "name": "frozen_identity_config",
+      "passed": true,
+      "exit_code": 0
+    },
+    {
+      "name": "research_contract",
+      "passed": true,
+      "exit_code": 0
+    },
+    {
+      "name": "client_B2",
+      "passed": true,
+      "exit_code": 0
+    },
+    {
+      "name": "client_W3",
+      "passed": true,
+      "exit_code": 0
+    },
+    {
+      "name": "hostname",
+      "passed": true,
+      "exit_code": 0
+    },
+    {
+      "name": "gpu",
+      "passed": true,
+      "exit_code": 0
+    },
+    {
+      "name": "model_sha256",
+      "passed": true,
+      "exit_code": 0
+    },
+    {
+      "name": "backend",
+      "passed": true,
+      "exit_code": 0
+    },
+    {
+      "name": "fresh_output_roots",
+      "passed": true,
+      "exit_code": 0
+    }
+  ],
+  "binding": "receipt SHA256 and status match public v2 report preflight fields"
+}

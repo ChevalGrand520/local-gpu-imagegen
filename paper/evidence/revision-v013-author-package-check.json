@@ -1,0 +1,36 @@
+{
+  "runtime": "Python 3.13.15",
+  "scope": "PRIVATE author ZIP offline checks",
+  "checks": [
+    {
+      "command": [
+        "python3.13",
+        "paper/scripts/verify_reviewer_demo.py"
+      ],
+      "working_directory": "clean archive extraction root",
+      "exit_code": 0,
+      "stdout_sha256": "a002be208166d6a25a44f536626baa9054f980dbaea5acec66a967113dae8af1",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python3.13",
+        "paper/scripts/verify_windows_projection.py"
+      ],
+      "working_directory": "clean archive extraction root",
+      "exit_code": 0,
+      "stdout_sha256": "2cfe620f641ff89cca2e72e08b2895e93d999865bd2ef44c8dd44ee29299bf34",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python3.13",
+        "paper/scripts/verify_execution_sources.py"
+      ],
+      "working_directory": "clean archive extraction root",
+      "exit_code": 0,
+      "stdout_sha256": "6dee8c6defcc6729fa5bc1508fdbd19d9defe6552c3a9e92f14017be44ca57d0",
+      "stderr": ""
+    }
+  ]
+}

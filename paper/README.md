@@ -1,8 +1,9 @@
 Requires Python >=3.10 for offline scripts; tested with Python 3.13.15.
-System Python 3.9 is unsupported. Distribute the named ZIPs, never the entire
-private delivery directory.
+System Python 3.9 is unsupported. The manuscript author ZIP is PRIVATE and contains host/account identifiers
+and audit paths. Only the separately sanitized anonymous demo is an external
+candidate; never distribute the full delivery directory.
 
-# v0.12 current revision
+# v0.13 current revision
 
 The manuscript now reports the offline Windows conversion and its conservative
 verification result. The anonymous demo v0.5 adds semantic projections and a

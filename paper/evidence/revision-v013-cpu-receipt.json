@@ -1,0 +1,19 @@
+{
+  "scope": "current offline research checks; no backend/GPU; not historical execution proof",
+  "command": [
+    "python3.13",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "tests/research",
+    "-q"
+  ],
+  "working_directory": "repository root",
+  "runtime": "3.13.15",
+  "started_at_utc": "2026-10-01T01:03:23.365470+00:00",
+  "finished_at_utc": "2026-10-01T01:03:29.969461+00:00",
+  "exit_code": 0,
+  "stdout": "",
+  "stderr": "----------------------------------------------------------------------\nRan 61 tests in 6.506s\n\nOK\n"
+}

@@ -33,18 +33,23 @@ def main():
         'scripts/research/run_reserved_windows_same_run.py',
         'scripts/local_gpu_imagegen/engine.py',
         'scripts/local_gpu_imagegen/run_store.py',
+        'scripts/local_gpu_imagegen/__init__.py',
+        'scripts/local_gpu_imagegen/artifacts.py',
+        'scripts/local_gpu_imagegen/errors.py',
+        'scripts/local_gpu_imagegen/two_stage_layout.py',
+        'scripts/local_gpu_imagegen/visual_review.py',
         'scripts/local_gpu_imagegen/backends/base.py',
     )]
     files += [ROOT / 'docs/research/runs/f02-same-run-windows-20261001.md',
               ROOT / 'docs/research/runs/f02-same-run-v2-windows-20261001.md']
     files = sorted(set(files))
     manifest = {
-        'purpose': 'author review; not a certified anonymous submission package',
+        'purpose': 'PRIVATE internal author review; contains direct identifiers; not for anonymous submission or public distribution',
         'scope': 'manuscript and retained-evidence reanalysis; not full generation-tool source',
         'files': {str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest()
                   for p in sorted(files)},
     }
-    dest = PAPER / 'delivery/dsn-tool-description-v0.12.zip'
+    dest = PAPER / 'delivery/dsn-tool-description-v0.13.zip'
     dest.parent.mkdir(exist_ok=True)
     with zipfile.ZipFile(dest, 'w', zipfile.ZIP_DEFLATED) as z:
         for p in sorted(files):
@@ -54,7 +59,11 @@ def main():
             'excluded': ['paper/delivery/private-same-run*/', 'paper/build/',
                          'private source-to-delivery maps', 'models', 'generated images'],
             'metadata_not_self_hashed': ['PACKAGE_MANIFEST.json', 'EXCLUDED_CONTENT.json'],
-            'note': 'The author delivery directory is private; distribute this ZIP only.'
+            'included_sensitive_identifiers': [
+                'execution-source snapshots: pinned host name and GPU UUID',
+                'model audit JSON: local absolute paths',
+                'Windows runner source: owner account name'],
+            'note': 'PRIVATE author ZIP. Share only with authorized internal reviewers. The separate anonymous demo is the external candidate; never distribute the whole delivery directory.'
         }, indent=2) + '\n')
     print(f'{dest.name}: {len(files)} files plus checksum manifest, {dest.stat().st_size} bytes')
 
