@@ -10,43 +10,31 @@
 \author{\IEEEauthorblockN{Anonymous submission draft}}
 \maketitle
 \begin{abstract}
-A lost submission response can leave a generation client uncertain whether its backend executed a request. We describe an evidence exporter, a same-run submission guard, and controlled fault injection for local image-generation pipelines. The exporter separates reported state, interpretation, and oracle evidence. In four historical Windows/ComfyUI cases, each control retained one execution binding and each response-loss case retained two; response-loss retries created fresh runs outside the guard. A subsequent same-run campaign initially stopped at model-identity validation. Restoring the pinned process-local inventory in a revised research caller exposed the guard: the retry returned submission-outcome-unknown with no additional submission, while the original run remained unresolved. Synthetic CPU fixtures expose incomplete operation as a cost. Raw payloads support reconstruction of the new retained bindings; the historical event gap remains. Original-run reconciliation, deployment rates, physical GPU execution counts and output-quality improvements remain unestablished.
+A lost acceptance response leaves a generation client uncertain about backend execution. Our tool preserves reported state, interprets evidence through a read-only exporter, and blocks submissions through an unresolved run. Four historical Windows/ComfyUI cases retained one execution binding per control and two per response-loss case. Their retries created fresh runs outside the guard. A subsequent same-run test stopped at model-identity validation. Rebuilding pinned process-local inventory exposed the submission-outcome-unknown guard in a revised test, with no additional submission and an unresolved original run. Synthetic CPU fixtures show an incomplete client operation despite worker completion. Retained raw payloads support the new lifecycle bindings, but do not repair the historical event gap. These fixed cases support inspectable evidence handling and run-scoped submission control, without establishing automatic reconciliation, deployment rates, physical GPU savings or output-quality gains.
 \end{abstract}
 \section{Introduction}
 
-Consider a client that submits an image-generation workflow and loses the
-response after the backend accepts it. The backend may continue while the
-client lacks the returned job identifier. A second submission creates another
-opportunity for execution, but a timeout or a count of HTTP requests cannot
-establish what the backend actually did. The relevant question is which
-observations justify the next recovery action and the subsequent report of
-that action.
+An image-generation client can lose a response after its backend accepts the
+workflow. Without the returned job identifier, the client cannot determine
+whether resubmission will repeat completed work. Request counts and timeouts
+alone leave that question unanswered. Recovery therefore requires an explicit
+account of the evidence available to the client and the backend.
 
-Uncertain outcomes are an established distributed-systems problem. Remote
-procedure call designs distinguish call semantics under communication failure
-\cite{birrell1984}, while idempotent API designs use caller-provided identifiers and explicit
-service behavior to make retries safe \cite{aws}. A local workstation does not remove
-the distinction between request transmission and backend execution. Our tool
-addresses how that distinction is represented and inspected in a particular
-local generation pipeline; it does not introduce a new exactly-once protocol.
+Remote procedure call semantics already address uncertainty under communication
+failure \cite{birrell1984}. Idempotent APIs make retries safe through request
+identifiers and an explicit service contract \cite{aws}. Local execution leaves
+the same distinction between transmitting a request and observing its outcome.
+Our tool makes that distinction inspectable in a generation pipeline; it adds
+no new exactly-once protocol.
 
-Our prototype combines persistent run records, generation orchestration,
-a ComfyUI adapter and artifact handling. We describe tooling that preserves the
-client's evidence, applies versioned interpretation rules, and records backend
-observations independently of the client's returned status. Its product guard
-is deliberately narrower: an explicitly unknown submission blocks further
-submission through the same unresolved run at the reviewed entry points.
-
-The tool description has three parts: an evidence representation and read-only
-exporter; a same-run guard whose unresolved state remains visible; and CPU and
-Windows fault-observation workflows with separate evidence boundaries. The
-Windows demonstration tests visibility across the client--backend boundary.
-A separate same-run follow-up observes submission blocking, while leaving the
-original run unresolved. Neither protocol establishes physical GPU savings.
-The contribution is an inspectable integration of evidence interpretation,
-run-scoped control and backend observation. Section~\ref{sec:related} compares its scope with
-idempotent APIs, workflow execution and tracing. The evaluated contribution
-is this implementation and its failure windows.
+The prototype combines persistent run records, a read-only evidence exporter,
+and a guard that blocks submissions through an explicitly unresolved run.
+Separate backend observations constrain the exporter's versioned interpretation
+of client outcomes. CPU fixtures and Windows campaigns demonstrate these
+interfaces under controlled response loss. They preserve the distinction between
+blocking a submission and reconciling the original run. The contribution is this
+inspectable integration and its failure boundaries, compared with existing
+control and tracing contracts in Section~\ref{sec:related}.
 
 \section{Failure model and evidence semantics}
 
@@ -118,11 +106,11 @@ python -m\\
 scripts.research.export\_records\\
 --input run-record.json --output evidence.json
 \end{quote}
-The exported record lets a reader inspect reported state, interpreted state,
-mapping reasons and oracle evidence without invoking recovery. It does not
-acquire a missing oracle automatically. The Windows observer export and the
-normalized exporter schema are separate interfaces; a complete automatic
-conversion between them is not established by the pilot.
+The output exposes reported state, interpretation, mapping reasons and supplied
+oracle evidence without initiating recovery. Missing oracle evidence remains
+missing. The Windows observer and exporter use separate schemas; the offline
+conversion described below bridges retained inputs rather than providing
+automatic live conversion.
 The companion offline demonstration supplies two synthetic records that differ
 in the original run's status. It also normalizes twelve previously retained
 CPU product manifests alongside their fixture oracle records, without adding
@@ -130,11 +118,9 @@ artifact-validation assertions. All twelve remain unverified by the composite
 policy. This demonstrates the mapping's behavior on retained product records,
 not an independent replay or certification of their original events.
 
-For example, an unresolved run and successful backend evidence may coexist.
-The execution field can describe the observed backend outcome while recovery
-remains required and execution verification remains false. This separation is
-the intended diagnostic output, rather than an error to hide by replacing the
-original run state with the latest call's result.
+Thus successful backend evidence can coexist with required recovery and false
+execution verification. A later successful call does not replace the original
+run's unresolved state in the exported record.
 
 \subsection{Recovery guard and its scope}
 
@@ -144,12 +130,10 @@ entry checks that unresolved attempt before permitting further generation.
 The guard applies within the same run, including attempts with a different
 idempotency key. The corresponding inspection action is \texttt{get\_run}.
 
-This guard does not discover a missing backend job identifier or reconcile an
-unknown job automatically. A newly created run lies outside the prior run's
-guard. Existing recovery for a known job in a two-stage operation is a separate
-path and is not attributed to this no-job-ID guard. The resulting tradeoff is
-explicit: the guard withholds another submission through that run while the
-required evidence is unavailable; it does not guarantee eventual completion.
+The guard neither discovers a missing job identifier nor reconciles an unknown
+job. A new run lies outside its scope. Known-job recovery in two-stage operations
+uses a separate path. Withholding another submission therefore preserves
+uncertainty rather than guaranteeing completion.
 
 A pipeline integrator can use this distinction when a generation UI receives a
 disconnect after sending a request: the exporter preserves the unknown outcome,
@@ -307,14 +291,10 @@ checked against the campaign configuration. These are recorded environment
 facts for this campaign. They do not establish behavior across other models,
 backend versions or machines.
 
-Both systems produced two retained execution bindings in F02. This demonstrates
-that the research export retained execution identifiers despite the first call's
-ambiguous outcome. The source explains how the aggregate count can exceed the
-binding count, but the retained extract does not independently resolve the
-historical event sequence. The cases do not demonstrate an execution-count
-advantage for W3.
-Because the second call changed run and seed, the table also does not establish
-a duplicate execution of an identical generation request.
+These cases show that execution identifiers survived the first call's ambiguous
+outcome in the research export. They provide no execution-count advantage for
+W3. Changing both run and seed also prevents interpreting them as repeated
+executions of an identical generation request.
 
 \subsection{Same-run scope tests and a recovered guard observation}
 
@@ -389,59 +369,40 @@ cases is therefore not the controller aggregation. Table~\ref{tab:cases} preserv
 sequence; the evidence addendum records this correction without rewriting the
 historical report. No recovery-success rate is inferred.
 
-There is also a counting distinction within the observer export. Successive
-oracle decisions retain cumulative raw-event snapshots, so summing their event
-counts can count earlier events again. The controller's execution count uses
-distinct bound execution-instance identifiers. A raw-evidence audit must check
-those bindings, not substitute aggregate event counts.
-
 \section{Reproducibility and limitations}
 
-The paired CPU records preserve product revisions, harness digests and event
-traces. The Windows source and report identities are recorded separately in
-the companion evidence ledger. The audit and figure-generation scripts consume
-existing records only; they do not run the generation backend. Reanalysis is
-reproducible from the included derived records, while recreating the Windows
-campaign also requires the pinned backend, model, workflow and private setup.
-A fresh reproduction of that historical four-case campaign was not performed.
-The subsequent same-run test used a separate detached research checkout,
-preserved the frozen product revisions, and retained the v1 negative result
-and separate v2 observation.
+The CPU records retain product revisions, harness digests and event traces.
+The companion ledger identifies Windows sources and reports. Audit and figure
+scripts reanalyse these records offline; reproducing a Windows campaign also
+requires its pinned backend, model, workflow and private setup. The historical
+four-case campaign was not rerun. Separate same-run campaigns preserved the
+frozen product and retained both the v1 failure and v2 observation.
 
-The historical Windows JSONL records contain sanitized case summaries,
-execution bindings, terminal labels and aggregate event counts, rather than full raw WebSocket
-messages and history snapshots. Thus the audit verifies internal consistency
-of retained bindings; it cannot independently reconstruct every backend event.
-The source oracle recognizes completion using an \texttt{executing} event with
-\texttt{node=null}, together with completed history. The offline audit's check
-of the exported \texttt{executing} label is only a consistency check: that label
-is set by construction and lacks the original node and payload discriminator.
-The derived, path-redacted evidence extract and a read-only audit script are
-included with the manuscript source. The offline script checks this derived
-extract and regenerates the two result tables. The recorded report/JSONL equality
-and image-byte matches are inspection receipts; rerunning the script does not
-repeat those host-side checks. No backend call is needed.
+Historical JSONL contains sanitized summaries, bindings, terminal labels and
+aggregate counts, without complete WebSocket payloads or history snapshots.
+Its audit checks consistency and regenerates two tables, but cannot reconstruct
+every backend event. The oracle requires \texttt{executing} with \texttt{node=null}
+and completed history. The exported terminal label lacks that discriminator
+and is set by construction, so checking it does not independently prove
+completion. Report/JSONL equality and image-byte matches remain historical
+inspection receipts rather than checks repeated by the offline script.
 
-Read-only hashing found that the four generated-call artifact hashes matched
-current output image bytes on the Windows host. Each case had one product-output
-PNG; the unresolved first F02 call recorded no product artifact hash. Therefore
-these checks do not verify the first F02 execution's output bytes. The oracle's
-path fingerprints hash metadata strings and cannot substitute for content
-hashes. Neither a matching content hash nor completed history establishes
-visual quality or final user acceptance.
+Host-side hashing matched the four generated-call artifact hashes to retained
+image bytes, with one product-output PNG per case. The first, unresolved F02
+call recorded no product artifact hash; those checks therefore do not verify
+its output bytes. Oracle path fingerprints hash metadata rather than image
+content. Neither content hashes nor completed history measure visual quality
+or final user acceptance.
 
-Observation depends on receiving and binding backend events within the harness
-window. Missing events limit evaluability; they do not establish non-execution.
-The same-process CPU observer and backend-origin Windows observer have different
-failure boundaries, neither of which establishes crash-complete auditability.
-The fixed case set contains no basis for deployment failure frequency, natural
-duplicate-execution frequency, performance improvement or broad model
-robustness. The subsequent two-case Windows test is a new controlled backend
-experiment, with no model download; it remains separate from the historical
-campaign. The v2 follow-up observes the guard in one fixed case, not a
-population effect or execution-count advantage. Private raw
-captures are excluded from the reviewer package, so its public audit receipt
-cannot substitute for third-party access to those bytes.
+The observer must receive and bind events within its capture window. Missing
+events restrict evaluability, not prove non-execution. CPU and Windows observers
+have different failure boundaries; neither provides crash-complete auditability.
+The fixed cases support no population rates, performance gain or broad model
+robustness claim. The subsequent Windows campaigns used existing models and
+remain separate from historical observations. In particular, v2 supports one
+fixed-case guard observation, not an execution-count advantage. Private raw
+captures are excluded from delivered archives, limiting third-party reanalysis
+to the included evidence rather than the original received bytes.
 
 The offline Windows conversion maps the retained product manifest separately
 from its audited backend lifecycle. F00 yields succeeded execution, partial
@@ -456,92 +417,60 @@ states match the private conversion; it reproduces mapping, not raw-event audit.
 \section{Related work and discussion}
 \label{sec:related}
 
-RPC failure semantics provide the conceptual starting point: a failed
-communication does not necessarily settle whether a remote operation ran \cite{birrell1984}.
-Idempotent API design addresses safe retries through an explicit contract,
-including caller-provided request identifiers \cite{aws}. Our tool relies on neither
-a prompt identifier nor a client idempotency key as sufficient evidence of
-backend deduplication. Its role is to preserve and qualify observations when
-such a guarantee has not been established for the evaluated path.
+Observation and control answer different questions at an uncertain submission
+boundary. A backend lifecycle can complete while the client still requires
+recovery; blocking a further submission does not discharge that obligation.
+RPC semantics and idempotent service contracts already address ambiguous
+outcomes and safe retries \cite{birrell1984,aws}. Our tool instead records the
+evidence available when backend deduplication is unestablished. Neither a
+prompt identifier nor a client idempotency key alone supplies that guarantee.
 
-The practical distinction is between observation and control. Backend events
-can establish that work completed while the client's original run remains
-unresolved. Conversely, a conservative same-run guard can block a further
-submission without resolving that uncertainty. The Windows harness crosses a
-different boundary by creating a new run after observation. Keeping these
-scopes separate explains why the demonstration can be oracle-evaluable without
-showing automatic recovery or a W3 reduction in executions.
+Li's preprint compares model, harness and tool-contract effects on duplicate
+side effects in a simulated service benchmark \cite{li2026exactlyonce}. Its
+guard combines read-back, supported idempotency keys, delayed verification,
+blocking unverifiable repeats and uncertainty annotations. Our narrower guard
+blocks an explicitly unknown submission within one run, without automatic
+read-back or reconciliation. Withholding unsafe retries is therefore not our
+novelty claim. The contribution lies in the local implementation linking
+preserved reports, reasoned interpretation and backend observation. Different
+workloads and evidence sources preclude comparing the studies' outcome counts.
 
-A recent preprint by Li studies ambiguous writes in a simulated service
-benchmark, comparing model, harness and tool-contract effects on duplicate
-side effects \cite{li2026exactlyonce}. Its guard combines read-back verification,
-idempotency keys where supported, delayed re-verification, blocking unverifiable
-non-idempotent repeats, and uncertainty annotations. Our guard has a narrower
-control rule: an explicitly unknown submission blocks further submission through
-the same run, without automatic read-back or reconciliation. The shared principle
-of withholding unsafe retries is not a novelty claim. The tool-specific object
-here is the inspectable integration of preserved reported state, versioned
-interpretation with reasons, and backend observation in a local generation
-pipeline. This is an implementation distinction, not evidence of superiority
-over that guard or of a new general recovery principle. The studies use different
-workloads and evidence sources; their outcome counts are not directly comparable.
+Reliable State Machines use persistent state and atomic runtime processing
+to support failure transparency and exactly-once input processing
+\cite{rsm2019}. Our external generator remains outside such a transactional
+runtime. Temporal likewise documents that completed Activities may be retried
+after a worker crashes before reporting completion, and recommends idempotent
+Activities \cite{temporal}. These contracts explain why durable client state
+alone cannot settle external side effects. Our restricted submission entry
+provides neither equivalent workflow guarantees nor automatic reconciliation.
 
-Reliable State Machines provide a stronger control contract within their
-programming model: persistent state and runtime-managed atomic processing
-support failure transparency and exactly-once input processing
-\cite{rsm2019}. Our tool does not place the external generator inside such a
-transactional runtime. It exposes uncertainty at that boundary and restricts
-one product entry path, rather than claiming an equivalent processing guarantee.
+OpenTelemetry relates operation spans through trace context \cite{otel}.
+Our application-specific policy additionally requires backend start and terminal
+events bound to completed history, while unresolved recovery vetoes
+\texttt{execution\_verified}. Correlation identifiers alone are not execution counts.
 
-Temporal's Activity documentation describes the same lost-completion boundary:
-a worker may finish an Activity and crash before reporting completion, leading
-to a retry. It recommends idempotent Activities \cite{temporal}. This is an important
-comparison because durable workflow state alone does not eliminate uncertainty
-about external side effects. Our same-run guard withholds a submission under
-explicit uncertainty, but supplies no equivalent general workflow-execution or
-automatic reconciliation guarantee.
+Toxiproxy injects configurable TCP connection faults \cite{toxiproxy}. Our
+proxy selects an accepted application response for suppression while a separate
+observer checks its lifecycle. No comparative implementation or usability study
+was performed, so equivalent Toxiproxy setups are not ruled out. Filibuster's
+project overview describes synthesizing fault-injected variations from integration
+tests \cite{filibuster}. Our fixed submission cases offer no such search coverage;
+this comparison uses the overview, not reproduced Filibuster results.
 
-OpenTelemetry represents operations through spans and uses trace context to
-relate observations across a request \cite{otel}. Such correlation provides a useful
-representation for a distributed execution path. In this tool, the additional
-application-specific rule is which observations permit an execution claim:
-backend start and terminal events must bind to completed history, and unresolved
-product recovery can still veto \texttt{execution\_verified}. Correlation identifiers
-alone are not used as execution counts.
-
-Toxiproxy provides configurable TCP connection fault injection for testing \cite{toxiproxy}.
-Our research proxy uses an application-level acceptance condition to select
-the response to suppress, while the observer separately checks execution. This
-comparison does not show that Toxiproxy could not support an equivalent setup;
-no comparative implementation or usability measurement was performed.
-
-Filibuster's project overview describes synthesizing fault-injected test
-variations from developer integration tests to check application error handling
-\cite{filibuster}. Our fixed case set does not provide that automatic search
-coverage. It concentrates on evidence interpretation at a selected submission
-barrier and preserves a separate backend observation channel. The comparison
-uses the project overview, not a reproduction of Filibuster's research results.
-
-This is a documentation-based comparison of responsibilities, not a performance
-benchmark or a feature-absence survey. The practical contribution is making the
-relationship between client ambiguity, backend observation and permitted claims
-inspectable for a local generation workflow. The comparisons delimit the tool
-responsibilities; they do not establish superiority, exhaustive novelty,
-or measured developer productivity.
+These documentation-based comparisons delimit responsibilities rather than
+establishing superiority, exhaustive novelty or developer productivity. The
+tool makes client ambiguity, backend observation and permitted claims
+inspectable within the evaluated generation workflow.
 
 \section{Conclusion}
 
-The tool preserves ambiguous client outcomes alongside separately bound
-execution evidence and implements a conservative guard within an unresolved
-run. The historical Windows cases demonstrate execution visibility under lost
-acceptance responses, while exposing the distinction between a new successful
-call and reconciliation of the original run. These bounded observations support
-an evidence-preserving tool description. The same-run tests retain the initial masking failure and a revised-caller
-observation of the submission guard. The original run remains unresolved;
-blocking another submission does not establish new physical GPU savings.
-These results do not establish automatic
-unknown-job recovery, deployment-wide reliability or natural duplicate-execution
-rates.
+The tool records ambiguous client outcomes alongside bound backend observations
+and restricts further submissions through an unresolved run. Historical Windows
+cases distinguish a successful fresh-run call from original-run reconciliation.
+Same-run tests retain both a masking failure and one fixed-case guard observation.
+The original run remains unresolved, and blocking another submission supplies
+no physical GPU-savings evidence. Automatic unknown-job recovery, deployment
+reliability and natural duplicate-execution rates remain unestablished.
 
 \section*{Data, code and responsible use}
 The manuscript source includes derived Windows evidence, retained CPU-record

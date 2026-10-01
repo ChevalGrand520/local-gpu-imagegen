@@ -1,0 +1,66 @@
+{
+  "scope": "Manuscript source lexical tokens after removing citation/label/path commands and command names; not journal word count or external similarity metric",
+  "baseline_commit": "590ea5109f6f4027351f715c98f99aac7b8677d3",
+  "before": 4778,
+  "after": 4052,
+  "reduction_percent": 15.2,
+  "citations_preserved": [
+    "aws",
+    "aws",
+    "birrell1984",
+    "birrell1984",
+    "filibuster",
+    "li2026exactlyonce",
+    "otel",
+    "rsm2019",
+    "temporal",
+    "toxiproxy"
+  ],
+  "sections": [
+    {
+      "section": "Introduction",
+      "before_lexical_tokens": 294,
+      "after_lexical_tokens": 182
+    },
+    {
+      "section": "Failure model and evidence semantics",
+      "before_lexical_tokens": 221,
+      "after_lexical_tokens": 221
+    },
+    {
+      "section": "Tool design",
+      "before_lexical_tokens": 1087,
+      "after_lexical_tokens": 1020
+    },
+    {
+      "section": "Evidence and demonstration",
+      "before_lexical_tokens": 1553,
+      "after_lexical_tokens": 1464
+    },
+    {
+      "section": "Reproducibility and limitations",
+      "before_lexical_tokens": 540,
+      "after_lexical_tokens": 397
+    },
+    {
+      "section": "Related work and discussion",
+      "before_lexical_tokens": 629,
+      "after_lexical_tokens": 354
+    },
+    {
+      "section": "Conclusion",
+      "before_lexical_tokens": 99,
+      "after_lexical_tokens": 66
+    },
+    {
+      "section": "Data, code and responsible use",
+      "before_lexical_tokens": 86,
+      "after_lexical_tokens": 86
+    },
+    {
+      "section": "AI Tool Usage",
+      "before_lexical_tokens": 60,
+      "after_lexical_tokens": 60
+    }
+  ]
+}
