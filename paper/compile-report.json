@@ -1,7 +1,7 @@
 {
-  "status": "DSN Tool v0.15; Humanizer prose revision",
+  "status": "DSN Tool v0.16; narrative revision and consolidated limitations",
   "pages_total": 6,
-  "abstract_words": 133,
+  "abstract_words": 127,
   "figures": 2,
   "tables": 3,
   "references": 8,
@@ -20,14 +20,14 @@
   "undefined_citations": 0,
   "undefined_references": 0,
   "overfull_boxes": 0,
-  "underfull_box_notices": 17,
-  "pdf_sha256": "db1e7124a41f895fe35a21eb435b97790f45d234076d6d99daafaa628aaa2447",
-  "pdf_bytes": 101268,
+  "underfull_box_notices": 18,
+  "pdf_sha256": "289546209cd7c1f68df856b5b893ee40bb352abf18d7b01040e1938ab61ab8f0",
+  "pdf_bytes": 100219,
   "compiler": "Tectonic 0.17.0",
   "submission_ready": false,
   "remaining": "Human declarations, final PDF acceptance and external artifact release decisions",
   "tables_generated_from_checked_records": true,
   "external_review": "DS round 2 substantive; Claude round aborted before file access",
   "venue_fit": "DSN Tool retained as candidate; target edition and institutional category recognition unconfirmed",
-  "visual_check": "All six v0.15 pages rendered at 1100-pixel longest edge and inspected; no obvious clipping or overlap. Final human acceptance pending."
+  "visual_check": "All six v0.16 pages rendered at 1100-pixel longest edge and inspected; no obvious clipping or overlap. Final human acceptance pending."
 }

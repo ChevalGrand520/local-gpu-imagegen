@@ -10,7 +10,7 @@
 \author{\IEEEauthorblockN{Anonymous submission draft}}
 \maketitle
 \begin{abstract}
-A lost acceptance response leaves a generation client uncertain about backend execution. Our tool preserves reported state, interprets evidence through a read-only exporter, and blocks further submissions within an unresolved run. Four historical Windows/ComfyUI cases retained one execution binding per control and two per response-loss case. Their retries created fresh runs outside the guard. A subsequent same-run test stopped at model-identity validation. After the caller rebuilt pinned process-local inventory, a revised test reached the submission-outcome-unknown guard. It added no submission and left the original run unresolved. Synthetic CPU fixtures show an incomplete client operation despite worker completion. Retained raw payloads support the new lifecycle bindings; the historical event gap remains. The fixed cases demonstrate evidence export and run-scoped submission control. They establish no automatic reconciliation, deployment rates, physical GPU savings or output-quality gains.
+When a local generation backend accepts a request but its response is lost, the client may retry work that has already finished. We present a tool that retains the client's unresolved submission record, exports its interpretation alongside backend evidence, and blocks further generation through the same run. Evaluation combines synthetic CPU fixtures with controlled Windows/ComfyUI response loss. The historical retries created fresh runs, so they left the guard untested. A later same-run campaign first encountered a model-identity rejection. With a revised caller that rebuilt pinned process-local inventory, the retry reached the submission guard and produced no further POST. The original run still required recovery. For an investigator, the resulting record exposes the disagreement between backend completion and client recovery that a successful later call can otherwise obscure.
 \end{abstract}
 \section{Introduction}
 
@@ -95,33 +95,33 @@ evidence policy, not independent certification of the input record.
 
 \subsection{Using the evidence record}
 
-An investigator first inspects the run manifest and the recorded submission
-outcome. If submission is explicitly unknown, inspection must preserve that
-uncertainty: the missing job identifier must not be synthesized from a later
-successful call. Backend observation is then associated with the relevant
-request and execution instance, while artifact checks retain their own result.
-The export command writes a new record and refuses to overwrite an existing
-export:
+For a response-loss incident, the investigator starts with the original run's
+manifest. The recorded submission outcome and job identifier determine which
+backend evidence can be associated with that run. If submission is explicitly
+unknown, a later successful call belongs to its own record; its job identifier
+is not assigned to the original run. The investigator associates the relevant
+backend observation with the request and execution instance and records
+artifact checks separately. The export command writes to a new file, refusing
+to overwrite an existing export:
 \begin{quote}\small\ttfamily
 python -m\\
 scripts.research.export\_records\\
 --input run-record.json --output evidence.json
 \end{quote}
-The output exposes reported state, interpretation, mapping reasons and supplied
-oracle evidence without initiating recovery. Missing oracle evidence remains
-missing. The Windows observer and exporter use separate schemas; the offline
-conversion described below bridges retained inputs rather than providing
-automatic live conversion.
-The companion offline demonstration supplies two synthetic records that differ
-in the original run's status. It also normalizes twelve previously retained
-CPU product manifests alongside their fixture oracle records, without adding
-artifact-validation assertions. All twelve remain unverified by the composite
-policy. This demonstrates the mapping's behavior on retained product records,
-not an independent replay or certification of their original events.
+The investigator can then compare reported and interpreted state, follow the
+mapping reasons and inspect supplied oracle evidence. An absent oracle record
+appears as missing evidence in this view. Export leaves the source run intact
+and makes no recovery call. Windows inputs pass through a separate offline
+conversion step because the observer and exporter schemas differ.
 
-The exported record can contain successful backend evidence, required recovery
-and false execution verification. A later successful call leaves the original
-run's unresolved state intact.
+The companion demonstration supplies two synthetic records with different
+original-run statuses. It also applies the mapping to twelve retained CPU
+product manifests and their fixture oracle records, with no added
+artifact-validation assertions. All twelve receive false composite verification.
+This offline exercise reproduces interpretation of the stored records;
+the original events are not replayed or independently certified. In a record
+with successful backend evidence and required recovery, the unresolved
+obligation still belongs to the original run, even after a later call succeeds.
 
 \subsection{Recovery guard and its scope}
 
@@ -377,50 +377,29 @@ historical report. No recovery-success rate is inferred.
 
 \section{Reproducibility and limitations}
 
-The CPU records retain product revisions, harness digests and event traces.
-The companion ledger identifies Windows sources and reports. Audit and figure
-scripts reanalyse these records offline; reproducing a Windows campaign also
-requires its pinned backend, model, workflow and private setup. The historical
-four-case campaign was not rerun. Separate same-run campaigns preserved the
-frozen product and retained both the v1 failure and v2 observation.
+Offline reproducibility rests on the retained CPU traces, Windows source/report
+ledger, audit scripts and figure sources. A live campaign additionally requires
+the pinned backend, model, workflow and private setup. The historical four cases
+and subsequent same-run campaigns remain separate, with both v1 and v2 retained.
+Raw captures are private.
 
-Historical JSONL contains sanitized summaries, bindings, terminal labels and
-aggregate counts, without complete WebSocket payloads or history snapshots.
-Its audit checks consistency and regenerates two tables, but cannot reconstruct
-every backend event. The oracle requires \texttt{executing} with \texttt{node=null}
-and completed history. The exported terminal label lacks that discriminator
-and is set by construction, so checking it does not independently prove
-completion. Report/JSONL equality and image-byte matches remain historical
-inspection receipts rather than checks repeated by the offline script.
+The main evidence gap is the historical event stream: JSONL supports consistency
+checks and table regeneration, but lacks the payloads needed to reconstruct the
+start-count discrepancy. The exported terminal label is assigned by construction;
+the oracle's completion rule additionally requires \texttt{executing} with
+\texttt{node=null} and completed history. Image-byte receipts cover four
+generated-call artifacts, leaving the first unresolved F02 output outside those
+checks. Path fingerprints describe metadata; visual quality and user acceptance
+require separate evaluation.
 
-Host-side hashing matched the four generated-call artifact hashes to retained
-image bytes, with one product-output PNG per case. The first, unresolved F02
-call recorded no product artifact hash; those checks therefore do not verify
-its output bytes. Oracle path fingerprints hash metadata rather than image
-content. Neither content hashes nor completed history measure visual quality
-or final user acceptance.
-
-The observer must receive and bind events within its capture window. Missing
-events limit what the observer can evaluate; their absence does not prove
-non-execution. CPU and Windows observers
-have different failure boundaries; neither provides crash-complete auditability.
-The fixed cases support no population rates, performance gain or broad model
-robustness claim. The subsequent Windows campaigns used existing models and
-remain separate from historical observations. In particular, v2 supports one
-fixed-case guard observation, not an execution-count advantage. Private raw
-captures are excluded from delivered archives, limiting third-party reanalysis
-to the included evidence rather than the original received bytes.
-
-The offline Windows conversion maps the retained product manifest separately
-from its audited backend lifecycle. F00 yields succeeded execution, partial
-evidence and no recovery requirement; F02 yields succeeded execution, missing
-evidence and required recovery. Neither is composite-verified: no independent
-artifact validator was supplied. Four variants (two missing-state and two
-job-identity-conflict) are explicitly synthetic checks, not additional Windows experiments.
-They retain unknown recovery or mismatch evidence. A clean-copy replay preserved
-all input bytes and reproduced the interpretation summary. The anonymous demo
-provides whitelisted, pseudonymized semantic projections whose interpretation
-states match the private conversion; it reproduces mapping, not raw-event audit.
+The observations depend on the observer's capture window and the recorded setup.
+The v2 case records run-scoped submission blocking. Deployment rates, performance
+comparisons, cross-model robustness and GPU savings require further measurement.
+The anonymous demo reproduces semantic mapping from sanitized projections;
+its four additional variants are synthetic. With no independent artifact
+validator, the converted F00 and F02 records both remain composite-unverified.
+Full conversion outcomes and audit coverage are documented in the companion
+evidence note.
 
 \section{Related work and discussion}
 \label{sec:related}
@@ -473,13 +452,13 @@ claims those observations support.
 
 \section{Conclusion}
 
-The tool records ambiguous client outcomes alongside bound backend observations
-and restricts further submissions through an unresolved run. Historical Windows
-cases distinguish a successful fresh-run call from original-run reconciliation.
-Same-run tests retain both a masking failure and one fixed-case guard observation.
-The original run remains unresolved, and blocking another submission supplies
-no physical GPU-savings evidence. Automatic unknown-job recovery, deployment
-reliability and natural duplicate-execution rates remain unestablished.
+We built the tool to keep a recovery decision attached to the run that created
+the uncertainty. In the revised Windows case, the backend lifecycle completed
+and the retry was blocked, while the original client record still required
+recovery. We chose to preserve that disagreement in the export and to make the
+unresolved submission constrain further generation through the same run. For a
+pipeline integrator, this record provides a concrete starting point for deciding
+how to reconcile the original operation.
 
 \section*{Data, code and responsible use}
 The manuscript source includes derived Windows evidence, retained CPU-record
