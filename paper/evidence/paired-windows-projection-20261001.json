@@ -1,0 +1,152 @@
+{
+  "schema": "paired-windows-projection-v1",
+  "execution_source": "08539d5",
+  "scope": "derived fixed-case record; raw private evidence excluded; not execution authentication",
+  "rows": [
+    {
+      "case": "B2_F00",
+      "metrics": {
+        "S_proxy": 1,
+        "S_upstream": 1,
+        "A": 1,
+        "E_bound": 1
+      },
+      "client_completion": true,
+      "guard": false,
+      "events": {
+        "status": 4,
+        "execution_start": 1,
+        "execution_cached": 1,
+        "progress_state": 44,
+        "executing": 8,
+        "progress": 30,
+        "executed": 1,
+        "execution_success": 1
+      },
+      "retained_png_files": 1
+    },
+    {
+      "case": "W3_F00",
+      "metrics": {
+        "S_proxy": 1,
+        "S_upstream": 1,
+        "A": 1,
+        "E_bound": 1
+      },
+      "client_completion": true,
+      "guard": false,
+      "events": {
+        "status": 4,
+        "execution_start": 1,
+        "execution_cached": 1,
+        "progress_state": 44,
+        "executing": 8,
+        "progress": 30,
+        "executed": 1,
+        "execution_success": 1
+      },
+      "retained_png_files": 1
+    },
+    {
+      "case": "W3_F02",
+      "metrics": {
+        "S_proxy": 1,
+        "S_upstream": 1,
+        "A": 1,
+        "E_bound": 1
+      },
+      "client_completion": false,
+      "guard": true,
+      "events": {
+        "status": 4,
+        "execution_start": 1,
+        "execution_cached": 1,
+        "progress_state": 44,
+        "executing": 8,
+        "progress": 30,
+        "executed": 1,
+        "execution_success": 1
+      },
+      "retained_png_files": 0
+    },
+    {
+      "case": "B2_F02",
+      "metrics": {
+        "S_proxy": 2,
+        "S_upstream": 2,
+        "A": 2,
+        "E_bound": 2
+      },
+      "client_completion": true,
+      "guard": false,
+      "events": {
+        "status": 7,
+        "execution_start": 2,
+        "execution_cached": 2,
+        "progress_state": 45,
+        "executing": 9,
+        "progress": 30,
+        "executed": 2,
+        "execution_success": 2
+      },
+      "retained_png_files": 1
+    },
+    {
+      "case": "B2_FPRE",
+      "metrics": {
+        "S_proxy": 2,
+        "S_upstream": 1,
+        "A": 1,
+        "E_bound": 1
+      },
+      "client_completion": true,
+      "guard": false,
+      "events": {
+        "status": 4,
+        "execution_start": 1,
+        "execution_cached": 1,
+        "progress_state": 44,
+        "executing": 8,
+        "progress": 30,
+        "executed": 1,
+        "execution_success": 1
+      },
+      "retained_png_files": 1
+    },
+    {
+      "case": "W3_FPRE",
+      "metrics": {
+        "S_proxy": 1,
+        "S_upstream": 0,
+        "A": 0,
+        "E_bound": 0
+      },
+      "client_completion": false,
+      "guard": true,
+      "events": {},
+      "retained_png_files": 0
+    }
+  ],
+  "totals": {
+    "operations": 6,
+    "product_calls": 10,
+    "proxy_posts": 8,
+    "upstream_attempts": 6
+  },
+  "control_rpc_seconds": [
+    35.7722965,
+    24.2037979
+  ],
+  "elapsed_seconds": 374.25439250003546,
+  "private_archive_sha256": "141b1ea66af741f9e8cc917f7a7a33db5cb0d048989f76a25166775180f852f3",
+  "cache_second_B2_F02_nodes": [
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9"
+  ],
+  "audit_checks": 1561
+}

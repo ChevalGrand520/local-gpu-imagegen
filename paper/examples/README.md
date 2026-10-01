@@ -18,3 +18,8 @@ The same command also checks the retained derived Windows and CPU records offlin
 Those records support the tables in the paper. The command cannot replay the
 Windows campaign, rehash private PNGs or reconstruct omitted WebSocket payloads.
 It uses only Python's standard library and does not contact a backend.
+
+For the newer paired batch, run `python3.13 paper/scripts/verify_paired_projection.py`.
+This checks derived rows and totals only. Private raw event replay requires
+the separately retained private archive and research audit entry; the public
+projection is not a new exporter-normalization experiment.

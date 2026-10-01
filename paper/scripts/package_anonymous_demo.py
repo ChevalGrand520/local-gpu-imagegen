@@ -11,11 +11,13 @@ from pathlib import Path
 from package_reviewer_demo import FILES, ROOT
 
 
-DEST = ROOT / "paper/delivery/evidence-tool-anonymous-demo-v0.5.zip"
-PRIVATE_MAP = ROOT / "paper/delivery/evidence-tool-anonymous-mapping-v0.5.json"
+DEST = ROOT / "paper/delivery/evidence-tool-anonymous-demo-v0.6.zip"
+PRIVATE_MAP = ROOT / "paper/delivery/evidence-tool-anonymous-mapping-v0.6.json"
 FILES = FILES + (
     "paper/examples/windows-conversion-projection.json",
     "paper/scripts/verify_windows_projection.py",
+    "paper/evidence/paired-windows-projection-20261001.json",
+    "paper/scripts/verify_paired_projection.py",
 )
 EPOCH = (2020, 1, 1, 0, 0, 0)
 SOURCE_README = "paper/examples/README.md"

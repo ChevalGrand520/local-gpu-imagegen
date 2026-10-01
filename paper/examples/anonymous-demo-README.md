@@ -48,3 +48,16 @@ validator is supplied: both retained cases remain composite-unverified.
 
 Synthetic CPU fixture prompts are included for inspection; they are not
 captured Windows user prompts.
+
+## Paired Windows derived projection
+
+```sh
+python3.13 paper/scripts/verify_paired_projection.py
+```
+
+This checks six derived paired rows, totals and the reported cache-node list.
+The projection includes no raw prompts, machine paths or images. Its private
+archive hash identifies the retained author archive; the archive is not included.
+This command cannot replay raw events or independently verify execution.
+The existing Windows conversion examples refer to a different earlier protocol;
+they are not exporter conversions of this new paired batch.

@@ -42,6 +42,12 @@ def main():
     )]
     files += [ROOT / 'docs/research/runs/f02-same-run-windows-20261001.md',
               ROOT / 'docs/research/runs/f02-same-run-v2-windows-20261001.md']
+    files += list((ROOT / 'scripts/research').glob('*.py'))
+    files += [ROOT / name for name in (
+        'refine-logs/WINDOWS_PAIRED_COMPLETED_20261001.md',
+        'refine-logs/ORACLE_QUIET_WINDOW_DIAGNOSIS_20261001.md',
+        'docs/research/dsn-tool-description-claim-evidence-matrix.md',
+    )]
     files = sorted(set(files))
     manifest = {
         'purpose': 'PRIVATE internal author review; contains direct identifiers; not for anonymous submission or public distribution',
@@ -49,7 +55,7 @@ def main():
         'files': {str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest()
                   for p in sorted(files)},
     }
-    dest = PAPER / 'delivery/dsn-tool-description-v0.18.zip'
+    dest = PAPER / 'delivery/dsn-tool-description-v0.20.zip'
     dest.parent.mkdir(exist_ok=True)
     with zipfile.ZipFile(dest, 'w', zipfile.ZIP_DEFLATED) as z:
         for p in sorted(files):
@@ -57,6 +63,7 @@ def main():
         z.writestr('PACKAGE_MANIFEST.json', json.dumps(manifest, indent=2) + '\n')
         z.writestr('EXCLUDED_CONTENT.json', json.dumps({
             'excluded': ['paper/delivery/private-same-run*/', 'paper/build/',
+                         'paired-windows private raw archive and capture directories',
                          'private source-to-delivery maps', 'models', 'generated images'],
             'metadata_not_self_hashed': ['PACKAGE_MANIFEST.json', 'EXCLUDED_CONTENT.json'],
             'included_sensitive_identifiers': [

@@ -64,8 +64,9 @@ Historical narrative was condensed without changing retained measurements.
 The current PDF is six US Letter pages with a 128-word abstract; all nine font
 entries are embedded. Compile/visual details are in `compile-report.json`.
 Original v0.18 delivery archives and their freeze remain historical baselines.
-No new v0.20 delivery package has been generated; old review statements below
-do not certify the new working manuscript or its artifact alignment.
+The v0.20 private author package and anonymous demo v0.6 add a derived paired
+projection and offline checker. Full paired raw captures are excluded from both.
+Old review statements below do not certify the new working manuscript.
 
 ## Verified format baseline
 

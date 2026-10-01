@@ -89,6 +89,21 @@ def audit(root):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("campaign", type=Path)
-    result = audit(parser.parse_args().campaign)
+    parser.add_argument("--write-public-projection", type=Path)
+    args = parser.parse_args()
+    result = audit(args.campaign)
+    if args.write_public_projection:
+        if result["status"] != "PASS":
+            raise ValueError("failed audit cannot produce projection")
+        runner = load(args.campaign / "runner-report.json")
+        public = {"schema": "paired-windows-projection-v1", "execution_source": "08539d5",
+                  "scope": "derived fixed-case record; raw private evidence excluded; not execution authentication",
+                  "rows": result["rows"], "totals": result["totals"],
+                  "control_rpc_seconds": runner["control_rpc_seconds"],
+                  "elapsed_seconds": runner["elapsed_seconds"],
+                  "private_archive_sha256": "141b1ea66af741f9e8cc917f7a7a33db5cb0d048989f76a25166775180f852f3",
+                  "cache_second_B2_F02_nodes": ["3", "4", "5", "6", "7", "8", "9"],
+                  "audit_checks": result["check_count"]}
+        args.write_public_projection.write_text(json.dumps(public, indent=2)+"\n")
     print(json.dumps(result, indent=2))
     raise SystemExit(0 if result["status"] == "PASS" else 1)
