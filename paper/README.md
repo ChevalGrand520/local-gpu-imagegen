@@ -1,7 +1,11 @@
-# v0.11 current revision
+Requires Python >=3.10 for offline scripts; tested with Python 3.13.15.
+System Python 3.9 is unsupported. Distribute the named ZIPs, never the entire
+private delivery directory.
+
+# v0.12 current revision
 
 The manuscript now reports the offline Windows conversion and its conservative
-verification result. The anonymous demo v0.4 adds semantic projections and a
+verification result. The anonymous demo v0.5 adds semantic projections and a
 standard-library replay command, tested after clean extraction. It excludes
 private raw captures and does not reproduce the live experiment. The v3 DS
 review prompt and pending author declarations are under `review/`.
@@ -16,7 +20,7 @@ validator assertion; all composite verifications remain false. Full converted
 records remain private. Submission readiness remains false; author and public
 artifact reproducibility decisions remain open.
 
-# Standard manuscript source
+# Historical v0.9 note (superseded by the current revision above)
 
 The v0.9 revision retains the October 1 Windows same-run campaign as a negative
 result: F02 made two product calls but one POST and one bound lifecycle. The
@@ -31,7 +35,7 @@ The same-run evidence gate remains open. This draft is not submission-ready.
 Markdown draft remains the argument/evidence working copy; it is not the
 submission file. Output is `main.pdf` after compilation.
 
-The active manuscript now describes `research-normalization-v3`. Missing or
+The active manuscript now describes `research-normalization-v4`. Missing or
 null reported run state leaves recovery unknown, and a durable-manifest job or
 artifact identity conflicting with the selected top-level identity is an
 evidence mismatch. The offline checker normalizes twelve retained CPU product
@@ -167,3 +171,11 @@ missing terminal-payload discriminator. The manuscript now reports these as
 limitations and uses retained bindings as a narrow count. This response is not
 authoritative independent verification and does not claim the missing payloads
 were recovered.
+
+## v0.12 review corrections
+
+Eighteen Windows execution-source hashes can be checked using
+`python3.13 paper/scripts/verify_execution_sources.py`. These are CRLF byte
+snapshots reconstructed from Git history, not runtime attestation. Historical
+unsupported test-count/runtime claims were removed. Normalization v4 preserves
+unknown recovery for partial runs. See `review/RESPONSE_TO_INDEPENDENT_REVIEW_20261001.md`.

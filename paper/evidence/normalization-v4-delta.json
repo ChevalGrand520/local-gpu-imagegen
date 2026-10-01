@@ -1,0 +1,29 @@
+{
+  "probe_count": 20,
+  "changes": [
+    {
+      "case": "b2/F02-two-stage",
+      "before": {
+        "submission_state": "intent_recorded",
+        "execution_state": "succeeded",
+        "evidence_state": "missing",
+        "recovery_state": "not_needed",
+        "domain_verdict": "not_evaluated",
+        "approval_state": "unknown",
+        "execution_verified": false,
+        "execution_verified_reason": "required_independent_execution_artifact_job_or_approval_evidence_is_incomplete"
+      },
+      "after": {
+        "submission_state": "intent_recorded",
+        "execution_state": "succeeded",
+        "evidence_state": "missing",
+        "recovery_state": "unknown",
+        "domain_verdict": "not_evaluated",
+        "approval_state": "unknown",
+        "execution_verified": false,
+        "execution_verified_reason": "unresolved_or_reconciling_recovery_state_prevents_execution_verification"
+      }
+    }
+  ],
+  "scope": "offline reanalysis; retained input bytes unchanged"
+}

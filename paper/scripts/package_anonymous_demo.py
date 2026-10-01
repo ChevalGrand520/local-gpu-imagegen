@@ -11,8 +11,8 @@ from pathlib import Path
 from package_reviewer_demo import FILES, ROOT
 
 
-DEST = ROOT / "paper/delivery/evidence-tool-anonymous-demo-v0.4.zip"
-PRIVATE_MAP = ROOT / "paper/delivery/evidence-tool-anonymous-mapping-v0.4.json"
+DEST = ROOT / "paper/delivery/evidence-tool-anonymous-demo-v0.5.zip"
+PRIVATE_MAP = ROOT / "paper/delivery/evidence-tool-anonymous-mapping-v0.5.json"
 FILES = FILES + (
     "paper/examples/windows-conversion-projection.json",
     "paper/scripts/verify_windows_projection.py",

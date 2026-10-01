@@ -35,6 +35,8 @@ def main():
         'scripts/local_gpu_imagegen/run_store.py',
         'scripts/local_gpu_imagegen/backends/base.py',
     )]
+    files += [ROOT / 'docs/research/runs/f02-same-run-windows-20261001.md',
+              ROOT / 'docs/research/runs/f02-same-run-v2-windows-20261001.md']
     files = sorted(set(files))
     manifest = {
         'purpose': 'author review; not a certified anonymous submission package',
@@ -42,14 +44,18 @@ def main():
         'files': {str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest()
                   for p in sorted(files)},
     }
-    files += [ROOT / 'docs/research/runs/f02-same-run-windows-20261001.md',
-              ROOT / 'docs/research/runs/f02-same-run-v2-windows-20261001.md']
-    dest = PAPER / 'delivery/dsn-tool-description-v0.11.zip'
+    dest = PAPER / 'delivery/dsn-tool-description-v0.12.zip'
     dest.parent.mkdir(exist_ok=True)
     with zipfile.ZipFile(dest, 'w', zipfile.ZIP_DEFLATED) as z:
         for p in sorted(files):
             z.write(p, str(p.relative_to(ROOT)))
         z.writestr('PACKAGE_MANIFEST.json', json.dumps(manifest, indent=2) + '\n')
+        z.writestr('EXCLUDED_CONTENT.json', json.dumps({
+            'excluded': ['paper/delivery/private-same-run*/', 'paper/build/',
+                         'private source-to-delivery maps', 'models', 'generated images'],
+            'metadata_not_self_hashed': ['PACKAGE_MANIFEST.json', 'EXCLUDED_CONTENT.json'],
+            'note': 'The author delivery directory is private; distribute this ZIP only.'
+        }, indent=2) + '\n')
     print(f'{dest.name}: {len(files)} files plus checksum manifest, {dest.stat().st_size} bytes')
 
 

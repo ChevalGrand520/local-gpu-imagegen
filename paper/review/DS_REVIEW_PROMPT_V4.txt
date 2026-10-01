@@ -1,0 +1,32 @@
+请对 Evidence-Bound Recovery for Ambiguous Submissions in Local Generative-AI Pipelines
+进行独立研究质量审阅。不要按目标期刊档次给分，不预测录用概率，不联系任何人。
+
+输入：当前 manuscript PDF/main.tex；v0.12 author-review ZIP；独立的
+evidence-tool-anonymous-demo-v0.5.zip。先逐项核验 PACKAGE_MANIFEST.json。
+允许离线解压、Python 标准库脚本和测试；禁止 GPU、模型下载、后端调用。
+不要将以前的审阅结论作为事实。若工具/图形渲染不可用，逐项说明限制。
+
+优先问题：
+1. 历史 fresh-run 四案例、v1 masked guard、v2 same-run guard 三组是否清楚分离？
+2. v2 submission_outcome_unknown、相同完整参数、未改变的未决 manifest 和
+   零新增 POST 是否支持一个固定案例的 submission blocking？哪些内部路径无法独立认证？
+3. lifecycle binding、proxy POST、product call、physical GPU work 是否混用？
+   F02 缓存复用是否限制所有计算/性能主张？
+4. exporter 的 succeeded/partial/not_needed 与 succeeded/missing/required，
+   以及 execution_verified=false 是否与保留记录相符？合成压力变体是否明确标注？
+5. 匿名包能否从干净解压运行 README 中所有命令？是否仅复现语义映射，而非
+   原始事件真实性/完整性或实测守卫？是否泄露直接身份、私有路径或提示词？
+6. 每处新增论文主张是否有可检查的输入和映射理由？私有 raw 缺失对第三方
+   审计带来什么具体限制？不要因为已披露限制就自动认可贡献充分性。
+
+报告必须包括：实际读取文件及校验结果；原样返回的离线命令退出码；逐项
+claim/evidence/limit 表；CRITICAL/MAJOR/MINOR；可执行修订建议；研究质量判定。
+所有发现引用文件名和具体位置，区分数字矛盾、单位错误、归因不足、缺证据。
+若认为无需新实验即可修复，说明如何；若需要实验，先说明它要否证的主张。
+这是模型辅助作者审阅，不是编辑决定、人类同行评审或独立真实性认证。
+
+本轮重点复核：18 个 execution-source 快照哈希是否逐字节匹配报告；
+CRLF 重建来源是否清楚，是否仍仅是字节对应而非运行时认证；v4 partial
+恢复态是否保守；20 探针差异是否只有 B2/F02-two-stage；Python 最低版本
+与显式解释器是否明确；清单是否覆盖所有有效载荷，元数据不自哈希是否标明。
+不要把作者回复或补交哈希当作原始执行真实性证明。

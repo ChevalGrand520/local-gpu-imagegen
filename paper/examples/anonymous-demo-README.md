@@ -1,11 +1,13 @@
 # Anonymous offline demonstration candidate
 
-From the extracted archive root, run:
+Requires Python >=3.10 (dataclass slots). Clean extraction was tested with
+Python 3.13.15; system Python 3.9 is unsupported. Select an installed compatible
+interpreter explicitly. From the extracted archive root, run:
 
 ```sh
-python3 paper/scripts/verify_reviewer_demo.py
-python3 paper/scripts/verify_windows_projection.py
-python3 -m unittest discover -s tests/research -q
+python3.13 paper/scripts/verify_reviewer_demo.py
+python3.13 paper/scripts/verify_windows_projection.py
+python3.13 -m unittest discover -s tests/research -q
 ```
 
 This package contains the read-only evidence exporter, two **synthetic** input
@@ -38,8 +40,11 @@ The Windows conversion projection includes two retained-case semantic inputs
 and four explicitly synthetic stress variants. Only state, submission/job and
 artifact-hash fields needed by the exporter are retained; job identities are
 consistently pseudonymized. Their interpretation states were checked against
-the full private conversions. The original manifests, raw events, prompts,
+the full private conversions. The original manifests, raw events, captured Windows prompts,
 host paths and generated images are excluded. Successful replay verifies the
 delivered mapping and checksums, not the private source's authenticity,
 completeness, live guard action or physical GPU work. No independent artifact
 validator is supplied: both retained cases remain composite-unverified.
+
+Synthetic CPU fixture prompts are included for inspection; they are not
+captured Windows user prompts.

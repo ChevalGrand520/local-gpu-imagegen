@@ -26,7 +26,7 @@ from local_gpu_imagegen.run_store import request_hash
 
 EXPORT_SCHEMA_VERSION = 1
 EXPORTER_VERSION = "research-exporter-v1"
-MAPPING_VERSION = "research-normalization-v3"
+MAPPING_VERSION = "research-normalization-v4"
 UNKNOWN = "unknown"
 _MISSING = object()
 
@@ -665,6 +665,8 @@ def _evidence_state(
 def _recovery_state(reported: dict[str, object], execution: str) -> tuple[str, str]:
     if reported.get("state") in {"unresolved", "interrupted"}:
         return "required", "reported_state_requires_recovery_or_reconciliation"
+    if reported.get("state") == "partial":
+        return UNKNOWN, "partial_reported_run_does_not_establish_recovery_completion"
     active = reported.get("active_attempt")
     if isinstance(active, dict) and active.get("status") == "running":
         return "reconciling", "active_attempt_is_still_running"

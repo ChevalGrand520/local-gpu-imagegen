@@ -152,3 +152,12 @@ are located; exact immutable test-source provenance remains open. G03 still
 requires raw-event reconstruction and artifact-byte checks. G04 now includes
 Temporal and OpenTelemetry responsibility comparisons, not an exhaustive survey.
 This update supersedes historical open-status wording above.
+## v0.12 independent-review corrections
+
+Two sets of nine Windows CRLF source hashes are now delivered as reconstructed
+Git snapshots; all match the original receipts. Correspondence is not runtime
+attestation. Normalization v4 treats partial run recovery as unknown. Across
+20 offline probes, only B2/F02-two-stage changes recovery from not_needed to
+unknown; no composite verification becomes true. Raw private data remain outside
+the named ZIPs. Runtime >=3.10 is explicit; clean extraction tested on 3.13.15.
+See paper/review/RESPONSE_TO_INDEPENDENT_REVIEW_20261001.md and the delta receipt.

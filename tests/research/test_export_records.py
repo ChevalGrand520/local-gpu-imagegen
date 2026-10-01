@@ -45,7 +45,7 @@ class ExportRecordTests(unittest.TestCase):
         self.assertEqual(exported["reported_state"], record["reported_state"])
         self.assertEqual(exported["interpreted_state"]["execution_state"], "succeeded")
         self.assertTrue(exported["interpreted_state"]["execution_verified"])
-        self.assertEqual(exported["mapping_version"], "research-normalization-v3")
+        self.assertEqual(exported["mapping_version"], "research-normalization-v4")
         self.assertEqual(exported["request_digest"], "d" * 64)
         self.assertEqual(exported["field_reasons"]["request_digest"], "provided_reported_attempts.request_hash")
 
@@ -143,7 +143,7 @@ class ExportRecordTests(unittest.TestCase):
         self.assertFalse(interpreted["execution_verified"])
         self.assertIn("unresolved", interpreted["execution_verified_reason"])
 
-    def test_missing_reported_run_state_cannot_clear_recovery(self) -> None:
+    def test_missing_or_partial_reported_run_state_cannot_clear_recovery(self) -> None:
         base = {
             "job_id": "job-1",
             "artifact_hash": "a" * 64,
@@ -158,7 +158,7 @@ class ExportRecordTests(unittest.TestCase):
                 "artifact_hash": "a" * 64,
             },
         }
-        for reported in ({"run_id": "run-1"}, None):
+        for reported in ({"run_id": "run-1"}, None, {"state": "partial"}):
             with self.subTest(reported=reported):
                 record = {**base, "reported_state": reported}
                 original = copy.deepcopy(record)

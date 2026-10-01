@@ -1,0 +1,39 @@
+{
+  "runtime": "Python 3.13.15",
+  "minimum_runtime": "Python 3.10",
+  "scope": "Offline clean-extraction checks; no backend/GPU; not historical execution receipts",
+  "checks": [
+    {
+      "command": [
+        "python3.13",
+        "paper/scripts/verify_reviewer_demo.py"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "stdout_sha256": "a002be208166d6a25a44f536626baa9054f980dbaea5acec66a967113dae8af1"
+    },
+    {
+      "command": [
+        "python3.13",
+        "paper/scripts/verify_windows_projection.py"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "stdout_sha256": "2cfe620f641ff89cca2e72e08b2895e93d999865bd2ef44c8dd44ee29299bf34"
+    },
+    {
+      "command": [
+        "python3.13",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests/research",
+        "-q"
+      ],
+      "exit_code": 0,
+      "stderr": "----------------------------------------------------------------------\nRan 13 tests in 0.002s\n\nOK\n",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

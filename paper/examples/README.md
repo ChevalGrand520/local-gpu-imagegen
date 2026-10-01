@@ -1,9 +1,10 @@
 # Offline tool demonstration
 
+Requires Python >=3.10; tested with Python 3.13.15. System Python 3.9 is unsupported.
 From the extracted reviewer bundle root, run:
 
 ```sh
-python3 paper/scripts/verify_reviewer_demo.py
+python3.13 paper/scripts/verify_reviewer_demo.py
 ```
 
 The two inputs are **synthetic** and differ only in the original run's reported

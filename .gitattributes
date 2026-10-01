@@ -19,3 +19,4 @@ docs/evidence/adoption/**/events.jsonl text eol=lf
 paper/evidence/windows-same-run-20261001.json -text whitespace=cr-at-eol
 
 paper/evidence/windows-same-run-v2-20261001.json -text whitespace=cr-at-eol
+paper/evidence/execution-source/**/*.py -text whitespace=cr-at-eol

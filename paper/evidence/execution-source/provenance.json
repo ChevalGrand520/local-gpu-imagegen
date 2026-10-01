@@ -1,0 +1,37 @@
+{
+  "scope": "Byte reconstruction from Git history, not original file custody or execution attestation",
+  "snapshots": [
+    {
+      "protocol": "v1",
+      "source_git_commit": "6c2219e03ae4eb8a55c11f8627866b549d1001d4",
+      "files": {
+        "f02_campaign.py": "ebc49c469ad40e2f0ab6ae3959fb3c3b1e677b15995a5393736679f56aa79165",
+        "f02_capture.py": "31bca3f3b4ffb14699eeb92b04f51e7403a26f7362728cceef60d5ad00285b11",
+        "f02_loopback.py": "2c3f30c72bde28ce58c0c2d085600e7a052260593206bdeb2f8b3a965257ce98",
+        "f02_oracle.py": "5c93a39178a3514a17e6e58f9efe2a474c7a9605459de8171749d78fecb881ec",
+        "f02_preflight.py": "a62a7053163bc642f5f8f486431203014933168e246cdb2c1bb881132f5a3ae0",
+        "f02_product_client.py": "03286bb8d7c452fc8b535cdd652ad7443ba914f5054858128f46dfe6b40eca26",
+        "f02_same_run_campaign.py": "65461891d9cfc40b88579a097655a600c582ba41aae1854911f30ab2cc6262b2",
+        "f02_transport_launcher.py": "960dfee8079be59be8dd12a18a16cbae96c400126ba8ccbadcf9baf87afa2d35",
+        "f02_transport_shim.py": "a34d429632bf4b1d568febfa3c017dd95d989d7df55c5801ed6e7855a64a10e2"
+      },
+      "reconstruction": "Git source translated from LF to CRLF; all retained receipt hashes match"
+    },
+    {
+      "protocol": "v2",
+      "source_git_commit": "a8e58eb54e34b8756c19a367e3df50ca2f440676",
+      "files": {
+        "f02_campaign.py": "ebc49c469ad40e2f0ab6ae3959fb3c3b1e677b15995a5393736679f56aa79165",
+        "f02_capture.py": "31bca3f3b4ffb14699eeb92b04f51e7403a26f7362728cceef60d5ad00285b11",
+        "f02_loopback.py": "2c3f30c72bde28ce58c0c2d085600e7a052260593206bdeb2f8b3a965257ce98",
+        "f02_oracle.py": "5c93a39178a3514a17e6e58f9efe2a474c7a9605459de8171749d78fecb881ec",
+        "f02_preflight.py": "a62a7053163bc642f5f8f486431203014933168e246cdb2c1bb881132f5a3ae0",
+        "f02_product_client.py": "82adfe2292a39ca9e377f676496f94e226355e07dd9d432e5dbf5765563aaa0f",
+        "f02_same_run_campaign.py": "66021435f491c6ac2790f615e847325aa43a1b814d406798686aa132f6ccd979",
+        "f02_transport_launcher.py": "960dfee8079be59be8dd12a18a16cbae96c400126ba8ccbadcf9baf87afa2d35",
+        "f02_transport_shim.py": "a34d429632bf4b1d568febfa3c017dd95d989d7df55c5801ed6e7855a64a10e2"
+      },
+      "reconstruction": "Git source translated from LF to CRLF; all retained receipt hashes match"
+    }
+  ]
+}
