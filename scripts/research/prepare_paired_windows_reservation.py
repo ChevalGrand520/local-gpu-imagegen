@@ -23,7 +23,7 @@ DESKTOP_NAMES = {
     "tabtip.exe", "textinputhost.exe", "phoneexperiencehost.exe", "wdadesktopservice.exe",
     "applicationframehost.exe", "systemsettings.exe", "lockapp.exe", "rtkuwp_rs5.exe",
     "steam++.exe", "tabbit browser.exe", "shellhost.exe", "browser.exe", "hipsdaemon.exe",
-    "chatgpt.exe", "logonui.exe", "lockscreencontentserver.exe",
+    "chatgpt.exe", "logonui.exe", "lockscreencontentserver.exe", "promecefpluginhost.exe",
 }
 
 
