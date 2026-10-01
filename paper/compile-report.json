@@ -1,7 +1,7 @@
 {
-  "status": "v0.21 working draft; fourth review probe visibility and cache scope corrections",
+  "status": "v0.22 working draft; fifth review minor clarifications",
   "pages_total": 6,
-  "abstract_words": 128,
+  "abstract_words": 127,
   "figures": 2,
   "tables": 4,
   "references": 8,
@@ -22,13 +22,13 @@
   "undefined_references": 0,
   "overfull_boxes": 0,
   "underfull_box_notices": 13,
-  "pdf_sha256": "446a02ed3cf933eddc768d3d6a7be64f9f829e8a06d741326f17035a9bc52f3d",
-  "pdf_bytes": 100383,
+  "pdf_sha256": "7208070c23683402ab0e6cfc9c4dfd16a31dff3c72c13833e0d7eee1512ed506",
+  "pdf_bytes": 100396,
   "compiler": "Tectonic 0.17.0",
   "submission_ready": false,
   "remaining": "Final human declarations, artifact alignment and complete submission checklist; DSN 2027 Tool seven-page rule rechecked",
   "tables_generated_from_checked_records": true,
   "external_review": "DS round 2 substantive; Claude round aborted before file access",
   "venue_fit": "DSN Tool retained as candidate; target edition and institutional category recognition unconfirmed",
-  "visual_check": "v0.21 changed pages 5--6 rendered and inspected without obvious clipping/overlap; six pages and all fonts embedded. Four font-shape fallback warnings remain."
+  "visual_check": "v0.21 layout inspected; v0.22 changes abstract wording only. New first page rendered and inspected without obvious clipping/overlap. Six-page compilation succeeds without overfull boxes. Four font-shape fallback warnings remain."
 }

@@ -1,0 +1,15 @@
+{
+  "scope": "v0.21 clean private-package extraction rerun; synthetic offline fixtures, not historical Windows data",
+  "interpreter": "Python 3.13.15; explicit installed executable",
+  "command": "python3.13 scripts/research/paired_evidence_probes.py --output fresh-probe-output",
+  "exit_code": 0,
+  "status": "PASS",
+  "probes": 12,
+  "counts": {
+    "exporter": {"correct": 12, "unknown": 3, "false_affirmations": 0},
+    "field_baseline": {"correct": 12, "unknown": 3, "false_affirmations": 0}
+  },
+  "agreement_count": 12,
+  "windows_executed": false,
+  "gpu_executed": false
+}

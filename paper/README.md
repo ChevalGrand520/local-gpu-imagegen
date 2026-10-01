@@ -6,7 +6,28 @@ System Python 3.9 is unsupported. The manuscript author ZIP is PRIVATE and conta
 and audit paths. Only the separately sanitized anonymous demo is an external
 candidate; never distribute the full delivery directory.
 
-# v0.18 current revision
+# Current v0.22 working revision
+
+For the twelve constructed same-information probes, from the extracted private
+author package root run:
+
+```sh
+python3.13 scripts/research/paired_evidence_probes.py --output fresh-probe-output
+```
+
+Use an explicit installed interpreter path if python3.13 is not on PATH. The
+output directory must not exist. Expected: PASS, twelve probes, both views
+correct=12/unknown=3/false_affirmations=0 and agreement_count=12. The compact
+receipt is `paper/evidence/v022-probe-command-receipt.json`. This constructs
+offline fixtures, not a Windows/GPU measurement. The anonymous demo does not
+include this probe command; it provides the smaller checks listed in its README.
+
+The PDF embeds Nimbus Times-metric-compatible fonts. Tectonic reports four
+TU/ptm font-shape fallbacks; embedded fonts are not a claim of native Times font
+identity. A venue requiring a specific font family needs a separate template
+check. No font substitution or template change was made in this revision.
+
+# Historical v0.18 revision
 
 The current pass clarifies the local recovery contribution, consolidates
 repeated qualifiers, places limitations after related work, moves Table I

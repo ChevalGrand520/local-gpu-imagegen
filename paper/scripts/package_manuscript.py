@@ -48,6 +48,7 @@ def main():
         'refine-logs/ORACLE_QUIET_WINDOW_DIAGNOSIS_20261001.md',
         'docs/research/dsn-tool-description-claim-evidence-matrix.md',
         'refine-logs/RESPONSE_DS_ROUND4_20261001.md',
+        'refine-logs/RESPONSE_DS_ROUND5_20261001.md',
     )]
     files = sorted(set(files))
     manifest = {
@@ -56,7 +57,7 @@ def main():
         'files': {str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest()
                   for p in sorted(files)},
     }
-    dest = PAPER / 'delivery/dsn-tool-description-v0.21.zip'
+    dest = PAPER / 'delivery/dsn-tool-description-v0.22.zip'
     dest.parent.mkdir(exist_ok=True)
     with zipfile.ZipFile(dest, 'w', zipfile.ZIP_DEFLATED) as z:
         for p in sorted(files):
