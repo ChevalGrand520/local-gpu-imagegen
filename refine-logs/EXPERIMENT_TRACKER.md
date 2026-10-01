@@ -35,4 +35,7 @@ F02：B2为2POST/2生命周期，W3为1POST/1生命周期；B2第二生命周期
 FPRE：B2重试后完成，W3无上游发送但仍阻塞、原run未决。无GPU计算节省结论。
 M1/M2/M3在C内完成；M4初步审计完成，后续主张修订以
 `WINDOWS_PAIRED_COMPLETED_20261001.md`为证据入口。Tool v0.18不改。
+M4主张审查：同系列只读复核为provisional/partial，窄C1支持；无GPU节省、
+P-stop优越性或parser准确率优势。矩阵、研究扩展提纲和独立草稿已更新，
+见 `PAIRED_RESULT_TO_CLAIM_20261001.md`。未启动新实验或改冻结投稿稿。
 PA1-R004 未启动；不能把 CPU 通过视作 Windows 现场门槛已满足。

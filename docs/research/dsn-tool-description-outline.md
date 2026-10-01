@@ -1,4 +1,31 @@
-## 2026-10-01 v2 follow-up — supersedes current-gate wording below
+## Current research extension after frozen Tool v0.18
+
+Claim authority: the paired batch C disposition at the top of the matrix.
+The outline below remains the historical Tool planning snapshot. Do not apply
+its old NOT_RUN or no-comparative-evidence wording to C, or silently rewrite
+the frozen Tool PDF. Proposed research-extension organization:
+
+1. Problem: lost acceptance receipt forces a submission/availability decision;
+   separate backend completion from the original run's recovery obligation.
+2. Units and method: calls, proxy POSTs, upstream sends, accepted jobs, bound
+   lifecycles, artifact bytes and client completion; scoped guard admission.
+3. Evaluation protocol: native pinned B2/W3, shared same-run schedule, F00/F02/
+   FPRE, per-operation backend restart, fixed semantic digest and T calibration.
+4. Results: two healthy controls; one F02 pair with additional POST/lifecycle
+   in B2; one FPRE pair exposing W3's conservative block and incomplete run.
+5. Interpretation: submission control has an observed completion cost. Full
+   cache reuse in B2's second F02 lifecycle prevents a GPU savings claim.
+   Preserve P-stop CPU equivalence and ordinary-parser equality alongside this.
+6. Export evidence: describe implemented representation and historical probe
+   checks; C's oracle/manifest separation is not a new exporter experiment.
+7. Reproducibility/limits: source and raw-byte archive, corrected observer and
+   retained A/B stops; one fixed platform/workload, no rate or speed inference.
+
+Draft the research extension separately before revising submission artifacts.
+Do not describe RPC uncertainty as unique to GenAI or claim hardware-specific
+causality from a single environment.
+
+## 2026-10-01 v2 follow-up — historical same-run protocol
 
 Separate same-run-guard-v2 campaign COMPLETED. Both fresh MCP processes now
 rebuild the exact pinned model inventory; frozen product and original generation

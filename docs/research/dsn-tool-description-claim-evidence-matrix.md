@@ -1,4 +1,35 @@
-## 2026-10-01 v2 follow-up — supersedes current-gate wording below
+## 2026-10-01 paired batch C: current research disposition
+
+This research update follows Tool v0.18; it does not amend the frozen submission
+files. Historical fresh-run, same-run v1/v2 and paired batches A/B/C stay separate.
+Source: `refine-logs/WINDOWS_PAIRED_COMPLETED_20261001.md`; execution source
+08539d5; complete private TAR SHA-256
+141b1ea66af741f9e8cc917f7a7a33db5cb0d048989f76a25166775180f852f3.
+The Mac archive matches Windows. Read-only audit replays retained bytes and
+bindings (1,561 checks); it does not authenticate execution or independently
+validate its own binding implementation. The semantic review remains provisional.
+
+| New ID | Claim | Evidence / permitted statement | Status / excluded inference |
+|---|---|---|---|
+| P01 | Same-run submission withholding under accepted response loss | C/W3_F02: 2 calls, 1 POST, 1 accepted job, 1 bound lifecycle; call 2 returns submission_outcome_unknown | Observed fixed operation; no global at-most-once guarantee |
+| P02 | Paired F02 submission difference | C/B2_F02: 2 POSTs/2 lifecycles, original run complete; C/W3_F02: 1 POST/1 lifecycle, original run unresolved; shared semantic digest | Observed pair; one additional POST/lifecycle in B2, not estimated deployment effect |
+| P03 | Backend completion differs from original-run completion | C/W3_F02: terminal event + successful history; original run unresolved | Observed separation; completed observation is not automatic reconciliation |
+| P04 | Conservative block under proved pre-send loss | C/W3_FPRE: 1 proxy POST, 0 upstream sends, 0 lifecycles, guard rejection and incomplete original run; B2 retries and completes | Observed pair and completion cost; not deployment false-positive rate |
+| P05 | GPU compute savings from guard | B2/F02 second lifecycle cached nodes 3..9, entire graph reused | Unsupported; do not equate lifecycle counts with full generations |
+| P06 | Superiority over simple stop policy | CPU P-stop matches W3 submission counts; P-stop absent from Windows matrix | Unsupported; preserve competing explanation |
+| P07 | Exporter better than same-information parser | Historical local probes 12/12, equal decisions; C bytes not yet converted/exported | Unsupported accuracy advantage; C establishes state separation, not exporter validation |
+| P08 | Six-operation coverage | C: 6/6 completed, 10 calls/8 POSTs/6 upstream sends; normal controls separate from four fault operations | Supported coverage; not rates or statistical replication |
+| P09 | Speed advantage | F00 RPC intervals 35.7722965 / 24.2037979s; desktop baseline activity present | Descriptive calibration only; not strategy speedup or GPU cost |
+| P10 | Cross-platform generalization | C is one Windows/CUDA platform with one model/workflow/seed | Unsupported; Mac/MPS not measured |
+
+Writing gate: use submission-level tradeoff as the evaluated mechanism claim.
+Execution bindings, client completion, exporter interpretation and artifact bytes
+remain separate fields. Do not add GPU savings, natural duplicate rates,
+exactly-once execution, automatic reconciliation or method-superiority wording.
+Attempts A/B retain their stops; B's early observer exit is corrected in the
+diagnosis, not promoted retrospectively to completion.
+
+## 2026-10-01 v2 follow-up — historical same-run protocol
 
 Separate same-run-guard-v2 campaign COMPLETED. Both fresh MCP processes now
 rebuild the exact pinned model inventory; frozen product and original generation
