@@ -10,7 +10,7 @@
 \author{\IEEEauthorblockN{Anonymous submission draft}}
 \maketitle
 \begin{abstract}
-When a local generation backend accepts a request but its response is lost, the client may retry work that has already finished. We present a tool that retains the client's unresolved submission record, exports its interpretation alongside backend evidence, and blocks further generation through the same run. Evaluation combines synthetic CPU fixtures with controlled Windows/ComfyUI response loss. The historical retries created fresh runs, so they left the guard untested. A later same-run campaign first encountered a model-identity rejection. With a revised caller that rebuilt pinned process-local inventory, the retry reached the submission guard and produced no further POST. The original run still required recovery. For pipeline integrators investigating response loss, the record exposes the disagreement between backend completion and client recovery that a successful later call can otherwise obscure.
+When a generation backend accepts a request but its response is lost, retrying can submit an operation whose backend work has already completed. We present a tool that preserves the unresolved client record, exports its interpretation alongside backend evidence, and guards further submission through the same run. A six-operation Windows/ComfyUI paired campaign compares guarded and unguarded products under acceptance-response loss and a fault before upstream sending. The guard withheld the second submission in both conditions, leaving the original run unresolved. The unguarded product retried and completed. Under response loss, it recorded two backend lifecycles rather than one, but the second reused the generation graph's cache. Synthetic probes also exercised completion/recovery separation. For pipeline integrators, the tool makes the submission/availability tradeoff inspectable without treating backend completion as client recovery.
 \end{abstract}
 \section{Introduction}
 
@@ -36,6 +36,11 @@ before permitting further generation. Synthetic CPU fixtures and controlled
 Windows campaigns exercise these interfaces, including a case in which backend
 completion coexists with an incomplete client operation. Section~\ref{sec:related}
 places this evidence-handling design beside existing retry and tracing contracts.
+
+A paired same-run evaluation further tests the submission boundary against an
+unguarded product under two transport faults. Its result is a concrete tradeoff:
+the guard suppresses another submission, including when the first request never
+reached the backend, while the original run remains unresolved.
 
 \section{Failure model and evidence semantics}
 
@@ -366,6 +371,67 @@ nodes 3--9; there were zero \texttt{progress} messages but one
 physical GPU computation. These new payloads do not recover the missing
 historical event lists. No third call or fresh-run fallback was made.
 
+\subsection{Paired submission control and completion cost}
+\label{sec:paired}
+
+The subsequent \texttt{paired-ambiguity-v1} campaign used the pinned native B2
+and W3 products with a shared caller and matched generation semantics, including
+seed. Each fault retry reused its original run and complete generation arguments.
+F02 suppressed the first accepted response. FPRE closed the connection after
+body reception but before the upstream send function. The caller scheduled a
+retry after the first call returned, without waiting for observer completion.
+Each operation started a fresh backend; its two calls shared that backend cache.
+
+Both F00 controls completed. Their generation RPC intervals, 35.77 and 24.20
+seconds, set the predefined fault window to 107.32 seconds. These intervals
+include MCP and client processing. Table~\ref{tab:paired} separates calls,
+proxy submissions, upstream sends, accepted jobs and bound lifecycles.
+
+\begin{table}[t]
+\caption{Six fixed paired operations.}
+\label{tab:paired}
+\centering
+\begin{tabular}{lrrrrrl}
+\hline
+Case & C & S & U & A & E & Complete \\
+\hline
+B2 F00 & 1 & 1 & 1 & 1 & 1 & yes \\
+W3 F00 & 1 & 1 & 1 & 1 & 1 & yes \\
+W3 F02 & 2 & 1 & 1 & 1 & 1 & no \\
+B2 F02 & 2 & 2 & 2 & 2 & 2 & yes \\
+B2 FPRE & 2 & 2 & 1 & 1 & 1 & yes \\
+W3 FPRE & 2 & 1 & 0 & 0 & 0 & no \\
+\hline
+\end{tabular}
+\par\smallskip
+\begin{minipage}{\columnwidth}\footnotesize\raggedright
+C: product calls; S: proxy POSTs; U: upstream send entries; A: accepted jobs;
+E: bound backend lifecycles. Complete refers to the original client run.
+These are coverage counts, not deployment rates.
+\end{minipage}
+\end{table}
+
+In F02, B2 retried and completed its original run. W3's retry returned
+\texttt{submission\_outcome\_unknown}, issued no second POST and left the run
+unresolved despite corroborated backend completion. B2's second lifecycle
+reported cached nodes 3--9, covering the generation graph. The extra lifecycle
+therefore provides no measurement of an additional full GPU generation.
+
+FPRE exposes the guard's completion cost. The proxy proved that the first
+request never entered the upstream send path. B2 retried and completed; W3
+still withheld retry and left its run unresolved. The product guard could not
+use the research observer's no-send evidence to discharge that uncertainty.
+This adverse case belongs alongside the F02 submission difference.
+
+The batch completed all six operations with ten calls, eight proxy POSTs and
+six upstream send entries. Source bytes were frozen before backend startup.
+A complete private archive matched across hosts; offline reanalysis checked
+raw-message hashes, replayed bindings and recomputed counts and paired semantics.
+Two earlier attempts remain separate: a pre-start port-check stop, and a partial
+batch whose observer exited on one second of message silence. The corrected
+observer waits through quiet intervals until the fixed deadline; the correction
+was tested with real sockets on both platforms before this batch.
+
 \subsection{Resolution labels require an explicit aggregation rule}
 
 A resolved second call does not erase the first call's unresolved result or
@@ -435,9 +501,14 @@ than the oracle's completion rule, which requires \texttt{executing} with
 \texttt{node=null} and completed history. Artifact receipts cover generated-call
 outputs, excluding the first unresolved F02 output.
 
-The fixed cases establish observations within the capture window, including v2
-submission blocking. Deployment rates and physical GPU savings require further
-measurement. The anonymous demo replays semantic mapping; four variants are
+The paired cases establish submission withholding and a completion cost on one
+Windows workload. Desktop activity was retained as a timing confound. A simple
+stop-after-unknown policy matched W3's fault submission counts in CPU checks;
+it was not measured on Windows. Same-information offline probes also gave the
+exporter and an ordinary parser identical decisions. These comparisons support
+an inspectable integration, rather than policy or classification superiority.
+The new campaign did not separately evaluate exporter normalization.
+The anonymous demo replays semantic mapping; four variants are
 synthetic, and converted F00 and F02 remain composite-unverified without an
 independent artifact validator. The companion evidence note details audit
 coverage.
@@ -445,12 +516,12 @@ coverage.
 \section{Conclusion}
 
 We built the tool to keep a recovery decision attached to the run that created
-the uncertainty. In the revised Windows case, the backend lifecycle completed
-and the retry was blocked, while the original client record still required
-recovery. We chose to preserve that disagreement in the export and to make the
-unresolved submission constrain further generation through the same run. For a
-pipeline integrator, this record provides a concrete starting point for deciding
-how to reconcile the original operation.
+the uncertainty. The paired cases show what this choice costs: W3 withheld an
+additional submission but left the original run unresolved, while B2 retried and
+completed. The pre-send fault makes the conservative block visible even when
+no backend job exists. Preserving these outcomes alongside backend observations
+gives pipeline integrators a concrete record for deciding how to reconcile the
+operation, rather than letting a successful retry erase its unresolved history.
 
 \section*{Data, code and responsible use}
 The manuscript source includes derived Windows evidence, retained CPU-record
