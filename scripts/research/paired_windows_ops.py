@@ -49,9 +49,18 @@ def private_directory(root):
         raise RunnerStop("private_ACL_setup_failed")
 
 
-def compute_idle_report(stdout, target_uuid):
+def compute_idle_report(stdout, target_uuid, desktop_baseline=()):
     """Reject missing UUIDs/unsupported rows rather than infer idleness."""
     processes = []
+    baseline = set()
+    for item in desktop_baseline:
+        name = item["process_name"].replace("/", "\\").lower()
+        executable = name.rsplit("\\", 1)[-1]
+        if not name or not isinstance(item["pid"], int) or not name[1:3] == ":\\":
+            raise RunnerStop("invalid_WDDM_desktop_baseline")
+        if any(token in executable for token in ("python", "comfy", "train", "cuda", "wsl")):
+            raise RunnerStop("compute_process_cannot_be_desktop_baseline")
+        baseline.add((item["pid"], name))
     for line in stdout.splitlines():
         if not line.strip():
             continue
@@ -60,8 +69,10 @@ def compute_idle_report(stdout, target_uuid):
             raise RunnerStop("GPU_compute_query_uninterpretable")
         if fields[0] == target_uuid:
             processes.append({"gpu_uuid": fields[0], "pid": int(fields[1]), "process_name": fields[2]})
-    return {"target_compute_processes": processes, "idle": not processes,
-            "scope": "nvidia_smi_compute_process_view_not_global_exclusivity_proof"}
+    unexpected = [p for p in processes if (p["pid"], p["process_name"].replace("/", "\\").lower()) not in baseline]
+    return {"target_compute_processes": processes, "unexpected_processes": unexpected,
+            "idle": not unexpected, "desktop_baseline_count": len(baseline),
+            "scope": "process_view_with_explicit_WDDM_baseline_not_global_exclusivity_proof"}
 
 
 class WindowsOps:
@@ -88,7 +99,8 @@ class WindowsOps:
                                 timeout=max(.01, min(10, deadline - time.monotonic())))
         if result.returncode != 0:
             raise RunnerStop("GPU_compute_query_failed")
-        idle = compute_idle_report(result.stdout, env["gpu_uuid"])
+        baseline = config.get("resource_policy", {}).get("wddm_desktop_baseline", [])
+        idle = compute_idle_report(result.stdout, env["gpu_uuid"], baseline)
         write_private_json(op_root, "GPU-availability.json", {"command": command, "exit_code": result.returncode,
                                                               "stdout": result.stdout, **idle})
         if not idle["idle"]:

@@ -239,6 +239,16 @@ class PlanAndAdapterTests(unittest.TestCase):
         for value in ("N/A, 42, python", "unsupported", "GPU-target, N/A, python"):
             with self.assertRaises(runner.RunnerStop): windows.compute_idle_report(value, "GPU-target")
 
+    def test_wddm_baseline_requires_exact_pid_path_and_excludes_compute(self):
+        baseline = [{"pid": 42, "process_name": r"C:\Windows\System32\dwm.exe"}]
+        row = r"GPU-target, 42, C:\Windows\System32\dwm.exe"
+        self.assertTrue(windows.compute_idle_report(row, "GPU-target", baseline)["idle"])
+        self.assertFalse(windows.compute_idle_report(row.replace("42", "43"), "GPU-target", baseline)["idle"])
+        self.assertFalse(windows.compute_idle_report(row.replace("dwm.exe", "other.exe"), "GPU-target", baseline)["idle"])
+        for name in (r"C:\Python\python.exe", r"D:\work\training.exe", "dwm.exe"):
+            with self.assertRaises(runner.RunnerStop):
+                windows.compute_idle_report("", "GPU-target", [{"pid": 42, "process_name": name}])
+
     def test_windows_cleanup_command_targets_exact_owned_pid_only(self):
         class Owned:
             pid = 12345
