@@ -10,7 +10,7 @@
 \author{\IEEEauthorblockN{Anonymous submission draft}}
 \maketitle
 \begin{abstract}
-A lost acceptance response leaves a generation client uncertain about backend execution. Our tool preserves reported state, interprets evidence through a read-only exporter, and blocks submissions through an unresolved run. Four historical Windows/ComfyUI cases retained one execution binding per control and two per response-loss case. Their retries created fresh runs outside the guard. A subsequent same-run test stopped at model-identity validation. Rebuilding pinned process-local inventory exposed the submission-outcome-unknown guard in a revised test, with no additional submission and an unresolved original run. Synthetic CPU fixtures show an incomplete client operation despite worker completion. Retained raw payloads support the new lifecycle bindings, but do not repair the historical event gap. These fixed cases support inspectable evidence handling and run-scoped submission control, without establishing automatic reconciliation, deployment rates, physical GPU savings or output-quality gains.
+A lost acceptance response leaves a generation client uncertain about backend execution. Our tool preserves reported state, interprets evidence through a read-only exporter, and blocks further submissions within an unresolved run. Four historical Windows/ComfyUI cases retained one execution binding per control and two per response-loss case. Their retries created fresh runs outside the guard. A subsequent same-run test stopped at model-identity validation. After the caller rebuilt pinned process-local inventory, a revised test reached the submission-outcome-unknown guard. It added no submission and left the original run unresolved. Synthetic CPU fixtures show an incomplete client operation despite worker completion. Retained raw payloads support the new lifecycle bindings; the historical event gap remains. The fixed cases demonstrate evidence export and run-scoped submission control. They establish no automatic reconciliation, deployment rates, physical GPU savings or output-quality gains.
 \end{abstract}
 \section{Introduction}
 
@@ -24,17 +24,18 @@ Remote procedure call semantics already address uncertainty under communication
 failure \cite{birrell1984}. Idempotent APIs make retries safe through request
 identifiers and an explicit service contract \cite{aws}. Local execution leaves
 the same distinction between transmitting a request and observing its outcome.
-Our tool makes that distinction inspectable in a generation pipeline; it adds
-no new exactly-once protocol.
+Our tool records client state and backend observations separately in a generation
+pipeline; it adds no new exactly-once protocol.
 
 The prototype combines persistent run records, a read-only evidence exporter,
 and a guard that blocks submissions through an explicitly unresolved run.
 Separate backend observations constrain the exporter's versioned interpretation
 of client outcomes. CPU fixtures and Windows campaigns demonstrate these
-interfaces under controlled response loss. They preserve the distinction between
-blocking a submission and reconciling the original run. The contribution is this
-inspectable integration and its failure boundaries, compared with existing
-control and tracing contracts in Section~\ref{sec:related}.
+interfaces under controlled response loss. Blocking a submission leaves the
+original run's recovery obligation unresolved. We contribute a local
+implementation that connects the run records, export decisions and submission
+checks, with explicit failure boundaries. Section~\ref{sec:related} compares
+these responsibilities with existing control and tracing contracts.
 
 \section{Failure model and evidence semantics}
 
@@ -56,8 +57,8 @@ The evidence model distinguishes reported state, interpreted state and oracle
 state. In addition, the Windows research client emits its own call-level labels.
 Its \texttt{resolved} label is derived from a generated product result after checking
 for artifact hashes. Its \texttt{unresolved} label can arise from several client errors.
-Thus a research-client label alone does not prove that a durable product
-manifest has a particular recovery state. In F02, the proxy's accepted-response
+A research-client label alone does not establish a durable product
+manifest's recovery state. In F02, the proxy's accepted-response
 loss and the oracle binding provide the additional context.
 
 \section{Tool design}
@@ -79,8 +80,8 @@ The current mapping also keeps recovery unknown when the reported run state is
 missing and marks a disagreement between manifest and selected job or artifact
 identity as an evidence mismatch. These rules prevent omission or a top-level
 field from silently strengthening the composite decision.
-This permits the record to express backend completion without asserting that
-the product's recovery obligation has been discharged. The exporter does not
+A record can therefore report backend completion while leaving the product's
+recovery obligation unresolved. The exporter does not
 invoke the engine, retry a request or update the source run. Its output writer
 uses exclusive file creation. These are implementation properties, not a
 claim of complete filesystem security.
@@ -118,9 +119,9 @@ artifact-validation assertions. All twelve remain unverified by the composite
 policy. This demonstrates the mapping's behavior on retained product records,
 not an independent replay or certification of their original events.
 
-Thus successful backend evidence can coexist with required recovery and false
-execution verification. A later successful call does not replace the original
-run's unresolved state in the exported record.
+The exported record can contain successful backend evidence, required recovery
+and false execution verification. A later successful call leaves the original
+run's unresolved state intact.
 
 \subsection{Recovery guard and its scope}
 
@@ -132,8 +133,8 @@ idempotency key. The corresponding inspection action is \texttt{get\_run}.
 
 The guard neither discovers a missing job identifier nor reconciles an unknown
 job. A new run lies outside its scope. Known-job recovery in two-stage operations
-uses a separate path. Withholding another submission therefore preserves
-uncertainty rather than guaranteeing completion.
+uses a separate path. Withholding another submission leaves the outcome
+uncertain and supplies no completion guarantee.
 
 A pipeline integrator can use this distinction when a generation UI receives a
 disconnect after sending a request: the exporter preserves the unknown outcome,
@@ -238,8 +239,8 @@ flag. These are twelve synthetic traces, not deployment samples.}
 \input{tables/cpu-rows.tex}
 \end{table*}
 
-The distinguishing F02 single-stage fixture has a concrete cost: W3 blocks a
-second product submission. Its synthetic worker records one successful start
+In the F02 single-stage fixture, W3 blocks a second product submission. Its
+synthetic worker records one successful start
 and finish with an artifact, yet the product operation remains incomplete in
 the observation window. B2 submits twice and completes in this fixture. The
 guard's direct action is withholding a submission; the corresponding difference
@@ -270,6 +271,7 @@ The four report records matched the corresponding retained JSONL cases.
 Their six retained execution bindings had distinct identifiers, completed-history
 flags and terminal-event labels. In both B2\_F02 and W3\_F02, the export reports
 \texttt{execution\_start=3}, two proxy submissions and two retained bindings.
+
 Each F02 case has two observer decisions. The oracle's \texttt{raw\_events}
 field is cumulative, while the export counts the entire event list of each
 decision. For example, if the first list contains start A and the second
@@ -281,7 +283,9 @@ reported count compatible with two bindings; it does not reconstruct the
 historical lists. Because the original snapshot boundaries and payloads are
 unavailable, an additional unbound start cannot be independently excluded.
 We report two retained bindings per case, not a complete execution ground
-truth. The first binding's completion precedes the second
+truth.
+
+The first binding's completion precedes the second
 receipt, as required by the controller's observation gate; these timestamps
 belong to different calls. No rate is estimated. Here, ``oracle-evaluable''
 refers to the retained binding record, not an independent raw-event audit.
@@ -291,8 +295,8 @@ checked against the campaign configuration. These are recorded environment
 facts for this campaign. They do not establish behavior across other models,
 backend versions or machines.
 
-These cases show that execution identifiers survived the first call's ambiguous
-outcome in the research export. They provide no execution-count advantage for
+The research export retained execution identifiers despite the first call's
+ambiguous outcome. The cases provide no execution-count advantage for
 W3. Changing both run and seed also prevents interpreting them as repeated
 executions of an identical generation request.
 
@@ -337,22 +341,24 @@ by itself establish changed model bytes.
 
 A revised \texttt{same-run-guard-v2} caller rebuilt the pinned model inventory
 in both fresh MCP processes, using the existing exact-file index, fingerprint
-and private-catalog checks. The frozen product was unchanged; complete generation arguments were reused
-unchanged within the same run. Locked-route validation was not bypassed. In a separate two-case
+and private-catalog checks. It reused the complete generation arguments within
+the same run, without changing the frozen product or bypassing locked-route
+validation. In a separate two-case
 campaign, the F02 retry returned \texttt{submission\_outcome\_unknown} at generation.
 The controller reported \texttt{submission\_guard\_observed=true}, with one total F02-case
-POST and an unchanged unresolved manifest. This observes the target guard's
-submission blocking for one fixed response-loss case; it does not establish
-reconciliation or eventual completion. The setup change supports a process-local
+POST and an unchanged unresolved manifest. The retry thus reached the target
+guard and was blocked in one fixed response-loss case. The original run was
+not reconciled, and eventual completion remains unestablished. The setup change supports a process-local
 inventory explanation for v1, without proving its entire internal error path.
 
 Each campaign's private capture retained 90 F00 and 10 F02 WebSocket text payloads and one
 history response per case. Offline reanalysis checked byte hashes and channel
 sequences, reconstructed one start and one \texttt{executing} event with
 \texttt{node=null} per case, and bound them to successful history and the
-published execution identifiers. This checks received, retained evidence;
-it supplies no authenticity or completeness guarantee. Both controls and F02 cases included cache events. In F02 the cached-node list
-listed nodes 3--9; there were zero \texttt{progress} messages but one
+published execution identifiers. This reanalysis checks the received, retained
+evidence without authenticating it or establishing completeness. Both controls
+and F02 cases included cache events. In F02 the cached-node list contained
+nodes 3--9; there were zero \texttt{progress} messages but one
 \texttt{progress\_state} message, so its lifecycle binding is not evidence of new
 physical GPU computation. These new payloads do not recover the missing
 historical event lists. No third call or fresh-run fallback was made.
@@ -395,7 +401,8 @@ content. Neither content hashes nor completed history measure visual quality
 or final user acceptance.
 
 The observer must receive and bind events within its capture window. Missing
-events restrict evaluability, not prove non-execution. CPU and Windows observers
+events limit what the observer can evaluate; their absence does not prove
+non-execution. CPU and Windows observers
 have different failure boundaries; neither provides crash-complete auditability.
 The fixed cases support no population rates, performance gain or broad model
 robustness claim. The subsequent Windows campaigns used existing models and
@@ -408,7 +415,8 @@ The offline Windows conversion maps the retained product manifest separately
 from its audited backend lifecycle. F00 yields succeeded execution, partial
 evidence and no recovery requirement; F02 yields succeeded execution, missing
 evidence and required recovery. Neither is composite-verified: no independent
-artifact validator was supplied. Four variants---two missing-state and two job-identity-conflict--- are explicitly synthetic checks, not additional Windows experiments.
+artifact validator was supplied. Four variants (two missing-state and two
+job-identity-conflict) are explicitly synthetic checks, not additional Windows experiments.
 They retain unknown recovery or mismatch evidence. A clean-copy replay preserved
 all input bytes and reproduced the interpretation summary. The anonymous demo
 provides whitelisted, pseudonymized semantic projections whose interpretation
@@ -431,8 +439,8 @@ guard combines read-back, supported idempotency keys, delayed verification,
 blocking unverifiable repeats and uncertainty annotations. Our narrower guard
 blocks an explicitly unknown submission within one run, without automatic
 read-back or reconciliation. Withholding unsafe retries is therefore not our
-novelty claim. The contribution lies in the local implementation linking
-preserved reports, reasoned interpretation and backend observation. Different
+novelty claim. Our contribution is the local implementation that preserves
+reports and links their interpretation to backend observations. Different
 workloads and evidence sources preclude comparing the studies' outcome counts.
 
 Reliable State Machines use persistent state and atomic runtime processing
@@ -457,10 +465,11 @@ project overview describes synthesizing fault-injected variations from integrati
 tests \cite{filibuster}. Our fixed submission cases offer no such search coverage;
 this comparison uses the overview, not reproduced Filibuster results.
 
-These documentation-based comparisons delimit responsibilities rather than
-establishing superiority, exhaustive novelty or developer productivity. The
-tool makes client ambiguity, backend observation and permitted claims
-inspectable within the evaluated generation workflow.
+These comparisons use the documented contracts to define each tool's
+responsibilities. They establish no superiority, exhaustive novelty or
+developer productivity gain. Within the evaluated workflow, our records let a
+reader inspect the client's ambiguous outcome, the backend observation and the
+claims those observations support.
 
 \section{Conclusion}
 
@@ -484,7 +493,8 @@ or institutional-ethics determinations are not inferred from this scope.
 
 \section*{AI Tool Usage}
 OpenAI Codex assisted with drafting portions of the manuscript, source
-inspection, record consistency checks, and code for Figs.~1--2. The review
+inspection, record consistency checks, and code for Figs.~1--2. The Humanizer
+editing skill was used for prose revision. The review
 conducted with this tool included separate and continued review contexts within
 the same model family, not independent peer review. Human authors must verify the content, references,
 attribution, and final submission. No AI-generated data are reported as

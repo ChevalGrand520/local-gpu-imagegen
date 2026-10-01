@@ -3,12 +3,14 @@ System Python 3.9 is unsupported. The manuscript author ZIP is PRIVATE and conta
 and audit paths. Only the separately sanitized anonymous demo is an external
 candidate; never distribute the full delivery directory.
 
-# v0.14 current revision
+# v0.15 current revision
 
-The current pass compresses repeated prose and preserves citations, tables,
-figures and adverse evidence. It is not an external similarity check. Bounded
-OPEN-item rechecks and terminology decisions are in
-`review/POLISH_AND_OPEN_ITEM_RECHECK_V014.md`.
+The current pass uses Humanizer 3.1.0 for prose revision. It replaces abstract
+contribution wording and awkward sentence structures while preserving citations,
+numbers, technical identifiers, tables, figures and adverse evidence. It does
+not measure plagiarism similarity or AI-detector scores. The editing and
+validation record is `review/HUMANIZER_PASS_V015.md`. The preceding bounded
+OPEN-item rechecks remain in `review/POLISH_AND_OPEN_ITEM_RECHECK_V014.md`.
 
 The manuscript now reports the offline Windows conversion and its conservative
 verification result. The anonymous demo v0.5 adds semantic projections and a
