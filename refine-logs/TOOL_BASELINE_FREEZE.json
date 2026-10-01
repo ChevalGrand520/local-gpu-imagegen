@@ -1,0 +1,30 @@
+{
+  "schema": "tool-baseline-freeze-v1",
+  "frozen_at": "2026-10-01T12:58:26+08:00",
+  "tool_version": "0.18",
+  "tool_branch": "codex/f02-same-run-capture",
+  "tool_commit": "fc2675def394051b420109c7842f8bbeb268b1e9",
+  "protocol_branch": "codex/paired-evaluation-protocol-v1",
+  "product_revisions_expected_at_launch": {
+    "B2": "da65d57047b5a59e3403b49adf4605a1c0497c58",
+    "W3": "d45173af75d404ad79dc14568edd4c45f654abd2"
+  },
+  "artifacts": {
+    "paper/main.tex": "3a48268c5b165bfa33176d7d20fd90f12e58fcf686311aa775ff80f50b134ca9",
+    "paper/main.pdf": "f48bf990ca566a7248875103881319057414ad69d4d752849d16874e1422dedd",
+    "paper/delivery/dsn-tool-description-v0.18.zip": "723eca951465c0e06c89f0c58820ed8d6156f303bd6988ad8904575f03caa0c2",
+    "paper/delivery/evidence-tool-anonymous-demo-v0.5.zip": "c7c60d7dd63c13c8d660d674fcba2f91d2211e43a50e128eac30d576f2b62f9e"
+  },
+  "inspected_harness_sources_not_new_execution_snapshots": {
+    "scripts/research/f02_same_run_campaign.py": "ae2984ddccfdee5ba80a557e6373145a2c483e12ce2d5365a2cf1f1fd308b60f",
+    "scripts/research/f02_product_client.py": "6f57f25e4f8f5b5d24ede1fe3df747dc75ab7e7d9ed68638307577d73a13ff00",
+    "scripts/research/f02_loopback.py": "f547642bc858258b795926b3f20899d003fd869cad195d2fdbdf9ca69f5eef0f"
+  },
+  "distribution": {
+    "dsn-tool-description-v0.18.zip": "PRIVATE author bundle; contains identifiers; local delivery artifact, not stored in Git",
+    "evidence-tool-anonymous-demo-v0.5.zip": "sanitized external candidate; local delivery artifact, not live replay"
+  },
+  "execution_status": "NOT_RUN",
+  "execution_ready": false,
+  "submission_ready": false
+}
