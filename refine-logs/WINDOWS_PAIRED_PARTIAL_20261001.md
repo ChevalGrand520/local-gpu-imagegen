@@ -64,3 +64,9 @@ Next: offline review of raw timing/observer records and backend loading logs,
 then an explicit revised measurement protocol and new reservation if a rerun is
 warranted. Do not silently extend T, pool failed samples or rerun missing pairs
 under the expired window. The current protocol's stop condition was honored.
+
+Correction from the subsequent source/raw audit: the observer exited on a
+one-second socket timeout, before its fixed deadline. The missing lifecycle
+therefore does not show deadline exhaustion. See
+`ORACLE_QUIET_WINDOW_DIAGNOSIS_20261001.md`. Historical raw bytes and unknown
+E_bound remain unchanged.

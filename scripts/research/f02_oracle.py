@@ -15,6 +15,7 @@ import http.client
 import ipaddress
 import json
 import os
+import select
 import socket
 import struct
 import time
@@ -163,7 +164,17 @@ class ComfyUIEventOracle:
             raise RuntimeError("oracle must be connected before observation")
         while time.monotonic() < deadline_monotonic:
             remaining = max(0.01, min(self.timeout_seconds, deadline_monotonic - time.monotonic()))
-            self._socket.settimeout(remaining)
+            # Quiet model loading is not the end of the observation window.
+            # Wait before consuming a frame so a poll timeout cannot discard
+            # an already consumed frame prefix.
+            readable, _, _ = select.select([self._socket], [], [], remaining)
+            if not readable:
+                if self._seen_terminal_for_all(requested):
+                    decision = self._decision(requested)
+                    if decision.oracle_evaluable:
+                        return decision
+                continue
+            self._socket.settimeout(max(0.01, deadline_monotonic - time.monotonic()))
             try:
                 frame = _read_server_frame(self._socket)
             except socket.timeout:

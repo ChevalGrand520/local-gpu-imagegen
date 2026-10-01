@@ -22,4 +22,7 @@ CPU 的停止策略等价性、保守阻塞代价与普通解析脚本等价性�
 最新现场检查与部分采集见 `WINDOWS_PAIRED_PARTIAL_20261001.md`。
 M1 attempt A 端口检查停止，0调用；attempt B 两个F00完成，W3/F02在生命周期不可绑定时停止。
 B2/F02、两个FPRE未运行。当前预约已过期；下一步只读分析停止原因，修订协议后再安排新预约。
+停止原因已定位为观察器遇1秒静默提前退出，而非完整deadline耗尽。
+修正与96项本机回归通过；见 `ORACLE_QUIET_WINDOW_DIAGNOSIS_20261001.md`。
+修正版Windows实测仍NOT_RUN，需要新预约、新采集编号，T公式保持不变。
 PA1-R004 未启动；不能把 CPU 通过视作 Windows 现场门槛已满足。
