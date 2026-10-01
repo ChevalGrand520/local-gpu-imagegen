@@ -16,6 +16,7 @@ import re
 from pathlib import Path
 import subprocess
 import sys
+import time
 from typing import Any
 
 if __package__ in {None, ""}:
@@ -573,18 +574,21 @@ def run(root: Path, *, case_id: str, operation_key: str, output_root: str, call_
 
 def run_same_run(
     root: Path, *, case_id: str, operation_key: str, output_root: str,
-    call_index: int, capture_root: Path,
+    call_index: int, capture_root: Path, protocol: str = "same-run-guard-v2",
 ) -> dict[str, Any]:
     """One invocation of an explicit, privately captured same-run protocol.
 
     Call 1 freezes the complete generation arguments before submission. Call 2
-    reuses them verbatim and refuses to proceed unless the original manifest
-    still contains the matching unknown/no-job unresolved attempt.
+    reuses them verbatim. Historical v2 requires the matching unknown manifest;
+    paired-v1 leaves recovery-state admission to the native product equally for
+    B2 and W3. Both modes check the original run and request identities.
     """
     from scripts.research.f02_capture import manifest_summary, unknown_submission, write_private_json
 
     if call_index not in (1, 2):
         raise ProductClientError("same_run_call_index_invalid")
+    if protocol not in {"same-run-guard-v2", "paired-ambiguity-v1"}:
+        raise ProductClientError("same_run_protocol_invalid")
     env = os.environ.copy()
     env.setdefault("LOCAL_GPU_IMAGEGEN_COMFYUI_URL", "http://127.0.0.1:8202")
     env["LOCAL_GPU_IMAGEGEN_OUTPUT_DIR"] = output_root
@@ -596,6 +600,8 @@ def run_same_run(
         "backend_url": env["LOCAL_GPU_IMAGEGEN_COMFYUI_URL"],
         "proxy_url": env.get("LOCAL_GPU_IMAGEGEN_RESEARCH_PROMPT_PROXY_URL"),
     }
+    if protocol == "paired-ambiguity-v1":
+        context["protocol"] = protocol
     session: dict[str, Any] = {}
     if call_index == 1:
         capture_root.mkdir(mode=0o700)  # Existing captures cannot be reused accidentally.
@@ -673,10 +679,21 @@ def run_same_run(
         if call_index == 2:
             if _digest(manifest.get("request")) != session["request_sha256"]:
                 raise ProductClientError("same_run_request_changed")
-            if not unknown_submission(manifest, operation_key):
+            if protocol == "same-run-guard-v2" and not unknown_submission(manifest, operation_key):
                 raise ProductClientError("same_run_unknown_submission_missing")
         stage = "generate_round"
-        generated = client.call("local_gpu_generate_round", session["generate_arguments"])
+        rpc_started = time.monotonic_ns()
+        write_private_json(capture_root, f"call-{call_index}-generation-request.json", {
+            "tool": "local_gpu_generate_round", "arguments": session["generate_arguments"],
+            "monotonic_ns": rpc_started, "wall_time": time.time(), "protocol": protocol,
+        })
+        result["generation_rpc_entered"] = True
+        result["generation_request_monotonic_ns"] = rpc_started
+        try:
+            generated = client.call("local_gpu_generate_round", session["generate_arguments"])
+        finally:
+            result["generation_return_monotonic_ns"] = time.monotonic_ns()
+            result["generation_return_wall_time"] = time.time()
         stage = "artifact_validation"
         hashes = _artifact_hashes(generated, root)
         if not hashes:
@@ -687,6 +704,12 @@ def run_same_run(
         result.update({"reported_state": "unresolved", "client_error_schema_version": 1,
                        "client_error_code": exc.stable_code, "client_error_stage": stage})
     finally:
+        if result.get("generation_rpc_entered"):
+            write_private_json(capture_root, f"call-{call_index}-generation-return.json", {
+                "tool": "local_gpu_generate_round", "monotonic_ns": result["generation_return_monotonic_ns"],
+                "wall_time": result["generation_return_wall_time"], "reported_state": result.get("reported_state"),
+                "error_code": result.get("client_error_code"), "error_stage": result.get("client_error_stage"),
+            })
         try:
             if run_id is not None:
                 after = client.call("local_gpu_get_run", {"run_id": run_id})
@@ -727,14 +750,15 @@ def main() -> int:
         print(json.dumps({"reported_state": "failed", "client_error_schema_version": 1, "client_error_code": "output_root_missing", "client_error_stage": "launch"}, sort_keys=True))
         return 2
     scope = os.environ.get("LOCAL_GPU_IMAGEGEN_F02_RETRY_SCOPE", "fresh_run")
-    if scope == "same_run":
+    if scope in {"same_run", "paired_same_run"}:
         capture = os.environ.get("LOCAL_GPU_IMAGEGEN_F02_PRIVATE_CAPTURE_DIR")
         if not capture:
             print(json.dumps({"reported_state": "failed", "client_error_code": "private_capture_missing"}))
             return 2
         try:
             result = run_same_run(root, case_id=case_id, operation_key=operation_key,
-                                  output_root=output_root, call_index=call_index, capture_root=Path(capture))
+                                  output_root=output_root, call_index=call_index, capture_root=Path(capture),
+                                  protocol="paired-ambiguity-v1" if scope == "paired_same_run" else "same-run-guard-v2")
         except (ProductClientError, OSError, ValueError) as exc:
             result = {"reported_state": "failed", "client_error_schema_version": 1,
                       "client_error_code": _safe_exception_code(exc), "client_error_stage": "launch"}

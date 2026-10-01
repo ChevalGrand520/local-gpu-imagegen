@@ -1,8 +1,9 @@
-"""One-shot, loopback-only reverse proxy for the Windows F02 pilot.
+"""One-shot, loopback-only reverse proxy for research ambiguity faults.
 
 The proxy is deliberately narrower than a general proxy.  It accepts only the
-ComfyUI HTTP paths exercised by the pilot and can drop exactly one *accepted*
-``POST /prompt`` response.  It never manufactures a successful response.
+ComfyUI HTTP paths exercised by the pilot. F02 suppresses one accepted response;
+FPRE closes one fully received prompt request before calling upstream transport.
+It never manufactures a successful response.
 """
 
 from __future__ import annotations
@@ -13,6 +14,7 @@ import http.client
 import http.server
 import ipaddress
 import json
+from pathlib import Path
 import socket
 import threading
 import time
@@ -37,12 +39,13 @@ class ProxyReceipt:
     response_dropped: bool
     forwarded: bool
     failure: str | None
+    request_sequence: int = 0
 
 
 class OneShotLoopbackFaultProxy:
     """Forward a small ComfyUI allowlist and drop only the first F02 acceptance.
 
-    ``fault_mode`` is either ``"F00"`` (transparent) or ``"F02"``.  In F02
+    ``fault_mode`` is ``"F00"`` (transparent), ``"F02"`` or ``"FPRE"``. In F02
     mode only the first successfully parsed acceptance response for ``POST
     /prompt`` is hidden from the client.  Its prompt ID remains in the
     proxy-owned receipt list so a controller can hand it only to the oracle.
@@ -63,9 +66,10 @@ class OneShotLoopbackFaultProxy:
         bind_host: str = "127.0.0.1",
         bind_port: int = 0,
         timeout_seconds: float = 30.0,
+        stage_log_path: Path | None = None,
     ) -> None:
-        if fault_mode not in {"F00", "F02"}:
-            raise ProxyConfigurationError("fault_mode must be F00 or F02")
+        if fault_mode not in {"F00", "F02", "FPRE"}:
+            raise ProxyConfigurationError("fault_mode must be F00, F02 or FPRE")
         _require_loopback_url(upstream_url)
         _require_loopback_host(bind_host)
         if not isinstance(bind_port, int) or not 0 <= bind_port <= 65535:
@@ -84,6 +88,11 @@ class OneShotLoopbackFaultProxy:
         self._lock = threading.Lock()
         self._receipts: list[ProxyReceipt] = []
         self._f02_consumed = False
+        self._fpre_consumed = False
+        self._request_sequence = 0
+        self._stages: list[dict[str, object]] = []
+        self._stage_log_path = stage_log_path
+        self._stage_log = None
         self._server: http.server.ThreadingHTTPServer | None = None
         self._thread: threading.Thread | None = None
 
@@ -110,6 +119,8 @@ class OneShotLoopbackFaultProxy:
     def start(self) -> "OneShotLoopbackFaultProxy":
         if self._server is not None:
             raise RuntimeError("proxy is already running")
+        if self._stage_log_path is not None:
+            self._stage_log = self._stage_log_path.open("x", encoding="utf-8")
         parent = self
 
         class Handler(http.server.BaseHTTPRequestHandler):
@@ -124,7 +135,13 @@ class OneShotLoopbackFaultProxy:
             def do_POST(self) -> None:  # noqa: N802
                 parent._handle(self)
 
-        self._server = http.server.ThreadingHTTPServer((self.bind_host, self.bind_port), Handler)
+        try:
+            self._server = http.server.ThreadingHTTPServer((self.bind_host, self.bind_port), Handler)
+        except Exception:
+            if self._stage_log is not None:
+                self._stage_log.close()
+                self._stage_log = None
+            raise
         self._server.daemon_threads = True
         self._thread = threading.Thread(target=self._server.serve_forever, name="f02-loopback-proxy", daemon=True)
         self._thread.start()
@@ -138,6 +155,9 @@ class OneShotLoopbackFaultProxy:
             self._thread.join(timeout=5)
         self._server = None
         self._thread = None
+        if self._stage_log is not None:
+            self._stage_log.close()
+            self._stage_log = None
 
     def __enter__(self) -> "OneShotLoopbackFaultProxy":
         return self.start()
@@ -147,6 +167,22 @@ class OneShotLoopbackFaultProxy:
 
     def evidence(self) -> list[dict[str, object]]:
         return [asdict(receipt) for receipt in self.receipts]
+
+    @property
+    def stages(self) -> tuple[dict[str, object], ...]:
+        with self._lock:
+            return tuple(dict(event) for event in self._stages)
+
+    def _stage(self, request_sequence: int, stage: str, method: str, path: str) -> None:
+        with self._lock:
+            event = {"event_sequence": len(self._stages) + 1,
+                     "request_sequence": request_sequence, "stage": stage,
+                     "method": method, "path": path,
+                     "monotonic_ns": time.monotonic_ns(), "wall_time": time.time()}
+            if self._stage_log is not None:
+                self._stage_log.write(json.dumps(event, sort_keys=True) + "\n")
+                self._stage_log.flush()
+            self._stages.append(event)
 
     def _handle(self, handler: http.server.BaseHTTPRequestHandler) -> None:
         method = handler.command.upper()
@@ -164,10 +200,49 @@ class OneShotLoopbackFaultProxy:
             handler.send_error(413, "request body exceeds research proxy limit")
             return
         body = handler.rfile.read(length) if length else b""
+        if len(body) != length:
+            handler.send_error(400, "incomplete request body")
+            return
         receipt_time = time.time()
+        with self._lock:
+            self._request_sequence += 1
+            request_sequence = self._request_sequence
+            pre_drop = (self.fault_mode == "FPRE" and not self._fpre_consumed
+                        and method == "POST" and _path_only(path) == "/prompt")
+            if pre_drop:
+                self._fpre_consumed = True
+        self._stage(request_sequence, "body_received", method, path)
+        if pre_drop:
+            self._stage(request_sequence, "fault_injected_before_upstream", method, path)
+            self._append_receipt(received_at=receipt_time, method=method, path=path, body=body,
+                upstream_status=None, upstream_reason=None, accepted_job_id=None,
+                response_dropped=True, forwarded=False, failure=None,
+                request_sequence=request_sequence)
+            handler.close_connection = True
+            try:
+                handler.connection.shutdown(socket.SHUT_RDWR)
+            except OSError:
+                pass  # The client may already have closed its end.
+            handler.connection.close()
+            self._stage(request_sequence, "connection_closed", method, path)
+            return
         try:
-            status, reason, headers, upstream_body = self._forward(method, path, handler.headers, body)
+            status, reason, headers, upstream_body = self._forward(
+                method, path, handler.headers, body, request_sequence=request_sequence)
+        except Exception as exc:
+            # `forwarded` alone is deliberately not a no-send oracle. The stage
+            # ledger survives an exception after entering the send function.
+            self._stage(request_sequence, "upstream_failure", method, path)
+            self._append_receipt(received_at=receipt_time, method=method, path=path, body=body,
+                upstream_status=None, upstream_reason=None, accepted_job_id=None,
+                response_dropped=False, forwarded=False,
+                failure=f"{type(exc).__name__}: {exc}", request_sequence=request_sequence)
+            handler.send_error(502, "research proxy forwarding failure")
+            return
+        try:
             job_id = _accepted_prompt_id(upstream_body) if method == "POST" and _path_only(path) == "/prompt" else None
+            if job_id is not None and 200 <= status < 300:
+                self._stage(request_sequence, "acceptance_received", method, path)
             should_drop = self._consume_f02_once(method, path, status, job_id)
             receipt = self._append_receipt(
                 received_at=receipt_time,
@@ -180,11 +255,13 @@ class OneShotLoopbackFaultProxy:
                 response_dropped=should_drop,
                 forwarded=True,
                 failure=None,
+                request_sequence=request_sequence,
             )
             if should_drop:
                 # No status line or acceptance bytes are emitted.  This is a real
                 # transport loss after backend acceptance, not a synthetic success.
                 handler.close_connection = True
+                self._stage(request_sequence, "accepted_response_suppressed", method, path)
                 return
             handler.send_response(status, reason)
             for name, value in headers:
@@ -194,20 +271,11 @@ class OneShotLoopbackFaultProxy:
             handler.end_headers()
             if upstream_body:
                 handler.wfile.write(upstream_body)
-        except Exception as exc:  # no successful response is fabricated on failure
-            self._append_receipt(
-                received_at=receipt_time,
-                method=method,
-                path=path,
-                body=body,
-                upstream_status=None,
-                upstream_reason=None,
-                accepted_job_id=None,
-                response_dropped=False,
-                forwarded=False,
-                failure=f"{type(exc).__name__}: {exc}",
-            )
-            handler.send_error(502, "research proxy forwarding failure")
+        except OSError:
+            # Delivery failure must not erase an already observed acceptance or
+            # append a second receipt for the same incoming POST.
+            self._stage(request_sequence, "client_delivery_failed", method, path)
+            handler.close_connection = True
 
     def _forward(
         self,
@@ -215,6 +283,7 @@ class OneShotLoopbackFaultProxy:
         path: str,
         headers: http.client.HTTPMessage,
         body: bytes,
+        *, request_sequence: int,
     ) -> tuple[int, str, list[tuple[str, str]], bytes]:
         target = self._upstream_base_path + path
         connection = http.client.HTTPConnection(self._upstream_host, self._upstream_port, timeout=self.timeout_seconds)
@@ -227,9 +296,12 @@ class OneShotLoopbackFaultProxy:
                     continue
                 connection.putheader(name, value)
             connection.putheader("Content-Length", str(len(body)))
+            self._stage(request_sequence, "upstream_send_started", method, path)
             connection.endheaders(body)
+            self._stage(request_sequence, "request_body_sent", method, path)
             response = connection.getresponse()
             response_body = response.read()
+            self._stage(request_sequence, "upstream_response_received", method, path)
             return response.status, response.reason, list(response.getheaders()), response_body
         finally:
             connection.close()
@@ -258,6 +330,7 @@ class OneShotLoopbackFaultProxy:
         response_dropped: bool,
         forwarded: bool,
         failure: str | None,
+        request_sequence: int = 0,
     ) -> ProxyReceipt:
         with self._lock:
             receipt = ProxyReceipt(
@@ -273,6 +346,7 @@ class OneShotLoopbackFaultProxy:
                 response_dropped=response_dropped,
                 forwarded=forwarded,
                 failure=failure,
+                request_sequence=request_sequence,
             )
             self._receipts.append(receipt)
             return receipt

@@ -1,0 +1,250 @@
+{
+  "protocol": "paired-ambiguity-v1",
+  "date": "2026-10-01",
+  "status": "CPU_COMPONENT_CHECKS_PASS_WINDOWS_INTEGRATION_PENDING",
+  "python": "3.13.15",
+  "tool_baseline_unchanged": true,
+  "windows_executed": false,
+  "gpu_executed": false,
+  "B0": {
+    "status": "PASS",
+    "operations": 12,
+    "report_sha256": "f1728421a986e942cda1a03aa77db5c30702d295002fc78178d5d8840a8e40a6",
+    "source_freeze_sha256": "d7f730d5435399e0eb58900cec9babb708280c987b7dedbbfdca63fb781342b5",
+    "harness_sha256": {
+      "execution_oracle.py": "ad763f7f35f9ec0024eb24cea9e9c76f1c430c907af57bf92f48eb64dfe3ffaa",
+      "f02_capture.py": "bcd55120a49078610aa1011ae1180891fc9b713af51d4b25cc0403bce2fd984b",
+      "f02_loopback.py": "0695685d815fa4078680cf97dc50edc607dfcda18361a4ad58e535e5b7eace4a",
+      "f02_product_client.py": "c4309a190affbfd593eb0be4c6ce8d86b89134f89e37295e96cfe0c7ed4f3039",
+      "paired_ambiguity.py": "73312b7a8e2f5473333d0ab8b6697f756dab36ed751a62e5ecfb1d367dd4967a",
+      "paired_cpu_worker.py": "52b5109488e645dade3e2978f67e37a3efb088ff4db286d0c5b00bac40d1c96b",
+      "run_paired_ambiguity_cpu.py": "6dc928cc2ff441f49079feb442e7cff92747035a0a2e09ede7d222e6885b2a33",
+      "run_paired_fault_matrix.py": "dead74d91c72c3bce107a16941ffcd45f852054f9aa1d58aaf16a29c3aa1ffc4"
+    },
+    "product_revisions": {
+      "B2": "da65d57047b5a59e3403b49adf4605a1c0497c58",
+      "W3": "d45173af75d404ad79dc14568edd4c45f654abd2"
+    },
+    "pair_checks": [],
+    "records": [
+      {
+        "strategy": "B2",
+        "fault": "F00",
+        "scope_probe": null,
+        "metrics": {
+          "A": 1,
+          "E_bound_cpu": 1,
+          "S_proxy": 1,
+          "S_upstream": 1
+        },
+        "original_run_state": "generated",
+        "client_completion": true,
+        "last_error": null,
+        "checks": []
+      },
+      {
+        "strategy": "B2",
+        "fault": "F02",
+        "scope_probe": null,
+        "metrics": {
+          "A": 2,
+          "E_bound_cpu": 2,
+          "S_proxy": 2,
+          "S_upstream": 2
+        },
+        "original_run_state": "generated",
+        "client_completion": true,
+        "last_error": null,
+        "checks": []
+      },
+      {
+        "strategy": "B2",
+        "fault": "FPRE",
+        "scope_probe": null,
+        "metrics": {
+          "A": 1,
+          "E_bound_cpu": 1,
+          "S_proxy": 2,
+          "S_upstream": 1
+        },
+        "original_run_state": "generated",
+        "client_completion": true,
+        "last_error": null,
+        "checks": []
+      },
+      {
+        "strategy": "W3",
+        "fault": "F00",
+        "scope_probe": null,
+        "metrics": {
+          "A": 1,
+          "E_bound_cpu": 1,
+          "S_proxy": 1,
+          "S_upstream": 1
+        },
+        "original_run_state": "generated",
+        "client_completion": true,
+        "last_error": null,
+        "checks": []
+      },
+      {
+        "strategy": "W3",
+        "fault": "F02",
+        "scope_probe": null,
+        "metrics": {
+          "A": 1,
+          "E_bound_cpu": 1,
+          "S_proxy": 1,
+          "S_upstream": 1
+        },
+        "original_run_state": "unresolved",
+        "client_completion": false,
+        "last_error": "submission_outcome_unknown",
+        "checks": []
+      },
+      {
+        "strategy": "W3",
+        "fault": "FPRE",
+        "scope_probe": null,
+        "metrics": {
+          "A": 0,
+          "E_bound_cpu": 0,
+          "S_proxy": 1,
+          "S_upstream": 0
+        },
+        "original_run_state": "unresolved",
+        "client_completion": false,
+        "last_error": "submission_outcome_unknown",
+        "checks": []
+      },
+      {
+        "strategy": "P-stop",
+        "fault": "F00",
+        "scope_probe": null,
+        "metrics": {
+          "A": 1,
+          "E_bound_cpu": 1,
+          "S_proxy": 1,
+          "S_upstream": 1
+        },
+        "original_run_state": "generated",
+        "client_completion": true,
+        "last_error": null,
+        "checks": []
+      },
+      {
+        "strategy": "P-stop",
+        "fault": "F02",
+        "scope_probe": null,
+        "metrics": {
+          "A": 1,
+          "E_bound_cpu": 1,
+          "S_proxy": 1,
+          "S_upstream": 1
+        },
+        "original_run_state": "created",
+        "client_completion": false,
+        "last_error": "backend_request_failed",
+        "checks": []
+      },
+      {
+        "strategy": "P-stop",
+        "fault": "FPRE",
+        "scope_probe": null,
+        "metrics": {
+          "A": 0,
+          "E_bound_cpu": 0,
+          "S_proxy": 1,
+          "S_upstream": 0
+        },
+        "original_run_state": "created",
+        "client_completion": false,
+        "last_error": "backend_request_failed",
+        "checks": []
+      },
+      {
+        "strategy": "W3",
+        "fault": "F00",
+        "scope_probe": "healthy-replay",
+        "metrics": {
+          "A": 1,
+          "E_bound_cpu": 1,
+          "S_proxy": 1,
+          "S_upstream": 1
+        },
+        "original_run_state": "generated",
+        "client_completion": true,
+        "last_error": null,
+        "checks": []
+      },
+      {
+        "strategy": "W3",
+        "fault": "F02",
+        "scope_probe": "unknown-new-key",
+        "metrics": {
+          "A": 1,
+          "E_bound_cpu": 1,
+          "S_proxy": 1,
+          "S_upstream": 1
+        },
+        "original_run_state": "unresolved",
+        "client_completion": false,
+        "last_error": "submission_outcome_unknown",
+        "checks": []
+      },
+      {
+        "strategy": "W3",
+        "fault": "F02",
+        "scope_probe": "unknown-new-run",
+        "metrics": {
+          "A": 2,
+          "E_bound_cpu": 2,
+          "S_proxy": 2,
+          "S_upstream": 2
+        },
+        "original_run_state": "unresolved",
+        "client_completion": false,
+        "last_error": null,
+        "checks": []
+      }
+    ],
+    "final_capture_batch": "20261001-pilot-05"
+  },
+  "B2": {
+    "status": "PASS",
+    "probes": 12,
+    "report_sha256": "fc61238f0e32273ef703be123e9b8fa908c8ecb2eec94af6241baff8b2c11253",
+    "source_hashes": {
+      "export_records.py": "991347565040b7bbfc192c84581375e43542b374be10d331b615987842e2aa21",
+      "f02_capture.py": "bcd55120a49078610aa1011ae1180891fc9b713af51d4b25cc0403bce2fd984b",
+      "paired_evidence_probes.py": "02ab242333c44edbdb947e41b5f82c8e77d29fe52241ac75a22f07e34de52776"
+    },
+    "counts": {
+      "exporter": {
+        "correct": 12,
+        "false_affirmations": 0,
+        "unknown": 3
+      },
+      "field_baseline": {
+        "correct": 12,
+        "false_affirmations": 0,
+        "unknown": 3
+      }
+    },
+    "observed_accuracy_advantage": false
+  },
+  "tests": {
+    "command": "python3.13 -m unittest discover -s tests/research -q",
+    "exit_code": 0,
+    "tests": 71,
+    "elapsed_seconds": 8.534,
+    "test_source_sha256": "3426630b622cfb877423464c301365d4f3e83b677e4133d729addf1250ae22b4"
+  },
+  "remaining_launch_gates": [
+    "six-operation reserved Windows runner with per-operation owned backend restart",
+    "native MCP inventory and route preflight on Windows",
+    "fresh exact source/config freeze before backend startup",
+    "live numeric-IP SSH and exclusive GPU reservation",
+    "full campaign timeout, storage and cleanup ownership"
+  ]
+}
