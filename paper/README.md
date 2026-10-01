@@ -1,4 +1,10 @@
-# v0.10 current revision
+# v0.11 current revision
+
+The manuscript now reports the offline Windows conversion and its conservative
+verification result. The anonymous demo v0.4 adds semantic projections and a
+standard-library replay command, tested after clean extraction. It excludes
+private raw captures and does not reproduce the live experiment. The v3 DS
+review prompt and pending author declarations are under `review/`.
 
 A separate v2 Windows campaign observes the same-run submission guard after
 restoring pinned process-local inventory in both calls. F02 returns

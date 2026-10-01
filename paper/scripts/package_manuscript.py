@@ -35,6 +35,7 @@ def main():
         'scripts/local_gpu_imagegen/run_store.py',
         'scripts/local_gpu_imagegen/backends/base.py',
     )]
+    files = sorted(set(files))
     manifest = {
         'purpose': 'author review; not a certified anonymous submission package',
         'scope': 'manuscript and retained-evidence reanalysis; not full generation-tool source',
@@ -43,7 +44,7 @@ def main():
     }
     files += [ROOT / 'docs/research/runs/f02-same-run-windows-20261001.md',
               ROOT / 'docs/research/runs/f02-same-run-v2-windows-20261001.md']
-    dest = PAPER / 'delivery/dsn-tool-description-v0.10.zip'
+    dest = PAPER / 'delivery/dsn-tool-description-v0.11.zip'
     dest.parent.mkdir(exist_ok=True)
     with zipfile.ZipFile(dest, 'w', zipfile.ZIP_DEFLATED) as z:
         for p in sorted(files):

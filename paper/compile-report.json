@@ -1,5 +1,5 @@
 {
-  "status": "DSN Tool v0.10; v1 negative and v2 fixed-case guard observation retained",
+  "status": "DSN Tool v0.11; Windows conversion and anonymous semantic replay added",
   "pages_total": 7,
   "abstract_words": 138,
   "figures": 2,
@@ -21,12 +21,13 @@
   "undefined_references": 0,
   "overfull_boxes": 0,
   "underfull_box_notices": 13,
-  "pdf_sha256": "3df948c929dde8d4c2469301d3d82165d041e678687a25df751f8c79ccf30b97",
-  "pdf_bytes": 104277,
+  "pdf_sha256": "e3ad8fdd8ab9ac39f992f85fa775986227770900eba588a2c25f0b309951278a",
+  "pdf_bytes": 104966,
   "compiler": "Tectonic 0.17.0",
   "submission_ready": false,
-  "remaining": "Observer-to-exporter conversion; final author and artifact decisions; final visual and citation review",
+  "remaining": "External whole-manuscript review; final author declarations and artifact release decisions",
   "tables_generated_from_checked_records": true,
   "external_review": "DS round 2 substantive; Claude round aborted before file access",
-  "venue_fit": "DSN Tool retained as candidate; target edition and institutional category recognition unconfirmed"
+  "venue_fit": "DSN Tool retained as candidate; target edition and institutional category recognition unconfirmed",
+  "visual_check": "All seven pages inspected as a rendered overview; no obvious clipping or overlap. Detailed final human review pending."
 }

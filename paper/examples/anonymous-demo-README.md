@@ -4,6 +4,7 @@ From the extracted archive root, run:
 
 ```sh
 python3 paper/scripts/verify_reviewer_demo.py
+python3 paper/scripts/verify_windows_projection.py
 python3 -m unittest discover -s tests/research -q
 ```
 
@@ -32,3 +33,13 @@ and mapping check of retained synthetic traces, not a new execution campaign.
 This is an author-side candidate. A sanitized package cannot guarantee that
 publicly indexed source or data cannot be recognized, and the archive is not
 an official DSN artifact-evaluation submission.
+
+The Windows conversion projection includes two retained-case semantic inputs
+and four explicitly synthetic stress variants. Only state, submission/job and
+artifact-hash fields needed by the exporter are retained; job identities are
+consistently pseudonymized. Their interpretation states were checked against
+the full private conversions. The original manifests, raw events, prompts,
+host paths and generated images are excluded. Successful replay verifies the
+delivered mapping and checksums, not the private source's authenticity,
+completeness, live guard action or physical GPU work. No independent artifact
+validator is supplied: both retained cases remain composite-unverified.

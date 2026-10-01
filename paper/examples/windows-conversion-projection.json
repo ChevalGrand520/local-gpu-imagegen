@@ -1,0 +1,262 @@
+{
+  "projection_version": "windows-anonymous-semantic-projection-v1",
+  "scope": "Whitelist projection of retained conversion inputs; stress variants synthetic; not raw capture or guard replay",
+  "source_report_sha256": "5e29a4c0d9c9b592aa648c4ad50430e1225d09eb0676abbeee412595e40f0506",
+  "records": [
+    {
+      "case": "W3_F00",
+      "variant": "retained",
+      "input": {
+        "record_id": "W3_F00",
+        "reported_state": {
+          "state": "generated",
+          "active_attempt": null,
+          "attempts": [
+            {
+              "status": "completed",
+              "backend_result": {
+                "workflow_job_id": "identity-87b37bcba163c68317c43036"
+              },
+              "image": {
+                "sha256": "dfc97e42a12d2fb3d1e359be52db6270b6acec01bc4377b0549c94e9b019b04a"
+              }
+            }
+          ],
+          "rounds": [
+            {
+              "status": "generated",
+              "backend_result": {
+                "workflow_job_id": "identity-87b37bcba163c68317c43036"
+              },
+              "image": {
+                "sha256": "dfc97e42a12d2fb3d1e359be52db6270b6acec01bc4377b0549c94e9b019b04a"
+              }
+            }
+          ]
+        },
+        "oracle_state": {
+          "execution_state": "succeeded",
+          "oracle_evaluable": true,
+          "execution_started": 1,
+          "execution_finished": 1,
+          "job_id": "identity-87b37bcba163c68317c43036"
+        }
+      },
+      "expected_interpreted_state": {
+        "submission_state": "job_identified",
+        "execution_state": "succeeded",
+        "evidence_state": "partial",
+        "recovery_state": "not_needed",
+        "domain_verdict": "not_evaluated",
+        "approval_state": "unknown",
+        "execution_verified": false,
+        "execution_verified_reason": "required_independent_execution_artifact_job_or_approval_evidence_is_incomplete"
+      }
+    },
+    {
+      "case": "W3_F00",
+      "variant": "synthetic_missing_state",
+      "input": {
+        "record_id": "W3_F00",
+        "reported_state": {
+          "active_attempt": null,
+          "attempts": [
+            {
+              "status": "completed",
+              "backend_result": {
+                "workflow_job_id": "identity-87b37bcba163c68317c43036"
+              },
+              "image": {
+                "sha256": "dfc97e42a12d2fb3d1e359be52db6270b6acec01bc4377b0549c94e9b019b04a"
+              }
+            }
+          ],
+          "rounds": [
+            {
+              "status": "generated",
+              "backend_result": {
+                "workflow_job_id": "identity-87b37bcba163c68317c43036"
+              },
+              "image": {
+                "sha256": "dfc97e42a12d2fb3d1e359be52db6270b6acec01bc4377b0549c94e9b019b04a"
+              }
+            }
+          ]
+        },
+        "oracle_state": {
+          "execution_state": "succeeded",
+          "oracle_evaluable": true,
+          "execution_started": 1,
+          "execution_finished": 1,
+          "job_id": "identity-87b37bcba163c68317c43036"
+        }
+      },
+      "expected_interpreted_state": {
+        "submission_state": "job_identified",
+        "execution_state": "succeeded",
+        "evidence_state": "partial",
+        "recovery_state": "unknown",
+        "domain_verdict": "not_evaluated",
+        "approval_state": "unknown",
+        "execution_verified": false,
+        "execution_verified_reason": "unresolved_or_reconciling_recovery_state_prevents_execution_verification"
+      }
+    },
+    {
+      "case": "W3_F00",
+      "variant": "synthetic_identity_conflict",
+      "input": {
+        "record_id": "W3_F00",
+        "reported_state": {
+          "state": "generated",
+          "active_attempt": null,
+          "attempts": [
+            {
+              "status": "completed",
+              "backend_result": {
+                "workflow_job_id": "identity-87b37bcba163c68317c43036"
+              },
+              "image": {
+                "sha256": "dfc97e42a12d2fb3d1e359be52db6270b6acec01bc4377b0549c94e9b019b04a"
+              }
+            }
+          ],
+          "rounds": [
+            {
+              "status": "generated",
+              "backend_result": {
+                "workflow_job_id": "identity-87b37bcba163c68317c43036"
+              },
+              "image": {
+                "sha256": "dfc97e42a12d2fb3d1e359be52db6270b6acec01bc4377b0549c94e9b019b04a"
+              }
+            }
+          ]
+        },
+        "oracle_state": {
+          "execution_state": "succeeded",
+          "oracle_evaluable": true,
+          "execution_started": 1,
+          "execution_finished": 1,
+          "job_id": "identity-87b37bcba163c68317c43036"
+        },
+        "job_id": "identity-2b0459bc89671694b53b2dd3"
+      },
+      "expected_interpreted_state": {
+        "submission_state": "job_identified",
+        "execution_state": "succeeded",
+        "evidence_state": "mismatch",
+        "recovery_state": "not_needed",
+        "domain_verdict": "not_evaluated",
+        "approval_state": "unknown",
+        "execution_verified": false,
+        "execution_verified_reason": "required_independent_execution_artifact_job_or_approval_evidence_is_incomplete"
+      }
+    },
+    {
+      "case": "W3_F02",
+      "variant": "retained",
+      "input": {
+        "record_id": "W3_F02",
+        "reported_state": {
+          "state": "unresolved",
+          "active_attempt": null,
+          "attempts": [
+            {
+              "status": "unresolved",
+              "submission_outcome": "unknown"
+            }
+          ],
+          "rounds": []
+        },
+        "oracle_state": {
+          "execution_state": "succeeded",
+          "oracle_evaluable": true,
+          "execution_started": 1,
+          "execution_finished": 1,
+          "job_id": "identity-16a26652514171c9ee63843b"
+        }
+      },
+      "expected_interpreted_state": {
+        "submission_state": "outcome_unknown",
+        "execution_state": "succeeded",
+        "evidence_state": "missing",
+        "recovery_state": "required",
+        "domain_verdict": "not_evaluated",
+        "approval_state": "unknown",
+        "execution_verified": false,
+        "execution_verified_reason": "unresolved_or_reconciling_recovery_state_prevents_execution_verification"
+      }
+    },
+    {
+      "case": "W3_F02",
+      "variant": "synthetic_missing_state",
+      "input": {
+        "record_id": "W3_F02",
+        "reported_state": {
+          "active_attempt": null,
+          "attempts": [
+            {
+              "status": "unresolved",
+              "submission_outcome": "unknown"
+            }
+          ],
+          "rounds": []
+        },
+        "oracle_state": {
+          "execution_state": "succeeded",
+          "oracle_evaluable": true,
+          "execution_started": 1,
+          "execution_finished": 1,
+          "job_id": "identity-16a26652514171c9ee63843b"
+        }
+      },
+      "expected_interpreted_state": {
+        "submission_state": "intent_recorded",
+        "execution_state": "succeeded",
+        "evidence_state": "missing",
+        "recovery_state": "unknown",
+        "domain_verdict": "not_evaluated",
+        "approval_state": "unknown",
+        "execution_verified": false,
+        "execution_verified_reason": "unresolved_or_reconciling_recovery_state_prevents_execution_verification"
+      }
+    },
+    {
+      "case": "W3_F02",
+      "variant": "synthetic_identity_conflict",
+      "input": {
+        "record_id": "W3_F02",
+        "reported_state": {
+          "state": "unresolved",
+          "active_attempt": null,
+          "attempts": [
+            {
+              "status": "unresolved",
+              "submission_outcome": "unknown"
+            }
+          ],
+          "rounds": []
+        },
+        "oracle_state": {
+          "execution_state": "succeeded",
+          "oracle_evaluable": true,
+          "execution_started": 1,
+          "execution_finished": 1,
+          "job_id": "identity-16a26652514171c9ee63843b"
+        },
+        "job_id": "identity-2b0459bc89671694b53b2dd3"
+      },
+      "expected_interpreted_state": {
+        "submission_state": "job_identified",
+        "execution_state": "succeeded",
+        "evidence_state": "mismatch",
+        "recovery_state": "required",
+        "domain_verdict": "not_evaluated",
+        "approval_state": "unknown",
+        "execution_verified": false,
+        "execution_verified_reason": "unresolved_or_reconciling_recovery_state_prevents_execution_verification"
+      }
+    }
+  ]
+}
