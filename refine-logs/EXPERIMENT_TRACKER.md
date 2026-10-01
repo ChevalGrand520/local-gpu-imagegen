@@ -25,4 +25,14 @@ B2/F02、两个FPRE未运行。当前预约已过期；下一步只读分析停�
 停止原因已定位为观察器遇1秒静默提前退出，而非完整deadline耗尽。
 修正与96项本机回归通过；见 `ORACLE_QUIET_WINDOW_DIAGNOSIS_20261001.md`。
 修正版Windows实测仍NOT_RUN，需要新预约、新采集编号，T公式保持不变。
+
+## Corrected-observer batch C checkpoint
+
+上述NOT_RUN属于修正后的启动前状态。最新批次C已在08539d5完成六操作，
+保留10调用/8代理POST/6上游发送；A/B不合并。预约锁已释放。
+完整私有包两端SHA256一致；离线重算1561项通过，非执行真实性认证。
+F02：B2为2POST/2生命周期，W3为1POST/1生命周期；B2第二生命周期全图缓存复用。
+FPRE：B2重试后完成，W3无上游发送但仍阻塞、原run未决。无GPU计算节省结论。
+M1/M2/M3在C内完成；M4初步审计完成，后续主张修订以
+`WINDOWS_PAIRED_COMPLETED_20261001.md`为证据入口。Tool v0.18不改。
 PA1-R004 未启动；不能把 CPU 通过视作 Windows 现场门槛已满足。
