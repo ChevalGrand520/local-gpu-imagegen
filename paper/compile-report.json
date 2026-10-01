@@ -1,5 +1,5 @@
 {
-  "status": "DSN Tool v0.17; call-label note, integrator audience and shorter limitations",
+  "status": "DSN Tool v0.18; selective review response and editorial consolidation",
   "pages_total": 6,
   "abstract_words": 129,
   "figures": 2,
@@ -21,13 +21,13 @@
   "undefined_references": 0,
   "overfull_boxes": 0,
   "underfull_box_notices": 19,
-  "pdf_sha256": "cbd346e72a210bb1b89eeb58512b45a7da96c4d20b4b7a8b90d746dfe500f44e",
-  "pdf_bytes": 99926,
+  "pdf_sha256": "f48bf990ca566a7248875103881319057414ad69d4d752849d16874e1422dedd",
+  "pdf_bytes": 98962,
   "compiler": "Tectonic 0.17.0",
   "submission_ready": false,
   "remaining": "Human declarations, final PDF acceptance and external artifact release decisions",
   "tables_generated_from_checked_records": true,
   "external_review": "DS round 2 substantive; Claude round aborted before file access",
   "venue_fit": "DSN Tool retained as candidate; target edition and institutional category recognition unconfirmed",
-  "visual_check": "All six v0.17 pages rendered at 1100-pixel longest edge and inspected; no obvious clipping or overlap, including the Table III note. Final human acceptance pending."
+  "visual_check": "All six v0.18 pages rendered at 1100-pixel longest edge and inspected; no obvious clipping or overlap, including both table notes and the reordered sections. Final human acceptance pending."
 }
