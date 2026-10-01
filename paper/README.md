@@ -1,4 +1,7 @@
-Requires Python >=3.10 for offline scripts; tested with Python 3.13.15.
+Use Python >=3.10 for the complete offline command set; tested with Python 3.13.15.
+Some standalone projection checks can run on older Python, but the exporter
+uses dataclass slots. Historical tests/research receipts describe full-checkout
+checks; that test tree is absent from the private author ZIP.
 System Python 3.9 is unsupported. The manuscript author ZIP is PRIVATE and contains host/account identifiers
 and audit paths. Only the separately sanitized anonymous demo is an external
 candidate; never distribute the full delivery directory.

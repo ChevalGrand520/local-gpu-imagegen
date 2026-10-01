@@ -12,6 +12,8 @@ import json
 from pathlib import Path
 import platform
 import sys
+import struct
+import zlib
 
 ROOT = Path(__file__).resolve().parents[2]
 if __package__ in {None, ""}:
@@ -20,7 +22,12 @@ if __package__ in {None, ""}:
 
 from scripts.research.export_records import export_record
 from scripts.research.f02_capture import write_private_json
-from tests.test_asset_run_engine import write_test_png
+def write_test_png(path, width=256, height=256, pixel=b"\x20\x40\x80"):
+    def chunk(kind, data):
+        return struct.pack(">I", len(data)) + kind + data + struct.pack(">I", zlib.crc32(kind + data))
+    header = struct.pack(">IIBBBBB", width, height, 8, 2, 0, 0, 0)
+    rows = b"".join(b"\x00" + pixel * width for _ in range(height))
+    path.write_bytes(b"\x89PNG\r\n\x1a\n" + chunk(b"IHDR", header) + chunk(b"IDAT", zlib.compress(rows)) + chunk(b"IEND", b""))
 
 
 def field_baseline(record):
@@ -144,6 +151,7 @@ def run(output: Path):
     report = {"evidence_class": "synthetic_offline_contract_probes", "python": platform.python_version(),
               "status": "PASS" if all(not p["checks"] for p in probes) and unchanged else "STOPPED",
               "probes": probes, "counts": counts, "same_information": True,
+              "agreement_count": sum(p["exporter"] == p["field_baseline"] for p in probes),
               "observed_information_or_accuracy_advantage": False,
               "source_hashes": source_hashes, "sources_unchanged": unchanged,
               "dependency_hashes": dependencies,
@@ -157,7 +165,7 @@ def main():
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
     report = run(args.output)
-    print(json.dumps({"status": report["status"], "probes": len(report["probes"]), "counts": report["counts"]}))
+    print(json.dumps({"status": report["status"], "probes": len(report["probes"]), "counts": report["counts"], "agreement_count": report["agreement_count"]}))
     return 0 if report["status"] == "PASS" else 1
 
 

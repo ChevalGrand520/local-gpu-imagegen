@@ -344,9 +344,10 @@ for v1 without proving the complete internal error path.
 Each campaign retained 90 F00 and 10 F02 WebSocket payloads and one history
 response per case. Offline checks rehashed bytes and reconstructed start,
 \texttt{executing(node=null)} and successful-history bindings. Both conditions
-included cache events. F02 cached nodes 3--9, with zero \texttt{progress} and
-one \texttt{progress\_state} message; it does not establish new physical GPU
-computation. These retained bytes neither authenticate execution nor recover
+included cache events. In these earlier v1/v2 F02 captures, nodes 3--9 were
+reported cached, with zero \texttt{progress} and one \texttt{progress\_state}
+message. This combination does not measure physical GPU computation.
+These retained bytes neither authenticate execution nor recover
 the missing fresh-run event lists. No third call or fresh-run fallback occurred.
 
 \subsection{Paired submission control and completion cost}
@@ -392,8 +393,10 @@ These are coverage counts, not deployment rates.
 In F02, B2 retried and completed its original run. W3's retry returned
 \texttt{submission\_outcome\_unknown}, issued no second POST and left the run
 unresolved despite corroborated backend completion. B2's second lifecycle
-reported cached nodes 3--9, covering the generation graph. The extra lifecycle
-therefore provides no measurement of an additional full GPU generation.
+reported cached nodes 3--9. The paired F02 operation also retained 30
+\texttt{progress} messages across both lifecycles; this aggregate does not
+assign computation to the second lifecycle. Cache events and lifecycle counts
+are insufficient to quantify an additional full GPU generation.
 
 FPRE exposes the guard's completion cost. The proxy proved that the first
 request never entered the upstream send path. B2 retried and completed; W3
@@ -482,8 +485,9 @@ outputs, excluding the first unresolved F02 output.
 The paired cases establish submission withholding and a completion cost on one
 Windows workload. Desktop activity was retained as a timing confound. A simple
 stop-after-unknown policy matched W3's fault submission counts in CPU checks;
-it was not measured on Windows. Same-information offline probes also gave the
-exporter and an ordinary parser identical decisions. These comparisons support
+it was not measured on Windows. In twelve constructed offline probes, both the
+exporter and an ordinary parser matched every declared answer, with agreement
+on all twelve classifications. These comparisons support
 an inspectable integration, rather than policy or classification superiority.
 The new campaign did not separately evaluate exporter normalization.
 The anonymous demo replays semantic mapping; four variants are
