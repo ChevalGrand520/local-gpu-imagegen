@@ -75,6 +75,18 @@ def compute_idle_report(stdout, target_uuid, desktop_baseline=()):
             "scope": "process_view_with_explicit_WDDM_baseline_not_global_exclusivity_proof"}
 
 
+def require_free_backend_port(host, port):
+    try:
+        # Windows may take about two seconds to report connection refusal.
+        with socket.create_connection((host, port), timeout=5):
+            pass
+    except ConnectionRefusedError:
+        return
+    except OSError as error:
+        raise RunnerStop("backend_port_state_unknown:" + type(error).__name__) from error
+    raise RunnerStop("existing_backend_or_listener_not_owned")
+
+
 class WindowsOps:
     evidence_class = "Windows_real_backend_campaign"
 
@@ -113,15 +125,7 @@ class WindowsOps:
             raise RunnerStop("frozen_site_identity_failed")
         # Existing listeners belong to somebody else, even if HTTP is broken.
         url = urlsplit(env["backend_url"])
-        try:
-            with socket.create_connection((url.hostname, url.port or 80), timeout=1):
-                pass
-        except ConnectionRefusedError:
-            pass
-        except OSError:
-            raise RunnerStop("backend_port_state_unknown")
-        else:
-            raise RunnerStop("existing_backend_or_listener_not_owned")
+        require_free_backend_port(url.hostname, url.port or 80)
         checks = [legacy._contract_check(config["preflight"]["ledger"]["root"],
                                          config["preflight"]["ledger"]["anchor"])]
         checks += legacy._client_checks(config["preflight"]["clients"])

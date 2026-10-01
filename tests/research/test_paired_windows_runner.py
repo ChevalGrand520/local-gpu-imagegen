@@ -249,6 +249,17 @@ class PlanAndAdapterTests(unittest.TestCase):
             with self.assertRaises(runner.RunnerStop):
                 windows.compute_idle_report("", "GPU-target", [{"pid": 42, "process_name": name}])
 
+    def test_port_probe_waits_for_refusal_but_rejects_listener_or_unknown(self):
+        with patch.object(windows.socket, "create_connection", side_effect=ConnectionRefusedError) as probe:
+            windows.require_free_backend_port("127.0.0.1", 8202)
+            probe.assert_called_once_with(("127.0.0.1", 8202), timeout=5)
+        with patch.object(windows.socket, "create_connection", side_effect=TimeoutError):
+            with self.assertRaisesRegex(runner.RunnerStop, "state_unknown:TimeoutError"):
+                windows.require_free_backend_port("127.0.0.1", 8202)
+        with patch.object(windows.socket, "create_connection"):
+            with self.assertRaisesRegex(runner.RunnerStop, "listener_not_owned"):
+                windows.require_free_backend_port("127.0.0.1", 8202)
+
     def test_windows_cleanup_command_targets_exact_owned_pid_only(self):
         class Owned:
             pid = 12345
