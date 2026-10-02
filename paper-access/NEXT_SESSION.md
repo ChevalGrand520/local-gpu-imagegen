@@ -55,6 +55,15 @@ and states that private paired raw captures are unavailable for third-party
 recalculation. The review's claim that both Access table inputs are untracked
 was false: `git ls-files` confirms both. No new results were added.
 
+The subsequent contribution gate is recorded in CONTRIBUTION_GATE_20261002.md.
+The B0 CPU receipt actually includes P-stop and matches W3 for F00/F02/FPRE
+count and completion outcomes, so rerunning E1 unchanged has no value. The
+private C TAR still matches its recorded hash, but its broad contents require
+a selective privacy review before any release. Li full text was unreachable in
+this pass; the novelty gate remains open. Current recommendation is to pause
+Access expansion and assess a bounded tool/software route, without changing
+the author's submission choice or starting experiments.
+
 AI declaration approved verbatim by user and applied to both working sources:
 OpenAI Codex assisted with language refinement, experimental code prototyping,
 and cross-checking of author records. The author reviewed and revised the
