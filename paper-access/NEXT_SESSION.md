@@ -85,6 +85,15 @@ The bare Mac Python 3.13 full suite failed (23 failures, 29 errors, 32 skips
 of 1,173 tests), so no full release gate is claimed. No candidate archive was
 published, and the private paired raw TAR remains outside the repository.
 
+The private paired-capture release design is recorded in
+PAIRED_CAPTURE_RELEASE_DESIGN_20261003.md. A read-only inventory script under
+paper-access/ scanned all 1,273 regular TAR files and 465 decoded WebSocket/
+history payloads without printing values. Original audit on an owner-only
+temporary extraction returned PASS, 1,561 checks; this is not independent
+execution authentication. A reduced public candidate needs a separate
+transformed-byte audit, because the original audit checks 1,038 source files
+and raw byte hashes. No sanitized archive was built or published.
+
 AI declaration approved verbatim by user and applied to both working sources:
 OpenAI Codex assisted with language refinement, experimental code prototyping,
 and cross-checking of author records. The author reviewed and revised the
