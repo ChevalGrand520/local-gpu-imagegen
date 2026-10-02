@@ -96,3 +96,28 @@ calling a reduced audit an original 1,561-check replay. Required transforms:
 The existing v0.6 anonymous demo remains a separate offline mapping artifact.
 It cannot be silently combined with this transformed-capture candidate or
 described as proof of live guard execution.
+
+## Local transformed-capture prototype
+
+`paper-access/paired_sanitized_candidate.py` now builds a local
+`paired-sanitized-v1` candidate from the private TAR. It keeps only anonymous
+event types, stable pseudonymous job/node/run IDs, proxy sequence/status data,
+history completion booleans, call-level errors/states and a transformed
+generation-argument tree. It discards original payload bytes, prompts, paths,
+source snapshots, logs, process receipts and image bytes.
+
+The prototype was built under an owner-only directory, then copied to a second
+clean directory containing only `capture.json`, `manifest.json`,
+`projection.json` and the verifier. The embedded verifier passed and matched
+the public six-row projection: 6 operations, 10 calls, 8 proxy POSTs, 6
+upstream sends. Candidate scans found no account, host, path or model marker.
+A structural negative with an extra send sequence was rejected even after its
+capture hash was recomputed. The pseudonym key was kept outside the candidate
+with mode 600.
+
+This is a **private prototype**, not a release artifact. It omits the original
+source/hash, raw-byte, manifest-byte, PNG-byte, process and cleanup checks. Its
+PASS means only that the transformed subset preserves the six derived rows and
+declared paired semantics. It does not authenticate the original execution or
+replace the 1,561-check audit. Human review of fields, licenses, archive
+metadata and the exact file list remains required before any disclosure.

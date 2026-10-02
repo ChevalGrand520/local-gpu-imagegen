@@ -94,6 +94,12 @@ execution authentication. A reduced public candidate needs a separate
 transformed-byte audit, because the original audit checks 1,038 source files
 and raw byte hashes. No sanitized archive was built or published.
 
+The local `paired-sanitized-v1` prototype now preserves the six derived rows
+and paired semantic equality in a clean directory; its verifier passed and a
+tampered send-sequence negative failed. It remains private and omits original
+source/raw/image/process checks. No candidate archive or pseudonym map was
+published.
+
 AI declaration approved verbatim by user and applied to both working sources:
 OpenAI Codex assisted with language refinement, experimental code prototyping,
 and cross-checking of author records. The author reviewed and revised the
