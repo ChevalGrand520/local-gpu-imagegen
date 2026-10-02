@@ -70,8 +70,10 @@ build plus isolated `verify` command passed, and the v0.6 anonymous demo passed
 four clean-extraction checks. The wheel contains product guard code but not the
 research exporter; the demo is not the whole product. The private raw TAR is
 not publication-ready. No SoftwareX manuscript, new release or submission was
-made. Confirm code-author rights metadata and the author's preferred English
-name/college wording before publication decisions.
+made. The user has since confirmed that `ChevalGrand520` is their own GitHub
+account; preserve the existing `Capricorn` license/package strings and confirm
+their intended attribution before publication. The author's preferred English
+name/college wording also remains to be confirmed.
 
 AI declaration approved verbatim by user and applied to both working sources:
 OpenAI Codex assisted with language refinement, experimental code prototyping,

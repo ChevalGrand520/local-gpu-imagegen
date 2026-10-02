@@ -25,7 +25,7 @@ policy/classification superiority, image quality or GPU savings.
 
 | Gate | Current evidence | Disposition |
 |---|---|---|
-| Public source and license | GitHub repository `ChevalGrand520/local-gpu-imagegen` was confirmed public on 2026-10-02. Root `LICENSE` is MIT; product source and English quickstart are present. | Available, but confirm author/rights metadata before submission. The license and `pyproject.toml` name `Capricorn`, while the draft names Cheng Zhen. Do not infer the legal relationship. |
+| Public source and license | GitHub repository `ChevalGrand520/local-gpu-imagegen` was confirmed public on 2026-10-02. The author confirmed that `ChevalGrand520` is their own GitHub account. Root `LICENSE` is MIT; product source and English quickstart are present. | Repository control is author-confirmed. The license and `pyproject.toml` name `Capricorn`, while the draft names Cheng Zhen. Preserve those existing labels; confirm the intended copyright/metadata attribution before a submission package. |
 | Installable product | `uv build --offline` built sdist and wheel from this branch (exit 0). Installing the wheel in an isolated, offline `uv run` and invoking `local-gpu-imagegen verify` returned exit 0, `ok: true`, version 0.9.1 and 17 MCP tools. | Component-level installation proven on this Mac. It does not prove the Windows/ComfyUI workflow or a fresh public release. |
 | Research-feature packaging | Wheel includes `engine.py` and `run_store.py`, but neither wheel nor sdist contains `scripts/research/export_records.py`. | The guard is in the product; exporter is only in the source checkout/demo. Decide whether the paper's named software includes an installable exporter command or explicitly treats export as supplementary research code. |
 | Offline supplementary demo | Clean extraction of `evidence-tool-anonymous-demo-v0.6.zip`; its reviewer, Windows-projection and paired-projection checks exited 0; 13 unit tests passed. | Reproduces mapping and derived consistency only. It omits live guard, backend and original paired raw capture. It is an author-side candidate, not a complete product release. |
@@ -56,3 +56,8 @@ derived records would be distributed; run those commands from a clean checkout;
 then review licenses and private identifiers before proposing a public change.
 This is preparation, not authorization to upload raw evidence, publish a new
 package, change stable branches or submit the manuscript.
+
+Author clarification received after this assessment: the GitHub repository
+owner account is the author's own account. This establishes control of that
+account by the author's statement; it does not independently establish a legal
+identity mapping for the `Capricorn` copyright and package-author strings.
