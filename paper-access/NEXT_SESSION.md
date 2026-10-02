@@ -77,6 +77,14 @@ name and should not be the software/publication byline. `LICENSE` and
 account-name records remain unchanged. The official college English wording
 also remains to be confirmed.
 
+Release-candidate inventory is recorded in
+SOFTWAREX_RELEASE_CANDIDATE_INVENTORY_20261002.md. The offline wheel/sdist build
+passed; the wheel omits the research exporter. A clean v0.6 demo passed four
+offline commands; the focused Python 3.12 research suite passed 96 tests.
+The bare Mac Python 3.13 full suite failed (23 failures, 29 errors, 32 skips
+of 1,173 tests), so no full release gate is claimed. No candidate archive was
+published, and the private paired raw TAR remains outside the repository.
+
 AI declaration approved verbatim by user and applied to both working sources:
 OpenAI Codex assisted with language refinement, experimental code prototyping,
 and cross-checking of author records. The author reviewed and revised the
