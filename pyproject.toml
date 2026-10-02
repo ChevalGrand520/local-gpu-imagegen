@@ -9,7 +9,7 @@ description = "MCP-first control plane for ComfyUI workflows with explicit appro
 readme = "README.md"
 requires-python = ">=3.11"
 license = "MIT"
-authors = [{name = "Capricorn"}]
+authors = [{name = "Zhen Cheng"}]
 keywords = ["mcp", "image-generation", "comfyui", "automatic1111", "local-ai"]
 classifiers = [
   "Development Status :: 4 - Beta",

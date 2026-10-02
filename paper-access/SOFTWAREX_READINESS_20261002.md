@@ -25,13 +25,13 @@ policy/classification superiority, image quality or GPU savings.
 
 | Gate | Current evidence | Disposition |
 |---|---|---|
-| Public source and license | GitHub repository `ChevalGrand520/local-gpu-imagegen` was confirmed public on 2026-10-02. The author confirmed that `ChevalGrand520` is their own GitHub account. Root `LICENSE` is MIT; product source and English quickstart are present. | Repository control is author-confirmed. The author clarified that `Capricorn` is only a computer account name, not a chosen publication or software byline. The `LICENSE` copyright line and `pyproject.toml` author field need correction once the preferred English spelling is confirmed. Historical records bearing that account name must not be rewritten. |
+| Public source and license | GitHub repository `ChevalGrand520/local-gpu-imagegen` was confirmed public on 2026-10-02. The author confirmed that `ChevalGrand520` is their own GitHub account. Root `LICENSE` is MIT; product source and English quickstart are present. | Repository control and the software byline are now author-confirmed as Zhen Cheng. Historical records bearing the old computer account name are not rewritten. |
 | Installable product | `uv build --offline` built sdist and wheel from this branch (exit 0). Installing the wheel in an isolated, offline `uv run` and invoking `local-gpu-imagegen verify` returned exit 0, `ok: true`, version 0.9.1 and 17 MCP tools. | Component-level installation proven on this Mac. It does not prove the Windows/ComfyUI workflow or a fresh public release. |
 | Research-feature packaging | Wheel includes `engine.py` and `run_store.py`, but neither wheel nor sdist contains `scripts/research/export_records.py`. | The guard is in the product; exporter is only in the source checkout/demo. Decide whether the paper's named software includes an installable exporter command or explicitly treats export as supplementary research code. |
 | Offline supplementary demo | Clean extraction of `evidence-tool-anonymous-demo-v0.6.zip`; its reviewer, Windows-projection and paired-projection checks exited 0; 13 unit tests passed. | Reproduces mapping and derived consistency only. It omits live guard, backend and original paired raw capture. It is an author-side candidate, not a complete product release. |
 | Paired-result reproducibility | Derived paired projection and checker are available. Private TAR matches the recorded SHA256 and contains raw observer/proxy/client records, full source snapshots, configuration and images. | A third party cannot rerun the raw-capture audit from current distributed files. Selective sanitization, rights review and clean extraction are needed before any release decision. Do not publish the whole TAR. |
 | Journal format | Prior official-guide check records a mandatory template, at most 4,000 words excluding specified metadata, at most six figures, public repository/README/license and data-availability statement. | No SoftwareX template manuscript has been prepared. The seven-page Access PDF is not a SoftwareX submission file. Recheck live guide before conversion. |
-| Cost and authorship | Prior publisher check recorded an APC of USD 1,920 excluding taxes. Current draft uses the provisional Romanized name `Zhen Cheng` and a provisional English college name. | Confirm current APC, budget, preferred author name, official affiliation wording, ORCID and correspondence details before submission. No payment or submission is implied. |
+| Cost and authorship | Prior publisher check recorded an APC of USD 1,920 excluding taxes. Current draft and package metadata use `Zhen Cheng`; the college English wording remains provisional. | Confirm current APC, budget, official affiliation wording and ORCID before submission. No payment or submission is implied. |
 
 ## Manuscript skeleton after the gates
 
@@ -58,5 +58,5 @@ This is preparation, not authorization to upload raw evidence, publish a new
 package, change stable branches or submit the manuscript.
 
 Author clarification received after this assessment: the GitHub repository
-owner account is the author's own account. `Capricorn` is a computer account
-name and should not be used as the publication or software author identity.
+owner account is the author's own account, and the formal software byline is
+`Zhen Cheng`. `Capricorn` remains only in historical computer-account records.
