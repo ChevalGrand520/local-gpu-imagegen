@@ -37,6 +37,9 @@ The class is unchanged. pdfLaTeX/BibTeX via latexmk built paper-access/main.pdf
 compile the official spot-color primitive. The local /tmp compiler may not
 survive a reboot; README records the build command. Compilation does not mean
 submission readiness.
+For the author update, the compiler was recreated in
+/Users/chevalgrand/.cache/paper-access-texlive; pdfLaTeX/BibTeX again produced
+a seven-page PDF and the updated first page was visually checked.
 
 Results now have explicit RQ1--RQ3 subsections. RQ1 records one withheld
 submission in the fixed accepted-response-loss pair; RQ2 records unresolved
@@ -56,12 +59,17 @@ User direction: prepare Access as single submission route; never submit overlapp
 DSN/Access manuscripts concurrently. User reports school reimburses papers with
 Zhejiang Sci-Tech University first affiliation; this is user-provided, not a
 verified reimbursement amount/procedure. Sole human author and correspondence
-intended; actual name, department English address and email remain missing.
-Do not invent them or add a supervisor for fees. Access official average4 weeks
+intended. User supplied the name Cheng Zhen in Chinese (程臻), the College of
+Computer and Artificial Intelligence in Chinese, and the correspondence email
+ChengZhen0105@outlook.com. The draft provisionally uses Zhen Cheng and
+"School of Computer Science and Artificial Intelligence" pending confirmation
+of preferred Romanized name order and official college English wording. No
+street or postal address has been supplied. Do not add a supervisor for fees.
+Access official average4 weeks
 to accept/reject, not guarantee; APC2160USD plus taxes after acceptance.
 
-Next: obtain exact author name, department English name, full affiliation and
-correspondence email from the user; decide whether the bounded six-operation
+Next: confirm Romanized name order and official college English wording, then
+decide whether the bounded six-operation
 contribution and available software/evidence distribution support an Access
 research submission. Yu survey citation is abstract-level checked only; full
 text and publisher metadata remain a literature gate. No new GPU run, model

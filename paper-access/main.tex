@@ -5,17 +5,17 @@
 \usepackage{amsmath,amssymb,amsfonts}
 \usepackage{url}
 \usepackage[hidelinks]{hyperref}
-\hypersetup{pdftitle={Evidence-Bound Recovery for Ambiguous Submissions in Local Generative-AI Pipelines},pdfauthor={}}
+\hypersetup{pdftitle={Evidence-Bound Recovery for Ambiguous Submissions in Local Generative-AI Pipelines},pdfauthor={Zhen Cheng}}
 \begin{document}
 \history{Working manuscript; publication history pending.}
 \doi{Pending assignment}
 \vol{pending}
 \year{pending}
 \title{Evidence-Bound Recovery for Ambiguous Submissions in Local Generative-AI Pipelines}
-\author{\uppercase{Author name pending}\authorrefmark{1}}
-\address[1]{Department pending, Zhejiang Sci-Tech University, postal address pending, China}
-\corresp{Corresponding author: name and e-mail pending.}
-\markboth{Working manuscript: author details pending}{Evidence-Bound Recovery}
+\author{\uppercase{Zhen Cheng}\authorrefmark{1}}
+\address[1]{School of Computer Science and Artificial Intelligence, Zhejiang Sci-Tech University, Hangzhou, China (e-mail: ChengZhen0105@outlook.com)}
+\corresp{Corresponding author: Zhen Cheng (e-mail: ChengZhen0105@outlook.com).}
+\markboth{Zhen Cheng: Evidence-Bound Recovery}{Evidence-Bound Recovery}
 \begin{abstract}
 Loss of a generation backend's acceptance response leaves a client unable to determine whether another submission will repeat an accepted operation. This study examines the tradeoff between withholding that submission and completing the original client run. An evidence-preserving exporter separates reported recovery state from supplied backend observations, while a same-run guard blocks generation after an explicitly unknown submission outcome. We evaluate pinned guarded and unguarded products in six controlled Windows/ComfyUI operations with matched generation semantics. Under acceptance-response loss, the unguarded product records two accepted jobs and two bound backend lifecycles; the guarded product records one of each and retains an unresolved original run despite backend completion. Under a pre-send fault, the guard also withholds retry although the proxy records no upstream send, while the unguarded product retries and completes. Twelve constructed offline probes give the exporter and a same-information parser matching classifications. Backend cache reports prevent interpreting lifecycle differences as measured GPU-compute savings. These fixed cases expose a submission/availability tradeoff and support an inspectable evidence contract for pipeline integrators rather than a deployment-wide reliability estimate.
 \end{abstract}

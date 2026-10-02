@@ -8,7 +8,7 @@
   "attempt": "latexmk -pdf -interaction=nonstopmode -halt-on-error -file-line-error -outdir=/tmp/paper-access-build main.tex with portable TeX Live 2026",
   "prior_engine_error": "ieeeaccess.cls:281 undefined pdfobj in AddSpotColor under XeTeX",
   "pdflatex_available": true,
-  "pdflatex_location": "/tmp/paper-access-texlive/bin/universal-darwin/pdflatex; task-local, not installed globally",
+  "pdflatex_location": "/Users/chevalgrand/.cache/paper-access-texlive/bin/universal-darwin/pdflatex; task-local, not installed globally",
   "pdf_pages": 7,
   "submission_ready": false
 }

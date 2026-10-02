@@ -9,7 +9,9 @@ https://ieeeaccess.ieee.org/wp-content/uploads/2026/05/ACCESS_latex_template_202
 Class, IEEEtran class, bibliography style, font resources, logos and bullet
 asset are copied unmodified from the hash-recorded official archive.
 No sample authors, photographs, sample DOI or publication dates are claimed.
-Author name, department, address and contact fields remain pending.
+The sole-author name, college and email were supplied by the author. Romanized
+name order and the college's official English wording await author confirmation;
+no street or postal address has been supplied.
 
 Initial adaptation uses the official class, an expanded 150--250-word abstract,
 keywords and three explicit research questions. Existing results, references,
@@ -32,6 +34,8 @@ The 2026-10-02 local build used a portable TeX Live 2026 installation with
 modified. The manuscript uses explicit pending publication metadata in place
 of the template's default volume/year. PDF compilation does not resolve the
 author fields or make the manuscript submission-ready.
+The author-update build uses task-local TeX Live at
+`/Users/chevalgrand/.cache/paper-access-texlive/bin/universal-darwin`.
 Author/source declarations and final human content approval are still required.
 
 Official rapid-review page reports average four weeks submission to accept/reject,
