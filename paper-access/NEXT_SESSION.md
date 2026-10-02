@@ -71,9 +71,11 @@ four clean-extraction checks. The wheel contains product guard code but not the
 research exporter; the demo is not the whole product. The private raw TAR is
 not publication-ready. No SoftwareX manuscript, new release or submission was
 made. The user has since confirmed that `ChevalGrand520` is their own GitHub
-account; preserve the existing `Capricorn` license/package strings and confirm
-their intended attribution before publication. The author's preferred English
-name/college wording also remains to be confirmed.
+account. The user then clarified that `Capricorn` is only a computer account
+name and should not be the software/publication byline. Correct `LICENSE` and
+`pyproject.toml` after confirming the preferred English author spelling; keep
+historical account-name records unchanged. The official college English
+wording also remains to be confirmed.
 
 AI declaration approved verbatim by user and applied to both working sources:
 OpenAI Codex assisted with language refinement, experimental code prototyping,
