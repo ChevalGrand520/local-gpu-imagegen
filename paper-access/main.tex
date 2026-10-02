@@ -235,8 +235,9 @@ exercise cases in which submission and execution counts differ and in which a
 shared prompt identifier does not imply a single execution. These are fixed
 semantic checks, not randomly sampled deployments.
 
-The delivered offline checks were tested with Python 3.13.15. Their source
-requires Python 3.10 features; compatibility with 3.10 itself was not tested. They check retained-record consistency and mapping,
+The delivered offline checks were tested with Python 3.13.15. The repository
+declares Python 3.11 or newer; compatibility with 3.11 itself was not tested
+here. The checks cover retained-record consistency and mapping,
 not backend execution. Historical test-count and runtime claims without packaged
 receipts are omitted. Exact historical CPU test-worktree attestation remains
 unavailable. The Windows v1/v2 campaigns recorded nine harness source hashes
@@ -278,15 +279,18 @@ unchanged F03 two-stage row exercises existing known-job recovery. These CPU
 paths must not be pooled with the Windows fresh-run protocol in
 Fig.~\ref{fig:sequence}.
 
-\subsection{Supporting Windows observation: fresh-run calls}
+\subsection{Historical Windows observation: fresh-run calls}
 
-The endpoint-preserving campaign report records B2 and W3 under F00 and F02. All four fixed cases were oracle-evaluable; the two F00 cases were controls
+This historical endpoint-preserving campaign is separate from the paired
+same-run study in Table~\ref{tab:paired}. It records B2 and W3 under F00 and
+F02. All four fixed cases were oracle-evaluable; the two F00 cases were controls
 and the two F02 cases had confirmed response-loss injection. Table~\ref{tab:cases} reports
 the observations without converting these counts into a success probability.
 
 
 \begin{table}[t]
-\caption{Four fixed cases, checked against retained report fields. S/E are
+\caption{Historical four-case fresh-run campaign, not the paired same-run study
+in Table~\ref{tab:paired}. S/E are
 proxy submissions/bound execution instances; U/R are unresolved/resolved
 research-client calls. All four cases were oracle-evaluable.}
 \label{tab:cases}
@@ -294,11 +298,13 @@ research-client calls. All four cases were oracle-evaluable.}
 \input{tables/windows-rows.tex}
 \end{table}
 
-The campaign totals were six calls, six proxy submissions and six retained bound
-execution instances. The F02 second call used a fresh run and changed seed.
+This historical campaign totals six calls, six proxy submissions and six
+retained bound execution instances. The F02 second call used a fresh run and
+changed seed.
 The four report records matched the corresponding retained JSONL cases.
 Their six retained execution bindings had distinct identifiers, completed-history
-flags and terminal-event labels. In both B2\_F02 and W3\_F02, the export reports
+flags and terminal-event labels. In the historical B2\_F02 and W3\_F02
+exports, each case reports
 \texttt{execution\_start=3}, two proxy submissions and two retained bindings.
 
 The export sums cumulative \texttt{raw\_events} from two F02 decisions: a
@@ -389,12 +395,14 @@ retry after the first call returned, without waiting for observer completion.
 Each operation started a fresh backend; its two calls shared that backend cache.
 
 Both F00 controls completed. Their generation RPC intervals, 35.77 and 24.20
-seconds, set the predefined fault window to 107.32 seconds. These intervals
+seconds, set the predefined per-operation observation deadline to 107.32
+seconds. These intervals
 include MCP and client processing. Table~\ref{tab:paired} separates calls,
 proxy submissions, upstream sends, accepted jobs and bound lifecycles.
 
 \begin{table}[t]
-\caption{Six fixed paired operations.}
+\caption{Six fixed operations in the paired same-run campaign; separate from
+the historical fresh-run cases in Table~\ref{tab:cases}.}
 \label{tab:paired}
 \centering
 \begin{tabular}{lrrrrrl}
@@ -420,9 +428,10 @@ These are coverage counts, not deployment rates.
 In F02, B2 retried and completed its original run. W3's retry returned
 \texttt{submission\_outcome\_unknown}, issued no second POST and left the run
 unresolved despite corroborated backend completion. B2's second lifecycle
-reported cached nodes 3--9. The paired F02 operation also retained 30
-\texttt{progress} messages across both lifecycles; this aggregate does not
-assign computation to the second lifecycle. Cache events and lifecycle counts
+reported cached nodes 3--9. The paired F02 operation retained 30
+\texttt{progress} messages in total; the retained aggregate does not
+allocate them to either lifecycle or assign computation to the second. Cache
+events and lifecycle counts
 are insufficient to quantify an additional full GPU generation.
 
 Thus, in this fixed accepted-response-loss pair, the same-run guard withheld
@@ -546,6 +555,11 @@ Offline checks use retained CPU traces, the Windows source/report ledger and
 sanitized projections. Live repetition requires the pinned backend, model,
 workflow and private setup. Historical and same-run campaigns remain separate.
 Export assumes trustworthy input provenance and does not authenticate sources.
+The paired Windows table can be checked against the retained derived projection,
+but its private raw WebSocket, history and proxy records are not distributed
+with this manuscript. Third parties therefore cannot rerun the raw-capture
+audit or independently reconstruct that table from the currently distributed
+materials.
 
 Historical JSONL supports consistency checks but lacks the raw events needed to
 resolve the start-count discrepancy. Its constructed terminal label is weaker
@@ -579,7 +593,8 @@ pointers, a deterministic audit script and figure sources. Models, private
 configuration, generated images and raw host paths are excluded from the
 external anonymous demo. A separate private author-review bundle contains exact
 source snapshots and audit metadata with host/account identifiers and local
-paths; it is not an anonymous or public distribution. The analysis concerns controlled software executions; it makes
+paths; it is not an anonymous or public distribution. No public release or
+reviewer access to the raw paired capture is claimed. The analysis concerns controlled software executions; it makes
 no claim about human participants or image-quality acceptance. Human-subjects
 or institutional-ethics determinations are not inferred from this scope.
 

@@ -48,6 +48,13 @@ same-information parser classifications. No experiment or comparison was added.
 Official template publication fields are visibly pending, without invented
 DOI, volume, year or history.
 
+The 2026-10-02 model-assisted DS review was dispositioned in
+DS_REVIEW_DISPOSITION_20261002.md. The manuscript now labels historical and
+paired protocols more explicitly, corrects the Python requirement to 3.11+,
+and states that private paired raw captures are unavailable for third-party
+recalculation. The review's claim that both Access table inputs are untracked
+was false: `git ls-files` confirms both. No new results were added.
+
 AI declaration approved verbatim by user and applied to both working sources:
 OpenAI Codex assisted with language refinement, experimental code prototyping,
 and cross-checking of author records. The author reviewed and revised the
