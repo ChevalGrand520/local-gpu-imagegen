@@ -6,7 +6,8 @@ to perform Access adaptation. Do not submit overlapping versions concurrently.
 
 Official Access template (downloaded 2026-10-02):
 https://ieeeaccess.ieee.org/wp-content/uploads/2026/05/ACCESS_latex_template_20260513-1-1.zip
-Class, bibliography style, font resources and logos are copied unmodified.
+Class, IEEEtran class, bibliography style, font resources, logos and bullet
+asset are copied unmodified from the hash-recorded official archive.
 No sample authors, photographs, sample DOI or publication dates are claimed.
 Author name, department, address and contact fields remain pending.
 
@@ -16,13 +17,21 @@ historical protocols and limitations are preserved; no new measurements.
 The contribution is submission/availability tradeoff plus inspectable evidence,
 not generalized reliability, parser superiority or GPU savings.
 
-Next substantive work: reduce historical protocol narrative, organize main
-results by RQ, assess nearest-method comparison and reproducible software
-distribution. Six fixed operations alone do not establish full research-paper
-novelty or population effects. Determine necessary additional evidence before
-launching experiments. Applied Research is a candidate type, not yet finalized.
+Results now answer RQ1--RQ3 explicitly. Next substantive work: further reduce
+historical protocol narrative, assess nearest-method comparison and reproducible
+software distribution. Six fixed operations alone do not establish full
+research-paper novelty or population effects. Determine necessary additional
+evidence before launching experiments. Applied Research is a candidate type,
+not yet finalized.
 
-Compile from this directory using `tectonic --keep-logs main.tex`.
+Compile with pdfLaTeX and BibTeX, for example
+`latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex`.
+Tectonic/XeTeX fails at the official template's pdfTeX spot-color primitive.
+The 2026-10-02 local build used a portable TeX Live 2026 installation with
+`ieeetran` and `courier`; it produced a seven-page PDF. The class was not
+modified. The manuscript uses explicit pending publication metadata in place
+of the template's default volume/year. PDF compilation does not resolve the
+author fields or make the manuscript submission-ready.
 Author/source declarations and final human content approval are still required.
 
 Official rapid-review page reports average four weeks submission to accept/reject,

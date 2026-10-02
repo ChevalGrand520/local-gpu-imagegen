@@ -29,11 +29,21 @@ Raw private C TAR outside repo has SHA256
 141b1ea66af741f9e8cc917f7a7a33db5cb0d048989f76a25166775180f852f3.
 Audit1561 retained-byte checks PASS, not independent execution authentication.
 
-Compiler blocker: official ieeeaccess.cls uses pdfobj at line281; Tectonic/XeTeX
-cannot compile it. No local pdflatex/latexmk. Do not modify class to disguise
-failure. Determine an appropriate supported compiler, without installing a
-global TeX distribution merely for editor preview. Source/log retained;
-Access PDF not verified or submission-ready.
+Compiler blocker resolved on 2026-10-02 with a portable task-local TeX Live
+2026 under /tmp/paper-access-texlive. The official ZIP SHA256 matched the
+recorded value; missing IEEEtran.cls and bullet.png were restored from it.
+The class is unchanged. pdfLaTeX/BibTeX via latexmk built paper-access/main.pdf
+(7 pages); all seven pages were visually inspected. Tectonic/XeTeX still cannot
+compile the official spot-color primitive. The local /tmp compiler may not
+survive a reboot; README records the build command. Compilation does not mean
+submission readiness.
+
+Results now have explicit RQ1--RQ3 subsections. RQ1 records one withheld
+submission in the fixed accepted-response-loss pair; RQ2 records unresolved
+original runs, including the no-send FPRE block; RQ3 reports equal
+same-information parser classifications. No experiment or comparison was added.
+Official template publication fields are visibly pending, without invented
+DOI, volume, year or history.
 
 AI declaration approved verbatim by user and applied to both working sources:
 OpenAI Codex assisted with language refinement, experimental code prototyping,
@@ -50,10 +60,13 @@ intended; actual name, department English address and email remain missing.
 Do not invent them or add a supervisor for fees. Access official average4 weeks
 to accept/reject, not guarantee; APC2160USD plus taxes after acceptance.
 
-Next: inspect Git and these files; solve official-template compilation, organize
-Results by RQ, verify nearest work and decide necessary falsifiable evidence
-before proposing more experiments. No new GPU run, model download, public raw
-release, external reviewer message or actual submission implied by this handoff.
+Next: obtain exact author name, department English name, full affiliation and
+correspondence email from the user; decide whether the bounded six-operation
+contribution and available software/evidence distribution support an Access
+research submission. Yu survey citation is abstract-level checked only; full
+text and publisher metadata remain a literature gate. No new GPU run, model
+download, public raw release, external reviewer message or actual submission
+implied by this handoff.
 Windows SSH must use verified numeric tailnet IP, never MagicDNS; no GPU access
 without live resource/reservation checks.
 

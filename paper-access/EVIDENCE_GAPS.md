@@ -28,3 +28,11 @@ cache and original-run noncompletion are conclusion-changing qualifications;
 historical source reconstruction, inventory repair and observer failure belong
 in reproducibility support rather than dominating the journal argument.
 No unsupported results were added, deleted or pooled in this revision.
+
+The current draft now answers RQ1--RQ3 under explicit headings. RQ1 and RQ2
+remain single paired observations, while RQ3 is a negative same-information
+comparison. A pdfLaTeX build and visual PDF review resolve formatting feasibility,
+not empirical generality. Before submission, the author must decide whether this
+bounded contribution and the available software/evidence distribution meet the
+journal's research and reproducibility expectations. No new GPU experiment is
+specified or authorized by the present draft.

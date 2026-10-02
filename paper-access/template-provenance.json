@@ -3,10 +3,12 @@
   "downloaded": "2026-10-02",
   "zip_sha256": "60c7efc9db8ac9e8bdb31c550ad4e03cb6f258a878ececc0bc690b6203e45a67",
   "ieeeaccess_cls_sha256": "67b73c4da05479d592a9449c38a81fcc7779d78753085bb44199e7f2746b757d",
-  "vendor_files": "class, bibliography style, font and logo resources copied unmodified",
-  "compile_status": "BLOCKED_ENGINE_COMPATIBILITY",
-  "attempt": "tectonic --keep-logs main.tex",
-  "error": "ieeeaccess.cls:281 undefined pdfobj in AddSpotColor under XeTeX",
-  "pdflatex_available": false,
+  "vendor_files": "class, IEEEtran class, bibliography style, font, logo and bullet resources copied unmodified",
+  "compile_status": "PDFLATEX_BIBTEX_PASS",
+  "attempt": "latexmk -pdf -interaction=nonstopmode -halt-on-error -file-line-error -outdir=/tmp/paper-access-build main.tex with portable TeX Live 2026",
+  "prior_engine_error": "ieeeaccess.cls:281 undefined pdfobj in AddSpotColor under XeTeX",
+  "pdflatex_available": true,
+  "pdflatex_location": "/tmp/paper-access-texlive/bin/universal-darwin/pdflatex; task-local, not installed globally",
+  "pdf_pages": 7,
   "submission_ready": false
 }

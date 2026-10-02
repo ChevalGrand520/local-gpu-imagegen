@@ -7,6 +7,10 @@
 \usepackage[hidelinks]{hyperref}
 \hypersetup{pdftitle={Evidence-Bound Recovery for Ambiguous Submissions in Local Generative-AI Pipelines},pdfauthor={}}
 \begin{document}
+\history{Working manuscript; publication history pending.}
+\doi{Pending assignment}
+\vol{pending}
+\year{pending}
 \title{Evidence-Bound Recovery for Ambiguous Submissions in Local Generative-AI Pipelines}
 \author{\uppercase{Author name pending}\authorrefmark{1}}
 \address[1]{Department pending, Zhejiang Sci-Tech University, postal address pending, China}
@@ -101,7 +105,7 @@ values. The inspected mapping is \texttt{research-normalization-v4}.
 
 Interpretation checks more than an execution-success label. Job and artifact
 bindings, approval and validation evidence, and recovery state constrain the
-\texttt{execution\_verified} decision. An unresolved recovery state prevents this flag
+\texttt{execution\_\allowbreak verified} decision. An unresolved recovery state prevents this flag
 from becoming true even when other evidence reports successful execution.
 The current mapping also keeps recovery unknown when the reported run state is
 missing and marks a disagreement between manifest and selected job or artifact
@@ -110,7 +114,7 @@ field from silently strengthening the composite decision.
 A record can therefore report backend completion while leaving the product's
 recovery obligation unresolved. Export checks supplied fields and bindings,
 writes a separate file using exclusive creation, and leaves the engine and
-source run untouched. In the current mapping, \texttt{execution\_verified}
+source run untouched. In the current mapping, \texttt{execution\_\allowbreak verified}
 denotes satisfaction of the evidence policy. Missing source revision,
 backend-instance or validator-version metadata alone does not veto this decision.
 
@@ -124,10 +128,11 @@ is not assigned to the original run. The investigator associates the relevant
 backend observation with the request and execution instance and records
 artifact checks separately. The export command writes to a new file, refusing
 to overwrite an existing export:
-\begin{quote}\small\ttfamily
+\begin{quote}\footnotesize\ttfamily\raggedright
 python -m\\
 scripts.research.export\_records\\
---input run-record.json --output evidence.json
+--input run-record.json\\
+--output evidence.json
 \end{quote}
 The investigator can then compare reported and interpreted state, follow the
 mapping reasons and inspect supplied oracle evidence. An absent oracle record
@@ -220,7 +225,7 @@ schematic, not a measured latency or GPU-runtime plot.}
 
 \section{Evaluation and results}
 
-\subsection{CPU components and deterministic fixtures}
+\subsection{Evaluation design: CPU components and deterministic fixtures}
 
 We denote the frozen baseline product revision by B2 and the revision with
 the same-run ambiguity guard by W3. The CPU harness separates submission events from synthetic worker-entry events.
@@ -273,7 +278,7 @@ unchanged F03 two-stage row exercises existing known-job recovery. These CPU
 paths must not be pooled with the Windows fresh-run protocol in
 Fig.~\ref{fig:sequence}.
 
-\subsection{Four controlled Windows cases}
+\subsection{Supporting Windows observation: fresh-run calls}
 
 The endpoint-preserving campaign report records B2 and W3 under F00 and F02. All four fixed cases were oracle-evaluable; the two F00 cases were controls
 and the two F02 cases had confirmed response-loss injection. Table~\ref{tab:cases} reports
@@ -319,7 +324,7 @@ ambiguous outcome. The cases provide no execution-count advantage for
 W3. Changing both run and seed also prevents interpreting them as repeated
 executions of an identical generation request.
 
-\subsection{Same-run scope tests and a recovered guard observation}
+\subsection{Supporting Windows observation: same-run scope}
 
 Separate W3 same-run campaigns reused the original run and complete generation
 arguments after a bindable first completion. Checks covered seed, operation key,
@@ -372,7 +377,7 @@ message. This combination does not measure physical GPU computation.
 These retained bytes neither authenticate execution nor recover
 the missing fresh-run event lists. No third call or fresh-run fallback occurred.
 
-\subsection{Paired submission control and completion cost}
+\subsection{RQ1: admission after accepted-response loss}
 \label{sec:paired}
 
 The subsequent \texttt{paired-ambiguity-v1} campaign used the pinned native B2
@@ -420,11 +425,22 @@ reported cached nodes 3--9. The paired F02 operation also retained 30
 assign computation to the second lifecycle. Cache events and lifecycle counts
 are insufficient to quantify an additional full GPU generation.
 
+Thus, in this fixed accepted-response-loss pair, the same-run guard withheld
+one additional proxy submission and one accepted job. This is the RQ1
+observation, not a population rate or a measured reduction in GPU work.
+
+\subsection{RQ2: original-run completion under a pre-send fault}
+
 FPRE exposes the guard's completion cost. The proxy proved that the first
 request never entered the upstream send path. B2 retried and completed; W3
 still withheld retry and left its run unresolved. The product guard could not
 use the research observer's no-send evidence to discharge that uncertainty.
 This adverse case belongs alongside the F02 submission difference.
+
+The paired F02 result also has a completion cost: the backend completed the
+accepted first job, but W3 did not complete its original client run. FPRE
+isolates a stronger availability cost because no backend job existed to be
+duplicated. Neither case establishes how often these faults occur in use.
 
 The batch completed all six operations with ten calls, eight proxy POSTs and
 six upstream send entries. Source bytes were frozen before backend startup.
@@ -434,6 +450,15 @@ Two earlier attempts remain separate: a pre-start port-check stop, and a partial
 batch whose observer exited on one second of message silence. The corrected
 observer waits through quiet intervals until the fixed deadline; the correction
 was tested with real sockets on both platforms before this batch.
+
+\subsection{RQ3: same-information interpretation}
+
+In twelve constructed offline probes, the exporter and an ordinary parser
+matched every declared answer and agreed on all twelve classifications.
+The exporter adds an explicit, inspectable record of mapping reasons and
+reported-versus-observed state, but these probes do not show superior
+classification accuracy. The paired Windows campaign did not separately
+evaluate exporter normalization.
 
 \subsection{Resolution labels require an explicit aggregation rule}
 
@@ -531,11 +556,8 @@ outputs, excluding the first unresolved F02 output.
 The paired cases establish submission withholding and a completion cost on one
 Windows workload. Desktop activity was retained as a timing confound. A simple
 stop-after-unknown policy matched W3's fault submission counts in CPU checks;
-it was not measured on Windows. In twelve constructed offline probes, both the
-exporter and an ordinary parser matched every declared answer, with agreement
-on all twelve classifications. These comparisons support
-an inspectable integration, rather than policy or classification superiority.
-The new campaign did not separately evaluate exporter normalization.
+it was not measured on Windows. These comparisons support an inspectable
+integration, rather than policy or classification superiority.
 The anonymous demo replays semantic mapping; four variants are
 synthetic, and converted F00 and F02 remain composite-unverified without an
 independent artifact validator. The companion evidence note details audit

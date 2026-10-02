@@ -8,6 +8,9 @@ full text not inspected. Citation supports only the abstract-level survey scope.
 Source: https://api.crossref.org/works/10.1145/3732777
 Year/issue should be reconciled against publisher full text before submission;
 no claim that the erroneous review reference was correct.
+Crossref DOI metadata was rechecked on 2026-10-02: title, TOSEM venue,
+volume 35, issue 1, year 2025 and DOI match the bibliography. The full text
+and publisher version remain uninspected.
 
 Temporal Activity Definition was read from official docs: Activities should be
 idempotent; completed effects can exist before completion is recorded. This
