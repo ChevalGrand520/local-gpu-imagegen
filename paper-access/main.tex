@@ -84,6 +84,12 @@ loss and the oracle binding provide the additional context.
 
 \section{Evidence contract and recovery mechanism}
 
+We use \emph{evidence-bound} to mean that a record's interpretation is limited
+by the evidence attached to the original run: missing acceptance information
+remains unknown, backend completion does not discharge client recovery, and an
+explicitly unknown submission constrains the next same-run generation request.
+This is an interpretation and admission policy, not a new delivery guarantee.
+
 \subsection{Evidence-preserving export}
 
 The exporter accepts a record or run manifest and produces a separate normalized
@@ -444,6 +450,11 @@ historical report. No recovery-success rate is inferred.
 \section{Related work and discussion}
 \label{sec:related}
 
+Yu et al. survey failure analysis and fault injection across six layers of AI
+systems, including discrepancies between simulated faults and real-world
+failures \cite{yu2025survey}. Our controlled cases isolate an acceptance-response
+boundary; they do not estimate the distribution of faults in deployed AI systems.
+
 Observation and control answer different questions at an uncertain submission
 boundary. A backend lifecycle can complete while the client still requires
 recovery; blocking a further submission does not discharge that obligation.
@@ -471,6 +482,25 @@ after a worker crashes before reporting completion, and recommends idempotent
 Activities \cite{temporal}. These contracts explain why durable client state
 alone cannot settle external side effects. In our pipeline, recovery of the
 generator's outcome remains an application responsibility.
+
+Transactional outbox addresses a different atomicity boundary: committing a
+database update together with a message to be relayed \cite{outbox}. A relay
+can still deliver duplicate messages, so consumer idempotency remains relevant.
+An outbox can durably retain the intent to submit a generation request; it does
+not by itself determine whether an external backend accepted a request whose
+response was lost. Our guard retains that unresolved outcome and withholds
+another same-run submission. It does not implement outbox delivery or provide
+automatic reconciliation.
+
+These alternatives differ in the contracts they require. A service-side
+idempotency implementation can make repeats safe when it binds a client token
+to the operation's effects. Temporal coordinates durable workflow execution,
+while external Activities still need an appropriate idempotency contract.
+Outbox atomically records database state and delivery intent. Our evaluated
+integration assumes none of those contracts for the external generator and
+instead exposes the resulting submission/availability tradeoff. We have not
+benchmarked an idempotent backend, a Temporal wrapper or an outbox relay; the
+comparison identifies responsibilities rather than performance superiority.
 
 OpenTelemetry relates operation spans through trace context \cite{otel}.
 Our application-specific policy additionally requires backend start and terminal
