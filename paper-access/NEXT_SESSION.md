@@ -64,6 +64,15 @@ this pass; the novelty gate remains open. Current recommendation is to pause
 Access expansion and assess a bounded tool/software route, without changing
 the author's submission choice or starting experiments.
 
+SoftwareX route readiness is assessed in SOFTWAREX_READINESS_20261002.md.
+The existing GitHub repository is public and MIT licensed. An offline wheel
+build plus isolated `verify` command passed, and the v0.6 anonymous demo passed
+four clean-extraction checks. The wheel contains product guard code but not the
+research exporter; the demo is not the whole product. The private raw TAR is
+not publication-ready. No SoftwareX manuscript, new release or submission was
+made. Confirm code-author rights metadata and the author's preferred English
+name/college wording before publication decisions.
+
 AI declaration approved verbatim by user and applied to both working sources:
 OpenAI Codex assisted with language refinement, experimental code prototyping,
 and cross-checking of author records. The author reviewed and revised the
