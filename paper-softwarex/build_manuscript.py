@@ -5,11 +5,14 @@ from pathlib import Path
 from zipfile import ZipFile, ZIP_DEFLATED
 import json
 import re
+from io import BytesIO
 from lxml import etree as E
+from docx import Document
+from docx.shared import Inches
 
 ROOT = Path(__file__).resolve().parent
 REF = ROOT / 'templates/softwarex-osp-template-v6.docx'
-OUT = ROOT / 'manuscript-v0.2.docx'
+OUT = ROOT / 'manuscript-v0.3.docx'
 QA = Path('/tmp/softwarex-template-qa')
 EXPECTED = '9fcf40ede96a2f188ee4ef77134e0596d01e1b65fd9db63f2874d29f2ecb916d'
 W = 'http://schemas.openxmlformats.org/wordprocessingml/2006/main'
@@ -78,11 +81,11 @@ def cell_text(cell, text):
 
 metadata = deepcopy(source[33])
 meta_values = [
-    '0.9.1; source snapshot 088ea6192a0b6486ad2f416a9442689aaf982065',
-    'https://github.com/ChevalGrand520/local-gpu-imagegen/tree/088ea6192a0b6486ad2f416a9442689aaf982065',
+    '0.9.1',
+    'https://github.com/ChevalGrand520/local-gpu-imagegen/tree/dfc8378cb3d891f7951786bc4544cd971bd56a11',
     'MIT License', 'Git', 'Python; stdio Model Context Protocol; ComfyUI and WebUI adapters',
     'Python >=3.11; Windows product platform; py7zr==1.1.3. Backend and model installation is separate. CI: Python 3.11/3.12 on Windows and Ubuntu.',
-    'https://github.com/ChevalGrand520/local-gpu-imagegen/blob/088ea6192a0b6486ad2f416a9442689aaf982065/README.md',
+    'https://github.com/ChevalGrand520/local-gpu-imagegen/blob/dfc8378cb3d891f7951786bc4544cd971bd56a11/README.md',
     'ChengZhen0105@outlook.com',
 ]
 for row, value in zip(metadata.findall('w:tr', NS)[1:], meta_values):
@@ -101,7 +104,7 @@ def row_rules(table):
         if i == 0 and pr.find('w:tblHeader', NS) is None: E.SubElement(pr, tag('tblHeader'))
 
 row_rules(metadata)
-blocks = re.split(r'\n\s*\n', (ROOT / 'manuscript-v0.2.md').read_text().strip())
+blocks = re.split(r'\n\s*\n', (ROOT / 'manuscript-v0.3.md').read_text().strip())
 for x in list(body): body.remove(x)
 body.append(para(16, blocks[0][2:], bold=True, numbered=False))
 for block in blocks[1:4]: body.append(para(23, block, bold=False, numbered=False))
@@ -124,7 +127,11 @@ for block in blocks[7:]:
         m = re.match(r'([1-5])\. (.*)', title)
         if m:
             subheading_index = 0
-            body.append(para(heading_map[int(m[1])], m[2], bold=True))
+            heading = para(heading_map[int(m[1])], m[2], bold=True)
+            if m[1] == '4':
+                pp = heading.find('w:pPr', NS)
+                style = E.Element(tag('pStyle')); style.set(tag('val'), 'Heading1'); pp.insert(0, style)
+            body.append(heading)
         else:
             body.append(para(76, title, bold=True, numbered=False))
     elif block.startswith('### '):
@@ -135,6 +142,8 @@ for block in blocks[7:]:
             body.append(para(46, 'Software architecture' if title == 'Architecture' else title, bold=True))
         else:
             body.append(para(76, title, bold=True, numbered=False))
+    elif block.startswith('!['):
+        body.append(para(23, 'ARCHITECTURE_IMAGE_SLOT', bold=False))
     elif block.startswith('|'):
         lines = block.splitlines()
         data = [[c.strip() for c in line.strip('|').split('|')] for line in lines if not re.match(r'^\|[- :|]+\|$', line)]
@@ -171,9 +180,36 @@ for local, value in [('creator', 'Zhen Cheng'), ('lastModifiedBy', 'Zhen Cheng')
 parts['docProps/core.xml'] = E.tostring(core, xml_declaration=True, encoding='UTF-8', standalone=True)
 editable = {'word/document.xml', 'word/settings.xml', 'docProps/core.xml'}
 assert all(sha256(v).hexdigest() == inventory[k]['sha256'] for k, v in parts.items() if k not in editable)
+# Let python-docx build a native inline picture, then retain only the parts
+# required by that addition. All unrelated template package parts stay original.
+initial = BytesIO()
+with ZipFile(initial, 'w', ZIP_DEFLATED) as temp:
+    for info in infos: temp.writestr(info, parts[info.filename])
+initial.seek(0)
+working = Document(initial)
+for caption in working.paragraphs:
+    if caption.text.startswith('Figure 1.'):
+        caption.paragraph_format.keep_together = True
+for p in working.paragraphs:
+    if p.text == 'ARCHITECTURE_IMAGE_SLOT':
+        p.clear(); p.add_run().add_picture(str(ROOT / 'figures/architecture.png'), width=Inches(6.5))
+        p.paragraph_format.keep_with_next = True
+        break
+else:
+    raise AssertionError('Figure slot missing')
+generated = BytesIO(); working.save(generated); generated.seek(0)
+with ZipFile(generated) as image_zip:
+    for key in ['word/document.xml', 'word/_rels/document.xml.rels', '[Content_Types].xml']:
+        parts[key] = image_zip.read(key)
+    for key in image_zip.namelist():
+        if key.startswith('word/media/'): parts[key] = image_zip.read(key)
+editable |= {'word/_rels/document.xml.rels', '[Content_Types].xml'}
+assert all(sha256(parts[k]).hexdigest() == v['sha256'] for k,v in inventory.items() if k not in editable)
 with ZipFile(OUT, 'w', ZIP_DEFLATED) as zout:
     for info in infos: zout.writestr(info, parts[info.filename])
+    for key in parts:
+        if key not in inventory: zout.writestr(key, parts[key])
 assert sha256(REF.read_bytes()).hexdigest() == EXPECTED
 print('Created', OUT)
-print('Preserve-only parts identical:', len(parts) - len(editable))
+print('Preserve-only original parts identical:', len(inventory) - len(editable))
 print('Abstract words:', len(blocks[5].split()))

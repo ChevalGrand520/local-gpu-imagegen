@@ -1,8 +1,14 @@
 # SoftwareX Original Software Publication candidate
 
-Current files: manuscript-v0.2.md (editable content), manuscript-v0.2.docx
+Current files: manuscript-v0.3.md (editable content), manuscript-v0.3.docx
 (official-template candidate), build_manuscript.py (deterministic package patch).
-Version 0.1 is retained as the first content draft. Nothing has been submitted.
+Versions 0.1 and 0.2 are retained. Nothing has been submitted.
+The supplied model-review disposition is REVIEW_DISPOSITION_20261004.md;
+current executed validation is VALIDATION_20261004.md. v0.3 pins software
+snapshot dfc8378, includes one architecture figure and explicit get_run/readback
+boundaries. It adds Heading1 to Impact, which the official template itself
+leaves unstyled; this is a navigation improvement, not correction of a missing
+section. No stable-branch merge or registry release was performed.
 
 Official template: Version 6, March 2026, downloaded from the SoftwareX link on
 https://www.elsevier.com/en-gb/researcher/author/tools-and-resources/research-elements-journals
@@ -18,22 +24,22 @@ after direct HTTP failed; the earlier download blocker is now resolved.
   description, Illustrative examples, Impact, Conclusions.
 - Approximately 100-word abstract; v0.2 abstract is exactly 100 whitespace words.
 - At most six keywords; current six. At most 4000 words; the full Markdown
-  draft is 2273 whitespace words including metadata and references, conservatively
+  draft remains below 2700 whitespace words including metadata and references, conservatively
   below that limit. Maximum six main-body pages excluding metadata/tables/
-  figures/references; the entire final rendering is five pages.
+  figures/references; the entire v0.3 rendering is six pages.
 - Metadata labels in the first two columns remain byte-for-byte identical to
   the official template; eight right-hand data slots are filled.
 - A README.md and Licence.txt are explicitly required in the template. This
-  branch now contains Licence.txt, byte-identical to the existing MIT LICENSE.
-  No license terms changed. The source snapshot pinned in the draft predates
-  this alias; refresh the submission snapshot to include it before filing.
+  branch and the pinned dfc8378 snapshot contain Licence.txt, byte-identical
+  to the existing MIT LICENSE. No license terms changed.
 - Instructions and optional empty acknowledgement removed; existing author-
   approved AI declaration preserved. No funding/conflict statement invented.
 - One Letter section and its full section XML unchanged; continuous line
   numbers, heading numbering and footer PAGE field preserved. Word is asked
-  to refresh fields when opening; rendered page numbers correctly run 1–5.
-- 28 preserve-only DOCX parts remain byte-identical. Only document.xml,
-  settings.xml (field refresh flag) and core.xml (author/title) are patched.
+  to refresh fields when opening; rendered page numbers correctly run 1–6.
+- 26 original preserve-only DOCX parts remain byte-identical. document.xml,
+  settings.xml, core.xml, image relationships and Content Types are editable;
+  one image part is added. The updated contract records this scope.
 - Reference/final rendering diff completed; every page of the final revision
   was visually inspected. No clipped text, broken tables or missing glyphs.
 - The paired projection checker passed again, six rows/totals; derived
@@ -43,9 +49,11 @@ after direct HTTP failed; the earlier download blocker is now resolved.
 
 Use the workspace-bundled Python with lxml:
 `python paper-softwarex/build_manuscript.py`.
-This writes a DOCX from the retained template and v0.2 Markdown and checks
+This writes a DOCX from the retained template and v0.3 Markdown and checks
 preserve-only parts. Then run the document skill renderer and inspect every
-page. templates/artifact.md records the format contract; /tmp QA directories
+page. Generate architecture.svg from figures/architecture.json with the ARIS
+figure-spec renderer; rasterize the SVG for the DOCX image. templates/artifact.md
+records the format contract; /tmp QA directories
 are disposable, not deliverables or manuscript evidence.
 
 ## Remaining submission gates

@@ -1,0 +1,29 @@
+{
+  "title": "Local GPU Imagegen product and source-only supplement",
+  "canvas": {"width": 960, "height": 470},
+  "style": {"font_family": "Arial, sans-serif", "font_size": 18, "bg_color": "#FFFFFF"},
+  "nodes": [
+    {"id":"client","label":"MCP client","x":90,"y":130,"width":150,"height":65,"fill":"#FFFFFF","stroke":"#333333"},
+    {"id":"transport","label":"CLI and MCP\ntransport","x":290,"y":130,"width":165,"height":65,"fill":"#EEF3F8","stroke":"#333333"},
+    {"id":"engine","label":"Route and run\nengine","x":490,"y":130,"width":165,"height":65,"fill":"#EEF3F8","stroke":"#333333"},
+    {"id":"guard","label":"Unknown-outcome\nsubmission guard","x":710,"y":130,"width":195,"height":65,"fill":"#EEF3F8","stroke":"#333333"},
+    {"id":"store","label":"RunStore\nDurable manifest","x":490,"y":265,"width":195,"height":65,"fill":"#EEF3F8","stroke":"#333333"},
+    {"id":"adapter","label":"Backend adapter","x":710,"y":265,"width":195,"height":65,"fill":"#EEF3F8","stroke":"#333333"},
+    {"id":"backend","label":"User backend\nand model","x":870,"y":380,"width":170,"height":65,"fill":"#FFFFFF","stroke":"#333333"},
+    {"id":"export","label":"Research exporter\nand derived checker","x":250,"y":380,"width":260,"height":65,"fill":"#FAF5EB","stroke":"#666666"}
+  ],
+  "edges": [
+    {"from":"client","to":"transport"},
+    {"from":"transport","to":"engine"},
+    {"from":"engine","to":"guard"},
+    {"from":"engine","to":"store"},
+    {"from":"store","to":"guard","style":"dashed"},
+    {"from":"guard","to":"adapter"},
+    {"from":"adapter","to":"backend"},
+    {"from":"store","to":"export","style":"dashed"}
+  ],
+  "labels": [
+    {"text":"Installed product","x":520,"y":40,"font_size":20,"color":"#333333"},
+    {"text":"Source-only supplement","x":250,"y":438,"font_size":18,"color":"#333333"}
+  ]
+}

@@ -148,8 +148,16 @@ original metadata labels. All five final pages were rendered and inspected;
 records checks, rebuild and remaining gates. Licence.txt is now identical to
 the MIT LICENSE; refresh the draft's pinned source snapshot to include this
 alias before submission. No submission or new experiment occurred.
-Next: review software impact, refresh the full guide and administrative
-declarations, and select the final immutable source/release inventory.
+The supplied independent SoftwareX model review is now dispositioned in
+../paper-softwarex/REVIEW_DISPOSITION_20261004.md. v0.3 pins dfc8378, which
+contains Licence.txt, and adds architecture/get_run/readback detail, explicit
+synthetic probe scope, revised Impact and Heading1 navigation. Current 96-test
+research run and rebuilt-wheel 17-tool verification passed without GPU; see
+VALIDATION_20261004.md. Li's theorem is not used to certify our failures as
+unavoidable. Main merge is not a template-stated requirement and remains
+unperformed. Next: bounded re-review of v0.3 and disposition, then refresh
+full-guide/admin/source-release gates. External adoption/impact evidence remains
+absent; do not expand claims, rerun equal GPU comparisons or publish private data.
 Li full-text retrieval is closed, but its overlap currently argues against
 expanding the present Access study. Yu survey remains abstract-level checked.
 No new GPU run, model

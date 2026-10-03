@@ -42,3 +42,13 @@ Fidelity gate: original reference hash unchanged; only the three declared
 parts may differ; metadata labels and section geometry identical; retain
 automatic heading numbers and footer page field. All final pages must be
 rendered and inspected. New pagination due to filled content is expected.
+
+## v0.3 revision scope
+
+Reviewer-requested architecture picture adds one inline image under 2.1;
+word/media/image1.png is new, and document relationships and Content Types
+are editable for the image only. Other relationships are semantically preserved.
+Impact gains Heading1 navigation style, an intentional change from the source
+template's unstyled Impact heading. The five-section numbering is preserved.
+No section geometry, styles.xml, numbering.xml or footer change is permitted.
+All other original package parts remain byte-identical (26 parts).

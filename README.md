@@ -109,7 +109,11 @@ For Claude Code, use `uvx local-gpu-imagegen setup claude-code --apply`. Remove 
 
 DeepSeek Harness (DSH) connects through the same standard stdio MCP protocol with no setup command: register the server through `dsh plugin --profile <name> add` or point any MCP-compatible client at `scripts/mcp_server.py`. A real DSH-driven run completed the full `discover_models (api_only) → recommend_models → start_run → get_run → generate_round` sequence against a live ComfyUI checkpoint and produced a `round-01.png` artifact; `initialize`/`tools/list`/`ping`, `verify_mcp.py`, and `verify_client_configs.py` all pass.
 
-Before PyPI publication, install the verified wheel or a source checkout, then use the equivalent `local-gpu-imagegen verify` and `local-gpu-imagegen setup ...` commands.
+Version 0.9.1 is available on PyPI. To inspect this source revision instead of
+the separately published artifact, run `python -m pip install .` from the
+repository root, then `local-gpu-imagegen verify`. Research scripts and the
+paper's derived-evidence checker require a source checkout; they are not
+installed by the product wheel.
 
 ## Why This Project
 
