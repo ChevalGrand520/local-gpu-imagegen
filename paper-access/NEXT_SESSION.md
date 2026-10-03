@@ -74,8 +74,8 @@ made. The user has since confirmed that `ChevalGrand520` is their own GitHub
 account. The user then clarified that `Capricorn` is only a computer account
 name and should not be the software/publication byline. `LICENSE` and
 `pyproject.toml` now use the approved byline `Zhen Cheng`; historical
-account-name records remain unchanged. The official college English wording
-also remains to be confirmed.
+account-name records remain unchanged. The author subsequently authorized
+the institutional website affiliation wording, recorded below.
 
 Release-candidate inventory is recorded in
 SOFTWAREX_RELEASE_CANDIDATE_INVENTORY_20261002.md. The offline wheel/sdist build
@@ -109,8 +109,8 @@ and evidence path are designed. An offline macOS/Python 3.12 full model-free
 run ended exit 1: 1,274 tests, 30 failures, 5 errors, 40 skips; this is not a
 supported Windows/Ubuntu CI result. The current SoftwareX guide fetch was
 blocked, and that route is still only a candidate. University pages name the
-Chinese school differently from the author-provided wording; formal English
-affiliation requires author confirmation.
+Chinese school differently from the author-provided wording; the author then
+authorized use of the institutional website wording.
 
 AI declaration approved verbatim by user and applied to both working sources:
 OpenAI Codex assisted with language refinement, experimental code prototyping,
@@ -126,14 +126,15 @@ verified reimbursement amount/procedure. Sole human author and correspondence
 intended. User supplied the name Cheng Zhen in Chinese (程臻), the College of
 Computer and Artificial Intelligence in Chinese, and the correspondence email
 ChengZhen0105@outlook.com. The author confirmed `Zhen Cheng` as the formal
-Romanized name. The draft uses "School of Computer Science and Artificial
-Intelligence" provisionally, pending confirmation of the exact institutional
-affiliation and its English wording. No
-street or postal address has been supplied. Do not add a supervisor for fees.
+Romanized name. On 2026-10-03 the author instructed use of the institutional
+website wording. The draft now uses "School of Computer Science and Technology
+(School of Artificial Intelligence), Zhejiang Sci-Tech University", matching
+the university journal's English affiliation. No street address has been
+supplied. Do not add a supervisor for fees.
 Access official average4 weeks
 to accept/reject, not guarantee; APC2160USD plus taxes after acceptance.
 
-Next: confirm the exact affiliation, then choose whether a new falsifiable
+Next: choose whether a new falsifiable
 research claim warrants Access work or to prepare a SoftwareX software account.
 Li full-text retrieval is closed, but its overlap currently argues against
 expanding the present Access study. Yu survey remains abstract-level checked.

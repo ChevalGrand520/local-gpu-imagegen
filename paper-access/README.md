@@ -10,9 +10,12 @@ Class, IEEEtran class, bibliography style, font resources, logos and bullet
 asset are copied unmodified from the hash-recorded official archive.
 No sample authors, photographs, sample DOI or publication dates are claimed.
 The sole-author name, college and email were supplied by the author. The author
-confirmed the formal Romanized name `Zhen Cheng`; the exact official English
-college wording still needs confirmation. No street or postal address has
-been supplied.
+confirmed the formal Romanized name `Zhen Cheng` and authorized use of the
+institutional website wording. The affiliation now uses `School of Computer
+Science and Technology (School of Artificial Intelligence), Zhejiang Sci-Tech
+University`, as published by the university journal:
+https://xuebao.zstu.edu.cn/oa/darticle.aspx?id=20241112&type=view .
+No street address has been supplied.
 
 Initial adaptation uses the official class, an expanded 150--250-word abstract,
 keywords and three explicit research questions. Existing results, references,

@@ -77,13 +77,12 @@ author-provided wording was `计算机与人工智能学院`. A university journ
 `School of Computer Science and Technology (School of Artificial Intelligence)`:
 https://xuebao.zstu.edu.cn/oa/darticle.aspx?id=20241112&type=view .
 The institution's current school page is https://jsjxy.zstu.edu.cn/ .
-This evidence does not establish the author's own affiliation unit or its
-required English byline. Confirm the exact affiliation with the author before
-changing the manuscript or filing it.
+On 2026-10-03 the author authorized use of the institutional website wording;
+the Access working source now uses the university journal's English affiliation.
 
 ## Next decision gates
 
-1. Resolve the formal affiliation and choose whether to pursue an improved
+1. Choose whether to pursue an improved
    Access research claim or a SoftwareX software description. No concurrent
    submission of overlapping manuscripts.
 2. For SoftwareX, run the supported Windows/Python release gate and inventory
