@@ -9,9 +9,10 @@ https://ieeeaccess.ieee.org/wp-content/uploads/2026/05/ACCESS_latex_template_202
 Class, IEEEtran class, bibliography style, font resources, logos and bullet
 asset are copied unmodified from the hash-recorded official archive.
 No sample authors, photographs, sample DOI or publication dates are claimed.
-The sole-author name, college and email were supplied by the author. Romanized
-name order and the college's official English wording await author confirmation;
-no street or postal address has been supplied.
+The sole-author name, college and email were supplied by the author. The author
+confirmed the formal Romanized name `Zhen Cheng`; the exact official English
+college wording still needs confirmation. No street or postal address has
+been supplied.
 
 Initial adaptation uses the official class, an expanded 150--250-word abstract,
 keywords and three explicit research questions. Existing results, references,

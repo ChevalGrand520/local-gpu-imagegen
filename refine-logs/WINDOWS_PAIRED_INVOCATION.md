@@ -14,10 +14,11 @@ advisory lock and retains a reviewed WDDM process baseline in private config.
 Unknown executable names stop preparation. Only the controller releases its
 own lock after checking cleanup. Do not create or replace another reservation.
 
-Offline invocation on the existing Windows interpreter, no GPU or network:
+Offline invocation from the Windows project checkout on the existing
+interpreter, no GPU or network:
 
 ```text
-python -B D:\CodexWorkspace\scratch\paired-research-20261001\scripts\research\run_reserved_windows_paired.py D:\CodexWorkspace\scratch\paired-research-20261001\docs\research\paired-windows-config.example.json
+python -B .\scripts\research\run_reserved_windows_paired.py .\docs\research\paired-windows-config.example.json
 ```
 
 Expected: exit 0, PLAN_ONLY, execution_performed=false, launch_enabled=false,

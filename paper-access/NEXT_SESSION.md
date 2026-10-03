@@ -100,6 +100,18 @@ tampered send-sequence negative failed. It remains private and omits original
 source/raw/image/process checks. No candidate archive or pseudonym map was
 published.
 
+The 2026-10-03 ARIS-assisted follow-up is in
+`AUTONOMOUS_RESEARCH_GATE_20261003.md`. Official arXiv HTML for Li v1 was
+read: its tested guard and recovery results overlap the Access contribution
+more directly than the earlier abstract-only check established. Stop Access
+lengthening and GPU case accumulation until a decision-changing comparator
+and evidence path are designed. An offline macOS/Python 3.12 full model-free
+run ended exit 1: 1,274 tests, 30 failures, 5 errors, 40 skips; this is not a
+supported Windows/Ubuntu CI result. The current SoftwareX guide fetch was
+blocked, and that route is still only a candidate. University pages name the
+Chinese school differently from the author-provided wording; formal English
+affiliation requires author confirmation.
+
 AI declaration approved verbatim by user and applied to both working sources:
 OpenAI Codex assisted with language refinement, experimental code prototyping,
 and cross-checking of author records. The author reviewed and revised the
@@ -113,18 +125,19 @@ Zhejiang Sci-Tech University first affiliation; this is user-provided, not a
 verified reimbursement amount/procedure. Sole human author and correspondence
 intended. User supplied the name Cheng Zhen in Chinese (程臻), the College of
 Computer and Artificial Intelligence in Chinese, and the correspondence email
-ChengZhen0105@outlook.com. The draft provisionally uses Zhen Cheng and
-"School of Computer Science and Artificial Intelligence" pending confirmation
-of preferred Romanized name order and official college English wording. No
+ChengZhen0105@outlook.com. The author confirmed `Zhen Cheng` as the formal
+Romanized name. The draft uses "School of Computer Science and Artificial
+Intelligence" provisionally, pending confirmation of the exact institutional
+affiliation and its English wording. No
 street or postal address has been supplied. Do not add a supervisor for fees.
 Access official average4 weeks
 to accept/reject, not guarantee; APC2160USD plus taxes after acceptance.
 
-Next: confirm Romanized name order and official college English wording, then
-decide whether the bounded six-operation
-contribution and available software/evidence distribution support an Access
-research submission. Yu survey citation is abstract-level checked only; full
-text and publisher metadata remain a literature gate. No new GPU run, model
+Next: confirm the exact affiliation, then choose whether a new falsifiable
+research claim warrants Access work or to prepare a SoftwareX software account.
+Li full-text retrieval is closed, but its overlap currently argues against
+expanding the present Access study. Yu survey remains abstract-level checked.
+No new GPU run, model
 download, public raw release, external reviewer message or actual submission
 implied by this handoff.
 Windows SSH must use verified numeric tailnet IP, never MagicDNS; no GPU access

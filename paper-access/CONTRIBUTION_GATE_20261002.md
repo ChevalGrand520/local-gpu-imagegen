@@ -35,14 +35,13 @@ recommendation, not an editorial decision.
 ## Literature boundary
 
 Li, *Where Does Exactly-Once Live?* (arXiv:2609.29095v1) is the closest
-identified overlap. The existing citation audit records specific sections,
-but this pass could not retrieve the official full text: the arXiv PDF request
-timed out and the HTML body timed out after partial transfer. No theorem-level
-claim or exact experimental comparison is newly verified here. The current
-manuscript's responsibility comparison with service idempotency, Temporal and
-outbox remains documentation-level, and the Yu survey remains abstract-level.
-The novelty audit is therefore not closed. This limits the strength of any
-final publication-route decision.
+identified overlap. The original 2026-10-02 pass could not retrieve its full
+text. The follow-up on 2026-10-03 read the official HTML and closed this
+specific retrieval gap; see `AUTONOMOUS_RESEARCH_GATE_20261003.md`. The
+current manuscript's responsibility comparison with service idempotency,
+Temporal and outbox remains documentation-level, and the Yu survey remains
+abstract-level. The nearest-work overlap strengthens the stop recommendation
+below; it does not make the manuscript submission-ready.
 
 ## Gate decision
 
