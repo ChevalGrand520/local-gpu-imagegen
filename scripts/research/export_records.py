@@ -502,9 +502,12 @@ def _interpret_state(
         and _oracle_evaluable(oracle)
         and not _oracle_contradiction(oracle)
         and approval in {"valid", "not_required"}
+        and recovery in {"not_needed", "resolved"}
     )
     if execution_verified:
         verification_reason = "independent_execution_and_artifact_evidence_satisfy_all_required_bindings"
+    elif recovery not in {"not_needed", "resolved"}:
+        verification_reason = "unresolved_or_reconciling_recovery_state_prevents_execution_verification"
     else:
         verification_reason = "required_independent_execution_artifact_job_or_approval_evidence_is_incomplete"
 
