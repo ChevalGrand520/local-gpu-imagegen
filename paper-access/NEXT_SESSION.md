@@ -140,9 +140,16 @@ its claim matrix, format blocker, timeline provenance and remaining gates are
 in ../paper-softwarex/DRAFT_STATUS_20261003.md. The official DOCX download
 returned HTTP 403 and the publisher Insights browser page showed human
 verification, so the draft is Markdown rather than official-template formatted.
-No submission or new experiment occurred. Next: obtain the mandatory template
-and map the drafted content to its actual slots, then review software impact
-and immutable release selection.
+That blocker was subsequently resolved by downloading the official link through
+the in-app browser. ../paper-softwarex/manuscript-v0.2.docx now uses Version 6
+(March 2026), with five required main sections, a 100-word abstract and the
+original metadata labels. All five final pages were rendered and inspected;
+28 preserve-only package parts are identical. ../paper-softwarex/README.md
+records checks, rebuild and remaining gates. Licence.txt is now identical to
+the MIT LICENSE; refresh the draft's pinned source snapshot to include this
+alias before submission. No submission or new experiment occurred.
+Next: review software impact, refresh the full guide and administrative
+declarations, and select the final immutable source/release inventory.
 Li full-text retrieval is closed, but its overlap currently argues against
 expanding the present Access study. Yu survey remains abstract-level checked.
 No new GPU run, model
