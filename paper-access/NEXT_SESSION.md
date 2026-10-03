@@ -134,8 +134,15 @@ supplied. Do not add a supervisor for fees.
 Access official average4 weeks
 to accept/reject, not guarantee; APC2160USD plus taxes after acceptance.
 
-Next: choose whether a new falsifiable
-research claim warrants Access work or to prepare a SoftwareX software account.
+The author subsequently instructed continuation with SoftwareX. A first
+English OSP content draft now resides in ../paper-softwarex/manuscript-v0.1.md;
+its claim matrix, format blocker, timeline provenance and remaining gates are
+in ../paper-softwarex/DRAFT_STATUS_20261003.md. The official DOCX download
+returned HTTP 403 and the publisher Insights browser page showed human
+verification, so the draft is Markdown rather than official-template formatted.
+No submission or new experiment occurred. Next: obtain the mandatory template
+and map the drafted content to its actual slots, then review software impact
+and immutable release selection.
 Li full-text retrieval is closed, but its overlap currently argues against
 expanding the present Access study. Yu survey remains abstract-level checked.
 No new GPU run, model
