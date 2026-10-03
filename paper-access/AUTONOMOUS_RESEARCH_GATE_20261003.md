@@ -62,10 +62,13 @@ No external uptake or broader scientific impact is measured in this record.
 
 ## Evidence and author metadata
 
-The private `paired-sanitized-v1` prototype passed its own clean-directory
-subset verifier in the prior milestone. It omits original raw/source/image and
-process checks. The original 1,561-check audit and transformed audit answer
-different questions; neither independently authenticates Windows execution.
+The private `paired-sanitized-v1` prototype was hardened to pseudonymize nested
+field names as well as scalar values and to reject unexpected call-state
+strings. A fresh owner-only build passed its own clean-directory subset
+verifier; deliberately broken paired semantics and an unknown state were
+rejected after the file hash was recomputed. It omits original raw/source,
+image and process checks. The original 1,561-check audit and transformed audit
+answer different questions; neither independently authenticates Windows execution.
 The exact candidate file list and any disclosure still need author review.
 
 The author approved `Zhen Cheng` as the formal name. Institutional pages

@@ -103,17 +103,22 @@ described as proof of live guard execution.
 `paired-sanitized-v1` candidate from the private TAR. It keeps only anonymous
 event types, stable pseudonymous job/node/run IDs, proxy sequence/status data,
 history completion booleans, call-level errors/states and a transformed
-generation-argument tree. It discards original payload bytes, prompts, paths,
-source snapshots, logs, process receipts and image bytes.
+generation-argument tree. The tree pseudonymizes both scalar values and nested
+field names, so dynamic JSON keys cannot directly expose input names. It
+discards original payload bytes, prompts, paths, source snapshots, logs,
+process receipts and image bytes. Builder and verifier restrict call run states
+and error codes to the observed closed vocabularies, rejecting unknown strings.
 
-The prototype was built under an owner-only directory, then copied to a second
-clean directory containing only `capture.json`, `manifest.json`,
-`projection.json` and the verifier. The embedded verifier passed and matched
-the public six-row projection: 6 operations, 10 calls, 8 proxy POSTs, 6
-upstream sends. Candidate scans found no account, host, path or model marker.
-A structural negative with an extra send sequence was rejected even after its
-capture hash was recomputed. The pseudonym key was kept outside the candidate
-with mode 600.
+After this hardening, a new owner-only local candidate was built from
+the hash-pinned private TAR. A clean directory containing only the four
+candidate files passed its embedded verifier and matched the six public rows:
+6 operations, 10 calls, 8 proxy POSTs and 6 upstream sends. All 29 distinct
+semantic-tree keys had pseudonymous `id-` form. A modified paired semantic
+tree and an unknown call state were each rejected after recomputing the
+candidate file hash. A heuristic marker scan found no account, home-path,
+device or model marker in the candidate. The pseudonym key remains outside
+the candidate with mode 600. The first local prototype predates this hardening
+and must not be used as the reviewed version.
 
 This is a **private prototype**, not a release artifact. It omits the original
 source/hash, raw-byte, manifest-byte, PNG-byte, process and cleanup checks. Its

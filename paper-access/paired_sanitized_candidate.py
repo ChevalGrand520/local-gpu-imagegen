@@ -24,6 +24,7 @@ SOURCE_SHA256 = "141b1ea66af741f9e8cc917f7a7a33db5cb0d048989f76a25166775180f852f
 ALLOWED_EVENTS = {"status", "execution_start", "execution_cached", "progress_state",
                   "executing", "progress", "executed", "execution_success", "execution_error"}
 ALLOWED_ERRORS = {None, "backend_request_failed", "submission_outcome_unknown"}
+ALLOWED_STATES = {"created", "unresolved", "generated"}
 
 
 def canonical(value: object) -> bytes:
@@ -48,7 +49,8 @@ def token(key: bytes, value: object) -> str:
 
 def opaque_tree(key: bytes, value: object) -> object:
     if isinstance(value, dict):
-        return {field: opaque_tree(key, item) for field, item in sorted(value.items())}
+        return {token(key, field): opaque_tree(key, item)
+                for field, item in sorted(value.items())}
     if isinstance(value, list):
         return [opaque_tree(key, item) for item in value]
     if value is None:
@@ -140,6 +142,8 @@ def transformed_case(bundle: tarfile.TarFile, case: str, index: int, key: bytes)
             raise ValueError("unexpected client error")
         number = call["call_index"]
         after = strict_object(member_json(bundle, f"{base}/client/call-{number}-after.json"))
+        if after["state"] not in ALLOWED_STATES:
+            raise ValueError("unexpected run state")
         calls.append({"index": number, "run": token(key, after["run_id"]),
                       "state": after["state"], "error": error})
     if calls[-1]["state"] != outcomes["original_run_state"]:
@@ -240,6 +244,9 @@ def audit(root: Path, expected: Path | None = None) -> dict:
         calls = record["calls"]
         if [call["index"] for call in calls] != list(range(1, len(calls) + 1)):
             raise ValueError("call sequence gap")
+        if any(call["state"] not in ALLOWED_STATES or call["error"] not in ALLOWED_ERRORS
+               for call in calls):
+            raise ValueError("unexpected call state or error")
         if len({call["run"] for call in calls}) != 1:
             raise ValueError("operation changed run")
         completion = calls[-1]["state"] == "generated"
