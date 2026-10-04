@@ -158,6 +158,13 @@ unavoidable. Main merge is not a template-stated requirement and remains
 unperformed. Next: bounded re-review of v0.3 and disposition, then refresh
 full-guide/admin/source-release gates. External adoption/impact evidence remains
 absent; do not expand claims, rerun equal GPU comparisons or publish private data.
+
+The user's v0.3 targeted model review recommends small corrections before
+submission-material preparation. v0.4 now supplies the abb3639 validation
+permalink, separates unknown and retained-job unresolved states, clarifies
+retrieval-derived next actions and figure arrows. Code limits engine job-ID
+recovery forwarding to the two-stage ComfyUI route; do not generalize it.
+See REVIEW_V03_DISPOSITION_20261004.md. No new tests/GPU/merge/submission.
 Li full-text retrieval is closed, but its overlap currently argues against
 expanding the present Access study. Yu survey remains abstract-level checked.
 No new GPU run, model

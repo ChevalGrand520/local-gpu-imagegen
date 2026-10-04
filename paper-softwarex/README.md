@@ -1,8 +1,11 @@
 # SoftwareX Original Software Publication candidate
 
-Current files: manuscript-v0.3.md (editable content), manuscript-v0.3.docx
+Current files: manuscript-v0.4.md (editable content), manuscript-v0.4.docx
 (official-template candidate), build_manuscript.py (deterministic package patch).
-Versions 0.1 and 0.2 are retained. Nothing has been submitted.
+Versions 0.1 through 0.3 are retained. Nothing has been submitted.
+The v0.3 targeted review disposition is REVIEW_V03_DISPOSITION_20261004.md.
+v0.4 adds a resolvable validation-material link, separates unknown submission
+from retained-job recovery, clarifies derived actions and figure arrows.
 The supplied model-review disposition is REVIEW_DISPOSITION_20261004.md;
 current executed validation is VALIDATION_20261004.md. v0.3 pins software
 snapshot dfc8378, includes one architecture figure and explicit get_run/readback
@@ -49,7 +52,7 @@ after direct HTTP failed; the earlier download blocker is now resolved.
 
 Use the workspace-bundled Python with lxml:
 `python paper-softwarex/build_manuscript.py`.
-This writes a DOCX from the retained template and v0.3 Markdown and checks
+This writes a DOCX from the retained template and v0.4 Markdown and checks
 preserve-only parts. Then run the document skill renderer and inspect every
 page. Generate architecture.svg from figures/architecture.json with the ARIS
 figure-spec renderer; rasterize the SVG for the DOCX image. templates/artifact.md
