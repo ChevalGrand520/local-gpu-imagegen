@@ -17,8 +17,11 @@ Email: ChengZhen0105@outlook.com
 
 ORCID: none currently, confirmed by the author on 2026-10-04. Register only if
 needed for the actual submission form; no identifier is invented.
-Postal address: [AUTHOR_INPUT_NEEDED: provide only if the form requires a full
-mailing address; no street address or postcode has been verified.]
+Postal address: Building 10, Zhejiang Sci-Tech University, 928 Second Avenue,
+Qiantang District, Hangzhou, Zhejiang 310018, China.
+School address verified at https://jsjxy.zstu.edu.cn/ on 2026-10-04; postcode
+verified in the university's official 2026 English admission brochure:
+https://admission.zstu.edu.cn/upfile/file/2026ZSTUAdmissionBrochure.pdf .
 
 ## Code availability
 
@@ -94,9 +97,9 @@ The author confirmed that the software, diagrams and experimental materials
 were authored by them or used lawfully under applicable licenses/permissions.
 No general waiver of third-party license conditions is claimed.
 
-[AUTHOR_INPUT_NEEDED: review and approve the updated final manuscript and the
-selected submission materials. Authorization to prepare these files is not
-authorization to submit them. Concurrent-consideration history is confirmed above.]
+Author instructed submission of v0.12 and selected materials on 2026-10-04.
+Concurrent-consideration history is confirmed above. APC payment or signing a
+binding publishing agreement is not covered by this submission instruction.
 
 ## Ethics and consent
 

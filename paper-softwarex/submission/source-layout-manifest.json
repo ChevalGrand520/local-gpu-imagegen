@@ -1,0 +1,363 @@
+{
+  "schema": "softwarex-frozen-source-layout-v1",
+  "product_revision": "dfc8378cb3d891f7951786bc4544cd971bd56a11",
+  "purpose": "Frozen source mirror for journal inspection; canonical build still uses scripts",
+  "files": {
+    "src/_constants.py": {
+      "original": "scripts/_constants.py",
+      "sha256": "1ef88fe12d52cbed3be4a29ce04ef4ec476b0e019802b4c67d2da0d5b6022ea2"
+    },
+    "src/_protocol.py": {
+      "original": "scripts/_protocol.py",
+      "sha256": "2e9500a6ec5f2266e08083b335278ef0b874be042ca5246400a986401f38bc71"
+    },
+    "src/_schema.py": {
+      "original": "scripts/_schema.py",
+      "sha256": "5d6161412fea9e744760b0532103fd64efa78b98d0757d869ae2e31f33d8c9af"
+    },
+    "src/_validation.py": {
+      "original": "scripts/_validation.py",
+      "sha256": "86dba573b955e2ca1945d19d7a89f3059635bb0cf2f9cb0c4bed692dfefdfee6"
+    },
+    "src/build_demo.py": {
+      "original": "scripts/build_demo.py",
+      "sha256": "8f5621582d63d043eec6327af711b2a945f7e24a1d71e59c71d79807365ee7fc"
+    },
+    "src/build_showcase.py": {
+      "original": "scripts/build_showcase.py",
+      "sha256": "d4bb2c4a066a24ce4951a4ba1e9296f48cbd2ceceeae9fee69272c4cc1b84de4"
+    },
+    "src/check_gpu.py": {
+      "original": "scripts/check_gpu.py",
+      "sha256": "3af563e05ca180caee767336e135fbc3de88cae802a642e34407096ac5f5cbc6"
+    },
+    "src/export_acceptance_evidence.py": {
+      "original": "scripts/export_acceptance_evidence.py",
+      "sha256": "b36d3e27f8eceecdcf81a90713caf1b1975822d2750525007cc0e65c52d059c3"
+    },
+    "src/export_real_demo.py": {
+      "original": "scripts/export_real_demo.py",
+      "sha256": "f24f107b43ff3a6c5eb9583dbcc08df77f9a20b2afe671d4ba62e331dbb6b478"
+    },
+    "src/generate_image.py": {
+      "original": "scripts/generate_image.py",
+      "sha256": "a4db33523502813b51ec781f6cfa6165c9d3d91e105104ec7544dcb5e7672573"
+    },
+    "src/install.ps1": {
+      "original": "scripts/install.ps1",
+      "sha256": "8cb3ea0a05d067406f5bd4189d8bc8aab6d87b1972a6ecb69e7f605c0a605551"
+    },
+    "src/local_gpu_imagegen/__init__.py": {
+      "original": "scripts/local_gpu_imagegen/__init__.py",
+      "sha256": "bb984032cb195d0e598a215293264224d1cfe6e1296c150c55d7b5b960d61ee6"
+    },
+    "src/local_gpu_imagegen/_filesystem_capability.py": {
+      "original": "scripts/local_gpu_imagegen/_filesystem_capability.py",
+      "sha256": "c0a3a9913e78c61ed798f043983209d025bd92e86f98307607238e72f04631a3"
+    },
+    "src/local_gpu_imagegen/artifacts.py": {
+      "original": "scripts/local_gpu_imagegen/artifacts.py",
+      "sha256": "d6dab1bf75a5f437f0d64ef61d3d5a42cb92ae23480086e9ee248cc39f609bb0"
+    },
+    "src/local_gpu_imagegen/backend_contract.py": {
+      "original": "scripts/local_gpu_imagegen/backend_contract.py",
+      "sha256": "dada08eee030b199d7a2c234fd0f4d6c35f77b376fd0dc60043f6ade187f9d78"
+    },
+    "src/local_gpu_imagegen/backend_lifecycle.py": {
+      "original": "scripts/local_gpu_imagegen/backend_lifecycle.py",
+      "sha256": "3514df9c09ee820bfe0fc87787ae7ddae78727236c9a3476da2a5ff979674660"
+    },
+    "src/local_gpu_imagegen/backends/__init__.py": {
+      "original": "scripts/local_gpu_imagegen/backends/__init__.py",
+      "sha256": "0a66faa1abdfeb48c06462dd69667fa5a5ad55a2d7c6b36738e9482bb509c62b"
+    },
+    "src/local_gpu_imagegen/backends/base.py": {
+      "original": "scripts/local_gpu_imagegen/backends/base.py",
+      "sha256": "d0f3926e9f6de52206b7bb3a6bef38459161ed94a47a036852cfaa2538039ad6"
+    },
+    "src/local_gpu_imagegen/backends/comfyui.py": {
+      "original": "scripts/local_gpu_imagegen/backends/comfyui.py",
+      "sha256": "f8d6a694470e4f5723c2d84455de87de2880118c371637a3b347e2e4591e6d50"
+    },
+    "src/local_gpu_imagegen/backends/webui.py": {
+      "original": "scripts/local_gpu_imagegen/backends/webui.py",
+      "sha256": "a3e83d1d07f9d34ecf611dc675adc7307c8d5bc7cdb7afeff35e6f3007539c1c"
+    },
+    "src/local_gpu_imagegen/bootstrap_catalog.py": {
+      "original": "scripts/local_gpu_imagegen/bootstrap_catalog.py",
+      "sha256": "2ccc6ef1c72c4665d9e82c3bc09179f277898bbdc40e5b0a6f9927a53456aa7e"
+    },
+    "src/local_gpu_imagegen/bootstrap_download.py": {
+      "original": "scripts/local_gpu_imagegen/bootstrap_download.py",
+      "sha256": "220a47d252c2155888a197bdb8bfea5438fc395720e7b2cd903ae24595823a71"
+    },
+    "src/local_gpu_imagegen/bootstrap_service.py": {
+      "original": "scripts/local_gpu_imagegen/bootstrap_service.py",
+      "sha256": "beab97202874fafdcb276cdbf822ef327e3f690cd0902cb2b74ed88792571721"
+    },
+    "src/local_gpu_imagegen/cli.py": {
+      "original": "scripts/local_gpu_imagegen/cli.py",
+      "sha256": "b5fbd357fb4d7ac58922bcbae8b26b5b669a6b5348c100b8257114db6ad08bb8"
+    },
+    "src/local_gpu_imagegen/client_setup.py": {
+      "original": "scripts/local_gpu_imagegen/client_setup.py",
+      "sha256": "b8487d5d4f40484b3a14906f3591322a7d6d2d3ed2d51d6d6831ed9f01fefbd7"
+    },
+    "src/local_gpu_imagegen/discovery.py": {
+      "original": "scripts/local_gpu_imagegen/discovery.py",
+      "sha256": "57e13936bd54834397e09f8b7ab40353a596f55c1084d1c903e95108693c0e15"
+    },
+    "src/local_gpu_imagegen/engine.py": {
+      "original": "scripts/local_gpu_imagegen/engine.py",
+      "sha256": "19fa5877c4beb695bbed538344fd71b7b872304ea3eb2d24fc295e3fc63b3da0"
+    },
+    "src/local_gpu_imagegen/errors.py": {
+      "original": "scripts/local_gpu_imagegen/errors.py",
+      "sha256": "7740e4c1ce476d112eff121968c501a2e32047f425e1cd20650aaa45eb7141f7"
+    },
+    "src/local_gpu_imagegen/file_verification.py": {
+      "original": "scripts/local_gpu_imagegen/file_verification.py",
+      "sha256": "cf2ed1a5afb695e2f19c8b9c9ed49704bff5f6c3fc2ad7b9056c8804453a0f2e"
+    },
+    "src/local_gpu_imagegen/generation_plan.py": {
+      "original": "scripts/local_gpu_imagegen/generation_plan.py",
+      "sha256": "f7910c758b0d87983519722f4b931e017560c9b5f64d264b27c96ca56311cf70"
+    },
+    "src/local_gpu_imagegen/masks.py": {
+      "original": "scripts/local_gpu_imagegen/masks.py",
+      "sha256": "d82afa98821fbf19f7e60955a64455068b0122117e7307e235d001c236cbc96f"
+    },
+    "src/local_gpu_imagegen/model_catalog.py": {
+      "original": "scripts/local_gpu_imagegen/model_catalog.py",
+      "sha256": "a16950d3662f97eab9843029538fa247c4c4f54cf2c163641bd36356558911fe"
+    },
+    "src/local_gpu_imagegen/model_identity.py": {
+      "original": "scripts/local_gpu_imagegen/model_identity.py",
+      "sha256": "81b43863919a91751a31e60492631bc38b9c8c0a620da71fa9083834855c814d"
+    },
+    "src/local_gpu_imagegen/model_router.py": {
+      "original": "scripts/local_gpu_imagegen/model_router.py",
+      "sha256": "d4034fdd8b269b1da2b0d83deea2a195dda1b46c17aaac463d9a4ce8e07f7864"
+    },
+    "src/local_gpu_imagegen/paths.py": {
+      "original": "scripts/local_gpu_imagegen/paths.py",
+      "sha256": "a7eafd635b1c9da8492ca87fe06f6d276e69b003b9c16a78b65f7c24fef5015c"
+    },
+    "src/local_gpu_imagegen/png_pixels.py": {
+      "original": "scripts/local_gpu_imagegen/png_pixels.py",
+      "sha256": "40d9ba7740ed668e0f17b7a21ec0a33830e4adcb556227f6c9017149e082b0a6"
+    },
+    "src/local_gpu_imagegen/postprocess.py": {
+      "original": "scripts/local_gpu_imagegen/postprocess.py",
+      "sha256": "a74c9eab5d2c79ba0c2124e245fad55b0bf0c2d5ed15404700e369e9b35b1ce7"
+    },
+    "src/local_gpu_imagegen/preview.py": {
+      "original": "scripts/local_gpu_imagegen/preview.py",
+      "sha256": "4dbe636f71e64e7505ab86734647e80e4ce061f8b18362a9f1db82bee5349065"
+    },
+    "src/local_gpu_imagegen/profile_registry.py": {
+      "original": "scripts/local_gpu_imagegen/profile_registry.py",
+      "sha256": "8d90ff0ace224b9ca940c9ca44d9241e549f03eab5767184decbee2068517e2d"
+    },
+    "src/local_gpu_imagegen/prompt_compilers.py": {
+      "original": "scripts/local_gpu_imagegen/prompt_compilers.py",
+      "sha256": "72eac76e65c26aedd17bd7a013a63b05529a60d98aa109430e2e542184eb5f81"
+    },
+    "src/local_gpu_imagegen/regional_layout.py": {
+      "original": "scripts/local_gpu_imagegen/regional_layout.py",
+      "sha256": "d3ad4ba2fcf870b6478b4cefa611ca3710cf2aefe152cc65ed128fd599237543"
+    },
+    "src/local_gpu_imagegen/revisions.py": {
+      "original": "scripts/local_gpu_imagegen/revisions.py",
+      "sha256": "a92cba5f85031146cbf2c9960b72f3a6c417b9f9130db3352f5bb5ba61d60a92"
+    },
+    "src/local_gpu_imagegen/run_store.py": {
+      "original": "scripts/local_gpu_imagegen/run_store.py",
+      "sha256": "5872ba571efe1246eb855fc74dce1da1a84553ec9feaf0207836e075fb5b7082"
+    },
+    "src/local_gpu_imagegen/services.py": {
+      "original": "scripts/local_gpu_imagegen/services.py",
+      "sha256": "334a7e8fa254ce97be47e68be8431eb48cfb48e2b4ac5356068efa47b9ea8d31"
+    },
+    "src/local_gpu_imagegen/trust_registry.py": {
+      "original": "scripts/local_gpu_imagegen/trust_registry.py",
+      "sha256": "7036e3b3de949e35ad1498127c183089aac14d4b98f4902cdf45999ab96db9e6"
+    },
+    "src/local_gpu_imagegen/two_stage_layout.py": {
+      "original": "scripts/local_gpu_imagegen/two_stage_layout.py",
+      "sha256": "b84ad2742d14cf780bc6d5332ce0091a587193666d4a3514d5f9501e58b2d709"
+    },
+    "src/local_gpu_imagegen/visual_review.py": {
+      "original": "scripts/local_gpu_imagegen/visual_review.py",
+      "sha256": "b8d46e21445ddbb1b9184a7a6a9a47f1eb1d491086fac692ae7b4c822e0ce91a"
+    },
+    "src/local_gpu_imagegen/workflow_onboarding.py": {
+      "original": "scripts/local_gpu_imagegen/workflow_onboarding.py",
+      "sha256": "b5fdd991b9a49a78bf708bb28b66701cfbe00535b3f45de61a1a7abe49c71c0d"
+    },
+    "src/local_gpu_imagegen/workflow_templates.py": {
+      "original": "scripts/local_gpu_imagegen/workflow_templates.py",
+      "sha256": "54357eb1f4fb0c70e667e445b4ae5894dca66a6dc29fb7b2326d7925a3758142"
+    },
+    "src/mcp_server.py": {
+      "original": "scripts/mcp_server.py",
+      "sha256": "7c03a4686104f2252484643cd7a7318ec1f9793c34c973a48b67f8d34a174590"
+    },
+    "src/record_star_observation.py": {
+      "original": "scripts/record_star_observation.py",
+      "sha256": "531df11fa94575c0a8ce1cd7695f99e39186b93161dc1d7ecef2c8ddd650846e"
+    },
+    "src/release_candidate_checks.py": {
+      "original": "scripts/release_candidate_checks.py",
+      "sha256": "8a98372ac972374b35601f62e37eb19e78ee71ff0cfe6535ee21a3f130caa2db"
+    },
+    "src/research/__init__.py": {
+      "original": "scripts/research/__init__.py",
+      "sha256": "12db47a5f367e935ab8b43dd5a115ea832d7d242a789b5a0dadd429ea5fb0e77"
+    },
+    "src/research/audit_paired_windows_capture.py": {
+      "original": "scripts/research/audit_paired_windows_capture.py",
+      "sha256": "6f0cf9239c28c0537ff22fd66bb562e880fd59da415027cb9458a6d5f04bc01e"
+    },
+    "src/research/check_regular_feasibility.py": {
+      "original": "scripts/research/check_regular_feasibility.py",
+      "sha256": "46501632387fe008ff96bbf6f1c570bc5f4523dba16a72dd4ea6a4e5283f41a1"
+    },
+    "src/research/convert_same_run_capture.py": {
+      "original": "scripts/research/convert_same_run_capture.py",
+      "sha256": "1e8ff917632e0603d118789924b7ad12408fc47aa03bfb61112a33b91623d846"
+    },
+    "src/research/cpu_evidence_contract.py": {
+      "original": "scripts/research/cpu_evidence_contract.py",
+      "sha256": "358fa76ef9fe133bdaa9c4555f68c18478435727c2c936abfc0c2019e97254c8"
+    },
+    "src/research/execution_oracle.py": {
+      "original": "scripts/research/execution_oracle.py",
+      "sha256": "ad763f7f35f9ec0024eb24cea9e9c76f1c430c907af57bf92f48eb64dfe3ffaa"
+    },
+    "src/research/export_records.py": {
+      "original": "scripts/research/export_records.py",
+      "sha256": "991347565040b7bbfc192c84581375e43542b374be10d331b615987842e2aa21"
+    },
+    "src/research/f02_campaign.py": {
+      "original": "scripts/research/f02_campaign.py",
+      "sha256": "32681f80d001add32ef9cf936a8b7fd64630b968eb5bfee22416fa0f67809d86"
+    },
+    "src/research/f02_capture.py": {
+      "original": "scripts/research/f02_capture.py",
+      "sha256": "bcd55120a49078610aa1011ae1180891fc9b713af51d4b25cc0403bce2fd984b"
+    },
+    "src/research/f02_loopback.py": {
+      "original": "scripts/research/f02_loopback.py",
+      "sha256": "0695685d815fa4078680cf97dc50edc607dfcda18361a4ad58e535e5b7eace4a"
+    },
+    "src/research/f02_oracle.py": {
+      "original": "scripts/research/f02_oracle.py",
+      "sha256": "7437564f3801b1deb5d26e30ca6df96540dc624f59bc7251c9e3391073ab0ebd"
+    },
+    "src/research/f02_preflight.py": {
+      "original": "scripts/research/f02_preflight.py",
+      "sha256": "b6564cd02be4934fc759429976c503b8d0d785ffceefca192d6223496dcc4bd2"
+    },
+    "src/research/f02_product_client.py": {
+      "original": "scripts/research/f02_product_client.py",
+      "sha256": "c4309a190affbfd593eb0be4c6ce8d86b89134f89e37295e96cfe0c7ed4f3039"
+    },
+    "src/research/f02_same_run_campaign.py": {
+      "original": "scripts/research/f02_same_run_campaign.py",
+      "sha256": "ae2984ddccfdee5ba80a557e6373145a2c483e12ce2d5365a2cf1f1fd308b60f"
+    },
+    "src/research/f02_transport_launcher.py": {
+      "original": "scripts/research/f02_transport_launcher.py",
+      "sha256": "32f6290f5280849a47b87e8a23d5ce1fff9a09b121748d7eb33a652c760a0821"
+    },
+    "src/research/f02_transport_shim.py": {
+      "original": "scripts/research/f02_transport_shim.py",
+      "sha256": "97bae4cfecf2a1999eea29057d09743013f547bf9c2474558cbbf7eb88dc568e"
+    },
+    "src/research/paired_ambiguity.py": {
+      "original": "scripts/research/paired_ambiguity.py",
+      "sha256": "73312b7a8e2f5473333d0ab8b6697f756dab36ed751a62e5ecfb1d367dd4967a"
+    },
+    "src/research/paired_ambiguity_operation.py": {
+      "original": "scripts/research/paired_ambiguity_operation.py",
+      "sha256": "1eb314252c29605fd0522de1a73a22d0e1963fbd407543cf1b510593019a6a83"
+    },
+    "src/research/paired_cpu_worker.py": {
+      "original": "scripts/research/paired_cpu_worker.py",
+      "sha256": "52b5109488e645dade3e2978f67e37a3efb088ff4db286d0c5b00bac40d1c96b"
+    },
+    "src/research/paired_evidence_probes.py": {
+      "original": "scripts/research/paired_evidence_probes.py",
+      "sha256": "ab0770e6ce0aab2bcf5be6cccfbd23a8dfd35bec70a008f85915ba5b22c5f9cd"
+    },
+    "src/research/paired_windows_ops.py": {
+      "original": "scripts/research/paired_windows_ops.py",
+      "sha256": "5868041dbf5f33034f5d10358de43d188900d4d4ecb2e55fe29afd851e4d6a4c"
+    },
+    "src/research/paired_windows_runner.py": {
+      "original": "scripts/research/paired_windows_runner.py",
+      "sha256": "5f90d337aad9891ed335ab0418c79030d47f59e80710292d849406fc64c202a8"
+    },
+    "src/research/prepare_paired_windows_reservation.py": {
+      "original": "scripts/research/prepare_paired_windows_reservation.py",
+      "sha256": "605d2df00fd90e7b488e21d976d2df4a1b960e0e470fb548be9285d377dd9652"
+    },
+    "src/research/run_fault_matrix.py": {
+      "original": "scripts/research/run_fault_matrix.py",
+      "sha256": "2996774d88c05819643ad8ca8f7616579e30cc89ebf5c18867ff1d34481f369b"
+    },
+    "src/research/run_paired_ambiguity_cpu.py": {
+      "original": "scripts/research/run_paired_ambiguity_cpu.py",
+      "sha256": "6dc928cc2ff441f49079feb442e7cff92747035a0a2e09ede7d222e6885b2a33"
+    },
+    "src/research/run_paired_fault_matrix.py": {
+      "original": "scripts/research/run_paired_fault_matrix.py",
+      "sha256": "dead74d91c72c3bce107a16941ffcd45f852054f9aa1d58aaf16a29c3aa1ffc4"
+    },
+    "src/research/run_regular_cpu_gate.py": {
+      "original": "scripts/research/run_regular_cpu_gate.py",
+      "sha256": "bf266a67e5314c3d319bff08d69bd941b9c1a44b4bb4be48f2a4c5b41a2c7951"
+    },
+    "src/research/run_reserved_windows_paired.py": {
+      "original": "scripts/research/run_reserved_windows_paired.py",
+      "sha256": "2e1b8851101eb8c73c058031bbcf5ed8ffc89f76e8e9df079677b15f26877feb"
+    },
+    "src/research/run_reserved_windows_same_run.py": {
+      "original": "scripts/research/run_reserved_windows_same_run.py",
+      "sha256": "9d22a8e81eb1341debb97d603ef86948b2a9985d4555206b73c74917e4ccc754"
+    },
+    "src/validate_acceptance_evidence.py": {
+      "original": "scripts/validate_acceptance_evidence.py",
+      "sha256": "af16994d451efcace5c096472c8fa5963fe8a8b1814c5ad04db1531482d1e7ce"
+    },
+    "src/validate_client_sessions.py": {
+      "original": "scripts/validate_client_sessions.py",
+      "sha256": "091ce32d36e74a05e3a93c3f623996fdec547d49c91923098dde78807faa3d5d"
+    },
+    "src/validate_real_demo.py": {
+      "original": "scripts/validate_real_demo.py",
+      "sha256": "70e067bddc25f7e3918c0e894ee7daf04af8f9906116230bf85581d7e1efadde"
+    },
+    "src/validate_release_candidate.py": {
+      "original": "scripts/validate_release_candidate.py",
+      "sha256": "1ec2bfb084af4b54673dead7d94f2e6ccabd7f4cca9e89a68fcf34c1cd51e3e1"
+    },
+    "src/validate_social_preview.py": {
+      "original": "scripts/validate_social_preview.py",
+      "sha256": "49752191103daaf8a6033d04cae380808d8ac59c9a5622b109e43afa12095564"
+    },
+    "src/validate_star_campaign.py": {
+      "original": "scripts/validate_star_campaign.py",
+      "sha256": "5129ccdbdee5b062d8c63e88b830558917c25f35f876f57b919023ba0ed22885"
+    },
+    "src/verify_client_configs.py": {
+      "original": "scripts/verify_client_configs.py",
+      "sha256": "9bee4b4ca4c588f3d64759990aa02fcd2267fb24d0bbd0c04d90dbc39d46f031"
+    },
+    "src/verify_mcp.py": {
+      "original": "scripts/verify_mcp.py",
+      "sha256": "7437309394bbd2ecef76ba814dff4717e950b1173df0eeb8cf499bc89bb5ef34"
+    }
+  }
+}
