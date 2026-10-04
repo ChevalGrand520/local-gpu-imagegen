@@ -1,6 +1,6 @@
 # SoftwareX Original Software Publication candidate
 
-Current files: manuscript-v0.6.md (editable content), manuscript-v0.6.docx
+Current files: manuscript-v0.7.md (editable content), manuscript-v0.7.docx
 (official-template candidate), build_manuscript.py (deterministic package patch).
 Versions 0.1 through 0.5 are retained. Nothing has been submitted.
 v0.5 adds verified section-level comparisons to three related preprints,
@@ -57,7 +57,7 @@ after direct HTTP failed; the earlier download blocker is now resolved.
 
 Use the workspace-bundled Python with lxml:
 `python paper-softwarex/build_manuscript.py`.
-This writes a DOCX from the retained template and v0.6 Markdown and checks
+This writes a DOCX from the retained template and v0.7 Markdown and checks
 preserve-only parts. Then run the document skill renderer and inspect every
 page. Generate architecture.svg from figures/architecture.json with the ARIS
 figure-spec renderer; rasterize the SVG for the DOCX image. templates/artifact.md
@@ -91,3 +91,10 @@ not an integrated ComfyUI/GPU recovery experiment or a Windows F03 result.
 The final DOCX was rebuilt and all seven rendered pages inspected on 2026-10-04.
 Metadata contains the C1–C8 table; it is not an empty heading.
 See KNOWN_JOB_RECOVERY_SCOPE_20261004.md for execution scope and limitations.
+
+## v0.7 ecosystem citations
+
+Adds the official MCP specification (2025-06-18 revision) and ComfyUI source
+repository as references [7–8], verified online on 2026-10-04. Seven rendered
+pages inspected; 101-word abstract and 26 preserved template parts unchanged.
+Figure 2 already has editable SVG source. No new execution evidence added.

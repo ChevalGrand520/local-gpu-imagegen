@@ -1,4 +1,4 @@
-"""Fill the retained SoftwareX v6 template without rebuilding other parts."""
+"""Fill the retained SoftwareX template without rebuilding other parts."""
 from copy import deepcopy
 from hashlib import sha256
 from pathlib import Path
@@ -12,7 +12,7 @@ from docx.shared import Inches
 
 ROOT = Path(__file__).resolve().parent
 REF = ROOT / 'templates/softwarex-osp-template-v6.docx'
-OUT = ROOT / 'manuscript-v0.6.docx'
+OUT = ROOT / 'manuscript-v0.7.docx'
 QA = Path('/tmp/softwarex-template-qa')
 EXPECTED = '9fcf40ede96a2f188ee4ef77134e0596d01e1b65fd9db63f2874d29f2ecb916d'
 W = 'http://schemas.openxmlformats.org/wordprocessingml/2006/main'
@@ -104,7 +104,7 @@ def row_rules(table):
         if i == 0 and pr.find('w:tblHeader', NS) is None: E.SubElement(pr, tag('tblHeader'))
 
 row_rules(metadata)
-blocks = re.split(r'\n\s*\n', (ROOT / 'manuscript-v0.6.md').read_text().strip())
+blocks = re.split(r'\n\s*\n', (ROOT / 'manuscript-v0.7.md').read_text().strip())
 for x in list(body): body.remove(x)
 body.append(para(16, blocks[0][2:], bold=True, numbered=False))
 for block in blocks[1:4]: body.append(para(23, block, bold=False, numbered=False))

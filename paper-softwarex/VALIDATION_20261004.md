@@ -1,5 +1,11 @@
 # SoftwareX revision validation receipt
 
+v0.7 (2026-10-04): added official MCP specification and ComfyUI repository
+references, verified through their primary pages. Bundled builder and renderer
+exited 0; seven pages inspected in full, 101-word abstract, 26 original
+preserve-only parts unchanged. Metadata C1–C8 is present. Figure 2 SVG source
+already exists. No additional experiment or similarity-check upload occurred.
+
 Source snapshot: dfc8378cb3d891f7951786bc4544cd971bd56a11.
 Product/research source remained unchanged during these commands. Later edits
 are manuscript, figure/builder and README changes; not backend/GPU execution.
