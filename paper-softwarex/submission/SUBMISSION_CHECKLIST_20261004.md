@@ -1,6 +1,6 @@
 # SoftwareX initial submission package checkpoint
 
-Readiness: v0.10 candidate prepared; submission_ready=false. Actual submission
+Readiness: v0.11 candidate prepared; submission_ready=false. Actual submission
 remains gated by final publisher checks and resolved administrative facts.
 No journal form, upload, editor message, agreement, payment or submission was
 performed. Approval received was for preparing these materials.
@@ -24,7 +24,7 @@ as evidence that the guide or an administrative requirement does not exist.
 
 | Item | Prepared file / status | Requirement provenance |
 |---|---|---|
-| Main manuscript | ../manuscript-v0.10.docx; eight pages total; 98-word abstract; inspected in full; eight references | Mandatory official template |
+| Main manuscript | ../manuscript-v0.11.docx; eight pages total; 98-word abstract; inspected in full; eight references | Mandatory official template |
 | Author/title metadata | declarations-draft.md; established name/affiliation/email; author has no ORCID currently | Full mailing address and ORCID registration only if the actual form requires them |
 | Cover letter | cover-letter-draft.md; final declaration placeholder | Useful editor-facing draft; mandatory status not refreshed |
 | Highlights | highlights-draft.txt; five bullets, each <=85 characters | Optional preparation; journal-specific demand/limit not refreshed |
@@ -42,6 +42,11 @@ as evidence that the guide or an administrative requirement does not exist.
 | Final CPU checks | ../validation/cpu-report-20261004.json and cpu-source-freeze-20261004.json | 12 synthetic operations; frozen variants separate from Windows campaign |
 
 ## Terminology and cross-file consistency
+
+Validation-material revision is dc9720e, independently pinned. Manuscript
+revision is v0.11 and its containing Git commit; no branch-head pin is used
+as a replacement for the immutable validation-material links. Subsequent
+disposition: ../REVIEW_V10_DISPOSITION_20261004.md.
 
 Canonical software: Local GPU Imagegen. Interface: Model Context Protocol (MCP).
 Unknown submission is distinct from known-job recovery and client completion.

@@ -1,6 +1,6 @@
 # SoftwareX Original Software Publication candidate
 
-Current files: manuscript-v0.10.md (editable content), manuscript-v0.10.docx
+Current files: manuscript-v0.11.md (editable content), manuscript-v0.11.docx
 (official-template candidate), build_manuscript.py (deterministic package patch).
 Versions 0.1 through 0.5 are retained. Nothing has been submitted.
 v0.5 adds verified section-level comparisons to three related preprints,
@@ -28,9 +28,9 @@ after direct HTTP failed; the earlier download blocker is now resolved.
 
 - Exactly five required main sections: Motivation and significance, Software
   description, Illustrative examples, Impact, Conclusions.
-- Approximately 100-word abstract; v0.10 has 98 whitespace words.
+- Approximately 100-word abstract; v0.11 has 98 whitespace words.
 - At most six keywords; current six. At most 4000 words; the full Markdown
-  draft remains below 3500 whitespace words including metadata and references, conservatively
+  draft has 3516 whitespace words including metadata and references, conservatively
   below that limit. Maximum six main-body pages excluding metadata/tables/
   figures/references; v0.6 is seven pages total; page seven contains the final main sections,
   availability, declaration and references. Metadata, tables and figures are
@@ -58,7 +58,7 @@ after direct HTTP failed; the earlier download blocker is now resolved.
 
 Use the workspace-bundled Python with lxml:
 `python paper-softwarex/build_manuscript.py`.
-This writes a DOCX from the retained template and v0.10 Markdown and checks
+This writes a DOCX from the retained template and v0.11 Markdown and checks
 preserve-only parts. Then run the document skill renderer and inspect every
 page. Generate architecture.svg from figures/architecture.json with the ARIS
 figure-spec renderer; rasterize the SVG for the DOCX image. templates/artifact.md
@@ -145,3 +145,14 @@ See REVIEW_V09_DISPOSITION_20261004.md for accepted and corrected review points.
 Bundled build/render passed; all eight pages inspected, 98-word abstract,
 3441 Markdown words and 26 original preserve-only parts identical. No new
 experiment or broader claim review was performed; v0.9 remains unchanged.
+
+## v0.11 retained macOS result and recovery wording
+
+Restores the macOS gate's retained 1274-test summary (30 failures, 5 errors,
+40 skips, exit 1), with a permanent summary link, local-run qualification,
+unpublished full-log boundary and no unified failure attribution. Corrects
+the Impact recovery sequence to retrieval, re-entry, identifier forwarding
+and adapter history. Validation materials remain pinned to dc9720e; this
+manuscript revision is tracked separately by its version and Git commit.
+See REVIEW_V10_DISPOSITION_20261004.md. All eight pages inspected; abstract
+98 words, full Markdown 3516 words, 26 template parts identical. No test rerun.

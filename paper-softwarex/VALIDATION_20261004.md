@@ -1,5 +1,14 @@
 # SoftwareX revision validation receipt
 
+v0.11 (2026-10-04): restored the retained macOS full-suite summary with its
+immutable source link, local qualification and absent-public-full-log boundary.
+No unified failure cause asserted. Recovery wording now names retrieval,
+re-entry and recovery_job_id forwarding through the adapter history path.
+Bundled build/render passed; all eight pages visually inspected, 98-word
+abstract, 3516 Markdown words and 26 identical preserve-only parts. Tables
+and references match v0.10. No experiment or test rerun. See
+REVIEW_V10_DISPOSITION_20261004.md; final submission gates remain open.
+
 v0.10 (2026-10-04): same-run guard and operator-use clarification; see
 REVIEW_V09_DISPOSITION_20261004.md. Bundled build/render passed; all eight
 pages inspected, 98-word abstract, 3441 Markdown words, 367-word Impact and
