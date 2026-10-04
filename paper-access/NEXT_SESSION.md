@@ -165,6 +165,15 @@ permalink, separates unknown and retained-job unresolved states, clarifies
 retrieval-derived next actions and figure arrows. Code limits engine job-ID
 recovery forwarding to the two-stage ComfyUI route; do not generalize it.
 See REVIEW_V03_DISPOSITION_20261004.md. No new tests/GPU/merge/submission.
+
+User approved initial-submission material preparation. Draft cover letter,
+declarations, highlights and completeness matrix now reside in
+../paper-softwarex/submission/. Full-guide refresh on 2026-10-04 failed with a
+browser certificate-hostname error; do not bypass it or invent current policy.
+SUBMISSION_CHECKLIST_20261004.md records template-confirmed versus unverified
+requirements. Author inputs remain for funding/conflicts/roles/history/final
+approval/permissions and applicable ethics; no no-conflict or no-concurrent-
+submission statement was invented. Actual submission/payment/merge not performed.
 Li full-text retrieval is closed, but its overlap currently argues against
 expanding the present Access study. Yu survey remains abstract-level checked.
 No new GPU run, model

@@ -1,0 +1,5 @@
+Local GPU Imagegen retains durable state around local image-generation backends.
+An MCP retrieval tool separates local run state from backend completion.
+Fixed ComfyUI cases expose submission withholding and incomplete client runs.
+A pre-send failure illustrates the guard's false-block cost.
+Source-based checks verify derived records without a GPU.
