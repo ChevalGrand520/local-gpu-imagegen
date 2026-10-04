@@ -1,6 +1,6 @@
 # SoftwareX Original Software Publication candidate
 
-Current files: manuscript-v0.7.md (editable content), manuscript-v0.7.docx
+Current files: manuscript-v0.8.md (editable content), manuscript-v0.8.docx
 (official-template candidate), build_manuscript.py (deterministic package patch).
 Versions 0.1 through 0.5 are retained. Nothing has been submitted.
 v0.5 adds verified section-level comparisons to three related preprints,
@@ -57,7 +57,7 @@ after direct HTTP failed; the earlier download blocker is now resolved.
 
 Use the workspace-bundled Python with lxml:
 `python paper-softwarex/build_manuscript.py`.
-This writes a DOCX from the retained template and v0.7 Markdown and checks
+This writes a DOCX from the retained template and v0.8 Markdown and checks
 preserve-only parts. Then run the document skill renderer and inspect every
 page. Generate architecture.svg from figures/architecture.json with the ARIS
 figure-spec renderer; rasterize the SVG for the DOCX image. templates/artifact.md
@@ -98,3 +98,11 @@ Adds the official MCP specification (2025-06-18 revision) and ComfyUI source
 repository as references [7–8], verified online on 2026-10-04. Seven rendered
 pages inspected; 101-word abstract and 26 preserved template parts unchanged.
 Figure 2 already has editable SVG source. No new execution evidence added.
+
+## v0.8 language revision
+
+Humanizer prose pass: simplified repeated caveats, split the retrieval/recovery
+paragraph, clarified actors and shortened repetitive closing sentences. Data
+tables, 35 inline-code spans, 11 URLs, 16 citation occurrences, metadata,
+references and the approved AI declaration are unchanged. No evidence added.
+The abstract is 99 words; the Word manuscript remains seven pages.

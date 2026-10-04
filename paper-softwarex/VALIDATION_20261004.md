@@ -1,5 +1,14 @@
 # SoftwareX revision validation receipt
 
+v0.8 (2026-10-04): prose-only humanizer revision. Compared against v0.7:
+35 inline-code spans, 11 URLs and 16 citation occurrences unchanged in order;
+all table rows, software metadata, references and approved AI declaration
+unchanged. Manual meaning review retained synthetic/Windows/GPU distinctions,
+unknown-ID/retained-ID separation, generated/completed distinction and every
+reported result. Bundled builder/renderer exited 0, 26 preserve-only template
+parts unchanged, abstract 99 words. Seven rendered pages inspected in full.
+No experiment, citation refresh or claim expansion in this revision.
+
 v0.7 (2026-10-04): added official MCP specification and ComfyUI repository
 references, verified through their primary pages. Bundled builder and renderer
 exited 0; seven pages inspected in full, 101-word abstract, 26 original
