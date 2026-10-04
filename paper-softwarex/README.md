@@ -125,6 +125,10 @@ final-check-receipt-20261004.json and validation/. These are CPU/interface check
 not new Windows, GPU or real ComfyUI recovery evidence.
 
 Eight rendered pages inspected; 99-word abstract, two figures, eight references,
-six keywords and 26 original preserve-only template parts retained. Captions now
-disclose Codex assistance, with exact model versions still pending. Author facts
-and publisher checks in submission/SUBMISSION_CHECKLIST_20261004.md remain open.
+six keywords and 26 original preserve-only template parts retained. Captions
+disclose Codex assistance. In the subsequent author confirmation, the diagram
+model was identified as GPT-6.1 Sol; competing interests, CRediT and study-scope
+statements were completed in the same v0.9 files. The author has no ORCID and
+plans to apply for university APC support, with no payment commitment claimed.
+Final author content approval and publisher checks in
+submission/SUBMISSION_CHECKLIST_20261004.md remain open.

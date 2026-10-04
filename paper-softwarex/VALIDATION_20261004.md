@@ -1,5 +1,16 @@
 # SoftwareX revision validation receipt
 
+Same-day author-declaration update to v0.9: completed competing interests,
+CRediT and factual ethics/consent scope; diagram captions disclose the
+author-confirmed GPT-6.1 Sol model. Original approved AI paragraph, result and
+metadata rows, abstract and reviewed references remain intact. No experiment
+rerun. Bundled build/render passed; 26 original preserve-only parts identical,
+99-word abstract, 3211 Markdown words and eight pages. Changed pages 3/6/7/8
+visually inspected; pages 1/2/4/5 byte-identical to the inspected prior renders.
+Final updated DOCX SHA256:
+0d1f4e7b45c9e2af0c05d32afb3f4e13d995295a925c6e0ad4a65534c2aa8e1d.
+Final human content approval and publisher/form/APC checks remain outstanding.
+
 v0.9 (2026-10-04): final review corrections and bounded verification.
 See FINAL_REVIEW_20261004.md and final-check-receipt-20261004.json.
 96 research tests passed again in 9.934 s; twelve synthetic CPU operations

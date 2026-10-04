@@ -51,7 +51,7 @@ The transport exposes a Model Context Protocol interface that declares protocol 
 
 ![Figure 1. Installed control plane and source-only research supplement](figures/architecture.png)
 
-Figure 1. Local GPU Imagegen architecture. Solid arrows show control relationships; dashed arrows show retained-record access. The exporter and checker are source-only supplements; the backend and models are user supplied. OpenAI Codex assisted in drafting the diagram specification and rendering code; its exact model version is pending confirmation.
+Figure 1. Local GPU Imagegen architecture. Solid arrows show control relationships; dashed arrows show retained-record access. The exporter and checker are source-only supplements; the backend and models are user supplied. OpenAI Codex (GPT-6.1 Sol) assisted in drafting the diagram specification and rendering code.
 
 A durable manifest records the selected route, submission state and outputs. Immutable child runs preserve earlier revisions. Subsequent attempts check the frozen route, reject changes to it and return unresolved state for inspection.
 
@@ -118,7 +118,7 @@ In a separate adapter check against a loopback fake HTTP server, a known `recove
 
 ![Figure 2. Retained-job recovery in the CPU engine fixture](figures/known-job-recovery.png)
 
-Figure 2. CPU engine fixture with a retained job identifier. Retrieval exposes the recovery action; same-key/hash re-entry forwards the identifier and records a generated round. The stop-only branch takes no further action. The separate HTTP-adapter check queries history/view with zero prompt POSTs. OpenAI Codex assisted in drafting the schematic and Python rendering code; its exact model version is pending confirmation.
+Figure 2. CPU engine fixture with a retained job identifier. Retrieval exposes the recovery action; same-key/hash re-entry forwards the identifier and records a generated round. The stop-only branch takes no further action. The separate HTTP-adapter check queries history/view with zero prompt POSTs. OpenAI Codex (GPT-6.1 Sol) assisted in drafting the schematic and Python rendering code.
 
 ### 3.4. Software validation boundaries
 
@@ -152,11 +152,23 @@ The cited software snapshot is https://github.com/ChevalGrand520/local-gpu-image
 
 OpenAI Codex assisted with language refinement, experimental code prototyping, and cross-checking of author records. The author reviewed and revised the resulting materials and takes full responsibility for the manuscript.
 
-Codex also assisted in drafting the explanatory diagram specifications and rendering code. The retained specifications and code render Figures 1 and 2. The exact model versions used for this assistance are pending confirmation before submission.
+For the explanatory diagrams, OpenAI Codex (GPT-6.1 Sol) assisted in drafting the specifications and rendering code. The retained specifications and code render Figures 1 and 2.
 
 ## Funding
 
 This research received no specific grant from funding agencies in the public, commercial, or not-for-profit sectors. The author completed the work independently.
+
+## Declaration of competing interests
+
+The author declares no competing financial interests or personal relationships that could have appeared to influence the work reported in this paper.
+
+## CRediT authorship contribution statement
+
+Zhen Cheng: Conceptualization, Methodology, Software, Investigation, Validation, Data curation, Writing – original draft, Writing – review & editing.
+
+## Ethics and consent
+
+This study did not involve human participants, identifiable personal data, or animal experiments.
 
 ## References
 

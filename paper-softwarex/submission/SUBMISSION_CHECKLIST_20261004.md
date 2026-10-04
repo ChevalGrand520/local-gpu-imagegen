@@ -25,10 +25,10 @@ as evidence that the guide or an administrative requirement does not exist.
 | Item | Prepared file / status | Requirement provenance |
 |---|---|---|
 | Main manuscript | ../manuscript-v0.9.docx; eight pages total; 99-word abstract; inspected in full; eight references | Mandatory official template |
-| Author/title metadata | declarations-draft.md; established name/affiliation/email | Template; full-address/ORCID form fields pending |
+| Author/title metadata | declarations-draft.md; established name/affiliation/email; author has no ORCID currently | Full mailing address and ORCID registration only if the actual form requires them |
 | Cover letter | cover-letter-draft.md; final declaration placeholder | Useful editor-facing draft; mandatory status not refreshed |
 | Highlights | highlights-draft.txt; five bullets, each <=85 characters | Optional preparation; journal-specific demand/limit not refreshed |
-| Declaration blocks | declarations-draft.md | Original AI paragraph preserved; no funding/history confirmed; conflicts/contributions/model versions pending |
+| Declaration blocks | declarations-draft.md; confirmed no conflicts, CRediT, study scope and diagram model GPT-6.1 Sol | Original AI paragraph preserved; final content approval pending |
 | Figure | ../figures/architecture.svg and architecture.png; also embedded in DOCX; known-job-recovery.svg/png | Architecture and CPU recovery diagrams; no GPU measurement |
 | Software snapshot | GitHub dfc8378; README, MIT LICENSE/Licence.txt, product and research files present | Template GitHub/permanent-link requirements |
 | Validation record | GitHub abb3639 / paper-softwarex/VALIDATION_20261004.md | Separate manuscript-material revision; explicitly cited |
@@ -50,17 +50,21 @@ reuse the manuscript title, Zhen Cheng byline, institutional affiliation, email
 and code snapshot. The letter reports six fixed operations and preserves the
 false block and incomplete-client outcome; no generalized advantage is claimed.
 The original AI paragraph is verbatim from the author-approved manuscript.
-Figure assistance is additionally disclosed; exact model versions remain pending
-under Elsevier's current AI policy, verified on 2026-10-04.
+Figure assistance is additionally disclosed as OpenAI Codex (GPT-6.1 Sol),
+the version supplied by the author on 2026-10-04. Both captions give tool,
+version and purpose under the publisher policy checked on that date.
 
 ## Author facts still needed
 
-Complete the marked declaration draft before finalizing:
-competing interests; CRediT roles; actual diagram AI tool/model versions;
-ORCID if any and mailing address if requested; final author approval, originality,
-permissions and relevant ethics/consent. Research funding and absent
-publication/preprint/concurrent-review history are confirmed. APC funding is
-separate and undecided.
+The author confirmed no competing interests, all listed CRediT roles,
+GPT-6.1 Sol for the diagrams, no human participants/identifiable personal
+data/animal experiments, lawful use of materials and no current ORCID.
+Research funding and absent publication/preprint/concurrent-review history
+are also confirmed. The author intends to apply for university APC support;
+no approval or payment commitment is claimed and this is separate from
+research funding. Final review/approval of the updated manuscript and selected
+materials is still needed. Mailing address or ORCID registration is requested
+only if required by the actual submission form.
 The historical computer account name is not the manuscript byline.
 
 ## Publisher and filing checks still needed

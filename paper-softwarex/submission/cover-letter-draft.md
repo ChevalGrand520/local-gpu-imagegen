@@ -12,7 +12,9 @@ The manuscript fits SoftwareX's focus on research software and its application b
 
 The work has not been published, posted as a preprint, or submitted for consideration elsewhere. The retained DSN and IEEE Access versions are internal drafts. The research received no specific funding and was completed by the sole author.
 
-[AUTHOR_INPUT_NEEDED: Confirm originality, rights and approval of the final manuscript. Add the competing-interest declaration if requested here after author confirmation.]
+The author declares no competing financial interests or personal relationships that could have appeared to influence this work. The study did not involve human participants, identifiable personal data, or animal experiments. The author confirms lawful use of the software, diagrams and experimental materials.
+
+[AUTHOR_INPUT_NEEDED: Review and approve the updated final manuscript and the selected submission materials before filing.]
 
 Thank you for considering the manuscript.
 

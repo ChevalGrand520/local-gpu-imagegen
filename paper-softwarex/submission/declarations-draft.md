@@ -15,8 +15,8 @@ School of Computer Science and Technology (School of Artificial Intelligence),
 Zhejiang Sci-Tech University, Hangzhou, China
 Email: ChengZhen0105@outlook.com
 
-ORCID: [AUTHOR_INPUT_NEEDED: provide an existing ORCID, or state none; current
-journal requirement not verified. Do not create one from a guessed identity.]
+ORCID: none currently, confirmed by the author on 2026-10-04. Register only if
+needed for the actual submission form; no identifier is invented.
 Postal address: [AUTHOR_INPUT_NEEDED: provide only if the form requires a full
 mailing address; no street address or postcode has been verified.]
 
@@ -46,18 +46,18 @@ The paragraph above is the previously approved manuscript wording. If a form
 requires additional details, disclose actual use accurately; do not add an
 unsupported assertion that all code or prose was entirely human-written.
 
-Supplementary v0.9 disclosure: Codex also assisted in drafting the explanatory
-diagram specifications and rendering code. The retained specifications and code
-render Figures 1 and 2. Exact model versions remain pending author confirmation;
-the figure captions disclose tool and purpose and must be completed before use.
+Supplementary v0.9 disclosure: For the explanatory diagrams, OpenAI Codex
+(GPT-6.1 Sol) assisted in drafting the specifications and rendering code.
+The retained specifications and code render Figures 1 and 2.
+The author supplied the model version on 2026-10-04; both figure captions now
+state the tool, version and purpose. This confirmation concerns the diagrams.
 
 ## Competing interests
 
-[AUTHOR_INPUT_NEEDED: disclose relevant financial and personal interests, or
-explicitly confirm none. Only after confirmation may a no-interest statement
-be used. Suggested wording if true: “The author declares no competing financial
-interests or personal relationships that could have appeared to influence the
-work reported in this paper.”]
+The author declares no competing financial interests or personal relationships
+that could have appeared to influence the work reported in this paper.
+
+Confirmed by the author on 2026-10-04: “无相关利益冲突”.
 
 ## Funding
 
@@ -65,14 +65,17 @@ This research received no specific grant from funding agencies in the public,
 commercial, or not-for-profit sectors. The author completed the work independently.
 
 Confirmed by the author on 2026-10-04: “无资助研究，纯靠个人完成”.
-APC payment or reimbursement is separate and remains undecided.
+The author plans to apply to the university for APC support. No approval or
+payment commitment has been confirmed. This is separate from research funding
+and is an administrative note, not a research-funding acknowledgment.
 
 ## Author contributions
 
-[AUTHOR_INPUT_NEEDED: confirm applicable CRediT roles for Zhen Cheng. Candidate
-roles to evaluate: Conceptualization; Software; Methodology; Investigation;
-Validation; Data curation; Writing – original draft; Writing – review & editing.
-Do not assign roles solely because there is one human author.]
+Zhen Cheng: Conceptualization, Methodology, Software, Investigation, Validation,
+Data curation, Writing – original draft, Writing – review & editing.
+
+Confirmed after listing the responsibilities to the author on 2026-10-04:
+“完全由我个人完成”. AI assistance remains disclosed separately.
 
 ## Related work and submission history
 
@@ -83,15 +86,18 @@ adaptation. Disclose related versions according to the journal's actual question
 
 ## Approval, originality and permissions
 
-[AUTHOR_INPUT_NEEDED: confirm review and approval of the final manuscript and
-all submitted materials; confirm appropriate rights to the software, diagram
-and distributed evidence; describe any third-party permissions needed. Confirm
-the work is not concurrently under consideration elsewhere before making that
-declaration. Do not infer approval of final content from approval to prepare it.]
+The author confirmed that the software, diagrams and experimental materials
+were authored by them or used lawfully under applicable licenses/permissions.
+No general waiver of third-party license conditions is claimed.
+
+[AUTHOR_INPUT_NEEDED: review and approve the updated final manuscript and the
+selected submission materials. Authorization to prepare these files is not
+authorization to submit them. Concurrent-consideration history is confirmed above.]
 
 ## Ethics and consent
 
-[AUTHOR_INPUT_NEEDED: confirm whether this study includes human participants,
-personal data requiring consent, animal work or restricted third-party material.
-The described fixed software/backend study does not report a participant study,
-but that alone is insufficient to invent a formal ethics-exemption declaration.]
+This study did not involve human participants, identifiable personal data, or
+animal experiments.
+
+Confirmed by the author on 2026-10-04. This describes the study's scope; it does
+not claim a formal institutional ethics approval or exemption decision.
