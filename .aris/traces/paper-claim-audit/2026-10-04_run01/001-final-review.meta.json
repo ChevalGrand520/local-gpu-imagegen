@@ -1,0 +1,17 @@
+{
+  "audit_skill": "paper-claim-audit",
+  "generated_at": "2026-10-04T11:27:35Z",
+  "executor_model": "not exposed; GPT-6 family",
+  "executor_family": "openai",
+  "reviewer_model": "gpt-6-astra",
+  "reviewer_family": "openai",
+  "reviewer_reasoning": "ultra",
+  "review_independence": "same-family",
+  "acceptance_status": "provisional",
+  "reviewer_agent": "/root/final_claim_audit",
+  "thread_id": null,
+  "thread_id_note": "No Codex app thread was created; reviewer is an internal collaboration agent.",
+  "reviewer_verdict": "WARN",
+  "canonical_execution_assurance_verdict": "BLOCKED",
+  "reason_code": "missing_raw_results"
+}

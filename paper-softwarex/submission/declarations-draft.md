@@ -46,6 +46,11 @@ The paragraph above is the previously approved manuscript wording. If a form
 requires additional details, disclose actual use accurately; do not add an
 unsupported assertion that all code or prose was entirely human-written.
 
+Supplementary v0.9 disclosure: Codex also assisted in drafting the explanatory
+diagram specifications and rendering code. The retained specifications and code
+render Figures 1 and 2. Exact model versions remain pending author confirmation;
+the figure captions disclose tool and purpose and must be completed before use.
+
 ## Competing interests
 
 [AUTHOR_INPUT_NEEDED: disclose relevant financial and personal interests, or
@@ -56,9 +61,11 @@ work reported in this paper.”]
 
 ## Funding
 
-[AUTHOR_INPUT_NEEDED: identify research funding and grant numbers, or confirm
-that no specific research funding was received. Potential reimbursement of an
-APC is separate from research funding. Do not infer either from affiliation.]
+This research received no specific grant from funding agencies in the public,
+commercial, or not-for-profit sectors. The author completed the work independently.
+
+Confirmed by the author on 2026-10-04: “无资助研究，纯靠个人完成”.
+APC payment or reimbursement is separate and remains undecided.
 
 ## Author contributions
 
@@ -69,13 +76,10 @@ Do not assign roles solely because there is one human author.]
 
 ## Related work and submission history
 
-Related versions include the retained DSN Tool draft and IEEE Access adaptation.
-Project records indicate these were not submitted by this task. They do not
-establish whether the author independently posted or submitted any version.
-
-[AUTHOR_INPUT_NEEDED: confirm publication/preprint/submission history and any
-current consideration elsewhere; supply URLs or manuscript IDs where relevant.
-Disclose related versions according to the journal's actual questions.]
+The author confirmed on 2026-10-04 that the work has not been published,
+posted as a preprint, or submitted for consideration elsewhere.
+Related internal versions include the retained DSN Tool draft and IEEE Access
+adaptation. Disclose related versions according to the journal's actual questions.
 
 ## Approval, originality and permissions
 

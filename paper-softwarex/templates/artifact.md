@@ -52,3 +52,15 @@ Impact gains Heading1 navigation style, an intentional change from the source
 template's unstyled Impact heading. The five-section numbering is preserved.
 No section geometry, styles.xml, numbering.xml or footer change is permitted.
 All other original package parts remain byte-identical (26 parts).
+
+## v0.6 through v0.9 revision scope
+
+Two inline explanatory images are embedded under architecture and known-job
+recovery. word/media/image1.png and image2.png are new; image relationships and
+Content Types remain the only additional mutable parts. Caption disclosure and
+author-confirmed funding use normal body paragraphs. The five required sections,
+metadata label cells, section geometry, styles, numbering and footer remain
+preserve-only. Eight total pages in v0.9 are expected after filling these slots;
+all pages must still pass visual inspection. The total-page count is distinct
+from the template's main-body allowance excluding metadata, tables, figures and
+references.

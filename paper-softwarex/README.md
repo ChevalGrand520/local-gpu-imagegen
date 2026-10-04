@@ -1,6 +1,6 @@
 # SoftwareX Original Software Publication candidate
 
-Current files: manuscript-v0.8.md (editable content), manuscript-v0.8.docx
+Current files: manuscript-v0.9.md (editable content), manuscript-v0.9.docx
 (official-template candidate), build_manuscript.py (deterministic package patch).
 Versions 0.1 through 0.5 are retained. Nothing has been submitted.
 v0.5 adds verified section-level comparisons to three related preprints,
@@ -28,9 +28,9 @@ after direct HTTP failed; the earlier download blocker is now resolved.
 
 - Exactly five required main sections: Motivation and significance, Software
   description, Illustrative examples, Impact, Conclusions.
-- Approximately 100-word abstract; v0.6 has 101 whitespace words.
+- Approximately 100-word abstract; v0.9 has 99 whitespace words.
 - At most six keywords; current six. At most 4000 words; the full Markdown
-  draft remains below 3100 whitespace words including metadata and references, conservatively
+  draft remains below 3300 whitespace words including metadata and references, conservatively
   below that limit. Maximum six main-body pages excluding metadata/tables/
   figures/references; v0.6 is seven pages total; page seven contains the final main sections,
   availability, declaration and references. Metadata, tables and figures are
@@ -41,13 +41,14 @@ after direct HTTP failed; the earlier download blocker is now resolved.
   branch and the pinned dfc8378 snapshot contain Licence.txt, byte-identical
   to the existing MIT LICENSE. No license terms changed.
 - Instructions and optional empty acknowledgement removed; existing author-
-  approved AI declaration preserved. No funding/conflict statement invented.
+  approved AI declaration preserved verbatim. No-funding statement uses the
+  author's 2026-10-04 confirmation; competing interests remain pending.
 - One Letter section and its full section XML unchanged; continuous line
   numbers, heading numbering and footer PAGE field preserved. Word is asked
   to refresh fields when opening; rendered page numbers correctly run 1–7.
 - 26 original preserve-only DOCX parts remain byte-identical. document.xml,
   settings.xml, core.xml, image relationships and Content Types are editable;
-  one image part is added. The updated contract records this scope.
+  two image parts are added. The updated contract records this scope.
 - Reference/final rendering diff completed; every page of the final revision
   was visually inspected. No clipped text, broken tables or missing glyphs.
 - The paired projection checker passed again, six rows/totals; derived
@@ -57,7 +58,7 @@ after direct HTTP failed; the earlier download blocker is now resolved.
 
 Use the workspace-bundled Python with lxml:
 `python paper-softwarex/build_manuscript.py`.
-This writes a DOCX from the retained template and v0.8 Markdown and checks
+This writes a DOCX from the retained template and v0.9 Markdown and checks
 preserve-only parts. Then run the document skill renderer and inspect every
 page. Generate architecture.svg from figures/architecture.json with the ARIS
 figure-spec renderer; rasterize the SVG for the DOCX image. templates/artifact.md
@@ -106,3 +107,24 @@ paragraph, clarified actors and shortened repetitive closing sentences. Data
 tables, 35 inline-code spans, 11 URLs, 16 citation occurrences, metadata,
 references and the approved AI declaration are unchanged. No evidence added.
 The abstract is 99 words; the Word manuscript remains seven pages.
+
+## v0.9 final review
+
+Final review and dispositions: FINAL_REVIEW_20261004.md. Fresh v0.8 claim review
+and citation review are retained with their original scopes; no v0.9 independent
+PASS is claimed. MCP citation now matches the declared 2024-11-05 protocol.
+The same-run and paired captures are kept distinct. Misleading accepted-job and
+completed-state wording was corrected. Unaccompanied Mac full-suite totals were
+removed while retaining the failed-attempt and unsupported-platform limits.
+Funding and absent publication/preprint/other-review history were author-confirmed.
+
+Bounded final executor checks: 96 research tests passed; twelve synthetic CPU
+operations passed; P-stop/W3 counts and original-run completion fields match;
+rebuilt wheel reports seventeen tools and 2024-11-05. See
+final-check-receipt-20261004.json and validation/. These are CPU/interface checks,
+not new Windows, GPU or real ComfyUI recovery evidence.
+
+Eight rendered pages inspected; 99-word abstract, two figures, eight references,
+six keywords and 26 original preserve-only template parts retained. Captions now
+disclose Codex assistance, with exact model versions still pending. Author facts
+and publisher checks in submission/SUBMISSION_CHECKLIST_20261004.md remain open.

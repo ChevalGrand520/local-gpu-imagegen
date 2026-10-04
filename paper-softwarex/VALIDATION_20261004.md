@@ -1,5 +1,15 @@
 # SoftwareX revision validation receipt
 
+v0.9 (2026-10-04): final review corrections and bounded verification.
+See FINAL_REVIEW_20261004.md and final-check-receipt-20261004.json.
+96 research tests passed again in 9.934 s; twelve synthetic CPU operations
+passed; an isolated rebuilt wheel exposed seventeen tools and 2024-11-05.
+CPU variants are B2 da65d57/W3 d45173a, separate from paired Windows 08539d5.
+No new Windows, GPU or real ComfyUI recovery result. Historical CI refresh
+returned 502; no current refresh claimed. Eight rendered pages inspected;
+99-word abstract, 3163 Markdown words, two figures and 26 preserved template
+parts. Figure/model-version and author/publisher gates remain open.
+
 v0.8 (2026-10-04): prose-only humanizer revision. Compared against v0.7:
 35 inline-code spans, 11 URLs and 16 citation occurrences unchanged in order;
 all table rows, software metadata, references and approved AI declaration

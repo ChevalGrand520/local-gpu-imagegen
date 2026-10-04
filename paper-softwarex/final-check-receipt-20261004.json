@@ -1,0 +1,176 @@
+{
+  "schema": "softwarex-final-check-receipt-v1",
+  "generated_at": "2026-10-04T11:27:35Z",
+  "evidence_class": "executor-recorded bounded CPU and packaging checks",
+  "source_head": "0b8f2722e866f3e6a020bf567b3c51983e9f08b5",
+  "product_scripts_tests_match": "dfc8378cb3d891f7951786bc4544cd971bd56a11",
+  "windows_executed": false,
+  "gpu_executed": false,
+  "real_comfyui_executed": false,
+  "checks": [
+    {
+      "name": "research tests",
+      "command": "uv run --offline --no-project --python 3.12 --with 'Pillow>=10' python -m unittest discover -s tests/research -q",
+      "exit_code": 0,
+      "stderr": "----------------------------------------------------------------------\nRan 96 tests in 9.934s\n\nOK\n",
+      "python": "3.12.14",
+      "scope": "Model-free research suite on macOS; not full product suite or GPU validation."
+    },
+    {
+      "name": "synthetic stop-control",
+      "command": "uv run --offline --no-project --python 3.12 --with 'Pillow>=10' python scripts/research/run_paired_ambiguity_cpu.py --output '/Users/chevalgrand/Documents/ paper dsn/review-checkouts/local-gpu-imagegen-dsn-writing/delivery/private-softwarex-final-cpu-20261004-absolute'",
+      "exit_code": 0,
+      "stdout": "{\"status\": \"PASS\", \"planned_operations\": 12, \"recorded_operations\": 12, \"python\": \"3.12.14\"}",
+      "cpu_result_file": "validation/cpu-report-20261004.json",
+      "cpu_result_sha256": "74f2fbf9617fbf06178f47859ef3437f4315e3b4035794e17af133b49d519f07",
+      "source_freeze_file": "validation/cpu-source-freeze-20261004.json",
+      "source_freeze_sha256": "04fe803b7eb3b2dcb964ad772384a3a2e2f033317adde4c484023aecf8ef11fa",
+      "products": {
+        "B2": "da65d57047b5a59e3403b49adf4605a1c0497c58",
+        "W3": "d45173af75d404ad79dc14568edd4c45f654abd2"
+      },
+      "pstop_product": "B2",
+      "same_run_rows": [
+        {
+          "strategy": "B2",
+          "fault": "F00",
+          "S_proxy": 1,
+          "S_upstream": 1,
+          "A": 1,
+          "E_bound_cpu": 1,
+          "client_completion": true
+        },
+        {
+          "strategy": "B2",
+          "fault": "F02",
+          "S_proxy": 2,
+          "S_upstream": 2,
+          "A": 2,
+          "E_bound_cpu": 2,
+          "client_completion": true
+        },
+        {
+          "strategy": "B2",
+          "fault": "FPRE",
+          "S_proxy": 2,
+          "S_upstream": 1,
+          "A": 1,
+          "E_bound_cpu": 1,
+          "client_completion": true
+        },
+        {
+          "strategy": "W3",
+          "fault": "F00",
+          "S_proxy": 1,
+          "S_upstream": 1,
+          "A": 1,
+          "E_bound_cpu": 1,
+          "client_completion": true
+        },
+        {
+          "strategy": "W3",
+          "fault": "F02",
+          "S_proxy": 1,
+          "S_upstream": 1,
+          "A": 1,
+          "E_bound_cpu": 1,
+          "client_completion": false
+        },
+        {
+          "strategy": "W3",
+          "fault": "FPRE",
+          "S_proxy": 1,
+          "S_upstream": 0,
+          "A": 0,
+          "E_bound_cpu": 0,
+          "client_completion": false
+        },
+        {
+          "strategy": "P-stop",
+          "fault": "F00",
+          "S_proxy": 1,
+          "S_upstream": 1,
+          "A": 1,
+          "E_bound_cpu": 1,
+          "client_completion": true
+        },
+        {
+          "strategy": "P-stop",
+          "fault": "F02",
+          "S_proxy": 1,
+          "S_upstream": 1,
+          "A": 1,
+          "E_bound_cpu": 1,
+          "client_completion": false
+        },
+        {
+          "strategy": "P-stop",
+          "fault": "FPRE",
+          "S_proxy": 1,
+          "S_upstream": 0,
+          "A": 0,
+          "E_bound_cpu": 0,
+          "client_completion": false
+        }
+      ],
+      "scope": "Nine same-run operations plus three scope probes; synthetic CPU fixture lifecycle counts are E_bound_cpu, not measured GPU lifecycles. Frozen variants differ from paired Windows source 08539d5."
+    },
+    {
+      "name": "package build",
+      "command": "uv build --offline --out-dir /tmp/softwarex-final-build-20261004",
+      "exit_code": 0,
+      "output": "local_gpu_imagegen-0.9.1.tar.gz and local_gpu_imagegen-0.9.1-py3-none-any.whl",
+      "registry_upload": false
+    },
+    {
+      "name": "isolated wheel interface",
+      "command": "uv run --offline --no-project --python 3.12 --with /tmp/softwarex-final-build-20261004/local_gpu_imagegen-0.9.1-py3-none-any.whl local-gpu-imagegen verify",
+      "exit_code": 0,
+      "result": {
+        "ok": true,
+        "transport": "stdio",
+        "server": {
+          "name": "local-gpu-imagegen",
+          "version": "0.9.1"
+        },
+        "protocolVersion": "2024-11-05",
+        "tools_count": 17
+      },
+      "wheel_sha256": "398adb60c17b09e2a70dca7b9daec973ea30a6819b1b9e27697350fadd94b396",
+      "metadata": {
+        "Author": "Zhen Cheng",
+        "Requires_Python": ">=3.11",
+        "Requires_Dist": "py7zr==1.1.3"
+      },
+      "research_members": [],
+      "scope": "MCP interface availability only."
+    }
+  ],
+  "negative_attempts": [
+    {
+      "check": "synthetic CPU relative output path",
+      "exit_code": 1,
+      "status": "STOPPED",
+      "recorded_operations": 1,
+      "error": "ValueError in paired_cpu_worker.py: absolute imported file not in relative product-root subpath",
+      "resolution": "Reran unchanged code with a fresh absolute output path. Failed capture preserved locally."
+    },
+    {
+      "check": "historical wheel path",
+      "exit_code": 1,
+      "error": "Distribution not found at /tmp/softwarex-review-build/local_gpu_imagegen-0.9.1-py3-none-any.whl",
+      "resolution": "Rebuilt a local wheel and verified it. No upload."
+    },
+    {
+      "check": "historical CI refresh",
+      "attempts": 2,
+      "error": "GitHub API HTTP 502 for actions/runs/37090919543",
+      "resolution": "No current CI refresh claimed; retain version-labelled historical citation."
+    }
+  ],
+  "limits": [
+    "Executor record, not independent execution authentication.",
+    "Original paired Windows raw captures remain private; neither this CPU report nor the two-case same-run record authenticates the six-case paired capture.",
+    "The historical failed macOS full suite was not rerun; its numerical totals were removed from v0.9 because no public full log accompanies them."
+  ]
+}

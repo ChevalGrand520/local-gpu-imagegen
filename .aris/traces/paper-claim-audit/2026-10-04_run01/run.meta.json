@@ -1,0 +1,23 @@
+{
+  "audit_skill": "paper-claim-audit",
+  "generated_at": "2026-10-04T11:27:35Z",
+  "executor_model": "not exposed; GPT-6 family",
+  "executor_family": "openai",
+  "reviewer_model": "gpt-6-astra",
+  "reviewer_family": "openai",
+  "reviewer_reasoning": "ultra",
+  "review_independence": "same-family",
+  "acceptance_status": "provisional",
+  "reviewer_agent": "/root/final_claim_audit",
+  "thread_id": null,
+  "thread_id_note": "No Codex app thread was created; reviewer is an internal collaboration agent.",
+  "audited_commit": "0b8f2722e866f3e6a020bf567b3c51983e9f08b5",
+  "audited_input_hashes": {
+    "manuscript-v0.8.md": "sha256:a5f0707c02e7ba3a310ca8642c07d622ce4bacdd7a32a3e83cf46c20e07baf0c",
+    "known-job-recovery-receipt.json": "sha256:e3129fb08a59f47676c598c1e49cde7b2612efd2a4164dbebb01ea266a40761c",
+    "/Users/chevalgrand/Documents/ paper dsn/review-checkouts/local-gpu-imagegen-dsn-writing/paper/evidence/paired-windows-projection-20261001.json": "sha256:9badad8948811c06f25b876e54768a02b808f9f7233527bd2ade20b4daed0891",
+    "/Users/chevalgrand/Documents/ paper dsn/review-checkouts/local-gpu-imagegen-dsn-writing/paper/evidence/windows-same-run-v2-20261001.json": "sha256:5e29a4c0d9c9b592aa648c4ad50430e1225d09eb0676abbeee412595e40f0506",
+    "/Users/chevalgrand/Documents/ paper dsn/review-checkouts/local-gpu-imagegen-dsn-writing/paper/evidence/v022-probe-command-receipt.json": "sha256:8d60ebef351c8d4722ee63a85a0e7be74026f19f28eefc2a62e0d82bf20f3361",
+    "/Users/chevalgrand/Documents/ paper dsn/review-checkouts/local-gpu-imagegen-dsn-writing/paper/evidence/revision-v012-runtime-check.json": "sha256:50b8d373607da822a7b26066a9968a260c55f6be810716ae983c6471871c252d"
+  }
+}

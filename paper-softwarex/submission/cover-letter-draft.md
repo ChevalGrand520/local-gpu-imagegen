@@ -10,7 +10,9 @@ A separate CPU walkthrough demonstrates recovery with a retained job identifier:
 
 The manuscript fits SoftwareX's focus on research software and its application by presenting an inspectable local control plane with concrete source-based examples. The public MIT-licensed source snapshot contains installation documentation, the product implementation and separate research scripts. Derived records can be checked without a GPU; the original paired raw captures remain private and are explicitly unavailable for third-party recomputation. External adoption and downstream scientific impact have not been measured. The software snapshot and later manuscript-validation materials are identified separately through immutable GitHub links.
 
-[AUTHOR_INPUT_NEEDED: Insert the confirmed originality and concurrent-submission declaration, disclose any preprint or related submitted/published manuscript, and include conflicts if the journal requests them here. The DSN and IEEE Access drafts are related versions of this work and must be considered when completing the journal's disclosure questions.]
+The work has not been published, posted as a preprint, or submitted for consideration elsewhere. The retained DSN and IEEE Access versions are internal drafts. The research received no specific funding and was completed by the sole author.
+
+[AUTHOR_INPUT_NEEDED: Confirm originality, rights and approval of the final manuscript. Add the competing-interest declaration if requested here after author confirmation.]
 
 Thank you for considering the manuscript.
 

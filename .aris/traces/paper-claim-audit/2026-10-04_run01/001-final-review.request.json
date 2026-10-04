@@ -1,0 +1,14 @@
+{
+  "model": "gpt-6-astra",
+  "reasoning_effort": "ultra",
+  "fork_turns": "none",
+  "prompt": "You are a fresh zero-context paper-to-evidence auditor. Read-only, no writes, no network, no GPU or experiments, no further agents. Repository /Users/chevalgrand/Documents/ paper dsn/review-checkouts/local-gpu-imagegen-dsn-writing at immutable commit 0b8f272. Only read these declared inputs: paper-softwarex/manuscript-v0.8.md; paper-softwarex/known-job-recovery-receipt.json; paper/evidence/paired-windows-projection-20261001.json; paper/evidence/windows-same-run-v2-20261001.json; paper/evidence/v022-probe-command-receipt.json; paper/evidence/revision-v012-runtime-check.json. Do not read previous audit outputs, executor summaries or any other Markdown files. Extract every quantitative/comparison/scope claim, map to evidence with exact value, classify exact_match/rounding_ok/ambiguous_mapping/missing_evidence/config_mismatch/aggregation_mismatch/number_mismatch/scope_overclaim/unsupported_claim. Distinguish raw evidence from derived JSON records according to file contents; don't treat a derived record as execution authentication. Provide a per-claim ledger, grounded material issues with manuscript line/section and evidence key, verdict PASS/WARN/FAIL/BLOCKED and audit limits. Model review is same-family provisional; never claim editorial or submission approval. Return final report in text, compact enough to consume but cover every numerical result. No writing to shared workspace.",
+  "audited_input_hashes": {
+    "manuscript-v0.8.md": "sha256:a5f0707c02e7ba3a310ca8642c07d622ce4bacdd7a32a3e83cf46c20e07baf0c",
+    "known-job-recovery-receipt.json": "sha256:e3129fb08a59f47676c598c1e49cde7b2612efd2a4164dbebb01ea266a40761c",
+    "/Users/chevalgrand/Documents/ paper dsn/review-checkouts/local-gpu-imagegen-dsn-writing/paper/evidence/paired-windows-projection-20261001.json": "sha256:9badad8948811c06f25b876e54768a02b808f9f7233527bd2ade20b4daed0891",
+    "/Users/chevalgrand/Documents/ paper dsn/review-checkouts/local-gpu-imagegen-dsn-writing/paper/evidence/windows-same-run-v2-20261001.json": "sha256:5e29a4c0d9c9b592aa648c4ad50430e1225d09eb0676abbeee412595e40f0506",
+    "/Users/chevalgrand/Documents/ paper dsn/review-checkouts/local-gpu-imagegen-dsn-writing/paper/evidence/v022-probe-command-receipt.json": "sha256:8d60ebef351c8d4722ee63a85a0e7be74026f19f28eefc2a62e0d82bf20f3361",
+    "/Users/chevalgrand/Documents/ paper dsn/review-checkouts/local-gpu-imagegen-dsn-writing/paper/evidence/revision-v012-runtime-check.json": "sha256:50b8d373607da822a7b26066a9968a260c55f6be810716ae983c6471871c252d"
+  }
+}
