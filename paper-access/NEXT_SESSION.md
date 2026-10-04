@@ -1,5 +1,13 @@
 # IEEE Access preparation handoff — 2026-10-02
 
+Latest 2026-10-04: author approved bounded handling of the Doubao critique.
+v0.5 reads/cites ToolPro (2606.19992), Trofimov/Novikov (2609.15397), Mansoor
+et al. (2608.02645), with section-level receipt RELATED_WORK_CHECK_20261004.md.
+It adds a retained F02 walkthrough, compresses repetitive caveats/provenance
+and preserves six paired rows/negative controls. No F03/GPU/force-resend added.
+Current candidate: paper-softwarex/manuscript-v0.5.docx; seven total pages,
+main sections end page six. Author administrative facts still pending.
+
 Actual repository: /Users/chevalgrand/Documents/ paper dsn/review-checkouts/local-gpu-imagegen-dsn-writing
 Branch: codex/ieee-access-adaptation-v1. Remote: ChevalGrand520/local-gpu-imagegen.
 Find current exact SHA and upstream from Git before proceeding.

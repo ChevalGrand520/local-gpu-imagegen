@@ -24,7 +24,7 @@ as evidence that the guide or an administrative requirement does not exist.
 
 | Item | Prepared file / status | Requirement provenance |
 |---|---|---|
-| Main manuscript | ../manuscript-v0.4.docx; six pages visually checked; 100-word abstract | Mandatory official template |
+| Main manuscript | ../manuscript-v0.5.docx; seven pages total, main sections end page six; ~100-word abstract | Mandatory official template |
 | Author/title metadata | declarations-draft.md; established name/affiliation/email | Template; full-address/ORCID form fields pending |
 | Cover letter | cover-letter-draft.md; final declaration placeholder | Useful editor-facing draft; mandatory status not refreshed |
 | Highlights | highlights-draft.txt; five bullets, each <=85 characters | Optional preparation; journal-specific demand/limit not refreshed |

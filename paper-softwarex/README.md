@@ -1,8 +1,11 @@
 # SoftwareX Original Software Publication candidate
 
-Current files: manuscript-v0.4.md (editable content), manuscript-v0.4.docx
+Current files: manuscript-v0.5.md (editable content), manuscript-v0.5.docx
 (official-template candidate), build_manuscript.py (deterministic package patch).
-Versions 0.1 through 0.3 are retained. Nothing has been submitted.
+Versions 0.1 through 0.4 are retained. Nothing has been submitted.
+v0.5 adds verified section-level comparisons to three related preprints,
+a retained F02 walkthrough and a compact Limitations subsection. Reading
+receipt and review disposition: RELATED_WORK_CHECK_20261004.md. No new results.
 The v0.3 targeted review disposition is REVIEW_V03_DISPOSITION_20261004.md.
 v0.4 adds a resolvable validation-material link, separates unknown submission
 from retained-job recovery, clarifies derived actions and figure arrows.
@@ -25,11 +28,12 @@ after direct HTTP failed; the earlier download blocker is now resolved.
 
 - Exactly five required main sections: Motivation and significance, Software
   description, Illustrative examples, Impact, Conclusions.
-- Approximately 100-word abstract; v0.2 abstract is exactly 100 whitespace words.
+- Approximately 100-word abstract; v0.5 has 101 whitespace words.
 - At most six keywords; current six. At most 4000 words; the full Markdown
   draft remains below 2700 whitespace words including metadata and references, conservatively
   below that limit. Maximum six main-body pages excluding metadata/tables/
-  figures/references; the entire v0.3 rendering is six pages.
+  figures/references; v0.5 is seven pages total, with main sections ending on
+  page six and page seven containing references only.
 - Metadata labels in the first two columns remain byte-for-byte identical to
   the official template; eight right-hand data slots are filled.
 - A README.md and Licence.txt are explicitly required in the template. This
@@ -39,7 +43,7 @@ after direct HTTP failed; the earlier download blocker is now resolved.
   approved AI declaration preserved. No funding/conflict statement invented.
 - One Letter section and its full section XML unchanged; continuous line
   numbers, heading numbering and footer PAGE field preserved. Word is asked
-  to refresh fields when opening; rendered page numbers correctly run 1–6.
+  to refresh fields when opening; rendered page numbers correctly run 1–7.
 - 26 original preserve-only DOCX parts remain byte-identical. document.xml,
   settings.xml, core.xml, image relationships and Content Types are editable;
   one image part is added. The updated contract records this scope.
@@ -52,7 +56,7 @@ after direct HTTP failed; the earlier download blocker is now resolved.
 
 Use the workspace-bundled Python with lxml:
 `python paper-softwarex/build_manuscript.py`.
-This writes a DOCX from the retained template and v0.4 Markdown and checks
+This writes a DOCX from the retained template and v0.5 Markdown and checks
 preserve-only parts. Then run the document skill renderer and inspect every
 page. Generate architecture.svg from figures/architecture.json with the ARIS
 figure-spec renderer; rasterize the SVG for the DOCX image. templates/artifact.md
