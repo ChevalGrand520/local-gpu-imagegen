@@ -1,6 +1,11 @@
 # SoftwareX Original Software Publication candidate
 
-Current files: manuscript-v0.11.md (editable content), manuscript-v0.11.docx
+Current rendered candidate: v0.12, nine total pages (including references),
+98-word abstract, 3636 Markdown words. All pages visually inspected. Public
+minimized-packet release record: EVIDENCE_RELEASE_20261004.md. Historical
+version-specific notes below retain their original verification scopes.
+
+Current files: manuscript-v0.12.md (editable content), manuscript-v0.12.docx
 (official-template candidate), build_manuscript.py (deterministic package patch).
 Versions 0.1 through 0.5 are retained. Nothing has been submitted.
 v0.5 adds verified section-level comparisons to three related preprints,
@@ -28,9 +33,9 @@ after direct HTTP failed; the earlier download blocker is now resolved.
 
 - Exactly five required main sections: Motivation and significance, Software
   description, Illustrative examples, Impact, Conclusions.
-- Approximately 100-word abstract; v0.11 has 98 whitespace words.
+- Approximately 100-word abstract; v0.12 has 98 whitespace words.
 - At most six keywords; current six. At most 4000 words; the full Markdown
-  draft has 3516 whitespace words including metadata and references, conservatively
+  draft remains below 4000 whitespace words including metadata and references, conservatively
   below that limit. Maximum six main-body pages excluding metadata/tables/
   figures/references; v0.6 is seven pages total; page seven contains the final main sections,
   availability, declaration and references. Metadata, tables and figures are
@@ -58,7 +63,7 @@ after direct HTTP failed; the earlier download blocker is now resolved.
 
 Use the workspace-bundled Python with lxml:
 `python paper-softwarex/build_manuscript.py`.
-This writes a DOCX from the retained template and v0.11 Markdown and checks
+This writes a DOCX from the retained template and v0.12 Markdown and checks
 preserve-only parts. Then run the document skill renderer and inspect every
 page. Generate architecture.svg from figures/architecture.json with the ARIS
 figure-spec renderer; rasterize the SVG for the DOCX image. templates/artifact.md
@@ -77,8 +82,9 @@ Refresh the full Guide for Authors, source-layout expectation, administrative
 declarations and current APC before submission. Select a final immutable source
 snapshot that includes Licence.txt and prepare its release inventory. Keep
 product source, older experiment source and source-only exporter distinct.
-Private raw captures and the sanitized prototype are still not cleared for
-public distribution. No GPU or new backend experiment occurred in this milestone.
+The original raw archive remains private. The author-approved minimized packet
+is now distributed under evidence/paired-windows-minimized-v2/; its scope and
+omissions are recorded there. No GPU or new backend experiment occurred.
 
 The older ranking/timeline receipt remains version-labelled in paper-access/.
 Current official Insights values were not refreshed through the CAPTCHA page.
@@ -156,3 +162,14 @@ and adapter history. Validation materials remain pinned to dc9720e; this
 manuscript revision is tracked separately by its version and Git commit.
 See REVIEW_V10_DISPOSITION_20261004.md. All eight pages inspected; abstract
 98 words, full Markdown 3516 words, 26 template parts identical. No test rerun.
+
+## v0.12 public minimized evidence
+
+Author-approved seven-file Windows packet is pinned to 345da1f44ad6d67a5cc637c31edb2db607a37480.
+Six rows can be recomputed from pseudonymized events/history/client states,
+with no backend or GPU. Original archive and full byte/causal-binding replay
+remain outside the public packet. The independent review failed before its
+final report due to usage limits; historical v0.8 BLOCKED is unchanged.
+Manuscript, letter and availability statement now describe this distinction.
+No new Windows/GPU experiment or reliability/cost claim. Nine rendered pages
+inspected, 26 preserve-only parts identical, tables/references unchanged.

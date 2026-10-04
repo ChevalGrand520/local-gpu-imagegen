@@ -1,5 +1,16 @@
 # SoftwareX revision validation receipt
 
+v0.12 (2026-10-04): author-approved minimized Windows packet released at
+345da1f44ad6d67a5cc637c31edb2db607a37480; see EVIDENCE_RELEASE_20261004.md.
+The standalone seven-file packet verifier passed after copying and checksum
+verification; six rows match. No new Windows/GPU execution. Original byte
+replay and independent execution authentication remain distinct from public
+subset recomputation. Reviewer final report was unavailable due to usage limits;
+no new independent audit PASS and no change to the frozen v0.8 audit.
+Bundled build/render passed; all nine pages inspected, 98-word abstract,
+3636 Markdown words, 26 identical preserve-only parts, tables/references unchanged.
+DOCX SHA256: 4eac128033c9967f9ce493f0ee0c68879e5b2531a8068b923b2521dab63fad73.
+
 v0.11 (2026-10-04): restored the retained macOS full-suite summary with its
 immutable source link, local qualification and absent-public-full-log boundary.
 No unified failure cause asserted. Recovery wording now names retrieval,

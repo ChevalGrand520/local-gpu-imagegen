@@ -1,8 +1,9 @@
 # SoftwareX 投稿前最终复查（2026-10-04）
 
-当前候选稿已更新为 manuscript-v0.11.md/docx。新增意见处理见
+当前候选稿已更新为 manuscript-v0.12.md/docx。脱敏公开记录见
+EVIDENCE_RELEASE_20261004.md。新增意见处理见
 REVIEW_V09_DISPOSITION_20261004.md 与 REVIEW_V10_DISPOSITION_20261004.md；
-下文保留历史审查范围，不改标为 v0.11 独立通过。
+下文保留历史审查范围，不改标为 v0.12 独立通过。
 作者最终内容确认和投稿端核验仍待完成。
 
 ## 同日作者确认更新

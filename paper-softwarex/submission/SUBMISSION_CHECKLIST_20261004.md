@@ -1,6 +1,6 @@
 # SoftwareX initial submission package checkpoint
 
-Readiness: v0.11 candidate prepared; submission_ready=false. Actual submission
+Readiness: v0.12 candidate prepared; submission_ready=false. Actual submission
 remains gated by final publisher checks and resolved administrative facts.
 No journal form, upload, editor message, agreement, payment or submission was
 performed. Approval received was for preparing these materials.
@@ -24,7 +24,7 @@ as evidence that the guide or an administrative requirement does not exist.
 
 | Item | Prepared file / status | Requirement provenance |
 |---|---|---|
-| Main manuscript | ../manuscript-v0.11.docx; eight pages total; 98-word abstract; inspected in full; eight references | Mandatory official template |
+| Main manuscript | ../manuscript-v0.12.docx; nine pages total; 98-word abstract; inspected in full; eight references | Total pages include metadata, figures, table and references |
 | Author/title metadata | declarations-draft.md; established name/affiliation/email; author has no ORCID currently | Full mailing address and ORCID registration only if the actual form requires them |
 | Cover letter | cover-letter-draft.md; final declaration placeholder | Useful editor-facing draft; mandatory status not refreshed |
 | Highlights | highlights-draft.txt; five bullets, each <=85 characters | Optional preparation; journal-specific demand/limit not refreshed |
@@ -33,6 +33,7 @@ as evidence that the guide or an administrative requirement does not exist.
 | Software snapshot | GitHub dfc8378; README, MIT LICENSE/Licence.txt, product and research files present | Template GitHub/permanent-link requirements |
 | Validation record | GitHub dc9720ee76375ea341a8770c4ef32c0143b3a1ff / paper-softwarex/VALIDATION_20261004.md | Immutable revision contains every cited public supplement |
 | Derived paired evidence | Source snapshot paper/evidence/paired-windows-projection-20261001.json and checker | Consistency only, no raw-event replay |
+| Minimized Windows packet | ../evidence/paired-windows-minimized-v2/; immutable 345da1f44ad6d67a5cc637c31edb2db607a37480 | Seven author-approved public files; six-row transformed-subset recomputation |
 | Known-job CPU supplement | ../known_job_recovery_demo.py and ../known-job-recovery-receipt.json; separate engine/adapter checks passed | Synthetic component evidence only |
 | Supplementary upload | Not selected; include only necessary, reviewed public files | Current portal options not verified; no whole-repo/private-capture upload |
 | Reviewer suggestions | Not drafted; no identities/contact details invented | Prepare only if portal requires or author requests |
@@ -44,9 +45,12 @@ as evidence that the guide or an administrative requirement does not exist.
 ## Terminology and cross-file consistency
 
 Validation-material revision is dc9720e, independently pinned. Manuscript
-revision is v0.11 and its containing Git commit; no branch-head pin is used
+revision is v0.12 and its containing Git commit; no branch-head pin is used
 as a replacement for the immutable validation-material links. Subsequent
 disposition: ../REVIEW_V10_DISPOSITION_20261004.md.
+Minimized-packet revision is separately pinned to 345da1f. Public distribution
+was approved on 2026-10-04; this does not authorize journal submission or
+publishing the original raw archive. Release record: ../EVIDENCE_RELEASE_20261004.md.
 
 Canonical software: Local GPU Imagegen. Interface: Model Context Protocol (MCP).
 Unknown submission is distinct from known-job recovery and client completion.

@@ -34,9 +34,13 @@ and repository default branch are distinct from this cited source snapshot.
 The derived paired record and its consistency checker are included in the
 cited source snapshot under paper/evidence/paired-windows-projection-20261001.json
 and paper/scripts/verify_paired_projection.py. The paired experiment used source
-revision 08539d5. Original raw captures and the private sanitized prototype are
-not publicly available for third-party recomputation. Derived consistency
-checks do not authenticate execution or replay original raw events.
+revision 08539d5. An author-approved minimized packet is available at
+https://github.com/ChevalGrand520/local-gpu-imagegen/tree/345da1f44ad6d67a5cc637c31edb2db607a37480/paper-softwarex/evidence/paired-windows-minimized-v2 .
+Its standalone verifier recomputes six rows from pseudonymized event, history
+and client-state fields without a GPU. The original raw archive remains private.
+The packet does not support complete original byte replay, the full causal
+binding contract or independent execution authentication. No pseudonym key,
+private configuration, source snapshots, payload bodies or images are distributed.
 
 ## Generative AI assistance
 
