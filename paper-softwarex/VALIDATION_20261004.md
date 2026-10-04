@@ -1,5 +1,17 @@
 # SoftwareX revision validation receipt
 
+v0.10 (2026-10-04): same-run guard and operator-use clarification; see
+REVIEW_V09_DISPOSITION_20261004.md. Bundled build/render passed; all eight
+pages inspected, 98-word abstract, 3441 Markdown words, 367-word Impact and
+26 identical original preserve-only parts. Metadata/result rows and references
+match v0.9 exactly. Figure 2 PNG is 7000×1600; SVG retained, stop connector
+dashed without arrowhead. Validation/supplement links pin dc9720e; all six
+cited supplement paths exist there. No new tests, Windows/GPU experiment or
+independent claim audit. Original v0.9 DOCX hash remains unchanged below.
+v0.10 DOCX SHA256:
+3af76fe63848df0a90bf574751293eaa9e99a40893c09f6144c60d7123dee6b0.
+Final author content approval and current publisher/form/APC checks remain open.
+
 Same-day author-declaration update to v0.9: completed competing interests,
 CRediT and factual ethics/consent scope; diagram captions disclose the
 author-confirmed GPT-6.1 Sol model. Original approved AI paragraph, result and

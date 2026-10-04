@@ -17,8 +17,8 @@
 <text x="910" y="55" text-anchor="middle" font-size="25" fill="#222222">same key / request hash</text>
 <text x="910" y="189" text-anchor="middle" font-size="25" fill="#222222">forward recovery_job_id</text>
 <rect x="1080" y="225" width="300" height="75" fill="white" stroke="#555555" stroke-width="2"/>
-<text x="1230" y="271" text-anchor="middle" font-size="25" fill="#222222">unresolved</text>
-<polyline points="160,160 160,260 1080,260" fill="none" stroke="#555555" stroke-width="2"/>
-<polygon points="1080,260 1068,254 1068,266" fill="#555555"/>
+<text x="1230" y="256" text-anchor="middle" font-size="25" fill="#222222">unresolved</text>
+<text x="1230" y="289" text-anchor="middle" font-size="25" fill="#222222">(unchanged)</text>
+<polyline points="160,160 160,260 1080,260" fill="none" stroke="#555555" stroke-width="2" stroke-dasharray="12 8"/>
 <text x="590" y="249" text-anchor="middle" font-size="25" fill="#222222">stop-only: no further action</text>
 </svg>

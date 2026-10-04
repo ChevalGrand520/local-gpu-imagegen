@@ -1,5 +1,11 @@
 # Official SoftwareX template contract
 
+Current v0.10 retains eight pages and 26 identical preserve-only parts. The
+recovery SVG retains its 1400×320 viewBox; PNG is 7000×1600 (about 1077 pixels
+per inch at its 6.5-inch embedded width). Stop-only uses a dashed arrowless
+connector and unresolved (unchanged). All eight pages inspected. This improves
+clarity without asserting a refreshed journal DPI requirement.
+
 Reference: /Users/chevalgrand/Documents/ paper dsn/review-checkouts/local-gpu-imagegen-dsn-writing/paper-softwarex/templates/softwarex-osp-template-v6.docx
 SHA256: 9fcf40ede96a2f188ee4ef77134e0596d01e1b65fd9db63f2874d29f2ecb916d
 Version 6, March 2026; obtained from Elsevier's author resources link.

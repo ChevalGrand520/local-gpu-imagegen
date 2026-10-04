@@ -2,7 +2,7 @@ Dear Editors of SoftwareX,
 
 Please consider my manuscript, “Local GPU Imagegen: Durable run records for local image generation,” as an Original Software Publication in SoftwareX.
 
-Local GPU Imagegen is an open-source Python control plane that connects Model Context Protocol clients to local image-generation backends. It combines durable run records, explicit backend and workflow selection, and a guard for an earlier submission whose outcome is unknown. The manuscript describes the software architecture, installation and inspection interfaces, and the distinction between reading local run state and recovering a known backend job.
+Local GPU Imagegen is an open-source Python control plane that connects Model Context Protocol clients to local image-generation backends. It combines durable run records, explicit backend and workflow selection, and a guard that prevents another automatic submission in the same run while an earlier submission's outcome is unknown. The manuscript describes the software architecture, installation and inspection interfaces, and the distinction between reading local run state and recovering a known backend job.
 
 Six fixed paired Windows operations with ComfyUI illustrate the submission contract. After accepted response loss, the guarded path retains one accepted job while withholding another submission, but leaves the original client operation incomplete. A pre-send failure also produces a false block. These examples make the completion cost visible. They establish neither a new recovery policy nor improved general reliability, image quality or measured GPU savings; a synthetic simple-stop control matches the reported guard outcomes.
 

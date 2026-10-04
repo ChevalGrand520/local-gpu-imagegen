@@ -1,30 +1,44 @@
 """Render the manuscript's CPU engine-fixture state diagram as SVG and PNG."""
 from pathlib import Path
 from html import escape
+from math import hypot
 from PIL import Image, ImageDraw, ImageFont
 
 ROOT = Path(__file__).resolve().parent
-image = Image.new('RGB', (1400, 320), 'white')
+SCALE = 5
+image = Image.new('RGB', (1400 * SCALE, 320 * SCALE), 'white')
 draw = ImageDraw.Draw(image)
 font_path = '/System/Library/Fonts/Supplemental/Arial.ttf'
-font = ImageFont.truetype(font_path, 25)
+font = ImageFont.truetype(font_path, 25 * SCALE)
 svg = ['<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="320" viewBox="0 0 1400 320" font-family="Arial, sans-serif">', '<rect width="1400" height="320" fill="white"/>']
 
 def box(x, y, w, h):
-    draw.rectangle((x, y, x+w, y+h), outline='#555555', width=2)
+    draw.rectangle(tuple(v * SCALE for v in (x, y, x+w, y+h)), outline='#555555', width=2 * SCALE)
     svg.append(f'<rect x="{x}" y="{y}" width="{w}" height="{h}" fill="white" stroke="#555555" stroke-width="2"/>')
 
 def label(x, y, value):
-    draw.text((x, y), value, font=font, fill='#222222', anchor='mt')
+    draw.text((x * SCALE, y * SCALE), value, font=font, fill='#222222', anchor='mt')
     svg.append(f'<text x="{x}" y="{y+24}" text-anchor="middle" font-size="25" fill="#222222">{escape(value)}</text>')
 
-def arrow(points):
-    draw.line(points, fill='#555555', width=2)
-    x, y = points[-1]
-    draw.polygon([(x,y),(x-12,y-6),(x-12,y+6)], fill='#555555')
+def connector(points, *, arrowhead=True, dashed=False):
+    if dashed:
+        for (x1, y1), (x2, y2) in zip(points, points[1:]):
+            length = hypot(x2 - x1, y2 - y1)
+            for start in range(0, int(length), 20):
+                end = min(start + 12, length)
+                segment = [(SCALE * (x1 + (x2-x1) * d / length),
+                            SCALE * (y1 + (y2-y1) * d / length)) for d in (start, end)]
+                draw.line(segment, fill='#555555', width=2 * SCALE)
+    else:
+        draw.line([(x * SCALE, y * SCALE) for x, y in points], fill='#555555', width=2 * SCALE)
     coords = ' '.join(f'{x},{y}' for x,y in points)
-    svg.append(f'<polyline points="{coords}" fill="none" stroke="#555555" stroke-width="2"/>')
-    svg.append(f'<polygon points="{x},{y} {x-12},{y-6} {x-12},{y+6}" fill="#555555"/>')
+    dash_attr = ' stroke-dasharray="12 8"' if dashed else ''
+    svg.append(f'<polyline points="{coords}" fill="none" stroke="#555555" stroke-width="2"{dash_attr}/>')
+    if arrowhead:
+        x, y = points[-1]
+        draw.polygon([(SCALE * px, SCALE * py) for px, py in
+                      [(x,y),(x-12,y-6),(x-12,y+6)]], fill='#555555')
+        svg.append(f'<polygon points="{x},{y} {x-12},{y-6} {x-12},{y+6}" fill="#555555"/>')
 
 box(20, 65, 280, 95)
 label(160, 82, 'unresolved')
@@ -35,15 +49,16 @@ label(580, 117, 'generate_round:recover')
 box(1080, 65, 300, 95)
 label(1230, 82, 'generated')
 label(1230, 117, 'image path recorded')
-arrow([(300,110),(415,110)])
+connector([(300,110),(415,110)])
 label(355, 31, 'inspect')
-arrow([(745,110),(1080,110)])
+connector([(745,110),(1080,110)])
 label(910, 31, 'same key / request hash')
 label(910, 165, 'forward recovery_job_id')
 box(1080, 225, 300, 75)
-label(1230, 247, 'unresolved')
-arrow([(160,160),(160,260),(1080,260)])
+label(1230, 232, 'unresolved')
+label(1230, 265, '(unchanged)')
+connector([(160,160),(160,260),(1080,260)], arrowhead=False, dashed=True)
 label(590, 225, 'stop-only: no further action')
 svg.append('</svg>')
 (ROOT / 'known-job-recovery.svg').write_text('\n'.join(svg) + '\n')
-image.save(ROOT / 'known-job-recovery.png')
+image.save(ROOT / 'known-job-recovery.png', dpi=(1100, 1100))

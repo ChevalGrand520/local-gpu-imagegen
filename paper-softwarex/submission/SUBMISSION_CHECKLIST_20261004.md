@@ -1,6 +1,6 @@
 # SoftwareX initial submission package checkpoint
 
-Readiness: v0.9 candidate prepared; submission_ready=false. Actual submission
+Readiness: v0.10 candidate prepared; submission_ready=false. Actual submission
 remains gated by final publisher checks and resolved administrative facts.
 No journal form, upload, editor message, agreement, payment or submission was
 performed. Approval received was for preparing these materials.
@@ -24,21 +24,21 @@ as evidence that the guide or an administrative requirement does not exist.
 
 | Item | Prepared file / status | Requirement provenance |
 |---|---|---|
-| Main manuscript | ../manuscript-v0.9.docx; eight pages total; 99-word abstract; inspected in full; eight references | Mandatory official template |
+| Main manuscript | ../manuscript-v0.10.docx; eight pages total; 98-word abstract; inspected in full; eight references | Mandatory official template |
 | Author/title metadata | declarations-draft.md; established name/affiliation/email; author has no ORCID currently | Full mailing address and ORCID registration only if the actual form requires them |
 | Cover letter | cover-letter-draft.md; final declaration placeholder | Useful editor-facing draft; mandatory status not refreshed |
 | Highlights | highlights-draft.txt; five bullets, each <=85 characters | Optional preparation; journal-specific demand/limit not refreshed |
 | Declaration blocks | declarations-draft.md; confirmed no conflicts, CRediT, study scope and diagram model GPT-6.1 Sol | Original AI paragraph preserved; final content approval pending |
 | Figure | ../figures/architecture.svg and architecture.png; also embedded in DOCX; known-job-recovery.svg/png | Architecture and CPU recovery diagrams; no GPU measurement |
 | Software snapshot | GitHub dfc8378; README, MIT LICENSE/Licence.txt, product and research files present | Template GitHub/permanent-link requirements |
-| Validation record | GitHub abb3639 / paper-softwarex/VALIDATION_20261004.md | Separate manuscript-material revision; explicitly cited |
+| Validation record | GitHub dc9720ee76375ea341a8770c4ef32c0143b3a1ff / paper-softwarex/VALIDATION_20261004.md | Immutable revision contains every cited public supplement |
 | Derived paired evidence | Source snapshot paper/evidence/paired-windows-projection-20261001.json and checker | Consistency only, no raw-event replay |
 | Known-job CPU supplement | ../known_job_recovery_demo.py and ../known-job-recovery-receipt.json; separate engine/adapter checks passed | Synthetic component evidence only |
 | Supplementary upload | Not selected; include only necessary, reviewed public files | Current portal options not verified; no whole-repo/private-capture upload |
 | Reviewer suggestions | Not drafted; no identities/contact details invented | Prepare only if portal requires or author requests |
 | Graphical abstract/video | Not prepared | Requirement not verified; architecture figure is not automatically a graphical abstract |
 | Related versions | Author confirmed no publication, preprint or concurrent review; DSN/Access drafts are internal | Reuse confirmed history in actual journal questions |
-| Final review | ../FINAL_REVIEW_20261004.md; claim/citation reviews and final-check-receipt-20261004.json | Same-family provisional review; derived consistency is not execution authentication |
+| Final review | ../FINAL_REVIEW_20261004.md; ../REVIEW_V09_DISPOSITION_20261004.md; frozen claim/citation reviews and final-check receipt | v0.10 disposition; no new independent PASS or execution authentication |
 | Final CPU checks | ../validation/cpu-report-20261004.json and cpu-source-freeze-20261004.json | 12 synthetic operations; frozen variants separate from Windows campaign |
 
 ## Terminology and cross-file consistency

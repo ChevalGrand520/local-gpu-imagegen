@@ -1,6 +1,6 @@
 # SoftwareX Original Software Publication candidate
 
-Current files: manuscript-v0.9.md (editable content), manuscript-v0.9.docx
+Current files: manuscript-v0.10.md (editable content), manuscript-v0.10.docx
 (official-template candidate), build_manuscript.py (deterministic package patch).
 Versions 0.1 through 0.5 are retained. Nothing has been submitted.
 v0.5 adds verified section-level comparisons to three related preprints,
@@ -28,9 +28,9 @@ after direct HTTP failed; the earlier download blocker is now resolved.
 
 - Exactly five required main sections: Motivation and significance, Software
   description, Illustrative examples, Impact, Conclusions.
-- Approximately 100-word abstract; v0.9 has 99 whitespace words.
+- Approximately 100-word abstract; v0.10 has 98 whitespace words.
 - At most six keywords; current six. At most 4000 words; the full Markdown
-  draft remains below 3300 whitespace words including metadata and references, conservatively
+  draft remains below 3500 whitespace words including metadata and references, conservatively
   below that limit. Maximum six main-body pages excluding metadata/tables/
   figures/references; v0.6 is seven pages total; page seven contains the final main sections,
   availability, declaration and references. Metadata, tables and figures are
@@ -42,10 +42,10 @@ after direct HTTP failed; the earlier download blocker is now resolved.
   to the existing MIT LICENSE. No license terms changed.
 - Instructions and optional empty acknowledgement removed; existing author-
   approved AI declaration preserved verbatim. No-funding statement uses the
-  author's 2026-10-04 confirmation; competing interests remain pending.
+  author's 2026-10-04 confirmations; competing interests are also confirmed.
 - One Letter section and its full section XML unchanged; continuous line
   numbers, heading numbering and footer PAGE field preserved. Word is asked
-  to refresh fields when opening; rendered page numbers correctly run 1–7.
+  to refresh fields when opening; current rendered page numbers run 1–8.
 - 26 original preserve-only DOCX parts remain byte-identical. document.xml,
   settings.xml, core.xml, image relationships and Content Types are editable;
   two image parts are added. The updated contract records this scope.
@@ -58,7 +58,7 @@ after direct HTTP failed; the earlier download blocker is now resolved.
 
 Use the workspace-bundled Python with lxml:
 `python paper-softwarex/build_manuscript.py`.
-This writes a DOCX from the retained template and v0.9 Markdown and checks
+This writes a DOCX from the retained template and v0.10 Markdown and checks
 preserve-only parts. Then run the document skill renderer and inspect every
 page. Generate architecture.svg from figures/architecture.json with the ARIS
 figure-spec renderer; rasterize the SVG for the DOCX image. templates/artifact.md
@@ -132,3 +132,16 @@ statements were completed in the same v0.9 files. The author has no ORCID and
 plans to apply for university APC support, with no payment commitment claimed.
 Final author content approval and publisher checks in
 submission/SUBMISSION_CHECKLIST_20261004.md remain open.
+
+## v0.10 function and usage clarification
+
+Restores the positive same-run unknown-outcome guard description, adds an
+operator inspection/recovery sequence and research questions to Impact, and
+restores the abstract reliability/GPU-savings boundary. Local unknown state
+alone cannot distinguish accepted work from a pre-send false block. Validation
+links now pin dc9720e, which contains all cited public supplements. Figure 2
+uses a dashed arrowless stop connector and a 7000×1600 PNG alongside its SVG.
+See REVIEW_V09_DISPOSITION_20261004.md for accepted and corrected review points.
+Bundled build/render passed; all eight pages inspected, 98-word abstract,
+3441 Markdown words and 26 original preserve-only parts identical. No new
+experiment or broader claim review was performed; v0.9 remains unchanged.
