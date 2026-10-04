@@ -1,0 +1,33 @@
+{
+  "schema": "known-job-cpu-walkthrough-v1",
+  "status": "PASS",
+  "scope": "Separate engine fixture and real adapter against loopback fake HTTP server",
+  "gpu_executed": false,
+  "real_comfyui_executed": false,
+  "fixtures_source": "dfc8378",
+  "engine_fixture": {
+    "before_state": "unresolved",
+    "retained_backend_job_id": "job-two-stage-timeout",
+    "next_actions": [
+      "get_run",
+      "generate_round:recover"
+    ],
+    "get_run_backend_calls_added": 0,
+    "changed_key_error": "backend_job_unresolved",
+    "recovery_job_id_forwarded": "job-two-stage-timeout",
+    "after_state": "generated",
+    "rounds": 1,
+    "image_recorded_and_exists": true,
+    "stop_only_control_state": "unresolved",
+    "control_scope": "Defined no-further-action policy on the same retained manifest; not P-stop Windows/CPU campaign"
+  },
+  "adapter_fixture": {
+    "request_paths": [
+      "/history/prompt-1",
+      "/view?filename=result.png&subfolder=&type=output"
+    ],
+    "prompt_posts": 0,
+    "workflow_job_id": "prompt-1"
+  },
+  "limits": "Synthetic images and known job IDs; not missing-ID reconciliation, F03 Windows evidence, or policy superiority"
+}

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="320" viewBox="0 0 1400 320" font-family="Arial, sans-serif">
+<rect width="1400" height="320" fill="white"/>
+<rect x="20" y="65" width="280" height="95" fill="white" stroke="#555555" stroke-width="2"/>
+<text x="160" y="106" text-anchor="middle" font-size="25" fill="#222222">unresolved</text>
+<text x="160" y="141" text-anchor="middle" font-size="25" fill="#222222">retained job ID</text>
+<rect x="415" y="65" width="330" height="95" fill="white" stroke="#555555" stroke-width="2"/>
+<text x="580" y="106" text-anchor="middle" font-size="25" fill="#222222">get_run</text>
+<text x="580" y="141" text-anchor="middle" font-size="25" fill="#222222">generate_round:recover</text>
+<rect x="1080" y="65" width="300" height="95" fill="white" stroke="#555555" stroke-width="2"/>
+<text x="1230" y="106" text-anchor="middle" font-size="25" fill="#222222">generated</text>
+<text x="1230" y="141" text-anchor="middle" font-size="25" fill="#222222">image path recorded</text>
+<polyline points="300,110 415,110" fill="none" stroke="#555555" stroke-width="2"/>
+<polygon points="415,110 403,104 403,116" fill="#555555"/>
+<text x="355" y="55" text-anchor="middle" font-size="25" fill="#222222">inspect</text>
+<polyline points="745,110 1080,110" fill="none" stroke="#555555" stroke-width="2"/>
+<polygon points="1080,110 1068,104 1068,116" fill="#555555"/>
+<text x="910" y="55" text-anchor="middle" font-size="25" fill="#222222">same key / request hash</text>
+<text x="910" y="189" text-anchor="middle" font-size="25" fill="#222222">forward recovery_job_id</text>
+<rect x="1080" y="225" width="300" height="75" fill="white" stroke="#555555" stroke-width="2"/>
+<text x="1230" y="271" text-anchor="middle" font-size="25" fill="#222222">unresolved</text>
+<polyline points="160,160 160,260 1080,260" fill="none" stroke="#555555" stroke-width="2"/>
+<polygon points="1080,260 1068,254 1068,266" fill="#555555"/>
+<text x="590" y="249" text-anchor="middle" font-size="25" fill="#222222">stop-only: no further action</text>
+</svg>

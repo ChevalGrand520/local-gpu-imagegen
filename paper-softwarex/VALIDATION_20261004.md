@@ -33,3 +33,12 @@ the retained template exactly; 26 preserve-only original parts are identical.
 The six DOCX result rows match the tracked projection JSON. The projection
 checker passed again; derived consistency only. Abstract remains 100 words;
 the full Markdown is below 2700 words, conservatively under the template limit.
+
+## v0.6 resumed validation (2026-10-04)
+
+- `uv run --offline --no-project --python 3.12 --with 'Pillow>=10' python paper-softwarex/known_job_recovery_demo.py`: exit 0; current JSON output is byte-identical to known-job-recovery-receipt.json.
+- Product scripts and tests match dfc8378 (`git diff --quiet dfc8378 -- scripts tests`: exit 0).
+- `python paper/scripts/verify_paired_projection.py`: exit 0, six published rows/totals; derived consistency only.
+- Bundled Python rebuilt manuscript-v0.6.docx: 26 original preserve-only template parts unchanged, abstract 101 words; two embedded figures.
+- Bundled document renderer produced seven pages; every page visually inspected, no clipping, overlap or broken tables. Metadata C1–C8 is populated. Markdown contains 2991 whitespace words including metadata and references.
+- No full-suite rerun, model download, GPU execution, real ComfyUI recovery or journal submission occurred. Prior failures and author/publisher gates remain recorded.

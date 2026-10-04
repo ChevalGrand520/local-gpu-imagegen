@@ -12,7 +12,7 @@ from docx.shared import Inches
 
 ROOT = Path(__file__).resolve().parent
 REF = ROOT / 'templates/softwarex-osp-template-v6.docx'
-OUT = ROOT / 'manuscript-v0.5.docx'
+OUT = ROOT / 'manuscript-v0.6.docx'
 QA = Path('/tmp/softwarex-template-qa')
 EXPECTED = '9fcf40ede96a2f188ee4ef77134e0596d01e1b65fd9db63f2874d29f2ecb916d'
 W = 'http://schemas.openxmlformats.org/wordprocessingml/2006/main'
@@ -104,7 +104,7 @@ def row_rules(table):
         if i == 0 and pr.find('w:tblHeader', NS) is None: E.SubElement(pr, tag('tblHeader'))
 
 row_rules(metadata)
-blocks = re.split(r'\n\s*\n', (ROOT / 'manuscript-v0.5.md').read_text().strip())
+blocks = re.split(r'\n\s*\n', (ROOT / 'manuscript-v0.6.md').read_text().strip())
 for x in list(body): body.remove(x)
 body.append(para(16, blocks[0][2:], bold=True, numbered=False))
 for block in blocks[1:4]: body.append(para(23, block, bold=False, numbered=False))
@@ -143,7 +143,9 @@ for block in blocks[7:]:
         else:
             body.append(para(76, title, bold=True, numbered=False))
     elif block.startswith('!['):
-        body.append(para(23, 'ARCHITECTURE_IMAGE_SLOT', bold=False))
+        match = re.fullmatch(r'!\[.*\]\((figures/[^)]+\.png)\)', block)
+        assert match, 'Unsupported figure reference'
+        body.append(para(23, 'IMAGE_SLOT:' + match[1], bold=False))
     elif block.startswith('|'):
         lines = block.splitlines()
         data = [[c.strip() for c in line.strip('|').split('|')] for line in lines if not re.match(r'^\|[- :|]+\|$', line)]
@@ -188,17 +190,18 @@ with ZipFile(initial, 'w', ZIP_DEFLATED) as temp:
 initial.seek(0)
 working = Document(initial)
 for caption in working.paragraphs:
-    if caption.text.startswith('Figure 1.'):
+    if caption.text.startswith('Figure '):
         caption.paragraph_format.keep_together = True
     if caption.text.startswith('Table 1.'):
         caption.paragraph_format.keep_with_next = True
+image_count = 0
 for p in working.paragraphs:
-    if p.text == 'ARCHITECTURE_IMAGE_SLOT':
-        p.clear(); p.add_run().add_picture(str(ROOT / 'figures/architecture.png'), width=Inches(6.5))
+    if p.text.startswith('IMAGE_SLOT:'):
+        image_path = ROOT / p.text.split(':', 1)[1]
+        p.clear(); p.add_run().add_picture(str(image_path), width=Inches(6.5))
         p.paragraph_format.keep_with_next = True
-        break
-else:
-    raise AssertionError('Figure slot missing')
+        image_count += 1
+assert image_count == 2, 'Expected architecture and recovery figures'
 generated = BytesIO(); working.save(generated); generated.seek(0)
 with ZipFile(generated) as image_zip:
     for key in ['word/document.xml', 'word/_rels/document.xml.rels', '[Content_Types].xml']:

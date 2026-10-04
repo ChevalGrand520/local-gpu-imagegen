@@ -24,15 +24,16 @@ as evidence that the guide or an administrative requirement does not exist.
 
 | Item | Prepared file / status | Requirement provenance |
 |---|---|---|
-| Main manuscript | ../manuscript-v0.5.docx; seven pages total, main sections end page six; ~100-word abstract | Mandatory official template |
+| Main manuscript | ../manuscript-v0.6.docx; seven pages total; 101-word abstract; inspected in full | Mandatory official template |
 | Author/title metadata | declarations-draft.md; established name/affiliation/email | Template; full-address/ORCID form fields pending |
 | Cover letter | cover-letter-draft.md; final declaration placeholder | Useful editor-facing draft; mandatory status not refreshed |
 | Highlights | highlights-draft.txt; five bullets, each <=85 characters | Optional preparation; journal-specific demand/limit not refreshed |
 | Declaration blocks | declarations-draft.md | AI wording approved; funding/conflicts/contributions/history need author input |
-| Figure | ../figures/architecture.svg and architecture.png; also embedded in DOCX | One implementation diagram; no new measurement |
+| Figure | ../figures/architecture.svg and architecture.png; also embedded in DOCX; known-job-recovery.svg/png | Architecture and CPU recovery diagrams; no GPU measurement |
 | Software snapshot | GitHub dfc8378; README, MIT LICENSE/Licence.txt, product and research files present | Template GitHub/permanent-link requirements |
 | Validation record | GitHub abb3639 / paper-softwarex/VALIDATION_20261004.md | Separate manuscript-material revision; explicitly cited |
 | Derived paired evidence | Source snapshot paper/evidence/paired-windows-projection-20261001.json and checker | Consistency only, no raw-event replay |
+| Known-job CPU supplement | ../known_job_recovery_demo.py and ../known-job-recovery-receipt.json; separate engine/adapter checks passed | Synthetic component evidence only |
 | Supplementary upload | Not selected; include only necessary, reviewed public files | Current portal options not verified; no whole-repo/private-capture upload |
 | Reviewer suggestions | Not drafted; no identities/contact details invented | Prepare only if portal requires or author requests |
 | Graphical abstract/video | Not prepared | Requirement not verified; architecture figure is not automatically a graphical abstract |
