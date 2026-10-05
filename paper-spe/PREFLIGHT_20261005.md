@@ -1,4 +1,9 @@
-# 已授权 Windows/GPU 验证：连接恢复，源码同步门槛未通过
+# Windows/GPU 验证：历次预检与执行记录
+
+最新 R1：source gate 已通过并完成真实验证至 generated，2 POST / recovery
+0 new POST，worker/scheduler exit 0，自有后端停止、reservation 释放。
+见 `NARRATIVE_REPORT_20261006_R1.md`。此文件下文按时间保留历史阻塞，
+不是当前 SOURCE_SYNC_GATE_FAILED 状态；完整协议仍非 PASS。
 
 00:00 检查时：SSH 已认证成功；真实 GPU
 恢复实验仍为 **NOT_RUN / SOURCE_SYNC_GATE_FAILED**。以下 22:30、23:32 的

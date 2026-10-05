@@ -324,11 +324,12 @@ def supervise(config_path):
     root = Path(config["private_root"])
     private_directory(root)
     receipt(root, "configuration.json", config)
-    receipt(root, "status.json", {"status": "RUNNING", "started": time.time()})
+    started = time.time()
+    receipt(root, "status.json", {"status": "RUNNING", "started": started})
     with (root / "worker.stdout.log").open("xb") as out, (root / "worker.stderr.log").open("xb") as err:
         child = subprocess.Popen([sys.executable, str(Path(__file__).resolve()), "worker", str(root / "configuration.json")],
                                  cwd=ROOT, stdout=out, stderr=err)
-        receipt(root, "supervisor-audit.json", {"supervisor_pid": os.getpid(), "worker_pid": child.pid, "wall_limit_seconds": 1200})
+        receipt(root, "supervisor-audit.json", {"supervisor_pid": os.getpid(), "worker_pid": child.pid, "wall_limit_seconds": 1200, "started": started})
         try:
             code = child.wait(timeout=min(1190, max(1, config.get("window_end_epoch", time.time()+1200) - time.time() - 10)))
         except subprocess.TimeoutExpired:
@@ -340,7 +341,7 @@ def supervise(config_path):
             if marker.is_file() and json.loads(marker.read_text()).get("owner_pid") == child.pid:
                 marker.unlink()
                 lock.rmdir()
-        receipt(root, "status.json", {"status": "FINISHED", "worker_exit_code": code, "ended": time.time(),
+        receipt(root, "status.json", {"status": "FINISHED", "worker_exit_code": code, "ended": time.time(), "started": started,
                 "worker_report_exists": (root / "worker-report.json").is_file()})
     return code
 

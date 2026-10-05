@@ -1,6 +1,13 @@
-# 已授权、尚未执行的 Windows / GPU 验证窗口
+# 已授权 Windows / GPU 协议与执行边界
 
-这是下一阶段的可审查协议，未执行。不得仅凭该文件启动任务、使用 GPU 或联系编辑。
+这是作者在对话中批准的可审查协议，本文件不单独授予资源或投稿权限。
+
+2026-10-06 R1：已完成真实 known-ID 取回、Windows key/seed/prompt 重入
+拒绝、completed replay 与 P1 手工取回，2 次 POST，恢复新增 0 次。作者
+review/finalize 未执行；observer 组件在 controller worker 中，未分出纯
+observer-only 进程，不能标完整协议 PASS。比较任务全缓存命中，不作为
+GPU 性能比较。详细结果见 `NARRATIVE_REPORT_20261006_R1.md`。下文保留
+原授权协议和早期预检更新。
 
 最新预检 2026-10-06 00:00：SSH 已恢复，但 Windows Git fetch 失败，
 source sync gate 未通过；新增 native owner-liveness 检查的修复后 Windows
