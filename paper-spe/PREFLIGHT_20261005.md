@@ -37,3 +37,15 @@ fetch control key: Get "https://controlplane.tailscale.com/key?v=142": failed to
 - 原 SoftwareX 工作树、稿件及 evidence 不变；没有撤稿、转投或联系编辑。
 
 下一步依赖本机 Tailscale 控制面可达及有效 peer 映射。恢复后重新检查 Windows 主机身份、source、环境和独占资源，再决定进入实验窗口。本阶段不绕过这些门槛，不用历史环境值填成 current，也不因无法连接而扩大网络修复范围。
+
+## 作者请求后的再次检查（23:27–23:32）
+
+当前系统层的 DNS 已恢复：系统 resolver 和直接向 8.8.8.8、1.1.1.1 的 UDP DNS 查询均取得 controlplane.tailscale.com 地址。Python 默认 opener 和无代理 opener 的 HTTPS HEAD 都返回 200。这纠正了“系统网络一直无法解析”的推断；没有证明 Tailscale extension 自身可达。
+
+保留既有 accept-dns=false / accept-routes 配置重启 Tailscale，再重新启用其 macOS connection service，均未得到 Running/peer mapping；extension 仍报 NoState 和控制面 DNS 错误。没有改 DNS、其他代理、账户或密钥。
+
+新 SSH verbose 检查显示 TCP 建立后，对历史数值地址的 22 端口返回 `HTTP/1.1 404 Not Found` 而不是 SSH banner，随后关闭。`route -n get` 证明该地址及控制面 IP 都通过 utun5，gateway 100.64.164.1；utun5 local address 为 100.64.164.2。这只能证明当前连接路径异常，不能确认 Windows SSH 服务故障或识别拦截者。没有越过 host-key 验证、没有发送登录凭据。
+
+只读检查了 Watt Toolkit UI，显示 Hosts 模式和“一键加速”，没有据此认定它就是 utun5 的持有者；未停止它或更改其设置。已向作者询问“数据线连接手机与 Mac，还是 Mac 与 Windows”，尚待设备信息，不能把普通数据线等同于可用网络链路。
+
+本次仍为 CONNECTION_GATE_FAILED：没有 Windows 身份核验、Task Scheduler、reservation、生成请求或 GPU 执行。检查结束将 Tailscale 逻辑状态恢复为 Stopped。下一步应确认备用连接的设备与网络类型，并同时复核到 tailnet 数值地址的路由，不能只凭 HTTPS 成功启动实验。
