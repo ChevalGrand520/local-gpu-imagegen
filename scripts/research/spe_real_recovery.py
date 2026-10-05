@@ -129,10 +129,12 @@ def worker(config, root):
     backend = None
     lock = Path(config["lock_root"])
     acquired = False
-    end = time.time() + 1170  # Leaves cleanup margin inside the 20-minute supervisor.
+    end = min(time.time() + 1170, config.get("window_end_epoch", float("inf")))
     report = {"status": "STOPPED", "author_review": False, "finalized": False}
     try:
         actual = subprocess.check_output(["git", "-C", str(ROOT), "rev-parse", "HEAD"], text=True).strip()
+        if time.time() >= end - 30:
+            raise RuntimeError("insufficient_remaining_window")
         if actual != config["source_sha"]:
             raise RuntimeError("source_mismatch")
         if subprocess.check_output(["git", "-C", str(ROOT), "status", "--porcelain"], text=True).strip():
@@ -178,8 +180,11 @@ def worker(config, root):
         comfy = Path(config["comfy_root"])
         if subprocess.check_output(["git", "-C", str(comfy), "rev-parse", "HEAD"], text=True).strip() != config["comfy_sha"]:
             raise RuntimeError("comfy_source_mismatch")
-        state = root / "state"
-        state.mkdir()
+        # Product file verification intentionally requires a user-local state
+        # root. Evidence on D: is valid, but it is not an allowed registry root.
+        state = Path(os.environ["LOCALAPPDATA"]) / ("local-gpu-imagegen-" + root.name)
+        private_directory(state)
+        receipt(root, "isolated-state.json", {"path": str(state)})
         old_state = Path(os.environ["LOCALAPPDATA"]) / "local-gpu-imagegen"
         # Reuse the author's existing private approval without changing shared state.
         for name in ("trust.json", "file-verifications.json"):
@@ -325,7 +330,7 @@ def supervise(config_path):
                                  cwd=ROOT, stdout=out, stderr=err)
         receipt(root, "supervisor-audit.json", {"supervisor_pid": os.getpid(), "worker_pid": child.pid, "wall_limit_seconds": 1200})
         try:
-            code = child.wait(timeout=1190)
+            code = child.wait(timeout=min(1190, max(1, config.get("window_end_epoch", time.time()+1200) - time.time() - 10)))
         except subprocess.TimeoutExpired:
             stop_owned_process(child)
             code = 124
