@@ -1,6 +1,10 @@
-# 待授权的 Windows / GPU 验证窗口
+# 已授权、尚未执行的 Windows / GPU 验证窗口
 
 这是下一阶段的可审查协议，未执行。不得仅凭该文件启动任务、使用 GPU 或联系编辑。
+
+最新预检 2026-10-06 00:00：SSH 已恢复，但 Windows Git fetch 失败，
+source sync gate 未通过；新增 native owner-liveness 检查的修复后 Windows
+回归仍待执行。原授权有效，预算未消耗；按协议停在预检。
 
 更新（2026-10-05 22:30 Asia/Shanghai）：作者已在对话中明确批准此协议的 Windows/GPU 窗口。授权不含撤稿、投稿、联系编辑、新 Agent 或预算扩大。首次连接预检失败，GPU 阶段未执行；见 `PREFLIGHT_20261005.md`。下一次满足连接条件后可在原授权内重新预检，无需重复索取相同批准。
 

@@ -4,6 +4,13 @@
 
 更新 22:30：作者已经批准 Windows/GPU 窗口；连接预检失败，GPU 阶段 **NOT_RUN**。无新的生成请求、Windows 执行或 GPU 结果。授权保留，具体记录见 `PREFLIGHT_20261005.md`。
 
+更新 2026-10-06 00:00：Tailscale/SSH 恢复，取得 Windows 原生 CPU 负向
+证据并补齐 owner-liveness 检查；随后 Windows GitHub fetch 两次失败，
+exact-source 门槛未闭合。GPU 阶段仍 NOT_RUN。最新 targeted 回归为 255 tests、
+2 skipped、27.982 s；修复后的 Windows 原生测试尚未执行。
+见 `NARRATIVE_REPORT_20261006.md` 和 preflight 末尾，不能把此前连接失败
+当作当前状态，也不能把 SSH 成功当作真实恢复成功。
+
 ## 实际状态与冻结边界
 
 作者报告 SoftwareX 于 2026-10-05 提交，正文为 `paper-softwarex/manuscript-v0.13.md`。历史状态 Submitted to Journal 没有在本阶段访问投稿系统重新核验，不作为当前状态。

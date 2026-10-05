@@ -1,4 +1,8 @@
-# 已授权 Windows/GPU 验证：连接预检未通过
+# 已授权 Windows/GPU 验证：连接恢复，源码同步门槛未通过
+
+最新检查截至 2026-10-06 00:00 Asia/Shanghai：SSH 已认证成功；真实 GPU
+恢复实验仍为 **NOT_RUN / SOURCE_SYNC_GATE_FAILED**。以下 22:30、23:32 的
+连接失败保留为历史观察，不代表最新连通状态。最新详情见本文末尾。
 
 时间：2026-10-05 22:28–22:30，Asia/Shanghai；最后确认 22:30:52。
 
@@ -8,7 +12,7 @@
 
 作者在看到 CPU 报告及真实后端协议后明确回复“批准”，授权原协议内 20 分钟或 3 个新的 upstream prompt sends，先到者止损。授权持续有效，满足连接条件后可再预检；不允许扩大预算、增加 Agent、撤稿、转投或联系编辑。
 
-开发 source：`93c3318ea9a396690978cb0b3d7b948eceb465a1`，分支 `experiment/spe-recovery-validation`；本地工作树干净。Windows 尚未连接，因此其 checkout/source、环境、GPU、queue、模型和 reservation 一律 **无法验证**，不是“空闲”。本阶段只读取既有协议和 runner/oracle 的接口，没有复制配置或源码到 Windows。
+22:30 时的开发 source：`93c3318ea9a396690978cb0b3d7b948eceb465a1`，分支 `experiment/spe-recovery-validation`；当时本地工作树干净、Windows 尚未连接，因此其 checkout/source、环境、GPU、queue、模型和 reservation 均无法验证。该段是首次预检记录。
 
 ## 实际观察
 
@@ -49,3 +53,44 @@ fetch control key: Get "https://controlplane.tailscale.com/key?v=142": failed to
 只读检查了 Watt Toolkit UI，显示 Hosts 模式和“一键加速”，没有据此认定它就是 utun5 的持有者；未停止它或更改其设置。已向作者询问“数据线连接手机与 Mac，还是 Mac 与 Windows”，尚待设备信息，不能把普通数据线等同于可用网络链路。
 
 本次仍为 CONNECTION_GATE_FAILED：没有 Windows 身份核验、Task Scheduler、reservation、生成请求或 GPU 执行。检查结束将 Tailscale 逻辑状态恢复为 Stopped。下一步应确认备用连接的设备与网络类型，并同时复核到 tailnet 数值地址的路由，不能只凭 HTTPS 成功启动实验。
+
+## 第三次检查：SSH 恢复与 Windows 原生负向证据
+
+2026-10-05 23:49 至 2026-10-06 00:00。数值 tailnet 地址的 SSH 公钥认证
+成功，hostname 为 LAPTOP-7QD7KR9F；随后 Tailscale ping 显示 LAN direct，
+15 ms。没有使用数据线或更改其他 VPN。最新 Tailscale 仍提示无法同步
+coordination server，因此 peer 可达可能退化；不能宣称网络问题彻底解决。
+
+只读 Windows 检查：GPU UUID 与冻结环境匹配，RTX 5070 Ti Laptop GPU，
+12,227 MiB，总占用 1,642 MiB、利用率 4%。compute-app 查询列出 WDDM
+桌面进程而非 Python；这不证明资源独占。现有 ComfyUI 和 SDXL 文件存在，
+ComfyUI Git HEAD b1693ecba9f5b65f8c80ab36b195ab963ec92413；E: 可用
+86,387,380,224 bytes；系统 Python 3.14 可导入 Pillow 12.2.0。
+本次未重新 fingerprint 模型；两端口的连接检查没有确认服务可用，未得到
+backend queue。因此 endpoint/model/queue/reservation 门槛仍未闭合。
+
+历史 W3 checkout 为 clean detached d45173af75d404ad79dc14568edd4c45f654abd2。
+Windows primary 的旧节点另有 2026-09-02 liveness 修复（3595fe0），不在
+当前 SPE source 中；没有修改这些 checkout 或把旧节点当成新实验结果。
+
+原生无 GPU 检查在 W3 运行真实产品函数：owned child 活着时 true；退出码
+0 后仍持有 Popen handle，产品仍返回 true（预期 false）。该函数源码
+SHA-256 d43140824a3dda86414ae23182e0d53120a9ee8d05c2052e1371aa0c7366ba9f
+与修复前 SPE 分支完全相同。该结果证明 owner-liveness 缺陷，**不证明**
+真实后端恢复。SPE 分支加入 GetExitCodeProcess / STILL_ACTIVE 检查；查询
+失败仍保守视为存活，finally 关闭句柄。此修复对应已知旧修复，不包装成新
+研究贡献。新增 Windows-only retained-handle 回归；Mac 255 targeted tests
+通过、2 skipped、27.982 s，其中原生 Windows 测试被跳过，修复后的 Windows
+GREEN 尚未取得。fake HTTP 线程打印 ConnectionResetError，但 suite exit 0。
+
+尝试经 Git fetch 专用分支，再创建隔离 Windows worktree；首次 GitHub HTTPS
+Recv failure / connection reset，单次禁用 Git HTTP proxy 的有界重试在
+21,110 ms 后仍无法连接 github.com:443。两次均 exit 128，worktree add 未执行。
+没有通过 SSH 复制产品源码或改变 remote，没有在未核验版本上执行 GPU 任务。
+
+结尾状态：**SOURCE_SYNC_GATE_FAILED**。新 upstream POST=0；backend/client
+生成进程、GPU reservation、Task Scheduler 实验 task 均未创建。只有已完成并
+退出的原生 CPU probe child。未消耗已授权 GPU 实验窗口；授权和预算保留。
+Tailscale 保留用户当前连接，未执行 down。下一步先让 Windows Git 正常取得
+专用 exact commit，运行原生 liveness 回归，再检查真实 backend/oracle；不扩大
+网络修复或 GPU campaign。SPE 仍 HOLD，不建议撤回 SoftwareX。

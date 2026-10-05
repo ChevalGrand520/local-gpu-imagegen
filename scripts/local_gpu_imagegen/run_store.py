@@ -80,18 +80,27 @@ def is_process_alive(pid: int) -> bool:
 def _windows_process_is_alive(pid: int) -> bool:
     process_query_limited_information = 0x1000
     invalid_parameter = 87
+    still_active = 259
     kernel32 = ctypes.WinDLL("kernel32", use_last_error=True)
     open_process = kernel32.OpenProcess
     open_process.argtypes = (ctypes.c_ulong, ctypes.c_bool, ctypes.c_ulong)
     open_process.restype = ctypes.c_void_p
+    get_exit_code = kernel32.GetExitCodeProcess
+    get_exit_code.argtypes = (ctypes.c_void_p, ctypes.POINTER(ctypes.c_ulong))
+    get_exit_code.restype = ctypes.c_bool
     close_handle = kernel32.CloseHandle
     close_handle.argtypes = (ctypes.c_void_p,)
     close_handle.restype = ctypes.c_bool
 
     handle = open_process(process_query_limited_information, False, pid)
     if handle:
-        close_handle(handle)
-        return True
+        try:
+            exit_code = ctypes.c_ulong()
+            if not get_exit_code(handle, ctypes.byref(exit_code)):
+                return True  # An unqueryable owner is not safe to steal from.
+            return exit_code.value == still_active
+        finally:
+            close_handle(handle)
     return ctypes.get_last_error() != invalid_parameter
 
 

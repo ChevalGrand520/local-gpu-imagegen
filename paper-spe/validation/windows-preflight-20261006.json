@@ -1,0 +1,61 @@
+{
+  "schema": "spe-preflight-v1",
+  "as_of": "2026-10-06T00:00:41+08:00",
+  "status": "SOURCE_SYNC_GATE_FAILED",
+  "ssh_host_verified": true,
+  "tailnet_transport_observed": "direct LAN",
+  "tailnet_ping_ms": 15,
+  "coordination_health_warning": true,
+  "gpu": {
+    "model": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+    "uuid_matches_frozen_environment": true,
+    "memory_used_mib": 1642,
+    "memory_total_mib": 12227,
+    "utilization_percent": 4,
+    "exclusive_resource_verified": false
+  },
+  "environment": {
+    "comfy_git_sha": "b1693ecba9f5b65f8c80ab36b195ab963ec92413",
+    "checkpoint_exists": true,
+    "fresh_model_fingerprint_verified": false,
+    "disk_free_e_bytes": 86387380224,
+    "system_python": "3.14",
+    "pillow": "12.2.0",
+    "backend_serving_verified": false,
+    "queue_verified": false
+  },
+  "native_cpu_negative_probe": {
+    "source_checkout_label": "historical-W3",
+    "source_sha": "d45173af75d404ad79dc14568edd4c45f654abd2",
+    "helper_source_sha256": "d43140824a3dda86414ae23182e0d53120a9ee8d05c2052e1371aa0c7366ba9f",
+    "matches_prepatch_spe_helper": true,
+    "before_alive": true,
+    "child_exit": 0,
+    "after_exit_alive_observed": true,
+    "after_exit_alive_expected": false,
+    "verdict": "DEFECT_REPRODUCED",
+    "postpatch_windows_green": false
+  },
+  "mac_regression": {
+    "tests": 255,
+    "skips": 2,
+    "elapsed_seconds": 27.982,
+    "exit_code": 0,
+    "native_windows_test_skipped": true,
+    "fake_server_connection_reset_printed": true
+  },
+  "windows_git_fetch": {
+    "attempts": 2,
+    "exit_codes": [128, 128],
+    "errors": ["HTTPS connection reset", "github.com:443 connect timeout after 21110 ms"],
+    "dedicated_worktree_created": false
+  },
+  "new_upstream_prompt_sends": 0,
+  "gpu_experiment_started": false,
+  "reservation_created": false,
+  "experiment_scheduler_task_created": false,
+  "real_recovery_verified": false,
+  "author_image_review_performed": false,
+  "spe_gate": "HOLD",
+  "withdraw_softwarex_recommended": false
+}
