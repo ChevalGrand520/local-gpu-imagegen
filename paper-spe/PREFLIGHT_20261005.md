@@ -1,8 +1,16 @@
 # 已授权 Windows/GPU 验证：连接恢复，源码同步门槛未通过
 
-最新检查截至 2026-10-06 00:00 Asia/Shanghai：SSH 已认证成功；真实 GPU
+00:00 检查时：SSH 已认证成功；真实 GPU
 恢复实验仍为 **NOT_RUN / SOURCE_SYNC_GATE_FAILED**。以下 22:30、23:32 的
 连接失败保留为历史观察，不代表最新连通状态。最新详情见本文末尾。
+
+最新更新 00:10 后：作者要求全自动继续并授权必要后续操作。Windows
+直连 GitHub 再次 40 s 超时后，改用完整 Git bundle 经已认证 SSH 传送，
+不改 remote、不散拷源码。Windows bundle verify 成功，隔离 detached
+checkout 的 exact SHA 为 5e0983e0662ceb31fca1773e1e8b7053151079c5。
+**SOURCE_SYNC_GATE 已闭合**。新 Windows native liveness 回归 1 项通过、
+0.028 s；255 targeted tests 全部通过、45.876 s、无 skips。此前 pending
+GREEN 和同步阻塞已解除。正在准备 Task Scheduler 有界 runner；尚无新 POST。
 
 时间：2026-10-05 22:28–22:30，Asia/Shanghai；最后确认 22:30:52。
 
