@@ -1,0 +1,13 @@
+{
+  "scope": "CPU subprocess + real adapter + fake HTTP; no real ComfyUI/GPU",
+  "process_actions": [
+    {
+      "action": "disk_failure_before_send",
+      "pid": 47845,
+      "state": "created",
+      "error": "OSError"
+    }
+  ],
+  "prompt_posts": 0,
+  "http_requests": []
+}

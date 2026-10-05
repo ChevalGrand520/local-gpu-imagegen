@@ -1,0 +1,20 @@
+{
+  "schema": "spe-submission-preservation-v1",
+  "date": "2026-10-05",
+  "base_commit": "7f76f90751e527bb8158d15169a425069c1b699b",
+  "submitted_manuscript_sha256": "509dde073f53a25dc792fdc58a4523f4b1557594efb840c8c87f0621b0d90491",
+  "paired_projection_sha256": "9badad8948811c06f25b876e54768a02b808f9f7233527bd2ade20b4daed0891",
+  "base_git_tree_ids": {
+    "scripts": "fef6ae2846cf3984866aee2a491cfe5405952a89",
+    "src": "683c1b1a70b6ab6907c2b9bb1d1ebb0c7df5733b",
+    "tests": "af01b84a2f55e550c46ba206fd7735af83900d34",
+    "paper-softwarex": "831e989d731e69175549ec08e88a5bcb1ed74f9f",
+    "paper/evidence": "d4d45ae31fc6c6939f8a3476de5e3b04f9dbce54"
+  },
+  "unchanged_development_paths": ["paper-softwarex", "paper/evidence", "src"],
+  "original_worktree_preserved": true,
+  "journal_status": "Historical author-reported Submitted to Journal; not refreshed",
+  "gpu_executed": false,
+  "windows_executed": false,
+  "real_comfyui_executed": false
+}

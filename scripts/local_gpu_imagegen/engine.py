@@ -294,7 +294,10 @@ class AssetRunEngine:
                     output_paths=stage_pending_paths if two_stage else None,
                     subject_seed=subject_seed,
                 )
-                if two_stage:
+                if route["backend"] == "comfyui":
+                    backend_request["backend_submission_callback"] = lambda: (
+                        self.store.mark_attempt_submission_started(handle)
+                    )
                     backend_request["backend_job_callback"] = lambda job_id: (
                         self.store.mark_attempt_backend_job(handle, "comfyui", job_id)
                     )
@@ -389,7 +392,26 @@ class AssetRunEngine:
                 **({"pixel_preservation": pixel_preservation} if two_stage else {}),
             })
         except Exception as error:
-            if _is_ambiguous_submission(error):
+            active = self.store.get(run_id).get("active_attempt")
+            retained_submission = isinstance(active, dict) and (
+                active.get("backend_job") is not None
+                or active.get("submission_outcome") == "unknown"
+            )
+            if retained_submission:
+                try:
+                    if active.get("backend_job") is not None:
+                        self.store.mark_attempt_unresolved(handle, _attempt_error(error))
+                    else:
+                        attempt_error = _attempt_error(error)
+                        attempt_error["details"] = {
+                            **attempt_error.get("details", {}), "submission_outcome": "unknown",
+                        }
+                        self.store.mark_attempt_submission_unknown(handle, attempt_error)
+                except Exception:
+                    # Preserve the active manifest for stale-owner recovery
+                    # if recording the terminal error fails.
+                    self.store.abandon_attempt_lock(handle)
+            elif _is_ambiguous_submission(error):
                 attempt_error = _attempt_error(error)
                 try:
                     pending_path.unlink(missing_ok=True)
@@ -403,25 +425,6 @@ class AssetRunEngine:
                     self.store.mark_attempt_submission_unknown(handle, attempt_error)
                 except Exception:
                     self._fail_owned_attempt(handle, error, attempt_error)
-            elif (
-                two_stage
-                and isinstance(error, StateError)
-                and error.code == "comfyui_job_timed_out"
-            ):
-                try:
-                    self.store.mark_attempt_unresolved(handle, _attempt_error(error))
-                except Exception:
-                    self._recover_two_stage_attempt(
-                        handle,
-                        run_root,
-                        stage_pending_paths,
-                        stage_final_paths,
-                        width,
-                        height,
-                        seed,
-                        subject_seed,
-                        error,
-                    )
             elif two_stage:
                 self._recover_two_stage_attempt(
                     handle,

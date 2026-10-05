@@ -1,0 +1,34 @@
+{
+  "scope": "CPU subprocess + real adapter + fake HTTP; no real ComfyUI/GPU",
+  "process_actions": [
+    {
+      "action": "crash_before_binding",
+      "exit": 71
+    },
+    {
+      "action": "inspect",
+      "pid": 47837,
+      "state": "unresolved",
+      "error": null
+    },
+    {
+      "action": "recover",
+      "pid": 47838,
+      "state": "unresolved",
+      "error": "submission_outcome_unknown"
+    },
+    {
+      "action": "changed_key",
+      "pid": 47839,
+      "state": "unresolved",
+      "error": "submission_outcome_unknown"
+    }
+  ],
+  "prompt_posts": 1,
+  "http_requests": [
+    {
+      "method": "POST",
+      "path": "/prompt"
+    }
+  ]
+}

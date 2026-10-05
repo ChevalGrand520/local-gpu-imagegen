@@ -1,0 +1,100 @@
+{
+  "scope": "CPU subprocess + real adapter + fake HTTP; no real ComfyUI/GPU",
+  "process_actions": [
+    {
+      "action": "submit",
+      "pid": 47848,
+      "state": "unresolved",
+      "error": "comfyui_job_timed_out"
+    },
+    {
+      "action": "inspect",
+      "pid": 47849,
+      "state": "unresolved",
+      "error": null
+    },
+    {
+      "action": "changed_key",
+      "pid": 47850,
+      "state": "unresolved",
+      "error": "backend_job_unresolved"
+    },
+    {
+      "action": "changed_seed",
+      "pid": 47851,
+      "state": "unresolved",
+      "error": "idempotency_conflict"
+    },
+    {
+      "action": "changed_prompt",
+      "pid": 47852,
+      "state": "unresolved",
+      "error": "idempotency_conflict"
+    },
+    {
+      "action": "changed_model",
+      "pid": 47853,
+      "state": "unresolved",
+      "error": "model_identity_drifted"
+    },
+    {
+      "action": "recover",
+      "pid": 47854,
+      "state": "generated",
+      "error": null
+    },
+    {
+      "action": "recover",
+      "pid": 47855,
+      "state": "generated",
+      "error": null
+    },
+    {
+      "action": "finalize",
+      "pid": 47857,
+      "state": "finalized",
+      "error": null
+    },
+    {
+      "action": "inspect",
+      "pid": 47858,
+      "state": "finalized",
+      "error": null
+    }
+  ],
+  "prompt_posts": 1,
+  "http_requests": [
+    {
+      "method": "POST",
+      "path": "/prompt"
+    },
+    {
+      "method": "GET",
+      "path": "/history/prompt-1"
+    },
+    {
+      "method": "GET",
+      "path": "/queue"
+    },
+    {
+      "method": "GET",
+      "path": "/history/prompt-1"
+    },
+    {
+      "method": "GET",
+      "path": "/queue"
+    },
+    {
+      "method": "GET",
+      "path": "/history/prompt-1"
+    },
+    {
+      "method": "GET",
+      "path": "/view?filename=result.png&subfolder=&type=output"
+    }
+  ],
+  "final_sha256": "11f2c9c919dcaaa53fcfbf16290e641da61f2122a8921cc01c56fa96e219ce5e",
+  "manifest_bytes": 20078,
+  "run_file_bytes": 22650,
+  "review_is_synthetic": true
+}

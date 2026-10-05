@@ -1,0 +1,89 @@
+{
+  "scope": "CPU subprocess + real adapter + fake HTTP; no real ComfyUI/GPU",
+  "process_actions": [
+    {
+      "action": "submit",
+      "pid": 46884,
+      "state": "unresolved",
+      "error": "comfyui_job_timed_out"
+    },
+    {
+      "action": "stop_submit",
+      "pid": 46885,
+      "state": "unresolved",
+      "error": null
+    },
+    {
+      "action": "stop_inspect",
+      "pid": 46886,
+      "state": "unresolved",
+      "error": null
+    },
+    {
+      "action": "recover",
+      "pid": 46887,
+      "state": "generated",
+      "error": null
+    },
+    {
+      "action": "finalize",
+      "pid": 46888,
+      "state": "finalized",
+      "error": null
+    },
+    {
+      "action": "stop_recover",
+      "pid": 46889,
+      "state": "finalized",
+      "error": null
+    }
+  ],
+  "prompt_posts": 2,
+  "http_requests": [
+    {
+      "method": "POST",
+      "path": "/prompt"
+    },
+    {
+      "method": "GET",
+      "path": "/history/prompt-1"
+    },
+    {
+      "method": "GET",
+      "path": "/queue"
+    },
+    {
+      "method": "GET",
+      "path": "/history/prompt-1"
+    },
+    {
+      "method": "GET",
+      "path": "/queue"
+    },
+    {
+      "method": "POST",
+      "path": "/prompt"
+    },
+    {
+      "method": "GET",
+      "path": "/history/prompt-1"
+    },
+    {
+      "method": "GET",
+      "path": "/view?filename=result.png&subfolder=&type=output"
+    },
+    {
+      "method": "GET",
+      "path": "/history/prompt-1"
+    },
+    {
+      "method": "GET",
+      "path": "/view?filename=result.png&subfolder=&type=output"
+    }
+  ],
+  "stop_record_bytes": 129,
+  "manual_record_bytes": 206,
+  "stop_only_state": "unresolved",
+  "manual_retrieval_matches_bytes": true,
+  "control_scope": "single sequential owner; same graph; synthetic backend; no execution count"
+}

@@ -1,0 +1,23 @@
+{
+  "scope": "CPU subprocess + real adapter + fake HTTP; no real ComfyUI/GPU",
+  "process_actions": [
+    {
+      "action": "crash_before_send",
+      "exit": 73
+    },
+    {
+      "action": "inspect",
+      "pid": 47842,
+      "state": "unresolved",
+      "error": null
+    },
+    {
+      "action": "recover",
+      "pid": 47843,
+      "state": "unresolved",
+      "error": "submission_outcome_unknown"
+    }
+  ],
+  "prompt_posts": 0,
+  "http_requests": []
+}

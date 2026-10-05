@@ -239,6 +239,9 @@ class ComfyUIAdapter:
                     "Required ComfyUI two-stage nodes changed before submission.",
                 )
         if recovery_job_id is None:
+            submission_callback = normalized.get("backend_submission_callback")
+            if callable(submission_callback):
+                submission_callback()
             submitted = self.client.post_json(
                 "/prompt",
                 {
@@ -505,11 +508,15 @@ def _validate_request(value: object, endpoint_identity: str) -> dict[str, object
     result = copy.deepcopy(value)
     result["model"] = model
     result["workflow"] = workflow
+    for callback_name in ("backend_submission_callback", "backend_job_callback"):
+        callback = value.get(callback_name)
+        if callback is not None and not callable(callback):
+            raise ValidationError("invalid_backend_request", "ComfyUI lifecycle callback is invalid.")
+    if value.get("recovery_job_id") is not None:
+        result["recovery_job_id"] = _validate_job_id(value["recovery_job_id"])
     if workflow.get("layout_mode") == TWO_STAGE_LAYOUT_MODE:
         output_paths = value.get("output_paths")
         component_bundle_sha256 = value.get("component_bundle_sha256")
-        backend_job_callback = value.get("backend_job_callback")
-        recovery_job_id = value.get("recovery_job_id")
         if (
             not isinstance(output_paths, dict)
             or set(output_paths) != {"base", "mask", "final"}
@@ -531,13 +538,6 @@ def _validate_request(value: object, endpoint_identity: str) -> dict[str, object
                 "invalid_backend_request",
                 "Two-stage ComfyUI component bundle digest is invalid.",
             )
-        if backend_job_callback is not None and not callable(backend_job_callback):
-            raise ValidationError(
-                "invalid_backend_request",
-                "Two-stage backend job callback is invalid.",
-            )
-        if recovery_job_id is not None:
-            result["recovery_job_id"] = _validate_job_id(recovery_job_id)
         identities = {
             _resolved_path_identity(output_paths[role])
             for role in ("base", "mask", "final")

@@ -1,0 +1,29 @@
+{
+  "schema": "spe-cpu-gate-v1",
+  "date": "2026-10-05",
+  "source_base": "7f76f90751e527bb8158d15169a425069c1b699b",
+  "runtime": "CPython 3.12.14 macOS arm64; offline uv cache; Pillow",
+  "product_sha256": {
+    "scripts/local_gpu_imagegen/engine.py": "63fa847158986b438a8658960cb66d7261a6a2c1a1f66196b1e2a171a8cb57c7",
+    "scripts/local_gpu_imagegen/run_store.py": "e6cd84c2190a9c58f4e3fb82b1982cb48e8ef8060d4e5b0adae976192aa20d24",
+    "scripts/local_gpu_imagegen/backends/comfyui.py": "04cc7f6c6cb3440e9f1d0179fe57e607009ad0986cb48606390029ca61153630"
+  },
+  "tests_sha256": "0bc91192211691e66b2245d0df8ee159b30df1d4a110347c3bdebdefe5d1a78f",
+  "targeted_regression": {"exit_code": 0, "tests_run": 254, "skipped": 1, "elapsed_seconds": 27.757},
+  "research_regression": {"exit_code": 0, "tests_run": 96, "elapsed_seconds": 8.916},
+  "original_known_job_walkthrough": "PASS; engine and adapter fixtures remain separate",
+  "published_projection_check": "PASS; six rows and totals; consistency only",
+  "final_receipts_directory": "cpu-20261005-final",
+  "intermediate_receipts_directory": "cpu-20261005; probes passed but associated regression had one legacy-fixture compatibility error",
+  "baseline_new_probes": {"failures": 3, "observed_state": "created", "scope": "single-stage known job timeout, crash before binding, crash after binding"},
+  "final_new_test_methods": 8,
+  "executor_self_review": true,
+  "independent_reviewer": false,
+  "real_backend_verified": false,
+  "windows_executed": false,
+  "gpu_executed": false,
+  "operator_benefit_measured": false,
+  "full_macos_suite_rerun": false,
+  "spe_contribution_gate": "HOLD",
+  "softwarex_withdrawal_recommendation": "Do not withdraw on current evidence"
+}

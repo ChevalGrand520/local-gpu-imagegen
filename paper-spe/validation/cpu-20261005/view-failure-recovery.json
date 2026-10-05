@@ -1,0 +1,40 @@
+{
+  "scope": "CPU subprocess + real adapter + fake HTTP; no real ComfyUI/GPU",
+  "process_actions": [
+    {
+      "action": "submit",
+      "pid": 46891,
+      "state": "unresolved",
+      "error": "invalid_backend_response"
+    },
+    {
+      "action": "recover",
+      "pid": 46892,
+      "state": "generated",
+      "error": null
+    }
+  ],
+  "prompt_posts": 1,
+  "http_requests": [
+    {
+      "method": "POST",
+      "path": "/prompt"
+    },
+    {
+      "method": "GET",
+      "path": "/history/prompt-1"
+    },
+    {
+      "method": "GET",
+      "path": "/view?filename=result.png&subfolder=&type=output"
+    },
+    {
+      "method": "GET",
+      "path": "/history/prompt-1"
+    },
+    {
+      "method": "GET",
+      "path": "/view?filename=result.png&subfolder=&type=output"
+    }
+  ]
+}

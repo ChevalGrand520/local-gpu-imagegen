@@ -1,0 +1,9 @@
+[
+  {
+    "date": "2026-10-05",
+    "mode": "Architecture Audit",
+    "score": 95,
+    "findings": {"critical": 0, "warning": 1, "suggestion": 0},
+    "scope": "ComfyUI durable submission/recovery path; legacy unmarked records excluded from guarantees"
+  }
+]

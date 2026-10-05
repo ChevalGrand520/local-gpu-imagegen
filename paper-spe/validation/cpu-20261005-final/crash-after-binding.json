@@ -1,0 +1,36 @@
+{
+  "scope": "CPU subprocess + real adapter + fake HTTP; no real ComfyUI/GPU",
+  "process_actions": [
+    {
+      "action": "crash_after_binding",
+      "exit": 72
+    },
+    {
+      "action": "inspect",
+      "pid": 47833,
+      "state": "unresolved",
+      "error": null
+    },
+    {
+      "action": "recover",
+      "pid": 47834,
+      "state": "generated",
+      "error": null
+    }
+  ],
+  "prompt_posts": 1,
+  "http_requests": [
+    {
+      "method": "POST",
+      "path": "/prompt"
+    },
+    {
+      "method": "GET",
+      "path": "/history/prompt-1"
+    },
+    {
+      "method": "GET",
+      "path": "/view?filename=result.png&subfolder=&type=output"
+    }
+  ]
+}

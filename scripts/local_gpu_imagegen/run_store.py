@@ -490,6 +490,26 @@ class RunStore:
         manifest["active_attempt"] = active
         return self._save_manifest(handle.run_id, manifest)
 
+    def mark_attempt_submission_started(self, handle: AttemptHandle) -> dict[str, object]:
+        """Persist send intent before ComfyUI POST; a crash cannot imply no-send.
+
+        This deliberately permits a false block if the process dies between
+        this write and sending. It is not server-side idempotency.
+        """
+        manifest, active = self._owned_attempt(handle)
+        route = manifest.get("request", {}).get("route", {})
+        if route.get("backend") != "comfyui" or active.get("backend_job") is not None:
+            raise StateError("invalid_submission_boundary", "Send intent requires an unbound ComfyUI attempt.")
+        active["submission_outcome"] = "unknown"
+        active["submission_started_at"] = utc_now()
+        manifest["active_attempt"] = active
+        return self._save_manifest(handle.run_id, manifest)
+
+    def abandon_attempt_lock(self, handle: AttemptHandle) -> None:
+        """Release only our lock, preserving the active manifest for recovery."""
+        self._owned_attempt(handle)
+        self._release_lock(self._lock_path(handle.run_id), handle.owner_token)
+
     def mark_attempt_backend_job(
         self,
         handle: AttemptHandle,
@@ -502,10 +522,14 @@ class RunStore:
                 "Backend job identity must be an exact ComfyUI job ID.",
             )
         manifest, active = self._owned_attempt(handle)
-        if not self._is_two_stage_manifest(manifest):
+        route = manifest.get("request", {}).get("route")
+        legacy_two_stage = self._is_two_stage_manifest(manifest) and (
+            route is None or isinstance(route, dict) and route.get("backend") is None
+        )
+        if not legacy_two_stage and (not isinstance(route, dict) or route.get("backend") != "comfyui"):
             raise StateError(
-                "two_stage_run_required",
-                "Backend job recovery applies only to the reviewed two-stage workflow.",
+                "comfyui_run_required",
+                "Backend job recovery requires a frozen ComfyUI route.",
             )
         backend_job = {"backend": backend, "job_id": job_id}
         existing = active.get("backend_job")
@@ -515,6 +539,7 @@ class RunStore:
                 "Active attempt backend job identity cannot change.",
             )
         active["backend_job"] = backend_job
+        active.pop("submission_outcome", None)
         manifest["active_attempt"] = active
         return self._save_manifest(handle.run_id, manifest)
 
@@ -1842,7 +1867,8 @@ class RunStore:
                 return copy.deepcopy(current)
             interrupted = copy.deepcopy(active)
             backend_job = interrupted.get("backend_job")
-            if isinstance(backend_job, dict):
+            submission_unknown = interrupted.get("submission_outcome") == "unknown"
+            if isinstance(backend_job, dict) or submission_unknown:
                 interrupted["status"] = "unresolved"
                 interrupted["unresolved_at"] = utc_now()
             else:
@@ -1856,7 +1882,7 @@ class RunStore:
                 interrupted["stage_units"] = len(stages)
                 current["state"] = "partial"
                 current["last_stable_state"] = "partial"
-            elif isinstance(backend_job, dict):
+            elif isinstance(backend_job, dict) or submission_unknown:
                 current["state"] = "unresolved"
             else:
                 current["state"] = current.get("last_stable_state", "created")
