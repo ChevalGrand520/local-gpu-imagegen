@@ -145,8 +145,24 @@ def worker(config, root):
                                        "--format=csv,noheader"], text=True)
         baseline = compute_idle_report(gpu, config["gpu_uuid"])["target_compute_processes"]
         receipt(root, "gpu-process-query.json", {"raw": gpu, "processes": baseline})
+        extra_desktop = set()
+        for desktop_path in config.get("additional_desktop_paths", []):
+            normalized = desktop_path.replace("/", "\\").lower()
+            if (not normalized.startswith("c:\\program files\\windowsapps\\microsoft.windowsterminal_")
+                    or not normalized.endswith("_8wekyb3d8bbwe\\windowsterminal.exe")):
+                raise RuntimeError("additional_desktop_path_not_terminal")
+            command = ("Get-AuthenticodeSignature -FilePath '" + desktop_path.replace("'", "''") +
+                       "' | Select-Object Status,@{Name='Signer';Expression={$_.SignerCertificate.Subject}} | ConvertTo-Json -Compress")
+            result = subprocess.run(["powershell", "-NoProfile", "-NonInteractive", "-Command", command],
+                                    capture_output=True, text=True, timeout=15, check=True)
+            signature = json.loads(result.stdout)
+            receipt(root, "terminal-signature.json", signature)
+            if signature.get("Status") != 0 or signature.get("Signer") != "CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US":
+                raise RuntimeError("additional_desktop_signature_invalid")
+            extra_desktop.add(normalized)
         if any(p["process_name"].replace("/", "\\").rsplit("\\", 1)[-1].lower()
-               not in DESKTOP_NAMES for p in baseline):
+               not in DESKTOP_NAMES and p["process_name"].replace("/", "\\").lower()
+               not in extra_desktop for p in baseline):
             raise RuntimeError("unreviewed_gpu_process")
         receipt(root, "gpu-preflight.json", compute_idle_report(gpu, config["gpu_uuid"], baseline))
         if shutil.disk_usage(root).free < 1024 ** 3:
