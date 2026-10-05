@@ -2,6 +2,8 @@
 
 日期：2026-10-05（Asia/Shanghai）。结论：**允许一个有上限的真实后端验证阶段；目前不满足 SPE 经验报告证据门槛，不建议撤回 SoftwareX。** 本文是开发与验证记录，不是 SPE 稿件。
 
+更新 22:30：作者已经批准 Windows/GPU 窗口；连接预检失败，GPU 阶段 **NOT_RUN**。无新的生成请求、Windows 执行或 GPU 结果。授权保留，具体记录见 `PREFLIGHT_20261005.md`。
+
 ## 实际状态与冻结边界
 
 作者报告 SoftwareX 于 2026-10-05 提交，正文为 `paper-softwarex/manuscript-v0.13.md`。历史状态 Submitted to Journal 没有在本阶段访问投稿系统重新核验，不作为当前状态。
@@ -77,7 +79,7 @@ uv run --offline --no-project --python 3.12 --with 'Pillow>=10' python paper/scr
 2. **目标平台重启：未验证。** 本地 child exit 可验证进程边界，不能替代 Windows 进程身份/锁与真实 endpoint/model 绑定检查；真实 run 的 key/hash 禁止变更和零额外 POST 需同窗 audit。
 3. **可复用的工程价值：尚未证明。** 与 P1 公平比较固定操作者任务的完成状态、动作数、错误/拒绝、用时、丢失/找错产物、metadata/storage 和持久化开销。CPU 只建立可测量契约；不能从一次 case 估算错误率。先由作者确认实际 recurring 使用问题，再确定 operator 任务。
 
-下一阶段的具体可审查方案见 `REAL_BACKEND_GATE_20261005.md`；它尚未获得 Windows/GPU 执行授权。三项都证明且差异对操作者有意义后，才制定 SPE experience-report 结构。在此之前不扩写稿件、不追加模型/训练/大范围故障 campaign。若真实 known-job 恢复不能跑通，或 P1 以很少代码/操作已满足实际需求、完整工具没有额外受验证的价值，建议停止 SPE 投入。
+下一阶段的具体可审查方案见 `REAL_BACKEND_GATE_20261005.md`；作者已经授权，但连接预检未通过，未启动 GPU 阶段。三项都证明且差异对操作者有意义后，才制定 SPE experience-report 结构。在此之前不扩写稿件、不追加模型/训练/大范围故障 campaign。若真实 known-job 恢复不能跑通，或 P1 以很少代码/操作已满足实际需求、完整工具没有额外受验证的价值，建议停止 SPE 投入。
 
 ## 投稿决定
 

@@ -2,6 +2,8 @@
 
 这是下一阶段的可审查协议，未执行。不得仅凭该文件启动任务、使用 GPU 或联系编辑。
 
+更新（2026-10-05 22:30 Asia/Shanghai）：作者已在对话中明确批准此协议的 Windows/GPU 窗口。授权不含撤稿、投稿、联系编辑、新 Agent 或预算扩大。首次连接预检失败，GPU 阶段未执行；见 `PREFLIGHT_20261005.md`。下一次满足连接条件后可在原授权内重新预检，无需重复索取相同批准。
+
 ## 进入条件
 
 作者明确授权 Windows/GPU 窗口和预算；fresh numeric Tailscale IP、工作分支与 exact commit 校验；专用顺序 writer；真实 backend/version/workflow/model/endpoint 身份；已有模型与足够磁盘空间；独占 reservation、无他人队列/GPU 工作。不得下载模型或消耗云 GPU。若任何条件不满足，留下无法验证或阻塞记录并停止。
