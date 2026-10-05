@@ -144,6 +144,7 @@ def worker(config, root):
         gpu = subprocess.check_output(["nvidia-smi", "--query-compute-apps=gpu_uuid,pid,process_name",
                                        "--format=csv,noheader"], text=True)
         baseline = compute_idle_report(gpu, config["gpu_uuid"])["target_compute_processes"]
+        receipt(root, "gpu-process-query.json", {"raw": gpu, "processes": baseline})
         if any(p["process_name"].replace("/", "\\").rsplit("\\", 1)[-1].lower()
                not in DESKTOP_NAMES for p in baseline):
             raise RuntimeError("unreviewed_gpu_process")
