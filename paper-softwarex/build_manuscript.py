@@ -12,7 +12,7 @@ from docx.shared import Inches
 
 ROOT = Path(__file__).resolve().parent
 REF = ROOT / 'templates/softwarex-osp-template-v6.docx'
-OUT = ROOT / 'manuscript-v0.12.docx'
+OUT = ROOT / 'manuscript-v0.13.docx'
 QA = Path('/tmp/softwarex-template-qa')
 EXPECTED = '9fcf40ede96a2f188ee4ef77134e0596d01e1b65fd9db63f2874d29f2ecb916d'
 W = 'http://schemas.openxmlformats.org/wordprocessingml/2006/main'
@@ -82,10 +82,10 @@ def cell_text(cell, text):
 metadata = deepcopy(source[33])
 meta_values = [
     '0.9.1',
-    'https://github.com/ChevalGrand520/local-gpu-imagegen/tree/dfc8378cb3d891f7951786bc4544cd971bd56a11',
+    'https://github.com/ChevalGrand520/local-gpu-imagegen/tree/360c7232707199d40a4e3fd763e5031ed129b56a',
     'MIT License', 'Git', 'Python; stdio Model Context Protocol; ComfyUI and WebUI adapters',
     'Python >=3.11; Windows product platform; py7zr==1.1.3. Backend and model installation is separate. CI: Python 3.11/3.12 on Windows and Ubuntu.',
-    'https://github.com/ChevalGrand520/local-gpu-imagegen/blob/dfc8378cb3d891f7951786bc4544cd971bd56a11/README.md',
+    'https://github.com/ChevalGrand520/local-gpu-imagegen/blob/360c7232707199d40a4e3fd763e5031ed129b56a/README.md',
     'ChengZhen0105@outlook.com',
 ]
 for row, value in zip(metadata.findall('w:tr', NS)[1:], meta_values):
@@ -104,7 +104,7 @@ def row_rules(table):
         if i == 0 and pr.find('w:tblHeader', NS) is None: E.SubElement(pr, tag('tblHeader'))
 
 row_rules(metadata)
-blocks = re.split(r'\n\s*\n', (ROOT / 'manuscript-v0.12.md').read_text().strip())
+blocks = re.split(r'\n\s*\n', (ROOT / 'manuscript-v0.13.md').read_text().strip())
 for x in list(body): body.remove(x)
 body.append(para(16, blocks[0][2:], bold=True, numbered=False))
 for block in blocks[1:4]: body.append(para(23, block, bold=False, numbered=False))
