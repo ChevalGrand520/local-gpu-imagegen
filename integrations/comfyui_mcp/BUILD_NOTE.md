@@ -41,3 +41,18 @@ Limits / next gate:
   errors/interventions against stop+explicit history. Do not add a GPU campaign
   or claim SQJ readiness merely because protocol checks passed.
 - No independent agent review or research-integrity verdict was obtained.
+
+## Follow-up: automated process/fault campaign
+
+24/24 fixed traces passed in 20.507 s; report FAULT_RESULTS_20261015.md.
+Receipt recomputation passed; three deliberate receipt corruptions (missing row,
+wrong count, wrong history ID) were rejected. Shared harness refactor passed the
+original upstream smoke; 17 boundary/recovery regression tests passed. No owned
+campaign worker/Node harness remained in the post-run process check. Initial
+process-list decoding failed on unrelated non-UTF-8 argv; retry decoded with
+replacement and printed only matching owned task PIDs (none).
+
+Automated fault handling is now exercised across actual Python process exits,
+not only mocked tool exceptions. This does not change the retained negative
+conclusion: strong stop+explicit history equals full in these outcome fields.
+See the report for the next bounded hypothesis gate; no new GPU work was launched.

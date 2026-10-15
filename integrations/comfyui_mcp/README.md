@@ -79,3 +79,12 @@ The malformed-response case exercises upstream's real ENQUEUE_UNVERIFIED path
 against a synthetic HTTP 200, not measured backend acceptance.
 
 The frozen SoftwareX manuscript and earlier real Windows records are unchanged.
+
+## Automated fault campaign
+
+The next milestone is recorded in [FAULT_RESULTS_20261015.md](FAULT_RESULTS_20261015.md).
+24 fixed CPU traces cover real client exits at three boundaries, HTTP response
+loss, history read failure, request changes and normal re-entry. Reproduce with
+`fault_campaign.py`; recompute receipts with `audit_fault_campaign.py`. These
+experiments need no human participants. Stop+explicit recovery and full remain
+equal in all compared outcome fields; no GPU campaign or user study was run.

@@ -21,6 +21,21 @@ spec.loader.exec_module(b)
 PIN = '6996d06ff511dd7b3b05adf89716e7667df2c1b9'
 
 
+def write_tool_harness(harness):
+    harness.write_text('''import {createRequire} from 'node:module';
+import {pathToFileURL} from 'node:url';
+const root=process.argv[2];
+const require=createRequire(root+'/package.json');
+const {McpServer}=await import(pathToFileURL(require.resolve('@modelcontextprotocol/sdk/server/mcp.js')));
+const {StdioServerTransport}=await import(pathToFileURL(require.resolve('@modelcontextprotocol/sdk/server/stdio.js')));
+const {registerWorkflowExecuteTools}=await import(pathToFileURL(root+'/dist/tools/workflow-execute.js'));
+const {registerDiagnosticsTools}=await import(pathToFileURL(root+'/dist/tools/diagnostics.js'));
+const server=new McpServer({name:'upstream-tool-harness',version:'0.52.206'});
+registerWorkflowExecuteTools(server);registerDiagnosticsTools(server);
+await server.connect(new StdioServerTransport());
+''')
+
+
 def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('upstream', type=Path)
@@ -77,18 +92,7 @@ def main():
             tmp = Path(td)
             (tmp/'empty.env').write_text('')
             harness = tmp/'harness.mjs'
-            harness.write_text('''import {createRequire} from 'node:module';
-import {pathToFileURL} from 'node:url';
-const root=process.argv[2];
-const require=createRequire(root+'/package.json');
-const {McpServer}=await import(pathToFileURL(require.resolve('@modelcontextprotocol/sdk/server/mcp.js')));
-const {StdioServerTransport}=await import(pathToFileURL(require.resolve('@modelcontextprotocol/sdk/server/stdio.js')));
-const {registerWorkflowExecuteTools}=await import(pathToFileURL(root+'/dist/tools/workflow-execute.js'));
-const {registerDiagnosticsTools}=await import(pathToFileURL(root+'/dist/tools/diagnostics.js'));
-const server=new McpServer({name:'upstream-tool-harness',version:'0.52.206'});
-registerWorkflowExecuteTools(server);registerDiagnosticsTools(server);
-await server.connect(new StdioServerTransport());
-''')
+            write_tool_harness(harness)
             endpoint = f'http://127.0.0.1:{server.server_port}'
             os.environ.update({'COMFYUI_URL':endpoint,'COMFYUI_MCP_ENV_FILE':str(tmp/'empty.env'),
                                'COMFYUI_MCP_DATA_DIR':str(tmp/'data'),
