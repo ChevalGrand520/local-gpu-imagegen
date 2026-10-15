@@ -88,3 +88,8 @@ loss, history read failure, request changes and normal re-entry. Reproduce with
 `fault_campaign.py`; recompute receipts with `audit_fault_campaign.py`. These
 experiments need no human participants. Stop+explicit recovery and full remain
 equal in all compared outcome fields; no GPU campaign or user study was run.
+
+The follow-up `minimal_baseline.py` independently implements durable stop and
+explicit history; it does not reuse DurableClient's journal/binding code.
+See INDEPENDENT_BASELINE_20261015.md for 23 passing tests and the unrun four-group
+upstream campaign. Its database stores raw requests/config: keep it private.

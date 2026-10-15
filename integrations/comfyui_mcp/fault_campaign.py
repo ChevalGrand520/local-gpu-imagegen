@@ -22,7 +22,7 @@ from urllib.parse import urlsplit
 from upstream_smoke import PIN, write_tool_harness
 
 HERE = Path(__file__).resolve().parent
-MODES = ('native','stop','full')
+MODES = ('native','stop','full','minimal')
 CASES = ('normal','before_send','response_loss','before_binding','after_binding',
          'history_failure','changed_key','changed_seed')
 
@@ -161,7 +161,7 @@ def run_case(upstream, root, mode, case):
         else:
             action=case if case in ('changed_key','changed_seed') else 'submit'
             steps.append(worker(config_path,env,mode,action))
-            if mode=='stop' and case in ('normal','after_binding'):
+            if mode in ('stop','minimal') and case in ('normal','after_binding'):
                 steps.append(worker(config_path,env,mode,'history'))
         posts=[e for e in fixture.events if e['method']=='POST']
         history=[e['path'].rsplit('/',1)[1] for e in fixture.events if e['path'].startswith('/history/')]
@@ -193,7 +193,11 @@ def run_case(upstream, root, mode, case):
         journal_state=None
         if mode!='native':
             with sqlite3.connect(root/'runs.sqlite') as db:
-                row=db.execute('SELECT state,prompt_id FROM runs').fetchone()
+                if mode=='minimal':
+                    pid=db.execute('SELECT job FROM operations').fetchone()[0]
+                    row=('submitting' if pid is None else 'known_job',pid)
+                else:
+                    row=db.execute('SELECT state,prompt_id FROM runs').fetchone()
                 journal_state={'state':row[0],'prompt_id':row[1]}
                 if case in ('before_send','before_binding','response_loss'):
                     assert row==('submitting',None),row
@@ -235,7 +239,7 @@ def main():
     finally:
         receipt['wall_seconds']=round(time.monotonic()-start,3)
         receipt['source_sha256']={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in
-                                 [HERE/'bridge.py',HERE/'fault_worker.py',HERE/'fault_campaign.py',HERE/'upstream_smoke.py']}
+                                 [HERE/'bridge.py',HERE/'minimal_baseline.py',HERE/'fault_worker.py',HERE/'fault_campaign.py',HERE/'upstream_smoke.py']}
         args.receipt.write_text(json.dumps(receipt,indent=2)+'\n')
 
 

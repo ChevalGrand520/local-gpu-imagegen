@@ -19,7 +19,10 @@ def audit(receipt):
     assert receipt['human_study'] is False
     rows=receipt['cases']
     identities=[(r['case'],r['mode']) for r in rows]
-    assert len(identities)==24 and set(identities)=={(c,m) for c in CASES for m in MODES}
+    modes = {r['mode'] for r in rows}
+    assert modes in (MODES, MODES | {'minimal'})
+    assert len(identities)==len(CASES)*len(modes)
+    assert set(identities)=={(c,m) for c in CASES for m in modes}
     summary=[]
     for row in rows:
         case,mode=row['case'],row['mode']
@@ -60,7 +63,11 @@ def audit(receipt):
     for case in CASES:
         stop=next(r for r in summary if r['case']==case and r['mode']=='stop')
         full=next(r for r in summary if r['case']==case and r['mode']=='full')
-        assert {k:v for k,v in stop.items() if k!='mode'}=={k:v for k,v in full.items() if k!='mode'}
+        expected={k:v for k,v in full.items() if k!='mode'}
+        assert {k:v for k,v in stop.items() if k!='mode'}==expected
+        if 'minimal' in modes:
+            simple=next(r for r in summary if r['case']==case and r['mode']=='minimal')
+            assert {k:v for k,v in simple.items() if k!='mode'}==expected
     return {'status':'RECEIPT_CONSISTENCY_PASS','cases_checked':len(rows),
             'stop_full_equal_in_compared_fields':True,'summary':summary,
             'scope':'Synthetic HTTP receipt recomputation; not independent authentication or real execution'}

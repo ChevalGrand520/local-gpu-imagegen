@@ -42,3 +42,12 @@ outcomes; fix the harness before interpreting any results. No parameter search.
 Decision: if stop+manual and full remain equal, do not launch GPU work to repeat
 that equality. Report only convenience of re-entry routing; require a concrete
 new hypothesis before more research development. No paper-writing gate is cleared.
+
+## Follow-up independent baseline (declared before four-group execution)
+
+Add `minimal`: independent SQLite implementation with explicit history recovery,
+sharing only MCP transport/ID extraction. Expand maximum to 32 fixed traces
+(8 × 4), <=120 child starts, <=5 minutes, still CPU-only. Old 24-case receipt
+remains frozen and is not relabeled as a four-group result. Unknown-ID windows
+must block; known-ID recovery is expected to match full. The revised runner is
+not considered executed until the pinned upstream checkout/build is restored.

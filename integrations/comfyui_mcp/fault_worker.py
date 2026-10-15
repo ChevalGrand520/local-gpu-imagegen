@@ -10,7 +10,12 @@ import bridge as b
 def main():
     config = json.loads(Path(sys.argv[1]).read_text())
     mode, action, fault = sys.argv[2:5]
-    client = b.DurableClient(config['database'],config['command'],config['endpoint'],mode=mode,timeout=8)
+    if mode == 'minimal':
+        from minimal_baseline import MinimalClient
+        factory = MinimalClient
+    else:
+        factory = b.DurableClient
+    client = factory(config['database'],config['command'],config['endpoint'],mode=mode,timeout=8)
     graph = config['graph']
     key = 'key'
     if action == 'changed_key':
