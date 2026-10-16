@@ -1,0 +1,233 @@
+{
+  "status": "RECEIPT_CONSISTENCY_PASS",
+  "cases_checked": 32,
+  "stop_full_equal_in_compared_fields": true,
+  "summary": [
+    {
+      "case": "normal",
+      "mode": "native",
+      "post_count": 2,
+      "history_reads": 0,
+      "synthetic_output_reference": false
+    },
+    {
+      "case": "normal",
+      "mode": "stop",
+      "post_count": 1,
+      "history_reads": 1,
+      "synthetic_output_reference": true
+    },
+    {
+      "case": "normal",
+      "mode": "full",
+      "post_count": 1,
+      "history_reads": 1,
+      "synthetic_output_reference": true
+    },
+    {
+      "case": "normal",
+      "mode": "minimal",
+      "post_count": 1,
+      "history_reads": 1,
+      "synthetic_output_reference": true
+    },
+    {
+      "case": "before_send",
+      "mode": "native",
+      "post_count": 1,
+      "history_reads": 0,
+      "synthetic_output_reference": false
+    },
+    {
+      "case": "before_send",
+      "mode": "stop",
+      "post_count": 0,
+      "history_reads": 0,
+      "synthetic_output_reference": false
+    },
+    {
+      "case": "before_send",
+      "mode": "full",
+      "post_count": 0,
+      "history_reads": 0,
+      "synthetic_output_reference": false
+    },
+    {
+      "case": "before_send",
+      "mode": "minimal",
+      "post_count": 0,
+      "history_reads": 0,
+      "synthetic_output_reference": false
+    },
+    {
+      "case": "response_loss",
+      "mode": "native",
+      "post_count": 2,
+      "history_reads": 0,
+      "synthetic_output_reference": false
+    },
+    {
+      "case": "response_loss",
+      "mode": "stop",
+      "post_count": 1,
+      "history_reads": 0,
+      "synthetic_output_reference": false
+    },
+    {
+      "case": "response_loss",
+      "mode": "full",
+      "post_count": 1,
+      "history_reads": 0,
+      "synthetic_output_reference": false
+    },
+    {
+      "case": "response_loss",
+      "mode": "minimal",
+      "post_count": 1,
+      "history_reads": 0,
+      "synthetic_output_reference": false
+    },
+    {
+      "case": "before_binding",
+      "mode": "native",
+      "post_count": 2,
+      "history_reads": 0,
+      "synthetic_output_reference": false
+    },
+    {
+      "case": "before_binding",
+      "mode": "stop",
+      "post_count": 1,
+      "history_reads": 0,
+      "synthetic_output_reference": false
+    },
+    {
+      "case": "before_binding",
+      "mode": "full",
+      "post_count": 1,
+      "history_reads": 0,
+      "synthetic_output_reference": false
+    },
+    {
+      "case": "before_binding",
+      "mode": "minimal",
+      "post_count": 1,
+      "history_reads": 0,
+      "synthetic_output_reference": false
+    },
+    {
+      "case": "after_binding",
+      "mode": "native",
+      "post_count": 2,
+      "history_reads": 0,
+      "synthetic_output_reference": false
+    },
+    {
+      "case": "after_binding",
+      "mode": "stop",
+      "post_count": 1,
+      "history_reads": 1,
+      "synthetic_output_reference": true
+    },
+    {
+      "case": "after_binding",
+      "mode": "full",
+      "post_count": 1,
+      "history_reads": 1,
+      "synthetic_output_reference": true
+    },
+    {
+      "case": "after_binding",
+      "mode": "minimal",
+      "post_count": 1,
+      "history_reads": 1,
+      "synthetic_output_reference": true
+    },
+    {
+      "case": "history_failure",
+      "mode": "native",
+      "post_count": 1,
+      "history_reads": 2,
+      "synthetic_output_reference": true
+    },
+    {
+      "case": "history_failure",
+      "mode": "stop",
+      "post_count": 1,
+      "history_reads": 2,
+      "synthetic_output_reference": true
+    },
+    {
+      "case": "history_failure",
+      "mode": "full",
+      "post_count": 1,
+      "history_reads": 2,
+      "synthetic_output_reference": true
+    },
+    {
+      "case": "history_failure",
+      "mode": "minimal",
+      "post_count": 1,
+      "history_reads": 2,
+      "synthetic_output_reference": true
+    },
+    {
+      "case": "changed_key",
+      "mode": "native",
+      "post_count": 2,
+      "history_reads": 0,
+      "synthetic_output_reference": false
+    },
+    {
+      "case": "changed_key",
+      "mode": "stop",
+      "post_count": 1,
+      "history_reads": 0,
+      "synthetic_output_reference": false
+    },
+    {
+      "case": "changed_key",
+      "mode": "full",
+      "post_count": 1,
+      "history_reads": 0,
+      "synthetic_output_reference": false
+    },
+    {
+      "case": "changed_key",
+      "mode": "minimal",
+      "post_count": 1,
+      "history_reads": 0,
+      "synthetic_output_reference": false
+    },
+    {
+      "case": "changed_seed",
+      "mode": "native",
+      "post_count": 2,
+      "history_reads": 0,
+      "synthetic_output_reference": false
+    },
+    {
+      "case": "changed_seed",
+      "mode": "stop",
+      "post_count": 1,
+      "history_reads": 0,
+      "synthetic_output_reference": false
+    },
+    {
+      "case": "changed_seed",
+      "mode": "full",
+      "post_count": 1,
+      "history_reads": 0,
+      "synthetic_output_reference": false
+    },
+    {
+      "case": "changed_seed",
+      "mode": "minimal",
+      "post_count": 1,
+      "history_reads": 0,
+      "synthetic_output_reference": false
+    }
+  ],
+  "scope": "Synthetic HTTP receipt recomputation; not independent authentication or real execution",
+  "receipt_sha256": "768cf1940cbc86c39e4bd7f5ba06a40f00b7c5ec42a8a28c7c34395369ca7206"
+}

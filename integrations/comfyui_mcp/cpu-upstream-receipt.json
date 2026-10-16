@@ -1,0 +1,56 @@
+{
+  "status": "PASS",
+  "upstream_revision": "6996d06ff511dd7b3b05adf89716e7667df2c1b9",
+  "upstream_version": "0.52.206",
+  "real_upstream_tool_handlers": true,
+  "full_upstream_boot": false,
+  "real_comfyui": false,
+  "gpu_executed": false,
+  "cases": [
+    {
+      "mode": "native",
+      "prompt_posts": 2,
+      "exact_history_reads": 0,
+      "http_paths": [
+        "/object_info?clientId=comfyui-mcp",
+        "/prompt",
+        "/queue",
+        "/object_info?clientId=comfyui-mcp",
+        "/prompt",
+        "/queue"
+      ],
+      "scope": "CPU fake HTTP; stop uses explicit history, full same-key history"
+    },
+    {
+      "mode": "stop",
+      "prompt_posts": 1,
+      "exact_history_reads": 1,
+      "http_paths": [
+        "/object_info?clientId=comfyui-mcp",
+        "/prompt",
+        "/queue",
+        "/history/fixture-job-1?clientId=comfyui-mcp"
+      ],
+      "scope": "CPU fake HTTP; stop uses explicit history, full same-key history"
+    },
+    {
+      "mode": "full",
+      "prompt_posts": 1,
+      "exact_history_reads": 1,
+      "http_paths": [
+        "/object_info?clientId=comfyui-mcp",
+        "/prompt",
+        "/queue",
+        "/history/fixture-job-1?clientId=comfyui-mcp"
+      ],
+      "scope": "CPU fake HTTP; stop uses explicit history, full same-key history"
+    },
+    {
+      "case": "upstream-accepted-http-malformed-json",
+      "prompt_posts": 1,
+      "reentry": "blocked",
+      "backend_acceptance": "synthetic fixture only"
+    }
+  ],
+  "limits": "No real generation, artifact download, completion proof, user benefit or native retry policy claim."
+}
