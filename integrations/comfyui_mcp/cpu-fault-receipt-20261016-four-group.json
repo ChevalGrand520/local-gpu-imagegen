@@ -1,0 +1,2542 @@
+{
+  "status": "PASS",
+  "scope": "CPU fixed traces; real upstream tools, fake HTTP",
+  "upstream_revision": "6996d06ff511dd7b3b05adf89716e7667df2c1b9",
+  "gpu_executed": false,
+  "real_comfyui": false,
+  "human_study": false,
+  "cases": [
+    {
+      "mode": "native",
+      "case": "normal",
+      "steps": [
+        {
+          "exit": 0,
+          "reply": {
+            "ok": true,
+            "result": {
+              "content": [
+                {
+                  "type": "text",
+                  "text": "{\n  \"status\": \"enqueued\",\n  \"prompt_id\": \"fixture-job-1\",\n  \"queue_remaining\": 0\n}"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "exit": 0,
+          "reply": {
+            "ok": true,
+            "result": {
+              "content": [
+                {
+                  "type": "text",
+                  "text": "{\n  \"status\": \"enqueued\",\n  \"prompt_id\": \"fixture-job-2\",\n  \"queue_remaining\": 0\n}"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "prompt_posts": 2,
+      "synthetic_accepted_ids": [
+        "fixture-job-1",
+        "fixture-job-2"
+      ],
+      "exact_history_ids": [],
+      "synthetic_output_reference_retrieved": false,
+      "journal": null,
+      "http_trace": [
+        {
+          "method": "GET",
+          "path": "/object_info"
+        },
+        {
+          "method": "POST",
+          "path": "/prompt",
+          "accepted_id": "fixture-job-1",
+          "graph": {
+            "1": {
+              "class_type": "SaveImage",
+              "inputs": {
+                "images": [
+                  "2",
+                  0
+                ],
+                "filename_prefix": "cpu"
+              }
+            },
+            "2": {
+              "class_type": "EmptyLatentImage",
+              "inputs": {
+                "seed": 42
+              }
+            }
+          }
+        },
+        {
+          "method": "GET",
+          "path": "/queue"
+        },
+        {
+          "method": "GET",
+          "path": "/object_info"
+        },
+        {
+          "method": "POST",
+          "path": "/prompt",
+          "accepted_id": "fixture-job-2",
+          "graph": {
+            "1": {
+              "class_type": "SaveImage",
+              "inputs": {
+                "images": [
+                  "2",
+                  0
+                ],
+                "filename_prefix": "cpu"
+              }
+            },
+            "2": {
+              "class_type": "EmptyLatentImage",
+              "inputs": {
+                "seed": 42
+              }
+            }
+          }
+        },
+        {
+          "method": "GET",
+          "path": "/queue"
+        }
+      ]
+    },
+    {
+      "mode": "stop",
+      "case": "normal",
+      "steps": [
+        {
+          "exit": 0,
+          "reply": {
+            "ok": true,
+            "result": {
+              "run_id": "run",
+              "request_digest": "53d96f2cbdcb937b67d110bd4a74681981e9428bc62eb639c4fcd556a28937e3",
+              "state": "known_job",
+              "prompt_id": "fixture-job-1",
+              "result": {
+                "content": [
+                  {
+                    "text": "{\n  \"status\": \"enqueued\",\n  \"prompt_id\": \"fixture-job-1\",\n  \"queue_remaining\": 0\n}",
+                    "type": "text"
+                  }
+                ]
+              },
+              "context_digest": "2ebb03ffbf0ed6d1019ca6c132f5f669c7cac2ddb6a207149282178f25b62f20"
+            }
+          }
+        },
+        {
+          "exit": 0,
+          "reply": {
+            "ok": true,
+            "result": {
+              "run_id": "run",
+              "request_digest": "53d96f2cbdcb937b67d110bd4a74681981e9428bc62eb639c4fcd556a28937e3",
+              "state": "known_job",
+              "prompt_id": "fixture-job-1",
+              "result": {
+                "content": [
+                  {
+                    "text": "{\n  \"status\": \"enqueued\",\n  \"prompt_id\": \"fixture-job-1\",\n  \"queue_remaining\": 0\n}",
+                    "type": "text"
+                  }
+                ]
+              },
+              "context_digest": "2ebb03ffbf0ed6d1019ca6c132f5f669c7cac2ddb6a207149282178f25b62f20"
+            }
+          }
+        },
+        {
+          "exit": 0,
+          "reply": {
+            "ok": true,
+            "result": {
+              "state": "known_job",
+              "prompt_id": "fixture-job-1",
+              "history_reply": {
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "## Execution: fixture-job-1\n**Status**: success | Completed: true\n\n### Outputs (1 nodes)\n- Node 1: images \u2192 **fixture-job-1.png (type=output)**"
+                  }
+                ]
+              },
+              "completion_verified": false
+            }
+          }
+        }
+      ],
+      "prompt_posts": 1,
+      "synthetic_accepted_ids": [
+        "fixture-job-1"
+      ],
+      "exact_history_ids": [
+        "fixture-job-1"
+      ],
+      "synthetic_output_reference_retrieved": true,
+      "journal": {
+        "state": "known_job",
+        "prompt_id": "fixture-job-1"
+      },
+      "http_trace": [
+        {
+          "method": "GET",
+          "path": "/object_info"
+        },
+        {
+          "method": "POST",
+          "path": "/prompt",
+          "accepted_id": "fixture-job-1",
+          "graph": {
+            "1": {
+              "class_type": "SaveImage",
+              "inputs": {
+                "images": [
+                  "2",
+                  0
+                ],
+                "filename_prefix": "cpu"
+              }
+            },
+            "2": {
+              "class_type": "EmptyLatentImage",
+              "inputs": {
+                "seed": 42
+              }
+            }
+          }
+        },
+        {
+          "method": "GET",
+          "path": "/queue"
+        },
+        {
+          "method": "GET",
+          "path": "/history/fixture-job-1"
+        }
+      ]
+    },
+    {
+      "mode": "full",
+      "case": "normal",
+      "steps": [
+        {
+          "exit": 0,
+          "reply": {
+            "ok": true,
+            "result": {
+              "run_id": "run",
+              "request_digest": "a766e13f724ba2d0b08b356441154acd6147fa2e1670f5475fd89292b1fd69e7",
+              "state": "known_job",
+              "prompt_id": "fixture-job-1",
+              "result": {
+                "content": [
+                  {
+                    "text": "{\n  \"status\": \"enqueued\",\n  \"prompt_id\": \"fixture-job-1\",\n  \"queue_remaining\": 0\n}",
+                    "type": "text"
+                  }
+                ]
+              },
+              "context_digest": "c051557d69e9e2d38bb08b647ac0defae26579834861b81e31291344cbf2cc40"
+            }
+          }
+        },
+        {
+          "exit": 0,
+          "reply": {
+            "ok": true,
+            "result": {
+              "state": "known_job",
+              "prompt_id": "fixture-job-1",
+              "history_reply": {
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "## Execution: fixture-job-1\n**Status**: success | Completed: true\n\n### Outputs (1 nodes)\n- Node 1: images \u2192 **fixture-job-1.png (type=output)**"
+                  }
+                ]
+              },
+              "completion_verified": false
+            }
+          }
+        }
+      ],
+      "prompt_posts": 1,
+      "synthetic_accepted_ids": [
+        "fixture-job-1"
+      ],
+      "exact_history_ids": [
+        "fixture-job-1"
+      ],
+      "synthetic_output_reference_retrieved": true,
+      "journal": {
+        "state": "known_job",
+        "prompt_id": "fixture-job-1"
+      },
+      "http_trace": [
+        {
+          "method": "GET",
+          "path": "/object_info"
+        },
+        {
+          "method": "POST",
+          "path": "/prompt",
+          "accepted_id": "fixture-job-1",
+          "graph": {
+            "1": {
+              "class_type": "SaveImage",
+              "inputs": {
+                "images": [
+                  "2",
+                  0
+                ],
+                "filename_prefix": "cpu"
+              }
+            },
+            "2": {
+              "class_type": "EmptyLatentImage",
+              "inputs": {
+                "seed": 42
+              }
+            }
+          }
+        },
+        {
+          "method": "GET",
+          "path": "/queue"
+        },
+        {
+          "method": "GET",
+          "path": "/history/fixture-job-1"
+        }
+      ]
+    },
+    {
+      "mode": "minimal",
+      "case": "normal",
+      "steps": [
+        {
+          "exit": 0,
+          "reply": {
+            "ok": true,
+            "result": {
+              "state": "known_job",
+              "prompt_id": "fixture-job-1"
+            }
+          }
+        },
+        {
+          "exit": 0,
+          "reply": {
+            "ok": true,
+            "result": {
+              "state": "known_job",
+              "prompt_id": "fixture-job-1"
+            }
+          }
+        },
+        {
+          "exit": 0,
+          "reply": {
+            "ok": true,
+            "result": {
+              "content": [
+                {
+                  "type": "text",
+                  "text": "## Execution: fixture-job-1\n**Status**: success | Completed: true\n\n### Outputs (1 nodes)\n- Node 1: images \u2192 **fixture-job-1.png (type=output)**"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "prompt_posts": 1,
+      "synthetic_accepted_ids": [
+        "fixture-job-1"
+      ],
+      "exact_history_ids": [
+        "fixture-job-1"
+      ],
+      "synthetic_output_reference_retrieved": true,
+      "journal": {
+        "state": "known_job",
+        "prompt_id": "fixture-job-1"
+      },
+      "http_trace": [
+        {
+          "method": "GET",
+          "path": "/object_info"
+        },
+        {
+          "method": "POST",
+          "path": "/prompt",
+          "accepted_id": "fixture-job-1",
+          "graph": {
+            "1": {
+              "class_type": "SaveImage",
+              "inputs": {
+                "images": [
+                  "2",
+                  0
+                ],
+                "filename_prefix": "cpu"
+              }
+            },
+            "2": {
+              "class_type": "EmptyLatentImage",
+              "inputs": {
+                "seed": 42
+              }
+            }
+          }
+        },
+        {
+          "method": "GET",
+          "path": "/queue"
+        },
+        {
+          "method": "GET",
+          "path": "/history/fixture-job-1"
+        }
+      ]
+    },
+    {
+      "mode": "native",
+      "case": "before_send",
+      "steps": [
+        {
+          "exit": 71,
+          "reply": null
+        },
+        {
+          "exit": 0,
+          "reply": {
+            "ok": true,
+            "result": {
+              "content": [
+                {
+                  "type": "text",
+                  "text": "{\n  \"status\": \"enqueued\",\n  \"prompt_id\": \"fixture-job-1\",\n  \"queue_remaining\": 0\n}"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "prompt_posts": 1,
+      "synthetic_accepted_ids": [
+        "fixture-job-1"
+      ],
+      "exact_history_ids": [],
+      "synthetic_output_reference_retrieved": false,
+      "journal": null,
+      "http_trace": [
+        {
+          "method": "GET",
+          "path": "/object_info"
+        },
+        {
+          "method": "POST",
+          "path": "/prompt",
+          "accepted_id": "fixture-job-1",
+          "graph": {
+            "1": {
+              "class_type": "SaveImage",
+              "inputs": {
+                "images": [
+                  "2",
+                  0
+                ],
+                "filename_prefix": "cpu"
+              }
+            },
+            "2": {
+              "class_type": "EmptyLatentImage",
+              "inputs": {
+                "seed": 42
+              }
+            }
+          }
+        },
+        {
+          "method": "GET",
+          "path": "/queue"
+        }
+      ]
+    },
+    {
+      "mode": "stop",
+      "case": "before_send",
+      "steps": [
+        {
+          "exit": 71,
+          "reply": null
+        },
+        {
+          "exit": 2,
+          "reply": {
+            "ok": false,
+            "error_type": "BridgeError",
+            "error": "Submission outcome unknown; no automatic resubmission"
+          }
+        }
+      ],
+      "prompt_posts": 0,
+      "synthetic_accepted_ids": [],
+      "exact_history_ids": [],
+      "synthetic_output_reference_retrieved": false,
+      "journal": {
+        "state": "submitting",
+        "prompt_id": null
+      },
+      "http_trace": []
+    },
+    {
+      "mode": "full",
+      "case": "before_send",
+      "steps": [
+        {
+          "exit": 71,
+          "reply": null
+        },
+        {
+          "exit": 2,
+          "reply": {
+            "ok": false,
+            "error_type": "BridgeError",
+            "error": "Submission outcome unknown; no automatic resubmission"
+          }
+        }
+      ],
+      "prompt_posts": 0,
+      "synthetic_accepted_ids": [],
+      "exact_history_ids": [],
+      "synthetic_output_reference_retrieved": false,
+      "journal": {
+        "state": "submitting",
+        "prompt_id": null
+      },
+      "http_trace": []
+    },
+    {
+      "mode": "minimal",
+      "case": "before_send",
+      "steps": [
+        {
+          "exit": 71,
+          "reply": null
+        },
+        {
+          "exit": 2,
+          "reply": {
+            "ok": false,
+            "error_type": "BridgeError",
+            "error": "Submission outcome unknown; no automatic resubmission"
+          }
+        }
+      ],
+      "prompt_posts": 0,
+      "synthetic_accepted_ids": [],
+      "exact_history_ids": [],
+      "synthetic_output_reference_retrieved": false,
+      "journal": {
+        "state": "submitting",
+        "prompt_id": null
+      },
+      "http_trace": []
+    },
+    {
+      "mode": "native",
+      "case": "response_loss",
+      "steps": [
+        {
+          "exit": 2,
+          "reply": {
+            "ok": false,
+            "error_type": "BridgeError",
+            "error": "Upstream tool returned isError; delivery is uncertain"
+          }
+        },
+        {
+          "exit": 0,
+          "reply": {
+            "ok": true,
+            "result": {
+              "content": [
+                {
+                  "type": "text",
+                  "text": "{\n  \"status\": \"enqueued\",\n  \"prompt_id\": \"fixture-job-2\",\n  \"queue_remaining\": 0\n}"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "prompt_posts": 2,
+      "synthetic_accepted_ids": [
+        "fixture-job-1",
+        "fixture-job-2"
+      ],
+      "exact_history_ids": [],
+      "synthetic_output_reference_retrieved": false,
+      "journal": null,
+      "http_trace": [
+        {
+          "method": "GET",
+          "path": "/object_info"
+        },
+        {
+          "method": "POST",
+          "path": "/prompt",
+          "accepted_id": "fixture-job-1",
+          "graph": {
+            "1": {
+              "class_type": "SaveImage",
+              "inputs": {
+                "images": [
+                  "2",
+                  0
+                ],
+                "filename_prefix": "cpu"
+              }
+            },
+            "2": {
+              "class_type": "EmptyLatentImage",
+              "inputs": {
+                "seed": 42
+              }
+            }
+          }
+        },
+        {
+          "method": "GET",
+          "path": "/object_info"
+        },
+        {
+          "method": "POST",
+          "path": "/prompt",
+          "accepted_id": "fixture-job-2",
+          "graph": {
+            "1": {
+              "class_type": "SaveImage",
+              "inputs": {
+                "images": [
+                  "2",
+                  0
+                ],
+                "filename_prefix": "cpu"
+              }
+            },
+            "2": {
+              "class_type": "EmptyLatentImage",
+              "inputs": {
+                "seed": 42
+              }
+            }
+          }
+        },
+        {
+          "method": "GET",
+          "path": "/queue"
+        }
+      ]
+    },
+    {
+      "mode": "stop",
+      "case": "response_loss",
+      "steps": [
+        {
+          "exit": 2,
+          "reply": {
+            "ok": false,
+            "error_type": "BridgeError",
+            "error": "Upstream tool returned isError; delivery is uncertain"
+          }
+        },
+        {
+          "exit": 2,
+          "reply": {
+            "ok": false,
+            "error_type": "BridgeError",
+            "error": "Submission outcome unknown; no automatic resubmission"
+          }
+        }
+      ],
+      "prompt_posts": 1,
+      "synthetic_accepted_ids": [
+        "fixture-job-1"
+      ],
+      "exact_history_ids": [],
+      "synthetic_output_reference_retrieved": false,
+      "journal": {
+        "state": "submitting",
+        "prompt_id": null
+      },
+      "http_trace": [
+        {
+          "method": "GET",
+          "path": "/object_info"
+        },
+        {
+          "method": "POST",
+          "path": "/prompt",
+          "accepted_id": "fixture-job-1",
+          "graph": {
+            "1": {
+              "class_type": "SaveImage",
+              "inputs": {
+                "images": [
+                  "2",
+                  0
+                ],
+                "filename_prefix": "cpu"
+              }
+            },
+            "2": {
+              "class_type": "EmptyLatentImage",
+              "inputs": {
+                "seed": 42
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "mode": "full",
+      "case": "response_loss",
+      "steps": [
+        {
+          "exit": 2,
+          "reply": {
+            "ok": false,
+            "error_type": "BridgeError",
+            "error": "Upstream tool returned isError; delivery is uncertain"
+          }
+        },
+        {
+          "exit": 2,
+          "reply": {
+            "ok": false,
+            "error_type": "BridgeError",
+            "error": "Submission outcome unknown; no automatic resubmission"
+          }
+        }
+      ],
+      "prompt_posts": 1,
+      "synthetic_accepted_ids": [
+        "fixture-job-1"
+      ],
+      "exact_history_ids": [],
+      "synthetic_output_reference_retrieved": false,
+      "journal": {
+        "state": "submitting",
+        "prompt_id": null
+      },
+      "http_trace": [
+        {
+          "method": "GET",
+          "path": "/object_info"
+        },
+        {
+          "method": "POST",
+          "path": "/prompt",
+          "accepted_id": "fixture-job-1",
+          "graph": {
+            "1": {
+              "class_type": "SaveImage",
+              "inputs": {
+                "images": [
+                  "2",
+                  0
+                ],
+                "filename_prefix": "cpu"
+              }
+            },
+            "2": {
+              "class_type": "EmptyLatentImage",
+              "inputs": {
+                "seed": 42
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "mode": "minimal",
+      "case": "response_loss",
+      "steps": [
+        {
+          "exit": 2,
+          "reply": {
+            "ok": false,
+            "error_type": "BridgeError",
+            "error": "Upstream tool returned isError; delivery is uncertain"
+          }
+        },
+        {
+          "exit": 2,
+          "reply": {
+            "ok": false,
+            "error_type": "BridgeError",
+            "error": "Submission outcome unknown; no automatic resubmission"
+          }
+        }
+      ],
+      "prompt_posts": 1,
+      "synthetic_accepted_ids": [
+        "fixture-job-1"
+      ],
+      "exact_history_ids": [],
+      "synthetic_output_reference_retrieved": false,
+      "journal": {
+        "state": "submitting",
+        "prompt_id": null
+      },
+      "http_trace": [
+        {
+          "method": "GET",
+          "path": "/object_info"
+        },
+        {
+          "method": "POST",
+          "path": "/prompt",
+          "accepted_id": "fixture-job-1",
+          "graph": {
+            "1": {
+              "class_type": "SaveImage",
+              "inputs": {
+                "images": [
+                  "2",
+                  0
+                ],
+                "filename_prefix": "cpu"
+              }
+            },
+            "2": {
+              "class_type": "EmptyLatentImage",
+              "inputs": {
+                "seed": 42
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "mode": "native",
+      "case": "before_binding",
+      "steps": [
+        {
+          "exit": 72,
+          "reply": null
+        },
+        {
+          "exit": 0,
+          "reply": {
+            "ok": true,
+            "result": {
+              "content": [
+                {
+                  "type": "text",
+                  "text": "{\n  \"status\": \"enqueued\",\n  \"prompt_id\": \"fixture-job-2\",\n  \"queue_remaining\": 0\n}"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "prompt_posts": 2,
+      "synthetic_accepted_ids": [
+        "fixture-job-1",
+        "fixture-job-2"
+      ],
+      "exact_history_ids": [],
+      "synthetic_output_reference_retrieved": false,
+      "journal": null,
+      "http_trace": [
+        {
+          "method": "GET",
+          "path": "/object_info"
+        },
+        {
+          "method": "POST",
+          "path": "/prompt",
+          "accepted_id": "fixture-job-1",
+          "graph": {
+            "1": {
+              "class_type": "SaveImage",
+              "inputs": {
+                "images": [
+                  "2",
+                  0
+                ],
+                "filename_prefix": "cpu"
+              }
+            },
+            "2": {
+              "class_type": "EmptyLatentImage",
+              "inputs": {
+                "seed": 42
+              }
+            }
+          }
+        },
+        {
+          "method": "GET",
+          "path": "/queue"
+        },
+        {
+          "method": "GET",
+          "path": "/object_info"
+        },
+        {
+          "method": "POST",
+          "path": "/prompt",
+          "accepted_id": "fixture-job-2",
+          "graph": {
+            "1": {
+              "class_type": "SaveImage",
+              "inputs": {
+                "images": [
+                  "2",
+                  0
+                ],
+                "filename_prefix": "cpu"
+              }
+            },
+            "2": {
+              "class_type": "EmptyLatentImage",
+              "inputs": {
+                "seed": 42
+              }
+            }
+          }
+        },
+        {
+          "method": "GET",
+          "path": "/queue"
+        }
+      ]
+    },
+    {
+      "mode": "stop",
+      "case": "before_binding",
+      "steps": [
+        {
+          "exit": 72,
+          "reply": null
+        },
+        {
+          "exit": 2,
+          "reply": {
+            "ok": false,
+            "error_type": "BridgeError",
+            "error": "Submission outcome unknown; no automatic resubmission"
+          }
+        }
+      ],
+      "prompt_posts": 1,
+      "synthetic_accepted_ids": [
+        "fixture-job-1"
+      ],
+      "exact_history_ids": [],
+      "synthetic_output_reference_retrieved": false,
+      "journal": {
+        "state": "submitting",
+        "prompt_id": null
+      },
+      "http_trace": [
+        {
+          "method": "GET",
+          "path": "/object_info"
+        },
+        {
+          "method": "POST",
+          "path": "/prompt",
+          "accepted_id": "fixture-job-1",
+          "graph": {
+            "1": {
+              "class_type": "SaveImage",
+              "inputs": {
+                "images": [
+                  "2",
+                  0
+                ],
+                "filename_prefix": "cpu"
+              }
+            },
+            "2": {
+              "class_type": "EmptyLatentImage",
+              "inputs": {
+                "seed": 42
+              }
+            }
+          }
+        },
+        {
+          "method": "GET",
+          "path": "/queue"
+        }
+      ]
+    },
+    {
+      "mode": "full",
+      "case": "before_binding",
+      "steps": [
+        {
+          "exit": 72,
+          "reply": null
+        },
+        {
+          "exit": 2,
+          "reply": {
+            "ok": false,
+            "error_type": "BridgeError",
+            "error": "Submission outcome unknown; no automatic resubmission"
+          }
+        }
+      ],
+      "prompt_posts": 1,
+      "synthetic_accepted_ids": [
+        "fixture-job-1"
+      ],
+      "exact_history_ids": [],
+      "synthetic_output_reference_retrieved": false,
+      "journal": {
+        "state": "submitting",
+        "prompt_id": null
+      },
+      "http_trace": [
+        {
+          "method": "GET",
+          "path": "/object_info"
+        },
+        {
+          "method": "POST",
+          "path": "/prompt",
+          "accepted_id": "fixture-job-1",
+          "graph": {
+            "1": {
+              "class_type": "SaveImage",
+              "inputs": {
+                "images": [
+                  "2",
+                  0
+                ],
+                "filename_prefix": "cpu"
+              }
+            },
+            "2": {
+              "class_type": "EmptyLatentImage",
+              "inputs": {
+                "seed": 42
+              }
+            }
+          }
+        },
+        {
+          "method": "GET",
+          "path": "/queue"
+        }
+      ]
+    },
+    {
+      "mode": "minimal",
+      "case": "before_binding",
+      "steps": [
+        {
+          "exit": 72,
+          "reply": null
+        },
+        {
+          "exit": 2,
+          "reply": {
+            "ok": false,
+            "error_type": "BridgeError",
+            "error": "Submission outcome unknown; no automatic resubmission"
+          }
+        }
+      ],
+      "prompt_posts": 1,
+      "synthetic_accepted_ids": [
+        "fixture-job-1"
+      ],
+      "exact_history_ids": [],
+      "synthetic_output_reference_retrieved": false,
+      "journal": {
+        "state": "submitting",
+        "prompt_id": null
+      },
+      "http_trace": [
+        {
+          "method": "GET",
+          "path": "/object_info"
+        },
+        {
+          "method": "POST",
+          "path": "/prompt",
+          "accepted_id": "fixture-job-1",
+          "graph": {
+            "1": {
+              "class_type": "SaveImage",
+              "inputs": {
+                "images": [
+                  "2",
+                  0
+                ],
+                "filename_prefix": "cpu"
+              }
+            },
+            "2": {
+              "class_type": "EmptyLatentImage",
+              "inputs": {
+                "seed": 42
+              }
+            }
+          }
+        },
+        {
+          "method": "GET",
+          "path": "/queue"
+        }
+      ]
+    },
+    {
+      "mode": "native",
+      "case": "after_binding",
+      "steps": [
+        {
+          "exit": 73,
+          "reply": null
+        },
+        {
+          "exit": 0,
+          "reply": {
+            "ok": true,
+            "result": {
+              "content": [
+                {
+                  "type": "text",
+                  "text": "{\n  \"status\": \"enqueued\",\n  \"prompt_id\": \"fixture-job-2\",\n  \"queue_remaining\": 0\n}"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "prompt_posts": 2,
+      "synthetic_accepted_ids": [
+        "fixture-job-1",
+        "fixture-job-2"
+      ],
+      "exact_history_ids": [],
+      "synthetic_output_reference_retrieved": false,
+      "journal": null,
+      "http_trace": [
+        {
+          "method": "GET",
+          "path": "/object_info"
+        },
+        {
+          "method": "POST",
+          "path": "/prompt",
+          "accepted_id": "fixture-job-1",
+          "graph": {
+            "1": {
+              "class_type": "SaveImage",
+              "inputs": {
+                "images": [
+                  "2",
+                  0
+                ],
+                "filename_prefix": "cpu"
+              }
+            },
+            "2": {
+              "class_type": "EmptyLatentImage",
+              "inputs": {
+                "seed": 42
+              }
+            }
+          }
+        },
+        {
+          "method": "GET",
+          "path": "/queue"
+        },
+        {
+          "method": "GET",
+          "path": "/object_info"
+        },
+        {
+          "method": "POST",
+          "path": "/prompt",
+          "accepted_id": "fixture-job-2",
+          "graph": {
+            "1": {
+              "class_type": "SaveImage",
+              "inputs": {
+                "images": [
+                  "2",
+                  0
+                ],
+                "filename_prefix": "cpu"
+              }
+            },
+            "2": {
+              "class_type": "EmptyLatentImage",
+              "inputs": {
+                "seed": 42
+              }
+            }
+          }
+        },
+        {
+          "method": "GET",
+          "path": "/queue"
+        }
+      ]
+    },
+    {
+      "mode": "stop",
+      "case": "after_binding",
+      "steps": [
+        {
+          "exit": 73,
+          "reply": null
+        },
+        {
+          "exit": 0,
+          "reply": {
+            "ok": true,
+            "result": {
+              "run_id": "run",
+              "request_digest": "6cbc23bee73fdb5dc169402f21706893d35baf00436c81a7cf9a937ce2ad63f3",
+              "state": "known_job",
+              "prompt_id": "fixture-job-1",
+              "result": {
+                "content": [
+                  {
+                    "text": "{\n  \"status\": \"enqueued\",\n  \"prompt_id\": \"fixture-job-1\",\n  \"queue_remaining\": 0\n}",
+                    "type": "text"
+                  }
+                ]
+              },
+              "context_digest": "780813ad8b3d83315ec7cbf22b44becad4c2cb14a56bacdf6431a1a33342f5ac"
+            }
+          }
+        },
+        {
+          "exit": 0,
+          "reply": {
+            "ok": true,
+            "result": {
+              "state": "known_job",
+              "prompt_id": "fixture-job-1",
+              "history_reply": {
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "## Execution: fixture-job-1\n**Status**: success | Completed: true\n\n### Outputs (1 nodes)\n- Node 1: images \u2192 **fixture-job-1.png (type=output)**"
+                  }
+                ]
+              },
+              "completion_verified": false
+            }
+          }
+        }
+      ],
+      "prompt_posts": 1,
+      "synthetic_accepted_ids": [
+        "fixture-job-1"
+      ],
+      "exact_history_ids": [
+        "fixture-job-1"
+      ],
+      "synthetic_output_reference_retrieved": true,
+      "journal": {
+        "state": "known_job",
+        "prompt_id": "fixture-job-1"
+      },
+      "http_trace": [
+        {
+          "method": "GET",
+          "path": "/object_info"
+        },
+        {
+          "method": "POST",
+          "path": "/prompt",
+          "accepted_id": "fixture-job-1",
+          "graph": {
+            "1": {
+              "class_type": "SaveImage",
+              "inputs": {
+                "images": [
+                  "2",
+                  0
+                ],
+                "filename_prefix": "cpu"
+              }
+            },
+            "2": {
+              "class_type": "EmptyLatentImage",
+              "inputs": {
+                "seed": 42
+              }
+            }
+          }
+        },
+        {
+          "method": "GET",
+          "path": "/queue"
+        },
+        {
+          "method": "GET",
+          "path": "/history/fixture-job-1"
+        }
+      ]
+    },
+    {
+      "mode": "full",
+      "case": "after_binding",
+      "steps": [
+        {
+          "exit": 73,
+          "reply": null
+        },
+        {
+          "exit": 0,
+          "reply": {
+            "ok": true,
+            "result": {
+              "state": "known_job",
+              "prompt_id": "fixture-job-1",
+              "history_reply": {
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "## Execution: fixture-job-1\n**Status**: success | Completed: true\n\n### Outputs (1 nodes)\n- Node 1: images \u2192 **fixture-job-1.png (type=output)**"
+                  }
+                ]
+              },
+              "completion_verified": false
+            }
+          }
+        }
+      ],
+      "prompt_posts": 1,
+      "synthetic_accepted_ids": [
+        "fixture-job-1"
+      ],
+      "exact_history_ids": [
+        "fixture-job-1"
+      ],
+      "synthetic_output_reference_retrieved": true,
+      "journal": {
+        "state": "known_job",
+        "prompt_id": "fixture-job-1"
+      },
+      "http_trace": [
+        {
+          "method": "GET",
+          "path": "/object_info"
+        },
+        {
+          "method": "POST",
+          "path": "/prompt",
+          "accepted_id": "fixture-job-1",
+          "graph": {
+            "1": {
+              "class_type": "SaveImage",
+              "inputs": {
+                "images": [
+                  "2",
+                  0
+                ],
+                "filename_prefix": "cpu"
+              }
+            },
+            "2": {
+              "class_type": "EmptyLatentImage",
+              "inputs": {
+                "seed": 42
+              }
+            }
+          }
+        },
+        {
+          "method": "GET",
+          "path": "/queue"
+        },
+        {
+          "method": "GET",
+          "path": "/history/fixture-job-1"
+        }
+      ]
+    },
+    {
+      "mode": "minimal",
+      "case": "after_binding",
+      "steps": [
+        {
+          "exit": 73,
+          "reply": null
+        },
+        {
+          "exit": 0,
+          "reply": {
+            "ok": true,
+            "result": {
+              "state": "known_job",
+              "prompt_id": "fixture-job-1"
+            }
+          }
+        },
+        {
+          "exit": 0,
+          "reply": {
+            "ok": true,
+            "result": {
+              "content": [
+                {
+                  "type": "text",
+                  "text": "## Execution: fixture-job-1\n**Status**: success | Completed: true\n\n### Outputs (1 nodes)\n- Node 1: images \u2192 **fixture-job-1.png (type=output)**"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "prompt_posts": 1,
+      "synthetic_accepted_ids": [
+        "fixture-job-1"
+      ],
+      "exact_history_ids": [
+        "fixture-job-1"
+      ],
+      "synthetic_output_reference_retrieved": true,
+      "journal": {
+        "state": "known_job",
+        "prompt_id": "fixture-job-1"
+      },
+      "http_trace": [
+        {
+          "method": "GET",
+          "path": "/object_info"
+        },
+        {
+          "method": "POST",
+          "path": "/prompt",
+          "accepted_id": "fixture-job-1",
+          "graph": {
+            "1": {
+              "class_type": "SaveImage",
+              "inputs": {
+                "images": [
+                  "2",
+                  0
+                ],
+                "filename_prefix": "cpu"
+              }
+            },
+            "2": {
+              "class_type": "EmptyLatentImage",
+              "inputs": {
+                "seed": 42
+              }
+            }
+          }
+        },
+        {
+          "method": "GET",
+          "path": "/queue"
+        },
+        {
+          "method": "GET",
+          "path": "/history/fixture-job-1"
+        }
+      ]
+    },
+    {
+      "mode": "native",
+      "case": "history_failure",
+      "steps": [
+        {
+          "exit": 0,
+          "reply": {
+            "ok": true,
+            "result": {
+              "content": [
+                {
+                  "type": "text",
+                  "text": "{\n  \"status\": \"enqueued\",\n  \"prompt_id\": \"fixture-job-1\",\n  \"queue_remaining\": 0\n}"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "exit": 2,
+          "reply": {
+            "ok": false,
+            "error_type": "BridgeError",
+            "error": "Upstream tool returned isError; delivery is uncertain"
+          }
+        },
+        {
+          "exit": 0,
+          "reply": {
+            "ok": true,
+            "result": {
+              "content": [
+                {
+                  "type": "text",
+                  "text": "## Execution: fixture-job-1\n**Status**: success | Completed: true\n\n### Outputs (1 nodes)\n- Node 1: images \u2192 **fixture-job-1.png (type=output)**"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "prompt_posts": 1,
+      "synthetic_accepted_ids": [
+        "fixture-job-1"
+      ],
+      "exact_history_ids": [
+        "fixture-job-1",
+        "fixture-job-1"
+      ],
+      "synthetic_output_reference_retrieved": true,
+      "journal": null,
+      "http_trace": [
+        {
+          "method": "GET",
+          "path": "/object_info"
+        },
+        {
+          "method": "POST",
+          "path": "/prompt",
+          "accepted_id": "fixture-job-1",
+          "graph": {
+            "1": {
+              "class_type": "SaveImage",
+              "inputs": {
+                "images": [
+                  "2",
+                  0
+                ],
+                "filename_prefix": "cpu"
+              }
+            },
+            "2": {
+              "class_type": "EmptyLatentImage",
+              "inputs": {
+                "seed": 42
+              }
+            }
+          }
+        },
+        {
+          "method": "GET",
+          "path": "/queue"
+        },
+        {
+          "method": "GET",
+          "path": "/history/fixture-job-1"
+        },
+        {
+          "method": "GET",
+          "path": "/history/fixture-job-1"
+        }
+      ]
+    },
+    {
+      "mode": "stop",
+      "case": "history_failure",
+      "steps": [
+        {
+          "exit": 0,
+          "reply": {
+            "ok": true,
+            "result": {
+              "run_id": "run",
+              "request_digest": "7b63218307de9f7cfc6dc1c5335b69b3018e40d663cdce02cc92e6704662cb64",
+              "state": "known_job",
+              "prompt_id": "fixture-job-1",
+              "result": {
+                "content": [
+                  {
+                    "text": "{\n  \"status\": \"enqueued\",\n  \"prompt_id\": \"fixture-job-1\",\n  \"queue_remaining\": 0\n}",
+                    "type": "text"
+                  }
+                ]
+              },
+              "context_digest": "4e1880aa66b5ad26530227e08f333b62dda40d2dad6042648b09d7049641952e"
+            }
+          }
+        },
+        {
+          "exit": 2,
+          "reply": {
+            "ok": false,
+            "error_type": "BridgeError",
+            "error": "Upstream tool returned isError; delivery is uncertain"
+          }
+        },
+        {
+          "exit": 0,
+          "reply": {
+            "ok": true,
+            "result": {
+              "state": "known_job",
+              "prompt_id": "fixture-job-1",
+              "history_reply": {
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "## Execution: fixture-job-1\n**Status**: success | Completed: true\n\n### Outputs (1 nodes)\n- Node 1: images \u2192 **fixture-job-1.png (type=output)**"
+                  }
+                ]
+              },
+              "completion_verified": false
+            }
+          }
+        }
+      ],
+      "prompt_posts": 1,
+      "synthetic_accepted_ids": [
+        "fixture-job-1"
+      ],
+      "exact_history_ids": [
+        "fixture-job-1",
+        "fixture-job-1"
+      ],
+      "synthetic_output_reference_retrieved": true,
+      "journal": {
+        "state": "known_job",
+        "prompt_id": "fixture-job-1"
+      },
+      "http_trace": [
+        {
+          "method": "GET",
+          "path": "/object_info"
+        },
+        {
+          "method": "POST",
+          "path": "/prompt",
+          "accepted_id": "fixture-job-1",
+          "graph": {
+            "1": {
+              "class_type": "SaveImage",
+              "inputs": {
+                "images": [
+                  "2",
+                  0
+                ],
+                "filename_prefix": "cpu"
+              }
+            },
+            "2": {
+              "class_type": "EmptyLatentImage",
+              "inputs": {
+                "seed": 42
+              }
+            }
+          }
+        },
+        {
+          "method": "GET",
+          "path": "/queue"
+        },
+        {
+          "method": "GET",
+          "path": "/history/fixture-job-1"
+        },
+        {
+          "method": "GET",
+          "path": "/history/fixture-job-1"
+        }
+      ]
+    },
+    {
+      "mode": "full",
+      "case": "history_failure",
+      "steps": [
+        {
+          "exit": 0,
+          "reply": {
+            "ok": true,
+            "result": {
+              "run_id": "run",
+              "request_digest": "0cfebe6ccda8082f313d715c1e7e5c7fd4510923ee73ab10cc2488c9dff6e945",
+              "state": "known_job",
+              "prompt_id": "fixture-job-1",
+              "result": {
+                "content": [
+                  {
+                    "text": "{\n  \"status\": \"enqueued\",\n  \"prompt_id\": \"fixture-job-1\",\n  \"queue_remaining\": 0\n}",
+                    "type": "text"
+                  }
+                ]
+              },
+              "context_digest": "7c857d6d82b9a6553139dfe3f7f3d5c9552ef9b0c6b17691d4e6913bac24d7b9"
+            }
+          }
+        },
+        {
+          "exit": 2,
+          "reply": {
+            "ok": false,
+            "error_type": "BridgeError",
+            "error": "Upstream tool returned isError; delivery is uncertain"
+          }
+        },
+        {
+          "exit": 0,
+          "reply": {
+            "ok": true,
+            "result": {
+              "state": "known_job",
+              "prompt_id": "fixture-job-1",
+              "history_reply": {
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "## Execution: fixture-job-1\n**Status**: success | Completed: true\n\n### Outputs (1 nodes)\n- Node 1: images \u2192 **fixture-job-1.png (type=output)**"
+                  }
+                ]
+              },
+              "completion_verified": false
+            }
+          }
+        }
+      ],
+      "prompt_posts": 1,
+      "synthetic_accepted_ids": [
+        "fixture-job-1"
+      ],
+      "exact_history_ids": [
+        "fixture-job-1",
+        "fixture-job-1"
+      ],
+      "synthetic_output_reference_retrieved": true,
+      "journal": {
+        "state": "known_job",
+        "prompt_id": "fixture-job-1"
+      },
+      "http_trace": [
+        {
+          "method": "GET",
+          "path": "/object_info"
+        },
+        {
+          "method": "POST",
+          "path": "/prompt",
+          "accepted_id": "fixture-job-1",
+          "graph": {
+            "1": {
+              "class_type": "SaveImage",
+              "inputs": {
+                "images": [
+                  "2",
+                  0
+                ],
+                "filename_prefix": "cpu"
+              }
+            },
+            "2": {
+              "class_type": "EmptyLatentImage",
+              "inputs": {
+                "seed": 42
+              }
+            }
+          }
+        },
+        {
+          "method": "GET",
+          "path": "/queue"
+        },
+        {
+          "method": "GET",
+          "path": "/history/fixture-job-1"
+        },
+        {
+          "method": "GET",
+          "path": "/history/fixture-job-1"
+        }
+      ]
+    },
+    {
+      "mode": "minimal",
+      "case": "history_failure",
+      "steps": [
+        {
+          "exit": 0,
+          "reply": {
+            "ok": true,
+            "result": {
+              "state": "known_job",
+              "prompt_id": "fixture-job-1"
+            }
+          }
+        },
+        {
+          "exit": 2,
+          "reply": {
+            "ok": false,
+            "error_type": "BridgeError",
+            "error": "Upstream tool returned isError; delivery is uncertain"
+          }
+        },
+        {
+          "exit": 0,
+          "reply": {
+            "ok": true,
+            "result": {
+              "content": [
+                {
+                  "type": "text",
+                  "text": "## Execution: fixture-job-1\n**Status**: success | Completed: true\n\n### Outputs (1 nodes)\n- Node 1: images \u2192 **fixture-job-1.png (type=output)**"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "prompt_posts": 1,
+      "synthetic_accepted_ids": [
+        "fixture-job-1"
+      ],
+      "exact_history_ids": [
+        "fixture-job-1",
+        "fixture-job-1"
+      ],
+      "synthetic_output_reference_retrieved": true,
+      "journal": {
+        "state": "known_job",
+        "prompt_id": "fixture-job-1"
+      },
+      "http_trace": [
+        {
+          "method": "GET",
+          "path": "/object_info"
+        },
+        {
+          "method": "POST",
+          "path": "/prompt",
+          "accepted_id": "fixture-job-1",
+          "graph": {
+            "1": {
+              "class_type": "SaveImage",
+              "inputs": {
+                "images": [
+                  "2",
+                  0
+                ],
+                "filename_prefix": "cpu"
+              }
+            },
+            "2": {
+              "class_type": "EmptyLatentImage",
+              "inputs": {
+                "seed": 42
+              }
+            }
+          }
+        },
+        {
+          "method": "GET",
+          "path": "/queue"
+        },
+        {
+          "method": "GET",
+          "path": "/history/fixture-job-1"
+        },
+        {
+          "method": "GET",
+          "path": "/history/fixture-job-1"
+        }
+      ]
+    },
+    {
+      "mode": "native",
+      "case": "changed_key",
+      "steps": [
+        {
+          "exit": 0,
+          "reply": {
+            "ok": true,
+            "result": {
+              "content": [
+                {
+                  "type": "text",
+                  "text": "{\n  \"status\": \"enqueued\",\n  \"prompt_id\": \"fixture-job-1\",\n  \"queue_remaining\": 0\n}"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "exit": 0,
+          "reply": {
+            "ok": true,
+            "result": {
+              "content": [
+                {
+                  "type": "text",
+                  "text": "{\n  \"status\": \"enqueued\",\n  \"prompt_id\": \"fixture-job-2\",\n  \"queue_remaining\": 0\n}"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "prompt_posts": 2,
+      "synthetic_accepted_ids": [
+        "fixture-job-1",
+        "fixture-job-2"
+      ],
+      "exact_history_ids": [],
+      "synthetic_output_reference_retrieved": false,
+      "journal": null,
+      "http_trace": [
+        {
+          "method": "GET",
+          "path": "/object_info"
+        },
+        {
+          "method": "POST",
+          "path": "/prompt",
+          "accepted_id": "fixture-job-1",
+          "graph": {
+            "1": {
+              "class_type": "SaveImage",
+              "inputs": {
+                "images": [
+                  "2",
+                  0
+                ],
+                "filename_prefix": "cpu"
+              }
+            },
+            "2": {
+              "class_type": "EmptyLatentImage",
+              "inputs": {
+                "seed": 42
+              }
+            }
+          }
+        },
+        {
+          "method": "GET",
+          "path": "/queue"
+        },
+        {
+          "method": "GET",
+          "path": "/object_info"
+        },
+        {
+          "method": "POST",
+          "path": "/prompt",
+          "accepted_id": "fixture-job-2",
+          "graph": {
+            "1": {
+              "class_type": "SaveImage",
+              "inputs": {
+                "images": [
+                  "2",
+                  0
+                ],
+                "filename_prefix": "cpu"
+              }
+            },
+            "2": {
+              "class_type": "EmptyLatentImage",
+              "inputs": {
+                "seed": 42
+              }
+            }
+          }
+        },
+        {
+          "method": "GET",
+          "path": "/queue"
+        }
+      ]
+    },
+    {
+      "mode": "stop",
+      "case": "changed_key",
+      "steps": [
+        {
+          "exit": 0,
+          "reply": {
+            "ok": true,
+            "result": {
+              "run_id": "run",
+              "request_digest": "26f91973635afccde6aae644aedd702c4e3484465f44578aa9a0356a51e3f07c",
+              "state": "known_job",
+              "prompt_id": "fixture-job-1",
+              "result": {
+                "content": [
+                  {
+                    "text": "{\n  \"status\": \"enqueued\",\n  \"prompt_id\": \"fixture-job-1\",\n  \"queue_remaining\": 0\n}",
+                    "type": "text"
+                  }
+                ]
+              },
+              "context_digest": "b4671294431fba7a2f06ce2503615827ee6c1368f297f81a2559d8632faee1ae"
+            }
+          }
+        },
+        {
+          "exit": 2,
+          "reply": {
+            "ok": false,
+            "error_type": "BridgeError",
+            "error": "Request binding conflict: key, graph, endpoint or command changed"
+          }
+        }
+      ],
+      "prompt_posts": 1,
+      "synthetic_accepted_ids": [
+        "fixture-job-1"
+      ],
+      "exact_history_ids": [],
+      "synthetic_output_reference_retrieved": false,
+      "journal": {
+        "state": "known_job",
+        "prompt_id": "fixture-job-1"
+      },
+      "http_trace": [
+        {
+          "method": "GET",
+          "path": "/object_info"
+        },
+        {
+          "method": "POST",
+          "path": "/prompt",
+          "accepted_id": "fixture-job-1",
+          "graph": {
+            "1": {
+              "class_type": "SaveImage",
+              "inputs": {
+                "images": [
+                  "2",
+                  0
+                ],
+                "filename_prefix": "cpu"
+              }
+            },
+            "2": {
+              "class_type": "EmptyLatentImage",
+              "inputs": {
+                "seed": 42
+              }
+            }
+          }
+        },
+        {
+          "method": "GET",
+          "path": "/queue"
+        }
+      ]
+    },
+    {
+      "mode": "full",
+      "case": "changed_key",
+      "steps": [
+        {
+          "exit": 0,
+          "reply": {
+            "ok": true,
+            "result": {
+              "run_id": "run",
+              "request_digest": "505922744109742b8c83520a7218d4d9451d013981d7ce883067ca1833be5793",
+              "state": "known_job",
+              "prompt_id": "fixture-job-1",
+              "result": {
+                "content": [
+                  {
+                    "text": "{\n  \"status\": \"enqueued\",\n  \"prompt_id\": \"fixture-job-1\",\n  \"queue_remaining\": 0\n}",
+                    "type": "text"
+                  }
+                ]
+              },
+              "context_digest": "52c53adb4f67ccfe7278580b43dc14d87c90690a2f21069bc51302d501a20f18"
+            }
+          }
+        },
+        {
+          "exit": 2,
+          "reply": {
+            "ok": false,
+            "error_type": "BridgeError",
+            "error": "Request binding conflict: key, graph, endpoint or command changed"
+          }
+        }
+      ],
+      "prompt_posts": 1,
+      "synthetic_accepted_ids": [
+        "fixture-job-1"
+      ],
+      "exact_history_ids": [],
+      "synthetic_output_reference_retrieved": false,
+      "journal": {
+        "state": "known_job",
+        "prompt_id": "fixture-job-1"
+      },
+      "http_trace": [
+        {
+          "method": "GET",
+          "path": "/object_info"
+        },
+        {
+          "method": "POST",
+          "path": "/prompt",
+          "accepted_id": "fixture-job-1",
+          "graph": {
+            "1": {
+              "class_type": "SaveImage",
+              "inputs": {
+                "images": [
+                  "2",
+                  0
+                ],
+                "filename_prefix": "cpu"
+              }
+            },
+            "2": {
+              "class_type": "EmptyLatentImage",
+              "inputs": {
+                "seed": 42
+              }
+            }
+          }
+        },
+        {
+          "method": "GET",
+          "path": "/queue"
+        }
+      ]
+    },
+    {
+      "mode": "minimal",
+      "case": "changed_key",
+      "steps": [
+        {
+          "exit": 0,
+          "reply": {
+            "ok": true,
+            "result": {
+              "state": "known_job",
+              "prompt_id": "fixture-job-1"
+            }
+          }
+        },
+        {
+          "exit": 2,
+          "reply": {
+            "ok": false,
+            "error_type": "BridgeError",
+            "error": "Request binding conflict"
+          }
+        }
+      ],
+      "prompt_posts": 1,
+      "synthetic_accepted_ids": [
+        "fixture-job-1"
+      ],
+      "exact_history_ids": [],
+      "synthetic_output_reference_retrieved": false,
+      "journal": {
+        "state": "known_job",
+        "prompt_id": "fixture-job-1"
+      },
+      "http_trace": [
+        {
+          "method": "GET",
+          "path": "/object_info"
+        },
+        {
+          "method": "POST",
+          "path": "/prompt",
+          "accepted_id": "fixture-job-1",
+          "graph": {
+            "1": {
+              "class_type": "SaveImage",
+              "inputs": {
+                "images": [
+                  "2",
+                  0
+                ],
+                "filename_prefix": "cpu"
+              }
+            },
+            "2": {
+              "class_type": "EmptyLatentImage",
+              "inputs": {
+                "seed": 42
+              }
+            }
+          }
+        },
+        {
+          "method": "GET",
+          "path": "/queue"
+        }
+      ]
+    },
+    {
+      "mode": "native",
+      "case": "changed_seed",
+      "steps": [
+        {
+          "exit": 0,
+          "reply": {
+            "ok": true,
+            "result": {
+              "content": [
+                {
+                  "type": "text",
+                  "text": "{\n  \"status\": \"enqueued\",\n  \"prompt_id\": \"fixture-job-1\",\n  \"queue_remaining\": 0\n}"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "exit": 0,
+          "reply": {
+            "ok": true,
+            "result": {
+              "content": [
+                {
+                  "type": "text",
+                  "text": "{\n  \"status\": \"enqueued\",\n  \"prompt_id\": \"fixture-job-2\",\n  \"queue_remaining\": 0\n}"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "prompt_posts": 2,
+      "synthetic_accepted_ids": [
+        "fixture-job-1",
+        "fixture-job-2"
+      ],
+      "exact_history_ids": [],
+      "synthetic_output_reference_retrieved": false,
+      "journal": null,
+      "http_trace": [
+        {
+          "method": "GET",
+          "path": "/object_info"
+        },
+        {
+          "method": "POST",
+          "path": "/prompt",
+          "accepted_id": "fixture-job-1",
+          "graph": {
+            "1": {
+              "class_type": "SaveImage",
+              "inputs": {
+                "images": [
+                  "2",
+                  0
+                ],
+                "filename_prefix": "cpu"
+              }
+            },
+            "2": {
+              "class_type": "EmptyLatentImage",
+              "inputs": {
+                "seed": 42
+              }
+            }
+          }
+        },
+        {
+          "method": "GET",
+          "path": "/queue"
+        },
+        {
+          "method": "GET",
+          "path": "/object_info"
+        },
+        {
+          "method": "POST",
+          "path": "/prompt",
+          "accepted_id": "fixture-job-2",
+          "graph": {
+            "1": {
+              "class_type": "SaveImage",
+              "inputs": {
+                "images": [
+                  "2",
+                  0
+                ],
+                "filename_prefix": "cpu"
+              }
+            },
+            "2": {
+              "class_type": "EmptyLatentImage",
+              "inputs": {
+                "seed": 43
+              }
+            }
+          }
+        },
+        {
+          "method": "GET",
+          "path": "/queue"
+        }
+      ]
+    },
+    {
+      "mode": "stop",
+      "case": "changed_seed",
+      "steps": [
+        {
+          "exit": 0,
+          "reply": {
+            "ok": true,
+            "result": {
+              "run_id": "run",
+              "request_digest": "cc2bf086d80682c8192d26560f8f3f04d2931c639de087345e6e168de11184e7",
+              "state": "known_job",
+              "prompt_id": "fixture-job-1",
+              "result": {
+                "content": [
+                  {
+                    "text": "{\n  \"status\": \"enqueued\",\n  \"prompt_id\": \"fixture-job-1\",\n  \"queue_remaining\": 0\n}",
+                    "type": "text"
+                  }
+                ]
+              },
+              "context_digest": "6237572856a400c5418046aa47c33eb5dc445cd4064e2a9e8afde03f5de5c9b4"
+            }
+          }
+        },
+        {
+          "exit": 2,
+          "reply": {
+            "ok": false,
+            "error_type": "BridgeError",
+            "error": "Request binding conflict: key, graph, endpoint or command changed"
+          }
+        }
+      ],
+      "prompt_posts": 1,
+      "synthetic_accepted_ids": [
+        "fixture-job-1"
+      ],
+      "exact_history_ids": [],
+      "synthetic_output_reference_retrieved": false,
+      "journal": {
+        "state": "known_job",
+        "prompt_id": "fixture-job-1"
+      },
+      "http_trace": [
+        {
+          "method": "GET",
+          "path": "/object_info"
+        },
+        {
+          "method": "POST",
+          "path": "/prompt",
+          "accepted_id": "fixture-job-1",
+          "graph": {
+            "1": {
+              "class_type": "SaveImage",
+              "inputs": {
+                "images": [
+                  "2",
+                  0
+                ],
+                "filename_prefix": "cpu"
+              }
+            },
+            "2": {
+              "class_type": "EmptyLatentImage",
+              "inputs": {
+                "seed": 42
+              }
+            }
+          }
+        },
+        {
+          "method": "GET",
+          "path": "/queue"
+        }
+      ]
+    },
+    {
+      "mode": "full",
+      "case": "changed_seed",
+      "steps": [
+        {
+          "exit": 0,
+          "reply": {
+            "ok": true,
+            "result": {
+              "run_id": "run",
+              "request_digest": "bc263bb5a4bb09a6c1ed1631bf50d0cc252eb8468ee07d938042bcd9925ae30b",
+              "state": "known_job",
+              "prompt_id": "fixture-job-1",
+              "result": {
+                "content": [
+                  {
+                    "text": "{\n  \"status\": \"enqueued\",\n  \"prompt_id\": \"fixture-job-1\",\n  \"queue_remaining\": 0\n}",
+                    "type": "text"
+                  }
+                ]
+              },
+              "context_digest": "8f1691ff86a66d50dd7d2cef5392deadca5e4b68930578bd38c7371647c51e85"
+            }
+          }
+        },
+        {
+          "exit": 2,
+          "reply": {
+            "ok": false,
+            "error_type": "BridgeError",
+            "error": "Request binding conflict: key, graph, endpoint or command changed"
+          }
+        }
+      ],
+      "prompt_posts": 1,
+      "synthetic_accepted_ids": [
+        "fixture-job-1"
+      ],
+      "exact_history_ids": [],
+      "synthetic_output_reference_retrieved": false,
+      "journal": {
+        "state": "known_job",
+        "prompt_id": "fixture-job-1"
+      },
+      "http_trace": [
+        {
+          "method": "GET",
+          "path": "/object_info"
+        },
+        {
+          "method": "POST",
+          "path": "/prompt",
+          "accepted_id": "fixture-job-1",
+          "graph": {
+            "1": {
+              "class_type": "SaveImage",
+              "inputs": {
+                "images": [
+                  "2",
+                  0
+                ],
+                "filename_prefix": "cpu"
+              }
+            },
+            "2": {
+              "class_type": "EmptyLatentImage",
+              "inputs": {
+                "seed": 42
+              }
+            }
+          }
+        },
+        {
+          "method": "GET",
+          "path": "/queue"
+        }
+      ]
+    },
+    {
+      "mode": "minimal",
+      "case": "changed_seed",
+      "steps": [
+        {
+          "exit": 0,
+          "reply": {
+            "ok": true,
+            "result": {
+              "state": "known_job",
+              "prompt_id": "fixture-job-1"
+            }
+          }
+        },
+        {
+          "exit": 2,
+          "reply": {
+            "ok": false,
+            "error_type": "BridgeError",
+            "error": "Request binding conflict"
+          }
+        }
+      ],
+      "prompt_posts": 1,
+      "synthetic_accepted_ids": [
+        "fixture-job-1"
+      ],
+      "exact_history_ids": [],
+      "synthetic_output_reference_retrieved": false,
+      "journal": {
+        "state": "known_job",
+        "prompt_id": "fixture-job-1"
+      },
+      "http_trace": [
+        {
+          "method": "GET",
+          "path": "/object_info"
+        },
+        {
+          "method": "POST",
+          "path": "/prompt",
+          "accepted_id": "fixture-job-1",
+          "graph": {
+            "1": {
+              "class_type": "SaveImage",
+              "inputs": {
+                "images": [
+                  "2",
+                  0
+                ],
+                "filename_prefix": "cpu"
+              }
+            },
+            "2": {
+              "class_type": "EmptyLatentImage",
+              "inputs": {
+                "seed": 42
+              }
+            }
+          }
+        },
+        {
+          "method": "GET",
+          "path": "/queue"
+        }
+      ]
+    }
+  ],
+  "wall_seconds": 52.159,
+  "source_sha256": {
+    "bridge.py": "b911f18ee11f33535698d087eb3e79fb0a95c63d5710b9d2de34523f765bf199",
+    "minimal_baseline.py": "8f60ef19c5f219a6e1a861cebc0a5185e41b05f7810e3f9f0d79778775c95a30",
+    "fault_worker.py": "28517b1818b4d52f5c8f55f6afca17c11ce6b9c739ae7be63e561f08aeca6e61",
+    "fault_campaign.py": "8c14dcc5d8e4577538ef1ca2f1a58634843ba3cf29722740b3baac41e9ffcf21",
+    "upstream_smoke.py": "0d0ae2af907b2da7d34bc031f680650ccf22fd39e5b7b3cad73cc7893f17c2a0"
+  }
+}

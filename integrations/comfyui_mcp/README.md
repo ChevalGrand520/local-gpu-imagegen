@@ -91,5 +91,6 @@ equal in all compared outcome fields; no GPU campaign or user study was run.
 
 The follow-up `minimal_baseline.py` independently implements durable stop and
 explicit history; it does not reuse DurableClient's journal/binding code.
-See INDEPENDENT_BASELINE_20261015.md for 23 passing tests and the unrun four-group
-upstream campaign. Its database stores raw requests/config: keep it private.
+See INDEPENDENT_BASELINE_20261015.md for the initial baseline checks. The four-group
+upstream campaign has now run: see RECHECK_20261016.md for 32 passing fixed traces,
+baseline equality, and the pinned Panel capability inspection. Its database stores raw requests/config: keep it private.

@@ -27,3 +27,9 @@ The existing frozen 24-case result is unchanged and can still be audited.
 Next bounded step: restore exactly 6996d06, npm ci with scripts disabled and
 build, run fault_campaign.py for all four groups, audit the new receipt. Do not
 extend models/fault types/GPU until a concrete distinct capability is found.
+
+## Follow-up status — 2026-10-16
+
+The source-restoration block was resolved. The four-group campaign and pinned
+Panel component checks have run; see RECHECK_20261016.md. The original pending
+status above describes the 2026-10-15 checkpoint, not the current state.
